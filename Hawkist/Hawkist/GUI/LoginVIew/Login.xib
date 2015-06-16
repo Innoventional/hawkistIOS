@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="signUp">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backAutorizate" translatesAutoresizingMaskIntoConstraints="NO" id="AzC-fn-jZZ">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZe-et-yby">
+                    <rect key="frame" x="20" y="500" width="560" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="SIGN UP WITH FACEBOOK" backgroundImage="fbButton">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnSignUpFB:" destination="iN0-l3-epB" eventType="touchUpInside" id="s0y-qI-LmG"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mD-9n-1sx">
+                    <rect key="frame" x="20" y="440" width="560" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="SIGN UP WITH MOBILE NUMBER" backgroundImage="phone">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnSignUpMobile:" destination="iN0-l3-epB" eventType="touchUpInside" id="1EI-go-YCg"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already a member?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9m-pO-9ck">
+                    <rect key="frame" x="157" y="553" width="188" height="27"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOc-Xl-GGm">
+                    <rect key="frame" x="357" y="555" width="92" height="25"/>
+                    <state key="normal" backgroundImage="SingIn">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnSignIn:" destination="iN0-l3-epB" eventType="touchUpInside" id="7IR-ZO-eZl"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="WZe-et-yby" firstAttribute="top" secondItem="9mD-9n-1sx" secondAttribute="bottom" constant="20" id="757-zb-FVr"/>
+                <constraint firstItem="WZe-et-yby" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="KVE-Gb-vfC"/>
+                <constraint firstItem="hOc-Xl-GGm" firstAttribute="leading" secondItem="w9m-pO-9ck" secondAttribute="trailing" constant="12" id="KXB-He-7s8"/>
+                <constraint firstAttribute="bottom" secondItem="WZe-et-yby" secondAttribute="bottom" constant="60" id="Lr1-gl-q2o"/>
+                <constraint firstItem="w9m-pO-9ck" firstAttribute="top" secondItem="WZe-et-yby" secondAttribute="bottom" constant="13" id="Lw9-Ix-Jjt"/>
+                <constraint firstAttribute="bottom" secondItem="w9m-pO-9ck" secondAttribute="bottom" constant="20" id="Ovg-RU-3tu"/>
+                <constraint firstAttribute="centerX" secondItem="w9m-pO-9ck" secondAttribute="centerX" constant="49" id="R7W-og-0Jr"/>
+                <constraint firstAttribute="trailing" secondItem="AzC-fn-jZZ" secondAttribute="trailing" id="XR8-Qw-1Eu"/>
+                <constraint firstAttribute="bottom" secondItem="AzC-fn-jZZ" secondAttribute="bottom" id="XrH-NN-Rir"/>
+                <constraint firstAttribute="centerX" secondItem="hOc-Xl-GGm" secondAttribute="centerX" constant="-103" id="ZDJ-D3-z6J"/>
+                <constraint firstAttribute="trailing" secondItem="9mD-9n-1sx" secondAttribute="trailing" constant="20" id="aR7-Yc-AvX"/>
+                <constraint firstItem="9mD-9n-1sx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="eT1-kk-8Aj"/>
+                <constraint firstAttribute="trailing" secondItem="WZe-et-yby" secondAttribute="trailing" constant="20" id="hO9-u0-4MN"/>
+                <constraint firstItem="hOc-Xl-GGm" firstAttribute="top" secondItem="WZe-et-yby" secondAttribute="bottom" constant="15" id="qCg-bs-Uso"/>
+                <constraint firstItem="AzC-fn-jZZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rpy-hp-eJG"/>
+                <constraint firstItem="AzC-fn-jZZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vt1-FI-6DM"/>
+                <constraint firstAttribute="bottom" secondItem="hOc-Xl-GGm" secondAttribute="bottom" constant="20" id="wSC-kb-3zy"/>
+            </constraints>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="259" y="170"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="SingIn" width="51" height="14"/>
+        <image name="backAutorizate" width="320" height="568"/>
+        <image name="fbButton" width="280" height="40"/>
+        <image name="phone" width="280" height="40"/>
+    </resources>
+</document>
