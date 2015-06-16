@@ -1,9 +1,3 @@
-//
-//  OCFacebookHelper.h
-//
-//  Created by Serg Shulga on 6/24/14.
-//  Copyright (c) 2014 Voxience. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
 

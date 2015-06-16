@@ -1,16 +1,18 @@
-//
-//  OCFacebookHelper.m
-//
-//  Created by Serg Shulga on 6/24/14.
-//  Copyright (c) 2014 Voxience. All rights reserved.
-//
 
 #import "OCFacebookHelper.h"
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import "const.h"
-#import "FFSocialManager.h"
+#import "SocialManager.h"
 #import "OCUtilites.h"
+
+const NSInteger SNAccessDisabledCode = -1001;
+const NSInteger SNNotLinkedErrorCode = -1002;
+const NSInteger SNLinkedToAnotherUserErrorCode = -1003;
+const NSInteger SNNoLinkedAccountInSettingsErrorCode = -1004;
+const NSInteger SNCannotAutolinkErrorCode = -1005;
+const NSInteger SNNoAccountErrorCode = 6;
+
 
 static OCFacebookHelper* fbHelperInstance = nil;
 
@@ -71,32 +73,32 @@ static OCFacebookHelper* fbHelperInstance = nil;
             
             if (nil != userID)
             {
-                response[FFSocialUserID] = userID;
+                response[SocialUserID] = userID;
             }
             
             if (nil != email)
             {
-                response[FFSocialEmail] = email;
+                response[SocialEmail] = email;
             }
             
             if (nil != fullname)
             {
-                response[FFSocialFullName] = fullname;
+                response[SocialFullName] = fullname;
             }
             
             if (nil != accessToken)
             {
-                response[FFSocialToken] = accessToken;
+                response[SocialToken] = accessToken;
             }
             
             if (nil != firstName)
             {
-                response[FFSocialFirstName] = firstName;
+                response[SocialFirstName] = firstName;
             }
             
             if (nil != lastName)
             {
-                response[FFSocialLastName] = lastName;
+                response[SocialLastName] = lastName;
             }
             
             if (successBlock != nil)
@@ -233,7 +235,7 @@ static OCFacebookHelper* fbHelperInstance = nil;
                  }
                  if (error.code == 7)
                  {
-                     error = [NSError errorWithDomain:@"Facebook" code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"In order to sign into FaceToFace using your Facebook account you must allow it to post to your friends on your behalf"}];
+                     error = [NSError errorWithDomain:@"Facebook" code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"In order to sign into Hawkist using your Facebook account you must allow it to post to your friends on your behalf"}];
                  }
                  completionBlock(nil, error);
              }

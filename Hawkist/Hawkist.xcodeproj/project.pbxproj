@@ -38,8 +38,6 @@
 		C35A4C7C1B303A43002E1F26 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35A4C7B1B303A43002E1F26 /* Accounts.framework */; };
 		C35A4C861B303BCF002E1F26 /* SocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C7F1B303BCF002E1F26 /* SocialManager.m */; };
 		C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C811B303BCF002E1F26 /* OCFacebookHelper.m */; };
-		C35A4C881B303BCF002E1F26 /* OCLinkedInClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C831B303BCF002E1F26 /* OCLinkedInClient.m */; };
-		C35A4C891B303BCF002E1F26 /* OCTwitterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C851B303BCF002E1F26 /* OCTwitterHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,10 +107,6 @@
 		C35A4C7F1B303BCF002E1F26 /* SocialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialManager.m; sourceTree = "<group>"; };
 		C35A4C801B303BCF002E1F26 /* OCFacebookHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCFacebookHelper.h; sourceTree = "<group>"; };
 		C35A4C811B303BCF002E1F26 /* OCFacebookHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCFacebookHelper.m; sourceTree = "<group>"; };
-		C35A4C821B303BCF002E1F26 /* OCLinkedInClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLinkedInClient.h; sourceTree = "<group>"; };
-		C35A4C831B303BCF002E1F26 /* OCLinkedInClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLinkedInClient.m; sourceTree = "<group>"; };
-		C35A4C841B303BCF002E1F26 /* OCTwitterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCTwitterHelper.h; sourceTree = "<group>"; };
-		C35A4C851B303BCF002E1F26 /* OCTwitterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCTwitterHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,10 +314,6 @@
 				C35A4C7F1B303BCF002E1F26 /* SocialManager.m */,
 				C35A4C801B303BCF002E1F26 /* OCFacebookHelper.h */,
 				C35A4C811B303BCF002E1F26 /* OCFacebookHelper.m */,
-				C35A4C821B303BCF002E1F26 /* OCLinkedInClient.h */,
-				C35A4C831B303BCF002E1F26 /* OCLinkedInClient.m */,
-				C35A4C841B303BCF002E1F26 /* OCTwitterHelper.h */,
-				C35A4C851B303BCF002E1F26 /* OCTwitterHelper.m */,
 			);
 			path = SocialManager;
 			sourceTree = "<group>";
@@ -474,9 +464,7 @@
 				C35A4C661B3035D2002E1F26 /* OCUtilites.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,
-				C35A4C881B303BCF002E1F26 /* OCLinkedInClient.m in Sources */,
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
-				C35A4C891B303BCF002E1F26 /* OCTwitterHelper.m in Sources */,
 				C35A4C441B302D05002E1F26 /* HWBaseViewController.m in Sources */,
 				C35A4C681B3035D2002E1F26 /* UIImage+Extensions.m in Sources */,
 				C35A4C4D1B3032B1002E1F26 /* NetworkManager.m in Sources */,

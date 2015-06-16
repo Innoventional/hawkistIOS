@@ -3,16 +3,15 @@
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import "const.h"
-#import "OCTwitterHelper.h"
 #import "OCFacebookHelper.h"
 
-const NSString *FFSocialUserID = @"FFSocialUserID";
-const NSString *FFSocialEmail = @"FFSocialEmail";
-const NSString *FFSocialFullName = @"FFSocialFullName";
-const NSString *FFSocialToken = @"FFSocialToken";
-const NSString *FFSocialSecret = @"FFSocialSecret";
-const NSString *FFSocialFirstName = @"FFSocialFirstName";
-const NSString *FFSocialLastName = @"FFSocialLastName";
+const NSString *SocialUserID = @"SocialUserID";
+const NSString *SocialEmail = @"SocialEmail";
+const NSString *SocialFullName = @"SocialFullName";
+const NSString *SocialToken = @"SocialToken";
+const NSString *SocialSecret = @"SocialSecret";
+const NSString *SocialFirstName = @"SocialFirstName";
+const NSString *SocialLastName = @"SocialLastName";
 
 
 @interface SocialManager ()
@@ -45,28 +44,6 @@ const NSString *FFSocialLastName = @"FFSocialLastName";
 }
 
 
-#pragma mark - Twitter
-
-- (void) loginTwitterSuccess:(void (^)(NSDictionary *))successBlock failure:(void (^)(NSError *))failure
-{
-    [[OCTwitterHelper shared] loginTwitterSuccess: successBlock failure: failure];
-}
-
-- (void) loginTwitterUsername: (NSString*) username success:(void (^)(NSDictionary *))successBlock failure:(void (^)(NSError *))failure
-{
-    [[OCTwitterHelper shared] loginTwitterUsername: username success: successBlock failure: failure];
-}
-
-- (void) linkTwitterWithCompletionBlock: (void (^)(NSArray* accounts, NSError *error)) completionBlock
-{
-    [[OCTwitterHelper shared] linkTwitterWithCompletionBlock: completionBlock];
-}
-
-- (void) linkTwitterWithUsername: (NSString*) username andCompletionBlock: (void (^)(NSError *error)) completionBlock
-{
-    [[OCTwitterHelper shared] linkTwitterWithUsername: username andCompletionBlock: completionBlock];
-}
-
 #pragma mark - Facebook
 
 - (void)loginFacebookSuccess:(void (^)(NSDictionary* ))successBlock failure:(void (^)(NSError *))failure
@@ -78,32 +55,5 @@ const NSString *FFSocialLastName = @"FFSocialLastName";
 {
     [[OCFacebookHelper shared] linkFacebookWithCompletionBlock: completionBlock];
 }
-
-#pragma mark - Post
-
-- (void) postMessage: (NSString*) message
-{
-//    if ([OCUser user].shareActivity)
-//    {
-//        if ([OCUser user].isFacebookSharingActive)
-//        {
-//            [[OCFacebookHelper shared] postToFacebookWithMessage: message
-//                                                 completionBlock: ^(NSError* error)
-//             {
-//                 
-//             }];
-//        }
-//        
-//        if ([OCUser user].isTwitterSharingActive)
-//        {
-//            [[OCTwitterHelper shared] tweetWithMessage: message
-//                                       completionBlock: ^(NSError *error)
-//             {
-//                 
-//             }];
-//        }
-//    }
-}
-
 
 @end

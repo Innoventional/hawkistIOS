@@ -26,5 +26,5 @@
 
 #endif
 
-
+#define FACEBOOK_APP_ID @""
 #endif
