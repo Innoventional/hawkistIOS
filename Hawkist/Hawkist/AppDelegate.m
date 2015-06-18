@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Heap.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [Heap setAppId: @"870570362"];
+    
+#ifdef DEBUG
+    [Heap enableVisualizer];
+#endif
+    
     return YES;
 }
 

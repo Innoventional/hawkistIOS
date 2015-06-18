@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Heap (2.1.5)
   - iCarousel (1.7.6)
   - JSONModel (1.1.0)
   - Masonry (0.5.3)
@@ -27,13 +28,15 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
+  - Heap
   - iCarousel (~> 1.7.6)
-  - JSONModel
+  - JSONModel (~> 1.1.0)
   - Masonry (~> 0.5.3)
   - MBProgressHUD (~> 0.5)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   iCarousel: ddd7f142c7c2f3429b0ce5fb8ea37f4a059394cd
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   Masonry: 9f515466afe48632562342a40a1c224071a1a022
