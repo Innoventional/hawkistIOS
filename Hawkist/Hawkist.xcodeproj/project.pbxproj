@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		3A8366781B30668E00208FC5 /* Login.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366741B30668E00208FC5 /* Login.xib */; };
 		3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366761B30668E00208FC5 /* LoginViewController.m */; };
-		3A83667C1B307E5A00208FC5 /* signUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A83667B1B307E5A00208FC5 /* signUp.m */; };
+		3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366801B31A85900208FC5 /* AccountDetailView.xib */; };
+		3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */; };
 		80E1CD0A02CE700CA374803C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D8ABABE09C6B8E36C39881 /* libPods.a */; };
 		C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C191B2F2DF7002E1F26 /* main.m */; };
 		C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */; };
@@ -58,8 +59,9 @@
 		3A8366741B30668E00208FC5 /* Login.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Login.xib; sourceTree = "<group>"; };
 		3A8366751B30668E00208FC5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3A8366761B30668E00208FC5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		3A83667A1B307E5A00208FC5 /* signUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = signUp.h; sourceTree = "<group>"; };
-		3A83667B1B307E5A00208FC5 /* signUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = signUp.m; sourceTree = "<group>"; };
+		3A8366801B31A85900208FC5 /* AccountDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetailView.xib; sourceTree = "<group>"; };
+		3A8366821B31AAAD00208FC5 /* AccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountDetailViewController.h; path = AccountDetail/AccountDetailViewController.h; sourceTree = "<group>"; };
+		3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountDetailViewController.m; path = AccountDetail/AccountDetailViewController.m; sourceTree = "<group>"; };
 		6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		80D8ABABE09C6B8E36C39881 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35A4C141B2F2DF7002E1F26 /* Hawkist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hawkist.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,10 +161,18 @@
 				3A8366741B30668E00208FC5 /* Login.xib */,
 				3A8366751B30668E00208FC5 /* LoginViewController.h */,
 				3A8366761B30668E00208FC5 /* LoginViewController.m */,
-				3A83667A1B307E5A00208FC5 /* signUp.h */,
-				3A83667B1B307E5A00208FC5 /* signUp.m */,
 			);
 			path = LoginVIew;
+			sourceTree = "<group>";
+		};
+		3A83667D1B318B1100208FC5 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				3A8366801B31A85900208FC5 /* AccountDetailView.xib */,
+				3A8366821B31AAAD00208FC5 /* AccountDetailViewController.h */,
+				3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */,
+			);
+			name = Registration;
 			sourceTree = "<group>";
 		};
 		B5270341DDA6B1495FD88522 /* Frameworks */ = {
@@ -269,6 +279,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				3A83667D1B318B1100208FC5 /* Registration */,
 				3A8366711B30668E00208FC5 /* LoginVIew */,
 				C35A4C411B302CE7002E1F26 /* Base */,
 			);
@@ -413,6 +424,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				C35A4C231B2F2DF7002E1F26 /* Main.storyboard in Resources */,
 				C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */,
 				C35A4C251B2F2DF7002E1F26 /* Images.xcassets in Resources */,
@@ -468,7 +480,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C35A4C621B3035D2002E1F26 /* NSDate+Extensions.m in Sources */,
-				3A83667C1B307E5A00208FC5 /* signUp.m in Sources */,
 				C35A4C6C1B3036D0002E1F26 /* HWUser.m in Sources */,
 				C35A4C671B3035D2002E1F26 /* UIColor+Extensions.m in Sources */,
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
@@ -483,6 +494,7 @@
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
 				C35A4C441B302D05002E1F26 /* HWBaseViewController.m in Sources */,
 				C35A4C681B3035D2002E1F26 /* UIImage+Extensions.m in Sources */,
+				3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */,
 				C35A4C4D1B3032B1002E1F26 /* NetworkManager.m in Sources */,
 				C35A4C651B3035D2002E1F26 /* NSURL+Extensions.m in Sources */,
 				C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */,

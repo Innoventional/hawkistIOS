@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface signUp : UIView <UIAlertViewDelegate>
-- (IBAction)btnSignUpMobile:(id)sender;
-- (IBAction)btnSignUpFB:(id)sender;
-- (IBAction)btnSignIn:(id)sender;
+
 
 @end

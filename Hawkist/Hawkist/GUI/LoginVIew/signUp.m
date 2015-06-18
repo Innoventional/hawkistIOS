@@ -8,8 +8,7 @@
 
 #import "signUp.h"
 @interface signUp()
-@property (nonatomic,strong) UIAlertView* getNumber;
-@property (nonatomic,strong) UIAlertView* getCode;
+
 @end
 
 @implementation signUp

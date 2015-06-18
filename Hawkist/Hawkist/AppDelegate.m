@@ -8,9 +8,11 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "AccountDetailViewController.h"
 
 @interface AppDelegate ()
-@property (nonatomic,strong) LoginViewController* viewController;
+//@property (nonatomic,strong) LoginViewController* viewController;
+@property (nonatomic,strong) AccountDetailViewController* viewController;
 @end
 
 @implementation AppDelegate
@@ -22,7 +24,7 @@
     
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         
-        self.viewController = [[LoginViewController alloc]init];
+        self.viewController = [[AccountDetailViewController alloc] init];
         self.window.rootViewController = self.viewController;
         
         [self.window makeKeyAndVisible];

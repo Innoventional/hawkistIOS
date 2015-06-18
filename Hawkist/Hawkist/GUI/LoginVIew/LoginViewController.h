@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
-
+@interface LoginViewController : UIViewController <UIAlertViewDelegate>
+- (IBAction)btnSignUpMobile:(id)sender;
+- (IBAction)btnSignUpFB:(id)sender;
+- (IBAction)btnSignIn:(id)sender;
 @end
