@@ -10,9 +10,11 @@
                 <outlet property="checkBox2" destination="pAR-da-ZsL" id="UWe-Ln-kLn"/>
                 <outlet property="checkbox1" destination="Zca-EA-cjv" id="YWf-t6-Adn"/>
                 <outlet property="scrollView" destination="FQN-fw-SqB" id="dUC-gI-vTk"/>
+                <outlet property="txtAboutMe" destination="txr-YX-ng7" id="WdB-1I-WNM"/>
                 <outlet property="txtEmail" destination="43a-MC-rNv" id="GMe-8F-iK2"/>
                 <outlet property="txtUserName" destination="yCs-S8-MJD" id="orP-T9-44S"/>
                 <outlet property="view" destination="iN0-l3-epB" id="VSQ-0v-KHm"/>
+                <outlet property="wwwww" destination="H88-yT-UGx" id="mXr-ic-uIg"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,13 +36,18 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acdet_blue" translatesAutoresizingMaskIntoConstraints="NO" id="LZ2-hg-ahV">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                            <gestureRecognizers/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acdet_circle" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-P3-l3e">
+                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acdet_circle" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-P3-l3e">
                                             <rect key="frame" x="178" y="28" width="245" height="245"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="245" id="7kI-Ij-nt9"/>
                                                 <constraint firstAttribute="height" constant="245" id="aiq-Tl-Hug"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="dkH-rq-9cd" appends="YES" id="oPG-lr-i66"/>
+                                            </connections>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -68,6 +75,9 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="aZO-0h-699"/>
+                                    </connections>
                                 </textField>
                                 <view alpha="0.19999999999999968" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaO-cX-OkA" userLabel="Email">
                                     <rect key="frame" x="0.0" y="348" width="600" height="50"/>
@@ -82,6 +92,9 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="fg4-4R-cI4"/>
+                                    </connections>
                                 </textField>
                                 <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07L-CX-bBL" userLabel="About ME">
                                     <rect key="frame" x="0.0" y="398" width="600" height="150"/>
@@ -104,6 +117,9 @@
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="4RQ-Oa-ogC"/>
+                                    </connections>
                                 </textView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zh1-de-97G" userLabel="CheckBoxes">
                                     <rect key="frame" x="0.0" y="553" width="600" height="100"/>
@@ -245,11 +261,6 @@
                         <constraint firstItem="H88-yT-UGx" firstAttribute="height" secondItem="FQN-fw-SqB" secondAttribute="height" id="pJh-hx-Srd"/>
                         <constraint firstAttribute="trailing" secondItem="H88-yT-UGx" secondAttribute="trailing" id="zcA-yn-mv6"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                            <size key="value" width="320" height="1000"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="pJh-hx-Srd"/>
@@ -273,6 +284,9 @@
                 <constraint firstItem="FQN-fw-SqB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ycU-4z-cYe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="Sy5-0N-4ax" appends="YES" id="eON-uk-caM"/>
+            </connections>
             <point key="canvasLocation" x="215" y="497"/>
         </view>
         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="NRf-UE-WmO">
@@ -283,6 +297,17 @@
             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
         </activityIndicatorView>
+        <tapGestureRecognizer id="dkH-rq-9cd">
+            <connections>
+                <action selector="tapImage:" destination="-1" id="TLt-S2-mpW"/>
+                <outlet property="delegate" destination="-1" id="VjZ-MN-UlI"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="Sy5-0N-4ax">
+            <connections>
+                <action selector="tapView:" destination="-1" id="piR-Do-W6i"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="acdet_blue" width="320" height="179"/>
