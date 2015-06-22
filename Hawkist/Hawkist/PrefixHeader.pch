@@ -9,6 +9,7 @@
 #ifndef Hawkist_PrefixHeader_pch
 #define Hawkist_PrefixHeader_pch
 
+#import "Masonry.h"
 #import "const.h"
 #import "HWUser.h"
 

@@ -8,10 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+@class CustomizationViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property(strong, nonatomic) CustomizationViewController *viewController;
 
 @end
+
+//#import <UIKit/UIKit.h>
+//
+//@class TutorialViewController;
+//
+//@interface AppDelegate : UIResponder <UIApplicationDelegate>
+//
+//@property (strong, nonatomic) UIWindow *window;
+//
+//@property(strong, nonatomic) TutorialViewController *viewController;
+//
+//@end
 
