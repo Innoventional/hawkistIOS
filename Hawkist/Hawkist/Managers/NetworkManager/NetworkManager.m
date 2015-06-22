@@ -122,4 +122,115 @@
                         }];
 }
 
+- (void) getUserProfileWithSuccessBlock: (void (^)(HWUser* user)) successBlock
+                           failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    [self.networkDecorator GET: @"user"
+                     parameters: nil
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            if([responseObject[@"success"] integerValue] != 0)
+                            {
+                                failureBlock([NSError errorWithDomain: @"Some error occured " code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                                return;
+                            }
+                            
+                            NSError* error;
+                            HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
+                            
+                            if(error)
+                            {
+                                failureBlock(error);
+                                return;
+                            }
+                            
+                            successBlock(user);
+                            
+                        }
+                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            failureBlock(error);
+                        }];
+}
+
+- (void) updateUserEntityWithUsername: (NSString*) username
+                                email: (NSString*) email
+                              aboutMe: (NSString*) about
+                                photo: (UIImage*) photo
+                         successBlock: (void (^)(HWUser* user)) successBlock
+                         failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    if(username)
+        [params setObject: username forKey: @"username"];
+    if (email)
+        [params setObject: email forKey: @"email"];
+    if (about)
+        [params setObject: about forKey: @"about_me"];
+    
+    [self.networkDecorator POST: @"user"
+                     parameters: params
+      constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+          if(photo)
+          {
+              [formData appendPartWithFileData: UIImageJPEGRepresentation(photo, 0)
+                                          name: @"media"
+                                      fileName: @"media.jpg"
+                                      mimeType: @"image/jpeg"];
+          }
+      }
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            if([responseObject[@"success"] integerValue] != 0)
+                            {
+                                failureBlock([NSError errorWithDomain: @"Some error occured in proccess of user update" code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                                return;
+                            }
+                            
+                            NSError* error;
+                            HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
+                            
+                            if(error)
+                            {
+                                failureBlock(error);
+                                return;
+                            }
+                            
+                            successBlock(user);
+                            
+                        }
+                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            failureBlock(error);
+                        }];
+
+}
+
+- (void) linkFacebookAccountWithToken: (NSString*) token
+                         successBlock: (void (^)(HWUser* user)) successBlock
+                         failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    [self.networkDecorator PUT: @"user/socials"
+                    parameters: @{@"facebook_token": token}
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"success"] integerValue] != 0)
+                           {
+                               failureBlock([NSError errorWithDomain: @"Some error occured" code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                               return;
+                           }
+                           
+                           NSError* error;
+                           HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(user);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock(error);
+                       }];
+}
+
 @end
