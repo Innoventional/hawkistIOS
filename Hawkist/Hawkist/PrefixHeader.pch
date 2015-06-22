@@ -10,6 +10,7 @@
 #define Hawkist_PrefixHeader_pch
 
 #import "Masonry.h"
+#import <UIKit/UIKit.h>
 #import "const.h"
 #import "HWUser.h"
 

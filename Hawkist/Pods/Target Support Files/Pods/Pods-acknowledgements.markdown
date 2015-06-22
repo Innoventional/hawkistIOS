@@ -24,6 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## Heap
+
+See https://heapanalytics.com/terms
+
 ## JSONModel
 
 JSONModel
