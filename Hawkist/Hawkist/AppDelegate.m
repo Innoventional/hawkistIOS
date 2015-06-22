@@ -11,6 +11,7 @@
 #import "AccountDetailViewController.h"
 #import "Heap.h"
 
+
 @interface AppDelegate ()
 @property (nonatomic,strong) LoginViewController* viewController;
 //@property (nonatomic,strong) AccountDetailViewController* viewController;
@@ -39,6 +40,7 @@
 #endif
     
     return YES;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

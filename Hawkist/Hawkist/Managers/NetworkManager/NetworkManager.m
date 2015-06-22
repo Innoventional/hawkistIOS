@@ -64,7 +64,7 @@
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"success"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: @"Some error occured in proccess of user registration" code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"success"] integerValue] userInfo: nil]);
                                 return;
                             }
                             
@@ -101,7 +101,7 @@
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"success"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: @"Some error occured in proccess of user login/registration" code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"success"] integerValue] userInfo: nil]);
                                 return;
                             }
                             
@@ -130,7 +130,7 @@
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"success"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: @"Some error occured " code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"success"] integerValue] userInfo: nil]);
                                 return;
                             }
                             
@@ -180,7 +180,7 @@
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"success"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: @"Some error occured in proccess of user update" code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"success"] integerValue] userInfo: nil]);
                                 return;
                             }
                             
@@ -212,7 +212,7 @@
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"success"] integerValue] != 0)
                            {
-                               failureBlock([NSError errorWithDomain: @"Some error occured" code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"success"] integerValue] userInfo: nil]);
                                return;
                            }
                            
