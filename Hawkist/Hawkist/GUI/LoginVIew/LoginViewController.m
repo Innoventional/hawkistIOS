@@ -7,6 +7,9 @@
 //
 
 #import "LoginViewController.h"
+#import "NetworkManager.h"
+#import "AppEngine.h"
+#import "AccountDetailViewController.h"
 
 @interface LoginViewController ()
 //@property (nonatomic,strong) UIAlertView* getNumber;
@@ -18,12 +21,23 @@
 
 @property (nonatomic,strong) UIView* codeDialog;
 
+@property (nonatomic,strong) NetworkManager* networkManager;
+@property (nonatomic,strong) UIView* signIn;
+@property (nonatomic,strong) AppEngine* engine;
+
+@property (nonatomic,strong) AccountDetailViewController* accountDetailVC;
+
 @end
 
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _engine = [AppEngine shared];
+    
+    _accountDetailVC= [[AccountDetailViewController alloc]init];
+    
     NSArray* arr = [[NSBundle mainBundle]loadNibNamed:@"Login" owner:self options:nil];
    
     _loginView = [arr objectAtIndex:0];
@@ -67,7 +81,30 @@
     
     [_numberDialog setHidden:YES];
     
+    _networkManager = [NetworkManager shared];
     
+    
+    
+    ///////signIn
+    
+   
+
+    arr = [[NSBundle mainBundle]loadNibNamed:@"SignIn" owner:self options:nil];
+    
+    _signIn = [arr objectAtIndex:0];
+    
+    _signIn.frame = self.view.frame;
+    
+    [_signIn setHidden:YES];
+    
+    [self.view addSubview:_signIn];
+
+    
+    NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"ENTER MOBILE NUMBER" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
+    self.txtMobileNum.attributedPlaceholder = str;
+    
+    NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"ENTER PIN" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
+    self.txtCode.attributedPlaceholder = str2;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,26 +147,11 @@
 //    }
 //}
 
-- (void) cancel
-{
-    NSLog(@"%@",@"cancel");
-}
-
-- (void) sendSMS:(NSString*)number
-{
-    NSLog(@"%@",number);
-}
-
-- (void) verify:(NSString*) code
-{
-    NSLog(@"%@",code);
-}
-
 
 
 
 - (IBAction)btnSignUpMobile:(id)sender {
-   // [_getNumber show];
+   
     [_numberDialog setHidden:NO];
 
 
@@ -152,12 +174,31 @@
 - (IBAction)btnSend:(id)sender {
     [_codeDialog setHidden:NO];
     [_numberDialog setHidden:YES];
+    
+    [_networkManager registerUserWithPhoneNumber:_txtNumber.text orFacebookToken:nil successBlock:^(HWUser *user) {
+        
+        
+    } failureBlock:^(NSError *error) {
+        
+        
+    }];
 
 }
 
 - (IBAction)btnResend:(id)sender {
     [_codeDialog setHidden:YES];
     [_numberDialog setHidden:YES];
+    
+    
+    
+    [_networkManager loginWithPhoneNumber:_txtNumber.text pin:_txtCode.text successBlock:^(HWUser *user) {
+        
+        _engine.user = user;
+           [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
 }
 
 
@@ -168,5 +209,36 @@
 }
 
 - (IBAction)btnSignIn:(id)sender {
+    [_loginView setHidden:YES];
+    [_signIn setHidden:NO];
 }
+
+- (IBAction)btnSignInFB:(id)sender {
+}
+
+
+- (IBAction)btnRequestNewPin:(id)sender {
+    [_numberDialog setHidden:NO];
+        [self.view bringSubviewToFront:_codeDialog];
+    [self.view bringSubviewToFront:_numberDialog];
+}
+
+- (IBAction)btnSignUp:(id)sender {
+    [_loginView setHidden:NO];
+    [_signIn setHidden:YES];
+}
+
+- (IBAction)btnSignInMobile:(id)sender {
+    [_networkManager loginWithPhoneNumber:_txtMobileNum.text pin:_txtPin.text successBlock:^(HWUser *user) {
+        _engine.user = user;
+        [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
+}
+
+
+
 @end

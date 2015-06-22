@@ -12,7 +12,7 @@
 
 #pragma mark -
 #pragma mark Lifecycle
-
+@synthesize user;
 + (instancetype) shared
 {
     static AppEngine* sharedInstance;

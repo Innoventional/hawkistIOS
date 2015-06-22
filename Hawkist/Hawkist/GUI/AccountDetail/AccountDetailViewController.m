@@ -10,6 +10,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "UIView+Extensions.h"
 #import "Masonry.h"
+#import "LoginViewController.h"
 
 @interface AccountDetailViewController ()
 @property (nonatomic,strong) UIView* accountDetailView;
@@ -254,5 +255,10 @@
     [self.txtUserName resignFirstResponder];
     [self.txtAboutMe resignFirstResponder];
     
+}
+- (IBAction)btnBack:(id)sender {
+    LoginViewController* login = [[LoginViewController alloc]init];
+    [self.navigationController pushViewController:login animated:(YES)];
+
 }
 @end

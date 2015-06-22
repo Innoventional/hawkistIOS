@@ -11,6 +11,7 @@
 
 @interface AccountDetailViewController : HWBaseViewController <UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
+- (IBAction)btnBack:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 

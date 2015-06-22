@@ -22,4 +22,17 @@
 - (IBAction)btnCancelCode:(id)sender;
 
 - (IBAction)btnSignIn:(id)sender;
+
+
+
+
+//////////SIGN IN
+@property (weak, nonatomic) IBOutlet UITextField *txtMobileNum;
+@property (weak, nonatomic) IBOutlet UITextField *txtPin;
+
+- (IBAction)btnRequestNewPin:(id)sender;
+- (IBAction)btnSignUp:(id)sender;
+- (IBAction)btnSignInMobile:(id)sender;
+- (IBAction)btnSignInFB:(id)sender;
+
 @end

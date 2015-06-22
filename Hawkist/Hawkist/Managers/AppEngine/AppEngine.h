@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface AppEngine : NSObject
-
+@property (nonatomic,strong) HWUser* user;
 + (instancetype) shared;
 
 // Returns YES if application is launching first time

@@ -24,10 +24,11 @@
     
     
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        
-        self.viewController = [[LoginViewController alloc] init];
-        self.window.rootViewController = self.viewController;
-        
+    self.rootViewController = [[UINavigationController alloc] init];
+    [self.rootViewController pushViewController:[[LoginViewController alloc] init]  animated: NO];
+    self.rootViewController.navigationBarHidden = YES;
+        self.window.rootViewController = self.rootViewController;
+    
         [self.window makeKeyAndVisible];
 
     

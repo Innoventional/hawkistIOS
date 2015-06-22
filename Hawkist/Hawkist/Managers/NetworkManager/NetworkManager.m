@@ -96,7 +96,7 @@
     if (pin)
         [params setObject: pin forKey: @"pin"];
     
-    [self.networkDecorator POST: @"users"
+    [self.networkDecorator PUT: @"users"
                      parameters: params
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"success"] integerValue] != 0)
