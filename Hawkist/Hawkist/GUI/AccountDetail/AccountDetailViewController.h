@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *checkBox2;
 @property (weak, nonatomic) IBOutlet UITextView *txtAboutMe;
+- (IBAction)btnNext:(id)sender;
 
 - (IBAction)checkBox:(id)sender;
 

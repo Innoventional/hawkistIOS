@@ -11,6 +11,7 @@
 #import "UIView+Extensions.h"
 #import "Masonry.h"
 #import "LoginViewController.h"
+#import "CustomizationViewController.h"
 
 @interface AccountDetailViewController ()
 @property (nonatomic,strong) UIView* accountDetailView;
@@ -165,6 +166,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)btnNext:(id)sender {
+    
+    
+    [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
+}
 
 - (IBAction)checkBox:(id)sender {
     
