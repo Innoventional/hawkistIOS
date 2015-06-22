@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "AccountDetailViewController.h"
+#import "Heap.h"
 
 @interface AppDelegate ()
 //@property (nonatomic,strong) LoginViewController* viewController;
@@ -29,6 +30,12 @@
         
         [self.window makeKeyAndVisible];
 
+    
+    [Heap setAppId: @"870570362"];
+    
+#ifdef DEBUG
+    [Heap enableVisualizer];
+#endif
     
     return YES;
 }
