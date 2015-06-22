@@ -31,4 +31,23 @@
                           pin: (NSString*) pin
                  successBlock: (void (^)(HWUser* user)) successBlock
                  failureBlock: (void (^)(NSError* error)) failureBlock;
+
+// get user profile
+- (void) getUserProfileWithSuccessBlock: (void (^)(HWUser* user)) successBlock
+                           failureBlock: (void (^)(NSError* error)) failureBlock;
+
+// update user entity
+
+- (void) updateUserEntityWithUsername: (NSString*) username
+                                email: (NSString*) email
+                              aboutMe: (NSString*) about
+                                photo: (UIImage*) photo
+                         successBlock: (void (^)(HWUser* user)) successBlock
+                         failureBlock: (void (^)(NSError* error)) failureBlock;
+
+// link facebook accaunt to user account
+
+- (void) linkFacebookAccountWithToken: (NSString*) token
+                         successBlock: (void (^)(HWUser* user)) successBlock
+                         failureBlock: (void (^)(NSError* error)) failureBlock;
 @end

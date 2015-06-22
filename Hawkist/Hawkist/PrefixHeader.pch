@@ -9,6 +9,7 @@
 #ifndef Hawkist_PrefixHeader_pch
 #define Hawkist_PrefixHeader_pch
 
+#import <UIKit/UIKit.h>
 #import "const.h"
 #import "HWUser.h"
 
