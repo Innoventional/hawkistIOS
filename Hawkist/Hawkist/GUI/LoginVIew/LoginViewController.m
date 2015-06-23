@@ -31,14 +31,32 @@
 
 @property (nonatomic,strong) SocialManager* socManager;
 
+
 @end
+
+
+
 
 @implementation LoginViewController
 
+
+- (void) showAlert: (NSError*)error
+{
+     NSLog(@"%@",error);
+    dispatch_async(dispatch_get_main_queue(), ^{
+    [[[UIAlertView alloc]initWithTitle:@"Error"
+                               message:error.domain
+                              delegate:nil
+                     cancelButtonTitle:@"Ok"
+                     otherButtonTitles:nil] show];
+         });
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
-    
+   
     _socManager = [SocialManager shared];
     _engine = [AppEngine shared];
     
@@ -117,10 +135,10 @@
     self.txtMobileNum.attributedPlaceholder = str;
     
     NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"ENTER PIN" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
-    self.txtCode.attributedPlaceholder = str2;
+    self.txtPin.attributedPlaceholder = str2;
     
     
-     [self registerForKeyboardNotifications];
+    // [self registerForKeyboardNotifications];
 }
 
 - (void) registerForKeyboardNotifications
@@ -138,6 +156,12 @@
     
 }
 
+//- (void) deregisterForKeyBoardNotifications
+//{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+//}
 
 
 
@@ -224,6 +248,7 @@
 - (IBAction)btnSignUpMobile:(id)sender {
    
     [_numberDialog setHidden:NO];
+    //[self deregisterForKeyBoardNotifications];
 
 
 }
@@ -235,12 +260,11 @@
             [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
             
         } failureBlock:^(NSError *error) {
-            NSLog(@"%@",error);
-            
+            [self showAlert:error];
         }];
         
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
+       [self showAlert:error];
         
     }];
 
@@ -265,7 +289,7 @@
         
         
     } failureBlock:^(NSError *error) {
-        
+        [self showAlert:error];
         
     }];
 
@@ -282,7 +306,7 @@
         _engine.user = user;
            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
     } failureBlock:^(NSError *error) {
-        
+       [self showAlert:error];
     }];
 
 }
@@ -306,13 +330,10 @@
             [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
             
         } failureBlock:^(NSError *error) {
-            NSLog(@"%@",error);
-            
-        }];
+           [self showAlert:error];        }];
         
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-        
+        [self showAlert:error];
     }];
 }
 
@@ -326,6 +347,8 @@
 - (IBAction)btnSignUp:(id)sender {
     [_loginView setHidden:NO];
     [_signIn setHidden:YES];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (IBAction)btnSignInMobile:(id)sender {
@@ -334,7 +357,7 @@
         [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
         
     } failureBlock:^(NSError *error) {
-        
+    [self showAlert:error];
     }];
 
 }
