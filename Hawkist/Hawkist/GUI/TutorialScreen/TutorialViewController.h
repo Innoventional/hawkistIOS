@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWBaseViewController.h"
 
-@interface TutorialViewController : UIViewController <UIScrollViewDelegate>
+
+@interface TutorialViewController : HWBaseViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic)  UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *viewScroll;

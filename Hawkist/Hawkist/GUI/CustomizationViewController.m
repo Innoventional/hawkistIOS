@@ -33,9 +33,7 @@
     [super viewDidLoad];
     
     self.arrayWithImageViews = [NSMutableArray array];
-    self.title1.text = @"What are you looking for:";
-    self.textup.text = @"Choose what you want to see first";
-    self.textdown.text = @"Whant more options? You'll be able tomake changes in your profile";
+    
     self.name = @[@"Playstation", @"Pc",@"Xbox"];
     self.backImage = @[@"11",@"22",@"33"];
     self.descriptions = @[@"Deals on Playstaion games and consoles like PS3 or God of War.",@"Deals on PC games like The Sims, Guild Wars or Crysis, Dota 2",@"Deals on XBox games and consoles like XBox 360 or Halo"];
@@ -49,56 +47,7 @@
     [self.scrollView setBounces:NO];
     self.scrollView.backgroundColor = [UIColor clearColor];
     
-//    [self.pageControl setNumberOfPages:[self.images count]];
-//    [self.viewScroll addSubview:self.scrollView];
-//    
-//    [self.viewScroll addSubview:self.pageControl];
-//    
-    
-    
-    //self.scrollView.frame =  self.viewScroll.bounds;
-    
-    
-//    CGSize scrollViewSize = self.viewScroll.frame.size;
-//    
-//    CGSize slideSize = CGSizeMake(self.scrollView.frame.size.width - 90, self.scrollView.frame.size.height);
-//    
-//    for (NSInteger i = 0; i < [self.images count]; i++)
-//    {
-//        CGRect slideRect = CGRectMake((self.scrollView.bounds.size.width - slideSize.width)/2 + slideSize.width * i, 0, slideSize.width, slideSize.height);
-//    
-//        
-//        UIView *slide = [[UIView alloc] initWithFrame:slideRect];
-//        [slide setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
-//        slide.backgroundColor = [UIColor redColor];
-//        
-//    
-//       UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, slideRect.size.width , slide.frame.size.height)];
-//        
-//        imageView.backgroundColor = [UIColor clearColor];
-//        imageView.contentMode = UIViewContentModeCenter;
-//        [imageView setImage:[UIImage imageNamed:[self.images objectAtIndex:i]]];
-//        
-//        UIImageView *imageFront = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, slideRect.size.width  , slide.frame.size.height - 100)];
-//        imageFront.backgroundColor = [UIColor clearColor];
-//        imageFront.contentMode = UIViewContentModeCenter;
-//        [imageFront setImage:[UIImage imageNamed:[self.backImage objectAtIndex:i]]];
-//        
-//
-//        [self.scrollView addSubview:slide];
-//        
-//        [slide addSubview:imageView];
-//        [imageView addSubview:imageFront];
-//    }
-//  
-//    
-//    [self.scrollView setContentSize:CGSizeMake(slideSize.width * [self.images count] + (self.scrollView.frame.size.width - slideSize.width), scrollViewSize.height)];
-//   
-//    
-//    [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(self.viewScroll);
-//    }];
-//    
+
 }
 
 - (void) viewDidAppear: (BOOL) animated
@@ -151,21 +100,22 @@
         [imageFront setImage:[UIImage imageNamed:[self.backImage objectAtIndex:i]]];
         imageFront.clipsToBounds = YES;
         
-        _lable = [[UILabel alloc] initWithFrame:CGRectMake(10, slideSize.width + 5.0f, slideSize.width  , 20 )];
+        _lable = [[UILabel alloc] initWithFrame:CGRectMake(10, slideSize.width + 5.0f, slideSize.width  , 16)];
+        _lable.font = [UIFont fontWithName: @"OpenSans-SemiBold" size: 15];
         _lable.textAlignment = NSTextAlignmentLeft;
         
         UILabel* descriptionLabel = [[UILabel alloc] init];
         descriptionLabel.backgroundColor = [UIColor clearColor];
-        descriptionLabel.font = [UIFont systemFontOfSize: 10.0f];
+        descriptionLabel.font = [UIFont fontWithName:@"OpenSans" size:10.0f];
         descriptionLabel.numberOfLines = 0;
         
         descriptionLabel.text = self.descriptions[i];
         
-        CGSize descriptionSize = [descriptionLabel.text sizeWithFont: [UIFont systemFontOfSize: 10.0f]
-                                                      constrainedToSize: CGSizeMake(slideSize.width - 20.0f, CGFLOAT_MAX)
+        CGSize descriptionSize = [descriptionLabel.text sizeWithFont: [UIFont fontWithName:@"OpenSans" size:10.0f]
+                                                      constrainedToSize: CGSizeMake(slideSize.width - 10.0f, CGFLOAT_MAX)
                                                           lineBreakMode: NSLineBreakByWordWrapping];
         
-        descriptionLabel.frame = CGRectMake(10.0f, _lable.maxY + 5.0f, descriptionSize.width, descriptionSize.height);
+        descriptionLabel.frame = CGRectMake(5.0f, _lable.maxY + 2.0f, descriptionSize.width, descriptionSize.height);
         
         [self.scrollView addSubview:slide];
         

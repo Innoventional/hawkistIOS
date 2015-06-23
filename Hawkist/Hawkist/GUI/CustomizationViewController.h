@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWBaseViewController.h"
 
-@interface CustomizationViewController : UIViewController <UIScrollViewDelegate>
+@interface CustomizationViewController : HWBaseViewController <UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UIView *viewTop;
 
 @property (strong, nonatomic) UIScrollView *scrollView;
@@ -18,9 +19,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *viewBottom;
 
-@property (strong, nonatomic) IBOutlet UILabel *title1;
-@property (strong, nonatomic) IBOutlet UILabel *textup;
-@property (strong, nonatomic) IBOutlet UILabel *textdown;
+
 @property (strong, nonatomic) NSArray *backImage;
 - (IBAction)nextButton:(id)sender;
 

@@ -38,51 +38,10 @@
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.View2.frame];
     [self.scrollView setDelegate:self];
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
-    //[self.scrollView setPagingEnabled:YES];
+
     [self.scrollView setBounces:NO];
     self.scrollView.backgroundColor = [UIColor clearColor];
-//    self.scrollView.frame =  CGRectMake(0,0 , self.view.frame.size.width , self.view.frame.size.height - 170);
-//    CGSize scrollViewSize = self.scrollView.frame.size;
-//    
-//    CGSize slideSize = CGSizeMake(self.scrollView.frame.size.width - 100, self.scrollView.frame.size.height);
-//    for (NSInteger i = 0; i < [self.images count]; i++)
-//    {
-//        CGRect slideRect = CGRectMake((self.scrollView.frame.size.width - slideSize.width)/2 + slideSize.width * i, 0, slideSize.width, scrollViewSize.height);
-//        
-//        UIView *slide = [[UIView alloc] initWithFrame:slideRect];
-//        [slide setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
-//        
-//        UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, slideRect.size.width, self.scrollView.frame.size.height)];
-//        imageView.backgroundColor = [UIColor clearColor];
-//        imageView.contentMode = UIViewContentModeScaleAspectFit;
-//        [imageView setImage:[UIImage imageNamed:[self.images objectAtIndex:i]]];
-//        
-//        
-//        [slide addSubview:imageView];
-//        _tutor.textColor = [UIColor colorWithRed:(56/255.0) green:(69/255.0) blue:(79/255.0) alpha:1];
-//        _tutor.text = [_titles objectAtIndex:0];
-//        _textik.textColor = [UIColor colorWithRed:(70/255.0) green:(96/255.0) blue:(113/255.0) alpha:1];
-//        _textik.text = [_text objectAtIndex:0];
-//        
-//        [self.scrollView addSubview:slide];
-    
-        
-        
-//    }
-//   
-//    UIPageControl *tempPageControll = [[UIPageControl alloc] initWithFrame:CGRectMake(0, scrollViewSize.height + 100, scrollViewSize.width, 20)];
-//
-//    tempPageControll.pageIndicatorTintColor = [UIColor colorWithRed:0.235f green: 0.720f blue:0.645f alpha:0.1f];
-//    tempPageControll.currentPageIndicatorTintColor = [UIColor colorWithRed:(55/255.0) green:(185/255.0) blue:(165/255.0) alpha:1];
-//    [self setPageControl:tempPageControll];
-//    
-//    [self.pageControl setNumberOfPages:[self.images count]];
-//    [self.scrollView setContentSize:CGSizeMake(slideSize.width * [self.images count] + (self.scrollView.frame.size.width - slideSize.width), scrollViewSize.height)];
-//    
-//    
-//    [self.View2 addSubview:self.scrollView];
-//    
-//    [self.View2 addSubview:self.pageControl];
+
 }
 
 - (void) viewDidAppear: (BOOL) animated
