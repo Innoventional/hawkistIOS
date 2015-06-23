@@ -34,7 +34,7 @@
     
     self.arrayWithImageViews = [NSMutableArray array];
     
-    self.name = @[@"PS4", @"PC",@"Xbox"];
+    self.name = @[@"PS 4", @"PC",@"Xbox"];
     self.backImage = @[@"11",@"22",@"33"];
     self.descriptions = @[@"Deals on Playstaion games and consoles like PS3 or God of War.",@"Deals on PC games like The Sims, Guild Wars or Crysis, Dota 2",@"Deals on XBox games and consoles like XBox 360 or Halo"];
     

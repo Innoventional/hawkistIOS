@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "CustomizationViewController.h"
 #import "NetworkManager.h"
+#import "UIColor+Extensions.h"
 
 
 @interface AccountDetailViewController ()
@@ -55,12 +56,36 @@
     
     [self registerForKeyboardNotifications];
     
-    NSString *htmlString = @"<p style='color:white;font-size:14'>I accept <a href='http://google.com' style='color: white;text-decoration:none'>Term of Use</a> and <a href='http://google.com' style='color: white;text-decoration:none'>Privacy Policy</a></p>";
+//    NSString *htmlString = @"<p style='color:white;font-size:14'>I accept <a href='http://google.com' style='color: white;text-decoration:none'>Term of Use</a> and <a href='http://google.com' style='color: white;text-decoration:none'>Privacy Policy</a></p>";
     
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    NSString* textString = @"I accept Term of Use and Privacy Policy";
+    
+    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString: textString];
+    
+    UIFont *font = [UIFont fontWithName:@"OpenSans" size:14.0];
+    
+    [attributedString addAttribute: NSFontAttributeName value: font range: NSMakeRange(0, attributedString.length)];
+    [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor whiteColor] range:NSMakeRange(0, attributedString.length)];
+    NSRange range = NSMakeRange(9, 11);
+    
+    
+    [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor redColor] range:range];
+    [attributedString addAttribute: NSLinkAttributeName value: @"http://www.google.com" range: range];
+    
+    range = NSMakeRange(25, 14);
+    [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor color256RGBWithRed: 63 green: 147 blue: 126] range:range];
+    [attributedString addAttribute: NSLinkAttributeName value: @"http://www.google.com" range: range];
+    
+//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    
     
     
     _txtURLS.attributedText = attributedString;
+    NSDictionary* linkAttributes = @{
+                                     NSForegroundColorAttributeName: [UIColor color256RGBWithRed: 63 green: 147 blue: 126],
+                                     NSUnderlineStyleAttributeName: @(NSUnderlineStyleNone)
+                                     };
+    [_txtURLS setLinkTextAttributes: linkAttributes];
     
   
     
