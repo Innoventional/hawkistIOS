@@ -70,7 +70,10 @@
         [_imgAvatar setImageWithURL: [NSURL URLWithString: user.avatar] placeholderImage: [UIImage imageNamed: @"acdet_circle"]];
         _txtUserName.text = user.username;
         _txtEmail.text = user.email;
-        _txtAboutMe.text = user.about_me;
+        _txtAboutMe.placeholder = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or consoles are you excited for?";
+        _txtAboutMe.placeholderColor = [UIColor whiteColor];
+        if(user.about_me)
+            _txtAboutMe.text = user.about_me;
         
     } failureBlock:^(NSError *error) {
         [self showAlert:error];
@@ -166,7 +169,7 @@
 //    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, bottomOffset, 0)];
 //    NSLog(@"%f-key",bottomOffset);
 
-     CGRect newRect = CGRectMake(0, -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
+     CGRect newRect = CGRectMake(0,  -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
     
     self.view.frame = newRect;
 }
@@ -219,25 +222,26 @@
 - (IBAction)btnNext:(id)sender {
     
     
-    
+    [self showHud];
     
     if (_isPhotoSet)
     
     [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:_txtAboutMe.text photo:_imgAvatar.image successBlock:^(HWUser *user) {
         
+        [self hideHud];
         [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
-        
+        [self hideHud];
         [self showAlert:error];
     }
      ];
     else
     {
         [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:_txtAboutMe.text photo:nil successBlock:^(HWUser *user) {
-            
+            [self hideHud];
             [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
         } failureBlock:^(NSError *error) {
-            
+            [self hideHud];
             [self showAlert:error];
             
         }

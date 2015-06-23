@@ -10,4 +10,7 @@
 
 @interface HWBaseViewController : UIViewController
 
+- (void) showHud;
+- (void) hideHud;
+
 @end

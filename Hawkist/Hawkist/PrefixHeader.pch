@@ -9,6 +9,7 @@
 #ifndef Hawkist_PrefixHeader_pch
 #define Hawkist_PrefixHeader_pch
 
+#import "MBProgressHUD.h"
 #import "UIView+Extensions.h"
 #import "Masonry.h"
 #import <UIKit/UIKit.h>
