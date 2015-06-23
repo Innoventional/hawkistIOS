@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWBaseViewController.h"
 
-@interface LoginViewController : UIViewController <UIAlertViewDelegate>
+@interface LoginViewController : HWBaseViewController <UIAlertViewDelegate>
 - (IBAction)btnSignUpMobile:(id)sender;
 - (IBAction)btnSignUpFB:(id)sender;
 

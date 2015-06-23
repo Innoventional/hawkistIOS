@@ -13,5 +13,6 @@
 #import <UIKit/UIKit.h>
 #import "const.h"
 #import "HWUser.h"
+#import "UIImageView+AFNetworking.h"
 
 #endif

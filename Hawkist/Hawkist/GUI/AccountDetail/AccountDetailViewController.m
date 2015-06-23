@@ -12,12 +12,16 @@
 #import "Masonry.h"
 #import "LoginViewController.h"
 #import "CustomizationViewController.h"
+#import "NetworkManager.h"
+
 
 @interface AccountDetailViewController ()
 @property (nonatomic,strong) UIView* accountDetailView;
 @property (nonatomic, assign) BOOL* isContinueEnable;
 
-
+@property (nonatomic, strong) UIImage* avatar;
+@property (nonatomic,strong) NetworkManager* netManager;
+@property (nonatomic,assign) BOOL isPhotoSet;
 @end
 
 @implementation AccountDetailViewController
@@ -38,6 +42,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _isPhotoSet = NO;
+    _netManager = [NetworkManager shared];
+    
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
     self.txtUserName.attributedPlaceholder = str;
     
@@ -57,17 +64,29 @@
     
   
     
+    _imgAvatar.layer.cornerRadius = 120;
+    _imgAvatar.clipsToBounds = YES;
     
-    
-    
+    [_netManager getUserProfileWithSuccessBlock:^(HWUser *user) {
+        [_imgAvatar setImageWithURL: [NSURL URLWithString: user.avatar] placeholderImage: [UIImage imageNamed: @"acdet_circle"]];
+        _txtUserName.text = user.username;
+        _txtEmail.text = user.email;
+        _txtAboutMe.text = user.about_me;
+        
+    } failureBlock:^(NSError *error) {
+        [self showAlert:error];
+    }];
 }
 
-- (void)setCursorToBeginning:(UITextView *)inView
+
+
+
+- (void) viewDidAppear:(BOOL)animated
 {
-    //you can change first parameter in NSMakeRange to wherever you want the cursor to move
-    inView.selectedRange = NSMakeRange(3, 0);
+    
+    [_txtURLS scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
+    
 }
-
 //
 //// Call this method somewhere in your view controller setup code.
 //- (void)registerForKeyboardNotifications
@@ -186,10 +205,45 @@
 }
 */
 
+- (void) showAlert: (NSError*)error
+{
+    NSLog(@"%@",error);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[[UIAlertView alloc]initWithTitle:@"Error"
+                                   message:error.domain
+                                  delegate:nil
+                         cancelButtonTitle:@"Ok"
+                         otherButtonTitles:nil] show];
+    });
+}
+
 - (IBAction)btnNext:(id)sender {
     
     
-    [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
+    //[self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
+    
+    if (_isPhotoSet)
+    
+    [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:_txtAboutMe.text photo:_imgAvatar.image successBlock:^(HWUser *user) {
+        
+        
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlert:error];
+    }
+     ];
+    else
+    {
+        [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:_txtAboutMe.text photo:nil successBlock:^(HWUser *user) {
+            
+            
+        } failureBlock:^(NSError *error) {
+            
+            [self showAlert:error];
+            
+        }
+         ];
+}
 }
 
 - (IBAction)checkBox:(id)sender {
@@ -288,8 +342,18 @@
 
 }
 
-- (IBAction)btnTermOfUse:(id)sender {
-}
-- (IBAction)btnPrivacyPolicy:(id)sender {
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    _avatar = info[UIImagePickerControllerEditedImage];
+    
+    _imgAvatar.image = _avatar;
+    
+    
+    _isPhotoSet = true;
+    [picker dismissViewControllerAnimated: YES completion:^{
+        
+    }];
 }
 @end
