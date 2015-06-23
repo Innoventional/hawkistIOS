@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomizationViewController">
@@ -61,22 +61,22 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syo-IK-4jS">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93M-qS-X3o">
-                            <rect key="frame" x="227" y="14" width="146" height="51"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93M-qS-X3o">
+                            <rect key="frame" x="227" y="34" width="146" height="46"/>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="146" id="aW2-Od-pQs"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpt-vU-m8n">
-                            <rect key="frame" x="148" y="80" width="304" height="21"/>
+                            <rect key="frame" x="148" y="88" width="304" height="28"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="304" id="VOu-Qy-JJR"/>
-                                <constraint firstAttribute="height" constant="21" id="Z2M-T0-0eK"/>
+                                <constraint firstAttribute="height" constant="28" id="Z2M-T0-0eK"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,8 +86,8 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Kpt-vU-m8n" firstAttribute="centerX" secondItem="93M-qS-X3o" secondAttribute="centerX" id="4Rx-16-dfK"/>
-                        <constraint firstItem="Kpt-vU-m8n" firstAttribute="top" secondItem="93M-qS-X3o" secondAttribute="bottom" constant="15" id="GC6-GW-URr"/>
-                        <constraint firstAttribute="bottom" secondItem="Kpt-vU-m8n" secondAttribute="bottom" constant="28" id="X3h-iS-0oF"/>
+                        <constraint firstItem="Kpt-vU-m8n" firstAttribute="top" secondItem="93M-qS-X3o" secondAttribute="bottom" constant="16" id="GC6-GW-URr"/>
+                        <constraint firstAttribute="bottom" secondItem="Kpt-vU-m8n" secondAttribute="bottom" constant="13" id="X3h-iS-0oF"/>
                         <constraint firstItem="Kpt-vU-m8n" firstAttribute="centerX" secondItem="syo-IK-4jS" secondAttribute="centerX" id="Y4q-FR-AZ3"/>
                         <constraint firstItem="93M-qS-X3o" firstAttribute="top" secondItem="syo-IK-4jS" secondAttribute="top" constant="14" id="YCi-i3-ao0"/>
                     </constraints>

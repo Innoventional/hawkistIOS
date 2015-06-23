@@ -24,10 +24,4 @@
 @property (strong, nonatomic) NSArray *backImage;
 - (IBAction)nextButton:(id)sender;
 
-@property (strong, nonatomic) NSArray *name;
-
-@property (nonatomic, strong) NSArray *images;
-
-@property (nonatomic , strong) UILabel *lable;
-
 @end

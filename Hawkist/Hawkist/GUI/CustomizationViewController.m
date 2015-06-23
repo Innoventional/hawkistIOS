@@ -4,10 +4,18 @@
 #import "UIColor+Extensions.h"
 @interface CustomizationViewController ()
 
+@property (strong, nonatomic) NSArray *name;
+@property (nonatomic, strong) NSArray *images;
+@property (nonatomic , strong) UILabel *lable;
 @property (nonatomic, strong) NSMutableArray* arrayWithImageViews;
+@property (nonatomic, strong) NSArray* descriptions;
+
 @end
 
 @implementation CustomizationViewController
+{
+    CGSize slideSize;
+}
 
 - (instancetype)init
 {
@@ -30,6 +38,7 @@
     self.textdown.text = @"Whant more options? You'll be able tomake changes in your profile";
     self.name = @[@"Playstation", @"Pc",@"Xbox"];
     self.backImage = @[@"11",@"22",@"33"];
+    self.descriptions = @[@"Deals on Playstaion games and consoles like PS3 or God of War.",@"Deals on PC games like The Sims, Guild Wars or Crysis, Dota 2",@"Deals on XBox games and consoles like XBox 360 or Halo"];
     
     self.images =@[@"plateside",@"plateside",@"plateside"];
     
@@ -103,19 +112,32 @@
     
     CGSize scrollViewSize = self.viewScroll.frame.size;
     
-    CGSize slideSize = CGSizeMake(self.scrollView.frame.size.width - 100, self.scrollView.frame.size.height);
+    CGFloat estimatedWidth = self.scrollView.frame.size.width - 100;
+    CGFloat estimatedHeight = self.scrollView.height - 20.0f;
+    
+    CGFloat calculatedHeightForEstimatedWitdth = estimatedWidth / 0.7f;
+    CGFloat calculatedWidthForEstimatedHeight = estimatedHeight * 0.7f;
+    
+    if(calculatedHeightForEstimatedWitdth > (self.scrollView.height - 20))
+    {
+        slideSize = CGSizeMake(calculatedWidthForEstimatedHeight, estimatedHeight);
+    }
+    else
+    {
+        slideSize = CGSizeMake(estimatedWidth, calculatedHeightForEstimatedWitdth);
+    }
+    
+    
     
     for (NSInteger i = 0; i < [self.images count]; i++)
     {
-        CGRect slideRect = CGRectMake((self.scrollView.bounds.size.width - slideSize.width)/2 + slideSize.width * i, 0, slideSize.width, slideSize.height);
+        CGRect slideRect = CGRectMake((self.scrollView.bounds.size.width - slideSize.width)/2 + (slideSize.width + 10) * i, (self.scrollView.height - slideSize.height) / 2, slideSize.width, slideSize.height);
         
         
         UIView *slide = [[UIView alloc] initWithFrame:slideRect];
         [slide setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
 
-        
-        
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.0f, 0, slideRect.size.width - 10.0f  , self.scrollView.frame.size.height )];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0, slideSize.width, slideSize.height)];
         
         imageView.layer.cornerRadius = 5.0f;
         
@@ -124,18 +146,31 @@
         //imageView.contentMode = UIViewContentModeScaleAspectFit;
         [imageView setImage:[UIImage imageNamed:[self.images objectAtIndex:i]]];
         
-        UIImageView *imageFront = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, slideRect.size.width  , slide.frame.size.height - 100)];
+        UIImageView *imageFront = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, slideSize.width , slideSize.width)];
         imageFront.contentMode = UIViewContentModeScaleAspectFill;
         [imageFront setImage:[UIImage imageNamed:[self.backImage objectAtIndex:i]]];
         imageFront.clipsToBounds = YES;
         
-        _lable = [[UILabel alloc] initWithFrame:CGRectMake(10, slide.frame.size.height - 90, slideRect.size.width  , 20 )];
+        _lable = [[UILabel alloc] initWithFrame:CGRectMake(10, slideSize.width + 5.0f, slideSize.width  , 20 )];
         _lable.textAlignment = NSTextAlignmentLeft;
         
+        UILabel* descriptionLabel = [[UILabel alloc] init];
+        descriptionLabel.backgroundColor = [UIColor clearColor];
+        descriptionLabel.font = [UIFont systemFontOfSize: 10.0f];
+        descriptionLabel.numberOfLines = 0;
+        
+        descriptionLabel.text = self.descriptions[i];
+        
+        CGSize descriptionSize = [descriptionLabel.text sizeWithFont: [UIFont systemFontOfSize: 10.0f]
+                                                      constrainedToSize: CGSizeMake(slideSize.width - 20.0f, CGFLOAT_MAX)
+                                                          lineBreakMode: NSLineBreakByWordWrapping];
+        
+        descriptionLabel.frame = CGRectMake(10.0f, _lable.maxY + 5.0f, descriptionSize.width, descriptionSize.height);
         
         [self.scrollView addSubview:slide];
         
         [imageView addSubview:_lable];
+        [imageView addSubview: descriptionLabel];
          
         [slide addSubview:imageView];
         
@@ -153,7 +188,7 @@
     
    
     
-    [self.scrollView setContentSize:CGSizeMake(slideSize.width * [self.images count] + (self.scrollView.frame.size.width - slideSize.width), scrollViewSize.height)];
+    [self.scrollView setContentSize:CGSizeMake((slideSize.width + 10) * [self.images count] + (self.scrollView.frame.size.width - slideSize.width), scrollViewSize.height)];
 }
 
 
@@ -161,12 +196,12 @@
 {
     CGFloat kMaxIndex = 3;
     CGFloat targetX = scrollView.contentOffset.x + velocity.x * 60.0;
-    CGFloat targetIndex = round(targetX / (self.scrollView.frame.size.width - 100));
+    CGFloat targetIndex = round(targetX / slideSize.width);
     if (targetIndex < 0)
         targetIndex = 0;
     if (targetIndex > kMaxIndex)
         targetIndex = kMaxIndex;
-    targetContentOffset->x = targetIndex * (self.scrollView.frame.size.width - 100);
+    targetContentOffset->x = targetIndex * slideSize.width;
     
     for (NSInteger index = 0; index < 3; index++) {
         UIImageView* imageView = [self.arrayWithImageViews objectAtIndex: index];
