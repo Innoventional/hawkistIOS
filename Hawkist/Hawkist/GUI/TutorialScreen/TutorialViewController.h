@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) NSArray *text;
 
+- (IBAction)pageControlDidChange:(id)sender;
 
 
 

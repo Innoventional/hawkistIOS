@@ -16,6 +16,8 @@
 		3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */; };
 		7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C735D3E1B3893B000295472 /* CustomizationViewController.m */; };
 		7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D3F1B3893B000295472 /* CustomizationViewController.xib */; };
+		7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */; };
+		7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */; };
 		7CDD9A621B343AD2000FA498 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD9A601B343AD2000FA498 /* TutorialViewController.m */; };
 		7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */; };
 		80E1CD0A02CE700CA374803C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D8ABABE09C6B8E36C39881 /* libPods.a */; };
@@ -76,6 +78,8 @@
 		7C735D3D1B3893B000295472 /* CustomizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizationViewController.h; sourceTree = "<group>"; };
 		7C735D3E1B3893B000295472 /* CustomizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizationViewController.m; sourceTree = "<group>"; };
 		7C735D3F1B3893B000295472 /* CustomizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizationViewController.xib; sourceTree = "<group>"; };
+		7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansRegular.ttf; sourceTree = "<group>"; };
 		7CDD9A5F1B343AD2000FA498 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		7CDD9A601B343AD2000FA498 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 				7CDD9A5F1B343AD2000FA498 /* TutorialViewController.h */,
 				7CDD9A601B343AD2000FA498 /* TutorialViewController.m */,
 				7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */,
+				7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */,
+				7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */,
 			);
 			path = TutorialScreen;
 			sourceTree = "<group>";
@@ -479,8 +485,10 @@
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
+				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
 				C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */,
+				7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				C35A4C251B2F2DF7002E1F26 /* Images.xcassets in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
