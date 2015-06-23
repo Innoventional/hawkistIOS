@@ -12,6 +12,7 @@
                 <outlet property="scrollView" destination="FQN-fw-SqB" id="dUC-gI-vTk"/>
                 <outlet property="txtAboutMe" destination="txr-YX-ng7" id="WdB-1I-WNM"/>
                 <outlet property="txtEmail" destination="43a-MC-rNv" id="GMe-8F-iK2"/>
+                <outlet property="txtURLS" destination="SvW-AZ-reo" id="0Mh-qP-pHW"/>
                 <outlet property="txtUserName" destination="yCs-S8-MJD" id="orP-T9-44S"/>
                 <outlet property="view" destination="iN0-l3-epB" id="VSQ-0v-KHm"/>
                 <outlet property="wwwww" destination="H88-yT-UGx" id="mXr-ic-uIg"/>
@@ -161,12 +162,6 @@
                                                 <action selector="checkBox:" destination="-1" eventType="touchUpInside" id="wPe-Sn-uWI"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I accept" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Oe-h4-GL0">
-                                            <rect key="frame" x="80" y="22" width="52" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAR-da-ZsL">
                                             <rect key="frame" x="40" y="65" width="20" height="20"/>
                                             <constraints>
@@ -193,23 +188,37 @@
                                                 <action selector="checkBox:" destination="-1" eventType="touchUpInside" id="0h2-ln-Wbc"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm at least 16 years old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDM-i2-4e3">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I'm at least 16 years old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDM-i2-4e3">
                                             <rect key="frame" x="80" y="65" width="155" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SvW-AZ-reo">
+                                            <rect key="frame" x="75" y="12" width="505" height="45"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="Ykc-Hv-GB7"/>
+                                            </constraints>
+                                            <attributedString key="attributedText"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="eqS-KS-2kp"/>
+                                            </connections>
+                                        </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="100" id="Cjw-7B-EsQ"/>
                                         <constraint firstItem="Zca-EA-cjv" firstAttribute="leading" secondItem="zh1-de-97G" secondAttribute="leading" constant="40" id="Fqs-iB-pe2"/>
                                         <constraint firstItem="Zca-EA-cjv" firstAttribute="top" secondItem="zh1-de-97G" secondAttribute="top" constant="20" id="Mrw-MC-pTI"/>
+                                        <constraint firstItem="SvW-AZ-reo" firstAttribute="leading" secondItem="Zca-EA-cjv" secondAttribute="trailing" constant="15" id="TRz-dr-ZxV"/>
+                                        <constraint firstAttribute="trailing" secondItem="SvW-AZ-reo" secondAttribute="trailing" constant="20" id="Ups-2U-akW"/>
                                         <constraint firstItem="pAR-da-ZsL" firstAttribute="top" secondItem="Zca-EA-cjv" secondAttribute="bottom" constant="25" id="bWG-R3-Toc"/>
-                                        <constraint firstItem="8Oe-h4-GL0" firstAttribute="leading" secondItem="Zca-EA-cjv" secondAttribute="trailing" constant="20" id="cw2-Ow-5JH"/>
                                         <constraint firstItem="pAR-da-ZsL" firstAttribute="leading" secondItem="zh1-de-97G" secondAttribute="leading" constant="40" id="dm1-nF-4b5"/>
-                                        <constraint firstItem="8Oe-h4-GL0" firstAttribute="top" secondItem="zh1-de-97G" secondAttribute="top" constant="22" id="l3J-QZ-Rzn"/>
-                                        <constraint firstItem="ZDM-i2-4e3" firstAttribute="top" secondItem="8Oe-h4-GL0" secondAttribute="bottom" constant="26" id="xDP-aa-CuR"/>
+                                        <constraint firstItem="pAR-da-ZsL" firstAttribute="centerY" secondItem="ZDM-i2-4e3" secondAttribute="centerY" id="du2-yw-jS1"/>
+                                        <constraint firstItem="SvW-AZ-reo" firstAttribute="centerY" secondItem="Zca-EA-cjv" secondAttribute="centerY" constant="4.5" id="pPw-pw-tYs"/>
                                         <constraint firstItem="ZDM-i2-4e3" firstAttribute="leading" secondItem="pAR-da-ZsL" secondAttribute="trailing" constant="20" id="xLJ-nC-chw"/>
                                     </constraints>
                                 </view>
@@ -219,6 +228,9 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="btnNext:" destination="-1" eventType="touchUpInside" id="P9k-CQ-Hqx"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>

@@ -15,6 +15,15 @@
 
 @implementation TutorialViewController
 
+- (instancetype) init
+{
+    self = [super initWithNibName: @"TutorialViewController" bundle: nil];
+    if(self)
+    {
+        
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -151,6 +160,8 @@
 
 
 - (IBAction)getStart:(id)sender {
-    
+    [self dismissViewControllerAnimated: YES completion:^{
+        
+    }];
 }
 @end

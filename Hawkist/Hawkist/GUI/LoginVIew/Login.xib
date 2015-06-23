@@ -20,7 +20,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="btnSignUpFB:" destination="-1" eventType="touchUpInside" id="UgY-qf-ngS"/>
+                        <action selector="btnSignUpFB:" destination="-1" eventType="touchUpInside" id="tIq-8w-vLv"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mD-9n-1sx">

@@ -62,9 +62,9 @@
     [self.networkDecorator POST: @"users"
                      parameters: params
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            if([responseObject[@"success"] integerValue] != 0)
+                            if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
                                 return;
                             }
                             
@@ -99,9 +99,9 @@
     [self.networkDecorator PUT: @"users"
                      parameters: params
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            if([responseObject[@"success"] integerValue] != 0)
+                            if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
                                 return;
                             }
                             
@@ -128,9 +128,9 @@
     [self.networkDecorator GET: @"user"
                      parameters: nil
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            if([responseObject[@"success"] integerValue] != 0)
+                            if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
                                 return;
                             }
                             
@@ -178,9 +178,9 @@
           }
       }
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            if([responseObject[@"success"] integerValue] != 0)
+                            if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
                                 return;
                             }
                             
@@ -210,9 +210,9 @@
                     parameters: @{@"facebook_token": token}
      
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           if([responseObject[@"success"] integerValue] != 0)
+                           if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"success"] integerValue] userInfo: nil]);
+                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
                                return;
                            }
                            

@@ -11,6 +11,7 @@
 #import "UIView+Extensions.h"
 #import "Masonry.h"
 #import "LoginViewController.h"
+#import "CustomizationViewController.h"
 
 @interface AccountDetailViewController ()
 @property (nonatomic,strong) UIView* accountDetailView;
@@ -31,6 +32,8 @@
     return self;
 }
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -45,7 +48,24 @@
     
     [self registerForKeyboardNotifications];
     
+    NSString *htmlString = @"<p style='color:white;font-size:14'>I accept <a href='http://google.com'>Term of Use</a> and <a href='http://google.com'>Privacy Policy</a></p>";
     
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    
+    
+    _txtURLS.attributedText = attributedString;
+    
+  
+    
+    
+    
+    
+}
+
+- (void)setCursorToBeginning:(UITextView *)inView
+{
+    //you can change first parameter in NSMakeRange to wherever you want the cursor to move
+    inView.selectedRange = NSMakeRange(3, 0);
 }
 
 //
@@ -166,6 +186,12 @@
 }
 */
 
+- (IBAction)btnNext:(id)sender {
+    
+    
+    [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
+}
+
 - (IBAction)checkBox:(id)sender {
     
     if ([sender tag] == 2)
@@ -260,5 +286,10 @@
     LoginViewController* login = [[LoginViewController alloc]init];
     [self.navigationController pushViewController:login animated:(YES)];
 
+}
+
+- (IBAction)btnTermOfUse:(id)sender {
+}
+- (IBAction)btnPrivacyPolicy:(id)sender {
 }
 @end

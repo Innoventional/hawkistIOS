@@ -10,6 +10,8 @@
 #import "NetworkManager.h"
 #import "AppEngine.h"
 #import "AccountDetailViewController.h"
+#import "TutorialViewController.h"
+#import "SocialManager.h"
 
 @interface LoginViewController ()
 //@property (nonatomic,strong) UIAlertView* getNumber;
@@ -27,14 +29,43 @@
 
 @property (nonatomic,strong) AccountDetailViewController* accountDetailVC;
 
+@property (nonatomic,strong) SocialManager* socManager;
+
+
 @end
+
+
+
 
 @implementation LoginViewController
 
+
+- (void) showAlert: (NSError*)error
+{
+     NSLog(@"%@",error);
+    dispatch_async(dispatch_get_main_queue(), ^{
+    [[[UIAlertView alloc]initWithTitle:@"Error"
+                               message:error.domain
+                              delegate:nil
+                     cancelButtonTitle:@"Ok"
+                     otherButtonTitles:nil] show];
+         });
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
+   
+    _socManager = [SocialManager shared];
     _engine = [AppEngine shared];
+    
+    if([AppEngine isFirsTimeLaunch])
+    {
+        [self presentViewController: [[TutorialViewController alloc] init] animated: YES completion:^{
+            
+        }];
+    }
     
     _accountDetailVC= [[AccountDetailViewController alloc]init];
     
@@ -104,7 +135,71 @@
     self.txtMobileNum.attributedPlaceholder = str;
     
     NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"ENTER PIN" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
-    self.txtCode.attributedPlaceholder = str2;
+    self.txtPin.attributedPlaceholder = str2;
+    
+    
+    // [self registerForKeyboardNotifications];
+}
+
+- (void) registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(adjustKeyboardFrame:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(hideKeyboardFrame:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    
+}
+
+//- (void) deregisterForKeyBoardNotifications
+//{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+//}
+
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+#pragma mark -
+#pragma mark Keyboard
+
+
+- (void) adjustKeyboardFrame: (NSNotification*) notification
+{
+    BOOL willHide = [notification.name isEqualToString: UIKeyboardWillHideNotification];
+    
+    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    CGFloat keyboardHeight = (CGRectGetMinY(keyboardFrame) < self.view.frame.size.height) ? CGRectGetHeight(keyboardFrame) : 0.0f;
+    
+    CGFloat bottomOffset = willHide ? 0.0f : keyboardHeight;
+    //
+    //    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, bottomOffset, 0)];
+    //    NSLog(@"%f-key",bottomOffset);
+    
+    CGRect newRect = CGRectMake(0, -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
+    
+    self.view.frame = newRect;
+}
+
+- (void) hideKeyboardFrame: (NSNotification*) notification
+{
+    CGRect newRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    self.view.frame = newRect;
+    //
+    //    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, 0, 0)];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,11 +248,26 @@
 - (IBAction)btnSignUpMobile:(id)sender {
    
     [_numberDialog setHidden:NO];
+    //[self deregisterForKeyBoardNotifications];
 
 
 }
 
 - (IBAction)btnSignUpFB:(id)sender {
+    [_socManager loginFacebookSuccess:^(NSDictionary *response) {
+        [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
+            _engine.user = user;
+            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+            
+        } failureBlock:^(NSError *error) {
+            [self showAlert:error];
+        }];
+        
+    } failure:^(NSError *error) {
+       [self showAlert:error];
+        
+    }];
+
 }
 
 - (IBAction)btnCancel:(id)sender {
@@ -179,7 +289,7 @@
         
         
     } failureBlock:^(NSError *error) {
-        
+        [self showAlert:error];
         
     }];
 
@@ -196,7 +306,7 @@
         _engine.user = user;
            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
     } failureBlock:^(NSError *error) {
-        
+       [self showAlert:error];
     }];
 
 }
@@ -214,6 +324,17 @@
 }
 
 - (IBAction)btnSignInFB:(id)sender {
+    [_socManager loginFacebookSuccess:^(NSDictionary *response) {
+        [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
+            _engine.user = user;
+            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+            
+        } failureBlock:^(NSError *error) {
+           [self showAlert:error];        }];
+        
+    } failure:^(NSError *error) {
+        [self showAlert:error];
+    }];
 }
 
 
@@ -226,6 +347,8 @@
 - (IBAction)btnSignUp:(id)sender {
     [_loginView setHidden:NO];
     [_signIn setHidden:YES];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (IBAction)btnSignInMobile:(id)sender {
@@ -234,7 +357,7 @@
         [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
         
     } failureBlock:^(NSError *error) {
-        
+    [self showAlert:error];
     }];
 
 }

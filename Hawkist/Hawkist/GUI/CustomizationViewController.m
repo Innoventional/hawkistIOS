@@ -9,6 +9,17 @@
 
 @implementation CustomizationViewController
 
+- (instancetype)init
+{
+    self = [super initWithNibName: @"CustomizationViewController" bundle: nil];
+    if(self)
+    {
+        
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
