@@ -79,7 +79,6 @@
 //    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
     
     
-    
     _txtURLS.attributedText = attributedString;
     NSDictionary* linkAttributes = @{
                                      NSForegroundColorAttributeName: [UIColor color256RGBWithRed: 63 green: 147 blue: 126],
