@@ -93,7 +93,7 @@
     
     CGSize rectSize= self.view.frame.size;
     
-    _codeDialog.frame = CGRectMake(20, 40, rectSize.width-40, (rectSize.width-40)/2);
+    _codeDialog.frame = CGRectMake(20, rectSize.height/2 - (rectSize.width-40)/2, rectSize.width-40, (rectSize.width-40)/2);
     
     
     [self.view addSubview:_codeDialog];
