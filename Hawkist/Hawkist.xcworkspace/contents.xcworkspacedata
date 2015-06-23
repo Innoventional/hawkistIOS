@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:OpenSans-Italic.ttf">
+   </FileRef>
+   <FileRef
       location = "group:Hawkist/GUI/LoginVIew/SignIn.xib">
    </FileRef>
    <FileRef
