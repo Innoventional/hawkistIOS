@@ -14,6 +14,7 @@
 - (IBAction)btnBack:(id)sender;
 - (IBAction)btnTermOfUse:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *txtURLS;
+@property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
 
 - (IBAction)btnPrivacyPolicy:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *txtCheckBox1;

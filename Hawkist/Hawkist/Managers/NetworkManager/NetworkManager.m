@@ -171,10 +171,10 @@
       constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
           if(photo)
           {
-              [formData appendPartWithFileData: UIImageJPEGRepresentation(photo, 0)
+              [formData appendPartWithFileData: UIImagePNGRepresentation(photo)
                                           name: @"media"
-                                      fileName: @"media.jpg"
-                                      mimeType: @"image/jpeg"];
+                                      fileName: @"media.png"
+                                      mimeType: @"image/png"];
           }
       }
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
