@@ -105,7 +105,7 @@
     _numberDialog= [arr objectAtIndex:0];
     
     
-    _numberDialog.frame = CGRectMake(20, 20, rectSize.width-40, rectSize.width-40);
+    _numberDialog.frame = CGRectMake(20, 60, rectSize.width-40, rectSize.width-80);
     
     
     [self.view addSubview:_numberDialog];
@@ -274,17 +274,25 @@
     if (!_numberDialog.hidden)
     {
         [_numberDialog setHidden:YES];
+        [_txtNumber resignFirstResponder];
     }
-    if (!_codeDialog.hidden)
+    if (!_codeDialog.hidden){
+        
         [_codeDialog setHidden:YES];
+        [_txtCode resignFirstResponder];
+    
+    }
     _txtNumber.text = @"";
     _txtCode.text = @"";
+    
+    
+    
 }
 
 - (IBAction)btnSend:(id)sender {
     [_codeDialog setHidden:NO];
     [_numberDialog setHidden:YES];
-    
+    [_txtNumber resignFirstResponder];
     [_networkManager registerUserWithPhoneNumber:_txtNumber.text orFacebookToken:nil successBlock:^(HWUser *user) {
         
         
@@ -300,7 +308,7 @@
     [_numberDialog setHidden:YES];
     
     
-    
+        [_txtCode resignFirstResponder];
     [_networkManager loginWithPhoneNumber:_txtNumber.text pin:_txtCode.text successBlock:^(HWUser *user) {
         
         _engine.user = user;
@@ -316,6 +324,7 @@
 - (IBAction)btnCancelCode:(id)sender {
     [_codeDialog setHidden:YES];
     [_numberDialog setHidden:NO];
+    [_txtCode resignFirstResponder];
 }
 
 - (IBAction)btnSignIn:(id)sender {

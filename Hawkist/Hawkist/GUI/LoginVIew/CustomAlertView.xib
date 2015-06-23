@@ -4,6 +4,15 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+        <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
@@ -24,15 +33,16 @@
                     <color key="textColor" red="0.4823529412" green="0.79607843140000001" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="soy-mG-5s8">
-                    <rect key="frame" x="15" y="370" width="570" height="3"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soy-mG-5s8">
+                    <rect key="frame" x="15" y="341" width="570" height="1"/>
                     <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="5" id="kT1-cr-sZL"/>
+                        <constraint firstAttribute="height" constant="1" id="kT1-cr-sZL"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Vq-sO-fdh">
                     <rect key="frame" x="15" y="555" width="275" height="30"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                     <state key="normal" title="SEND" backgroundImage="send">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -42,15 +52,16 @@
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uCh-19-cEg">
-                    <rect key="frame" x="64" y="338" width="521" height="24"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <rect key="frame" x="64" y="308" width="521" height="25"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="3Fz-Hp-sxs"/>
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaK-9Q-eSG">
                     <rect key="frame" x="310" y="555" width="275" height="30"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                     <state key="normal" title="CANCEL" backgroundImage="cancel">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,7 +77,7 @@
                 <constraint firstAttribute="bottom" secondItem="dXL-hp-elu" secondAttribute="bottom" id="7t1-xk-qiI"/>
                 <constraint firstAttribute="bottom" secondItem="ZaK-9Q-eSG" secondAttribute="bottom" constant="15" id="9Mh-Z6-eFC"/>
                 <constraint firstItem="uCh-19-cEg" firstAttribute="leading" secondItem="gUo-8E-vSa" secondAttribute="trailing" constant="15" id="EZj-sB-zAa"/>
-                <constraint firstAttribute="centerY" secondItem="uCh-19-cEg" secondAttribute="centerY" constant="-50" id="HAm-aT-fwY"/>
+                <constraint firstAttribute="centerY" secondItem="uCh-19-cEg" secondAttribute="centerY" constant="-20" id="HAm-aT-fwY"/>
                 <constraint firstItem="soy-mG-5s8" firstAttribute="top" secondItem="uCh-19-cEg" secondAttribute="bottom" constant="8" id="Jq1-H2-E2j"/>
                 <constraint firstAttribute="centerX" secondItem="1Vq-sO-fdh" secondAttribute="trailing" constant="10" id="PVr-k7-dC0"/>
                 <constraint firstItem="uCh-19-cEg" firstAttribute="leading" secondItem="gUo-8E-vSa" secondAttribute="trailing" constant="15" id="V5R-Vx-3ah"/>

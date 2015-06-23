@@ -55,7 +55,7 @@
     
     [self registerForKeyboardNotifications];
     
-    NSString *htmlString = @"<p style='color:white;font-size:14'>I accept <a href='http://google.com'>Term of Use</a> and <a href='http://google.com'>Privacy Policy</a></p>";
+    NSString *htmlString = @"<p style='color:white;font-size:14'>I accept <a href='http://google.com' style='color: white;text-decoration:none'>Term of Use</a> and <a href='http://google.com' style='color: white;text-decoration:none'>Privacy Policy</a></p>";
     
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
     
