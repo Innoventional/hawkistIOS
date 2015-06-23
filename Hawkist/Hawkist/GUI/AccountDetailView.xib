@@ -9,6 +9,7 @@
                 <outlet property="btnContinue" destination="J6Y-gE-673" id="VMk-Ic-h9I"/>
                 <outlet property="checkBox2" destination="pAR-da-ZsL" id="UWe-Ln-kLn"/>
                 <outlet property="checkbox1" destination="Zca-EA-cjv" id="YWf-t6-Adn"/>
+                <outlet property="imgAvatar" destination="9Mv-P3-l3e" id="sxh-az-ot9"/>
                 <outlet property="scrollView" destination="FQN-fw-SqB" id="dUC-gI-vTk"/>
                 <outlet property="txtAboutMe" destination="txr-YX-ng7" id="WdB-1I-WNM"/>
                 <outlet property="txtEmail" destination="43a-MC-rNv" id="GMe-8F-iK2"/>
@@ -40,18 +41,18 @@
                                             <gestureRecognizers/>
                                         </imageView>
                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acdet_circle" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-P3-l3e">
-                                            <rect key="frame" x="178" y="28" width="245" height="245"/>
+                                            <rect key="frame" x="178" y="42" width="245" height="240"/>
                                             <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="245" id="7kI-Ij-nt9"/>
-                                                <constraint firstAttribute="height" constant="245" id="aiq-Tl-Hug"/>
+                                                <constraint firstAttribute="height" constant="240" id="aiq-Tl-Hug"/>
                                             </constraints>
                                             <connections>
                                                 <outletCollection property="gestureRecognizers" destination="dkH-rq-9cd" appends="YES" id="oPG-lr-i66"/>
                                             </connections>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dC-Sn-3lK">
-                                            <rect key="frame" x="12" y="12" width="40" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dC-Sn-3lK">
+                                            <rect key="frame" x="12" y="15" width="20" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="O3g-hE-KHZ"/>
                                                 <constraint firstAttribute="width" constant="20" id="oBo-Et-GgR"/>
@@ -64,7 +65,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-N1-rI7">
-                                            <rect key="frame" x="244" y="12" width="113" height="21"/>
+                                            <rect key="frame" x="244" y="15" width="113" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -74,16 +75,15 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="LZ2-hg-ahV" secondAttribute="bottom" id="0Ep-PW-VmK"/>
                                         <constraint firstItem="LZ2-hg-ahV" firstAttribute="leading" secondItem="49n-Xd-8MH" secondAttribute="leading" id="2yE-sX-aFZ"/>
-                                        <constraint firstAttribute="bottom" secondItem="9Mv-P3-l3e" secondAttribute="bottom" constant="27" id="DR5-vj-RuE"/>
-                                        <constraint firstItem="Fuq-N1-rI7" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" constant="12" id="DWf-LY-g0m"/>
+                                        <constraint firstAttribute="bottom" secondItem="9Mv-P3-l3e" secondAttribute="bottom" constant="18" id="DR5-vj-RuE"/>
+                                        <constraint firstItem="Fuq-N1-rI7" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" constant="15" id="DWf-LY-g0m"/>
                                         <constraint firstItem="5dC-Sn-3lK" firstAttribute="leading" secondItem="49n-Xd-8MH" secondAttribute="leading" constant="12" id="G10-20-kyF"/>
                                         <constraint firstAttribute="trailing" secondItem="LZ2-hg-ahV" secondAttribute="trailing" id="GxQ-bf-8F9"/>
                                         <constraint firstAttribute="height" constant="300" id="Rrc-H0-NdY"/>
                                         <constraint firstAttribute="centerX" secondItem="9Mv-P3-l3e" secondAttribute="centerX" id="Rx5-2i-cMI"/>
-                                        <constraint firstItem="5dC-Sn-3lK" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" constant="12" id="fTl-v4-4do"/>
+                                        <constraint firstItem="5dC-Sn-3lK" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" constant="15" id="fTl-v4-4do"/>
                                         <constraint firstItem="LZ2-hg-ahV" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" id="lZG-k1-dYM"/>
                                         <constraint firstAttribute="centerX" secondItem="Fuq-N1-rI7" secondAttribute="centerX" id="pUA-50-Fcw"/>
-                                        <constraint firstItem="9Mv-P3-l3e" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" constant="28" id="t5f-VT-0Je"/>
                                     </constraints>
                                 </view>
                                 <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQc-LA-xof" userLabel="UserName">
@@ -188,8 +188,8 @@
                                                 <action selector="checkBox:" destination="-1" eventType="touchUpInside" id="0h2-ln-Wbc"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I'm at least 16 years old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDM-i2-4e3">
-                                            <rect key="frame" x="80" y="65" width="155" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm at least 16 years old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDM-i2-4e3">
+                                            <rect key="frame" x="80" y="67" width="155" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -201,7 +201,7 @@
                                                 <constraint firstAttribute="height" constant="45" id="Ykc-Hv-GB7"/>
                                             </constraints>
                                             <attributedString key="attributedText"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
                                             <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             <connections>
                                                 <outlet property="delegate" destination="-1" id="eqS-KS-2kp"/>
