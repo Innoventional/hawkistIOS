@@ -25,7 +25,7 @@
    
     self.images = @[@"1page",@"2page",@"3page",@"4page",@"5page"];
     self.titles = @[@"The Marketplace", @"It's your Choice", @"All the Loot", @"Get the Fact",@"Buy with Confidencce"];
-    self.text = @[@"Hawkist connects real people buying and selling video games of consoles.",@"Customize with items apper in your product feed by indicating preferences",@"Detailed item descriptionsand eller rewiews",@"FAQs and support topics at your fingertips. Got a questions? Message us.", @"Pay securly. Money only changes hands when both parties re happy"];
+    self.text = @[@"Hawkist connects real people buying and selling video games or consoles.",@"Customise which items appear in your product feed by indicating preferences.",@"Detailed item descriptions and seller reviews. Follow, favourite and negotiate.",@"FAQs and support topics at your fingertips. Got a question? Message us.", @"Pay securly. Money only changes hands when both parties are happy"];
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.View2.frame];
     [self.scrollView setDelegate:self];
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
