@@ -220,13 +220,13 @@
 - (IBAction)btnNext:(id)sender {
     
     
-    //[self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
+    
     
     if (_isPhotoSet)
     
     [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:_txtAboutMe.text photo:_imgAvatar.image successBlock:^(HWUser *user) {
         
-        
+        [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
         
         [self showAlert:error];
@@ -236,7 +236,7 @@
     {
         [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:_txtAboutMe.text photo:nil successBlock:^(HWUser *user) {
             
-            
+            [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
         } failureBlock:^(NSError *error) {
             
             [self showAlert:error];
