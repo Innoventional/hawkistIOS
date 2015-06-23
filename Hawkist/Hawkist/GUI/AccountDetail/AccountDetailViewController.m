@@ -22,6 +22,8 @@
 @property (nonatomic, strong) UIImage* avatar;
 @property (nonatomic,strong) NetworkManager* netManager;
 @property (nonatomic,assign) BOOL isPhotoSet;
+@property (nonatomic, assign) BOOL isPlaceholderHidden;
+
 @end
 
 @implementation AccountDetailViewController
@@ -35,6 +37,7 @@
     }
     return self;
 }
+
 
 
 
@@ -73,7 +76,10 @@
         _txtAboutMe.placeholder = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or consoles are you excited for?";
         _txtAboutMe.placeholderColor = [UIColor whiteColor];
         if(user.about_me)
+        {
             _txtAboutMe.text = user.about_me;
+            self.isPlaceholderHidden = YES;
+        }
         
     } failureBlock:^(NSError *error) {
         [self showAlert:error];
@@ -88,6 +94,18 @@
     
     [_txtURLS scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
     
+}
+
+
+
+ - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    if (!self.isPlaceholderHidden)
+    {
+        _txtAboutMe.text =@"";
+        self.isPlaceholderHidden = YES;
+    }
+    return YES;
 }
 //
 //// Call this method somewhere in your view controller setup code.

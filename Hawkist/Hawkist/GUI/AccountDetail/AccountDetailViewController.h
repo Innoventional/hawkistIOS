@@ -10,7 +10,7 @@
 #import "HWBaseViewController.h"
 #import "UIPlaceholderTextView.h"
 
-@interface AccountDetailViewController : HWBaseViewController <UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface AccountDetailViewController : HWBaseViewController <UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 - (IBAction)btnBack:(id)sender;
 - (IBAction)btnTermOfUse:(id)sender;
