@@ -54,7 +54,7 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uCh-19-cEg">
                     <rect key="frame" x="64" y="308" width="521" height="25"/>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="3Fz-Hp-sxs"/>
                     </connections>

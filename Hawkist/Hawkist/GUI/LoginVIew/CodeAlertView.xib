@@ -24,13 +24,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gotCode" translatesAutoresizingMaskIntoConstraints="NO" id="AJP-eR-Lrw">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gotCode" translatesAutoresizingMaskIntoConstraints="NO" id="AJP-eR-Lrw">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter it here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fO4-ur-E9l">
                     <rect key="frame" x="50" y="292" width="500" height="17"/>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Wt5-n3-qHk"/>
                     </connections>
@@ -70,6 +70,7 @@
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="zJD-bB-q6i" secondAttribute="trailing" id="1bf-ps-JGG"/>
                 <constraint firstItem="zJD-bB-q6i" firstAttribute="top" secondItem="fO4-ur-E9l" secondAttribute="bottom" constant="20" id="8PD-X9-5kG"/>
+                <constraint firstAttribute="bottom" secondItem="AJP-eR-Lrw" secondAttribute="bottom" id="9pH-vQ-Zbx"/>
                 <constraint firstAttribute="trailing" secondItem="AJP-eR-Lrw" secondAttribute="trailing" id="EK9-Av-ADO"/>
                 <constraint firstAttribute="trailing" secondItem="Xur-wW-cdK" secondAttribute="trailing" constant="28" id="Edz-e9-4WC"/>
                 <constraint firstItem="zJD-bB-q6i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="FQs-nN-DWL"/>
@@ -86,6 +87,7 @@
             </constraints>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="Yht-dv-jGk"/>
                     <exclude reference="1bf-ps-JGG"/>
                     <exclude reference="FQs-nN-DWL"/>
                 </mask>

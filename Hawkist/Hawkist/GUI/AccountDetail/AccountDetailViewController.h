@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HWBaseViewController.h"
+#import "UIPlaceholderTextView.h"
 
 @interface AccountDetailViewController : HWBaseViewController <UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
@@ -26,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *checkbox1;
 
 @property (weak, nonatomic) IBOutlet UIButton *checkBox2;
-@property (weak, nonatomic) IBOutlet UITextView *txtAboutMe;
+@property (weak, nonatomic) IBOutlet UIPlaceholderTextView *txtAboutMe;
 - (IBAction)btnNext:(id)sender;
 
 - (IBAction)checkBox:(id)sender;

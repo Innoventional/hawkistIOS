@@ -51,13 +51,13 @@
                                                 <outletCollection property="gestureRecognizers" destination="dkH-rq-9cd" appends="YES" id="oPG-lr-i66"/>
                                             </connections>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dC-Sn-3lK">
-                                            <rect key="frame" x="12" y="25" width="20" height="15"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dC-Sn-3lK">
+                                            <rect key="frame" x="12" y="17" width="38" height="34"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="15" id="O3g-hE-KHZ"/>
-                                                <constraint firstAttribute="width" constant="20" id="oBo-Et-GgR"/>
+                                                <constraint firstAttribute="height" constant="34" id="O3g-hE-KHZ"/>
+                                                <constraint firstAttribute="width" constant="38" id="oBo-Et-GgR"/>
                                             </constraints>
-                                            <state key="normal" backgroundImage="acdet_back">
+                                            <state key="normal" image="acdet_back">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -81,7 +81,7 @@
                                         <constraint firstAttribute="trailing" secondItem="LZ2-hg-ahV" secondAttribute="trailing" id="GxQ-bf-8F9"/>
                                         <constraint firstAttribute="height" constant="300" id="Rrc-H0-NdY"/>
                                         <constraint firstAttribute="centerX" secondItem="9Mv-P3-l3e" secondAttribute="centerX" id="Rx5-2i-cMI"/>
-                                        <constraint firstItem="5dC-Sn-3lK" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" constant="25" id="fTl-v4-4do"/>
+                                        <constraint firstItem="5dC-Sn-3lK" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" constant="17" id="fTl-v4-4do"/>
                                         <constraint firstItem="LZ2-hg-ahV" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" id="lZG-k1-dYM"/>
                                         <constraint firstAttribute="centerX" secondItem="Fuq-N1-rI7" secondAttribute="centerX" id="pUA-50-Fcw"/>
                                     </constraints>
@@ -134,10 +134,9 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txr-YX-ng7" userLabel="About me Text">
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="txr-YX-ng7" userLabel="About me Text" customClass="UIPlaceholderTextView">
                                     <rect key="frame" x="40" y="458" width="520" height="75"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</string>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

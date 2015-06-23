@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -34,7 +34,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m32-vG-zHR">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="430"/>
+                    <rect key="frame" x="0.0" y="10" width="600" height="420"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kc-W9-pz0">
@@ -105,9 +105,9 @@
                 <constraint firstItem="e1L-JT-QMk" firstAttribute="trailing" secondItem="1kc-W9-pz0" secondAttribute="trailing" id="aan-oq-tVd"/>
                 <constraint firstItem="m32-vG-zHR" firstAttribute="trailing" secondItem="e1L-JT-QMk" secondAttribute="trailing" id="b3b-Mt-c8Q"/>
                 <constraint firstAttribute="trailing" secondItem="1kc-W9-pz0" secondAttribute="trailing" id="dJY-tw-9pZ"/>
-                <constraint firstItem="m32-vG-zHR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lV3-UL-7iV"/>
+                <constraint firstItem="m32-vG-zHR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="lV3-UL-7iV"/>
                 <constraint firstAttribute="bottom" secondItem="1kc-W9-pz0" secondAttribute="bottom" id="nwA-l4-XxB"/>
-                <constraint firstItem="m32-vG-zHR" firstAttribute="top" secondItem="e1L-JT-QMk" secondAttribute="top" id="plT-Us-ojk"/>
+                <constraint firstItem="m32-vG-zHR" firstAttribute="top" secondItem="e1L-JT-QMk" secondAttribute="top" constant="10" id="plT-Us-ojk"/>
                 <constraint firstItem="e1L-JT-QMk" firstAttribute="leading" secondItem="1kc-W9-pz0" secondAttribute="leading" id="wai-yR-cLe"/>
             </constraints>
             <point key="canvasLocation" x="713" y="214"/>

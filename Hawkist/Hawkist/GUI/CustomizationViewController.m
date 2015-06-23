@@ -34,7 +34,7 @@
     
     self.arrayWithImageViews = [NSMutableArray array];
     
-    self.name = @[@"Playstation", @"Pc",@"Xbox"];
+    self.name = @[@"PS4", @"PC",@"Xbox"];
     self.backImage = @[@"11",@"22",@"33"];
     self.descriptions = @[@"Deals on Playstaion games and consoles like PS3 or God of War.",@"Deals on PC games like The Sims, Guild Wars or Crysis, Dota 2",@"Deals on XBox games and consoles like XBox 360 or Halo"];
     
@@ -100,7 +100,7 @@
         [imageFront setImage:[UIImage imageNamed:[self.backImage objectAtIndex:i]]];
         imageFront.clipsToBounds = YES;
         
-        _lable = [[UILabel alloc] initWithFrame:CGRectMake(10, slideSize.width + 5.0f, slideSize.width  , 16)];
+        _lable = [[UILabel alloc] initWithFrame:CGRectMake(5, slideSize.width + 5.0f, slideSize.width  , 16)];
         _lable.font = [UIFont fontWithName: @"OpenSans-SemiBold" size: 15];
         _lable.textAlignment = NSTextAlignmentLeft;
         
