@@ -220,25 +220,26 @@
 - (IBAction)btnNext:(id)sender {
     
     
-    
+    [self showHud];
     
     if (_isPhotoSet)
     
     [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:_txtAboutMe.text photo:_imgAvatar.image successBlock:^(HWUser *user) {
         
+        [self hideHud];
         [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
-        
+        [self hideHud];
         [self showAlert:error];
     }
      ];
     else
     {
         [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:_txtAboutMe.text photo:nil successBlock:^(HWUser *user) {
-            
+            [self hideHud];
             [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
         } failureBlock:^(NSError *error) {
-            
+            [self hideHud];
             [self showAlert:error];
             
         }

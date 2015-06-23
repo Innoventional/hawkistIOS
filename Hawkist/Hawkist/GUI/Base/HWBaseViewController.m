@@ -32,4 +32,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -
+#pragma mark Public
+
+- (void) showHud
+{
+    [MBProgressHUD showHUDAddedTo: self.view animated: YES];
+}
+
+- (void) hideHud
+{
+    [MBProgressHUD hideAllHUDsForView: self.view animated: YES];
+}
+
 @end
