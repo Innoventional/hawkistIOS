@@ -26,6 +26,7 @@
             <subviews>
                 <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gotCode" translatesAutoresizingMaskIntoConstraints="NO" id="AJP-eR-Lrw">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                     <gestureRecognizers/>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="rM3-mg-ctQ" appends="YES" id="A0O-Vu-l5u"/>
@@ -70,7 +71,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="zJD-bB-q6i" secondAttribute="trailing" id="1bf-ps-JGG"/>
                 <constraint firstItem="zJD-bB-q6i" firstAttribute="top" secondItem="fO4-ur-E9l" secondAttribute="bottom" constant="20" id="8PD-X9-5kG"/>
