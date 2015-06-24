@@ -429,8 +429,8 @@
     
 }
 - (IBAction)btnBack:(id)sender {
-    LoginViewController* login = [[LoginViewController alloc]init];
-    [self.navigationController pushViewController:login animated:(YES)];
+    //LoginViewController* login = [[LoginViewController alloc]init];
+    [self.navigationController popViewControllerAnimated:YES];
 
 }
 
