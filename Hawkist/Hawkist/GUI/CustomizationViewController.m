@@ -100,7 +100,7 @@
         [imageFront setImage:[UIImage imageNamed:[self.backImage objectAtIndex:i]]];
         imageFront.clipsToBounds = YES;
         
-        _lable = [[UILabel alloc] initWithFrame:CGRectMake(5, slideSize.width + 5.0f, slideSize.width  , 16)];
+        _lable = [[UILabel alloc] initWithFrame:CGRectMake(10.0, slideSize.width + 5.0f, slideSize.width - 10.0f , 16)];
         _lable.font = [UIFont fontWithName: @"OpenSans-SemiBold" size: 15];
         _lable.textAlignment = NSTextAlignmentLeft;
         
