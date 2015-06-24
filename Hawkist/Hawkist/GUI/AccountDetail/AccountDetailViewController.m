@@ -220,12 +220,12 @@
     
     CGFloat bottomOffset = willHide ? 0.0f : keyboardHeight;
 //
-//    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, bottomOffset, 0)];
+    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, bottomOffset, 0)];
 //    NSLog(@"%f-key",bottomOffset);
-    
-    [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.scrollView.superview).mas_offset(-bottomOffset);
-    }];
+//    
+//    [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self.scrollView.superview).mas_offset(-bottomOffset);
+//    }];
 
 //     CGRect newRect = CGRectMake(0,  -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
 //    
@@ -235,14 +235,14 @@
 - (void) hideKeyboardFrame: (NSNotification*) notification
 {
     
-    [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.scrollView.superview);
-    }];
+//    [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self.scrollView.superview);
+//    }];
 //    CGRect newRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height);
 //    
 //    self.view.frame = newRect;
 //
-//    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, 0, 0)];
  
 }
 
