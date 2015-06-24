@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -24,8 +24,12 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enterNumber" translatesAutoresizingMaskIntoConstraints="NO" id="dXL-hp-elu">
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enterNumber" translatesAutoresizingMaskIntoConstraints="NO" id="dXL-hp-elu">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="233"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="UnL-IC-nOu" appends="YES" id="cr9-8E-ugh"/>
+                    </connections>
                 </imageView>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+63" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUo-8E-vSa">
                     <rect key="frame" x="15" y="338" width="34" height="24"/>
@@ -104,6 +108,12 @@
             <point key="canvasLocation" x="485" y="421"/>
         </view>
         <barButtonItem title="Item" id="ebT-bp-XMD"/>
+        <tapGestureRecognizer id="UnL-IC-nOu">
+            <connections>
+                <action selector="tapScreen:" destination="-1" id="3hX-1B-ck3"/>
+                <outlet property="delegate" destination="-1" id="pnC-hF-N2J"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="cancel" width="125" height="30"/>

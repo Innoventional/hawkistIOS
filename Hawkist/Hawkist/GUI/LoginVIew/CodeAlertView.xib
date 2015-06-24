@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -24,6 +24,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gotCode" translatesAutoresizingMaskIntoConstraints="NO" id="AJP-eR-Lrw">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="rM3-mg-ctQ" appends="YES" id="A0O-Vu-l5u"/>
+                    </connections>
+                </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter it here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fO4-ur-E9l">
                     <rect key="frame" x="50" y="291" width="500" height="20"/>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
@@ -62,9 +69,6 @@
                         <action selector="btnCancelCode:" destination="-1" eventType="touchUpInside" id="ejS-Yr-ucQ"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gotCode" translatesAutoresizingMaskIntoConstraints="NO" id="AJP-eR-Lrw">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -93,6 +97,12 @@
                 </mask>
             </variation>
         </view>
+        <tapGestureRecognizer id="rM3-mg-ctQ">
+            <connections>
+                <action selector="tapScreen:" destination="-1" id="0A9-KE-hKr"/>
+                <outlet property="delegate" destination="-1" id="7Nm-cT-5WO"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="cancel" width="125" height="30"/>

@@ -290,13 +290,15 @@
 }
 
 - (IBAction)btnSend:(id)sender {
-    [_codeDialog setHidden:NO];
-    [_numberDialog setHidden:YES];
+    
+    [self showHud];
     [_txtNumber resignFirstResponder];
     [_networkManager registerUserWithPhoneNumber:_txtNumber.text orFacebookToken:nil successBlock:^(HWUser *user) {
-        
-        
+        [self hideHud];
+        [_codeDialog setHidden:NO];
+        [_numberDialog setHidden:YES];
     } failureBlock:^(NSError *error) {
+        [self hideHud];
         [self showAlert:error];
         
     }];
@@ -335,6 +337,8 @@
 - (IBAction)tapScreen:(id)sender {
     [_txtMobileNum resignFirstResponder];
     [_txtPin resignFirstResponder];
+    [_txtNumber resignFirstResponder];
+    [_txtCode resignFirstResponder];
 }
 
 - (IBAction)btnSignInFB:(id)sender {
