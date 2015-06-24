@@ -89,6 +89,8 @@
                                      };
     [_txtURLS setLinkTextAttributes: linkAttributes];
     
+    
+    _btnContinue.enabled = false;
   
     
     _imgAvatar.layer.cornerRadius = 120;
@@ -345,11 +347,12 @@
     
     if (self.checkbox1.selected && self.checkBox2.selected)
     {
-        self.btnContinue.hidden = false;
+        
+        self.btnContinue.enabled = true;
     }
     else
     {
-    self.btnContinue.hidden = true;
+    self.btnContinue.enabled = false;
     }
 }
 
