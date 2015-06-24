@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Semibold.ttf">
@@ -76,9 +77,8 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Qg-3W-ezy">
-                    <rect key="frame" x="335" y="372" width="100" height="16"/>
+                    <rect key="frame" x="319" y="373" width="120" height="16"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="F5M-u6-jBW"/>
                         <constraint firstAttribute="height" constant="16" id="vK8-JQ-6uK"/>
                     </constraints>
                     <state key="normal" image="requestNewPin">
@@ -89,7 +89,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Seeing a Pin Above?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXV-aS-4ZZ">
-                    <rect key="frame" x="173" y="370" width="157" height="20"/>
+                    <rect key="frame" x="157" y="370" width="157" height="20"/>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -177,7 +177,7 @@
                 <constraint firstItem="HXV-aS-4ZZ" firstAttribute="top" secondItem="cIg-rw-M7K" secondAttribute="bottom" constant="10" id="EQQ-cn-GHy"/>
                 <constraint firstItem="wIY-UA-3Ic" firstAttribute="top" secondItem="ijM-Ow-Afh" secondAttribute="top" id="HIe-om-laD"/>
                 <constraint firstAttribute="trailing" secondItem="Vzj-xh-hef" secondAttribute="trailing" id="Hm9-Fr-f7v"/>
-                <constraint firstAttribute="centerX" secondItem="HXV-aS-4ZZ" secondAttribute="centerX" constant="49" id="I88-iJ-yju"/>
+                <constraint firstAttribute="centerX" secondItem="HXV-aS-4ZZ" secondAttribute="trailing" constant="-14" id="I88-iJ-yju"/>
                 <constraint firstAttribute="trailing" secondItem="wfp-4g-4MA" secondAttribute="trailing" id="KTS-Dp-QTP"/>
                 <constraint firstItem="WZe-et-yby" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="KVE-Gb-vfC"/>
                 <constraint firstItem="hOc-Xl-GGm" firstAttribute="leading" secondItem="w9m-pO-9ck" secondAttribute="trailing" constant="12" id="KXB-He-7s8"/>
@@ -208,7 +208,7 @@
                 <constraint firstItem="wIY-UA-3Ic" firstAttribute="bottom" secondItem="ijM-Ow-Afh" secondAttribute="bottom" id="kRY-Ds-CLl"/>
                 <constraint firstAttribute="trailing" secondItem="9Qg-3W-ezy" secondAttribute="trailing" constant="20" id="oWp-fc-HuA"/>
                 <constraint firstItem="hOc-Xl-GGm" firstAttribute="top" secondItem="WZe-et-yby" secondAttribute="bottom" constant="15" id="qCg-bs-Uso"/>
-                <constraint firstItem="9Qg-3W-ezy" firstAttribute="centerY" secondItem="HXV-aS-4ZZ" secondAttribute="centerY" id="qvO-n1-baE"/>
+                <constraint firstItem="9Qg-3W-ezy" firstAttribute="centerY" secondItem="HXV-aS-4ZZ" secondAttribute="centerY" constant="1" id="qvO-n1-baE"/>
                 <constraint firstItem="AzC-fn-jZZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rpy-hp-eJG"/>
                 <constraint firstItem="AzC-fn-jZZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vt1-FI-6DM"/>
                 <constraint firstAttribute="bottom" secondItem="hOc-Xl-GGm" secondAttribute="bottom" constant="20" id="wSC-kb-3zy"/>
