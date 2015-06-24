@@ -332,6 +332,11 @@
     [_signIn setHidden:NO];
 }
 
+- (IBAction)tapScreen:(id)sender {
+    [_txtMobileNum resignFirstResponder];
+    [_txtPin resignFirstResponder];
+}
+
 - (IBAction)btnSignInFB:(id)sender {
     [_socManager loginFacebookSuccess:^(NSDictionary *response) {
         [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {

@@ -24,6 +24,7 @@
 
 - (IBAction)btnSignIn:(id)sender;
 
+- (IBAction)tapScreen:(id)sender;
 
 
 
