@@ -227,7 +227,7 @@
                                         <constraint firstItem="ZDM-i2-4e3" firstAttribute="top" secondItem="pAR-da-ZsL" secondAttribute="top" id="imu-lo-VC2"/>
                                     </constraints>
                                 </view>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6Y-gE-673">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6Y-gE-673">
                                     <rect key="frame" x="0.0" y="648" width="600" height="66"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="66" id="Ikp-Ax-8cH"/>
