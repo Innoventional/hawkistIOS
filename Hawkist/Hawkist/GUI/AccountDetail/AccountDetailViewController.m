@@ -131,7 +131,18 @@
         _txtAboutMe.text =@"";
         self.isPlaceholderHidden = YES;
     }
+    [self scrollToTextView];
     return YES;
+}
+
+- (void) scrollToTextView
+{
+    CGRect textViewRect = [self.txtAboutMe.superview convertRect: self.txtAboutMe.frame toView: self.view];
+    CGFloat offset = 225 - (self.view.height - (textViewRect.origin.y + textViewRect.size.height));
+    if(offset > 0)
+    {
+        [self.scrollView setContentOffset: CGPointMake(0, self.scrollView.contentOffset.y + offset)];
+    }
 }
 //
 //// Call this method somewhere in your view controller setup code.
