@@ -199,7 +199,7 @@ static OCFacebookHelper* fbHelperInstance = nil;
                  
                  if (arrayOfAccounts == nil || arrayOfAccounts.count == 0)
                  {
-                     error = [NSError errorWithDomain:@"Facebook" code:SNNoAccountErrorCode userInfo:@{NSLocalizedDescriptionKey:@"Please login to Facebook in the device Settings"}];
+                     error = [NSError errorWithDomain:@"Please login to Facebook in the device Settings" code:SNNoAccountErrorCode userInfo:@{NSLocalizedDescriptionKey:@"Please login to Facebook in the device Settings"}];
                      completionBlock(nil, error);
                  }
                  else
@@ -218,7 +218,7 @@ static OCFacebookHelper* fbHelperInstance = nil;
              }
              else
              {
-                 NSError *localError = [NSError errorWithDomain:NSStringFromClass(self.class) code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"Facebook access disabled"}];
+                 NSError *localError = [NSError errorWithDomain: @"Facebook access disabled" code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"Facebook access disabled"}];
                  if(completionBlock != nil)
                  {
                      completionBlock(nil, localError);
@@ -231,11 +231,11 @@ static OCFacebookHelper* fbHelperInstance = nil;
              {
                  if (error.code == 6)
                  {
-                     error = [NSError errorWithDomain:@"Facebook" code:SNNoAccountErrorCode userInfo:@{NSLocalizedDescriptionKey:@"Please login to Facebook in the device Settings"}];
+                     error = [NSError errorWithDomain:@"Please login to Facebook in the device Settings" code:SNNoAccountErrorCode userInfo:@{NSLocalizedDescriptionKey:@"Please login to Facebook in the device Settings"}];
                  }
                  if (error.code == 7)
                  {
-                     error = [NSError errorWithDomain:@"Facebook" code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"In order to sign into Hawkist using your Facebook account you must allow it to post to your friends on your behalf"}];
+                     error = [NSError errorWithDomain:@"Please login to Facebook in the device Settings" code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"In order to sign into Hawkist using your Facebook account you must allow it to post to your friends on your behalf"}];
                  }
                  completionBlock(nil, error);
              }

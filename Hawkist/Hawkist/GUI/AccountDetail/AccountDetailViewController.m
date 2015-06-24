@@ -98,8 +98,8 @@
         [_imgAvatar setImageWithURL: [NSURL URLWithString: user.avatar] placeholderImage: [UIImage imageNamed: @"acdet_circle"]];
         _txtUserName.text = user.username;
         _txtEmail.text = user.email;
-        _txtAboutMe.placeholder = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or consoles are you excited for?";
-        _txtAboutMe.placeholderColor = [UIColor whiteColor];
+        _txtAboutMe.text = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or consoles are you excited for?";
+        
         if(user.about_me)
         {
             _txtAboutMe.text = user.about_me;
@@ -120,6 +120,7 @@
     [_txtURLS scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
     
 }
+
 
 
 
@@ -177,7 +178,17 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
     return YES;
+}
+
+- (void) textViewDidEndEditing: (UITextView*) textView
+{
+    if([textView.text isEqualToString: @""])
+    {
+        textView.text = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or consoles are you excited for?";
+        self.isPlaceholderHidden = NO;
+    }
 }
 
 
@@ -267,9 +278,19 @@
     
     [self showHud];
     
+    NSString* aboutString;
+    if(self.isPlaceholderHidden)
+    {
+        aboutString = _txtAboutMe.text;
+    }
+    else
+    {
+        aboutString = nil;
+    }
+    
     if (_isPhotoSet)
     
-    [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:_txtAboutMe.text photo:_imgAvatar.image successBlock:^(HWUser *user) {
+    [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:aboutString photo:_imgAvatar.image successBlock:^(HWUser *user) {
         
         [self hideHud];
         [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
@@ -280,7 +301,7 @@
      ];
     else
     {
-        [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:_txtAboutMe.text photo:nil successBlock:^(HWUser *user) {
+        [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:aboutString photo:nil successBlock:^(HWUser *user) {
             [self hideHud];
             [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
         } failureBlock:^(NSError *error) {
