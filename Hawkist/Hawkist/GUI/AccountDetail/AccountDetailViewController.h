@@ -37,4 +37,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnContinue;
 @property (weak, nonatomic) IBOutlet UITextField *txtUserName;
+
+
+@property (nonatomic, assign) BOOL isLogeedWithFacebook;
+
 @end

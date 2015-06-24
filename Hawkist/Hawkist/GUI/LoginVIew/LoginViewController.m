@@ -257,6 +257,7 @@
     [_socManager loginFacebookSuccess:^(NSDictionary *response) {
         [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
             _engine.user = user;
+            _accountDetailVC.isLogeedWithFacebook = YES;
             [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
             
         } failureBlock:^(NSError *error) {
@@ -312,7 +313,7 @@
     
         [_txtCode resignFirstResponder];
     [_networkManager loginWithPhoneNumber:_txtNumber.text pin:_txtCode.text successBlock:^(HWUser *user) {
-        
+        _accountDetailVC.isLogeedWithFacebook = NO;
         _engine.user = user;
            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
     } failureBlock:^(NSError *error) {
@@ -345,6 +346,7 @@
     [_socManager loginFacebookSuccess:^(NSDictionary *response) {
         [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
             _engine.user = user;
+            self.accountDetailVC.isLogeedWithFacebook = YES;
             [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
             
         } failureBlock:^(NSError *error) {
@@ -372,6 +374,7 @@
 - (IBAction)btnSignInMobile:(id)sender {
     [_networkManager loginWithPhoneNumber:_txtMobileNum.text pin:_txtPin.text successBlock:^(HWUser *user) {
         _engine.user = user;
+        _accountDetailVC.isLogeedWithFacebook = NO;
         [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
         
     } failureBlock:^(NSError *error) {

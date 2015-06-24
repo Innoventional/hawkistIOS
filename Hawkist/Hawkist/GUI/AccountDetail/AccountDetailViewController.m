@@ -96,6 +96,9 @@
     _imgAvatar.layer.cornerRadius = 120;
     _imgAvatar.clipsToBounds = YES;
     
+    if(self.isLogeedWithFacebook)
+        self.txtUserName.enabled = NO;
+    
     [_netManager getUserProfileWithSuccessBlock:^(HWUser *user) {
         [_imgAvatar setImageWithURL: [NSURL URLWithString: user.avatar] placeholderImage: [UIImage imageNamed: @"acdet_circle"]];
         _txtUserName.text = user.username;
