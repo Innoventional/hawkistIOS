@@ -100,7 +100,7 @@
         _txtEmail.text = user.email;
         _txtAboutMe.text = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or consoles are you excited for?";
         
-        if(user.about_me)
+        if(user.about_me && user.about_me.length > 0)
         {
             _txtAboutMe.text = user.about_me;
             self.isPlaceholderHidden = YES;
@@ -222,18 +222,26 @@
 //
 //    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, bottomOffset, 0)];
 //    NSLog(@"%f-key",bottomOffset);
-
-     CGRect newRect = CGRectMake(0,  -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
     
-    self.view.frame = newRect;
+    [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.scrollView.superview).mas_offset(-bottomOffset);
+    }];
+
+//     CGRect newRect = CGRectMake(0,  -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
+//    
+//    self.view.frame = newRect;
 }
 
 - (void) hideKeyboardFrame: (NSNotification*) notification
 {
-    CGRect newRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height);
     
-    self.view.frame = newRect;
+    [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.scrollView.superview);
+    }];
+//    CGRect newRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height);
 //    
+//    self.view.frame = newRect;
+//
 //    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, 0, 0)];
  
 }
