@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *viewBottom;
 
+- (IBAction)backButton:(id)sender;
 
 @property (strong, nonatomic) NSArray *backImage;
 - (IBAction)nextButton:(id)sender;

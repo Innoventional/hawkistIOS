@@ -44,4 +44,30 @@
     return isFirstTime;
 }
 
+#pragma mark -
+#pragma mark Setters/Getters
+
+- (void) setPin: (NSString*) pin
+{
+     [[NSUserDefaults standardUserDefaults] setObject: pin forKey: @"pin"];
+}
+
+- (NSString*) pin
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey: @"pin"];
+}
+
+- (void) setNumber: (NSString*) number
+{
+    [[NSUserDefaults standardUserDefaults] setObject: number forKey: @"number"];
+
+}
+
+
+- (NSString*) number
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey: @"number"];
+
+}
+
 @end

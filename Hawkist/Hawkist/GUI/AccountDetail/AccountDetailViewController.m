@@ -94,13 +94,30 @@
   
     
     _imgAvatar.layer.cornerRadius = 120;
+        _imgAvatar2.layer.cornerRadius = 100;
+    
     _imgAvatar.clipsToBounds = YES;
+        _imgAvatar2.clipsToBounds = YES;
     
     if(self.isLogeedWithFacebook)
         self.txtUserName.enabled = NO;
     
     [_netManager getUserProfileWithSuccessBlock:^(HWUser *user) {
-        [_imgAvatar setImageWithURL: [NSURL URLWithString: user.avatar] placeholderImage: [UIImage imageNamed: @"acdet_circle"]];
+        if ([user.avatar isEqualToString:@""])
+        {
+            _imgAvatar2.hidden = YES;
+            _imgAvatar.hidden = NO;
+            [_imgAvatar setImageWithURL: [NSURL URLWithString: user.avatar] placeholderImage:[UIImage imageNamed: @"acdet_circle"]];
+        }
+        else
+        {
+          //  _imgAvatar2.hidden = NO;
+            _imgAvatar.hidden = YES;
+            [_imgAvatar2 setImageWithURL: [NSURL URLWithString: user.avatar] placeholderImage:[UIImage imageNamed: @"acdet_circle"]];
+        
+        
+        }
+        
         _txtUserName.text = user.username;
         _txtEmail.text = user.email;
         _txtAboutMe.text = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or consoles are you excited for?";
@@ -149,51 +166,22 @@
         [self.scrollView setContentOffset: CGPointMake(0, self.scrollView.contentOffset.y + offset)];
     }
 }
-//
-//// Call this method somewhere in your view controller setup code.
-//- (void)registerForKeyboardNotifications
-//{
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWasShown:)
-//                                                 name:UIKeyboardDidShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWillBeHidden:)
-//                                                 name:UIKeyboardWillHideNotification object:nil];
-//}
-//
-//// Called when the UIKeyboardDidShowNotification is sent.
-//- (void)keyboardWasShown:(NSNotification*)aNotification
-//{
-//    NSDictionary* info = [aNotification userInfo];
-//    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-//    _scrollView.contentInset = contentInsets;
-//    _scrollView.scrollIndicatorInsets = contentInsets;
-//    
-//    // If active text field is hidden by keyboard, scroll it so it's visible
-//    // Your application might not need or want this behavior.
-//    CGRect aRect = self.view.frame;
-//    aRect.size.height -= kbSize.height;
-//    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
-//        CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y-kbSize.height);
-//        [_scrollView setContentOffset:scrollPoint animated:YES];
-//    }
-//}
-//
-//// Called when the UIKeyboardWillHideNotification is sent
-//- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-//{
-//    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-//    _scrollView.contentInset = contentInsets;
-//    _scrollView.scrollIndicatorInsets = contentInsets;
-//}
-
 
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    //[textField resignFirstResponder];
+    
+   if  (textField.tag == 1)
+   {
+       [_txtEmail becomeFirstResponder];
+   }
+    if (textField.tag ==2)
+    {
+        [_txtAboutMe becomeFirstResponder];
+    }
+    
     
     return YES;
 }
@@ -235,29 +223,14 @@
     CGFloat keyboardHeight = (CGRectGetMinY(keyboardFrame) < self.view.height) ? CGRectGetHeight(keyboardFrame) : 0.0f;
     
     CGFloat bottomOffset = willHide ? 0.0f : keyboardHeight;
-//
-    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, bottomOffset, 0)];
-//    NSLog(@"%f-key",bottomOffset);
-//    
-//    [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.scrollView.superview).mas_offset(-bottomOffset);
-//    }];
 
-//     CGRect newRect = CGRectMake(0,  -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
-//    
-//    self.view.frame = newRect;
+    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, bottomOffset, 0)];
+
 }
 
 - (void) hideKeyboardFrame: (NSNotification*) notification
 {
-    
-//    [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.scrollView.superview);
-//    }];
-//    CGRect newRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height);
-//    
-//    self.view.frame = newRect;
-//
+
     [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, 0, 0)];
  
 }
@@ -275,15 +248,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void) showAlert: (NSError*)error
 {
@@ -314,7 +278,7 @@
     
     if (_isPhotoSet)
     
-    [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:aboutString photo:_imgAvatar.image successBlock:^(HWUser *user) {
+    [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:aboutString photo:_imgAvatar2.image successBlock:^(HWUser *user) {
         
         [self hideHud];
         [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
@@ -440,8 +404,9 @@
 {
     _avatar = info[UIImagePickerControllerEditedImage];
     
-    _imgAvatar.image = _avatar;
-    
+    _imgAvatar2.image = _avatar;
+    _imgAvatar2.hidden = NO;
+    _imgAvatar.hidden = YES;
     
     _isPhotoSet = true;
     [picker dismissViewControllerAnimated: YES completion:^{

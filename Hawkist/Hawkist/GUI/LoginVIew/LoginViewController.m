@@ -14,8 +14,6 @@
 #import "SocialManager.h"
 
 @interface LoginViewController ()
-//@property (nonatomic,strong) UIAlertView* getNumber;
-//@property (nonatomic,strong) UIAlertView* getCode;
 
 @property (nonatomic,strong) UIView* loginView;
 
@@ -24,17 +22,16 @@
 @property (nonatomic,strong) UIView* codeDialog;
 
 @property (nonatomic,strong) NetworkManager* networkManager;
+
 @property (nonatomic,strong) UIView* signIn;
+
 @property (nonatomic,strong) AppEngine* engine;
 
 @property (nonatomic,strong) AccountDetailViewController* accountDetailVC;
 
 @property (nonatomic,strong) SocialManager* socManager;
 
-
 @end
-
-
 
 
 @implementation LoginViewController
@@ -54,8 +51,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    
    
     _socManager = [SocialManager shared];
     _engine = [AppEngine shared];
@@ -67,7 +62,7 @@
         }];
     }
     
-    _accountDetailVC= [[AccountDetailViewController alloc]init];
+
     
     NSArray* arr = [[NSBundle mainBundle]loadNibNamed:@"Login" owner:self options:nil];
    
@@ -76,16 +71,6 @@
     _loginView.frame = self.view.frame;
     
     [self.view addSubview:_loginView];
-    
-//    _getNumber = [[UIAlertView alloc]initWithTitle:@"Enter mobile Number"
-//                                           message:@"An SMS with your access code will sent to this number." delegate:self cancelButtonTitle:@"Send" otherButtonTitles:@"Cancel", nil];
-//    _getNumber.tag = 1;
-//    [_getNumber setAlertViewStyle:UIAlertViewStylePlainTextInput];
-//    _getCode = [[UIAlertView alloc]initWithTitle:nil message:@"Get your code" delegate:self cancelButtonTitle:@"Resend" otherButtonTitles:@"Ok", nil];
-//    _getCode.tag = 2;
-//    [_getCode setAlertViewStyle:UIAlertViewStylePlainTextInput];
-
-    // Do any additional setup after loading the view.
     
     arr = [[NSBundle mainBundle]loadNibNamed:@"CodeAlertView" owner:self options:nil];
     
@@ -114,11 +99,6 @@
     
     _networkManager = [NetworkManager shared];
     
-    
-    
-    ///////signIn
-    
-   
 
     arr = [[NSBundle mainBundle]loadNibNamed:@"SignIn" owner:self options:nil];
     
@@ -137,8 +117,9 @@
     NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"ENTER PIN" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
     self.txtPin.attributedPlaceholder = str2;
     
-    
-    // [self registerForKeyboardNotifications];
+    _txtMobileNum.text = _engine.number;
+    _txtPin.text = _engine.pin;
+
 }
 
 - (void) registerForKeyboardNotifications
@@ -152,24 +133,10 @@
                                              selector:@selector(hideKeyboardFrame:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    
-    
 }
 
-//- (void) deregisterForKeyBoardNotifications
-//{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-//    
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-//}
 
 
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
 #pragma mark -
 #pragma mark Keyboard
 
@@ -183,9 +150,6 @@
     CGFloat keyboardHeight = (CGRectGetMinY(keyboardFrame) < self.view.frame.size.height) ? CGRectGetHeight(keyboardFrame) : 0.0f;
     
     CGFloat bottomOffset = willHide ? 0.0f : keyboardHeight;
-    //
-    //    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, bottomOffset, 0)];
-    //    NSLog(@"%f-key",bottomOffset);
     
     CGRect newRect = CGRectMake(0, -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
     
@@ -197,59 +161,17 @@
     CGRect newRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height);
     
     self.view.frame = newRect;
-    //
-    //    [self.scrollView setContentInset: UIEdgeInsetsMake(0, 0, 0, 0)];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+   
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if (buttonIndex == 1)
-//    {
-//        if (alertView.tag == 2)
-//            [self verify:[_getCode textFieldAtIndex:0].text];
-//        if (alertView.tag == 1)
-//            [self cancel];
-//        return;
-//    }
-//    
-//    if (alertView.tag ==1)
-//    {
-//        [self sendSMS:[_getNumber textFieldAtIndex:0].text];
-//        [_getCode show];
-//    }
-//    if (alertView.tag == 2) {
-//        
-//        [_getNumber show];
-//        
-//        
-//    }
-//}
-
-
-
 
 - (IBAction)btnSignUpMobile:(id)sender {
    
     [_numberDialog setHidden:NO];
-    //[self deregisterForKeyBoardNotifications];
-
 
 }
 
@@ -257,6 +179,7 @@
     [_socManager loginFacebookSuccess:^(NSDictionary *response) {
         [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
             _engine.user = user;
+                _accountDetailVC= [[AccountDetailViewController alloc]init];
             _accountDetailVC.isLogeedWithFacebook = YES;
             [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
             
@@ -313,8 +236,10 @@
     
         [_txtCode resignFirstResponder];
     [_networkManager loginWithPhoneNumber:_txtNumber.text pin:_txtCode.text successBlock:^(HWUser *user) {
+            _accountDetailVC= [[AccountDetailViewController alloc]init];
         _accountDetailVC.isLogeedWithFacebook = NO;
         _engine.user = user;
+        
            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
     } failureBlock:^(NSError *error) {
        [self showAlert:error];
@@ -346,6 +271,7 @@
     [_socManager loginFacebookSuccess:^(NSDictionary *response) {
         [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
             _engine.user = user;
+                _accountDetailVC= [[AccountDetailViewController alloc]init];
             self.accountDetailVC.isLogeedWithFacebook = YES;
             [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
             
@@ -374,7 +300,11 @@
 - (IBAction)btnSignInMobile:(id)sender {
     [_networkManager loginWithPhoneNumber:_txtMobileNum.text pin:_txtPin.text successBlock:^(HWUser *user) {
         _engine.user = user;
+            _accountDetailVC= [[AccountDetailViewController alloc]init];
         _accountDetailVC.isLogeedWithFacebook = NO;
+        
+        _engine.number = _txtMobileNum.text;
+        _engine.pin = _txtPin.text;
         [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
         
     } failureBlock:^(NSError *error) {

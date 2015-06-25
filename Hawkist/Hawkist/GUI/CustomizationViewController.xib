@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -98,6 +98,19 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gjy-68-zuB">
+                            <rect key="frame" x="12" y="17" width="38" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="38" id="JwG-Oi-0BC"/>
+                                <constraint firstAttribute="height" constant="34" id="TiG-t0-IBr"/>
+                            </constraints>
+                            <state key="normal" image="acdet_back">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="backButton:" destination="-1" eventType="touchUpInside" id="jZt-Vf-mhy"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -105,8 +118,10 @@
                         <constraint firstItem="Kpt-vU-m8n" firstAttribute="top" secondItem="ZXh-cx-v2E" secondAttribute="bottom" constant="8" symbolic="YES" id="IvQ-5M-qhY"/>
                         <constraint firstItem="93M-qS-X3o" firstAttribute="leading" secondItem="ZXh-cx-v2E" secondAttribute="leading" id="OMU-RN-x1H"/>
                         <constraint firstItem="93M-qS-X3o" firstAttribute="top" secondItem="syo-IK-4jS" secondAttribute="top" constant="20" id="Tcm-vz-VOH"/>
+                        <constraint firstItem="Gjy-68-zuB" firstAttribute="top" secondItem="syo-IK-4jS" secondAttribute="top" constant="17" id="lIg-79-9Cv"/>
                         <constraint firstItem="ZXh-cx-v2E" firstAttribute="centerX" secondItem="Kpt-vU-m8n" secondAttribute="centerX" id="lUW-yB-sNL"/>
                         <constraint firstItem="Kpt-vU-m8n" firstAttribute="top" secondItem="93M-qS-X3o" secondAttribute="bottom" constant="36" id="n2o-6X-otI"/>
+                        <constraint firstItem="Gjy-68-zuB" firstAttribute="leading" secondItem="syo-IK-4jS" secondAttribute="leading" constant="12" id="pxP-DW-iOe"/>
                         <constraint firstItem="93M-qS-X3o" firstAttribute="trailing" secondItem="ZXh-cx-v2E" secondAttribute="trailing" id="vjt-7e-sAt"/>
                         <constraint firstItem="Kpt-vU-m8n" firstAttribute="bottom" secondItem="syo-IK-4jS" secondAttribute="bottomMargin" id="wAl-xQ-H7p"/>
                         <constraint firstItem="93M-qS-X3o" firstAttribute="centerX" secondItem="syo-IK-4jS" secondAttribute="centerX" id="znr-NW-Pq8"/>
@@ -135,6 +150,7 @@
         </view>
     </objects>
     <resources>
+        <image name="acdet_back" width="12" height="11"/>
         <image name="backgroundcus" width="320" height="568"/>
         <image name="buttonnext" width="320" height="60"/>
         <image name="next" width="12" height="11"/>

@@ -10,9 +10,18 @@
 
 @interface AppEngine : NSObject
 @property (nonatomic,strong) HWUser* user;
+@property (nonatomic, strong) NSString* pin;
 + (instancetype) shared;
 
 // Returns YES if application is launching first time
 + (BOOL) isFirsTimeLaunch;
+
+- (void) setPin: (NSString*) pin;
+
+- (NSString*) pin;
+
+- (void) setNumber: (NSString*) number;
+
+- (NSString*) number;
 
 @end

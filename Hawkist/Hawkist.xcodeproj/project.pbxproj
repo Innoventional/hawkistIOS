@@ -181,6 +181,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3A61FBD51B3C11300004A24B /* WantToSell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = WantToSell;
+			sourceTree = "<group>";
+		};
 		3A8366711B30668E00208FC5 /* LoginVIew */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,7 +201,7 @@
 			path = LoginVIew;
 			sourceTree = "<group>";
 		};
-		3A83667D1B318B1100208FC5 /* Registration */ = {
+		3A83667D1B318B1100208FC5 /* AccountDetails */ = {
 			isa = PBXGroup;
 			children = (
 				3A8366801B31A85900208FC5 /* AccountDetailView.xib */,
@@ -203,7 +210,7 @@
 				C35A4C961B39DDFF002E1F26 /* UIPlaceholderTextView.h */,
 				C35A4C971B39DDFF002E1F26 /* UIPlaceholderTextView.m */,
 			);
-			name = Registration;
+			name = AccountDetails;
 			sourceTree = "<group>";
 		};
 		7CDD9A5E1B343AB9000FA498 /* TutorialScreen */ = {
@@ -333,7 +340,8 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				3A83667D1B318B1100208FC5 /* Registration */,
+				3A61FBD51B3C11300004A24B /* WantToSell */,
+				3A83667D1B318B1100208FC5 /* AccountDetails */,
 				3A8366711B30668E00208FC5 /* LoginVIew */,
 				7CE30E871B3453A7001617B7 /* CustomisationScreen */,
 				7CDD9A5E1B343AB9000FA498 /* TutorialScreen */,

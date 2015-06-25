@@ -18,6 +18,7 @@
                 <outlet property="checkBox2" destination="pAR-da-ZsL" id="UWe-Ln-kLn"/>
                 <outlet property="checkbox1" destination="Zca-EA-cjv" id="YWf-t6-Adn"/>
                 <outlet property="imgAvatar" destination="9Mv-P3-l3e" id="sxh-az-ot9"/>
+                <outlet property="imgAvatar2" destination="LQW-7s-CWm" id="pLN-pB-n2B"/>
                 <outlet property="scrollView" destination="FQN-fw-SqB" id="dUC-gI-vTk"/>
                 <outlet property="txtAboutMe" destination="txr-YX-ng7" id="WdB-1I-WNM"/>
                 <outlet property="txtEmail" destination="43a-MC-rNv" id="GMe-8F-iK2"/>
@@ -50,6 +51,7 @@
                                         </imageView>
                                         <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acdet_circle" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-P3-l3e">
                                             <rect key="frame" x="178" y="50" width="245" height="240"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="245" id="HgI-Sd-BMq"/>
@@ -80,6 +82,17 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LQW-7s-CWm">
+                                            <rect key="frame" x="200" y="70" width="200" height="200"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="200" id="DfG-4j-UTr"/>
+                                                <constraint firstAttribute="width" constant="200" id="mga-RU-Nn4"/>
+                                            </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="dkH-rq-9cd" appends="YES" id="Q1s-zA-PmD"/>
+                                            </connections>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -91,8 +104,10 @@
                                         <constraint firstItem="Fuq-N1-rI7" firstAttribute="centerX" secondItem="LZ2-hg-ahV" secondAttribute="centerX" id="Dn7-21-a7a"/>
                                         <constraint firstAttribute="bottom" secondItem="LZ2-hg-ahV" secondAttribute="bottom" id="P4b-jh-9V9"/>
                                         <constraint firstAttribute="trailing" secondItem="LZ2-hg-ahV" secondAttribute="trailing" id="RDc-Df-HKB"/>
+                                        <constraint firstAttribute="centerX" secondItem="LQW-7s-CWm" secondAttribute="centerX" id="hZK-HA-FYv" userLabel="Center X Alignment - (0) - Top - Image View"/>
                                         <constraint firstItem="LZ2-hg-ahV" firstAttribute="leading" secondItem="49n-Xd-8MH" secondAttribute="leading" id="iRo-Ys-88c"/>
                                         <constraint firstAttribute="bottom" secondItem="9Mv-P3-l3e" secondAttribute="bottom" constant="10" id="vlV-kz-jIR"/>
+                                        <constraint firstAttribute="centerY" secondItem="LQW-7s-CWm" secondAttribute="centerY" constant="-20" id="xh6-2k-VbA"/>
                                         <constraint firstItem="Fuq-N1-rI7" firstAttribute="centerX" secondItem="9Mv-P3-l3e" secondAttribute="centerX" id="ynP-N6-iss"/>
                                     </constraints>
                                 </view>
@@ -100,7 +115,7 @@
                                     <rect key="frame" x="0.0" y="298" width="600" height="50"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yCs-S8-MJD" userLabel="Text Field UserName">
+                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yCs-S8-MJD" userLabel="Text Field UserName">
                                     <rect key="frame" x="20" y="298" width="560" height="50"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -108,7 +123,7 @@
                                     </constraints>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="aZO-0h-699"/>
                                     </connections>
@@ -117,7 +132,7 @@
                                     <rect key="frame" x="0.0" y="348" width="600" height="50"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43a-MC-rNv" userLabel="Text Field Email">
+                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43a-MC-rNv" userLabel="Text Field Email">
                                     <rect key="frame" x="20" y="348" width="560" height="50"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -125,7 +140,7 @@
                                     </constraints>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="fg4-4R-cI4"/>
                                     </connections>
@@ -141,7 +156,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="txr-YX-ng7" userLabel="About me Text" customClass="UIPlaceholderTextView">
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="txr-YX-ng7" userLabel="About me Text" customClass="UIPlaceholderTextView">
                                     <rect key="frame" x="20" y="445" width="560" height="88"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
