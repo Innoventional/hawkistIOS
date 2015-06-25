@@ -116,15 +116,15 @@
                                                       constrainedToSize: CGSizeMake(slideSize.width - 15.0f, CGFLOAT_MAX)
                                                           lineBreakMode: NSLineBreakByWordWrapping];
         
-        if(descriptionSize.height <= (imageView.height - imageFront.height - 2))
-        {
-            descriptionLabel.font = [UIFont fontWithName:@"OpenSans" size:7.0f];
+//        if(descriptionSize.height <= (imageView.height - imageFront.height - 2))
+//        {
+//            descriptionLabel.font = [UIFont fontWithName:@"OpenSans" size:7.0f];
+//            descriptionLabel.frame = CGRectMake(10.0f, _lable.maxY + 2.0f, descriptionSize.width, descriptionSize.height);
+//        }
+//        else
+//        {
             descriptionLabel.frame = CGRectMake(10.0f, _lable.maxY + 2.0f, descriptionSize.width, descriptionSize.height);
-        }
-        else
-        {
-            descriptionLabel.frame = CGRectMake(10.0f, _lable.maxY + 2.0f, descriptionSize.width, descriptionSize.height);
-        }
+        //}
        
         
         [self.scrollView addSubview:slide];
