@@ -218,7 +218,7 @@ static OCFacebookHelper* fbHelperInstance = nil;
              }
              else
              {
-                 NSError *localError = [NSError errorWithDomain: @"Facebook access disabled" code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"Facebook access disabled"}];
+                 NSError *localError = [NSError errorWithDomain: @"Cannot Access Facebook. In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist." code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"Cannot Access Facebook. In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist."}];
                  if(completionBlock != nil)
                  {
                      completionBlock(nil, localError);
@@ -235,7 +235,7 @@ static OCFacebookHelper* fbHelperInstance = nil;
                  }
                  if (error.code == 7)
                  {
-                     error = [NSError errorWithDomain:@"Please login to Facebook in the device Settings" code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"In order to sign into Hawkist using your Facebook account you must allow it to post to your friends on your behalf"}];
+                     error = [NSError errorWithDomain:@"Connect to Facebook. Hawkist would like access to your basic profile info and friends list" code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"Connect to Facebook. Hawkist would like access to your basic profile info and friends list"}];
                  }
                  completionBlock(nil, error);
              }

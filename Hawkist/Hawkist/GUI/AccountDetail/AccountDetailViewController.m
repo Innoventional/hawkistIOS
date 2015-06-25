@@ -163,7 +163,9 @@
     CGFloat offset = 225 - (self.view.height - (textViewRect.origin.y + textViewRect.size.height));
     if(offset > 0)
     {
-        [self.scrollView setContentOffset: CGPointMake(0, self.scrollView.contentOffset.y + offset)];
+        [UIView animateWithDuration: 0.7 animations:^{
+            [self.scrollView setContentOffset: CGPointMake(0, self.scrollView.contentOffset.y + offset)];
+        }];
     }
 }
 
@@ -393,9 +395,7 @@
     
 }
 - (IBAction)btnBack:(id)sender {
-    //LoginViewController* login = [[LoginViewController alloc]init];
-    [self.navigationController popViewControllerAnimated:YES];
-
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 
