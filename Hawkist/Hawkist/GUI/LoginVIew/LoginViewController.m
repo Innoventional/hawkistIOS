@@ -40,13 +40,28 @@
 - (void) showAlert: (NSError*)error
 {
      NSLog(@"%@",error);
+    
+    if (error.code == 2)
+    {
     dispatch_async(dispatch_get_main_queue(), ^{
-    [[[UIAlertView alloc]initWithTitle:@"Error"
+    [[[UIAlertView alloc]initWithTitle:@"Invalid Number Format"
                                message:error.domain
                               delegate:nil
                      cancelButtonTitle:@"Ok"
                      otherButtonTitles:nil] show];
          });
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc]initWithTitle:@"Error"
+                                       message:error.domain
+                                      delegate:nil
+                             cancelButtonTitle:@"Ok"
+                             otherButtonTitles:nil] show];
+        });
+
+    }
 }
 
 - (void)viewDidLoad {
