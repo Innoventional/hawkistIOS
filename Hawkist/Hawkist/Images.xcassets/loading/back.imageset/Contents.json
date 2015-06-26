@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "back.png"
+      "filename" : "newBG2@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "back@2x.png"
+      "filename" : "newBG@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "back@3x.png"
+      "filename" : "newBG@3x.png"
     }
   ],
   "info" : {
