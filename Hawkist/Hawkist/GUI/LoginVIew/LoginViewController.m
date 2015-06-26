@@ -135,31 +135,41 @@
     
     _txtMobileNum.text = _engine.number;
     _txtPin.text = _engine.pin;
-    
-    
-    
-    
-    
+
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleDefault;
+    
+    UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                   style:UIBarButtonItemStyleDone target:self
+                                                                  action:@selector(hideKeyboard)];
+    
+    
+    UIButton* customButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 30)];
+    
+    [customButton setBackgroundImage:[UIImage imageNamed:@"signBut"] forState:UIControlStateNormal];
+    
+    [customButton setTitle:@"Done" forState:UIControlStateNormal];
+    
+    [customButton addTarget:self action:@selector(hideKeyboard) forControlEvents:UIControlEventTouchDown];
+    
+    doneButton.customView = customButton;
+    
     numberToolbar.items = [NSArray arrayWithObjects:
                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(nextToPin)],
+                          doneButton,
                            nil];
-    [numberToolbar sizeToFit];
-    
-    UIToolbar* numberToolbar2 = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
-    numberToolbar2.barStyle = UIBarStyleDefault;
-    numberToolbar2.items = [NSArray arrayWithObjects:
-                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(nextTo)],
-                           nil];
-    [numberToolbar2 sizeToFit];
-    
+    [numberToolbar sizeToFit];    //[numberToolbar addSubview:customButton];
+
     _txtMobileNum.inputAccessoryView = numberToolbar;
-    _txtPin.inputAccessoryView = numberToolbar2;
-    
-    
+    _txtPin.inputAccessoryView = numberToolbar;
+
+}
+
+
+- (void) hideKeyboard
+{
+    [_txtMobileNum resignFirstResponder];
+    [_txtPin resignFirstResponder];
 }
     
 - (void) nextToPin
@@ -197,26 +207,53 @@
 
 - (void) adjustKeyboardFrame: (NSNotification*) notification
 {
-    BOOL willHide = [notification.name isEqualToString: UIKeyboardWillHideNotification];
     
-    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
-    CGFloat keyboardHeight = (CGRectGetMinY(keyboardFrame) < self.view.frame.size.height) ? CGRectGetHeight(keyboardFrame) : 0.0f;
+    UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    doneButton.frame = CGRectMake(0, 163, 106, 53);
+    doneButton.adjustsImageWhenHighlighted = NO;
+    [doneButton setImage:[UIImage imageNamed:@"signBut"] forState:UIControlStateNormal];
+    [doneButton setImage:[UIImage imageNamed:@"signBut"] forState:UIControlStateHighlighted];
+    [doneButton addTarget:self action:@selector(nextToPin) forControlEvents:UIControlEventTouchUpInside];
     
-    CGFloat bottomOffset = willHide ? 0.0f : keyboardHeight;
     
-    CGRect newRect = CGRectMake(0, -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIView *keyboardView = [[[[[UIApplication sharedApplication] windows] lastObject] subviews] firstObject];
+            [doneButton setFrame:CGRectMake(0, keyboardView.frame.size.height - 53, 106, 53)];
+            [keyboardView addSubview:doneButton];
+            [keyboardView bringSubviewToFront:doneButton];
+            
+            [UIView animateWithDuration:[[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]-.02
+                                  delay:.0
+                                options:[[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]
+                             animations:^{
+                                 self.view.frame = CGRectOffset(self.view.frame, 0, 0);
+                             } completion:nil];
+        });
     
-    self.view.frame = newRect;
+//    
+//    BOOL willHide = [notification.name isEqualToString: UIKeyboardWillHideNotification];
+//    
+//    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    
+//    CGFloat keyboardHeight = (CGRectGetMinY(keyboardFrame) < self.view.frame.size.height) ? CGRectGetHeight(keyboardFrame) : 0.0f;
+//    
+//    CGFloat bottomOffset = willHide ? 0.0f : keyboardHeight;
+//    
+//    CGRect newRect = CGRectMake(0, -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
+//    
+//    self.view.frame = newRect;
     
 
 }
 
+
+
 - (void) hideKeyboardFrame: (NSNotification*) notification
 {
-    CGRect newRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height);
-    
-    self.view.frame = newRect;
+//    CGRect newRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height);
+//    
+//    self.view.frame = newRect;
     
 }
 
