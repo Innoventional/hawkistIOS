@@ -31,6 +31,7 @@
 
 @property (nonatomic,strong) SocialManager* socManager;
 
+
 @end
 
 
@@ -163,6 +164,7 @@
     
 - (void) nextToPin
 {
+    
     [_txtMobileNum resignFirstResponder];
     [_txtPin becomeFirstResponder];
 }
@@ -206,6 +208,8 @@
     CGRect newRect = CGRectMake(0, -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
     
     self.view.frame = newRect;
+    
+
 }
 
 - (void) hideKeyboardFrame: (NSNotification*) notification
