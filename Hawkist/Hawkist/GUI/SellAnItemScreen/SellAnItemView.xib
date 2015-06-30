@@ -14,9 +14,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
                     <color key="backgroundColor" red="0.92356873110000004" green="1" blue="0.1011652418" alpha="1" colorSpace="calibratedRGB"/>
                     <accessibility key="accessibilityConfiguration" label="">
-                        <accessibilityTraits key="traits" none="YES" button="YES"/>
-                        <bool key="isElement" value="NO"/>
+                        <accessibilityTraits key="traits" none="YES" button="YES" link="YES" image="YES" selected="YES" playsSound="YES" keyboardKey="YES" staticText="YES" summaryElement="YES" updatesFrequently="YES" searchField="YES"/>
+                        <bool key="isElement" value="YES"/>
                     </accessibility>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

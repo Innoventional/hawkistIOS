@@ -18,6 +18,11 @@
 }
 */
 
+- (void) setBgColor:(UIColor *)bgColor
+{
+    self.backgroundColor = bgColor;
+}
+
 - (IBAction)LeftButtonAction:(id)sender {
 }
 - (IBAction)RightButtonAction:(id)sender {

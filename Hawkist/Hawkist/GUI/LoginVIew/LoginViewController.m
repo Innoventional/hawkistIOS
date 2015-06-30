@@ -121,7 +121,7 @@
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[[UIAlertView alloc]initWithTitle:@"Error"
-                                           message:error.domain
+                                           message:@"Server error"
                                           delegate:nil
                                  cancelButtonTitle:@"Ok"
                                  otherButtonTitles:nil] show];
