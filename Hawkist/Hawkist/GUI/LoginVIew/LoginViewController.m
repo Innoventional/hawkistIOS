@@ -52,6 +52,26 @@
                      otherButtonTitles:nil] show];
          });
     }
+    if (error.code == 12)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc]initWithTitle:@"Cannot Access Facebook."
+                                       message:error.domain
+                                      delegate:nil
+                             cancelButtonTitle:@"Ok"
+                             otherButtonTitles:nil] show];
+        });
+    }
+    if (error.code == 11)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc]initWithTitle:@"Connect to Facebook."
+                                       message:error.domain
+                                      delegate:nil
+                             cancelButtonTitle:@"Ok"
+                             otherButtonTitles:nil] show];
+        });
+    }
     else
     {
         dispatch_async(dispatch_get_main_queue(), ^{
