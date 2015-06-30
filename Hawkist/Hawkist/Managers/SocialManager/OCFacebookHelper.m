@@ -236,7 +236,7 @@ static OCFacebookHelper* fbHelperInstance = nil;
                  }
                  if (error.code == 7)
                  {
-                     error = [NSError errorWithDomain:@"Hawkist would like access to your basic profile info and friends list" code:SNAccessDisabledCode userInfo:@{NSLocalizedDescriptionKey:@"Hawkist would like access to your basic profile info and friends list"}];
+                     error = [NSError errorWithDomain:@"Hawkist would like access to your basic profile info and friends list" code:11 userInfo:@{NSLocalizedDescriptionKey:@"Hawkist would like access to your basic profile info and friends list"}];
                  }
                  completionBlock(nil, error);
              }
