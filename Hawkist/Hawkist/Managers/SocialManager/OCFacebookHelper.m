@@ -199,7 +199,7 @@ static OCFacebookHelper* fbHelperInstance = nil;
                  
                  if (arrayOfAccounts == nil || arrayOfAccounts.count == 0)
                  {
-                     error = [NSError errorWithDomain:@"Please login to Facebook in the device Settings" code:11 userInfo:@{NSLocalizedDescriptionKey:@"Please login to Facebook in the device Settings"}];
+                     error = [NSError errorWithDomain:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist." code:12 userInfo:@{NSLocalizedDescriptionKey:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist."}];
                      completionBlock(nil, error);
                  }
                  else
@@ -231,8 +231,8 @@ static OCFacebookHelper* fbHelperInstance = nil;
              {
                  if (error.code == 6)
                  {
-                     error = [NSError errorWithDomain:@"Please login to Facebook in the device Settings" code: 11
-                                             userInfo:@{NSLocalizedDescriptionKey:@"Please login to Facebook in the device Settings"}];
+                     error = [NSError errorWithDomain:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist." code: 12
+                                             userInfo:@{NSLocalizedDescriptionKey:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist."}];
                  }
                  if (error.code == 7)
                  {
