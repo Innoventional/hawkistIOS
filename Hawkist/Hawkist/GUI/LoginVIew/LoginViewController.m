@@ -56,6 +56,42 @@
             break;
         }
 
+        case 3:
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc]initWithTitle:@"User Not Found"
+                                           message:error.domain
+                                          delegate:nil
+                                 cancelButtonTitle:@"Ok"
+                                 otherButtonTitles:nil] show];
+                
+            });
+            break;
+        }
+        case 4:
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc]initWithTitle:@"Wrong Pin"
+                                           message:error.domain
+                                          delegate:nil
+                                 cancelButtonTitle:@"Ok"
+                                 otherButtonTitles:nil] show];
+                
+            });
+            break;
+        }
+        case 5:
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc]initWithTitle:@"Cannot Sign In"
+                                           message:error.domain
+                                          delegate:nil
+                                 cancelButtonTitle:@"Ok"
+                                 otherButtonTitles:nil] show];
+                
+            });
+            break;
+        }
             
         case 12:
         {

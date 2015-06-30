@@ -9,6 +9,16 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLI-rP-fTl" customClass="NavigationBar">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
+                    <color key="backgroundColor" red="0.92356873110000004" green="1" blue="0.1011652418" alpha="1" colorSpace="calibratedRGB"/>
+                    <accessibility key="accessibilityConfiguration" label="">
+                        <accessibilityTraits key="traits" none="YES" button="YES"/>
+                        <bool key="isElement" value="NO"/>
+                    </accessibility>
+                </view>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
     </objects>
