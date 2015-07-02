@@ -30,6 +30,10 @@
 		7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */; };
 		7CDD9A621B343AD2000FA498 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD9A601B343AD2000FA498 /* TutorialViewController.m */; };
 		7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */; };
+		7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */; };
+		7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */; };
+		7CE0E8E11B4307F0003B8B3A /* FeedScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0E8DD1B4307F0003B8B3A /* FeedScreenViewController.m */; };
+		7CE0E8E21B4307F0003B8B3A /* FeedScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE0E8DE1B4307F0003B8B3A /* FeedScreenViewController.xib */; };
 		7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CE102B91B39BF8000F0F747 /* OpenSans-Italic.ttf */; };
 		7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE778C71B3D51E600856A36 /* Icon-60@2x.png */; };
 		7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE778C81B3D51E600856A36 /* Icon-60@3x.png */; };
@@ -112,6 +116,12 @@
 		7CDD9A5F1B343AD2000FA498 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		7CDD9A601B343AD2000FA498 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
+		7CE0E8D91B4307F0003B8B3A /* FeedScreenCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedScreenCollectionViewCell.h; sourceTree = "<group>"; };
+		7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedScreenCollectionViewCell.m; sourceTree = "<group>"; };
+		7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedScreenCollectionViewCell.xib; sourceTree = "<group>"; };
+		7CE0E8DC1B4307F0003B8B3A /* FeedScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedScreenViewController.h; sourceTree = "<group>"; };
+		7CE0E8DD1B4307F0003B8B3A /* FeedScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedScreenViewController.m; sourceTree = "<group>"; };
+		7CE0E8DE1B4307F0003B8B3A /* FeedScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedScreenViewController.xib; sourceTree = "<group>"; };
 		7CE102B91B39BF8000F0F747 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		7CE778C71B3D51E600856A36 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		7CE778C81B3D51E600856A36 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
@@ -245,7 +255,30 @@
 			name = AccountDetails;
 			sourceTree = "<group>";
 		};
-		3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
+	3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				3ACC6B8D1B43A0B90076004F /* Navigation.xib */,
+				3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */,
+				3ACC6B901B43A0D90076004F /* NavigationVIew.m */,
+			);
+			name = NavigationView;
+			sourceTree = "<group>";
+		};
+		7CBC69E41B42B1F300AE535C /* FeedScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7CE0E8DC1B4307F0003B8B3A /* FeedScreenViewController.h */,
+				7CE0E8DD1B4307F0003B8B3A /* FeedScreenViewController.m */,
+				7CE0E8DE1B4307F0003B8B3A /* FeedScreenViewController.xib */,
+				7CE0E8D91B4307F0003B8B3A /* FeedScreenCollectionViewCell.h */,
+				7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */,
+				7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */,
+			);
+			name = FeedScreen;
+			sourceTree = "<group>";
+		};
+		3AF04D461B42B423000D1D58 /* SellAnItem */ = {
 			isa = PBXGroup;
 			children = (
 				3ACC6B8D1B43A0B90076004F /* Navigation.xib */,
@@ -421,6 +454,7 @@
 				3A61FBD51B3C11300004A24B /* WantToSell */,
 				3A83667D1B318B1100208FC5 /* AccountDetails */,
 				3A8366711B30668E00208FC5 /* LoginVIew */,
+				7CBC69E41B42B1F300AE535C /* FeedScreen */,
 				7CE30E871B3453A7001617B7 /* CustomisationScreen */,
 				7CDD9A5E1B343AB9000FA498 /* TutorialScreen */,
 				C35A4C411B302CE7002E1F26 /* Base */,
@@ -575,10 +609,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CE0E8E21B4307F0003B8B3A /* FeedScreenViewController.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
 				7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */,
 				3ACC6BEE1B44A75E0076004F /* money.xib in Resources */,
+				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
 				3A2FA2F51B42AA3B00E8B459 /* WantToSellView.xib in Resources */,
@@ -654,6 +690,7 @@
 				C35A4C611B3035D2002E1F26 /* CGGeometry+CoreGraphicsHelpers.m in Sources */,
 				C35A4C201B2F2DF7002E1F26 /* ViewController.m in Sources */,
 				3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */,
+				7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */,
 				C35A4C4A1B3031F4002E1F26 /* NetworkDecorator.m in Sources */,
 				C35A4C661B3035D2002E1F26 /* OCUtilites.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
@@ -662,6 +699,7 @@
 				3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */,
 				C35A4C8D1B31A408002E1F26 /* AppEngine.m in Sources */,
 				C35A4C441B302D05002E1F26 /* HWBaseViewController.m in Sources */,
+				7CE0E8E11B4307F0003B8B3A /* FeedScreenViewController.m in Sources */,
 				C35A4C681B3035D2002E1F26 /* UIImage+Extensions.m in Sources */,
 				3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */,
 				C35A4C4D1B3032B1002E1F26 /* NetworkManager.m in Sources */,

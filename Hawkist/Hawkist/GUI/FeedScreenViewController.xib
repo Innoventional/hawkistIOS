@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedScreenViewController">
+            <connections>
+                <outlet property="collectionView" destination="ORN-hw-D5b" id="hEk-os-3vI"/>
+                <outlet property="searchField" destination="fxe-IB-pPP" id="VSc-JY-jJj"/>
+                <outlet property="searchView" destination="wbD-0x-nei" id="SKY-G6-CsP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbD-0x-nei">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchfield" translatesAutoresizingMaskIntoConstraints="NO" id="y2P-6q-MhK">
+                            <rect key="frame" x="13" y="6" width="572" height="32"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1X-xp-WKL">
+                            <rect key="frame" x="13" y="6" width="572" height="32"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fxe-IB-pPP">
+                                    <rect key="frame" x="36" y="1" width="536" height="31"/>
+                                    <accessibility key="accessibilityConfiguration" label="">
+                                        <accessibilityTraits key="traits" none="YES" image="YES" searchField="YES"/>
+                                    </accessibility>
+                                    <color key="textColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="Hiy-82-m0r"/>
+                                    </connections>
+                                </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchLupa" translatesAutoresizingMaskIntoConstraints="NO" id="DlB-Fi-7sX">
+                                    <rect key="frame" x="11" y="8" width="17" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="17" id="dwY-y9-TZC"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="fxe-IB-pPP" firstAttribute="leading" secondItem="DlB-Fi-7sX" secondAttribute="trailing" constant="8" symbolic="YES" id="0US-61-EZQ"/>
+                                <constraint firstItem="DlB-Fi-7sX" firstAttribute="leading" secondItem="L1X-xp-WKL" secondAttribute="leading" constant="11" id="1bo-dY-nm5"/>
+                                <constraint firstItem="DlB-Fi-7sX" firstAttribute="bottom" secondItem="L1X-xp-WKL" secondAttribute="bottomMargin" id="6Mm-Y1-kiM"/>
+                                <constraint firstAttribute="trailing" secondItem="fxe-IB-pPP" secondAttribute="trailing" id="A2X-LG-8ht"/>
+                                <constraint firstItem="fxe-IB-pPP" firstAttribute="centerY" secondItem="DlB-Fi-7sX" secondAttribute="centerY" id="ZIX-Ft-gRQ"/>
+                                <constraint firstAttribute="bottom" secondItem="fxe-IB-pPP" secondAttribute="bottom" id="jv0-Yd-OUh"/>
+                                <constraint firstItem="DlB-Fi-7sX" firstAttribute="top" secondItem="L1X-xp-WKL" secondAttribute="topMargin" id="vil-15-BNq"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="y2P-6q-MhK" firstAttribute="bottom" secondItem="L1X-xp-WKL" secondAttribute="bottom" id="2T0-rN-5QH"/>
+                        <constraint firstAttribute="height" constant="44" id="3kG-fC-056"/>
+                        <constraint firstItem="L1X-xp-WKL" firstAttribute="top" secondItem="wbD-0x-nei" secondAttribute="top" constant="6" id="Bm3-YU-ctn"/>
+                        <constraint firstItem="L1X-xp-WKL" firstAttribute="leading" secondItem="y2P-6q-MhK" secondAttribute="leading" id="Ewb-Au-Xb2"/>
+                        <constraint firstAttribute="trailing" secondItem="L1X-xp-WKL" secondAttribute="trailing" constant="15" id="FXI-74-tJE"/>
+                        <constraint firstItem="L1X-xp-WKL" firstAttribute="centerY" secondItem="wbD-0x-nei" secondAttribute="centerY" id="PVi-fU-QlH"/>
+                        <constraint firstItem="L1X-xp-WKL" firstAttribute="trailing" secondItem="y2P-6q-MhK" secondAttribute="trailing" id="U9Z-hs-hdQ"/>
+                        <constraint firstItem="L1X-xp-WKL" firstAttribute="top" secondItem="y2P-6q-MhK" secondAttribute="top" id="gg0-XY-faM"/>
+                        <constraint firstItem="L1X-xp-WKL" firstAttribute="leading" secondItem="wbD-0x-nei" secondAttribute="leading" constant="13" id="ofp-Yc-cvg"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ORN-hw-D5b">
+                    <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="556" id="tiy-Hg-bCe"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Hvy-Fc-LRb">
+                        <size key="itemSize" width="0.0" height="0.0"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="JOC-1X-nd6"/>
+                        <outlet property="delegate" destination="-1" id="06R-Sj-ZaP"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="wbD-0x-nei" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MwB-1n-3qq"/>
+                <constraint firstItem="wbD-0x-nei" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OMM-dP-JvR"/>
+                <constraint firstAttribute="trailing" secondItem="wbD-0x-nei" secondAttribute="trailing" id="VFm-iv-7PJ"/>
+                <constraint firstItem="wbD-0x-nei" firstAttribute="leading" secondItem="ORN-hw-D5b" secondAttribute="leading" id="W42-mL-Ckk"/>
+                <constraint firstItem="ORN-hw-D5b" firstAttribute="top" secondItem="wbD-0x-nei" secondAttribute="bottom" id="pdL-dJ-1f9"/>
+                <constraint firstAttribute="bottom" secondItem="ORN-hw-D5b" secondAttribute="bottom" id="uFK-74-nlT"/>
+                <constraint firstItem="ORN-hw-D5b" firstAttribute="trailing" secondItem="wbD-0x-nei" secondAttribute="trailing" id="vky-x3-JkA"/>
+            </constraints>
+            <point key="canvasLocation" x="284" y="323"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="searchLupa" width="14" height="13"/>
+        <image name="searchfield" width="290" height="30"/>
+    </resources>
+</document>
