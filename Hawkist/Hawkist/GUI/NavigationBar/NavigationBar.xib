@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NavigationBar">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qtl-Vq-peK">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wI-Zv-2kh">
+                    <rect key="frame" x="27" y="285" width="89" height="30"/>
+                    <state key="normal" title="Button Left">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="LeftButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="vWi-KC-lXN"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label Center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kk-XV-hVm">
+                    <rect key="frame" x="263" y="289" width="103" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBc-EF-3pD">
+                    <rect key="frame" x="483" y="285" width="87" height="30"/>
+                    <state key="normal" title="Button Right">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="RightButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="VqL-4I-yzM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="9Kk-XV-hVm" secondAttribute="centerX" id="57K-pa-TNl"/>
+                <constraint firstItem="qtl-Vq-peK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5G0-09-XeH"/>
+                <constraint firstAttribute="centerY" secondItem="6wI-Zv-2kh" secondAttribute="centerY" id="8ei-Is-wHh"/>
+                <constraint firstAttribute="trailing" secondItem="oBc-EF-3pD" secondAttribute="trailing" constant="30" id="ArC-sj-ZjR"/>
+                <constraint firstAttribute="centerY" secondItem="oBc-EF-3pD" secondAttribute="centerY" id="IPc-fU-YCv"/>
+                <constraint firstAttribute="trailing" secondItem="qtl-Vq-peK" secondAttribute="trailing" id="Lxb-fS-JHk"/>
+                <constraint firstItem="6wI-Zv-2kh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="Y06-2Z-57M"/>
+                <constraint firstItem="qtl-Vq-peK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="a4u-a6-TqP"/>
+                <constraint firstAttribute="bottom" secondItem="qtl-Vq-peK" secondAttribute="bottom" id="f4Y-gg-Bv7"/>
+                <constraint firstAttribute="centerY" secondItem="9Kk-XV-hVm" secondAttribute="centerY" id="l2T-QH-tfw"/>
+            </constraints>
+            <connections>
+                <outlet property="ImageView" destination="qtl-Vq-peK" id="Jxf-2x-upo"/>
+                <outlet property="LeftButtonOutLet" destination="6wI-Zv-2kh" id="Dey-jv-JfL"/>
+                <outlet property="RightButtonOutlet" destination="oBc-EF-3pD" id="6Ij-qo-to8"/>
+                <outlet property="Title" destination="9Kk-XV-hVm" id="Uxv-4f-hHC"/>
+            </connections>
+        </view>
+    </objects>
+</document>
