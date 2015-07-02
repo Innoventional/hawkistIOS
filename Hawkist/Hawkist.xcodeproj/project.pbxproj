@@ -15,10 +15,15 @@
 		3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366761B30668E00208FC5 /* LoginViewController.m */; };
 		3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366801B31A85900208FC5 /* AccountDetailView.xib */; };
 		3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */; };
+		3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6B8D1B43A0B90076004F /* Navigation.xib */; };
+		3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B901B43A0D90076004F /* NavigationVIew.m */; };
+		3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B941B43A1C40076004F /* SellAnItemViewController.m */; };
+		3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6B961B43A1D90076004F /* SellAnItem.xib */; };
+		3ACC6BE81B4408590076004F /* Custom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6BE71B4408590076004F /* Custom.xib */; };
+		3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6BEA1B4426780076004F /* CustomButton.m */; };
+		3ACC6BEE1B44A75E0076004F /* money.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6BED1B44A75E0076004F /* money.xib */; };
+		3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6BF01B44A9E30076004F /* MoneyField.m */; };
 		3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */; };
-		3AF04D451B42B410000D1D58 /* SellAnItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF04D441B42B410000D1D58 /* SellAnItemView.xib */; };
-		3AF04D491B42B515000D1D58 /* NavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF04D481B42B515000D1D58 /* NavigationBar.xib */; };
-		3AF04D4C1B42B64A000D1D58 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF04D4B1B42B64A000D1D58 /* NavigationBar.m */; };
 		7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C735D3E1B3893B000295472 /* CustomizationViewController.m */; };
 		7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D3F1B3893B000295472 /* CustomizationViewController.xib */; };
 		7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */; };
@@ -88,12 +93,20 @@
 		3A8366801B31A85900208FC5 /* AccountDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetailView.xib; sourceTree = "<group>"; };
 		3A8366821B31AAAD00208FC5 /* AccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountDetailViewController.h; path = AccountDetail/AccountDetailViewController.h; sourceTree = "<group>"; };
 		3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountDetailViewController.m; path = AccountDetail/AccountDetailViewController.m; sourceTree = "<group>"; };
+		3ACC6B8D1B43A0B90076004F /* Navigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Navigation.xib; path = NavigationView/Navigation.xib; sourceTree = "<group>"; };
+		3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationVIew.h; path = NavigationView/NavigationVIew.h; sourceTree = "<group>"; };
+		3ACC6B901B43A0D90076004F /* NavigationVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationVIew.m; path = NavigationView/NavigationVIew.m; sourceTree = "<group>"; };
+		3ACC6B931B43A1C40076004F /* SellAnItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SellAnItemViewController.h; path = SellAnItem/SellAnItemViewController.h; sourceTree = "<group>"; };
+		3ACC6B941B43A1C40076004F /* SellAnItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SellAnItemViewController.m; path = SellAnItem/SellAnItemViewController.m; sourceTree = "<group>"; };
+		3ACC6B961B43A1D90076004F /* SellAnItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SellAnItem.xib; path = SellAnItem/SellAnItem.xib; sourceTree = "<group>"; };
+		3ACC6BE71B4408590076004F /* Custom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Custom.xib; path = SellAnItem/CustomButton/Custom.xib; sourceTree = "<group>"; };
+		3ACC6BE91B4426780076004F /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomButton.h; path = SellAnItem/CustomButton/CustomButton.h; sourceTree = "<group>"; };
+		3ACC6BEA1B4426780076004F /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomButton.m; path = SellAnItem/CustomButton/CustomButton.m; sourceTree = "<group>"; };
+		3ACC6BED1B44A75E0076004F /* money.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = money.xib; path = SellAnItem/MoneyField/money.xib; sourceTree = "<group>"; };
+		3ACC6BEF1B44A9E30076004F /* MoneyField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoneyField.h; path = SellAnItem/MoneyField/MoneyField.h; sourceTree = "<group>"; };
+		3ACC6BF01B44A9E30076004F /* MoneyField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoneyField.m; path = SellAnItem/MoneyField/MoneyField.m; sourceTree = "<group>"; };
 		3AF04D411B42B34D000D1D58 /* WantToSellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WantToSellViewController.h; path = WantToSell/WantToSellViewController.h; sourceTree = "<group>"; };
 		3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WantToSellViewController.m; path = WantToSell/WantToSellViewController.m; sourceTree = "<group>"; };
-		3AF04D441B42B410000D1D58 /* SellAnItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SellAnItemView.xib; path = SellAnItemScreen/SellAnItemView.xib; sourceTree = "<group>"; };
-		3AF04D481B42B515000D1D58 /* NavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NavigationBar.xib; path = NavigationBar/NavigationBar.xib; sourceTree = "<group>"; };
-		3AF04D4A1B42B64A000D1D58 /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationBar.h; path = NavigationBar/NavigationBar.h; sourceTree = "<group>"; };
-		3AF04D4B1B42B64A000D1D58 /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationBar.m; path = NavigationBar/NavigationBar.m; sourceTree = "<group>"; };
 		6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7C735D3D1B3893B000295472 /* CustomizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizationViewController.h; sourceTree = "<group>"; };
 		7C735D3E1B3893B000295472 /* CustomizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizationViewController.m; sourceTree = "<group>"; };
@@ -242,22 +255,14 @@
 			name = AccountDetails;
 			sourceTree = "<group>";
 		};
-		3AF04D461B42B423000D1D58 /* SellAnItem */ = {
+	3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
 			isa = PBXGroup;
 			children = (
-				3AF04D441B42B410000D1D58 /* SellAnItemView.xib */,
+				3ACC6B8D1B43A0B90076004F /* Navigation.xib */,
+				3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */,
+				3ACC6B901B43A0D90076004F /* NavigationVIew.m */,
 			);
-			name = SellAnItem;
-			sourceTree = "<group>";
-		};
-		3AF04D471B42B4E3000D1D58 /* NavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				3AF04D481B42B515000D1D58 /* NavigationBar.xib */,
-				3AF04D4A1B42B64A000D1D58 /* NavigationBar.h */,
-				3AF04D4B1B42B64A000D1D58 /* NavigationBar.m */,
-			);
-			name = NavigationBar;
+			name = NavigationView;
 			sourceTree = "<group>";
 		};
 		7CBC69E41B42B1F300AE535C /* FeedScreen */ = {
@@ -271,6 +276,61 @@
 				7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */,
 			);
 			name = FeedScreen;
+			sourceTree = "<group>";
+		};
+		3AF04D461B42B423000D1D58 /* SellAnItem */ = {
+			isa = PBXGroup;
+			children = (
+				3ACC6B8D1B43A0B90076004F /* Navigation.xib */,
+				3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */,
+				3ACC6B901B43A0D90076004F /* NavigationVIew.m */,
+			);
+			name = NavigationView;
+			sourceTree = "<group>";
+		};
+		3ACC6B921B43A1A20076004F /* SellAnItem */ = {
+			isa = PBXGroup;
+			children = (
+				3ACC6BEC1B44A7350076004F /* MoneyField */,
+				3ACC6BE61B4408210076004F /* CustomButton */,
+				3ACC6B931B43A1C40076004F /* SellAnItemViewController.h */,
+				3ACC6B941B43A1C40076004F /* SellAnItemViewController.m */,
+				3ACC6B961B43A1D90076004F /* SellAnItem.xib */,
+			);
+			name = SellAnItem;
+			sourceTree = "<group>";
+		};
+		3ACC6BE61B4408210076004F /* CustomButton */ = {
+			isa = PBXGroup;
+			children = (
+				3ACC6BE71B4408590076004F /* Custom.xib */,
+				3ACC6BE91B4426780076004F /* CustomButton.h */,
+				3ACC6BEA1B4426780076004F /* CustomButton.m */,
+			);
+			name = CustomButton;
+			sourceTree = "<group>";
+		};
+		7CBC69E41B42B1F300AE535C /* FeedScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7CE0E8DC1B4307F0003B8B3A /* FeedScreenViewController.h */,
+				7CE0E8DD1B4307F0003B8B3A /* FeedScreenViewController.m */,
+				7CE0E8DE1B4307F0003B8B3A /* FeedScreenViewController.xib */,
+				7CE0E8D91B4307F0003B8B3A /* FeedScreenCollectionViewCell.h */,
+				7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */,
+				7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */,
+			);
+			name = FeedScreen;
+			sourceTree = "<group>";
+		};
+		3ACC6BEC1B44A7350076004F /* MoneyField */ = {
+			isa = PBXGroup;
+			children = (
+				3ACC6BED1B44A75E0076004F /* money.xib */,
+				3ACC6BEF1B44A9E30076004F /* MoneyField.h */,
+				3ACC6BF01B44A9E30076004F /* MoneyField.m */,
+			);
+			name = MoneyField;
 			sourceTree = "<group>";
 		};
 		7CDD9A5E1B343AB9000FA498 /* TutorialScreen */ = {
@@ -402,8 +462,8 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				3AF04D471B42B4E3000D1D58 /* NavigationBar */,
-				3AF04D461B42B423000D1D58 /* SellAnItem */,
+				3ACC6B921B43A1A20076004F /* SellAnItem */,
+				3ACC6B8C1B43A0AA0076004F /* NavigationView */,
 				3A61FBD51B3C11300004A24B /* WantToSell */,
 				3A83667D1B318B1100208FC5 /* AccountDetails */,
 				3A8366711B30668E00208FC5 /* LoginVIew */,
@@ -566,20 +626,22 @@
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
 				7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */,
+				3ACC6BEE1B44A75E0076004F /* money.xib in Resources */,
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
 				3A2FA2F51B42AA3B00E8B459 /* WantToSellView.xib in Resources */,
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
-				3AF04D491B42B515000D1D58 /* NavigationBar.xib in Resources */,
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
+				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
 				C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */,
+				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
 				7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
-				3AF04D451B42B410000D1D58 /* SellAnItemView.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
 				C35A4C251B2F2DF7002E1F26 /* Images.xcassets in Resources */,
+				3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,11 +699,12 @@
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
 				3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */,
 				C35A4C861B303BCF002E1F26 /* SocialManager.m in Sources */,
+				3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */,
 				C35A4C611B3035D2002E1F26 /* CGGeometry+CoreGraphicsHelpers.m in Sources */,
 				C35A4C201B2F2DF7002E1F26 /* ViewController.m in Sources */,
+				3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */,
 				7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */,
 				C35A4C4A1B3031F4002E1F26 /* NetworkDecorator.m in Sources */,
-				3AF04D4C1B42B64A000D1D58 /* NavigationBar.m in Sources */,
 				C35A4C661B3035D2002E1F26 /* OCUtilites.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,
@@ -656,6 +719,8 @@
 				7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */,
 				C35A4C981B39DDFF002E1F26 /* UIPlaceholderTextView.m in Sources */,
 				C35A4C651B3035D2002E1F26 /* NSURL+Extensions.m in Sources */,
+				3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */,
+				3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */,
 				C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */,
 				C35A4C631B3035D2002E1F26 /* NSDictionary+Extensions.m in Sources */,
 				7CDD9A621B343AD2000FA498 /* TutorialViewController.m in Sources */,
