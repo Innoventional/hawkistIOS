@@ -242,19 +242,6 @@
 			name = AccountDetails;
 			sourceTree = "<group>";
 		};
-		7CBC69E41B42B1F300AE535C /* FeedScreen */ = {
-			isa = PBXGroup;
-			children = (
-				7CE0E8DC1B4307F0003B8B3A /* FeedScreenViewController.h */,
-				7CE0E8DD1B4307F0003B8B3A /* FeedScreenViewController.m */,
-				7CE0E8DE1B4307F0003B8B3A /* FeedScreenViewController.xib */,
-				7CE0E8D91B4307F0003B8B3A /* FeedScreenCollectionViewCell.h */,
-				7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */,
-				7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */,
-			);
-			name = FeedScreen;
-			sourceTree = "<group>";
-		};
 		3AF04D461B42B423000D1D58 /* SellAnItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +258,19 @@
 				3AF04D4B1B42B64A000D1D58 /* NavigationBar.m */,
 			);
 			name = NavigationBar;
+			sourceTree = "<group>";
+		};
+		7CBC69E41B42B1F300AE535C /* FeedScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7CE0E8DC1B4307F0003B8B3A /* FeedScreenViewController.h */,
+				7CE0E8DD1B4307F0003B8B3A /* FeedScreenViewController.m */,
+				7CE0E8DE1B4307F0003B8B3A /* FeedScreenViewController.xib */,
+				7CE0E8D91B4307F0003B8B3A /* FeedScreenCollectionViewCell.h */,
+				7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */,
+				7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */,
+			);
+			name = FeedScreen;
 			sourceTree = "<group>";
 		};
 		7CDD9A5E1B343AB9000FA498 /* TutorialScreen */ = {
