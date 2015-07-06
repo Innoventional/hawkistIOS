@@ -7,11 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol CustomButtonDelegate <NSObject>
+
+- (void) selectAction: (id)sender;
+
+@end;
 
 @interface CustomButton : UIView
 @property (weak, nonatomic) IBOutlet UILabel *Text;
 @property (weak, nonatomic) IBOutlet UILabel *Title;
 @property (weak, nonatomic) IBOutlet UIImageView *img;
+@property (weak,nonatomic) id <CustomButtonDelegate> delegate;
+
 - (IBAction)tapAction:(id)sender;
 
 @end

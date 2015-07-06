@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol MoneyFieldDelegate <NSObject>
 
-@interface MoneyField : UIView
+- (void) moneyField:(id)sender ModifyTo:(NSString*)value;
+
+@end
+
+@interface MoneyField : UIView <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak,nonatomic) id<MoneyFieldDelegate> delegate;
 
 @end

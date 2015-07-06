@@ -7,12 +7,41 @@
 //
 
 #import "SellAnItemViewController.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "UIView+Extensions.h"
+#import "Masonry.h"
+#import "ChoiceTableViewController.h"
 
 @interface SellAnItemViewController ()
 
+@property (nonatomic,assign)int selectedImage;
+@property (nonatomic, assign) BOOL isPlaceholderHidden;
+@property (nonatomic, strong) UIColor *placeHolderColor;
+@property (nonatomic, strong) UIColor *textColor;
 @end
 
 @implementation SellAnItemViewController 
+@synthesize nav;
+@synthesize scrollView;
+@synthesize titleField;
+@synthesize barCode;
+@synthesize takePic1;
+@synthesize takePic2;
+@synthesize takePic3;
+@synthesize descriptionField;
+@synthesize platform;
+@synthesize category;
+@synthesize condition;
+@synthesize color;
+@synthesize retailPrice;
+@synthesize sellingPrice;
+@synthesize checkBox1;
+@synthesize priceForShipping;
+@synthesize checkBox2;
+@synthesize postLabel;
+@synthesize postField;
+@synthesize selectedImage;
+@synthesize youGetLabel;
 
 - (instancetype) init
 {
@@ -21,27 +50,121 @@
         UIView* v = [[[NSBundle mainBundle]loadNibNamed:@"SellAnItem" owner:self options:nil]firstObject];
         
         v.frame = self.view.frame;
-        
+      
         [self.view addSubview:v];
         
-        _nav.delegate = self;
+        nav.delegate = self;
         
-        _category.Title.text = @"CATEGORY";
-        _category.Text.text = @"Games";
+        [nav.leftButtonOutlet setBackgroundImage:[UIImage imageNamed:@"acdet_back"] forState:UIControlStateNormal];
+        [nav.leftButtonOutlet setTitle:@"" forState:UIControlStateNormal];
+        [nav.rightButtonOutlet setTitle:@"" forState:UIControlStateNormal];
+        nav.title.text = @"Sell An Item";
+        [nav.title setTextColor:[UIColor whiteColor]];
+        nav.rightButtonOutlet.enabled = NO;
+        
+        
+        platform.delegate = self;
+        category.Title.text = @"CATEGORY";
+        category.delegate = self;
        
-        _condition.Title.text = @"CONDITION";
-        _condition.Text.text = @"Very Good - Brand New";
+        condition.Title.text = @"CONDITION";
+        condition.delegate = self;
         
-        _color.Title.text = @"COLOR";
-                _color.Text.text = @"Blue/White/Red";
+        color.Title.text = @"COLOR";
+        color.delegate = self;
+        
+
+        
+//        [self registerForKeyboardNotifications];
+        
+        [self initDefault];
         
     }
     return self;
 }
 
+
+- (void) initDefault
+{
+
+     self.placeHolderColor = descriptionField.textColor;
+     self.textColor = titleField.textColor;
+    
+        platform.Text.textColor = self.placeHolderColor;
+        category.Text.textColor = self.placeHolderColor;
+        condition.Text.textColor = self.placeHolderColor;
+        color.Text.textColor = self.placeHolderColor;
+    
+     platform.Text.text = @"Select a Platform";
+     category.Text.text = @"Select a Category";
+     condition.Text.text = @"Select a Condition";
+     color.Text.text = @"Select a Colour";
+    
+     retailPrice.textField.text = @"0.00";
+     retailPrice.delegate = self;
+    
+     sellingPrice.textField.text = @"0.00";
+     sellingPrice.delegate = self;
+    
+    checkBox1.selected = YES;
+    
+     priceForShipping.textField.text = @"0.00";
+     priceForShipping.delegate = self;
+    
+    checkBox2.selected = YES;
+     postLabel.text=@"Enter post code";
+     postField.text = @"";
+    
+   
+    selectedImage = 0;
+    
+   
+    
+    descriptionField.text = @"Brand new in box PS3 for sale with two controllers and 3 games";
+    self.isPlaceholderHidden = NO;
+    
+    sellingPrice.textField.text = @"1.00";
+    
+}
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    if (!self.isPlaceholderHidden)
+    {
+        descriptionField.textColor = self.textColor;
+        descriptionField.text =@"";
+
+        self.isPlaceholderHidden = YES;
+    }
+    return YES;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    if (textField == titleField)
+        
+    [descriptionField becomeFirstResponder];
+ 
+    return NO;
+}
+
+- (void) textViewDidEndEditing: (UITextView*) textView
+{
+    if([textView.text isEqualToString: @""])
+    {
+        descriptionField.textColor = _placeHolderColor;
+        textView.text = @"Brand new in box PS3 for sale with two controllers and 3 games";
+        self.isPlaceholderHidden = NO;
+    }
+}
+
+
+
+
 - (void) leftButtonClick
 {
-    NSLog(@"LeftButton");
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 
@@ -60,14 +183,202 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)LinkAction:(id)sender {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://google.com"]];
 }
-*/
+- (IBAction)checkBox1Action:(id)sender {
+   
+    ((UIButton*)sender).selected =!((UIButton*)sender).selected;
+    
+        priceForShipping.textField.enabled =((UIButton*)sender).selected;
+    
+    if (!priceForShipping.textField.enabled)
+    {
+        priceForShipping.textField.textColor = self.placeHolderColor;
+        priceForShipping.label.textColor = self.placeHolderColor;
+    }
+    else
+    {
+        priceForShipping.textField.textColor = self.textColor;
+        priceForShipping.label.textColor = self.textColor;
+    }
+    
+}
+- (IBAction)checkBox2Action:(id)sender {
+ 
+        ((UIButton*)sender).selected =!((UIButton*)sender).selected;
+  
+}
+
+- (IBAction)sellAction:(id)sender {
+}
+
+- (IBAction)imageClick:(id)sender {
+    
+    UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: @""
+                                                       delegate: self
+                                              cancelButtonTitle: @"Cancel"
+                                         destructiveButtonTitle: nil
+                                              otherButtonTitles: @"Take Photo", @"Choose Photo", nil];
+    popup.tag = 1;
+    [popup showInView: [UIApplication sharedApplication].keyWindow];
+    
+    UIGestureRecognizer *recognizer = (UIGestureRecognizer*) sender;
+    selectedImage = recognizer.view.tag;
+
+
+
+}
+
+- (void)    actionSheet: (UIActionSheet*) popup
+   clickedButtonAtIndex: (NSInteger) buttonIndex
+{
+    switch (popup.tag)
+    {
+        case 1:
+        {
+            switch (buttonIndex)
+            {
+                case 0:
+                    [self takePhoto: YES
+                        fromGallery: NO];
+                    break;
+                    
+                case 1:
+                    [self takePhoto: YES
+                        fromGallery: YES];
+                    break;
+                    
+                default:
+                    break;
+            }
+            break;
+        }
+        default:
+            break;
+            
+    }
+}
+
+- (void) takePhoto: (BOOL)photo
+       fromGallery:(BOOL)gallery
+{
+    UIImagePickerControllerSourceType source = gallery ? UIImagePickerControllerSourceTypePhotoLibrary :
+    UIImagePickerControllerSourceTypeCamera;
+    
+    if ([UIImagePickerController isSourceTypeAvailable: source])
+    {
+        UIImagePickerController* picker = [[UIImagePickerController alloc] init];
+        
+        picker.delegate      = self;
+        picker.allowsEditing = YES;
+        if(photo)
+        picker.mediaTypes    = @[(NSString*) kUTTypeImage];
+        picker.sourceType    = source;
+        
+        [self presentViewController: picker animated: YES completion: NULL];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage* selImage = info[UIImagePickerControllerEditedImage];
+   
+    switch (selectedImage) {
+            case 1:
+        {
+            barCode.image = selImage;
+                break;
+        }
+        case 2:
+        {
+         
+            takePic1.image = selImage;
+            break;
+        }
+        case 3:
+        {
+            
+            takePic2.image = selImage;
+            break;
+        }
+        case 4:
+        {
+            
+            takePic3.image = selImage;
+            break;
+        }
+            default:
+                break;
+        }
+    
+    
+    
+    [picker dismissViewControllerAnimated: YES completion:^{
+        
+    }];
+}
+    
+
+- (void) selectAction:sender
+{
+ 
+    if (sender == color)
+    {
+        ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+        
+        v.items = [NSMutableArray arrayWithObjects:@"Black",@"White",@"Red",@"Blue",@"Green",@"Orange",@"Yellow",@"Purple",@"Not Applicable",nil];
+        
+       v.navigationView.title.text = @"Choice Color";
+        v.delegate = self;
+        v.sender = sender;
+        
+        [self presentViewController:v animated:YES completion:nil];
+        
+    }
+    
+    if (sender == condition)
+    {
+        ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+        
+        v.items = [NSMutableArray arrayWithObjects:@"Brand New in Box",@"Like New",@"Used",@"Refurbished",@"Not Working or Parts Only",nil];
+        
+        v.navigationView.title.text = @"Choice Condition";
+        v.delegate = self;
+        v.sender = sender;
+        
+        [self presentViewController:v animated:YES completion:nil];
+        
+    }
+}
+
+- (void) moneyField:(id)sender ModifyTo:(NSString *)value
+{
+    if (sender == sellingPrice)
+    {
+        
+        float val =  [value floatValue]*0.875;
+        youGetLabel.text = [NSString stringWithFormat:@"%.2f.", val];
+    }
+}
+
+- (void) SelectedItemFrom:(id)sender WithName:(NSString *)name
+{
+    if (sender == color)
+    {
+        color.Text.textColor = self.textColor;
+        color.Text.text = name;
+    }
+    
+    if (sender == condition)
+    {
+        condition.Text.textColor = self.textColor;
+        condition.Text.text = name;
+    }
+}
+
+
 
 @end

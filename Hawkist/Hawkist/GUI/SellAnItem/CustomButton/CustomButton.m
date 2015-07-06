@@ -41,5 +41,7 @@
 
 - (IBAction)tapAction:(id)sender {
     NSLog(@"Tap");
+    if (self.delegate && [self.delegate respondsToSelector: @selector(selectAction:)])
+        [_delegate selectAction:self];
 }
 @end

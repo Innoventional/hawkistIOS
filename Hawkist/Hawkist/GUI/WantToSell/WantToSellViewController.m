@@ -7,12 +7,24 @@
 //
 
 #import "WantToSellViewController.h"
+#import "SellAnItemViewController.h"
 
 @interface WantToSellViewController ()
 
 @end
 
 @implementation WantToSellViewController
+
+- (instancetype) init
+{
+    self = [super initWithNibName: @"WantToSell" bundle: [NSBundle mainBundle]];
+    if(self)
+    {
+        
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,5 +47,7 @@
 */
 
 - (IBAction)btnWantToSell:(id)sender {
+    [self.navigationController pushViewController: [[SellAnItemViewController alloc] init]  animated: YES];
+    
 }
 @end

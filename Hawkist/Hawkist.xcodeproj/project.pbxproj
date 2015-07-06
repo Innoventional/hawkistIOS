@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A2FA2F51B42AA3B00E8B459 /* WantToSellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */; };
 		3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCB1B3813620004A24B /* CustomAlertView.xib */; };
 		3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */; };
 		3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBD31B386FA60004A24B /* SignIn.xib */; };
@@ -15,6 +14,11 @@
 		3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366761B30668E00208FC5 /* LoginViewController.m */; };
 		3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366801B31A85900208FC5 /* AccountDetailView.xib */; };
 		3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */; };
+		3A968E161B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */; };
+		3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E181B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		3A968E221B4A8542005AA347 /* ChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E211B4A8542005AA347 /* ChoiceTableViewController.m */; };
+		3A968E241B4A98B4005AA347 /* ChoiceTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A968E231B4A98B4005AA347 /* ChoiceTable.xib */; };
+		3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A968E251B4AC43A005AA347 /* WantToSell.xib */; };
 		3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6B8D1B43A0B90076004F /* Navigation.xib */; };
 		3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B901B43A0D90076004F /* NavigationVIew.m */; };
 		3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B941B43A1C40076004F /* SellAnItemViewController.m */; };
@@ -83,7 +87,6 @@
 
 /* Begin PBXFileReference section */
 		3906BE83E13D87CC9252A21D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WantToSellView.xib; path = WantToSell/WantToSellView.xib; sourceTree = "<group>"; };
 		3A61FBCB1B3813620004A24B /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeAlertView.xib; sourceTree = "<group>"; };
 		3A61FBD31B386FA60004A24B /* SignIn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignIn.xib; sourceTree = "<group>"; };
@@ -93,6 +96,14 @@
 		3A8366801B31A85900208FC5 /* AccountDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetailView.xib; sourceTree = "<group>"; };
 		3A8366821B31AAAD00208FC5 /* AccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountDetailViewController.h; path = AccountDetail/AccountDetailViewController.h; sourceTree = "<group>"; };
 		3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountDetailViewController.m; path = AccountDetail/AccountDetailViewController.m; sourceTree = "<group>"; };
+		3A968E141B468EBB005AA347 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		3A968E171B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		3A968E181B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		3A968E201B4A8542005AA347 /* ChoiceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChoiceTableViewController.h; path = SellAnItem/ChoiceFromButton/ChoiceTableViewController.h; sourceTree = "<group>"; };
+		3A968E211B4A8542005AA347 /* ChoiceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChoiceTableViewController.m; path = SellAnItem/ChoiceFromButton/ChoiceTableViewController.m; sourceTree = "<group>"; };
+		3A968E231B4A98B4005AA347 /* ChoiceTable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChoiceTable.xib; path = SellAnItem/ChoiceFromButton/ChoiceTable.xib; sourceTree = "<group>"; };
+		3A968E251B4AC43A005AA347 /* WantToSell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WantToSell.xib; path = WantToSell/WantToSell.xib; sourceTree = "<group>"; };
 		3ACC6B8D1B43A0B90076004F /* Navigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Navigation.xib; path = NavigationView/Navigation.xib; sourceTree = "<group>"; };
 		3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationVIew.h; path = NavigationView/NavigationVIew.h; sourceTree = "<group>"; };
 		3ACC6B901B43A0D90076004F /* NavigationVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationVIew.m; path = NavigationView/NavigationVIew.m; sourceTree = "<group>"; };
@@ -223,9 +234,9 @@
 		3A61FBD51B3C11300004A24B /* WantToSell */ = {
 			isa = PBXGroup;
 			children = (
-				3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */,
 				3AF04D411B42B34D000D1D58 /* WantToSellViewController.h */,
 				3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */,
+				3A968E251B4AC43A005AA347 /* WantToSell.xib */,
 			);
 			name = WantToSell;
 			sourceTree = "<group>";
@@ -255,30 +266,17 @@
 			name = AccountDetails;
 			sourceTree = "<group>";
 		};
-	3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
+		3A968E1D1B4A8483005AA347 /* ChoiceFromButton */ = {
 			isa = PBXGroup;
 			children = (
-				3ACC6B8D1B43A0B90076004F /* Navigation.xib */,
-				3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */,
-				3ACC6B901B43A0D90076004F /* NavigationVIew.m */,
+				3A968E201B4A8542005AA347 /* ChoiceTableViewController.h */,
+				3A968E211B4A8542005AA347 /* ChoiceTableViewController.m */,
+				3A968E231B4A98B4005AA347 /* ChoiceTable.xib */,
 			);
-			name = NavigationView;
+			name = ChoiceFromButton;
 			sourceTree = "<group>";
 		};
-		7CBC69E41B42B1F300AE535C /* FeedScreen */ = {
-			isa = PBXGroup;
-			children = (
-				7CE0E8DC1B4307F0003B8B3A /* FeedScreenViewController.h */,
-				7CE0E8DD1B4307F0003B8B3A /* FeedScreenViewController.m */,
-				7CE0E8DE1B4307F0003B8B3A /* FeedScreenViewController.xib */,
-				7CE0E8D91B4307F0003B8B3A /* FeedScreenCollectionViewCell.h */,
-				7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */,
-				7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */,
-			);
-			name = FeedScreen;
-			sourceTree = "<group>";
-		};
-		3AF04D461B42B423000D1D58 /* SellAnItem */ = {
+		3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
 			isa = PBXGroup;
 			children = (
 				3ACC6B8D1B43A0B90076004F /* Navigation.xib */,
@@ -291,6 +289,11 @@
 		3ACC6B921B43A1A20076004F /* SellAnItem */ = {
 			isa = PBXGroup;
 			children = (
+				3A968E1D1B4A8483005AA347 /* ChoiceFromButton */,
+				3A968E141B468EBB005AA347 /* TPKeyboardAvoidingScrollView.h */,
+				3A968E171B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				3A968E181B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+				3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */,
 				3ACC6BEC1B44A7350076004F /* MoneyField */,
 				3ACC6BE61B4408210076004F /* CustomButton */,
 				3ACC6B931B43A1C40076004F /* SellAnItemViewController.h */,
@@ -310,6 +313,16 @@
 			name = CustomButton;
 			sourceTree = "<group>";
 		};
+		3ACC6BEC1B44A7350076004F /* MoneyField */ = {
+			isa = PBXGroup;
+			children = (
+				3ACC6BED1B44A75E0076004F /* money.xib */,
+				3ACC6BEF1B44A9E30076004F /* MoneyField.h */,
+				3ACC6BF01B44A9E30076004F /* MoneyField.m */,
+			);
+			name = MoneyField;
+			sourceTree = "<group>";
+		};
 		7CBC69E41B42B1F300AE535C /* FeedScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,16 +334,6 @@
 				7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */,
 			);
 			name = FeedScreen;
-			sourceTree = "<group>";
-		};
-		3ACC6BEC1B44A7350076004F /* MoneyField */ = {
-			isa = PBXGroup;
-			children = (
-				3ACC6BED1B44A75E0076004F /* money.xib */,
-				3ACC6BEF1B44A9E30076004F /* MoneyField.h */,
-				3ACC6BF01B44A9E30076004F /* MoneyField.m */,
-			);
-			name = MoneyField;
 			sourceTree = "<group>";
 		};
 		7CDD9A5E1B343AB9000FA498 /* TutorialScreen */ = {
@@ -625,12 +628,12 @@
 				7CE0E8E21B4307F0003B8B3A /* FeedScreenViewController.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
+				3A968E241B4A98B4005AA347 /* ChoiceTable.xib in Resources */,
 				7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */,
 				3ACC6BEE1B44A75E0076004F /* money.xib in Resources */,
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
-				3A2FA2F51B42AA3B00E8B459 /* WantToSellView.xib in Resources */,
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
@@ -638,6 +641,7 @@
 				C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */,
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
 				7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */,
+				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
 				C35A4C251B2F2DF7002E1F26 /* Images.xcassets in Resources */,
@@ -699,15 +703,18 @@
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
 				3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */,
 				C35A4C861B303BCF002E1F26 /* SocialManager.m in Sources */,
+				3A968E221B4A8542005AA347 /* ChoiceTableViewController.m in Sources */,
 				3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */,
 				C35A4C611B3035D2002E1F26 /* CGGeometry+CoreGraphicsHelpers.m in Sources */,
 				C35A4C201B2F2DF7002E1F26 /* ViewController.m in Sources */,
+				3A968E161B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */,
 				7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */,
 				C35A4C4A1B3031F4002E1F26 /* NetworkDecorator.m in Sources */,
 				C35A4C661B3035D2002E1F26 /* OCUtilites.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,
+				3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
 				3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */,
 				C35A4C8D1B31A408002E1F26 /* AppEngine.m in Sources */,
