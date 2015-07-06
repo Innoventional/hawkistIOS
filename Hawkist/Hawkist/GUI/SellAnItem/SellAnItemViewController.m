@@ -11,6 +11,7 @@
 #import "UIView+Extensions.h"
 #import "Masonry.h"
 #import "ChoiceTableViewController.h"
+#import "NetworkManager.h"
 
 @interface SellAnItemViewController ()
 
@@ -18,6 +19,7 @@
 @property (nonatomic, assign) BOOL isPlaceholderHidden;
 @property (nonatomic, strong) UIColor *placeHolderColor;
 @property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic,weak) NetworkManager* netManager;
 @end
 
 @implementation SellAnItemViewController 
@@ -42,11 +44,14 @@
 @synthesize postField;
 @synthesize selectedImage;
 @synthesize youGetLabel;
+@synthesize netManager;
 
 - (instancetype) init
 {
     if (self = [super init])
     {
+        netManager = [NetworkManager shared];
+        
         UIView* v = [[[NSBundle mainBundle]loadNibNamed:@"SellAnItem" owner:self options:nil]firstObject];
         
         v.frame = self.view.frame;
@@ -126,6 +131,48 @@
     sellingPrice.textField.text = @"1.00";
     
 }
+
+- (void) showAlert: (NSError*)error
+{
+    NSLog(@"%@",error);
+    
+    switch(error.code) {
+        case 8:
+        {
+       
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc]initWithTitle:@"Post Code"
+                                           message:error.domain
+                                          delegate:nil
+                                 cancelButtonTitle:@"Ok"
+                                 otherButtonTitles:nil] show];
+                
+            });
+            break;
+        }
+            
+            
+        
+case 7:
+    {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc]initWithTitle:@"Post Code"
+                                       message:error.domain
+                                      delegate:nil
+                             cancelButtonTitle:@"Ok"
+                             otherButtonTitles:nil] show];
+            
+        });
+        break;
+    }
+    
+    
+}
+
+    }
+
+
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     if (!self.isPlaceholderHidden)
@@ -149,6 +196,25 @@
     return NO;
 }
 
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    
+    if (textField == postField)
+    {
+        [self showHud];
+        [netManager getCityByPostCode:textField.text successBlock:^(NSString *city) {
+            [self hideHud];
+            postLabel.text = city;
+            
+        }
+            failureBlock:^(NSError *error) {
+            [self hideHud];
+            [self showAlert:error];
+        }];
+    }
+    return YES;
+}
+
 - (void) textViewDidEndEditing: (UITextView*) textView
 {
     if([textView.text isEqualToString: @""])
@@ -157,6 +223,7 @@
         textView.text = @"Brand new in box PS3 for sale with two controllers and 3 games";
         self.isPlaceholderHidden = NO;
     }
+    
 }
 
 
@@ -327,6 +394,8 @@
  
     if (sender == color)
     {
+        
+        
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
         
         v.items = [NSMutableArray arrayWithObjects:@"Black",@"White",@"Red",@"Blue",@"Green",@"Orange",@"Yellow",@"Purple",@"Not Applicable",nil];
@@ -334,6 +403,11 @@
        v.navigationView.title.text = @"Choice Color";
         v.delegate = self;
         v.sender = sender;
+        
+        if (![color.Text.text isEqualToString:@"Select a Colour"])
+        {
+            v.previousSelected = color.Text.text;
+        }
         
         [self presentViewController:v animated:YES completion:nil];
         
@@ -348,6 +422,11 @@
         v.navigationView.title.text = @"Choice Condition";
         v.delegate = self;
         v.sender = sender;
+        if (![condition.Text.text isEqualToString:@"Select a Condition"])
+        {
+            v.previousSelected = condition.Text.text;
+        }
+
         
         [self presentViewController:v animated:YES completion:nil];
         

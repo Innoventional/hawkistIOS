@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *img;
 @property (weak,nonatomic) id <CustomButtonDelegate> delegate;
 
+
 - (IBAction)tapAction:(id)sender;
 
 @end

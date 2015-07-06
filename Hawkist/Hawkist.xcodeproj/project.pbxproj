@@ -19,6 +19,8 @@
 		3A968E221B4A8542005AA347 /* ChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E211B4A8542005AA347 /* ChoiceTableViewController.m */; };
 		3A968E241B4A98B4005AA347 /* ChoiceTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A968E231B4A98B4005AA347 /* ChoiceTable.xib */; };
 		3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A968E251B4AC43A005AA347 /* WantToSell.xib */; };
+		3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A968E271B4AD819005AA347 /* ChoiceCell.xib */; };
+		3A968E2B1B4AD92B005AA347 /* ChoiceCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E2A1B4AD92B005AA347 /* ChoiceCellView.m */; };
 		3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6B8D1B43A0B90076004F /* Navigation.xib */; };
 		3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B901B43A0D90076004F /* NavigationVIew.m */; };
 		3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B941B43A1C40076004F /* SellAnItemViewController.m */; };
@@ -104,6 +106,9 @@
 		3A968E211B4A8542005AA347 /* ChoiceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChoiceTableViewController.m; path = SellAnItem/ChoiceFromButton/ChoiceTableViewController.m; sourceTree = "<group>"; };
 		3A968E231B4A98B4005AA347 /* ChoiceTable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChoiceTable.xib; path = SellAnItem/ChoiceFromButton/ChoiceTable.xib; sourceTree = "<group>"; };
 		3A968E251B4AC43A005AA347 /* WantToSell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WantToSell.xib; path = WantToSell/WantToSell.xib; sourceTree = "<group>"; };
+		3A968E271B4AD819005AA347 /* ChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChoiceCell.xib; path = SellAnItem/ChoiceFromButton/Cell/ChoiceCell.xib; sourceTree = "<group>"; };
+		3A968E291B4AD92B005AA347 /* ChoiceCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChoiceCellView.h; path = SellAnItem/ChoiceFromButton/Cell/ChoiceCellView.h; sourceTree = "<group>"; };
+		3A968E2A1B4AD92B005AA347 /* ChoiceCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChoiceCellView.m; path = SellAnItem/ChoiceFromButton/Cell/ChoiceCellView.m; sourceTree = "<group>"; };
 		3ACC6B8D1B43A0B90076004F /* Navigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Navigation.xib; path = NavigationView/Navigation.xib; sourceTree = "<group>"; };
 		3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationVIew.h; path = NavigationView/NavigationVIew.h; sourceTree = "<group>"; };
 		3ACC6B901B43A0D90076004F /* NavigationVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationVIew.m; path = NavigationView/NavigationVIew.m; sourceTree = "<group>"; };
@@ -272,6 +277,9 @@
 				3A968E201B4A8542005AA347 /* ChoiceTableViewController.h */,
 				3A968E211B4A8542005AA347 /* ChoiceTableViewController.m */,
 				3A968E231B4A98B4005AA347 /* ChoiceTable.xib */,
+				3A968E271B4AD819005AA347 /* ChoiceCell.xib */,
+				3A968E291B4AD92B005AA347 /* ChoiceCellView.h */,
+				3A968E2A1B4AD92B005AA347 /* ChoiceCellView.m */,
 			);
 			name = ChoiceFromButton;
 			sourceTree = "<group>";
@@ -644,6 +652,7 @@
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
+				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
 				C35A4C251B2F2DF7002E1F26 /* Images.xcassets in Resources */,
 				3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
@@ -722,6 +731,7 @@
 				7CE0E8E11B4307F0003B8B3A /* FeedScreenViewController.m in Sources */,
 				C35A4C681B3035D2002E1F26 /* UIImage+Extensions.m in Sources */,
 				3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */,
+				3A968E2B1B4AD92B005AA347 /* ChoiceCellView.m in Sources */,
 				C35A4C4D1B3032B1002E1F26 /* NetworkManager.m in Sources */,
 				7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */,
 				C35A4C981B39DDFF002E1F26 /* UIPlaceholderTextView.m in Sources */,

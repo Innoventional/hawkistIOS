@@ -13,7 +13,7 @@
 #import "MoneyField.h"
 #import "ChoiceTableViewController.h"
 
-@interface SellAnItemViewController : HWBaseViewController <NavigationViewDelegate,UIActionSheetDelegate,UINavigationControllerDelegate, UIActionSheetDelegate,UIImagePickerControllerDelegate, UITextViewDelegate,CustomButtonDelegate,ChoiceTableViewDelegata,MoneyFieldDelegate>
+@interface SellAnItemViewController : HWBaseViewController <NavigationViewDelegate,UIActionSheetDelegate,UINavigationControllerDelegate, UIActionSheetDelegate,UIImagePickerControllerDelegate, UITextViewDelegate,CustomButtonDelegate,ChoiceTableViewDelegata,MoneyFieldDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet NavigationVIew *nav;
 

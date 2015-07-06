@@ -7,6 +7,7 @@
 //
 
 #import "ChoiceTableViewController.h"
+#import "ChoiceCellView.h"
 
 @interface ChoiceTableViewController ()
 
@@ -29,15 +30,28 @@
         
         navigationView.delegate = self;
         
-        [navigationView.leftButtonOutlet setBackgroundImage:[UIImage imageNamed:@"acdet_back"] forState:UIControlStateNormal];
-        [navigationView.leftButtonOutlet setTitle:@"" forState:UIControlStateNormal];
+        [navigationView.leftButtonOutlet setImage:[UIImage imageNamed:@"acdet_back"] forState:UIControlStateNormal];
+        [navigationView.leftButtonOutlet setTitle:@" Sell" forState:UIControlStateNormal];
         [navigationView.rightButtonOutlet setTitle:@"" forState:UIControlStateNormal];
 
         [navigationView.title setTextColor:[UIColor whiteColor]];
         navigationView.rightButtonOutlet.enabled = NO;
+        
+
+        self.table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     }
     return self;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    long index = [items indexOfObject:self.previousSelected];
+    if (index)
+    {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.table selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+
+    }
 }
 
 -(void) leftButtonClick
@@ -54,14 +68,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* cellID = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    ChoiceCellView *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
     if (cell==nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
         
+        
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[ChoiceCellView alloc]init];
     }
     
-    cell.detailTextLabel.text = [items objectAtIndex:indexPath.row];
+    
+    cell.myLabel.text = [items objectAtIndex:indexPath.row];
+    
     return cell;
 }
 

@@ -17,12 +17,15 @@
 @end
 
 @interface ChoiceTableViewController : HWBaseViewController <UITableViewDataSource,UITableViewDelegate,NavigationViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
 
 @property (nonatomic) NSMutableArray* items;
 
 @property (nonatomic,weak) id <ChoiceTableViewDelegata> delegate;
+
 @property (nonatomic,weak) id sender;
+@property (weak,nonatomic) NSString* previousSelected;
 
 @end
