@@ -265,4 +265,34 @@
                        }];
 }
 
+- (void) getListOfTags: (void (^)(NSData* city)) successBlock
+          failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    [self.networkDecorator GET: @"tags"
+                    parameters: nil
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock([NSError errorWithDomain: responseObject[@"message"][@"message"] code: [responseObject[@"message"][@"status"] integerValue] userInfo: nil]);
+                               return;
+                           }
+                           
+                           NSError* error;
+                           NSData* city = responseObject[@"tags"];
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(city);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock(error);
+                       }];
+}
+
 @end

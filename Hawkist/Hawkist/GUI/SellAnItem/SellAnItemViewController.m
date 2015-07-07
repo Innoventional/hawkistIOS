@@ -15,7 +15,7 @@
 
 @interface SellAnItemViewController ()
 
-@property (nonatomic,assign)int selectedImage;
+@property (nonatomic,assign) long selectedImage;
 @property (nonatomic, assign) BOOL isPlaceholderHidden;
 @property (nonatomic, strong) UIColor *placeHolderColor;
 @property (nonatomic, strong) UIColor *textColor;
@@ -128,7 +128,7 @@
     descriptionField.text = @"Brand new in box PS3 for sale with two controllers and 3 games";
     self.isPlaceholderHidden = NO;
     
-    sellingPrice.textField.text = @"1.00";
+
     
 }
 
@@ -137,11 +137,11 @@
     NSLog(@"%@",error);
     
     switch(error.code) {
-        case 8:
+        case 7:
         {
        
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"Post Code"
+                [[[UIAlertView alloc]initWithTitle:@"Incorrect Post Code"
                                            message:error.domain
                                           delegate:nil
                                  cancelButtonTitle:@"Ok"
@@ -153,11 +153,11 @@
             
             
         
-case 7:
+case 8:
     {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[[UIAlertView alloc]initWithTitle:@"Post Code"
+            [[[UIAlertView alloc]initWithTitle:@"Post Code Not Found"
                                        message:error.domain
                                       delegate:nil
                              cancelButtonTitle:@"Ok"
@@ -199,7 +199,7 @@ case 7:
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     
-    if (textField == postField)
+    if (textField == postField && textField.text.length>0)
     {
         [self showHud];
         [netManager getCityByPostCode:textField.text successBlock:^(NSString *city) {
@@ -280,6 +280,14 @@ case 7:
 }
 
 - (IBAction)sellAction:(id)sender {
+    [netManager getListOfTags:^(NSData *city) {
+        
+        
+    } failureBlock:^(NSError *error) {
+        
+        
+    }];
+
 }
 
 - (IBAction)imageClick:(id)sender {
@@ -294,8 +302,6 @@ case 7:
     
     UIGestureRecognizer *recognizer = (UIGestureRecognizer*) sender;
     selectedImage = recognizer.view.tag;
-
-
 
 }
 
