@@ -81,6 +81,7 @@
 		C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C811B303BCF002E1F26 /* OCFacebookHelper.m */; };
 		C35A4C8D1B31A408002E1F26 /* AppEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C8C1B31A407002E1F26 /* AppEngine.m */; };
 		C35A4C981B39DDFF002E1F26 /* UIPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C971B39DDFF002E1F26 /* UIPlaceholderTextView.m */; };
+		C35CB49F1B4BE91B00956150 /* HWItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB49E1B4BE91B00956150 /* HWItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +212,8 @@
 		C35A4C8C1B31A407002E1F26 /* AppEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppEngine.m; sourceTree = "<group>"; };
 		C35A4C961B39DDFF002E1F26 /* UIPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPlaceholderTextView.h; path = LoginVIew/UIPlaceholderTextView.h; sourceTree = "<group>"; };
 		C35A4C971B39DDFF002E1F26 /* UIPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPlaceholderTextView.m; path = LoginVIew/UIPlaceholderTextView.m; sourceTree = "<group>"; };
+		C35CB49D1B4BE91B00956150 /* HWItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWItem.h; sourceTree = "<group>"; };
+		C35CB49E1B4BE91B00956150 /* HWItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,6 +497,8 @@
 			children = (
 				C35A4C6A1B3036D0002E1F26 /* HWUser.h */,
 				C35A4C6B1B3036D0002E1F26 /* HWUser.m */,
+				C35CB49D1B4BE91B00956150 /* HWItem.h */,
+				C35CB49E1B4BE91B00956150 /* HWItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -683,8 +688,8 @@
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
-				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
 				7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */,
+				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
 				C35A4C251B2F2DF7002E1F26 /* Images.xcassets in Resources */,
 				3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
@@ -754,6 +759,7 @@
 				7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */,
 				C35A4C4A1B3031F4002E1F26 /* NetworkDecorator.m in Sources */,
 				C35A4C661B3035D2002E1F26 /* OCUtilites.m in Sources */,
+				C35CB49F1B4BE91B00956150 /* HWItem.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,
 				3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
