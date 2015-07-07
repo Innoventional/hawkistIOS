@@ -17,8 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeLable;
 
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
-
-@property (strong, nonatomic) IBOutlet UILabel *reductionLable;
+@property (strong, nonatomic) IBOutlet UITextField *skidkaTextfield;
 
 @property (strong, nonatomic) IBOutlet UILabel *sellItemLabel;
 
@@ -34,6 +33,9 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *oldPriceLable;
 @property (strong, nonatomic) IBOutlet UILabel *currentPriceLable;
+
+
+
 
 
 

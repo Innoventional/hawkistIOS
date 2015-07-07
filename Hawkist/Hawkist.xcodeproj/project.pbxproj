@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A2FA2F51B42AA3B00E8B459 /* WantToSellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */; };
 		3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCB1B3813620004A24B /* CustomAlertView.xib */; };
 		3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */; };
 		3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBD31B386FA60004A24B /* SignIn.xib */; };
@@ -34,6 +35,9 @@
 		7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D3F1B3893B000295472 /* CustomizationViewController.xib */; };
 		7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */; };
 		7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */; };
+		7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE8F1B4BF39200CDA5FD /* mot2.png */; };
+		7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE901B4BF39200CDA5FD /* mot3.png */; };
+		7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE931B4BF63B00CDA5FD /* smile.png */; };
 		7CDD9A621B343AD2000FA498 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD9A601B343AD2000FA498 /* TutorialViewController.m */; };
 		7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */; };
 		7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */; };
@@ -43,6 +47,8 @@
 		7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CE102B91B39BF8000F0F747 /* OpenSans-Italic.ttf */; };
 		7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE778C71B3D51E600856A36 /* Icon-60@2x.png */; };
 		7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE778C81B3D51E600856A36 /* Icon-60@3x.png */; };
+		7CF0F9821B455DB30041F58F /* ViewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0F9801B455DB30041F58F /* ViewItemViewController.m */; };
+		7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CF0F9811B455DB30041F58F /* ViewItemViewController.xib */; };
 		80E1CD0A02CE700CA374803C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D8ABABE09C6B8E36C39881 /* libPods.a */; };
 		C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C191B2F2DF7002E1F26 /* main.m */; };
 		C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */; };
@@ -89,6 +95,7 @@
 
 /* Begin PBXFileReference section */
 		3906BE83E13D87CC9252A21D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WantToSellView.xib; path = WantToSell/WantToSellView.xib; sourceTree = "<group>"; };
 		3A61FBCB1B3813620004A24B /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeAlertView.xib; sourceTree = "<group>"; };
 		3A61FBD31B386FA60004A24B /* SignIn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignIn.xib; sourceTree = "<group>"; };
@@ -129,6 +136,9 @@
 		7C735D3F1B3893B000295472 /* CustomizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizationViewController.xib; sourceTree = "<group>"; };
 		7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansRegular.ttf; sourceTree = "<group>"; };
+		7CDBCE8F1B4BF39200CDA5FD /* mot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mot2.png; sourceTree = "<group>"; };
+		7CDBCE901B4BF39200CDA5FD /* mot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mot3.png; sourceTree = "<group>"; };
+		7CDBCE931B4BF63B00CDA5FD /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
 		7CDD9A5F1B343AD2000FA498 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		7CDD9A601B343AD2000FA498 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
@@ -141,6 +151,9 @@
 		7CE102B91B39BF8000F0F747 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		7CE778C71B3D51E600856A36 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		7CE778C81B3D51E600856A36 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
+		7CF0F97F1B455DB30041F58F /* ViewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewItemViewController.h; sourceTree = "<group>"; };
+		7CF0F9801B455DB30041F58F /* ViewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewItemViewController.m; sourceTree = "<group>"; };
+		7CF0F9811B455DB30041F58F /* ViewItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewItemViewController.xib; sourceTree = "<group>"; };
 		80D8ABABE09C6B8E36C39881 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35A4C141B2F2DF7002E1F26 /* Hawkist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hawkist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35A4C181B2F2DF7002E1F26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -239,6 +252,7 @@
 		3A61FBD51B3C11300004A24B /* WantToSell */ = {
 			isa = PBXGroup;
 			children = (
+				3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */,
 				3AF04D411B42B34D000D1D58 /* WantToSellViewController.h */,
 				3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */,
 				3A968E251B4AC43A005AA347 /* WantToSell.xib */,
@@ -284,7 +298,7 @@
 			name = ChoiceFromButton;
 			sourceTree = "<group>";
 		};
-		3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
+3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
 			isa = PBXGroup;
 			children = (
 				3ACC6B8D1B43A0B90076004F /* Navigation.xib */,
@@ -367,6 +381,20 @@
 				7CE102B91B39BF8000F0F747 /* OpenSans-Italic.ttf */,
 			);
 			name = CustomisationScreen;
+			sourceTree = "<group>";
+		};
+		7CF0F97E1B455D7F0041F58F /* ViewItem */ = {
+			isa = PBXGroup;
+			children = (
+				7CF0F97F1B455DB30041F58F /* ViewItemViewController.h */,
+				7CF0F9801B455DB30041F58F /* ViewItemViewController.m */,
+				7CF0F9811B455DB30041F58F /* ViewItemViewController.xib */,
+				7CDBCE931B4BF63B00CDA5FD /* smile.png */,
+				7CDBCE8F1B4BF39200CDA5FD /* mot2.png */,
+				7CDBCE901B4BF39200CDA5FD /* mot3.png */,
+			);
+			name = ViewItem;
+			path = TutorialScreen;
 			sourceTree = "<group>";
 		};
 		B5270341DDA6B1495FD88522 /* Frameworks */ = {
@@ -478,8 +506,9 @@
 				3A61FBD51B3C11300004A24B /* WantToSell */,
 				3A83667D1B318B1100208FC5 /* AccountDetails */,
 				3A8366711B30668E00208FC5 /* LoginVIew */,
-				7CBC69E41B42B1F300AE535C /* FeedScreen */,
 				7CE30E871B3453A7001617B7 /* CustomisationScreen */,
+				7CBC69E41B42B1F300AE535C /* FeedScreen */,
+				7CF0F97E1B455D7F0041F58F /* ViewItem */,
 				7CDD9A5E1B343AB9000FA498 /* TutorialScreen */,
 				C35A4C411B302CE7002E1F26 /* Base */,
 			);
@@ -641,21 +670,25 @@
 				3ACC6BEE1B44A75E0076004F /* money.xib in Resources */,
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
+				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
 				C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */,
+				7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */,
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
 				7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */,
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
 				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
+				7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */,
 				C35A4C251B2F2DF7002E1F26 /* Images.xcassets in Resources */,
 				3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
+				7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,6 +771,7 @@
 				C35A4C651B3035D2002E1F26 /* NSURL+Extensions.m in Sources */,
 				3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */,
 				3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */,
+				7CF0F9821B455DB30041F58F /* ViewItemViewController.m in Sources */,
 				C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */,
 				C35A4C631B3035D2002E1F26 /* NSDictionary+Extensions.m in Sources */,
 				7CDD9A621B343AD2000FA498 /* TutorialViewController.m in Sources */,
