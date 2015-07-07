@@ -50,4 +50,9 @@
 - (void) linkFacebookAccountWithToken: (NSString*) token
                          successBlock: (void (^)(HWUser* user)) successBlock
                          failureBlock: (void (^)(NSError* error)) failureBlock;
+
+- (void) getCityByPostCode: (NSString*) postCode
+              successBlock: (void (^)(NSString* city)) successBlock
+              failureBlock: (void (^)(NSError* error)) failureBlock;
+
 @end

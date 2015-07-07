@@ -9,9 +9,9 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "AccountDetailViewController.h"
-#import "SellAnItemViewController.h"
+#import "WantToSellViewController.h"
 #import "Heap.h"
-#import "ViewItemViewController.h"
+
 
 @interface AppDelegate ()
 @property (nonatomic,strong) LoginViewController* viewController;
@@ -28,8 +28,8 @@
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.rootViewController = [[UINavigationController alloc] init];
     
-   [self.rootViewController pushViewController:[[ViewItemViewController alloc] init]  animated: NO];
-      //[self.rootViewController pushViewController:[[SellAnItemViewController alloc] init]  animated: NO];
+   [self.rootViewController pushViewController:[[LoginViewController alloc] init]  animated: NO];
+   //   [self.rootViewController pushViewController:[[WantToSellViewController alloc] init]  animated: NO];
     self.rootViewController.navigationBarHidden = YES;
         self.window.rootViewController = self.rootViewController;
     

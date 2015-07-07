@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWBaseViewController.h"
 
-@interface WantToSellViewController : UIViewController
+@interface WantToSellViewController : HWBaseViewController
 - (IBAction)btnWantToSell:(id)sender;
 
 @end

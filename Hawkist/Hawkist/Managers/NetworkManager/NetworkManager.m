@@ -233,4 +233,36 @@
                        }];
 }
 
+
+- (void) getCityByPostCode: (NSString*) postCode
+                         successBlock: (void (^)(NSString* city)) successBlock
+                         failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    [self.networkDecorator PUT: @"get_city"
+                    parameters: @{@"post_code": postCode}
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock([NSError errorWithDomain: responseObject[@"message"][@"message"] code: [responseObject[@"message"][@"status"] integerValue] userInfo: nil]);
+                               return;
+                           }
+                           
+                           NSError* error;
+                           NSString* city = responseObject[@"city"];
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(city);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock(error);
+                       }];
+}
+
 @end
