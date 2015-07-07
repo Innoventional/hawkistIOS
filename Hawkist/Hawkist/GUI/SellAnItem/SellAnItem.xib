@@ -422,7 +422,7 @@
                                         <outletCollection property="gestureRecognizers" destination="no3-u5-pAy" appends="YES" id="EDP-io-9xM"/>
                                     </connections>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.88." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jog-dC-YWg">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.00." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jog-dC-YWg">
                                     <rect key="frame" x="249" y="93" width="42" height="21"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
@@ -529,10 +529,10 @@
                                     <color key="textColor" red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10066" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hhs-is-8C5">
-                                    <rect key="frame" x="15" y="151" width="55" height="20"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="10066" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hhs-is-8C5">
+                                    <rect key="frame" x="15" y="151" width="70" height="20"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="55" id="BWM-Eh-r1g"/>
+                                        <constraint firstAttribute="width" constant="70" id="BWM-Eh-r1g"/>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="55" id="ep0-V2-nmQ"/>
                                     </constraints>
                                     <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
@@ -548,7 +548,7 @@
                                     </connections>
                                 </textField>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="fhX-VT-HSH">
-                                    <rect key="frame" x="70" y="152" width="19" height="19"/>
+                                    <rect key="frame" x="85" y="152" width="19" height="19"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="19" id="Puk-cC-zej"/>
@@ -556,7 +556,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHq-sm-00u">
-                                    <rect key="frame" x="90" y="152" width="62" height="20"/>
+                                    <rect key="frame" x="105" y="152" width="62" height="20"/>
                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                     <color key="textColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

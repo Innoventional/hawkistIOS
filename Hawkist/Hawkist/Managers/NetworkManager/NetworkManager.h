@@ -55,4 +55,7 @@
               successBlock: (void (^)(NSString* city)) successBlock
               failureBlock: (void (^)(NSError* error)) failureBlock;
 
+- (void) getListOfTags: (void (^)(NSData* city)) successBlock
+          failureBlock: (void (^)(NSError* error)) failureBlock;
+
 @end
