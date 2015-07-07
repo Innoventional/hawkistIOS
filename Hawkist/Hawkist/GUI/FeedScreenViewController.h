@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FeedScreenCollectionViewCell.h"
+#import "UIColor+Extensions.h"
 
 @interface FeedScreenViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate>
 

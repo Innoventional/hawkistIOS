@@ -21,13 +21,21 @@
 
 - (void)awakeFromNib {
     
-    
-    
-    //self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCell"]];
- 
     self.backgroundColor = [UIColor whiteColor];
-    self.layer.cornerRadius = 5;
+    self.itemImage.layer.cornerRadius = 5.0f;
+    self.itemImage.layer.masksToBounds = YES;
+    self.layer.cornerRadius = 5.0f;
     self.layer.masksToBounds = YES;
+    
+    self.avatarImage.layer.cornerRadius = self.avatarImage.frame.size.height /2;
+    self.avatarImage.layer.masksToBounds = YES;
+    self.avatarImage.layer.borderWidth = 0;
+    
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:@"£33"];
+    [attributeString addAttribute:NSStrikethroughStyleAttributeName
+                            value:@2
+                            range:NSMakeRange(0, [attributeString length])];
+    self.oldPriceLable.attributedText = attributeString;
     
 }
 
