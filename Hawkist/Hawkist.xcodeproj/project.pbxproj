@@ -39,6 +39,7 @@
 		C35A4C861B303BCF002E1F26 /* SocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C7F1B303BCF002E1F26 /* SocialManager.m */; };
 		C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C811B303BCF002E1F26 /* OCFacebookHelper.m */; };
 		C35A4C8D1B31A408002E1F26 /* AppEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C8C1B31A407002E1F26 /* AppEngine.m */; };
+		C35CB49F1B4BE91B00956150 /* HWItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB49E1B4BE91B00956150 /* HWItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,8 @@
 		C35A4C811B303BCF002E1F26 /* OCFacebookHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCFacebookHelper.m; sourceTree = "<group>"; };
 		C35A4C8B1B31A407002E1F26 /* AppEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppEngine.h; sourceTree = "<group>"; };
 		C35A4C8C1B31A407002E1F26 /* AppEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppEngine.m; sourceTree = "<group>"; };
+		C35CB49D1B4BE91B00956150 /* HWItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWItem.h; sourceTree = "<group>"; };
+		C35CB49E1B4BE91B00956150 /* HWItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +249,8 @@
 			children = (
 				C35A4C6A1B3036D0002E1F26 /* HWUser.h */,
 				C35A4C6B1B3036D0002E1F26 /* HWUser.m */,
+				C35CB49D1B4BE91B00956150 /* HWItem.h */,
+				C35CB49E1B4BE91B00956150 /* HWItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 				C35A4C201B2F2DF7002E1F26 /* ViewController.m in Sources */,
 				C35A4C4A1B3031F4002E1F26 /* NetworkDecorator.m in Sources */,
 				C35A4C661B3035D2002E1F26 /* OCUtilites.m in Sources */,
+				C35CB49F1B4BE91B00956150 /* HWItem.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
