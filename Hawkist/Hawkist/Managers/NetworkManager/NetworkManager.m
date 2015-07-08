@@ -401,4 +401,37 @@
                        }];
 }
 
+- (void) getItemById: (NSString*) itemId
+        successBlock: (void (^)(HWItem* item)) successBlock
+        failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    NSDictionary* params = @{@"item_id": itemId};
+    
+    [self.networkDecorator GET: @"items"
+                    parameters: params
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                               return;
+                           }
+                           
+                           NSError* error;
+                           HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(item);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock(error);
+                       }];
+}
+
 @end
