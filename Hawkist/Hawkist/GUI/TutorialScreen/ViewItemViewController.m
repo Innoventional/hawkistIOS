@@ -23,7 +23,13 @@
         if(self)
         {
             self.item = item;
-            
+            [[NetworkManager shared] getItemById: self.item.id
+            successBlock:^(HWItem *item) {
+                self.item = item;
+                [self updateItem];
+            } failureBlock:^(NSError *error) {
+                
+            }];
         }
         return self;
     }
@@ -59,40 +65,7 @@
 #pragma mark -
 #pragma mark implementation model user and item
     
-    self.sellerName.text = self.item.user.username;
-    [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user.avatar] placeholderImage:nil];
-    
-    self.nameOoStuff.text = self.item.title;
-    self.sellerPrice.text = self.item.selling_price;
-    self.oldPrice.text = self.item.retail_price;
-    self.descriptionOfItem.text = self.item.item_description;
-    self.added.text = self.item.created_at;
-    //self.platform.text = self.item.platform;
-    //self.condition = self.item.condition;
-    //self.category = self.item.category;
-    self.colour.text = self.item.color;
-    self.delivery.text = self.item.shipping_price;
-    self.discount.text = self.item.discount;
-    //self.counts.text = self.item.
-    if(self.item.photos.count >= 1)
-    {
-        [self.bigImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
-        [self.smallImage1 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
-        self.smallImage1.layer.borderWidth = 2.0f;
-        self.smallImage1.layer.borderColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164].CGColor;
-    }
-    if(self.item.photos.count >= 2)
-        [self.smallImage2 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:1]] placeholderImage:nil];
-    if(self.item.photos.count >= 3)
-        [self.smallImage3 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:2]] placeholderImage:nil];
-    
-    [self.smallImage4 setImageWithURL: [NSURL URLWithString: self.item.barcode] placeholderImage:nil];
-    
-    
-    
-    
-    
-    
+    [self updateItem];
     self.sellerAvatar.layer.cornerRadius = self.sellerAvatar.frame.size.height /2;
     self.sellerAvatar.layer.masksToBounds = YES;
     self.sellerAvatar.layer.borderWidth = 0;
@@ -123,6 +96,38 @@
     
 }
 
+- (void) updateItem
+{
+    self.sellerName.text = self.item.user.username;
+    [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user.avatar] placeholderImage:nil];
+    
+    self.nameOoStuff.text = self.item.title;
+    self.sellerPrice.text = self.item.selling_price;
+    self.oldPrice.text = self.item.retail_price;
+    self.descriptionOfItem.text = self.item.item_description;
+    self.added.text = self.item.created_at;
+    //self.platform.text = self.item.platform;
+    //self.condition = self.item.condition;
+    //self.category = self.item.category;
+    //self.colour.text = self.item.color;
+    self.delivery.text = self.item.shipping_price;
+    self.discount.text = self.item.discount;
+    //self.counts.text = self.item.
+    if(self.item.photos.count >= 1)
+    {
+        [self.bigImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
+        [self.smallImage1 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
+        self.smallImage1.layer.borderWidth = 2.0f;
+        self.smallImage1.layer.borderColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164].CGColor;
+    }
+    if(self.item.photos.count >= 2)
+        [self.smallImage2 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:1]] placeholderImage:nil];
+    if(self.item.photos.count >= 3)
+        [self.smallImage3 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:2]] placeholderImage:nil];
+    
+    [self.smallImage4 setImageWithURL: [NSURL URLWithString: self.item.barcode] placeholderImage:nil];
+}
+
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     return YES;
@@ -139,7 +144,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.items.count;
+    return 0;
 }
 
 

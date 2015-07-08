@@ -77,7 +77,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(15, 12, 0, 12); // top, left, bottom, right
+    return UIEdgeInsetsMake(15, 12, 15, 12); // top, left, bottom, right
 }
 
 
