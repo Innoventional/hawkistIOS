@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
-
+@property (strong, nonatomic) NSMutableArray *items;
 
 @property (strong, nonatomic) IBOutlet UIView *searchView;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;

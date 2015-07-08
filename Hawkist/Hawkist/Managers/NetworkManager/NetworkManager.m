@@ -353,7 +353,7 @@
                                return;
                            }
                            
-                           successBlock(items, page, searchString);
+                           successBlock(arrayWithItems, page, searchString);
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {

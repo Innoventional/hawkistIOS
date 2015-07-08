@@ -17,5 +17,6 @@
 #import "HWUser.h"
 #import "HWItem.h"
 #import "UIImageView+AFNetworking.h"
+#import "NetworkManager.h"
 
 #endif

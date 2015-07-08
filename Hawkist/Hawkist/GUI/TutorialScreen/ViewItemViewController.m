@@ -23,6 +23,7 @@
         if(self)
         {
             self.item = item;
+            
         }
         return self;
     }
@@ -32,6 +33,12 @@
     
     _starRatingControl.delegate = self;
     
+//    [[NetworkManager shared] getItemsWithPage: self.currentPage + 1 searchString: nil successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+//        [self.items addObjectsFromArray: arrayWithItems];
+//    } failureBlock:^(NSError *error) {
+//        
+//    }];
+
     
     
    self.smallImage1.layer.cornerRadius = 5.0f;
@@ -67,10 +74,19 @@
     self.delivery.text = self.item.shipping_price;
     self.discount.text = self.item.discount;
     //self.counts.text = self.item.
+    if(self.item.photos.count >= 1)
+    {
+        [self.bigImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
+        [self.smallImage1 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
+        self.smallImage1.layer.borderWidth = 2.0f;
+        self.smallImage1.layer.borderColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164].CGColor;
+    }
+    if(self.item.photos.count >= 2)
+        [self.smallImage2 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:1]] placeholderImage:nil];
+    if(self.item.photos.count >= 3)
+        [self.smallImage3 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:2]] placeholderImage:nil];
     
-    [self.smallImage1 setImageWithURL: [NSURL URLWithString: self.item.user.avatar] placeholderImage:nil];
-    
-    
+    [self.smallImage4 setImageWithURL: [NSURL URLWithString: self.item.barcode] placeholderImage:nil];
     
     
     
@@ -123,12 +139,14 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 2;
+    return self.items.count;
 }
 
 
 - (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
+    cell.item = [self.items objectAtIndex: indexPath.row];
+    
     return cell;
 }
 

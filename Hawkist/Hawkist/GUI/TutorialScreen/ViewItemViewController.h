@@ -18,6 +18,7 @@
 // custom init
 - (instancetype) initWithItem: (HWItem*) item;
 
+@property (nonatomic,strong) NSMutableArray *items;
 
 @property (weak) IBOutlet StarRatingControl *starRatingControl;
 

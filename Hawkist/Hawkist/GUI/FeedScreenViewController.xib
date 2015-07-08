@@ -47,38 +47,39 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchLupa" translatesAutoresizingMaskIntoConstraints="NO" id="DlB-Fi-7sX">
                                     <rect key="frame" x="11" y="8" width="17" height="16"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="17" id="dfU-vn-zs1"/>
+                                        <constraint firstAttribute="width" constant="17" id="x7E-hF-hp7"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="fxe-IB-pPP" secondAttribute="bottom" id="0f2-mY-Z3d"/>
-                                <constraint firstItem="DlB-Fi-7sX" firstAttribute="leading" secondItem="L1X-xp-WKL" secondAttribute="leading" constant="11" id="4Ol-Uc-1Sm"/>
-                                <constraint firstAttribute="trailing" secondItem="fxe-IB-pPP" secondAttribute="trailing" id="CA0-G1-twB"/>
-                                <constraint firstItem="fxe-IB-pPP" firstAttribute="centerY" secondItem="DlB-Fi-7sX" secondAttribute="centerY" id="K8c-b1-gTt"/>
-                                <constraint firstItem="fxe-IB-pPP" firstAttribute="leading" secondItem="DlB-Fi-7sX" secondAttribute="trailing" constant="8" symbolic="YES" id="NtI-0L-efX"/>
-                                <constraint firstItem="DlB-Fi-7sX" firstAttribute="top" secondItem="L1X-xp-WKL" secondAttribute="topMargin" id="fsI-Or-JHG"/>
-                                <constraint firstItem="DlB-Fi-7sX" firstAttribute="bottom" secondItem="L1X-xp-WKL" secondAttribute="bottomMargin" id="ouO-DO-QP0"/>
+                                <constraint firstAttribute="bottom" secondItem="fxe-IB-pPP" secondAttribute="bottom" id="2NP-JG-9Xg"/>
+                                <constraint firstItem="DlB-Fi-7sX" firstAttribute="bottom" secondItem="L1X-xp-WKL" secondAttribute="bottomMargin" id="At8-gP-s64"/>
+                                <constraint firstItem="fxe-IB-pPP" firstAttribute="leading" secondItem="DlB-Fi-7sX" secondAttribute="trailing" constant="8" symbolic="YES" id="H6o-ms-A2O"/>
+                                <constraint firstItem="DlB-Fi-7sX" firstAttribute="centerY" secondItem="fxe-IB-pPP" secondAttribute="centerY" id="M6W-PP-rAn"/>
+                                <constraint firstItem="DlB-Fi-7sX" firstAttribute="top" secondItem="L1X-xp-WKL" secondAttribute="topMargin" id="bB9-By-aV6"/>
+                                <constraint firstItem="DlB-Fi-7sX" firstAttribute="leading" secondItem="L1X-xp-WKL" secondAttribute="leading" constant="11" id="l0S-UP-jEE"/>
+                                <constraint firstAttribute="trailing" secondItem="fxe-IB-pPP" secondAttribute="trailing" id="oDi-Zo-VVD"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="y2P-6q-MhK" firstAttribute="top" secondItem="L1X-xp-WKL" secondAttribute="top" id="2sx-ct-TCZ"/>
-                        <constraint firstItem="y2P-6q-MhK" firstAttribute="leading" secondItem="L1X-xp-WKL" secondAttribute="leading" id="4z4-RL-yB2"/>
-                        <constraint firstItem="L1X-xp-WKL" firstAttribute="top" secondItem="wbD-0x-nei" secondAttribute="top" constant="6" id="5Wm-fv-kVm"/>
-                        <constraint firstItem="y2P-6q-MhK" firstAttribute="leading" secondItem="wbD-0x-nei" secondAttribute="leading" constant="13" id="Eue-Of-guU"/>
-                        <constraint firstAttribute="trailing" secondItem="y2P-6q-MhK" secondAttribute="trailing" constant="15" id="PCK-9l-Q5M"/>
-                        <constraint firstItem="y2P-6q-MhK" firstAttribute="bottom" secondItem="L1X-xp-WKL" secondAttribute="bottom" id="fV3-My-ZnC"/>
-                        <constraint firstItem="y2P-6q-MhK" firstAttribute="trailing" secondItem="L1X-xp-WKL" secondAttribute="trailing" id="lTz-ws-ud7"/>
-                        <constraint firstItem="L1X-xp-WKL" firstAttribute="centerY" secondItem="wbD-0x-nei" secondAttribute="centerY" id="pst-gD-lXF"/>
+                        <constraint firstItem="y2P-6q-MhK" firstAttribute="top" secondItem="L1X-xp-WKL" secondAttribute="top" id="4KK-yD-PmW"/>
+                        <constraint firstItem="y2P-6q-MhK" firstAttribute="bottom" secondItem="L1X-xp-WKL" secondAttribute="bottom" id="BeG-Dv-HLJ"/>
+                        <constraint firstAttribute="height" constant="44" id="Ck8-W5-wr6"/>
+                        <constraint firstItem="y2P-6q-MhK" firstAttribute="leading" secondItem="L1X-xp-WKL" secondAttribute="leading" id="Ez0-jZ-gGv"/>
+                        <constraint firstItem="y2P-6q-MhK" firstAttribute="leading" secondItem="wbD-0x-nei" secondAttribute="leading" constant="13" id="GJd-s9-pmV"/>
+                        <constraint firstItem="y2P-6q-MhK" firstAttribute="top" secondItem="wbD-0x-nei" secondAttribute="top" constant="6" id="Nht-Kd-A38"/>
+                        <constraint firstItem="y2P-6q-MhK" firstAttribute="centerY" secondItem="wbD-0x-nei" secondAttribute="centerY" id="k81-um-QUZ"/>
+                        <constraint firstItem="L1X-xp-WKL" firstAttribute="trailing" secondItem="y2P-6q-MhK" secondAttribute="trailing" id="nGi-t8-5nz"/>
+                        <constraint firstAttribute="trailing" secondItem="L1X-xp-WKL" secondAttribute="trailing" constant="15" id="rNb-1K-BE4"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ORN-hw-D5b">
                     <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="556" id="v93-hN-afO"/>
+                        <constraint firstAttribute="height" constant="556" id="Sry-Z6-vaK"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Hvy-Fc-LRb">
                         <size key="itemSize" width="0.0" height="0.0"/>
@@ -94,13 +95,17 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="ORN-hw-D5b" secondAttribute="bottom" id="5Dz-NU-QAQ"/>
-                <constraint firstItem="wbD-0x-nei" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CVQ-co-YMf"/>
-                <constraint firstItem="ORN-hw-D5b" firstAttribute="leading" secondItem="wbD-0x-nei" secondAttribute="leading" id="M5d-sD-TUb"/>
-                <constraint firstItem="wbD-0x-nei" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RIF-JM-Ci5"/>
-                <constraint firstItem="wbD-0x-nei" firstAttribute="trailing" secondItem="ORN-hw-D5b" secondAttribute="trailing" id="cch-Xp-GET"/>
-                <constraint firstAttribute="trailing" secondItem="ORN-hw-D5b" secondAttribute="trailing" id="p5h-0k-8hm"/>
-                <constraint firstItem="ORN-hw-D5b" firstAttribute="top" secondItem="wbD-0x-nei" secondAttribute="bottom" id="ygd-Hv-aRX"/>
+                <constraint firstAttribute="trailing" secondItem="wbD-0x-nei" secondAttribute="trailing" id="7iB-0G-vpv"/>
+                <constraint firstItem="wbD-0x-nei" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CuA-qR-zzQ"/>
+                <constraint firstItem="ORN-hw-D5b" firstAttribute="top" secondItem="wbD-0x-nei" secondAttribute="bottom" id="OVr-mY-6Rz"/>
+                <constraint firstItem="ORN-hw-D5b" firstAttribute="top" secondItem="wbD-0x-nei" secondAttribute="bottom" id="Pyc-y0-12r"/>
+                <constraint firstItem="wbD-0x-nei" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="V5b-aI-TuI"/>
+                <constraint firstAttribute="trailing" secondItem="ORN-hw-D5b" secondAttribute="trailing" id="VTn-2p-jl9"/>
+                <constraint firstItem="wbD-0x-nei" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XUq-EM-JlC"/>
+                <constraint firstItem="wbD-0x-nei" firstAttribute="leading" secondItem="ORN-hw-D5b" secondAttribute="leading" id="ZQy-iU-zao"/>
+                <constraint firstItem="wbD-0x-nei" firstAttribute="trailing" secondItem="ORN-hw-D5b" secondAttribute="trailing" id="qxR-oA-Hpg"/>
+                <constraint firstAttribute="bottom" secondItem="ORN-hw-D5b" secondAttribute="bottom" id="rdc-JZ-Bph"/>
+                <constraint firstItem="wbD-0x-nei" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="spr-ZO-I4H"/>
             </constraints>
             <point key="canvasLocation" x="284" y="323"/>
         </view>
