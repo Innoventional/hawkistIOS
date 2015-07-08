@@ -14,6 +14,7 @@
 #import "NetworkManager.h"
 #import "Heap.h"
 #import "ViewItemViewController.h"
+#import "FeedScreenViewController.h"
 
 @interface AppDelegate ()
 @property (nonatomic,strong) LoginViewController* viewController;
@@ -43,7 +44,7 @@
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.rootViewController = [[UINavigationController alloc] init];
     
-   [self.rootViewController pushViewController:[[LoginViewController alloc] init]  animated: NO];
+   [self.rootViewController pushViewController:[[FeedScreenViewController alloc] init]  animated: NO];
    //   [self.rootViewController pushViewController:[[WantToSellViewController alloc] init]  animated: NO];
     self.rootViewController.navigationBarHidden = YES;
         self.window.rootViewController = self.rootViewController;

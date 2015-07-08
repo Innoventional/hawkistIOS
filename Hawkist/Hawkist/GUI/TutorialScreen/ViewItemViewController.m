@@ -31,8 +31,18 @@
                 
             }];
         }
+        
+        
         return self;
+        
+        
     }
+
+
+- (void) leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -93,7 +103,7 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
-    
+    self.navigationView.delegate = self;
 }
 
 - (void) updateItem
