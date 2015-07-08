@@ -23,6 +23,7 @@
 
 @property (nonatomic, assign) NSInteger platform;
 @property (nonatomic, assign) NSInteger category;
+@property (nonatomic, assign) NSInteger subcategory;
 @property (nonatomic, assign) NSInteger condition;
 @property (nonatomic, strong) NSString<Optional>* color;
 

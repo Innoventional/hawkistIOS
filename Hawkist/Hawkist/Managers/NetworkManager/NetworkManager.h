@@ -58,4 +58,17 @@
 - (void) getListOfTags: (void (^)(NSData* city)) successBlock
           failureBlock: (void (^)(NSError* error)) failureBlock;
 
+// get all items at page with search string
+- (void) getItemsWithPage: (NSInteger) page
+             searchString: (NSString*) searchString // can be nil
+             successBlock: (void (^)(NSArray* arrayWithItems, NSInteger page, NSString* searchString)) successBlock
+             failureBlock: (void (^)(NSError* error)) failureBlock;
+
+
+// create an item
+
+- (void) createItem: (HWItem*) item
+       successBlock: (void (^)(HWItem* item)) successBlock
+       failureBlock: (void (^)(NSError* error)) failureBlock;
+
 @end
