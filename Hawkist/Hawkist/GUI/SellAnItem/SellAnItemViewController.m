@@ -14,6 +14,8 @@
 #import "NetworkManager.h"
 #import "AppEngine.h"
 
+#import "AWSS3Manager.h"
+
 @interface SellAnItemViewController ()
 
 @property (nonatomic,assign) long selectedImage;
@@ -23,10 +25,16 @@
 @property (nonatomic,weak) NetworkManager* netManager;
 @property (nonatomic,strong) NSMutableArray* tags;
 
+@property (nonatomic,weak) AWSS3Manager* awsManager;
 
 
 @property (nonatomic,weak) NSArray* tempTagsForCategory;
 @property (nonatomic,assign) int idCategory;
+
+@property (nonatomic,weak)NSString* barUrl;
+@property (nonatomic,weak)NSString* img1Url;
+@property (nonatomic,weak)NSString* img2Url;
+@property (nonatomic,weak)NSString* img3Url;
 
 
 
@@ -55,12 +63,15 @@
 @synthesize selectedImage;
 @synthesize youGetLabel;
 @synthesize netManager;
+@synthesize awsManager;
 
 - (instancetype) init
 {
     if (self = [super init])
     {
         netManager = [NetworkManager shared];
+        
+        awsManager = [AWSS3Manager shared];
         
         UIView* v = [[[NSBundle mainBundle]loadNibNamed:@"SellAnItem" owner:self options:nil]firstObject];
         
@@ -441,23 +452,55 @@ case 8:
             case 1:
         {
             barCode.image = selImage;
-                break;
+
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempBar"]];
+            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
+            
+            
+            
+            
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
+                               successBlock:^(NSString *fileURL) {
+                                   self.barUrl = fileURL;
+                
+            }
+                               failureBlock:^(NSError *error) {
+                
+                                   NSLog(@"%@",error);
+            }
+                              progressBlock:^(CGFloat progress) {
+                
+                                  NSLog(@"%f",progress);
+            }];
+            break;
         }
         case 2:
         {
          
             takePic1.image = selImage;
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic1"]];
+            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
+
             break;
         }
         case 3:
         {
             
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic2"]];
+            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
+
             takePic2.image = selImage;
             break;
         }
         case 4:
         {
-            
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic3"]];
+            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
+
             takePic3.image = selImage;
             break;
         }
