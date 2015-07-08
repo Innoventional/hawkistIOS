@@ -326,9 +326,9 @@ case 8:
     currentItem.category = 30;      //TODO: Why 0?
     
     
-    currentItem.subcategory = 33; //category.Text.tag;
-    currentItem.condition = 36;  //condition.Text.tag;
-    currentItem.color  = 40; //color.Text.text;
+    currentItem.subcategory = category.Text.tag;
+    currentItem.condition = condition.Text.tag;
+    currentItem.color  = color.Text.tag;
     
     currentItem.retail_price = retailPrice.textField.text;
     currentItem.selling_price = sellingPrice.textField.text;
@@ -610,7 +610,7 @@ case 8:
     
     currentButton.Text.textColor = self.textColor;
     currentButton.Text.text = tag.name;
-    currentButton.Text.tag = tag.id;
+    currentButton.Text.tag = [tag.id integerValue];
     
 //    
 //    if (sender == color)

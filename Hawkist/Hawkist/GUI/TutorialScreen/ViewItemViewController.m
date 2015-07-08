@@ -63,7 +63,7 @@
     //self.platform.text = self.item.platform;
     //self.condition = self.item.condition;
     //self.category = self.item.category;
-    self.colour.text = self.item.color;
+   // self.colour.text = self.item.color;
     self.delivery.text = self.item.shipping_price;
     self.discount.text = self.item.discount;
     //self.counts.text = self.item.
