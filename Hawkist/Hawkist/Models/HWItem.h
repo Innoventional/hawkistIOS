@@ -38,4 +38,7 @@
 @property (nonatomic, strong) NSString<Optional>* location_lat;
 @property (nonatomic, strong) NSString<Optional>* location_lon;
 
+@property (nonatomic, strong) NSString<Optional>* barcode;
+@property (nonatomic, strong) NSArray<Optional>* photos;
+
 @end
