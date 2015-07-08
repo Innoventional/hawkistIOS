@@ -23,6 +23,7 @@
 
 @property (nonatomic, assign) NSInteger platform;
 @property (nonatomic, assign) NSInteger category;
+@property (nonatomic, assign) NSInteger subcategory;
 @property (nonatomic, assign) NSInteger condition;
 @property (nonatomic, strong) NSString<Optional>* color;
 
@@ -37,5 +38,8 @@
 @property (nonatomic, strong) NSString<Optional>* city;
 @property (nonatomic, strong) NSString<Optional>* location_lat;
 @property (nonatomic, strong) NSString<Optional>* location_lon;
+
+@property (nonatomic, strong) NSString<Optional>* barcode;
+@property (nonatomic, strong) NSArray<Optional>* photos;
 
 @end

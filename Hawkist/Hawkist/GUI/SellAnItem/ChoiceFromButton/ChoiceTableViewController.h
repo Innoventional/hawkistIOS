@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "NavigationVIew.h"
+#import "HWTag.h"
 #import "HWBaseViewController.h"
 
 @protocol ChoiceTableViewDelegata <NSObject>
 
-- (void) SelectedItemFrom:(id)sender WithName:(NSString*)name;
+- (void) SelectedItemFrom:(id)sender WithItem:(HWTag*)tag;
 
 @end
 
@@ -28,4 +29,6 @@
 @property (nonatomic,weak) id sender;
 @property (weak,nonatomic) NSString* previousSelected;
 
+
+@property (assign,nonatomic)BOOL isPlatform;
 @end

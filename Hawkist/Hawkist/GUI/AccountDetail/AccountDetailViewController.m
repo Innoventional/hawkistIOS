@@ -328,7 +328,7 @@
 
 
 - (IBAction)tapImage:(id)sender {
-    UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: @""
+    UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil
                                                        delegate: self
                                               cancelButtonTitle: @"Cancel"
                                          destructiveButtonTitle: nil

@@ -8,6 +8,7 @@
 
 #import "NetworkManager.h"
 #import "NetworkDecorator.h"
+#import "HWTag.h"
 
 @interface NetworkManager ()
 
@@ -250,7 +251,7 @@
                            
                            NSError* error;
                            NSString* city = responseObject[@"city"];
-                           
+
                            if(error)
                            {
                                failureBlock(error);
@@ -265,7 +266,7 @@
                        }];
 }
 
-- (void) getListOfTags: (void (^)(NSData* city)) successBlock
+- (void) getListOfTags: (void (^)(NSMutableArray * tags)) successBlock
           failureBlock: (void (^)(NSError* error)) failureBlock
 {
     [self.networkDecorator GET: @"tags"
@@ -279,7 +280,15 @@
                            }
                            
                            NSError* error;
-                           NSData* city = responseObject[@"tags"];
+
+                           
+                           NSMutableArray* tags = [NSMutableArray array];
+                           
+                           for (NSDictionary* tag in responseObject[@"tags"])
+                           {
+                                 HWTag* newTag = [[HWTag alloc] initWithDictionary: tag error: &error];
+                                [tags addObject:newTag];
+                           }
                            
                            if(error)
                            {
@@ -287,7 +296,104 @@
                                return;
                            }
                            
-                           successBlock(city);
+                           successBlock(tags);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock(error);
+                       }];
+}
+
+- (void) getItemsWithPage: (NSInteger) page
+             searchString: (NSString*) searchString // can be nil
+             successBlock: (void (^)(NSArray* arrayWithItems, NSInteger page, NSString* searchString)) successBlock
+             failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    if(page < 1)
+        page = 1;
+    [params setObject: @(page) forKey: @"p"];
+    
+    if(searchString && searchString.length > 0)
+    {
+        [params setObject: searchString forKey: @"q"];
+    }
+    
+    [self.networkDecorator GET: @"items"
+                    parameters: params
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                               return;
+                           }
+                           
+                           NSError* error;
+                           NSArray* items = responseObject[@"items"];
+                           
+                           NSMutableArray* arrayWithItems = [NSMutableArray array];
+                           
+                           for (NSDictionary* item in items) {
+                               HWItem* newItem = [[HWItem alloc] initWithDictionary: item error: &error];
+                               if(error)
+                               {
+                                   NSLog(@"Error occured during item entity parsing: %@", error);
+                                   error = nil;
+                               }
+                               else
+                               {
+                                   [arrayWithItems addObject: newItem];
+                               }
+                           }
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(items, page, searchString);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock(error);
+                       }];
+}
+
+- (void) createItem: (HWItem*) item
+       successBlock: (void (^)(HWItem* item)) successBlock
+       failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    if(!item)
+    {
+        NSLog(@"No item to create");
+        failureBlock([NSError errorWithDomain: @"No item to create" code: 101 userInfo: nil]);
+        return;
+    }
+    
+    NSDictionary* params = [item toDictionary];
+    
+    [self.networkDecorator POST: @"items"
+                    parameters: params
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                               return;
+                           }
+                           
+                           NSError* error;
+                           HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(item);
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {

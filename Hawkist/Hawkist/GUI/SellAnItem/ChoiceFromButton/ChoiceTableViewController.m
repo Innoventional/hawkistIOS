@@ -8,6 +8,7 @@
 
 #import "ChoiceTableViewController.h"
 #import "ChoiceCellView.h"
+#import "HWTag.h"
 
 @interface ChoiceTableViewController ()
 
@@ -22,6 +23,8 @@
 {
  
     {
+        
+        
         UIView* v = [[[NSBundle mainBundle]loadNibNamed:@"ChoiceTable" owner:self options:nil]firstObject];
         
          v.frame = self.view.frame;
@@ -45,18 +48,27 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    long index = [items indexOfObject:self.previousSelected];
-    if (index)
+//    long index;//= [items indexOfObject:self.previousSelected];
+//    
+    for (HWTag* tag in items)
     {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [self.table selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-
+        if ([tag.name isEqualToString:self.previousSelected])
+        {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[items indexOfObject:tag] inSection:0];
+            [self.table selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+        }
     }
+   
+    
 }
 
 -(void) leftButtonClick
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.navigationController.viewControllers.count>1)
+        [self.navigationController popViewControllerAnimated:YES];
+    else
+         [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -77,16 +89,43 @@
         cell = [[ChoiceCellView alloc]init];
     }
     
+    HWTag* currentItem = [items objectAtIndex:indexPath.row];
     
-    cell.myLabel.text = [items objectAtIndex:indexPath.row];
+    cell.myLabel.text = currentItem.name;
+    
+    if (!currentItem.children || self.isPlatform)
+        cell.forwardImage.hidden = YES;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.delegate && [self.delegate respondsToSelector: @selector(SelectedItemFrom:WithName:)])
-        [self.delegate SelectedItemFrom:self.sender WithName:[items objectAtIndex:indexPath.row]];
+    HWTag* currentItem = [items objectAtIndex:indexPath.row];
+    
+    
+   if (!currentItem.children|| self.isPlatform)
+   {
+       if (self.delegate && [self.delegate respondsToSelector: @selector(SelectedItemFrom:WithItem:)])
+        [self.delegate SelectedItemFrom:self.sender WithItem:currentItem];
+       [self dismissViewControllerAnimated:YES completion:nil];
+   }
+    else
+    {
+        ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+        
+       
+        v.items = [NSMutableArray arrayWithArray:currentItem.children];
+        
+        v.navigationView.title.text = self.navigationView.title.text;
+        
+        v.delegate = self.delegate;
+        
+        v.sender = self.sender;
+        
+        [self.navigationController pushViewController:v animated:YES];
+
+    }
 }
 
 - (void)viewDidLoad {
