@@ -25,6 +25,9 @@
 
 
 @property (nonatomic,weak) NSArray* tempTagsForCategory;
+
+
+
 @end
 
 @implementation SellAnItemViewController 
@@ -312,6 +315,50 @@ case 8:
 }
 
 - (IBAction)sellAction:(id)sender {
+ 
+    HWItem* currentItem = [[HWItem alloc]init];
+    
+    currentItem.title = titleField.text;
+    currentItem.item_description = descriptionField.text;
+   
+    
+    currentItem.platform = platform.Text.tag;
+    currentItem.category = 30;      //TODO: Why 0?
+    
+    
+    currentItem.subcategory = 33; //category.Text.tag;
+    currentItem.condition = 36;  //condition.Text.tag;
+    currentItem.color  = 40; //color.Text.text;
+    
+    currentItem.retail_price = retailPrice.textField.text;
+    currentItem.selling_price = sellingPrice.textField.text;
+    
+    currentItem.shipping_price = priceForShipping.textField.text;
+    
+    currentItem.collection_only = checkBox2.selected;
+    
+    if (![postField.text isEqualToString:@""])
+    
+    
+    currentItem.post_code = postField.text;
+    if (![postLabel.text isEqualToString:@"Enter post code"])
+        currentItem.city = postLabel.text;
+
+    currentItem.photos = [NSArray arrayWithObjects:@"http://www.thetimes.co.uk/tto/multimedia/archive/00309/108787995_309592c.jpg",nil];
+    
+//    @property (nonatomic, strong) NSString<Optional>* barcode;
+//    @property (nonatomic, strong) NSArray<Optional>* photos;
+    
+    
+    
+    [netManager createItem:currentItem successBlock:^(HWItem *item) {
+        
+        NSLog(@"--------------------------Saved");
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlert:error];
+    }
+     ];
     
 }
 
@@ -563,6 +610,8 @@ case 8:
     
     currentButton.Text.textColor = self.textColor;
     currentButton.Text.text = tag.name;
+    currentButton.Text.tag = tag.id;
+    
 //    
 //    if (sender == color)
 //    {

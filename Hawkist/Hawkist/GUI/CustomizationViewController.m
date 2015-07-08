@@ -3,6 +3,9 @@
 #import "CustomizationViewController.h"
 #import "UIColor+Extensions.h"
 #import "FeedScreenViewController.h"
+
+#import "WantToSellViewController.h"
+
 @interface CustomizationViewController ()
 
 @property (strong, nonatomic) NSArray *name;
@@ -181,7 +184,8 @@
 }
 
 - (IBAction)nextButton:(id)sender {
-    [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
+   // [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
+    [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
 }
 - (IBAction)backButton:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
