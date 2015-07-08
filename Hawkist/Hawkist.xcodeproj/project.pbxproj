@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A2FA2F51B42AA3B00E8B459 /* WantToSellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */; };
 		3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCB1B3813620004A24B /* CustomAlertView.xib */; };
 		3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */; };
 		3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBD31B386FA60004A24B /* SignIn.xib */; };
@@ -22,6 +21,7 @@
 		3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A968E251B4AC43A005AA347 /* WantToSell.xib */; };
 		3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A968E271B4AD819005AA347 /* ChoiceCell.xib */; };
 		3A968E2B1B4AD92B005AA347 /* ChoiceCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E2A1B4AD92B005AA347 /* ChoiceCellView.m */; };
+		3A968E311B4C1188005AA347 /* HWTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E301B4C1188005AA347 /* HWTag.m */; };
 		3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6B8D1B43A0B90076004F /* Navigation.xib */; };
 		3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B901B43A0D90076004F /* NavigationVIew.m */; };
 		3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B941B43A1C40076004F /* SellAnItemViewController.m */; };
@@ -117,6 +117,8 @@
 		3A968E271B4AD819005AA347 /* ChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChoiceCell.xib; path = SellAnItem/ChoiceFromButton/Cell/ChoiceCell.xib; sourceTree = "<group>"; };
 		3A968E291B4AD92B005AA347 /* ChoiceCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChoiceCellView.h; path = SellAnItem/ChoiceFromButton/Cell/ChoiceCellView.h; sourceTree = "<group>"; };
 		3A968E2A1B4AD92B005AA347 /* ChoiceCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChoiceCellView.m; path = SellAnItem/ChoiceFromButton/Cell/ChoiceCellView.m; sourceTree = "<group>"; };
+		3A968E2F1B4C1188005AA347 /* HWTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTag.h; sourceTree = "<group>"; };
+		3A968E301B4C1188005AA347 /* HWTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTag.m; sourceTree = "<group>"; };
 		3ACC6B8D1B43A0B90076004F /* Navigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Navigation.xib; path = NavigationView/Navigation.xib; sourceTree = "<group>"; };
 		3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationVIew.h; path = NavigationView/NavigationVIew.h; sourceTree = "<group>"; };
 		3ACC6B901B43A0D90076004F /* NavigationVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationVIew.m; path = NavigationView/NavigationVIew.m; sourceTree = "<group>"; };
@@ -301,7 +303,7 @@
 			name = ChoiceFromButton;
 			sourceTree = "<group>";
 		};
-3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
+		3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
 			isa = PBXGroup;
 			children = (
 				3ACC6B8D1B43A0B90076004F /* Navigation.xib */,
@@ -499,6 +501,8 @@
 				C35A4C6B1B3036D0002E1F26 /* HWUser.m */,
 				C35CB49D1B4BE91B00956150 /* HWItem.h */,
 				C35CB49E1B4BE91B00956150 /* HWItem.m */,
+				3A968E2F1B4C1188005AA347 /* HWTag.h */,
+				3A968E301B4C1188005AA347 /* HWTag.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -777,6 +781,7 @@
 				C35A4C651B3035D2002E1F26 /* NSURL+Extensions.m in Sources */,
 				3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */,
 				3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */,
+				3A968E311B4C1188005AA347 /* HWTag.m in Sources */,
 				7CF0F9821B455DB30041F58F /* ViewItemViewController.m in Sources */,
 				C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */,
 				C35A4C631B3035D2002E1F26 /* NSDictionary+Extensions.m in Sources */,
