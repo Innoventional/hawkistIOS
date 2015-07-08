@@ -56,18 +56,18 @@
 }
 
 
-//- (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
-//    cell.timeLable.text = [NSString stringWithFormat:@"cell %li",(long)indexPath.row];
-//    return cell;
-//}
+- (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
+    
+    return cell;
+}
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    FeedScreenCollectionViewCell *cell = (FeedScreenCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
-//    NSArray *views = [cell.contentView subviews];
-//    UILabel *label = [views objectAtIndex:0];
-//    NSLog(@"Select %@",label.text);
-//}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    FeedScreenCollectionViewCell *cell = (FeedScreenCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    NSArray *views = [cell.contentView subviews];
+    UILabel *label = [views objectAtIndex:0];
+    NSLog(@"Select %@",label.text);
+}
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(15, 12, 0, 12); // top, left, bottom, right

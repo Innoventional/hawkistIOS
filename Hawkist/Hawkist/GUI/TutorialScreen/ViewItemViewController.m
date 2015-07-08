@@ -8,23 +8,32 @@
 
 #import "ViewItemViewController.h"
 #import "FeedScreenCollectionViewCell.h"
-
+#import "HWItem.h"
+#import "UIImageView+AFNetworking.h"
 @interface ViewItemViewController ()
 
+@property (nonatomic, strong) HWItem* item;
 @end
 
 @implementation ViewItemViewController
- - (instancetype)init
+
+- (instancetype) initWithItem: (HWItem*) item
     {
         self = [super initWithNibName: @"ViewItemViewController" bundle: nil];
         if(self)
         {
-            
+            self.item = item;
         }
         return self;
     }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _starRatingControl.delegate = self;
+    
+    
+    
    self.smallImage1.layer.cornerRadius = 5.0f;
    self.smallImage1.layer.masksToBounds = YES;
     
@@ -39,6 +48,33 @@
     
     self.bigImage.layer.cornerRadius = 5.0f;
     self.bigImage.layer.masksToBounds = YES;
+    
+#pragma mark -
+#pragma mark implementation model user and item
+    
+    self.sellerName.text = self.item.user.username;
+    [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user.avatar] placeholderImage:nil];
+    
+    self.nameOoStuff.text = self.item.title;
+    self.sellerPrice.text = self.item.selling_price;
+    self.oldPrice.text = self.item.retail_price;
+    self.descriptionOfItem.text = self.item.item_description;
+    self.added.text = self.item.created_at;
+    //self.platform.text = self.item.platform;
+    //self.condition = self.item.condition;
+    //self.category = self.item.category;
+    self.colour.text = self.item.color;
+    self.delivery.text = self.item.shipping_price;
+    self.discount.text = self.item.discount;
+    //self.counts.text = self.item.
+    
+    [self.smallImage1 setImageWithURL: [NSURL URLWithString: self.item.user.avatar] placeholderImage:nil];
+    
+    
+    
+    
+    
+    
     
     
     self.sellerAvatar.layer.cornerRadius = self.sellerAvatar.frame.size.height /2;
@@ -64,6 +100,7 @@
 //                         action:@selector(segmentChanged:)
 //               forControlEvents:UIControlEventValueChanged];
 //    [self.itemUser addSubview:segmentedControl];
+   
     [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
@@ -92,7 +129,6 @@
 
 - (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
-    cell.timeLable.text = [NSString stringWithFormat:@"cell %li",(long)indexPath.row];
     return cell;
 }
 
@@ -131,10 +167,16 @@
    
 }
 
-
-
 - (IBAction)buyButton:(id)sender {
 }
+
+
 - (IBAction)askButton:(id)sender {
 }
+
+
+
+
+
+
 @end
