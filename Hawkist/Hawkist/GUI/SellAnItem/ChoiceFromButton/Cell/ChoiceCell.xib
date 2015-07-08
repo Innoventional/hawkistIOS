@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChoiceCellView">
             <connections>
+                <outlet property="forwardImage" destination="Ld0-TI-PF5" id="2TR-8g-aRB"/>
                 <outlet property="myLabel" destination="Wk7-Lh-7M6" id="G5m-PG-S8S"/>
             </connections>
         </placeholder>
@@ -25,6 +26,14 @@
                     <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="Ld0-TI-PF5">
+                    <rect key="frame" x="296" y="8" width="15" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="3N4-d0-jvX"/>
+                        <constraint firstAttribute="width" constant="15" id="70u-xX-yyI"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="AAe-Nf-obO"/>
+                    </constraints>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQd-fC-fN5">
                     <rect key="frame" x="0.0" y="29" width="320" height="1"/>
                     <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
@@ -34,15 +43,20 @@
                 </view>
             </subviews>
             <constraints>
+                <constraint firstAttribute="centerY" secondItem="Ld0-TI-PF5" secondAttribute="centerY" id="1JN-1C-Ki0"/>
                 <constraint firstAttribute="trailing" secondItem="KQd-fC-fN5" secondAttribute="trailing" id="2ol-po-zq5"/>
                 <constraint firstItem="Wk7-Lh-7M6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="417-Lb-zRw"/>
                 <constraint firstItem="KQd-fC-fN5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Luw-qC-TRk"/>
                 <constraint firstAttribute="trailing" secondItem="Wk7-Lh-7M6" secondAttribute="trailing" constant="20" id="Zsb-WD-k8e"/>
                 <constraint firstAttribute="bottom" secondItem="KQd-fC-fN5" secondAttribute="bottom" id="mfh-Pl-dpa"/>
+                <constraint firstAttribute="trailing" secondItem="Ld0-TI-PF5" secondAttribute="trailing" constant="9" id="q3P-GS-6Zf"/>
                 <constraint firstAttribute="centerY" secondItem="Wk7-Lh-7M6" secondAttribute="centerY" id="y3O-9j-X04"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="364" y="267.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="forward" width="8" height="14"/>
+    </resources>
 </document>

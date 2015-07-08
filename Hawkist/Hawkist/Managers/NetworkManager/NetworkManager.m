@@ -8,6 +8,7 @@
 
 #import "NetworkManager.h"
 #import "NetworkDecorator.h"
+#import "HWTag.h"
 
 @interface NetworkManager ()
 
@@ -250,7 +251,7 @@
                            
                            NSError* error;
                            NSString* city = responseObject[@"city"];
-                           
+
                            if(error)
                            {
                                failureBlock(error);
@@ -265,7 +266,7 @@
                        }];
 }
 
-- (void) getListOfTags: (void (^)(NSData* city)) successBlock
+- (void) getListOfTags: (void (^)(NSMutableArray * tags)) successBlock
           failureBlock: (void (^)(NSError* error)) failureBlock
 {
     [self.networkDecorator GET: @"tags"
@@ -279,7 +280,15 @@
                            }
                            
                            NSError* error;
-                           NSData* city = responseObject[@"tags"];
+
+                           
+                           NSMutableArray* tags = [NSMutableArray array];
+                           
+                           for (NSDictionary* tag in responseObject[@"tags"])
+                           {
+                                 HWTag* newTag = [[HWTag alloc] initWithDictionary: tag error: &error];
+                                [tags addObject:newTag];
+                           }
                            
                            if(error)
                            {
@@ -287,7 +296,7 @@
                                return;
                            }
                            
-                           successBlock(city);
+                           successBlock(tags);
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {

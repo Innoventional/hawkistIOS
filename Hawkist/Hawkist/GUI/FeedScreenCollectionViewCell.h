@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWItem.h"
+
 
 @interface FeedScreenCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, strong) HWItem *item;
 
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImage;
 

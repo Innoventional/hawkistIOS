@@ -20,6 +20,11 @@
 @property (nonatomic, strong) UIColor *placeHolderColor;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic,weak) NetworkManager* netManager;
+@property (nonatomic,strong) NSMutableArray* tags;
+
+
+
+@property (nonatomic,weak) NSArray* tempTagsForCategory;
 @end
 
 @implementation SellAnItemViewController 
@@ -83,6 +88,7 @@
 //        [self registerForKeyboardNotifications];
         
         [self initDefault];
+        [self downloadData];
         
     }
     return self;
@@ -130,6 +136,21 @@
     
 
     
+}
+
+
+- (void) downloadData
+{
+    [netManager getListOfTags:^(NSMutableArray *tags) {
+        
+        
+        self.tags = tags;
+        
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlert:error];
+    }];
+
 }
 
 - (void) showAlert: (NSError*)error
@@ -199,8 +220,11 @@ case 8:
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     
-    if (textField == postField && textField.text.length>0)
+    if (textField == postField)
     {
+        
+       if (textField.text.length>0)
+       {
         [self showHud];
         [netManager getCityByPostCode:textField.text successBlock:^(NSString *city) {
             [self hideHud];
@@ -211,7 +235,15 @@ case 8:
             [self hideHud];
             [self showAlert:error];
         }];
+        }
+        else
+        {
+            postLabel.text = @"Enter post code";
+        }
     }
+    
+    
+    
     return YES;
 }
 
@@ -280,19 +312,12 @@ case 8:
 }
 
 - (IBAction)sellAction:(id)sender {
-    [netManager getListOfTags:^(NSData *city) {
-        
-        
-    } failureBlock:^(NSError *error) {
-        
-        
-    }];
-
+    
 }
 
 - (IBAction)imageClick:(id)sender {
     
-    UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: @""
+    UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil
                                                        delegate: self
                                               cancelButtonTitle: @"Cancel"
                                          destructiveButtonTitle: nil
@@ -398,46 +423,128 @@ case 8:
 - (void) selectAction:sender
 {
  
-    if (sender == color)
+        if (sender == color)
     {
+        UINavigationController* navigationController = [[UINavigationController alloc]init];
         
+   
         
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+//        
+//        v.items = [NSMutableArray arrayWithObjects:@"Black",@"White",@"Red",@"Blue",@"Green",@"Orange",@"Yellow",@"Purple",@"Not Applicable",nil];
         
-        v.items = [NSMutableArray arrayWithObjects:@"Black",@"White",@"Red",@"Blue",@"Green",@"Orange",@"Yellow",@"Purple",@"Not Applicable",nil];
+        for (HWTag* tag in self.tags)
+        {
+            if ([tag.name isEqualToString:@"colour"])
+            {
+                v.items = [NSMutableArray arrayWithArray:tag.children];
+//                
+//                    for (HWTags* nameColor in tag.children)
+//                    {
+//                        [v.items addObject:nameColor];
+//                    }
+            }
+        }
         
        v.navigationView.title.text = @"Choice Color";
         v.delegate = self;
         v.sender = sender;
         
-        if (![color.Text.text isEqualToString:@"Select a Colour"])
-        {
-            v.previousSelected = color.Text.text;
-        }
+        [navigationController pushViewController:v animated:NO];
         
-        [self presentViewController:v animated:YES completion:nil];
+        navigationController.navigationBarHidden = YES;
+        [self presentViewController:navigationController animated:YES completion:nil];
         
     }
     
     if (sender == condition)
     {
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+        UINavigationController* navigationController = [[UINavigationController alloc]init];
+
+//        v.items = [NSMutableArray arrayWithObjects:@"Brand New in Box",@"Like New",@"Used",@"Refurbished",@"Not Working or Parts Only",nil];
         
-        v.items = [NSMutableArray arrayWithObjects:@"Brand New in Box",@"Like New",@"Used",@"Refurbished",@"Not Working or Parts Only",nil];
-        
+        for (HWTag* tag in self.tags)
+        {
+            if ([tag.name isEqualToString:@"condition"])
+            {
+                v.items = [NSMutableArray arrayWithArray:tag.children];
+            }
+
+        }
         v.navigationView.title.text = @"Choice Condition";
         v.delegate = self;
         v.sender = sender;
-        if (![condition.Text.text isEqualToString:@"Select a Condition"])
-        {
-            v.previousSelected = condition.Text.text;
-        }
-
+            
+        [navigationController pushViewController:v animated:NO];
+        navigationController.navigationBarHidden = YES;
         
-        [self presentViewController:v animated:YES completion:nil];
+        [self presentViewController:navigationController animated:YES completion:nil];
+        
+        
+        }
+    
+    if (sender == platform)
+    {
+        UINavigationController* navigationController = [[UINavigationController alloc]init];
+        
+
+        ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+        
+        for (HWTag* tag in self.tags)
+        {
+            if ([tag.name isEqualToString:@"platform"])
+            {
+                v.items = [NSMutableArray arrayWithArray:tag.children];
+            }
+            
+        }
+        v.navigationView.title.text = @"Choice Platform";
+        v.delegate = self;
+        v.sender = sender;
+        
+      
+        [navigationController pushViewController:v animated:NO];
+        navigationController.navigationBarHidden = YES;
+        v.isPlatform = YES;
+        
+        [self presentViewController:navigationController animated:YES completion:nil];
+        
+
+    }
+    
+    if (sender == category)
+    {
+        UINavigationController* navigationController = [[UINavigationController alloc]init];
+        
+        
+        ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+        
+//        for (HWTag* tag in self.tags)
+//        {
+//            if ([tag.name isEqualToString:@"category"])
+//            {
+//                v.items = [NSMutableArray arrayWithArray:tag.children];
+//            }
+//            
+//        }
+        
+        v.items = self.tempTagsForCategory;
+        v.navigationView.title.text = @"Choice Category";
+        v.delegate = self;
+        v.sender = sender;
+        
+        
+        [navigationController pushViewController:v animated:NO];
+        navigationController.navigationBarHidden = YES;
+        
+        [self presentViewController:navigationController animated:YES completion:nil];
+        
         
     }
+    
 }
+
 
 - (void) moneyField:(id)sender ModifyTo:(NSString *)value
 {
@@ -449,19 +556,36 @@ case 8:
     }
 }
 
-- (void) SelectedItemFrom:(id)sender WithName:(NSString *)name
+- (void) SelectedItemFrom:(id)sender WithItem:(HWTag *)tag
 {
-    if (sender == color)
-    {
-        color.Text.textColor = self.textColor;
-        color.Text.text = name;
-    }
     
-    if (sender == condition)
+    CustomButton* currentButton = (CustomButton*)sender;
+    
+    currentButton.Text.textColor = self.textColor;
+    currentButton.Text.text = tag.name;
+//    
+//    if (sender == color)
+//    {
+//        color.Text.textColor = self.textColor;
+//        color.Text.text = tag.name;
+//    }
+//    
+//    if (sender == condition)
+//    {
+//        condition.Text.textColor = self.textColor;
+//        condition.Text.text = tag.name;
+//    }
+//    
+    if (sender == platform)
     {
-        condition.Text.textColor = self.textColor;
-        condition.Text.text = name;
+        platform.Text.textColor = self.textColor;
+        platform.Text.text = tag.name;
+        
+        self.tempTagsForCategory = tag.children;
+        category.Text.textColor = self.placeHolderColor;
+        category.Text.text = @"Select Category";
     }
+
 }
 
 

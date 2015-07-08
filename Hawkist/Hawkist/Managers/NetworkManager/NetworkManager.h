@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "HWTag.h"
 
 @interface NetworkManager : NSObject
 
@@ -55,7 +55,7 @@
               successBlock: (void (^)(NSString* city)) successBlock
               failureBlock: (void (^)(NSError* error)) failureBlock;
 
-- (void) getListOfTags: (void (^)(NSData* city)) successBlock
+- (void) getListOfTags: (void (^)(NSMutableArray* tags)) successBlock
           failureBlock: (void (^)(NSError* error)) failureBlock;
 
 // get all items at page with search string
