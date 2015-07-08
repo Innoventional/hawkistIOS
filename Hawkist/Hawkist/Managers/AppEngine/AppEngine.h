@@ -11,6 +11,8 @@
 @interface AppEngine : NSObject
 @property (nonatomic,strong) HWUser* user;
 @property (nonatomic, strong) NSString* pin;
+@property (nonatomic,strong) NSMutableArray* tags;
+
 + (instancetype) shared;
 
 // Returns YES if application is launching first time

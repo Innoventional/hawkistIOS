@@ -12,6 +12,7 @@
 #import "Masonry.h"
 #import "ChoiceTableViewController.h"
 #import "NetworkManager.h"
+#import "AppEngine.h"
 
 @interface SellAnItemViewController ()
 
@@ -25,6 +26,7 @@
 
 
 @property (nonatomic,weak) NSArray* tempTagsForCategory;
+@property (nonatomic,assign) int idCategory;
 
 
 
@@ -144,15 +146,19 @@
 
 - (void) downloadData
 {
-    [netManager getListOfTags:^(NSMutableArray *tags) {
-        
-        
-        self.tags = tags;
-        
-    } failureBlock:^(NSError *error) {
-        
-        [self showAlert:error];
-    }];
+//    [netManager getListOfTags:^(NSMutableArray *tags) {
+//        
+//        
+//        self.tags = tags;
+//        
+//    } failureBlock:^(NSError *error) {
+//        
+//        [self showAlert:error];
+//    }];
+//
+    
+    AppEngine* engine = [AppEngine shared];
+    self.tags = engine.tags;
 
 }
 
@@ -323,7 +329,7 @@ case 8:
    
     
     currentItem.platform = platform.Text.tag;
-    currentItem.category = 30;      //TODO: Why 0?
+    currentItem.category = self.idCategory;      //TODO: Why 0?
     
     
     currentItem.subcategory = category.Text.tag;
@@ -576,7 +582,7 @@ case 8:
 //            
 //        }
         
-        v.items = self.tempTagsForCategory;
+        v.items = [NSMutableArray arrayWithArray:self.tempTagsForCategory];
         v.navigationView.title.text = @"Choice Category";
         v.delegate = self;
         v.sender = sender;
@@ -608,6 +614,8 @@ case 8:
     
     CustomButton* currentButton = (CustomButton*)sender;
     
+    
+    
     currentButton.Text.textColor = self.textColor;
     currentButton.Text.text = tag.name;
     currentButton.Text.tag = [tag.id integerValue];
@@ -624,7 +632,16 @@ case 8:
 //        condition.Text.textColor = self.textColor;
 //        condition.Text.text = tag.name;
 //    }
-//    
+//
+    
+    
+    if (sender == category&& category.isFirstSelection)
+    {
+            self.idCategory = [tag.id intValue];
+            category.isFirstSelection = NO;
+        
+    }
+    
     if (sender == platform)
     {
         platform.Text.textColor = self.textColor;
@@ -633,6 +650,8 @@ case 8:
         self.tempTagsForCategory = tag.children;
         category.Text.textColor = self.placeHolderColor;
         category.Text.text = @"Select Category";
+        category.isFirstSelection = YES;
+        
     }
 
 }

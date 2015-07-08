@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *Title;
 @property (weak, nonatomic) IBOutlet UIImageView *img;
 @property (weak,nonatomic) id <CustomButtonDelegate> delegate;
-
+@property (assign,nonatomic) BOOL isFirstSelection;
 
 - (IBAction)tapAction:(id)sender;
 

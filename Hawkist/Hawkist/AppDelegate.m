@@ -10,6 +10,8 @@
 #import "LoginViewController.h"
 #import "AccountDetailViewController.h"
 #import "WantToSellViewController.h"
+#import "AppEngine.h"
+#import "NetworkManager.h"
 #import "Heap.h"
 
 
@@ -23,6 +25,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    NetworkManager* manager = [NetworkManager shared];
+    AppEngine* engine = [AppEngine shared];
+    
+  [manager getListOfTags:^(NSMutableArray *tags) {
+        
+      engine.tags = tags;
+      
+    } failureBlock:^(NSError *error) {
+        NSLog(@"----------Can't get Tags -------");
+        
+    }];
     
     
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

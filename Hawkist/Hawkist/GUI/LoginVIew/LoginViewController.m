@@ -512,8 +512,8 @@
         
         _engine.number = _txtMobileNum.text;
         _engine.pin = _txtPin.text;
-        [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-        
+//        [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+         [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
     [self showAlert:error];
     }];
