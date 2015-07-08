@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "UIColor+Extensions.h"
+#import "HWBaseViewController.h"
+#import "NavigationVIew.h"
+#import "HWItem.h"
+#import "StarRatingControl.h"
 
-@interface ViewItemViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate>
+@interface ViewItemViewController : HWBaseViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate,StarRatingDelegate>
+
+// custom init
+- (instancetype) initWithItem: (HWItem*) item;
+
+
+@property (weak) IBOutlet StarRatingControl *starRatingControl;
+
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIView *itemUser;
@@ -21,8 +32,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *smallImage2;
 @property (strong, nonatomic) IBOutlet UIImageView *smallImage3;
 @property (strong, nonatomic) IBOutlet UIImageView *smallImage4;
-
-@property (nonatomic,strong) NSArray *picArray;
 
 @property (strong, nonatomic) IBOutlet UILabel *nameOoStuff;
 
@@ -46,5 +55,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *delivery;
 @property (strong, nonatomic) IBOutlet UILabel *counts;
 @property (strong, nonatomic) IBOutlet UILabel *comments;
+@property (strong, nonatomic) IBOutlet UILabel *category;
+@property (strong, nonatomic) IBOutlet UITextField *discount;
 
 @end
