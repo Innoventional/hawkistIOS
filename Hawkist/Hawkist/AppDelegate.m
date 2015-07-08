@@ -13,7 +13,7 @@
 #import "AppEngine.h"
 #import "NetworkManager.h"
 #import "Heap.h"
-
+#import "ViewItemViewController.h"
 
 @interface AppDelegate ()
 @property (nonatomic,strong) LoginViewController* viewController;

@@ -7,8 +7,11 @@
 //
 #import <QuartzCore/QuartzCore.h>
 #import "FeedScreenViewController.h"
+#import "ViewItemViewController.h"
 
 @interface FeedScreenViewController ()
+
+@property (nonatomic, assign) NSInteger currentPage;
 
 @end
 
@@ -19,7 +22,7 @@
     self = [super initWithNibName: @"FeedScreenViewController" bundle: nil];
     if(self)
     {
-        
+        self.items = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -33,7 +36,12 @@
     self.searchView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundSearch"]];
     [self.searchField setValue:[UIColor colorWithRed:189.0/255.0 green:215.0/255.0 blue:211.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
     
-    
+    [[NetworkManager shared] getItemsWithPage: self.currentPage + 1 searchString: nil successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+        [self.items addObjectsFromArray: arrayWithItems];
+        [self.collectionView reloadData];
+    } failureBlock:^(NSError *error) {
+        
+    }];
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -52,27 +60,30 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 2;
+    return self.items.count;
 }
 
 
 - (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
+    cell.item = [self.items objectAtIndex: indexPath.row];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    FeedScreenCollectionViewCell *cell = (FeedScreenCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    NSArray *views = [cell.contentView subviews];
-    UILabel *label = [views objectAtIndex:0];
-    NSLog(@"Select %@",label.text);
+    ViewItemViewController* vc = [[ViewItemViewController alloc] initWithItem: [self.items objectAtIndex: indexPath.row]];
+    [self.navigationController pushViewController: vc animated: YES];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(15, 12, 0, 12); // top, left, bottom, right
+    return UIEdgeInsetsMake(15, 12, 15, 12); // top, left, bottom, right
 }
 
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 10.0;
+}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
