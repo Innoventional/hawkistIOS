@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HWItem.h"
-
+#import "HWUser.h"
 
 @interface FeedScreenCollectionViewCell : UICollectionViewCell
 
@@ -21,7 +21,7 @@
 @property (strong, nonatomic) NSMutableArray *items;
 
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
-@property (strong, nonatomic) IBOutlet UITextField *skidkaTextfield;
+@property (strong, nonatomic) IBOutlet UILabel *skidkaTextfield;
 
 @property (strong, nonatomic) IBOutlet UILabel *sellItemLabel;
 

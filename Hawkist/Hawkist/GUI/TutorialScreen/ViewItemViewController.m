@@ -47,6 +47,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationView.title.text = @"View Item";
+    
     _starRatingControl.delegate = self;
     
 
@@ -70,7 +72,7 @@
 #pragma mark -
 #pragma mark implementation model user and item
     
-    [self updateItem];
+    //[self updateItem];
     self.sellerAvatar.layer.cornerRadius = self.sellerAvatar.frame.size.height /2;
     self.sellerAvatar.layer.masksToBounds = YES;
     self.sellerAvatar.layer.borderWidth = 0;
@@ -99,14 +101,17 @@
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
     self.navigationView.delegate = self;
+    
+    
 }
 
 - (void) updateItem
 {
-    self.sellerName.text = self.item.user.username;
-    [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user.avatar] placeholderImage:nil];
+    self.sellerName.text = self.item.user_username;
+    [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user_avatar] placeholderImage:nil];
     
     self.nameOoStuff.text = self.item.title;
+
     self.sellerPrice.text = self.item.selling_price;
     self.oldPrice.text = self.item.retail_price;
     self.descriptionOfItem.text = self.item.item_description;
@@ -133,10 +138,10 @@
     [self.smallImage4 setImageWithURL: [NSURL URLWithString: self.item.barcode] placeholderImage:nil];
 }
 
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    return YES;
-}
+//-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+//{
+//    return YES;
+//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

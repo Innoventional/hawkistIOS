@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FeedScreenCollectionViewCell.h"
 #import "UIColor+Extensions.h"
+#import "HWBaseViewController.h"
 
-@interface FeedScreenViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate>
+@interface FeedScreenViewController : HWBaseViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
