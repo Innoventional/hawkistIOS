@@ -20,5 +20,6 @@
 @property (nonatomic, strong) NSString<Optional>* facebook_id;
 @property (nonatomic, strong) NSString* id;
 @property (nonatomic, strong) NSString<Optional>* thumbnail;
+@property (nonatomic, assign) BOOL first_login;
 
 @end

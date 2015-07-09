@@ -38,9 +38,10 @@
 
 - (void) createSubviews
 {
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor color256RGBWithRed: 50 green: 54 blue: 62];
     self.contentView = [[UIView alloc] init];
     self.contentView.backgroundColor = [UIColor clearColor];
+    [self addSubview: self.contentView];
     
     for (NSInteger index = 1; index <= self.arrayWithNormalIcons.count; index++)
     {
@@ -51,6 +52,7 @@
         [button addTarget: self action: @selector(itemSelected:) forControlEvents: UIControlEventTouchUpInside];
         button.tag = index;
         [self.items addObject: button];
+        [self addSubview: button];
     }
 }
 
@@ -69,7 +71,9 @@
 
 - (void) addContentView: (UIView*) view
 {
+    [self.contentView removeFromSuperview];
     self.contentView = view;
+    [self addSubview: self.contentView];
     [self setNeedsLayout];
 }
 
@@ -91,7 +95,7 @@
     for (UIButton* button in self.items) {
         if(button.tag == index)
         {
-            button.backgroundColor = [UIColor color256RGBWithRed: 63 green: 184 blue: 62];
+            button.backgroundColor = [UIColor color256RGBWithRed: 63 green: 184 blue: 165];
             [button setSelected: YES];
         }
         else

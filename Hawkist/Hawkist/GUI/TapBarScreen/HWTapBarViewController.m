@@ -54,6 +54,7 @@
 {
     if(self.currentSelectedItem == index)
         return;
+    self.currentSelectedItem = index;
     switch (index) {
         case 1:
         {
