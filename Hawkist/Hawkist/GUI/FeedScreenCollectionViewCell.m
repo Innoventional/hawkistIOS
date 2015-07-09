@@ -27,7 +27,12 @@
     [self.avatarImage setImageWithURL: [NSURL URLWithString: self.item.user_avatar] placeholderImage:nil];
     
     
-    self.skidkaTextfield.text = self.item.discount;
+    //self.skidkaTextfield.text = self.item.discount;
+    if (self.item.discount) {
+        self.skidkaTextfield.text = self.item.discount;
+    } else {
+        self.skidkaTextfield.text = @"0";
+    }
     self.sellItemLabel.text = self.item.title;
     self.currentPriceLable.text = self.item.selling_price;
     self.oldPriceLable.text = self.item.retail_price;
@@ -40,16 +45,7 @@
 
 - (void)awakeFromNib {
     
-     
-    
-
-    
-    
-    
-    
-    
-    
-    
+         
     self.backgroundColor = [UIColor whiteColor];
     self.itemImage.layer.cornerRadius = 5.0f;
     self.itemImage.layer.masksToBounds = YES;
@@ -61,10 +57,6 @@
     self.avatarImage.layer.borderWidth = 0;
     
    
-    
-   
-   
-    
     
     
 }
