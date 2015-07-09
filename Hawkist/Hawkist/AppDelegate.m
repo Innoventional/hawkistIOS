@@ -10,8 +10,11 @@
 #import "LoginViewController.h"
 #import "AccountDetailViewController.h"
 #import "WantToSellViewController.h"
+#import "AppEngine.h"
+#import "NetworkManager.h"
 #import "Heap.h"
 #import "ViewItemViewController.h"
+#import "FeedScreenViewController.h"
 
 @interface AppDelegate ()
 @property (nonatomic,strong) LoginViewController* viewController;
@@ -25,11 +28,24 @@
     // Override point for customization after application launch.
     
     
+    NetworkManager* manager = [NetworkManager shared];
+    AppEngine* engine = [AppEngine shared];
+    
+  [manager getListOfTags:^(NSMutableArray *tags) {
+        
+      engine.tags = tags;
+      
+    } failureBlock:^(NSError *error) {
+        NSLog(@"----------Can't get Tags -------");
+        
+    }];
+    
+    
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.rootViewController = [[UINavigationController alloc] init];
     
-   [self.rootViewController pushViewController:[[LoginViewController alloc] init]  animated: NO];
-      //[self.rootViewController pushViewController:[[ViewItemViewController alloc] init]  animated: NO];
+   [self.rootViewController pushViewController:[[FeedScreenViewController alloc] init]  animated: NO];
+   //   [self.rootViewController pushViewController:[[WantToSellViewController alloc] init]  animated: NO];
     self.rootViewController.navigationBarHidden = YES;
         self.window.rootViewController = self.rootViewController;
     

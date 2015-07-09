@@ -12,6 +12,9 @@
 #import "Masonry.h"
 #import "ChoiceTableViewController.h"
 #import "NetworkManager.h"
+#import "AppEngine.h"
+
+#import "AWSS3Manager.h"
 
 @interface SellAnItemViewController ()
 
@@ -22,9 +25,19 @@
 @property (nonatomic,weak) NetworkManager* netManager;
 @property (nonatomic,strong) NSMutableArray* tags;
 
+@property (nonatomic,weak) AWSS3Manager* awsManager;
 
 
 @property (nonatomic,weak) NSArray* tempTagsForCategory;
+@property (nonatomic,assign) int idCategory;
+
+@property (nonatomic,weak)NSString* barUrl;
+@property (nonatomic,weak)NSString* img1Url;
+@property (nonatomic,weak)NSString* img2Url;
+@property (nonatomic,weak)NSString* img3Url;
+
+
+
 @end
 
 @implementation SellAnItemViewController 
@@ -50,12 +63,15 @@
 @synthesize selectedImage;
 @synthesize youGetLabel;
 @synthesize netManager;
+@synthesize awsManager;
 
 - (instancetype) init
 {
     if (self = [super init])
     {
         netManager = [NetworkManager shared];
+        
+        awsManager = [AWSS3Manager shared];
         
         UIView* v = [[[NSBundle mainBundle]loadNibNamed:@"SellAnItem" owner:self options:nil]firstObject];
         
@@ -141,15 +157,19 @@
 
 - (void) downloadData
 {
-    [netManager getListOfTags:^(NSMutableArray *tags) {
-        
-        
-        self.tags = tags;
-        
-    } failureBlock:^(NSError *error) {
-        
-        [self showAlert:error];
-    }];
+//    [netManager getListOfTags:^(NSMutableArray *tags) {
+//        
+//        
+//        self.tags = tags;
+//        
+//    } failureBlock:^(NSError *error) {
+//        
+//        [self showAlert:error];
+//    }];
+//
+    
+    AppEngine* engine = [AppEngine shared];
+    self.tags = engine.tags;
 
 }
 
@@ -312,6 +332,50 @@ case 8:
 }
 
 - (IBAction)sellAction:(id)sender {
+ 
+    HWItem* currentItem = [[HWItem alloc]init];
+    
+    currentItem.title = titleField.text;
+    currentItem.item_description = descriptionField.text;
+   
+    
+    currentItem.platform = platform.Text.tag;
+    currentItem.category = self.idCategory;      //TODO: Why 0?
+    
+    
+    currentItem.subcategory = category.Text.tag;
+    currentItem.condition = condition.Text.tag;
+    currentItem.color  = color.Text.tag;
+    
+    currentItem.retail_price = retailPrice.textField.text;
+    currentItem.selling_price = sellingPrice.textField.text;
+    
+    currentItem.shipping_price = priceForShipping.textField.text;
+    
+    currentItem.collection_only = checkBox2.selected;
+    
+    if (![postField.text isEqualToString:@""])
+    
+    
+    currentItem.post_code = postField.text;
+    if (![postLabel.text isEqualToString:@"Enter post code"])
+        currentItem.city = postLabel.text;
+
+    currentItem.photos = [NSArray arrayWithObjects:@"http://www.thetimes.co.uk/tto/multimedia/archive/00309/108787995_309592c.jpg",nil];
+    
+//    @property (nonatomic, strong) NSString<Optional>* barcode;
+//    @property (nonatomic, strong) NSArray<Optional>* photos;
+    
+    
+    
+    [netManager createItem:currentItem successBlock:^(HWItem *item) {
+        
+        NSLog(@"--------------------------Saved");
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlert:error];
+    }
+     ];
     
 }
 
@@ -388,23 +452,55 @@ case 8:
             case 1:
         {
             barCode.image = selImage;
-                break;
+
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempBar"]];
+            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
+            
+            
+            
+            
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
+                               successBlock:^(NSString *fileURL) {
+                                   self.barUrl = fileURL;
+                
+            }
+                               failureBlock:^(NSError *error) {
+                
+                                   NSLog(@"%@",error);
+            }
+                              progressBlock:^(CGFloat progress) {
+                
+                                  NSLog(@"%f",progress);
+            }];
+            break;
         }
         case 2:
         {
          
             takePic1.image = selImage;
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic1"]];
+            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
+
             break;
         }
         case 3:
         {
             
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic2"]];
+            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
+
             takePic2.image = selImage;
             break;
         }
         case 4:
         {
-            
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic3"]];
+            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
+
             takePic3.image = selImage;
             break;
         }
@@ -529,7 +625,7 @@ case 8:
 //            
 //        }
         
-        v.items = self.tempTagsForCategory;
+        v.items = [NSMutableArray arrayWithArray:self.tempTagsForCategory];
         v.navigationView.title.text = @"Choice Category";
         v.delegate = self;
         v.sender = sender;
@@ -561,8 +657,12 @@ case 8:
     
     CustomButton* currentButton = (CustomButton*)sender;
     
+    
+    
     currentButton.Text.textColor = self.textColor;
     currentButton.Text.text = tag.name;
+    currentButton.Text.tag = [tag.id integerValue];
+    
 //    
 //    if (sender == color)
 //    {
@@ -575,7 +675,16 @@ case 8:
 //        condition.Text.textColor = self.textColor;
 //        condition.Text.text = tag.name;
 //    }
-//    
+//
+    
+    
+    if (sender == category&& category.isFirstSelection)
+    {
+            self.idCategory = [tag.id intValue];
+            category.isFirstSelection = NO;
+        
+    }
+    
     if (sender == platform)
     {
         platform.Text.textColor = self.textColor;
@@ -584,6 +693,8 @@ case 8:
         self.tempTagsForCategory = tag.children;
         category.Text.textColor = self.placeHolderColor;
         category.Text.text = @"Select Category";
+        category.isFirstSelection = YES;
+        
     }
 
 }

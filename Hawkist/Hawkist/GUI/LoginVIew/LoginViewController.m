@@ -12,6 +12,7 @@
 #import "AccountDetailViewController.h"
 #import "TutorialViewController.h"
 #import "SocialManager.h"
+#import "WantToSellViewController.h"
 
 @interface LoginViewController ()
 
@@ -387,8 +388,8 @@
             _engine.user = user;
                 _accountDetailVC= [[AccountDetailViewController alloc]init];
             _accountDetailVC.isLogeedWithFacebook = YES;
-            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-            
+           // [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+                [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
         } failureBlock:^(NSError *error) {
             [self showAlert:error];
         }];
@@ -511,8 +512,8 @@
         
         _engine.number = _txtMobileNum.text;
         _engine.pin = _txtPin.text;
-        [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-        
+//        [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+         [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
     [self showAlert:error];
     }];

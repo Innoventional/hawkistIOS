@@ -13,10 +13,22 @@
 #import "HWItem.h"
 #import "StarRatingControl.h"
 
-@interface ViewItemViewController : HWBaseViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate,StarRatingDelegate>
+@interface ViewItemViewController : HWBaseViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate,StarRatingDelegate,NavigationViewDelegate>
 
 // custom init
 - (instancetype) initWithItem: (HWItem*) item;
+
+
+
+
+@property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
+
+
+
+
+
+
+
 
 @property (nonatomic,strong) NSMutableArray *items;
 

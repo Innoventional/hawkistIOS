@@ -124,6 +124,8 @@
         v.sender = self.sender;
         
         [self.navigationController pushViewController:v animated:YES];
+        if (self.delegate && [self.delegate respondsToSelector: @selector(SelectedItemFrom:WithItem:)])
+            [self.delegate SelectedItemFrom:self.sender WithItem:currentItem];
 
     }
 }

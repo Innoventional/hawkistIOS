@@ -31,4 +31,6 @@
 
 
 @property (assign,nonatomic)BOOL isPlatform;
+
+
 @end
