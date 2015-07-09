@@ -7,8 +7,18 @@
 //
 
 #import "HWTapBarViewController.h"
+#import "HWTapBarView.h"
+#import "FeedScreenViewController.h"
+#import "WantToSellViewController.h"
 
-@interface HWTapBarViewController ()
+@interface HWTapBarViewController () <HWTapBarViewDelegate>
+
+@property (nonatomic, strong) HWTapBarView* contentView;
+@property (nonatomic, assign) NSInteger currentSelectedItem;
+
+// view controllers
+@property (nonatomic, strong) FeedScreenViewController* feedVC;
+@property (nonatomic, strong) WantToSellViewController* sellVC;
 
 @end
 
@@ -16,7 +26,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.contentView = [[HWTapBarView alloc] initWithFrame: self.view.bounds];
+    self.contentView.delegate = self;
+    [self.view addSubview: self.contentView];
+    [self.contentView markSelected: 1];
+    
+    self.feedVC = [[FeedScreenViewController alloc] init];
+    [self addChildViewController: self.feedVC];
+    self.sellVC = [[WantToSellViewController alloc] init];
+    [self addChildViewController: self.sellVC];
+    
+    [self.contentView addContentView: self.feedVC.view];
+    
+    self.currentSelectedItem = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +47,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark -
+#pragma mark HWTapBarViewDelegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) itemAtIndexSelected:(NSInteger)index
+{
+    if(self.currentSelectedItem == index)
+        return;
+    switch (index) {
+        case 1:
+        {
+            [self.contentView addContentView: self.feedVC.view];
+            break;
+        }
+        case 2:
+        {
+            [self.contentView addContentView: self.sellVC.view];
+            break;
+        }
+        default:
+            break;
+    }
 }
-*/
 
 @end

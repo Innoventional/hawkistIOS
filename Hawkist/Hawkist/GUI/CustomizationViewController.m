@@ -6,6 +6,8 @@
 
 #import "WantToSellViewController.h"
 
+#import "HWTapBarViewController.h"
+
 @interface CustomizationViewController ()
 
 @property (strong, nonatomic) NSArray *name;
@@ -184,7 +186,7 @@
 }
 
 - (IBAction)nextButton:(id)sender {
-    [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
+    [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
 
 }
 - (IBAction)backButton:(id)sender {
