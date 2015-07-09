@@ -69,5 +69,8 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey: @"number"];
 
 }
-
+- (void) setTags:(NSMutableArray *)tags
+{
+    _tags = tags;
+}
 @end
