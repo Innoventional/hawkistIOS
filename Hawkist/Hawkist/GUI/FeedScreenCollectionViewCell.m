@@ -23,8 +23,8 @@
 {
     _item = item;
     
-    self.userNameLable.text = self.item.user.username;
-    [self.avatarImage setImageWithURL: [NSURL URLWithString: self.item.user.avatar] placeholderImage:nil];
+    self.userNameLable.text = self.item.user_username;
+    [self.avatarImage setImageWithURL: [NSURL URLWithString: self.item.user_avatar] placeholderImage:nil];
     
     
     self.skidkaTextfield.text = self.item.discount;
@@ -32,13 +32,17 @@
     self.currentPriceLable.text = self.item.selling_price;
     self.oldPriceLable.text = self.item.retail_price;
 //self.platform.text = self.item.platform;
+    if(self.item.photos.count >= 1)
+    {
+        [self.itemImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
+    }
 }
 
 - (void)awakeFromNib {
     
      
     
-    
+
     
     
     
