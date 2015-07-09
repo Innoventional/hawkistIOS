@@ -39,11 +39,6 @@
     
     _starRatingControl.delegate = self;
     
-//    [[NetworkManager shared] getItemsWithPage: self.currentPage + 1 searchString: nil successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
-//        [self.items addObjectsFromArray: arrayWithItems];
-//    } failureBlock:^(NSError *error) {
-//        
-//    }];
 
     
     
