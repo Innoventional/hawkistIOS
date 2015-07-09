@@ -49,4 +49,8 @@
 @property (nonatomic, strong) NSArray<HWItem, Optional>* similar_items;
 @property (nonatomic, strong) NSArray<HWItem, Optional>* user_items;
 
+@property (nonatomic, strong) NSString<Optional>* user_avatar;
+@property (nonatomic, strong) NSString<Optional>* user_username;
+
+
 @end

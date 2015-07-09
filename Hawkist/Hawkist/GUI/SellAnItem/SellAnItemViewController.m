@@ -209,9 +209,55 @@ case 8:
     }
     
     
+
+case 6:
+    {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc]initWithTitle:@"Missing Field"
+                                       message:error.domain
+                                      delegate:nil
+                             cancelButtonTitle:@"Ok"
+                             otherButtonTitles:nil] show];
+            
+        });
+        break;
+    }
+    
+    
+case 1:
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc]initWithTitle:@"Error"
+                                       message:error.domain
+                                      delegate:nil
+                             cancelButtonTitle:@"Ok"
+                             otherButtonTitles:nil] show];
+        });
+        break;
+        
+    }
+        default:
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc]initWithTitle:@"Error"
+                                           message:@"Server error"
+                                          delegate:nil
+                                 cancelButtonTitle:@"Ok"
+                                 otherButtonTitles:nil] show];
+            });
+            break;
+            
+        }
+            
+            
+            
+    }
+    
 }
 
-    }
+
+
 
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
