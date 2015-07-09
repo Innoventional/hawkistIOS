@@ -10,8 +10,8 @@
 #import "AppEngine.h"
 #import "AWSS3.h"
 #import "NSURL+Extensions.h"
-#define ACCESS_KEY_ID          @"AKIAIKZ5QUEU3PXH4NRA"
-#define SECRET_KEY             @"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"
+#define ACCESS_KEY_ID          @"AKIAJZDNOKN3IAAMLYJQ"
+#define SECRET_KEY             @"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"
 #define AMAZON_FILE_BUKET @"hawkist-item-images"
 #define FULL_FILE_BUCKET  [[NSString stringWithFormat:@"%@-%@", AMAZON_FILE_BUKET, ACCESS_KEY_ID] lowercaseString]
 
@@ -65,7 +65,9 @@
     uploadRequest.key = fileName;
     uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
     uploadRequest.contentType = @"image/png";
-    NSString* fileURL = [NSString stringWithFormat: @"https://s3.amazonaws.com/%@/%@", AMAZON_FILE_BUKET, fileName];
+
+    
+    NSString* fileURL = [NSString stringWithFormat: @"https://s3-eu-west-1.amazonaws.com/%@/%@", AMAZON_FILE_BUKET, fileName];
     
     AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
     

@@ -180,6 +180,20 @@
     //}
 }
 
+
+- (void) DownloadData
+{
+    [_networkManager getListOfTags:^(NSMutableArray *tags) {
+        
+        _engine.tags = tags;
+        
+    } failureBlock:^(NSError *error) {
+        NSLog(@"----------Can't get Tags -------");
+        
+    }];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
    
@@ -392,6 +406,8 @@
            // [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
                 [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
              //       [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
+            
+            [self DownloadData];
         } failureBlock:^(NSError *error) {
             [self showAlert:error];
         }];

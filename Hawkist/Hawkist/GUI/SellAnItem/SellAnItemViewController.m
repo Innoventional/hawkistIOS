@@ -31,10 +31,10 @@
 @property (nonatomic,weak) NSArray* tempTagsForCategory;
 @property (nonatomic,assign) int idCategory;
 
-@property (nonatomic,weak)NSString* barUrl;
-@property (nonatomic,weak)NSString* img1Url;
-@property (nonatomic,weak)NSString* img2Url;
-@property (nonatomic,weak)NSString* img3Url;
+@property (nonatomic,strong)NSString* barUrl;
+@property (nonatomic,strong)NSString* img1Url;
+@property (nonatomic,strong)NSString* img2Url;
+@property (nonatomic,strong)NSString* img3Url;
 
 
 
@@ -262,6 +262,7 @@ case 1:
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
+    
     if (!self.isPlaceholderHidden)
     {
         descriptionField.textColor = self.textColor;
@@ -283,12 +284,21 @@ case 1:
     return NO;
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == postField)
+    {
+        self.sellButton.enabled = NO;
+    }
+    return YES;
+}
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     
     if (textField == postField)
     {
-        
+        self.sellButton.enabled = YES;
        if (textField.text.length>0)
        {
         [self showHud];
@@ -407,11 +417,26 @@ case 1:
     if (![postLabel.text isEqualToString:@"Enter post code"])
         currentItem.city = postLabel.text;
  
-    currentItem.photos = [NSArray arrayWithObjects:@"http://www.thetimes.co.uk/tto/multimedia/archive/00309/108787995_309592c.jpg",nil];
     
-//    @property (nonatomic, strong) NSString<Optional>* barcode;
-//    @property (nonatomic, strong) NSArray<Optional>* photos;
+    NSMutableArray* tmpArrayForImage = [[NSMutableArray alloc]init];
     
+    if (self.img1Url)
+        [tmpArrayForImage addObject:self.img1Url];
+    
+    
+    if (self.img2Url)
+        [tmpArrayForImage addObject:self.img2Url];
+    
+    if (self.img3Url)
+        [tmpArrayForImage addObject:self.img3Url];
+    
+    
+    
+    currentItem.photos = [NSArray arrayWithArray:tmpArrayForImage];
+    
+    currentItem.barcode = self.barUrl;
+    
+
     
     
     [netManager createItem:currentItem successBlock:^(HWItem *item) {
@@ -531,6 +556,21 @@ case 1:
             NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic1"]];
             [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
 
+            
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
+                               successBlock:^(NSString *fileURL) {
+                                   self.img1Url = fileURL;
+                                   
+                               }
+                               failureBlock:^(NSError *error) {
+                                   
+                                   NSLog(@"%@",error);
+                               }
+                              progressBlock:^(CGFloat progress) {
+                                  
+                                  NSLog(@"%f",progress);
+                              }];
+            
             break;
         }
         case 3:
@@ -540,6 +580,21 @@ case 1:
             NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic2"]];
             [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
 
+            
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
+                               successBlock:^(NSString *fileURL) {
+                                   self.img2Url = fileURL;
+                                   
+                               }
+                               failureBlock:^(NSError *error) {
+                                   
+                                   NSLog(@"%@",error);
+                               }
+                              progressBlock:^(CGFloat progress) {
+                                  
+                                  NSLog(@"%f",progress);
+                              }];
+            
             takePic2.image = selImage;
             break;
         }
@@ -549,6 +604,21 @@ case 1:
             NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic3"]];
             [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
 
+            
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
+                               successBlock:^(NSString *fileURL) {
+                                   self.img3Url = fileURL;
+                                   
+                               }
+                               failureBlock:^(NSError *error) {
+                                   
+                                   NSLog(@"%@",error);
+                               }
+                              progressBlock:^(CGFloat progress) {
+                                  
+                                  NSLog(@"%f",progress);
+                              }];
+            
             takePic3.image = selImage;
             break;
         }

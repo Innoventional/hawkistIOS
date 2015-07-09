@@ -48,6 +48,7 @@
 
 - (IBAction)sellAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *sellButton;
 
 - (IBAction)imageClick:(id)sender;
 @end

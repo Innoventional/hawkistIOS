@@ -956,6 +956,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dmitry Stepanov (V7F25AAY4S)";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "bb4648b7-b407-4c35-a032-276ea2853d5f";
@@ -971,6 +972,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Dmitro Stepanov (7228BBSRBS)";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "716f9269-1e2c-49ed-a94f-b8d5553f0d71";
