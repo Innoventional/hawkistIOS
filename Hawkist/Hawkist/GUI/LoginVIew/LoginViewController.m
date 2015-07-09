@@ -403,11 +403,8 @@
             _engine.user = user;
                 _accountDetailVC= [[AccountDetailViewController alloc]init];
             _accountDetailVC.isLogeedWithFacebook = YES;
-           // [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-                [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
-             //       [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
-            
-            [self DownloadData];
+            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+                         [self DownloadData];
         } failureBlock:^(NSError *error) {
             [self showAlert:error];
         }];
@@ -472,6 +469,13 @@
 
 }
 
+
+
+- (void) logginned
+{
+    
+    
+}
 
 
 - (IBAction)btnCancelCode:(id)sender {
