@@ -69,6 +69,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *counts;
 @property (strong, nonatomic) IBOutlet UILabel *comments;
 @property (strong, nonatomic) IBOutlet UILabel *category;
-@property (strong, nonatomic) IBOutlet UITextField *discount;
+@property (strong, nonatomic) IBOutlet UILabel *discount;
 
 @end
