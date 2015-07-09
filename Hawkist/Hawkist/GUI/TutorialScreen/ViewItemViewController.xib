@@ -278,10 +278,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Asus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIr-Nv-oTn">
-                                    <rect key="frame" x="51" y="6" width="42" height="24"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="42" id="ge9-jj-G8z"/>
-                                    </constraints>
+                                    <rect key="frame" x="51" y="6" width="115" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.35294117647058826" green="0.35294117647058826" blue="0.35294117647058826" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -305,15 +302,17 @@
                                 <constraint firstAttribute="trailing" secondItem="xYe-cl-JfU" secondAttribute="trailing" constant="16" id="EyR-x7-NtB"/>
                                 <constraint firstAttribute="bottom" secondItem="OjR-qP-LPr" secondAttribute="bottom" constant="14" id="FEt-BT-3dx"/>
                                 <constraint firstItem="86w-tp-Zkn" firstAttribute="leading" secondItem="3Fj-23-iky" secondAttribute="trailing" constant="6" id="Fho-N3-Ec9"/>
+                                <constraint firstAttribute="bottom" secondItem="WIr-Nv-oTn" secondAttribute="bottom" constant="28" id="Ojf-Pj-IuH"/>
                                 <constraint firstItem="3Fj-23-iky" firstAttribute="top" secondItem="Ul6-MW-hGx" secondAttribute="top" constant="29" id="UNU-Pt-1Wf"/>
                                 <constraint firstItem="xYe-cl-JfU" firstAttribute="centerY" secondItem="OjR-qP-LPr" secondAttribute="centerY" id="VnQ-fh-w4q"/>
-                                <constraint firstItem="WIr-Nv-oTn" firstAttribute="top" secondItem="Ul6-MW-hGx" secondAttribute="top" constant="6" id="YJq-V3-PN5"/>
                                 <constraint firstItem="86w-tp-Zkn" firstAttribute="top" secondItem="Ul6-MW-hGx" secondAttribute="top" constant="27" id="Zju-yk-1gj"/>
-                                <constraint firstItem="3Fj-23-iky" firstAttribute="leading" secondItem="WIr-Nv-oTn" secondAttribute="leading" id="gOQ-AV-88L"/>
-                                <constraint firstItem="WIr-Nv-oTn" firstAttribute="leading" secondItem="OjR-qP-LPr" secondAttribute="trailing" constant="5" id="hMf-Ex-nzH"/>
                                 <constraint firstItem="OjR-qP-LPr" firstAttribute="top" secondItem="Ul6-MW-hGx" secondAttribute="top" constant="12" id="nAb-PL-aFN"/>
+                                <constraint firstItem="WIr-Nv-oTn" firstAttribute="leading" secondItem="OjR-qP-LPr" secondAttribute="trailing" constant="5" id="nEa-lq-IOo"/>
                                 <constraint firstItem="xYe-cl-JfU" firstAttribute="leading" secondItem="86w-tp-Zkn" secondAttribute="trailing" constant="39" id="pYA-ja-W9x"/>
+                                <constraint firstItem="WIr-Nv-oTn" firstAttribute="leading" secondItem="3Fj-23-iky" secondAttribute="leading" id="pdm-fP-Q6O"/>
                                 <constraint firstItem="OjR-qP-LPr" firstAttribute="leading" secondItem="Ul6-MW-hGx" secondAttribute="leading" constant="13" id="pu8-Xi-GYj"/>
+                                <constraint firstItem="WIr-Nv-oTn" firstAttribute="top" secondItem="Ul6-MW-hGx" secondAttribute="top" constant="6" id="s8n-Cd-Ay3"/>
+                                <constraint firstItem="xYe-cl-JfU" firstAttribute="leading" secondItem="WIr-Nv-oTn" secondAttribute="trailing" constant="92" id="yBf-ed-xdu"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bST-Zs-1S5" userLabel="raz2">

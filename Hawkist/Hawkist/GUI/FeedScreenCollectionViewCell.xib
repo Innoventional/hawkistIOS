@@ -41,20 +41,21 @@
                                             <constraint firstAttribute="width" constant="24" id="6SG-01-AhA"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RAZER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5U5-NL-G0a">
-                                        <rect key="frame" x="40" y="5" width="58" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RAZER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5U5-NL-G0a">
+                                        <rect key="frame" x="40" y="5" width="97" height="24"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                         <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="5U5-NL-G0a" firstAttribute="leading" secondItem="WVl-zk-Z7C" secondAttribute="trailing" constant="8" symbolic="YES" id="C9U-m4-Aci"/>
+                                    <constraint firstItem="5U5-NL-G0a" firstAttribute="leading" secondItem="WVl-zk-Z7C" secondAttribute="trailing" constant="8" symbolic="YES" id="3nu-kD-au4"/>
+                                    <constraint firstItem="5U5-NL-G0a" firstAttribute="top" secondItem="WVl-zk-Z7C" secondAttribute="top" id="Foz-4H-UKu"/>
                                     <constraint firstItem="WVl-zk-Z7C" firstAttribute="leading" secondItem="V0o-Zt-KW8" secondAttribute="leadingMargin" id="J4a-wf-JAW"/>
-                                    <constraint firstItem="5U5-NL-G0a" firstAttribute="bottom" secondItem="WVl-zk-Z7C" secondAttribute="bottom" id="SKO-di-JeS"/>
                                     <constraint firstItem="WVl-zk-Z7C" firstAttribute="top" secondItem="V0o-Zt-KW8" secondAttribute="top" constant="5" id="V3c-UK-8tc"/>
-                                    <constraint firstItem="WVl-zk-Z7C" firstAttribute="top" secondItem="5U5-NL-G0a" secondAttribute="top" id="Wrj-qG-XBr"/>
-                                    <constraint firstItem="5U5-NL-G0a" firstAttribute="centerY" secondItem="V0o-Zt-KW8" secondAttribute="centerY" id="mJG-pM-xwN"/>
+                                    <constraint firstItem="5U5-NL-G0a" firstAttribute="centerY" secondItem="V0o-Zt-KW8" secondAttribute="centerY" id="VqR-Dv-W7A"/>
+                                    <constraint firstItem="5U5-NL-G0a" firstAttribute="bottom" secondItem="WVl-zk-Z7C" secondAttribute="bottom" id="iPr-ZJ-vtH"/>
+                                    <constraint firstItem="5U5-NL-G0a" firstAttribute="trailing" secondItem="V0o-Zt-KW8" secondAttribute="trailingMargin" id="vDn-Mk-70M"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jzg-In-8hJ" userLabel="centerImage">

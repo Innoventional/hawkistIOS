@@ -22,6 +22,11 @@
 -(void)setItem:(HWItem *)item
 {
     _item = item;
+    
+    self.userNameLable.text = self.item.user.username;
+    [self.avatarImage setImageWithURL: [NSURL URLWithString: self.item.user.avatar] placeholderImage:nil];
+    
+    
     self.skidkaTextfield.text = self.item.discount;
     self.sellItemLabel.text = self.item.title;
     self.currentPriceLable.text = self.item.selling_price;
@@ -31,8 +36,7 @@
 
 - (void)awakeFromNib {
     
-     self.userNameLable.text = self.item.user.username;
-    [self.avatarImage setImageWithURL: [NSURL URLWithString: self.item.user.avatar] placeholderImage:nil];
+     
     
     
     

@@ -18,7 +18,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *userNameLable;
 
-
+@property (strong, nonatomic) NSMutableArray *items;
 
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
 @property (strong, nonatomic) IBOutlet UITextField *skidkaTextfield;
