@@ -36,7 +36,7 @@
     if(self)
     {
                 AWSStaticCredentialsProvider *credentialsProvider = [[AWSStaticCredentialsProvider alloc] initWithAccessKey: ACCESS_KEY_ID secretKey: SECRET_KEY];
-        AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion: AWSRegionUSWest2 credentialsProvider: credentialsProvider];
+        AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion: AWSRegionEUWest1 credentialsProvider: credentialsProvider];
         [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
         
         NSError *error = nil;

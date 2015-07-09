@@ -81,7 +81,7 @@
         
         nav.delegate = self;
         
-        [nav.leftButtonOutlet setBackgroundImage:[UIImage imageNamed:@"acdet_back"] forState:UIControlStateNormal];
+        [nav.leftButtonOutlet setImage:[UIImage imageNamed:@"acdet_back"] forState:UIControlStateNormal];
         [nav.leftButtonOutlet setTitle:@"" forState:UIControlStateNormal];
         [nav.rightButtonOutlet setTitle:@"" forState:UIControlStateNormal];
         nav.title.text = @"Sell An Item";
@@ -556,15 +556,15 @@ case 1:
             NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic1"]];
             [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
 
-            
+            [self showHud];
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
                                successBlock:^(NSString *fileURL) {
                                    self.img1Url = fileURL;
-                                   
+                                               [self hideHud];
                                }
                                failureBlock:^(NSError *error) {
-                                   
-                                   NSLog(@"%@",error);
+                                               [self hideHud];
+                                   [self showAlert:error];
                                }
                               progressBlock:^(CGFloat progress) {
                                   

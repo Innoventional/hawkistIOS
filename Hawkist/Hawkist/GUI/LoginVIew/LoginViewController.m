@@ -44,6 +44,20 @@
      NSLog(@"%@",error);
     
     switch(error.code) {
+        case 1:
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc]initWithTitle:@"Error"
+                                           message:error.domain
+                                          delegate:nil
+                                 cancelButtonTitle:@"Ok"
+                                 otherButtonTitles:nil] show];
+                
+            });
+            break;
+        }
+
+            
         case 2:
         {
             dispatch_async(dispatch_get_main_queue(), ^{
