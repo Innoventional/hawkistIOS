@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
@@ -25,8 +26,12 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5r4-4N-gxU">
-                    <rect key="frame" x="13" y="49" width="102" height="22"/>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5r4-4N-gxU">
+                    <rect key="frame" x="20" y="49" width="58" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="FJb-9m-xTh"/>
+                        <constraint firstAttribute="width" constant="58" id="a79-Wd-1fe"/>
+                    </constraints>
                     <state key="normal" image="acdet_back">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -34,8 +39,8 @@
                         <action selector="leftButtonAction:" destination="-1" eventType="touchUpInside" id="IvB-bb-Ks5"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fr-2c-RUl">
-                    <rect key="frame" x="203" y="35" width="87" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fr-2c-RUl">
+                    <rect key="frame" x="260" y="35" width="30" height="30"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -55,7 +60,7 @@
                 <constraint firstAttribute="centerX" secondItem="4FN-D8-Xly" secondAttribute="centerX" id="bYl-de-Mtx"/>
                 <constraint firstAttribute="centerY" secondItem="0fr-2c-RUl" secondAttribute="centerY" id="dVg-re-my0"/>
                 <constraint firstItem="jv5-G9-oUe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jxx-3c-f1y"/>
-                <constraint firstItem="5r4-4N-gxU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="uV2-3h-ZF2"/>
+                <constraint firstItem="5r4-4N-gxU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="uV2-3h-ZF2"/>
                 <constraint firstItem="jv5-G9-oUe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xzJ-Hy-r8r"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

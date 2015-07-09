@@ -47,6 +47,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    self.contentView.frame = self.view.frame;
+    [self.contentView setNeedsLayout];
+}
+
 #pragma mark -
 #pragma mark HWTapBarViewDelegate
 

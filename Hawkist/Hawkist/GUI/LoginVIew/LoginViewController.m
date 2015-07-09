@@ -12,8 +12,7 @@
 #import "AccountDetailViewController.h"
 #import "TutorialViewController.h"
 #import "SocialManager.h"
-#import "WantToSellViewController.h"
-#import "FeedScreenViewController.h"
+#import "HWTapBarViewController.h"
 
 @interface LoginViewController ()
 
@@ -400,11 +399,12 @@
 - (IBAction)btnSignUpFB:(id)sender {
     [_socManager loginFacebookSuccess:^(NSDictionary *response) {
         [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
-            _engine.user = user;
-                _accountDetailVC= [[AccountDetailViewController alloc]init];
-            _accountDetailVC.isLogeedWithFacebook = YES;
-            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-                         [self DownloadData];
+//            _engine.user = user;
+//                _accountDetailVC= [[AccountDetailViewController alloc]init];
+//            _accountDetailVC.isLogeedWithFacebook = YES;
+//            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+//                         [self DownloadData];
+        [self logged:user isLoggedWithFacebook:YES];
         } failureBlock:^(NSError *error) {
             [self showAlert:error];
         }];
@@ -458,11 +458,14 @@
     
         [_txtCode resignFirstResponder];
     [_networkManager loginWithPhoneNumber:_txtNumber.text pin:_txtCode.text successBlock:^(HWUser *user) {
-            _accountDetailVC= [[AccountDetailViewController alloc]init];
-        _accountDetailVC.isLogeedWithFacebook = NO;
-        _engine.user = user;
+////            _accountDetailVC= [[AccountDetailViewController alloc]init];
+////        _accountDetailVC.isLogeedWithFacebook = NO;
+////        _engine.user = user;
+//        
+//           [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
         
-           [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+        [self logged:user isLoggedWithFacebook:NO];
+        
     } failureBlock:^(NSError *error) {
        [self showAlert:error];
     }];
@@ -470,12 +473,23 @@
 }
 
 
-
-- (void) logginned
+- (void) logged:(HWUser*) user isLoggedWithFacebook: (BOOL) FaceBook
 {
-    
-    
+            _engine.user = user;
+    if (user.first_login)
+    {
+        
+            _accountDetailVC= [[AccountDetailViewController alloc]init];
+            _accountDetailVC.isLogeedWithFacebook = FaceBook;
+         [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+    }
+    else
+    {
+        [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+    }
+        [self DownloadData];
 }
+
 
 
 - (IBAction)btnCancelCode:(id)sender {
@@ -499,10 +513,12 @@
 - (IBAction)btnSignInFB:(id)sender {
     [_socManager loginFacebookSuccess:^(NSDictionary *response) {
         [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
-            _engine.user = user;
-                _accountDetailVC= [[AccountDetailViewController alloc]init];
-            self.accountDetailVC.isLogeedWithFacebook = YES;
-            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+//            _engine.user = user;
+//                _accountDetailVC= [[AccountDetailViewController alloc]init];
+//            self.accountDetailVC.isLogeedWithFacebook = YES;
+//            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+//            
+        [self logged:user isLoggedWithFacebook:YES];
             
         } failureBlock:^(NSError *error) {
            [self showAlert:error];        }];
@@ -528,15 +544,15 @@
 
 - (IBAction)btnSignInMobile:(id)sender {
     [_networkManager loginWithPhoneNumber:_txtMobileNum.text pin:_txtPin.text successBlock:^(HWUser *user) {
-        _engine.user = user;
-            _accountDetailVC= [[AccountDetailViewController alloc]init];
-        _accountDetailVC.isLogeedWithFacebook = NO;
-        
+//        _engine.user = user;
+//            _accountDetailVC= [[AccountDetailViewController alloc]init];
+//        _accountDetailVC.isLogeedWithFacebook = NO;
+                [self logged:user isLoggedWithFacebook:NO];
         _engine.number = _txtMobileNum.text;
         _engine.pin = _txtPin.text;
 //        [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
      //    [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
-        [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
+        //[self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
     [self showAlert:error];
     }];
