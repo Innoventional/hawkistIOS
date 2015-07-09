@@ -530,16 +530,17 @@ case 1:
             NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempBar"]];
             [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
             
-            
+            [self showHud];
             
             
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
                                successBlock:^(NSString *fileURL) {
                                    self.barUrl = fileURL;
+                                   [self hideHud];
                 
             }
                                failureBlock:^(NSError *error) {
-                
+                                   [self hideHud];
                                    NSLog(@"%@",error);
             }
                               progressBlock:^(CGFloat progress) {
@@ -580,14 +581,15 @@ case 1:
             NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic2"]];
             [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
 
+            [self showHud];
             
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
                                successBlock:^(NSString *fileURL) {
                                    self.img2Url = fileURL;
-                                   
+                                   [self hideHud];
                                }
                                failureBlock:^(NSError *error) {
-                                   
+                                   [self hideHud];
                                    NSLog(@"%@",error);
                                }
                               progressBlock:^(CGFloat progress) {
@@ -604,14 +606,14 @@ case 1:
             NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic3"]];
             [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
 
-            
+            [self showHud];
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
                                successBlock:^(NSString *fileURL) {
                                    self.img3Url = fileURL;
-                                   
+                                   [self hideHud];
                                }
                                failureBlock:^(NSError *error) {
-                                   
+                                   [self hideHud];
                                    NSLog(@"%@",error);
                                }
                               progressBlock:^(CGFloat progress) {
@@ -778,9 +780,10 @@ case 1:
     
     
     currentButton.Text.textColor = self.textColor;
-    currentButton.Text.text = tag.name;
+    if (sender !=category)
+    {currentButton.Text.text = tag.name;
     currentButton.Text.tag = [tag.id integerValue];
-    
+    }
 //    
 //    if (sender == color)
 //    {
@@ -800,6 +803,8 @@ case 1:
     {
             self.idCategory = [tag.id intValue];
             category.isFirstSelection = NO;
+            category.Text.text = tag.name;
+            category.Text.tag = [tag.id integerValue];
         
     }
     
