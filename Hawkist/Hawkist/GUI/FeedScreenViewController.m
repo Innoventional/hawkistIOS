@@ -12,6 +12,7 @@
 @interface FeedScreenViewController ()
 
 @property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, retain) UIRefreshControl *refreshControl;
 
 @end
 
@@ -29,6 +30,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    //[self.refreshControl setBackgroundColor:[UIColor whiteColor]];
+    [self.refreshControl setTintColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];
+    [self.refreshControl tintColorDidChange];
+    [self.collectionView addSubview:self.refreshControl];
+    //self.collectionView.alwaysBounceVertical = YES;
+    
    
     [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
@@ -91,6 +102,19 @@
     CGFloat width = self.view.width;
     CGFloat widthForView = (width - 36) / 2;
     return CGSizeMake(widthForView, (widthForView * 488) / 291);
+}
+
+- (void)refresh
+{
+    [[NetworkManager shared] getItemsWithPage: 1 searchString: nil successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+        [self.items removeAllObjects];
+        [self.items addObjectsFromArray: arrayWithItems];
+        [self.collectionView reloadData];
+        [self.refreshControl endRefreshing];
+    } failureBlock:^(NSError *error) {
+        [self.refreshControl endRefreshing];
+    }];
+    
 }
 
 

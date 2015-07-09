@@ -42,6 +42,7 @@
 - (void) leftButtonClick
 {
     [self.navigationController popViewControllerAnimated:YES];
+    [self updateItem];
 }
 
 - (void)viewDidLoad {
@@ -121,7 +122,12 @@
     //self.category = self.item.category;
     //self.colour.text = self.item.color;
     self.delivery.text = self.item.shipping_price;
-    self.discount.text = self.item.discount;
+    //self.discount.text = self.item.discount;
+    if (self.item.discount == nil) {
+        self.discount.text = @"0";
+    } else {
+        self.discount.text = self.item.discount;
+    }
     //self.counts.text = self.item.
     if(self.item.photos.count >= 1)
     {
