@@ -406,7 +406,7 @@ case 1:
     currentItem.post_code = postField.text;
     if (![postLabel.text isEqualToString:@"Enter post code"])
         currentItem.city = postLabel.text;
-
+ 
     currentItem.photos = [NSArray arrayWithObjects:@"http://www.thetimes.co.uk/tto/multimedia/archive/00309/108787995_309592c.jpg",nil];
     
 //    @property (nonatomic, strong) NSString<Optional>* barcode;
@@ -417,6 +417,8 @@ case 1:
     [netManager createItem:currentItem successBlock:^(HWItem *item) {
         
         NSLog(@"--------------------------Saved");
+        
+        [self.navigationController popViewControllerAnimated:YES];
     } failureBlock:^(NSError *error) {
         
         [self showAlert:error];

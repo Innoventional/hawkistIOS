@@ -390,8 +390,8 @@
                 _accountDetailVC= [[AccountDetailViewController alloc]init];
             _accountDetailVC.isLogeedWithFacebook = YES;
            // [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-              //  [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
-                    [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
+                [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
+             //       [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
         } failureBlock:^(NSError *error) {
             [self showAlert:error];
         }];
