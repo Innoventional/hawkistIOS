@@ -73,6 +73,7 @@
 {
     [self.contentView removeFromSuperview];
     self.contentView = view;
+    self.contentView.clipsToBounds = YES;
     [self addSubview: self.contentView];
     [self setNeedsLayout];
 }
