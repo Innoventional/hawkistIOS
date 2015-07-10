@@ -150,7 +150,7 @@
    
     category.userInteractionEnabled = NO;
     
-    descriptionField.text = @"Brand new in box PS3 for sale with two controllers and 3 games";
+    descriptionField.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
     self.isPlaceholderHidden = NO;
     
 
@@ -331,7 +331,7 @@ case 1:
     if([textView.text isEqualToString: @""])
     {
         descriptionField.textColor = _placeHolderColor;
-        textView.text = @"Brand new in box PS3 for sale with two controllers and 3 games";
+        textView.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
         self.isPlaceholderHidden = NO;
     }
     
