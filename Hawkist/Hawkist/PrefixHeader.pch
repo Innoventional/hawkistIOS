@@ -16,8 +16,9 @@
 #import <UIKit/UIKit.h>
 #import "const.h"
 #import "HWUser.h"
-#import "HWItem.h"
+#import "HWItem+Extensions.h"
 #import "UIImageView+AFNetworking.h"
 #import "NetworkManager.h"
+#import "AppEngine.h"
 
 #endif

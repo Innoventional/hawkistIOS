@@ -8,7 +8,7 @@
 #import "StarRatingControl.h"
 
 #define kDefaultNumberOfStars 5
-#define kStarPadding 5.0f
+#define kStarPadding 2.0f
 
 
 @interface StarRatingControl ()

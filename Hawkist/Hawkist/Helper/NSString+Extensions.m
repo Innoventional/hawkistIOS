@@ -17,7 +17,7 @@
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     [formatter setTimeZone:tz];
     
-    return [formatter dateFromString:self];
+    return [formatter dateFromString:[self substringToIndex:19]];
 }
 
 @end

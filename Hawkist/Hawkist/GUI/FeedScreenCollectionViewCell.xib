@@ -71,9 +71,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="145" height="147"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skidka" translatesAutoresizingMaskIntoConstraints="NO" id="3WA-3G-8hz">
-                                        <rect key="frame" x="0.0" y="14" width="43" height="31"/>
+                                        <rect key="frame" x="0.0" y="16" width="43" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="43" id="wW8-pA-Qdc"/>
+                                            <constraint firstAttribute="width" constant="43" id="PBn-y1-h6S"/>
+                                            <constraint firstAttribute="height" constant="28" id="uog-Qr-Abx"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1se-cG-QcW">
@@ -97,17 +98,16 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="3WA-3G-8hz" firstAttribute="centerY" secondItem="1se-cG-QcW" secondAttribute="centerY" id="20e-Qn-ZE6"/>
+                                    <constraint firstItem="3WA-3G-8hz" firstAttribute="top" secondItem="Jzg-In-8hJ" secondAttribute="top" constant="16" id="4R4-lC-xdz"/>
                                     <constraint firstItem="Z2r-t5-Mlu" firstAttribute="baseline" secondItem="1se-cG-QcW" secondAttribute="baseline" id="5u3-Z1-yC2"/>
                                     <constraint firstItem="Z2r-t5-Mlu" firstAttribute="leading" secondItem="1se-cG-QcW" secondAttribute="trailing" constant="1" id="9I2-Mb-Czp"/>
                                     <constraint firstItem="AS9-vi-cBD" firstAttribute="leading" secondItem="Jzg-In-8hJ" secondAttribute="leading" id="9dp-af-H6l"/>
-                                    <constraint firstItem="3WA-3G-8hz" firstAttribute="leading" secondItem="AS9-vi-cBD" secondAttribute="leading" id="GJy-nk-L26"/>
                                     <constraint firstItem="1se-cG-QcW" firstAttribute="firstBaseline" secondItem="Z2r-t5-Mlu" secondAttribute="firstBaseline" id="Ira-3b-WeL"/>
                                     <constraint firstAttribute="bottom" secondItem="AS9-vi-cBD" secondAttribute="bottom" id="b9h-zt-G3y"/>
+                                    <constraint firstItem="3WA-3G-8hz" firstAttribute="leading" secondItem="AS9-vi-cBD" secondAttribute="leading" id="eJb-zq-4DW"/>
                                     <constraint firstItem="AS9-vi-cBD" firstAttribute="top" secondItem="Jzg-In-8hJ" secondAttribute="top" id="ly0-TF-8W3"/>
                                     <constraint firstAttribute="trailing" secondItem="AS9-vi-cBD" secondAttribute="trailing" id="ptE-3b-nzp"/>
                                     <constraint firstItem="1se-cG-QcW" firstAttribute="top" secondItem="Jzg-In-8hJ" secondAttribute="top" constant="19" id="qkG-t4-UHv"/>
-                                    <constraint firstItem="3WA-3G-8hz" firstAttribute="top" secondItem="Jzg-In-8hJ" secondAttribute="top" constant="14" id="uve-DY-K2f"/>
                                     <constraint firstItem="1se-cG-QcW" firstAttribute="leading" secondItem="Jzg-In-8hJ" secondAttribute="leading" constant="4" id="xzl-2y-VDX"/>
                                 </constraints>
                             </view>

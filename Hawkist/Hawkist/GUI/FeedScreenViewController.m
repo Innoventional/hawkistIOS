@@ -9,10 +9,11 @@
 #import "FeedScreenViewController.h"
 #import "ViewItemViewController.h"
 
-@interface FeedScreenViewController ()
+@interface FeedScreenViewController () <UITextFieldDelegate>
 
 @property (nonatomic, assign) NSInteger currentPage;
-@property (nonatomic, retain) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) NSString* searchString;
 
 @end
 
@@ -24,6 +25,7 @@
     if(self)
     {
         self.items = [[NSMutableArray alloc]init];
+        self.searchString = @"";
     }
     return self;
 }
@@ -45,8 +47,10 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
-    self.searchView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundSearch"]];
+    self.searchView.backgroundColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164];
     [self.searchField setValue:[UIColor colorWithRed:189.0/255.0 green:215.0/255.0 blue:211.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
+    self.searchField.delegate = self;
+
     
     [[NetworkManager shared] getItemsWithPage: self.currentPage + 1 searchString: nil successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
         [self.items addObjectsFromArray: arrayWithItems];
@@ -56,8 +60,34 @@
     }];
 }
 
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    NSString* searchString = [textField.text stringByReplacingCharactersInRange: range withString:string];
+    self.searchString = searchString;
+    [[NetworkManager shared] getItemsWithPage: 1 searchString: searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+        self.currentPage = 1;
+        [self.items removeAllObjects];
+        [self.items addObjectsFromArray: arrayWithItems];
+        [self.collectionView reloadData];
+    } failureBlock:^(NSError *error) {
+        self.currentPage = 1;
+    }];
+    return YES;
+}
+
+- (BOOL) textFieldShouldReturn: (UITextField*) textField
+{
+    self.searchString = textField.text;
+    [[NetworkManager shared] getItemsWithPage: 1 searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+        self.currentPage = 1;
+        [self.items removeAllObjects];
+        [self.items addObjectsFromArray: arrayWithItems];
+        [self.collectionView reloadData];
+    } failureBlock:^(NSError *error) {
+        self.currentPage = 1;
+    }];
+
+    [self.view endEditing: YES];
     return YES;
 }
 - (void)didReceiveMemoryWarning {
@@ -109,7 +139,7 @@
 {
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
     
-    [[NetworkManager shared] getItemsWithPage: 1 searchString: nil successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+    [[NetworkManager shared] getItemsWithPage: 1 searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
         [self.items removeAllObjects];
         [self.items addObjectsFromArray: arrayWithItems];
         [self.collectionView reloadData];
