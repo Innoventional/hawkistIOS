@@ -780,10 +780,10 @@ case 1:
     
     
     currentButton.Text.textColor = self.textColor;
-    if (sender !=category)
-    {currentButton.Text.text = tag.name;
+    
+    currentButton.Text.text = tag.name;
     currentButton.Text.tag = [tag.id integerValue];
-    }
+    
 //    
 //    if (sender == color)
 //    {
