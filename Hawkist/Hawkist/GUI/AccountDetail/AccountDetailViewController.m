@@ -258,7 +258,7 @@
         [[[UIAlertView alloc]initWithTitle:@"Error"
                                    message:error.domain
                                   delegate:nil
-                         cancelButtonTitle:@"Ok"
+                         cancelButtonTitle:@"OK"
                          otherButtonTitles:nil] show];
     });
 }
