@@ -21,6 +21,8 @@
 
 -(void)setItem:(HWItem *)item
 {
+    self.avatarImage.image = nil;
+    self.itemImage.image = nil;
     _item = item;
     
     self.userNameLable.text = self.item.user_username;
@@ -41,6 +43,7 @@
     {
         [self.itemImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
     }
+    [self setNeedsLayout];
 }
 
 - (void)awakeFromNib {
