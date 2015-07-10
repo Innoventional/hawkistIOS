@@ -10,6 +10,7 @@
 #import "FeedScreenCollectionViewCell.h"
 #import "HWItem.h"
 #import "UIImageView+AFNetworking.h"
+#import "AppEngine.h"
 @interface ViewItemViewController ()
 
 @property (nonatomic, strong) HWItem* item;
@@ -118,15 +119,15 @@
     self.sellerPrice.text = self.item.selling_price;
     self.oldPrice.text = self.item.retail_price;
     self.descriptionOfItem.text = self.item.item_description;
-    self.added.text = self.item.created_at;
-    //self.platform.text = self.item.platform;
-    //self.condition = self.item.condition;
-    //self.category = self.item.category;
-    //self.colour.text = self.item.color;
+    self.added.text = [self.item stringItemCreationDate];
+    self.platform.text = [[AppEngine shared] categoryNameById: self.item.platform];
+    self.condition.text = [[AppEngine shared] categoryNameById: self.item.condition];
+    self.category.text = [[AppEngine shared] categoryNameById: self.item.category];
+    self.colour.text = [[AppEngine shared] categoryNameById: self.item.color];
     self.delivery.text = self.item.shipping_price;
     //self.discount.text = self.item.discount;
-    if (self.item.discount == nil) {
-        self.discount.text = @"0";
+    if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
+        self.discount.text = @"1";
     } else {
         self.discount.text = self.item.discount;
     }
