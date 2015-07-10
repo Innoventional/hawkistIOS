@@ -70,7 +70,7 @@
     self.bigImage.layer.cornerRadius = 5.0f;
     self.bigImage.layer.masksToBounds = YES;
     
-#pragma mark -
+
 #pragma mark implementation model user and item
     
     //[self updateItem];
@@ -97,7 +97,9 @@
 //                         action:@selector(segmentChanged:)
 //               forControlEvents:UIControlEventValueChanged];
 //    [self.itemUser addSubview:segmentedControl];
-   
+#pragma mark ending
+    
+    
     [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
@@ -105,7 +107,7 @@
     
     
 }
-
+#pragma mark - update item
 - (void) updateItem
 {
     self.sellerName.text = self.item.user_username;
@@ -148,12 +150,13 @@
 //{
 //    return YES;
 //}
+#pragma mark ending
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
+#pragma mark UICollectionView
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;

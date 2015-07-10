@@ -8,11 +8,12 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="OpenSans-Bold.ttf">
-            <string>OpenSans-Bold</string>
-        </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
+        </mutableArray>
+        <mutableArray key="open-sans.extrabold.ttf">
+            <string>OpenSans-Extrabold</string>
+            <string>OpenSans-Extrabold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -80,7 +81,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="26" id="LwE-0x-5ZZ"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="13"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="14"/>
                                     <color key="textColor" red="0.2156862745" green="0.72549019609999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -188,7 +189,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="11" id="NTX-d7-PPv"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="14"/>
                                     <color key="textColor" red="0.21568627450980393" green="0.72549019607843135" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>

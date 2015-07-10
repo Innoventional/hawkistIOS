@@ -38,6 +38,7 @@
     [self.refreshControl setTintColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];
     [self.refreshControl tintColorDidChange];
     [self.collectionView addSubview:self.refreshControl];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
     //self.collectionView.alwaysBounceVertical = YES;
     
    
@@ -106,14 +107,24 @@
 
 - (void)refresh
 {
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    
     [[NetworkManager shared] getItemsWithPage: 1 searchString: nil successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
         [self.items removeAllObjects];
         [self.items addObjectsFromArray: arrayWithItems];
         [self.collectionView reloadData];
         [self.refreshControl endRefreshing];
     } failureBlock:^(NSError *error) {
-        [self.refreshControl endRefreshing];
+        //[self.refreshControl endRefreshing];
     }];
+    
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM d, h:mm a"];
+         NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
+                                  [formatter stringFromDate:[NSDate date]]];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+        [self.refreshControl endRefreshing];
+    
     
 }
 

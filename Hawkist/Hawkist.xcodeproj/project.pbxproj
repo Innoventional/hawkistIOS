@@ -35,6 +35,7 @@
 		7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D3F1B3893B000295472 /* CustomizationViewController.xib */; };
 		7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */; };
 		7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */; };
+		7C9E7B011B4FCD58001DF8BE /* open-sans.extrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C9E7B001B4FCD58001DF8BE /* open-sans.extrabold.ttf */; };
 		7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE8F1B4BF39200CDA5FD /* mot2.png */; };
 		7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE901B4BF39200CDA5FD /* mot3.png */; };
 		7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE931B4BF63B00CDA5FD /* smile.png */; };
@@ -50,6 +51,7 @@
 		7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE778C81B3D51E600856A36 /* Icon-60@3x.png */; };
 		7CF0F9821B455DB30041F58F /* ViewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0F9801B455DB30041F58F /* ViewItemViewController.m */; };
 		7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CF0F9811B455DB30041F58F /* ViewItemViewController.xib */; };
+		7CF22CA41B4FCE18002CF7ED /* open-sans.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CF22CA31B4FCE18002CF7ED /* open-sans.bold.ttf */; };
 		80E1CD0A02CE700CA374803C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D8ABABE09C6B8E36C39881 /* libPods.a */; };
 		C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C191B2F2DF7002E1F26 /* main.m */; };
 		C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */; };
@@ -143,6 +145,7 @@
 		7C735D3F1B3893B000295472 /* CustomizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizationViewController.xib; sourceTree = "<group>"; };
 		7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansRegular.ttf; sourceTree = "<group>"; };
+		7C9E7B001B4FCD58001DF8BE /* open-sans.extrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "open-sans.extrabold.ttf"; sourceTree = "<group>"; };
 		7CDBCE8F1B4BF39200CDA5FD /* mot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mot2.png; sourceTree = "<group>"; };
 		7CDBCE901B4BF39200CDA5FD /* mot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mot3.png; sourceTree = "<group>"; };
 		7CDBCE931B4BF63B00CDA5FD /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 		7CF0F97F1B455DB30041F58F /* ViewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewItemViewController.h; sourceTree = "<group>"; };
 		7CF0F9801B455DB30041F58F /* ViewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewItemViewController.m; sourceTree = "<group>"; };
 		7CF0F9811B455DB30041F58F /* ViewItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewItemViewController.xib; sourceTree = "<group>"; };
+		7CF22CA31B4FCE18002CF7ED /* open-sans.bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "open-sans.bold.ttf"; sourceTree = "<group>"; };
 		80D8ABABE09C6B8E36C39881 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35A4C141B2F2DF7002E1F26 /* Hawkist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hawkist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35A4C181B2F2DF7002E1F26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -371,6 +375,8 @@
 				7CE0E8D91B4307F0003B8B3A /* FeedScreenCollectionViewCell.h */,
 				7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */,
 				7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */,
+				7CF22CA31B4FCE18002CF7ED /* open-sans.bold.ttf */,
+				7C9E7B001B4FCD58001DF8BE /* open-sans.extrabold.ttf */,
 			);
 			name = FeedScreen;
 			sourceTree = "<group>";
@@ -721,6 +727,7 @@
 				3A968E241B4A98B4005AA347 /* ChoiceTable.xib in Resources */,
 				7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */,
 				3ACC6BEE1B44A75E0076004F /* money.xib in Resources */,
+				7C9E7B011B4FCD58001DF8BE /* open-sans.extrabold.ttf in Resources */,
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
@@ -731,6 +738,7 @@
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
 				C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */,
 				7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */,
+				7CF22CA41B4FCE18002CF7ED /* open-sans.bold.ttf in Resources */,
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
 				7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */,
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
