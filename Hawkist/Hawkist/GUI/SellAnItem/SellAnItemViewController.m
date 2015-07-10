@@ -84,7 +84,7 @@
         [nav.leftButtonOutlet setImage:[UIImage imageNamed:@"acdet_back"] forState:UIControlStateNormal];
         [nav.leftButtonOutlet setTitle:@"" forState:UIControlStateNormal];
         [nav.rightButtonOutlet setTitle:@"" forState:UIControlStateNormal];
-        nav.title.text = @"Sell An Item";
+        nav.title.text = @"Sell an Item";
         [nav.title setTextColor:[UIColor whiteColor]];
         nav.rightButtonOutlet.enabled = NO;
         
