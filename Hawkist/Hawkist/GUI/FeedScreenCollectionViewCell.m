@@ -22,6 +22,7 @@
 -(void)setItem:(HWItem *)item
 {
     self.avatarImage.image = nil;
+    self.avatarImage.image = [UIImage imageNamed:@"NoAvatar"];
     self.itemImage.image = nil;
     _item = item;
     
@@ -31,9 +32,9 @@
     
     //self.skidkaTextfield.text = self.item.discount;
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
-        self.skidkaTextfield.text = @"1";
+        self.skidkaTextfield.text = @"1%";
     } else {
-        self.skidkaTextfield.text = self.item.discount;
+        self.skidkaTextfield.text = [NSString stringWithFormat:@"%@%%",self.item.discount];
     }
     self.sellItemLabel.text = self.item.title;
     self.currentPriceLable.text = self.item.selling_price;

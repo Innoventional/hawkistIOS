@@ -44,7 +44,6 @@
         <mutableArray key="open-sans.bold.ttf">
             <string>OpenSans-Bold</string>
             <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -197,8 +196,8 @@
                                         <constraint firstAttribute="width" constant="53" id="tRv-cx-I5X"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7e-2t-3KG">
-                                    <rect key="frame" x="14" y="85" width="30" height="26"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7e-2t-3KG">
+                                    <rect key="frame" x="14" y="85" width="47" height="26"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="26" id="pN3-bv-NUO"/>
                                     </constraints>
@@ -232,20 +231,9 @@
                                     <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sU-F5-fI3">
-                                    <rect key="frame" x="46" y="85" width="15" height="26"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="15" id="Krg-Gu-ZAs"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="uMT-Mc-rHZ" firstAttribute="trailing" secondItem="Fcf-SG-vzr" secondAttribute="trailing" id="0J3-RC-jxI"/>
-                                <constraint firstItem="L7e-2t-3KG" firstAttribute="firstBaseline" secondItem="6sU-F5-fI3" secondAttribute="firstBaseline" id="0q1-Rb-Nhb"/>
-                                <constraint firstItem="L7e-2t-3KG" firstAttribute="baseline" secondItem="6sU-F5-fI3" secondAttribute="baseline" id="25H-Ea-JMK"/>
                                 <constraint firstItem="uMT-Mc-rHZ" firstAttribute="trailing" secondItem="Fcf-SG-vzr" secondAttribute="trailing" constant="9" id="2J4-xd-8ik"/>
                                 <constraint firstItem="L7e-2t-3KG" firstAttribute="leading" secondItem="YR3-wU-mwa" secondAttribute="leading" id="2fi-aB-V4Y"/>
                                 <constraint firstAttribute="bottom" secondItem="Rg4-LH-YBt" secondAttribute="bottom" constant="16" id="4TK-FK-dDI"/>
@@ -266,6 +254,7 @@
                                 <constraint firstItem="UR7-vb-gl3" firstAttribute="leading" secondItem="L7e-2t-3KG" secondAttribute="leading" id="CrZ-yK-3ZR"/>
                                 <constraint firstItem="sjN-Y7-3hG" firstAttribute="width" secondItem="RSv-5e-TOl" secondAttribute="width" id="DQg-3W-VX0"/>
                                 <constraint firstItem="YR3-wU-mwa" firstAttribute="top" secondItem="Hsl-Tc-dOE" secondAttribute="bottom" constant="8" symbolic="YES" id="DQg-Sp-n6n"/>
+                                <constraint firstItem="Y3U-AV-1AS" firstAttribute="trailing" secondItem="L7e-2t-3KG" secondAttribute="trailing" id="E6i-0z-8PO"/>
                                 <constraint firstItem="5Nd-Tt-GCU" firstAttribute="width" secondItem="YR3-wU-mwa" secondAttribute="width" id="EcN-PJ-5za"/>
                                 <constraint firstItem="nSJ-Wd-IBa" firstAttribute="top" secondItem="RSv-5e-TOl" secondAttribute="top" id="EfA-Fa-Kv5"/>
                                 <constraint firstItem="RSv-5e-TOl" firstAttribute="top" secondItem="Lhz-kN-U05" secondAttribute="top" id="Ehw-s5-cue"/>
@@ -273,9 +262,7 @@
                                 <constraint firstItem="5nY-34-Nt6" firstAttribute="bottom" secondItem="nSJ-Wd-IBa" secondAttribute="bottom" id="GOb-xM-3UB"/>
                                 <constraint firstItem="RSv-5e-TOl" firstAttribute="bottom" secondItem="Lhz-kN-U05" secondAttribute="bottom" id="H3f-8U-ekx"/>
                                 <constraint firstItem="Fcf-SG-vzr" firstAttribute="trailing" secondItem="uMT-Mc-rHZ" secondAttribute="trailing" constant="16" id="H9D-QL-abH"/>
-                                <constraint firstItem="6sU-F5-fI3" firstAttribute="centerX" secondItem="YR3-wU-mwa" secondAttribute="centerX" constant="5.5" id="HZA-jD-IPK"/>
                                 <constraint firstItem="nSJ-Wd-IBa" firstAttribute="leading" secondItem="RSv-5e-TOl" secondAttribute="trailing" id="IKp-DS-qps"/>
-                                <constraint firstItem="6sU-F5-fI3" firstAttribute="leading" secondItem="L7e-2t-3KG" secondAttribute="trailing" constant="2" id="IOu-ae-lf4"/>
                                 <constraint firstItem="UR7-vb-gl3" firstAttribute="leading" secondItem="Fcf-SG-vzr" secondAttribute="trailing" id="IkA-F3-HCK"/>
                                 <constraint firstItem="dfC-VT-yYf" firstAttribute="top" secondItem="N2l-Zo-haQ" secondAttribute="top" constant="12" id="IsR-Tn-Crv"/>
                                 <constraint firstItem="c2g-Gx-pUg" firstAttribute="top" secondItem="N2l-Zo-haQ" secondAttribute="top" constant="12" id="KeD-oU-uLn"/>
@@ -381,7 +368,7 @@
                                         <action selector="askButton:" destination="-1" eventType="touchUpInside" id="Pgv-Cx-a1c"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smile.png" translatesAutoresizingMaskIntoConstraints="NO" id="OjR-qP-LPr">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="OjR-qP-LPr">
                                     <rect key="frame" x="12" y="12" width="33" height="32"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIr-Nv-oTn">
@@ -896,6 +883,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="NoAvatar" width="500" height="500"/>
         <image name="askbutton" width="47" height="30"/>
         <image name="bigimage" width="319" height="239"/>
         <image name="buybutton" width="290" height="40"/>
@@ -904,6 +892,5 @@
         <image name="mot3.png" width="700" height="466"/>
         <image name="skidka" width="37" height="20"/>
         <image name="smallButton" width="27" height="20"/>
-        <image name="smile.png" width="1281" height="1026"/>
     </resources>
 </document>

@@ -127,9 +127,9 @@
     self.delivery.text = self.item.shipping_price;
     //self.discount.text = self.item.discount;
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
-        self.discount.text = @"1";
+        self.discount.text = @"1%";
     } else {
-        self.discount.text = self.item.discount;
+        self.discount.text = [NSString stringWithFormat:@"%@%%",self.item.discount];
     }
     //self.counts.text = self.item.
     if(self.item.photos.count >= 1)
