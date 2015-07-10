@@ -26,4 +26,6 @@
 
 - (NSString*) number;
 
+- (NSString*) categoryNameById: (NSInteger) id;
+
 @end
