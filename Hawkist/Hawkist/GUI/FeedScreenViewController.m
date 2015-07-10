@@ -36,9 +36,9 @@
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     //[self.refreshControl setBackgroundColor:[UIColor whiteColor]];
     [self.refreshControl setTintColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];
-    [self.refreshControl tintColorDidChange];
+   // [self.refreshControl tintColorDidChange];
     [self.collectionView addSubview:self.refreshControl];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    
     //self.collectionView.alwaysBounceVertical = YES;
     
    
@@ -115,15 +115,8 @@
         [self.collectionView reloadData];
         [self.refreshControl endRefreshing];
     } failureBlock:^(NSError *error) {
-        //[self.refreshControl endRefreshing];
-    }];
-    
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MMM d, h:mm a"];
-         NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
-                                  [formatter stringFromDate:[NSDate date]]];
-        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
         [self.refreshControl endRefreshing];
+    }];
     
     
 }

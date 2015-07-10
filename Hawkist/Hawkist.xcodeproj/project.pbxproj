@@ -88,6 +88,7 @@
 		C35CB4A61B4D3A2E00956150 /* AWSS3Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4A51B4D3A2E00956150 /* AWSS3Manager.m */; };
 		C35CB4AF1B4EA3BA00956150 /* HWTapBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4AD1B4EA3BA00956150 /* HWTapBarViewController.m */; };
 		C35CB4B31B4EA7E200956150 /* HWTapBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4B21B4EA7E200956150 /* HWTapBarView.m */; };
+		C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4B51B4FF04900956150 /* HWItem+Extensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,6 +233,8 @@
 		C35CB4AD1B4EA3BA00956150 /* HWTapBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTapBarViewController.m; sourceTree = "<group>"; };
 		C35CB4B11B4EA7E200956150 /* HWTapBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTapBarView.h; sourceTree = "<group>"; };
 		C35CB4B21B4EA7E200956150 /* HWTapBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTapBarView.m; sourceTree = "<group>"; };
+		C35CB4B41B4FF04900956150 /* HWItem+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HWItem+Extensions.h"; sourceTree = "<group>"; };
+		C35CB4B51B4FF04900956150 /* HWItem+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HWItem+Extensions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -532,6 +535,8 @@
 				C35CB49E1B4BE91B00956150 /* HWItem.m */,
 				3A968E2F1B4C1188005AA347 /* HWTag.h */,
 				3A968E301B4C1188005AA347 /* HWTag.m */,
+				C35CB4B41B4FF04900956150 /* HWItem+Extensions.h */,
+				C35CB4B51B4FF04900956150 /* HWItem+Extensions.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -803,6 +808,7 @@
 				C35A4C621B3035D2002E1F26 /* NSDate+Extensions.m in Sources */,
 				C35A4C6C1B3036D0002E1F26 /* HWUser.m in Sources */,
 				C35A4C671B3035D2002E1F26 /* UIColor+Extensions.m in Sources */,
+				C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */,
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
 				3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */,
 				C35A4C861B303BCF002E1F26 /* SocialManager.m in Sources */,

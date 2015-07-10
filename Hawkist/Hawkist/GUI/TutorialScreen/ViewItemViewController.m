@@ -78,7 +78,7 @@
     self.sellerAvatar.layer.masksToBounds = YES;
     self.sellerAvatar.layer.borderWidth = 0;
     
-    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans" size:15.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans" size:14.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
 //    NSArray *itemArray = [NSArray arrayWithObjects: @"Similar Items", @"User Items", nil];
 //    
 //    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
