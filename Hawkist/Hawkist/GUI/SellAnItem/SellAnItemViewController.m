@@ -665,7 +665,7 @@ case 1:
             }
         }
         
-       v.navigationView.title.text = @"Choice Color";
+       v.navigationView.title.text = @"Select a Colour";
         v.delegate = self;
         v.sender = sender;
         
@@ -691,7 +691,7 @@ case 1:
             }
 
         }
-        v.navigationView.title.text = @"Choice Condition";
+        v.navigationView.title.text = @"Select a Condition";
         v.delegate = self;
         v.sender = sender;
             
@@ -718,7 +718,7 @@ case 1:
             }
             
         }
-        v.navigationView.title.text = @"Choice Platform";
+        v.navigationView.title.text = @"Select a Platform";
         v.delegate = self;
         v.sender = sender;
         
@@ -728,7 +728,7 @@ case 1:
         v.isPlatform = YES;
         
         [self presentViewController:navigationController animated:YES completion:nil];
-            category.userInteractionEnabled = YES;
+
 
     }
     
@@ -749,7 +749,7 @@ case 1:
 //        }
         
         v.items = [NSMutableArray arrayWithArray:self.tempTagsForCategory];
-        v.navigationView.title.text = @"Choice Category";
+        v.navigationView.title.text = @"Select a Category";
         v.delegate = self;
         v.sender = sender;
         
@@ -818,8 +818,9 @@ case 1:
         
         self.tempTagsForCategory = tag.children;
         category.Text.textColor = self.placeHolderColor;
-        category.Text.text = @"Select Category";
+        category.Text.text = @"Select a Category";
         category.isFirstSelection = YES;
+                    category.userInteractionEnabled = YES;
         
     }
 

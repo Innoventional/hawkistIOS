@@ -471,6 +471,8 @@
     
     
         [_txtCode resignFirstResponder];
+    
+    
     [_networkManager loginWithPhoneNumber:_txtNumber.text pin:_txtCode.text successBlock:^(HWUser *user) {
 ////            _accountDetailVC= [[AccountDetailViewController alloc]init];
 ////        _accountDetailVC.isLogeedWithFacebook = NO;
@@ -479,6 +481,8 @@
 //           [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
         
         [self logged:user isLoggedWithFacebook:NO];
+        _engine.number = user.phone;
+                _engine.pin = _txtCode.text;
         
     } failureBlock:^(NSError *error) {
        [self showAlert:error];
@@ -503,11 +507,7 @@
     }
         [self DownloadData];
     
-    if (!FaceBook)
-    {
-        _engine.number = _txtMobileNum.text;
-        _engine.pin = _txtPin.text;
-    }
+
 }
 
 
@@ -569,6 +569,9 @@
 //        _accountDetailVC.isLogeedWithFacebook = NO;
                 [self logged:user isLoggedWithFacebook:NO];
 
+        
+        _engine.number = user.phone;
+        _engine.pin = _txtPin.text;
 //        [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
      //    [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
         //[self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
