@@ -476,8 +476,8 @@
                                         <outletCollection property="gestureRecognizers" destination="no3-u5-pAy" appends="YES" id="EDP-io-9xM"/>
                                     </connections>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jog-dC-YWg">
-                                    <rect key="frame" x="249" y="95" width="28" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0.00." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jog-dC-YWg">
+                                    <rect key="frame" x="249" y="95" width="61" height="17"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -490,6 +490,7 @@
                                 <constraint firstItem="Azf-Zr-JB9" firstAttribute="leading" secondItem="6H3-nA-ynJ" secondAttribute="leading" id="DGD-mi-aeh"/>
                                 <constraint firstItem="m9R-hM-JeU" firstAttribute="top" secondItem="6H3-nA-ynJ" secondAttribute="bottom" constant="30" id="GE5-L4-LJl"/>
                                 <constraint firstAttribute="trailing" secondItem="6H3-nA-ynJ" secondAttribute="trailing" constant="8" id="Lst-oK-N5Q"/>
+                                <constraint firstAttribute="trailing" secondItem="Jog-dC-YWg" secondAttribute="trailing" constant="10" id="Nnd-6D-Tz4"/>
                                 <constraint firstAttribute="centerX" secondItem="6H3-nA-ynJ" secondAttribute="leading" constant="14" id="PHI-PI-3fK"/>
                                 <constraint firstAttribute="height" constant="165" id="T9y-BA-0Nj"/>
                                 <constraint firstItem="6H3-nA-ynJ" firstAttribute="top" secondItem="aSh-3C-Bsv" secondAttribute="top" constant="14" id="VRl-UE-XQn"/>

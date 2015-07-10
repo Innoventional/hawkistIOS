@@ -87,14 +87,14 @@
                         
                     default:
                         failureBlock([NSError errorWithDomain: @""
-                                                         code: 1
+                                                         code: 13
                                                      userInfo: nil]);
                         NSLog(@"Upload failed: [%@]", task.error);
                         break;
                 }
             } else {
                 failureBlock([NSError errorWithDomain: @""
-                                                 code: 1
+                                                 code: 13
                                              userInfo: nil]);
                 NSLog(@"Upload failed: [%@]", task.error);
             }
