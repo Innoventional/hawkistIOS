@@ -181,6 +181,21 @@
     NSLog(@"%@",error);
     
     switch(error.code) {
+        case 13:
+        {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc]initWithTitle:@"File Server Error"
+                                           message:@"Please try again later"
+                                          delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil] show];
+                
+            });
+            break;
+        }
+            
+        
         case 7:
         {
        
@@ -544,11 +559,11 @@ case 1:
             }
                                failureBlock:^(NSError *error) {
                                    [self hideHud];
-                                   NSLog(@"%@",error);
+                                   [self showAlert:error];
             }
                               progressBlock:^(CGFloat progress) {
                 
-                                  NSLog(@"%f",progress);
+                                
             }];
             break;
         }
