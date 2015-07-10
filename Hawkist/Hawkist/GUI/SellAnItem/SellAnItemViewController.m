@@ -99,6 +99,8 @@
         color.Title.text = @"COLOR";
         color.delegate = self;
         
+        
+        
 
         
 //        [self registerForKeyboardNotifications];
@@ -146,6 +148,7 @@
     selectedImage = 0;
     
    
+    category.userInteractionEnabled = NO;
     
     descriptionField.text = @"Brand new in box PS3 for sale with two controllers and 3 games";
     self.isPlaceholderHidden = NO;
@@ -185,7 +188,7 @@
                 [[[UIAlertView alloc]initWithTitle:@"Incorrect Post Code"
                                            message:error.domain
                                           delegate:nil
-                                 cancelButtonTitle:@"Ok"
+                                 cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil] show];
                 
             });
@@ -201,7 +204,7 @@ case 8:
             [[[UIAlertView alloc]initWithTitle:@"Post Code Not Found"
                                        message:error.domain
                                       delegate:nil
-                             cancelButtonTitle:@"Ok"
+                             cancelButtonTitle:@"OK"
                              otherButtonTitles:nil] show];
             
         });
@@ -217,7 +220,7 @@ case 6:
             [[[UIAlertView alloc]initWithTitle:@"Missing Field"
                                        message:error.domain
                                       delegate:nil
-                             cancelButtonTitle:@"Ok"
+                             cancelButtonTitle:@"OK"
                              otherButtonTitles:nil] show];
             
         });
@@ -231,7 +234,7 @@ case 1:
             [[[UIAlertView alloc]initWithTitle:@"Error"
                                        message:error.domain
                                       delegate:nil
-                             cancelButtonTitle:@"Ok"
+                             cancelButtonTitle:@"OK"
                              otherButtonTitles:nil] show];
         });
         break;
@@ -243,7 +246,7 @@ case 1:
                 [[[UIAlertView alloc]initWithTitle:@"Error"
                                            message:@"Server error"
                                           delegate:nil
-                                 cancelButtonTitle:@"Ok"
+                                 cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil] show];
             });
             break;
@@ -437,15 +440,15 @@ case 1:
     currentItem.barcode = self.barUrl;
     
 
-    
+    [self showHud];
     
     [netManager createItem:currentItem successBlock:^(HWItem *item) {
         
         NSLog(@"--------------------------Saved");
-        
+        [self hideHud];
         [self.navigationController popViewControllerAnimated:YES];
     } failureBlock:^(NSError *error) {
-        
+        [self hideHud];
         [self showAlert:error];
     }
      ];
@@ -725,7 +728,7 @@ case 1:
         v.isPlatform = YES;
         
         [self presentViewController:navigationController animated:YES completion:nil];
-        
+            category.userInteractionEnabled = YES;
 
     }
     

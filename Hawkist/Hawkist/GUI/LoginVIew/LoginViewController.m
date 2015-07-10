@@ -50,7 +50,7 @@
                 [[[UIAlertView alloc]initWithTitle:@"Error"
                                            message:error.domain
                                           delegate:nil
-                                 cancelButtonTitle:@"Ok"
+                                 cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil] show];
                 
             });
@@ -64,7 +64,7 @@
                 [[[UIAlertView alloc]initWithTitle:@"Invalid Number Format"
                                            message:error.domain
                                           delegate:nil
-                                 cancelButtonTitle:@"Ok"
+                                 cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil] show];
                 
             });
@@ -77,7 +77,7 @@
                 [[[UIAlertView alloc]initWithTitle:@"User Not Found"
                                            message:error.domain
                                           delegate:nil
-                                 cancelButtonTitle:@"Ok"
+                                 cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil] show];
                 
             });
@@ -89,7 +89,7 @@
                 [[[UIAlertView alloc]initWithTitle:@"Wrong Pin"
                                            message:error.domain
                                           delegate:nil
-                                 cancelButtonTitle:@"Ok"
+                                 cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil] show];
                 
             });
@@ -101,7 +101,7 @@
                 [[[UIAlertView alloc]initWithTitle:@"Cannot Sign In"
                                            message:error.domain
                                           delegate:nil
-                                 cancelButtonTitle:@"Ok"
+                                 cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil] show];
                 
             });
@@ -114,7 +114,7 @@
                 [[[UIAlertView alloc]initWithTitle:@"Cannot Access Facebook."
                                            message:error.domain
                                           delegate:nil
-                                 cancelButtonTitle:@"Ok"
+                                 cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil] show];
             });
              break;
@@ -125,7 +125,7 @@
                 [[[UIAlertView alloc]initWithTitle:@"Facebook"
                                            message:error.domain
                                           delegate:nil
-                                 cancelButtonTitle:@"Ok"
+                                 cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil] show];
             });
             break;
@@ -138,7 +138,7 @@
                 [[[UIAlertView alloc]initWithTitle:@"Error"
                                            message:@"Server error"
                                           delegate:nil
-                                 cancelButtonTitle:@"Ok"
+                                 cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil] show];
             });
             break;
