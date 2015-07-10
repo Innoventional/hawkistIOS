@@ -213,7 +213,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="33" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcf-SG-vzr">
-                                    <rect key="frame" x="293" y="11" width="14" height="21"/>
+                                    <rect key="frame" x="293" y="12" width="14" height="21"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
@@ -272,7 +272,7 @@
                                 <constraint firstItem="5FJ-rO-ueA" firstAttribute="leading" secondItem="5Nd-Tt-GCU" secondAttribute="trailing" id="NBI-Kd-pQ8"/>
                                 <constraint firstItem="5FJ-rO-ueA" firstAttribute="bottom" secondItem="5Nd-Tt-GCU" secondAttribute="bottom" id="NIv-rE-oAr"/>
                                 <constraint firstItem="sjN-Y7-3hG" firstAttribute="height" secondItem="5nY-34-Nt6" secondAttribute="height" id="NUV-eE-sRB"/>
-                                <constraint firstItem="Fcf-SG-vzr" firstAttribute="top" secondItem="N2l-Zo-haQ" secondAttribute="top" constant="11" id="NyN-bq-Z3d"/>
+                                <constraint firstItem="Fcf-SG-vzr" firstAttribute="top" secondItem="N2l-Zo-haQ" secondAttribute="top" constant="12" id="NyN-bq-Z3d"/>
                                 <constraint firstItem="ssH-Uv-G7b" firstAttribute="bottom" secondItem="YR3-wU-mwa" secondAttribute="bottom" id="O2B-A5-vtT"/>
                                 <constraint firstItem="8wo-XK-8rm" firstAttribute="leading" secondItem="uMT-Mc-rHZ" secondAttribute="leading" id="OAK-X4-egX"/>
                                 <constraint firstItem="sjN-Y7-3hG" firstAttribute="height" secondItem="RSv-5e-TOl" secondAttribute="height" id="QLh-zA-f02"/>
@@ -673,7 +673,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 1, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZb-gx-bJD">
-                                    <rect key="frame" x="158" y="31" width="78" height="16"/>
+                                    <rect key="frame" x="158" y="31" width="77.5" height="16"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -706,7 +706,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motherboard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzK-lv-3dw">
-                                    <rect key="frame" x="158" y="65" width="78" height="16"/>
+                                    <rect key="frame" x="158" y="65" width="77.5" height="16"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
