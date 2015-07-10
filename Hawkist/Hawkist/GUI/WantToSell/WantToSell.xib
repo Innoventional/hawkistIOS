@@ -37,7 +37,8 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.90745877896613192" green="0.90745877896613192" blue="0.90745877896613192" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="tintColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="HNi-dC-Ji7" secondAttribute="bottom" id="2R4-u9-xbw"/>
                 <constraint firstAttribute="trailing" secondItem="HNi-dC-Ji7" secondAttribute="trailing" id="60B-UF-DPv"/>
