@@ -176,103 +176,103 @@
 
 }
 
-- (void) showAlert: (NSError*)error
-{
-    NSLog(@"%@",error);
-    
-    switch(error.code) {
-        case 13:
-        {
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"File Server Error"
-                                           message:@"Please try again later"
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-                
-            });
-            break;
-        }
-            
-        
-        case 7:
-        {
-       
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"Incorrect Post Code"
-                                           message:error.domain
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-                
-            });
-            break;
-        }
-            
-            
-        
-case 8:
-    {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[[UIAlertView alloc]initWithTitle:@"Post Code Not Found"
-                                       message:error.domain
-                                      delegate:nil
-                             cancelButtonTitle:@"OK"
-                             otherButtonTitles:nil] show];
-            
-        });
-        break;
-    }
-    
-    
-
-case 6:
-    {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[[UIAlertView alloc]initWithTitle:@"Missing Field"
-                                       message:error.domain
-                                      delegate:nil
-                             cancelButtonTitle:@"OK"
-                             otherButtonTitles:nil] show];
-            
-        });
-        break;
-    }
-    
-    
-case 1:
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[[UIAlertView alloc]initWithTitle:@"Error"
-                                       message:error.domain
-                                      delegate:nil
-                             cancelButtonTitle:@"OK"
-                             otherButtonTitles:nil] show];
-        });
-        break;
-        
-    }
-        default:
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"Error"
-                                           message:@"Server error"
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-            });
-            break;
-            
-        }
-            
-            
-            
-    }
-    
-}
+//- (void) showAlert: (NSError*)error
+//{
+//    NSLog(@"%@",error);
+//    
+//    switch(error.code) {
+//        case 13:
+//        {
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"File Server Error"
+//                                           message:@"Please try again later"
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//                
+//            });
+//            break;
+//        }
+//            
+//        
+//        case 7:
+//        {
+//       
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"Incorrect Post Code"
+//                                           message:error.domain
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//                
+//            });
+//            break;
+//        }
+//            
+//            
+//        
+//case 8:
+//    {
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [[[UIAlertView alloc]initWithTitle:@"Post Code Not Found"
+//                                       message:error.domain
+//                                      delegate:nil
+//                             cancelButtonTitle:@"OK"
+//                             otherButtonTitles:nil] show];
+//            
+//        });
+//        break;
+//    }
+//    
+//    
+//
+//case 6:
+//    {
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [[[UIAlertView alloc]initWithTitle:@"Missing Field"
+//                                       message:error.domain
+//                                      delegate:nil
+//                             cancelButtonTitle:@"OK"
+//                             otherButtonTitles:nil] show];
+//            
+//        });
+//        break;
+//    }
+//    
+//    
+//case 1:
+//    {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [[[UIAlertView alloc]initWithTitle:@"Error"
+//                                       message:error.domain
+//                                      delegate:nil
+//                             cancelButtonTitle:@"OK"
+//                             otherButtonTitles:nil] show];
+//        });
+//        break;
+//        
+//    }
+//        default:
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"Error"
+//                                           message:@"Server error"
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//            });
+//            break;
+//            
+//        }
+//            
+//            
+//            
+//    }
+//    
+//}
 
 
 
@@ -327,7 +327,8 @@ case 1:
         }
             failureBlock:^(NSError *error) {
             [self hideHud];
-            [self showAlert:error];
+           // [self showAlert:error];
+                
         }];
         }
         else
@@ -464,7 +465,7 @@ case 1:
         [self.navigationController popViewControllerAnimated:YES];
     } failureBlock:^(NSError *error) {
         [self hideHud];
-        [self showAlert:error];
+    //    [self showAlert:error];
     }
      ];
     
@@ -559,7 +560,7 @@ case 1:
             }
                                failureBlock:^(NSError *error) {
                                    [self hideHud];
-                                   [self showAlert:error];
+                              //     [self showAlert:error];
             }
                               progressBlock:^(CGFloat progress) {
                 
@@ -583,7 +584,7 @@ case 1:
                                }
                                failureBlock:^(NSError *error) {
                                                [self hideHud];
-                                   [self showAlert:error];
+                             //      [self showAlert:error];
                                }
                               progressBlock:^(CGFloat progress) {
                                   

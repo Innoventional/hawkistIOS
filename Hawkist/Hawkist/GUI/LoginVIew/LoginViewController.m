@@ -39,115 +39,115 @@
 @implementation LoginViewController
 
 
-- (void) showAlert: (NSError*)error
-{
-     NSLog(@"%@",error);
-    
-    switch(error.code) {
-        case 1:
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"Error"
-                                           message:error.domain
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-                
-            });
-            break;
-        }
-
-            
-        case 2:
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"Invalid Number Format"
-                                           message:error.domain
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-                
-            });
-            break;
-        }
-
-        case 3:
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"User Not Found"
-                                           message:error.domain
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-                
-            });
-            break;
-        }
-        case 4:
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"Wrong Pin"
-                                           message:error.domain
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-                
-            });
-            break;
-        }
-        case 5:
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"Cannot Sign In"
-                                           message:error.domain
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-                
-            });
-            break;
-        }
-            
-        case 12:
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"Cannot Access Facebook."
-                                           message:error.domain
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-            });
-             break;
-        }
-        case 11:
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"Facebook"
-                                           message:error.domain
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-            });
-            break;
-        }
-
-           
-        default:
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc]initWithTitle:@"Error"
-                                           message:@"Server error"
-                                          delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil] show];
-            });
-            break;
-            
-        }
-            
-    }
-    
+//- (void) showAlert: (NSError*)error
+//{
+//     NSLog(@"%@",error);
 //    
+//    switch(error.code) {
+//        case 1:
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"Error"
+//                                           message:error.domain
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//                
+//            });
+//            break;
+//        }
+//
+//            
+//        case 2:
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"Invalid Number Format"
+//                                           message:error.domain
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//                
+//            });
+//            break;
+//        }
+//
+//        case 3:
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"User Not Found"
+//                                           message:error.domain
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//                
+//            });
+//            break;
+//        }
+//        case 4:
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"Wrong Pin"
+//                                           message:error.domain
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//                
+//            });
+//            break;
+//        }
+//        case 5:
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"Cannot Sign In"
+//                                           message:error.domain
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//                
+//            });
+//            break;
+//        }
+//            
+//        case 12:
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"Cannot Access Facebook."
+//                                           message:error.domain
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//            });
+//             break;
+//        }
+//        case 11:
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"Facebook"
+//                                           message:error.domain
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//            });
+//            break;
+//        }
+//
+//           
+//        default:
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[[UIAlertView alloc]initWithTitle:@"Error"
+//                                           message:@"Server error"
+//                                          delegate:nil
+//                                 cancelButtonTitle:@"OK"
+//                                 otherButtonTitles:nil] show];
+//            });
+//            break;
+//            
+//        }
+//            
+//    }
+//    
+//
 //    
 //    
 //    if (error.code == 2)
@@ -191,7 +191,7 @@
 //        });
 
     //}
-}
+//}
 
 
 - (void) DownloadData
@@ -420,11 +420,11 @@
 //                         [self DownloadData];
         [self logged:user isLoggedWithFacebook:YES];
         } failureBlock:^(NSError *error) {
-            [self showAlert:error];
+//            [AppEngine showAlertWithTitle:<#(NSString *)#> Message:<#(NSString *)#>];
         }];
         
     } failure:^(NSError *error) {
-       [self showAlert:error];
+  //     [self showAlert:error];
         
     }];
 
@@ -459,7 +459,7 @@
         [_numberDialog setHidden:YES];
     } failureBlock:^(NSError *error) {
         [self hideHud];
-        [self showAlert:error];
+    //    [self showAlert:error];
         
     }];
 
@@ -485,7 +485,7 @@
                 _engine.pin = _txtCode.text;
         
     } failureBlock:^(NSError *error) {
-       [self showAlert:error];
+ //      [self showAlert:error];
     }];
 
 }
@@ -541,10 +541,11 @@
         [self logged:user isLoggedWithFacebook:YES];
             
         } failureBlock:^(NSError *error) {
-           [self showAlert:error];        }];
+         //  [self showAlert:error];
+        }];
         
     } failure:^(NSError *error) {
-        [self showAlert:error];
+//        [self showAlert:error];
     }];
 }
 
@@ -576,7 +577,7 @@
      //    [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
         //[self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
-    [self showAlert:error];
+  //  [self showAlert:error];
     }];
 
 }

@@ -65,7 +65,11 @@
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                                failureBlock(
+                                             [NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                                
+                                [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
+                                
                                 return;
                             }
                             
@@ -75,6 +79,7 @@
                             if(error)
                             {
                                 failureBlock(error);
+                                
                                 return;
                             }
                             
@@ -103,6 +108,7 @@
                             if([responseObject[@"status"] integerValue] != 0)
                             {
                                 failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                                     [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
                                 return;
                             }
                             
@@ -132,6 +138,7 @@
                             if([responseObject[@"status"] integerValue] != 0)
                             {
                                 failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                                      [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
                                 return;
                             }
                             
@@ -182,6 +189,7 @@
                             if([responseObject[@"status"] integerValue] != 0)
                             {
                                 failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                                       [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
                                 return;
                             }
                             
@@ -214,6 +222,7 @@
                            if([responseObject[@"status"] integerValue] != 0)
                            {
                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                                  [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
                                return;
                            }
                            
@@ -246,6 +255,7 @@
                            if([responseObject[@"status"] integerValue] != 0)
                            {
                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                                   [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
                                return;
                            }
                            
@@ -276,6 +286,7 @@
                            if([responseObject[@"status"] integerValue] != 0)
                            {
                                failureBlock([NSError errorWithDomain: responseObject[@"message"][@"message"] code: [responseObject[@"message"][@"status"] integerValue] userInfo: nil]);
+                                 [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
                                return;
                            }
                            
@@ -326,6 +337,7 @@
                            if([responseObject[@"status"] integerValue] != 0)
                            {
                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                                   [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
                                return;
                            }
                            
@@ -381,6 +393,7 @@
                            if([responseObject[@"status"] integerValue] != 0)
                            {
                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                                  [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
                                return;
                            }
                            
@@ -414,6 +427,7 @@
                            if([responseObject[@"status"] integerValue] != 0)
                            {
                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
+                                   [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
                                return;
                            }
                            

@@ -28,4 +28,6 @@
 
 - (NSString*) categoryNameById: (NSInteger) id;
 
+
++ (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message;
 @end

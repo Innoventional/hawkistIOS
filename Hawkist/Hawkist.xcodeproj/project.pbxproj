@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0BAF6C1B53FAA6004DFF86 /* myItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0BAF6B1B53FAA6004DFF86 /* myItemCell.xib */; };
 		3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCB1B3813620004A24B /* CustomAlertView.xib */; };
 		3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */; };
 		3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBD31B386FA60004A24B /* SignIn.xib */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		3906BE83E13D87CC9252A21D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3A0BAF6B1B53FAA6004DFF86 /* myItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = myItemCell.xib; path = myItems/myItemCell.xib; sourceTree = "<group>"; };
 		3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WantToSellView.xib; path = WantToSell/WantToSellView.xib; sourceTree = "<group>"; };
 		3A61FBCB1B3813620004A24B /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeAlertView.xib; sourceTree = "<group>"; };
@@ -271,6 +273,14 @@
 				3906BE83E13D87CC9252A21D /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3A0BAF691B53FA2B004DFF86 /* MyItems */ = {
+			isa = PBXGroup;
+			children = (
+				3A0BAF6B1B53FAA6004DFF86 /* myItemCell.xib */,
+			);
+			name = MyItems;
 			sourceTree = "<group>";
 		};
 		3A61FBD51B3C11300004A24B /* WantToSell */ = {
@@ -544,6 +554,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				3A0BAF691B53FA2B004DFF86 /* MyItems */,
 				C35CB4AB1B4EA39600956150 /* TapBarScreen */,
 				3ACC6B921B43A1A20076004F /* SellAnItem */,
 				3ACC6B8C1B43A0AA0076004F /* NavigationView */,
@@ -741,6 +752,7 @@
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
+				3A0BAF6C1B53FAA6004DFF86 /* myItemCell.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
 				C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */,
 				7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */,
