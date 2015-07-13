@@ -99,8 +99,8 @@
     _imgAvatar.clipsToBounds = YES;
         _imgAvatar2.clipsToBounds = YES;
     
-    if(self.isLogeedWithFacebook)
-        self.txtUserName.enabled = NO;
+   // if(self.isLogeedWithFacebook)
+     //   self.txtUserName.enabled = NO;
     
     [_netManager getUserProfileWithSuccessBlock:^(HWUser *user) {
         if ([user.avatar isEqualToString:@""])
