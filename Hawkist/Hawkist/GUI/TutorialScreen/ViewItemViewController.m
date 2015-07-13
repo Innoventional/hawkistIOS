@@ -14,6 +14,8 @@
 @interface ViewItemViewController ()
 
 @property (nonatomic, strong) HWItem* item;
+@property (nonatomic, strong) NSMutableArray* imagesArray;
+
 @end
 
 @implementation ViewItemViewController
@@ -23,6 +25,7 @@
         self = [super initWithNibName: @"ViewItemViewController" bundle: nil];
         if(self)
         {
+            self.imagesArray = [NSMutableArray array];
             self.item = item;
             [[NetworkManager shared] getItemById: self.item.id
             successBlock:^(HWItem *item) {
@@ -53,17 +56,18 @@
     
     _starRatingControl.delegate = self;
     
-
-    
     
    self.smallImage1.layer.cornerRadius = 5.0f;
    self.smallImage1.layer.masksToBounds = YES;
+    self.smallImage1.image = nil;
     
     self.smallImage2.layer.cornerRadius = 5.0f;
     self.smallImage2.layer.masksToBounds = YES;
+    self.smallImage2.image = nil;
     
     self.smallImage3.layer.cornerRadius = 5.0f;
     self.smallImage3.layer.masksToBounds = YES;
+    self.smallImage3.image = nil;
     
     self.smallImage4.layer.cornerRadius = 5.0f;
     self.smallImage4.layer.masksToBounds = YES;
@@ -131,22 +135,48 @@
     } else {
         self.discount.text = [NSString stringWithFormat:@"%@%%",self.item.discount];
     }
-    //self.counts.text = self.item.
-    if(self.item.photos.count >= 1)
-    {
-        [self.bigImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
-        [self.smallImage1 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
-        self.smallImage1.layer.borderWidth = 2.0f;
-        self.smallImage1.layer.borderColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164].CGColor;
-    }
-    if(self.item.photos.count >= 2)
-        [self.smallImage2 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:1]] placeholderImage:nil];
-    if(self.item.photos.count >= 3)
-        [self.smallImage3 setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:2]] placeholderImage:nil];
+    [self.imagesArray removeAllObjects];
     
-    [self.smallImage4 setImageWithURL: [NSURL URLWithString: self.item.barcode] placeholderImage:nil];
+    if(self.item.photos)
+        [self.imagesArray addObjectsFromArray: self.item.photos];
+    if(self.item.barcode)
+        [self.imagesArray addObject: self.item.barcode];
+    
+    [self setImages];
+    
 }
 
+- (void) setImages
+{
+    for(NSInteger index = 0; index < self.imagesArray.count; index++)
+    {
+        switch (index) {
+            case 0:
+            {
+                [self.bigImage setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage: nil];
+                break;
+            }
+            case 1:
+            {
+                [self.smallImage1 setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage: nil];
+                break;
+            }
+            case 2:
+            {
+                [self.smallImage2 setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage: nil];
+                break;
+            }
+            case 3:
+            {
+                [self.smallImage3 setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage: nil];
+                break;
+            }
+            default:
+                break;
+        }
+        
+    }
+}
 //-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 //{
 //    return YES;
@@ -182,7 +212,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Make cell same width as application frame and 250 pixels tall.
+    // Calculate cell frame
     CGFloat width = self.view.width;
     CGFloat widthForView = (width - 36) / 2;
     return CGSizeMake(widthForView, (widthForView * 488) / 291);
@@ -193,21 +223,20 @@
 - (IBAction)imageTapped:(id)sender {
     UIGestureRecognizer *recognizer = (UIGestureRecognizer*) sender;
     
-    UIImageView* img = (UIImageView*)recognizer.view;
+    NSInteger tag = recognizer.view.tag;
     
-    if (img)
-        
+    if(tag == 4)
     {
-        self.smallImage1.layer.borderWidth = 0.0f;
-        self.smallImage2.layer.borderWidth = 0.0f;
-        self.smallImage3.layer.borderWidth = 0.0f;
-        self.smallImage4.layer.borderWidth = 0.0f;
-        [self.bigImage setImage:img.image];
-        img.layer.borderWidth = 2.0f;
-        img.layer.borderColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164].CGColor;
-        
+        //TODO: Implement favourites action
+        return;
     }
-   
+    if(tag >= self.imagesArray.count)
+        return;
+    // shift array
+    NSArray* buff = [self.imagesArray subarrayWithRange: NSMakeRange(0, tag)];
+    [self.imagesArray removeObjectsInRange: NSMakeRange(0, tag)];
+    [self.imagesArray addObjectsFromArray: buff];
+    [self setImages];
 }
 
 - (IBAction)buyButton:(id)sender {
