@@ -86,16 +86,16 @@
                         break;
                         
                     default:
-                        failureBlock([NSError errorWithDomain: @""
-                                                         code: 13
-                                                     userInfo: nil]);
+                        failureBlock(
+
+                                     [NSError errorWithDomain:@"File Server Error" code:-3 userInfo:@{NSLocalizedDescriptionKey:@"Please try again later"}]);
+                        
                         NSLog(@"Upload failed: [%@]", task.error);
                         break;
                 }
             } else {
-                failureBlock([NSError errorWithDomain: @""
-                                                 code: 13
-                                             userInfo: nil]);
+                failureBlock([NSError errorWithDomain:@"File Server Error" code:-3 userInfo:@{NSLocalizedDescriptionKey:@"Please try again later"}]);
+                
                 NSLog(@"Upload failed: [%@]", task.error);
             }
         }

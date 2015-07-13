@@ -66,11 +66,10 @@
                             if([responseObject[@"status"] integerValue] != 0)
                             {
                                 failureBlock(
-                                             [NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
-                                
-                                [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
-                                
-                                return;
+                                             
+                                [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                             
+                            return;
                             }
                             
                             NSError* error;
@@ -107,8 +106,11 @@
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
-                                     [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
+                                failureBlock(
+                                             
+                                             [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                
+
                                 return;
                             }
                             
@@ -137,8 +139,11 @@
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
-                                      [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
+                                failureBlock(
+                                             
+                                             [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                
+
                                 return;
                             }
                             
@@ -188,8 +193,11 @@
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
-                                       [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
+                                failureBlock(
+                                             
+                                             [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                
+
                                 return;
                             }
                             
@@ -221,8 +229,11 @@
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
-                                  [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+
                                return;
                            }
                            
@@ -254,8 +265,10 @@
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
-                                   [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
                                return;
                            }
                            
@@ -285,8 +298,10 @@
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock([NSError errorWithDomain: responseObject[@"message"][@"message"] code: [responseObject[@"message"][@"status"] integerValue] userInfo: nil]);
-                                 [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
                                return;
                            }
                            
@@ -336,8 +351,10 @@
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
-                                   [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
                                return;
                            }
                            
@@ -392,8 +409,10 @@
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
-                                  [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
                                return;
                            }
                            
@@ -426,8 +445,10 @@
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock([NSError errorWithDomain: responseObject[@"message"] code: [responseObject[@"status"] integerValue] userInfo: nil]);
-                                   [AppEngine showAlertWithTitle:responseObject[@"title"] Message:responseObject[@"message"]];
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
                                return;
                            }
                            

@@ -327,7 +327,7 @@
         }
             failureBlock:^(NSError *error) {
             [self hideHud];
-           // [self showAlert:error];
+           [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                 
         }];
         }
@@ -465,7 +465,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     } failureBlock:^(NSError *error) {
         [self hideHud];
-    //    [self showAlert:error];
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }
      ];
     
@@ -560,7 +560,7 @@
             }
                                failureBlock:^(NSError *error) {
                                    [self hideHud];
-                              //     [self showAlert:error];
+[self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             }
                               progressBlock:^(CGFloat progress) {
                 
@@ -584,7 +584,7 @@
                                }
                                failureBlock:^(NSError *error) {
                                                [self hideHud];
-                             //      [self showAlert:error];
+                               [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                }
                               progressBlock:^(CGFloat progress) {
                                   
@@ -609,7 +609,7 @@
                                }
                                failureBlock:^(NSError *error) {
                                    [self hideHud];
-                                   NSLog(@"%@",error);
+                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                }
                               progressBlock:^(CGFloat progress) {
                                   
@@ -633,7 +633,7 @@
                                }
                                failureBlock:^(NSError *error) {
                                    [self hideHud];
-                                   NSLog(@"%@",error);
+                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                }
                               progressBlock:^(CGFloat progress) {
                                   

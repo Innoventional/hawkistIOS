@@ -28,13 +28,13 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if ([string isEqualToString:@","])
-    {
-        
-    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:@"."];
-        return NO;
-    }
-    
+//    if ([string isEqualToString:@","])
+//    {
+//        
+//    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:@"."];
+//        return NO;
+//    }
+//    
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     NSArray  *arrayOfString = [newString componentsSeparatedByString:@"."];
     

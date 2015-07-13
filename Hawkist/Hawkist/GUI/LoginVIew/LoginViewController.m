@@ -201,8 +201,7 @@
         _engine.tags = tags;
         
     } failureBlock:^(NSError *error) {
-        NSLog(@"----------Can't get Tags -------");
-        
+       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
 
 }
@@ -418,13 +417,14 @@
 //            _accountDetailVC.isLogeedWithFacebook = YES;
 //            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
 //                         [self DownloadData];
+            
         [self logged:user isLoggedWithFacebook:YES];
         } failureBlock:^(NSError *error) {
-//            [AppEngine showAlertWithTitle:<#(NSString *)#> Message:<#(NSString *)#>];
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         }];
         
     } failure:^(NSError *error) {
-  //     [self showAlert:error];
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         
     }];
 
@@ -459,7 +459,7 @@
         [_numberDialog setHidden:YES];
     } failureBlock:^(NSError *error) {
         [self hideHud];
-    //    [self showAlert:error];
+    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         
     }];
 
@@ -485,7 +485,7 @@
                 _engine.pin = _txtCode.text;
         
     } failureBlock:^(NSError *error) {
- //      [self showAlert:error];
+       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
 
 }
@@ -541,11 +541,11 @@
         [self logged:user isLoggedWithFacebook:YES];
             
         } failureBlock:^(NSError *error) {
-         //  [self showAlert:error];
+         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         }];
         
     } failure:^(NSError *error) {
-//        [self showAlert:error];
+       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
 }
 
@@ -577,7 +577,9 @@
      //    [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
         //[self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
-  //  [self showAlert:error];
+  
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        
     }];
 
 }

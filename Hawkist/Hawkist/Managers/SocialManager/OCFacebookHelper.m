@@ -199,7 +199,7 @@ static OCFacebookHelper* fbHelperInstance = nil;
                  
                  if (arrayOfAccounts == nil || arrayOfAccounts.count == 0)
                  {
-                     error = [NSError errorWithDomain:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist." code:12 userInfo:@{NSLocalizedDescriptionKey:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist."}];
+                     error = [NSError errorWithDomain:@"Cannot Access Facebook." code:-2 userInfo:@{NSLocalizedDescriptionKey:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist."}];
                      completionBlock(nil, error);
                  }
                  else
@@ -218,7 +218,7 @@ static OCFacebookHelper* fbHelperInstance = nil;
              }
              else
              {
-                 NSError *localError = [NSError errorWithDomain: @"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist." code:12 userInfo:@{NSLocalizedDescriptionKey:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist."}];
+                 NSError *localError = [NSError errorWithDomain: @"Cannot Access Facebook." code:-2 userInfo:@{NSLocalizedDescriptionKey:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist."}];
                  if(completionBlock != nil)
                  {
                      completionBlock(nil, localError);
@@ -231,12 +231,12 @@ static OCFacebookHelper* fbHelperInstance = nil;
              {
                  if (error.code == 6)
                  {
-                     error = [NSError errorWithDomain:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist." code: 12
+                     error = [NSError errorWithDomain:@"Cannot Access Facebook." code: -2
                                              userInfo:@{NSLocalizedDescriptionKey:@"In order to Sign Up With Facebook, please allow Hawkist access. Navigate to Settings > Privacy > Facebook and enable Hawkist."}];
                  }
                  if (error.code == 7)
                  {
-                     error = [NSError errorWithDomain:@"Hawkist would like access to your basic profile info and friends list" code:11 userInfo:@{NSLocalizedDescriptionKey:@"Hawkist would like access to your basic profile info and friends list"}];
+                     error = [NSError errorWithDomain:@"Facebook" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"Hawkist would like access to your basic profile info and friends list"}];
                  }
                  completionBlock(nil, error);
              }
