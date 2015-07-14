@@ -14,7 +14,7 @@
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (nonatomic,strong) NSMutableArray* items;
+
 
 @end
 
