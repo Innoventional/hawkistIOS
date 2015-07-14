@@ -16,7 +16,12 @@
 @property (nonatomic, strong) HWItem* item;
 @property (nonatomic, strong) NSMutableArray* imagesArray;
 
+@property (nonatomic, strong) NSArray *selectedItemsArray;
+
 @end
+
+
+
 
 @implementation ViewItemViewController
 
@@ -30,6 +35,7 @@
             [[NetworkManager shared] getItemById: self.item.id
             successBlock:^(HWItem *item) {
                 self.item = item;
+                
                 [self updateItem];
             } failureBlock:^(NSError *error) {
                 
@@ -144,6 +150,11 @@
     
     [self setImages];
     
+    
+    
+    self.selectedItemsArray = self.item.similar_items;
+    
+    [self.collectionView reloadData];
 }
 
 - (void) setImages
@@ -181,29 +192,66 @@
 //{
 //    return YES;
 //}
+#pragma mark -
+#pragma mark UISegmentedControl
+ 
+
+- (IBAction)segmentSwith:(UISegmentedControl *)sender {
+    
+    switch (sender.selectedSegmentIndex) {
+        case 0:
+            self.selectedItemsArray = self.item.similar_items;
+            break;
+            
+        case 1:
+            self.selectedItemsArray = self.item.user_items;
+            break;
+            
+        default:
+            break;
+    }
+    [self.collectionView reloadData];
+}
+
+
 #pragma mark ending
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark UICollectionView
+#pragma mark UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 0;
+    return [self.selectedItemsArray count];
 }
 
 
 - (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
-    cell.item = [self.items objectAtIndex: indexPath.row];
+   
+    HWItem *item = [[HWItem alloc] initWithDictionary:  [self.selectedItemsArray objectAtIndex: indexPath.row]  error: nil];
+    
+    cell.item = item;
     
     return cell;
 }
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+     HWItem *item = [[HWItem alloc] initWithDictionary:  [self.selectedItemsArray objectAtIndex: indexPath.row]  error: nil];
+    ViewItemViewController* vc = [[ViewItemViewController alloc] initWithItem:item];
+    [self.navigationController pushViewController: vc animated: YES];
+}
+
+
+
+
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(15, 12, 0, 12); // top, left, bottom, right

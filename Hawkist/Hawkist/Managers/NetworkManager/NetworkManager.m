@@ -455,6 +455,9 @@
                            NSError* error;
                            HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
                            
+                           item.user_items =  responseObject[@"user_items"];
+                           item.similar_items = responseObject[@"similar_items"];
+                           
                            if(error)
                            {
                                failureBlock(error);
@@ -468,5 +471,7 @@
                            failureBlock(error);
                        }];
 }
+
+
 
 @end

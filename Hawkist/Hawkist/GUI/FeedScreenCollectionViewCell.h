@@ -39,9 +39,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *currentPriceLable;
 
 
-
-
-
-
-
 @end
+
+
+

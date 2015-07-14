@@ -24,12 +24,6 @@
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
 
 
-
-
-
-
-
-
 @property (nonatomic,strong) NSMutableArray *items;
 
 @property (weak) IBOutlet StarRatingControl *starRatingControl;
