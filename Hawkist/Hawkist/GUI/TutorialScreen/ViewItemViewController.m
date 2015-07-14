@@ -18,6 +18,9 @@
 
 @property (nonatomic, strong) NSArray *selectedItemsArray;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, assign) CGFloat lastHeightCollectionView;
+
 @end
 
 
@@ -90,6 +93,8 @@
     self.sellerAvatar.layer.borderWidth = 0;
     
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans" size:14.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    
+    
 //    NSArray *itemArray = [NSArray arrayWithObjects: @"Similar Items", @"User Items", nil];
 //    
 //    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
@@ -116,6 +121,8 @@
     
     self.navigationView.delegate = self;
     
+    
+ 
     
 }
 #pragma mark - update item
@@ -155,6 +162,24 @@
     self.selectedItemsArray = self.item.similar_items;
     
     [self.collectionView reloadData];
+    [self reloadScrollViewSize];
+    
+}
+
+
+- (void) reloadScrollViewSize
+{
+    
+    //reload scroll view size
+    
+    
+    [self.collectionView layoutIfNeeded];
+    CGSize size = self.scrollView.contentSize;
+    size.height += self.collectionView.contentSize.height - self.lastHeightCollectionView;
+    self.scrollView.contentSize = size;
+    
+    self.lastHeightCollectionView = self.collectionView.contentSize.height ;
+    
 }
 
 - (void) setImages
@@ -198,6 +223,7 @@
 
 - (IBAction)segmentSwith:(UISegmentedControl *)sender {
     
+    //select similar or user's items
     switch (sender.selectedSegmentIndex) {
         case 0:
             self.selectedItemsArray = self.item.similar_items;
@@ -210,7 +236,10 @@
         default:
             break;
     }
+    
     [self.collectionView reloadData];
+    [self reloadScrollViewSize];
+    
 }
 
 
@@ -293,10 +322,4 @@
 
 - (IBAction)askButton:(id)sender {
 }
-
-
-
-
-
-
 @end

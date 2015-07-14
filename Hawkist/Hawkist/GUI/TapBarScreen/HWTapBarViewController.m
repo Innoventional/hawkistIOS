@@ -11,6 +11,11 @@
 #import "FeedScreenViewController.h"
 #import "WantToSellViewController.h"
 
+
+
+#import "HWProfileViewController.h"
+
+
 @interface HWTapBarViewController () <HWTapBarViewDelegate>
 
 @property (nonatomic, strong) HWTapBarView* contentView;
@@ -71,6 +76,12 @@
         case 2:
         {
             [self.contentView addContentView: self.sellVC.view];
+            break;
+        }
+        case 3:
+        {
+            HWProfileViewController * sss = [[HWProfileViewController alloc] init];
+            [self.navigationController pushViewController:sss animated:YES];
             break;
         }
         default:
