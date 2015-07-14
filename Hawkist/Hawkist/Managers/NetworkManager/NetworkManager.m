@@ -86,7 +86,9 @@
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock(error);
+                            failureBlock([NSError errorWithDomain:@"Servet Error" code:error.code userInfo:error.userInfo]);
+                            return;
+
                         }];
 }
 
@@ -127,7 +129,9 @@
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock(error);
+                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                            return;
+
                         }];
 }
 
@@ -160,7 +164,9 @@
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock(error);
+                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                            return;
+
                         }];
 }
 
@@ -214,7 +220,9 @@
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock(error);
+                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                            return;
+
                         }];
 
 }
@@ -250,7 +258,9 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+
                        }];
 }
 
@@ -285,7 +295,9 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+
                        }];
 }
 
@@ -326,7 +338,9 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+
                        }];
 }
 
@@ -386,7 +400,9 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+
                        }];
 }
 
@@ -429,7 +445,8 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
                        }];
 }
 
@@ -465,7 +482,9 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+
                        }];
 }
 
