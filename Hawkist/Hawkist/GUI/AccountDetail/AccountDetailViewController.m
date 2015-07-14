@@ -61,7 +61,7 @@
     
 //    NSString *htmlString = @"<p style='color:white;font-size:14'>I accept <a href='http://google.com' style='color: white;text-decoration:none'>Term of Use</a> and <a href='http://google.com' style='color: white;text-decoration:none'>Privacy Policy</a></p>";
     
-    NSString* textString = @"I accept Term of Use and Privacy Policy";
+    NSString* textString = @"I accept Terms of Use and Privacy Policy";
     
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString: textString];
     
@@ -73,11 +73,11 @@
     
     
     [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor redColor] range:range];
-    [attributedString addAttribute: NSLinkAttributeName value: @"http://www.google.com" range: range];
+    [attributedString addAttribute: NSLinkAttributeName value: @"http://www.hawkist.com/privacy-policy" range: range];
     
     range = NSMakeRange(25, 14);
     [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor color256RGBWithRed: 63 green: 147 blue: 126] range:range];
-    [attributedString addAttribute: NSLinkAttributeName value: @"http://www.google.com" range: range];
+    [attributedString addAttribute: NSLinkAttributeName value: @"http://www.hawkist.com/terms-conditions" range: range];
     
 //    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
     
@@ -120,7 +120,7 @@
         
         _txtUserName.text = user.username;
         _txtEmail.text = user.email;
-        _txtAboutMe.text = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or consoles are you excited for?";
+        _txtAboutMe.text = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or hardware are you excited for?";
         
         if(user.about_me && user.about_me.length > 0)
         {
@@ -192,7 +192,7 @@
 {
     if([textView.text isEqualToString: @""])
     {
-        textView.text = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or consoles are you excited for?";
+        textView.text = @"Tell other users about yourself. What kinds of games do you enjoy? What is your top gaming achievement? What new games or hardware are you excited for?";
         self.isPlaceholderHidden = NO;
     }
 }
