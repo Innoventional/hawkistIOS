@@ -39,6 +39,7 @@
     //[self.refreshControl setBackgroundColor:[UIColor whiteColor]];
     [self.refreshControl setTintColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];
    // [self.refreshControl tintColorDidChange];
+    
     [self.collectionView addSubview:self.refreshControl];
     
     //self.collectionView.alwaysBounceVertical = YES;

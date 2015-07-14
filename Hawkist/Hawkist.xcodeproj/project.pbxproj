@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3A0BAF6C1B53FAA6004DFF86 /* myItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0BAF6B1B53FAA6004DFF86 /* myItemCell.xib */; };
+		3A0BAF6F1B551BA6004DFF86 /* MyItemCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BAF6E1B551BA6004DFF86 /* MyItemCellView.m */; };
+		3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */; };
+		3A0BAF741B5527DD004DFF86 /* MyItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */; };
 		3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCB1B3813620004A24B /* CustomAlertView.xib */; };
 		3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */; };
 		3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBD31B386FA60004A24B /* SignIn.xib */; };
@@ -105,6 +108,11 @@
 /* Begin PBXFileReference section */
 		3906BE83E13D87CC9252A21D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3A0BAF6B1B53FAA6004DFF86 /* myItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = myItemCell.xib; path = myItems/myItemCell.xib; sourceTree = "<group>"; };
+		3A0BAF6D1B551BA6004DFF86 /* MyItemCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyItemCellView.h; path = myItems/MyItemCellView.h; sourceTree = "<group>"; };
+		3A0BAF6E1B551BA6004DFF86 /* MyItemCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItemCellView.m; path = myItems/MyItemCellView.m; sourceTree = "<group>"; };
+		3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyItemsView.xib; path = myItems/MyItemsView.xib; sourceTree = "<group>"; };
+		3A0BAF721B5527DD004DFF86 /* MyItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyItemsViewController.h; path = myItems/MyItemsViewController.h; sourceTree = "<group>"; };
+		3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItemsViewController.m; path = myItems/MyItemsViewController.m; sourceTree = "<group>"; };
 		3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WantToSellView.xib; path = WantToSell/WantToSellView.xib; sourceTree = "<group>"; };
 		3A61FBCB1B3813620004A24B /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeAlertView.xib; sourceTree = "<group>"; };
@@ -279,6 +287,11 @@
 			isa = PBXGroup;
 			children = (
 				3A0BAF6B1B53FAA6004DFF86 /* myItemCell.xib */,
+				3A0BAF6D1B551BA6004DFF86 /* MyItemCellView.h */,
+				3A0BAF6E1B551BA6004DFF86 /* MyItemCellView.m */,
+				3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */,
+				3A0BAF721B5527DD004DFF86 /* MyItemsViewController.h */,
+				3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */,
 			);
 			name = MyItems;
 			sourceTree = "<group>";
@@ -746,6 +759,7 @@
 				3ACC6BEE1B44A75E0076004F /* money.xib in Resources */,
 				7C9E7B011B4FCD58001DF8BE /* open-sans.extrabold.ttf in Resources */,
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
+				3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
@@ -819,8 +833,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C35A4C621B3035D2002E1F26 /* NSDate+Extensions.m in Sources */,
+				3A0BAF741B5527DD004DFF86 /* MyItemsViewController.m in Sources */,
 				C35A4C6C1B3036D0002E1F26 /* HWUser.m in Sources */,
 				C35A4C671B3035D2002E1F26 /* UIColor+Extensions.m in Sources */,
+				3A0BAF6F1B551BA6004DFF86 /* MyItemCellView.m in Sources */,
 				C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */,
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
 				3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */,

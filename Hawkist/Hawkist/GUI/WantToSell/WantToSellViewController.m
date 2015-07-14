@@ -8,12 +8,14 @@
 
 #import "WantToSellViewController.h"
 #import "SellAnItemViewController.h"
+#import "myItemsViewController.h"
 
 @interface WantToSellViewController ()
-
+@property (nonatomic,strong) MyItemsViewController* itemsViewController;
 @end
 
 @implementation WantToSellViewController
+@synthesize itemsViewController;
 
 - (instancetype) init
 {
@@ -28,7 +30,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    itemsViewController = [[MyItemsViewController alloc]init];
+    
+    itemsViewController.view.frame = self.contentView.frame;
+    
+    [self.contentView addSubview:itemsViewController.view];
+    
+    [self addChildViewController:itemsViewController];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -11,5 +11,6 @@
 
 @interface WantToSellViewController : HWBaseViewController
 - (IBAction)btnWantToSell:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end

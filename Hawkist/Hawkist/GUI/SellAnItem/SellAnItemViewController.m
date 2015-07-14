@@ -24,13 +24,9 @@
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic,weak) NetworkManager* netManager;
 @property (nonatomic,strong) NSMutableArray* tags;
-
 @property (nonatomic,weak) AWSS3Manager* awsManager;
-
-
 @property (nonatomic,weak) NSArray* tempTagsForCategory;
 @property (nonatomic,assign) int idCategory;
-
 @property (nonatomic,strong)NSString* barUrl;
 @property (nonatomic,strong)NSString* img1Url;
 @property (nonatomic,strong)NSString* img2Url;
