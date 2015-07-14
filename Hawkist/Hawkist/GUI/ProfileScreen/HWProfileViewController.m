@@ -7,8 +7,12 @@
 //
 
 #import "HWProfileViewController.h"
+#import "NavigationVIew.h"
 
-@interface HWProfileViewController ()
+@interface HWProfileViewController () <NavigationViewDelegate>
+
+@property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarSeller;
 
 @end
 
@@ -20,12 +24,13 @@
 
 - (instancetype) init
 {
-//    self = [super initWithNibName: @"" bundle: nil];
-//    if(self)
-//    {
-//    
-//    
-//    }
+    self = [super initWithNibName: @"HWProfileViewController" bundle: nil];
+    
+    if(self)
+    {
+    
+    
+    }
     
     
     return self;
@@ -36,7 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +49,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark -
+#pragma mark NavigationDelegate
+
+
+-(void) leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void) rightButtonClick
+{
+    
+}
 
 
 @end
