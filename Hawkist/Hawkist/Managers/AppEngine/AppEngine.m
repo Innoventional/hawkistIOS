@@ -84,6 +84,32 @@
         return nil;
 }
 
+- (void) setCity:(NSString *)city
+{
+    [[NSUserDefaults standardUserDefaults] setObject: city forKey: @"city"];
+    
+}
+
+
+- (NSString*) city
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey: @"city"];
+    
+}
+
+- (void) setPostCode:(NSString *)postCode
+{
+    [[NSUserDefaults standardUserDefaults] setObject: postCode forKey: @"postCode"];
+    
+}
+
+
+- (NSString*) postCode
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey: @"postCode"];
+    
+}
+
 - (HWTag*) tagWithId: (NSString*) tagId fromArray: (NSArray*) array
 {
     for(HWTag* tag in array)

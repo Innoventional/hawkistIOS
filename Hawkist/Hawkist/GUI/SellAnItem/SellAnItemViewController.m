@@ -36,7 +36,7 @@
 @property (nonatomic,strong)NSString* img2Url;
 @property (nonatomic,strong)NSString* img3Url;
 
-
+@property (nonatomic,weak) AppEngine* engine;
 
 @end
 
@@ -64,6 +64,7 @@
 @synthesize youGetLabel;
 @synthesize netManager;
 @synthesize awsManager;
+@synthesize engine;
 
 - (instancetype) init
 {
@@ -98,15 +99,13 @@
         
         color.Title.text = @"COLOR";
         color.delegate = self;
-        
-        
-        
 
+       
+            engine = [AppEngine shared];
+            self.tags = engine.tags;
         
-//        [self registerForKeyboardNotifications];
         
         [self initDefault];
-        [self downloadData];
         
     }
     return self;
@@ -135,148 +134,26 @@
      sellingPrice.textField.text = @"0.00";
      sellingPrice.delegate = self;
     
-    checkBox1.selected = YES;
+     checkBox1.selected = YES;
     
      priceForShipping.textField.text = @"0.00";
      priceForShipping.delegate = self;
     
-    checkBox2.selected = YES;
+     checkBox2.selected = YES;
      postLabel.text=@"Enter post code";
      postField.text = @"";
     
-   
-    selectedImage = 0;
+     selectedImage = 0;
     
-   
-    category.userInteractionEnabled = NO;
+     category.userInteractionEnabled = NO;
     
-    descriptionField.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
-    self.isPlaceholderHidden = NO;
+     descriptionField.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
+     self.isPlaceholderHidden = NO;
     
-
+     postField.text = engine.postCode;
+     postLabel.text = engine.city;
     
 }
-
-
-- (void) downloadData
-{
-//    [netManager getListOfTags:^(NSMutableArray *tags) {
-//        
-//        
-//        self.tags = tags;
-//        
-//    } failureBlock:^(NSError *error) {
-//        
-//        [self showAlert:error];
-//    }];
-//
-    
-    AppEngine* engine = [AppEngine shared];
-    self.tags = engine.tags;
-
-}
-
-//- (void) showAlert: (NSError*)error
-//{
-//    NSLog(@"%@",error);
-//    
-//    switch(error.code) {
-//        case 13:
-//        {
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [[[UIAlertView alloc]initWithTitle:@"File Server Error"
-//                                           message:@"Please try again later"
-//                                          delegate:nil
-//                                 cancelButtonTitle:@"OK"
-//                                 otherButtonTitles:nil] show];
-//                
-//            });
-//            break;
-//        }
-//            
-//        
-//        case 7:
-//        {
-//       
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [[[UIAlertView alloc]initWithTitle:@"Incorrect Post Code"
-//                                           message:error.domain
-//                                          delegate:nil
-//                                 cancelButtonTitle:@"OK"
-//                                 otherButtonTitles:nil] show];
-//                
-//            });
-//            break;
-//        }
-//            
-//            
-//        
-//case 8:
-//    {
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [[[UIAlertView alloc]initWithTitle:@"Post Code Not Found"
-//                                       message:error.domain
-//                                      delegate:nil
-//                             cancelButtonTitle:@"OK"
-//                             otherButtonTitles:nil] show];
-//            
-//        });
-//        break;
-//    }
-//    
-//    
-//
-//case 6:
-//    {
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [[[UIAlertView alloc]initWithTitle:@"Missing Field"
-//                                       message:error.domain
-//                                      delegate:nil
-//                             cancelButtonTitle:@"OK"
-//                             otherButtonTitles:nil] show];
-//            
-//        });
-//        break;
-//    }
-//    
-//    
-//case 1:
-//    {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [[[UIAlertView alloc]initWithTitle:@"Error"
-//                                       message:error.domain
-//                                      delegate:nil
-//                             cancelButtonTitle:@"OK"
-//                             otherButtonTitles:nil] show];
-//        });
-//        break;
-//        
-//    }
-//        default:
-//        {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [[[UIAlertView alloc]initWithTitle:@"Error"
-//                                           message:@"Server error"
-//                                          delegate:nil
-//                                 cancelButtonTitle:@"OK"
-//                                 otherButtonTitles:nil] show];
-//            });
-//            break;
-//            
-//        }
-//            
-//            
-//            
-//    }
-//    
-//}
-
-
-
-
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
@@ -337,8 +214,6 @@
         }
     }
     
-    
-    
     return YES;
 }
 
@@ -353,30 +228,10 @@
     
 }
 
-
-
-
 - (void) leftButtonClick
 {
     [self.navigationController popViewControllerAnimated: YES];
 }
-
-
-- (void) rightButtonClick
-{
-    NSLog(@"RightButton");
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (IBAction)LinkAction:(id)sender {
     
@@ -415,8 +270,7 @@
    
     
     currentItem.platform = platform.Text.tag;
-    currentItem.category = self.idCategory;      //TODO: Why 0?
-    
+    currentItem.category = self.idCategory;
     
     currentItem.subcategory = category.Text.tag;
     currentItem.condition = condition.Text.tag;
@@ -463,6 +317,10 @@
         NSLog(@"--------------------------Saved");
         [self hideHud];
         [self.navigationController popViewControllerAnimated:YES];
+        
+        engine.city = postLabel.text;
+        engine.postCode = postField.text;
+        
     } failureBlock:^(NSError *error) {
         [self hideHud];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
@@ -665,19 +523,12 @@
    
         
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
-//        
-//        v.items = [NSMutableArray arrayWithObjects:@"Black",@"White",@"Red",@"Blue",@"Green",@"Orange",@"Yellow",@"Purple",@"Not Applicable",nil];
-        
+      
         for (HWTag* tag in self.tags)
         {
             if ([tag.name isEqualToString:@"colour"])
             {
                 v.items = [NSMutableArray arrayWithArray:tag.children];
-//                
-//                    for (HWTags* nameColor in tag.children)
-//                    {
-//                        [v.items addObject:nameColor];
-//                    }
             }
         }
         
@@ -697,8 +548,6 @@
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
         UINavigationController* navigationController = [[UINavigationController alloc]init];
 
-//        v.items = [NSMutableArray arrayWithObjects:@"Brand New in Box",@"Like New",@"Used",@"Refurbished",@"Not Working or Parts Only",nil];
-        
         for (HWTag* tag in self.tags)
         {
             if ([tag.name isEqualToString:@"condition"])
@@ -754,16 +603,7 @@
         
         
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
-        
-//        for (HWTag* tag in self.tags)
-//        {
-//            if ([tag.name isEqualToString:@"category"])
-//            {
-//                v.items = [NSMutableArray arrayWithArray:tag.children];
-//            }
-//            
-//        }
-        
+
         v.items = [NSMutableArray arrayWithArray:self.tempTagsForCategory];
         v.navigationView.title.text = @"Select a Category";
         v.delegate = self;
@@ -795,28 +635,10 @@
 {
     
     CustomButton* currentButton = (CustomButton*)sender;
-    
-    
-    
+ 
     currentButton.Text.textColor = self.textColor;
-    
     currentButton.Text.text = tag.name;
     currentButton.Text.tag = [tag.id integerValue];
-    
-//    
-//    if (sender == color)
-//    {
-//        color.Text.textColor = self.textColor;
-//        color.Text.text = tag.name;
-//    }
-//    
-//    if (sender == condition)
-//    {
-//        condition.Text.textColor = self.textColor;
-//        condition.Text.text = tag.name;
-//    }
-//
-    
     
     if (sender == category&& category.isFirstSelection)
     {
@@ -841,7 +663,5 @@
     }
 
 }
-
-
 
 @end

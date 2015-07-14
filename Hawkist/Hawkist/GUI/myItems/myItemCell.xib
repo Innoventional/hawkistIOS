@@ -10,9 +10,23 @@
         <view contentMode="scaleToFill" id="FDH-wR-NE6">
             <rect key="frame" x="0.0" y="0.0" width="299" height="355"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyCell" translatesAutoresizingMaskIntoConstraints="NO" id="QXr-uS-Tyj">
+                    <rect key="frame" x="0.0" y="0.0" width="299" height="355"/>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="QXr-uS-Tyj" secondAttribute="bottom" id="Ott-dO-wYR"/>
+                <constraint firstItem="QXr-uS-Tyj" firstAttribute="leading" secondItem="FDH-wR-NE6" secondAttribute="leading" id="Wcq-tk-EdL"/>
+                <constraint firstAttribute="trailing" secondItem="QXr-uS-Tyj" secondAttribute="trailing" id="dOd-4r-LFg"/>
+                <constraint firstItem="QXr-uS-Tyj" firstAttribute="top" secondItem="FDH-wR-NE6" secondAttribute="top" id="ugF-Ak-wwr"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="32.5" y="558.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="MyCell" width="145" height="145"/>
+    </resources>
 </document>
