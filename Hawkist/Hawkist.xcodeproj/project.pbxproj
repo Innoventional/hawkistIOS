@@ -93,6 +93,8 @@
 		CE8721EE1B55289B003C47E5 /* noPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE8721ED1B55289B003C47E5 /* noPhoto.jpg */; };
 		CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8721F11B553684003C47E5 /* HWProfileViewController.m */; };
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
+		CEC68DD11B5661510024AFC5 /* HWButtonForSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */; };
+		CEDD02701B56C22E00EC8E4A /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDD026F1B56C22E00EC8E4A /* 1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +246,9 @@
 		CE8721F01B553684003C47E5 /* HWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWProfileViewController.h; path = ProfileScreen/HWProfileViewController.h; sourceTree = "<group>"; };
 		CE8721F11B553684003C47E5 /* HWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWProfileViewController.m; path = ProfileScreen/HWProfileViewController.m; sourceTree = "<group>"; };
 		CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWProfileViewController.xib; path = ProfileScreen/HWProfileViewController.xib; sourceTree = "<group>"; };
+		CEC68DCF1B5661510024AFC5 /* HWButtonForSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWButtonForSegment.h; path = ProfileScreen/CustomSegment/HWButtonForSegment.h; sourceTree = "<group>"; };
+		CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWButtonForSegment.m; path = ProfileScreen/CustomSegment/HWButtonForSegment.m; sourceTree = "<group>"; };
+		CEDD026F1B56C22E00EC8E4A /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -667,11 +672,22 @@
 		CE8721EF1B553569003C47E5 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				CEC68DCE1B565DAF0024AFC5 /* CustomSegment */,
 				CE8721F01B553684003C47E5 /* HWProfileViewController.h */,
 				CE8721F11B553684003C47E5 /* HWProfileViewController.m */,
 				CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */,
+				CEDD026F1B56C22E00EC8E4A /* 1.png */,
 			);
 			name = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		CEC68DCE1B565DAF0024AFC5 /* CustomSegment */ = {
+			isa = PBXGroup;
+			children = (
+				CEC68DCF1B5661510024AFC5 /* HWButtonForSegment.h */,
+				CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */,
+			);
+			name = CustomSegment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -779,6 +795,7 @@
 				7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */,
 				7CF22CA41B4FCE18002CF7ED /* open-sans.bold.ttf in Resources */,
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
+				CEDD02701B56C22E00EC8E4A /* 1.png in Resources */,
 				7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */,
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
@@ -876,6 +893,7 @@
 				7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */,
 				C35A4C981B39DDFF002E1F26 /* UIPlaceholderTextView.m in Sources */,
 				C35A4C651B3035D2002E1F26 /* NSURL+Extensions.m in Sources */,
+				CEC68DD11B5661510024AFC5 /* HWButtonForSegment.m in Sources */,
 				3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */,
 				3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */,
 				3A968E311B4C1188005AA347 /* HWTag.m in Sources */,
