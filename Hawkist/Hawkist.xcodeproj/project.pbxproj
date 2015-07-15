@@ -113,7 +113,6 @@
 		3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyItemsView.xib; path = myItems/MyItemsView.xib; sourceTree = "<group>"; };
 		3A0BAF721B5527DD004DFF86 /* MyItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyItemsViewController.h; path = myItems/MyItemsViewController.h; sourceTree = "<group>"; };
 		3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItemsViewController.m; path = myItems/MyItemsViewController.m; sourceTree = "<group>"; };
-		3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WantToSellView.xib; path = WantToSell/WantToSellView.xib; sourceTree = "<group>"; };
 		3A61FBCB1B3813620004A24B /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeAlertView.xib; sourceTree = "<group>"; };
 		3A61FBD31B386FA60004A24B /* SignIn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignIn.xib; sourceTree = "<group>"; };
@@ -299,7 +298,6 @@
 		3A61FBD51B3C11300004A24B /* WantToSell */ = {
 			isa = PBXGroup;
 			children = (
-				3A2FA2F41B42AA3B00E8B459 /* WantToSellView.xib */,
 				3AF04D411B42B34D000D1D58 /* WantToSellViewController.h */,
 				3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */,
 				3A968E251B4AC43A005AA347 /* WantToSell.xib */,

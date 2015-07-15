@@ -14,6 +14,7 @@
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic,strong) NSMutableArray* items;
 
 
 @end
@@ -43,7 +44,7 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
     
-    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
+    self.collectionView.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
     
     [[NetworkManager shared] getItemsWithPage: self.currentPage + 1 searchString: nil successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
@@ -72,13 +73,15 @@
     MyItemCellView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
    
     [cell setItem:[self.items objectAtIndex: indexPath.row]];
+   
     
     return cell;
 }
 
+
+
 //- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    ViewItemViewController* vc = [[ViewItemViewController alloc] initWithItem: [self.items objectAtIndex: indexPath.row]];
-//    [self.navigationController pushViewController: vc animated: YES];
+//    NSLog(@"cell selected");
 //}
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {

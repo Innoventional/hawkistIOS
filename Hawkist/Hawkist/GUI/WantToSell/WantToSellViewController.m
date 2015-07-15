@@ -33,16 +33,11 @@
     
     itemsViewController = [[MyItemsViewController alloc]init];
     
-    itemsViewController.view.frame = self.backGroundImage.frame;
+    itemsViewController.view.frame = self.contentView.frame;
     
-    if (itemsViewController.items.count !=0)
-    {
-        
-    [self.view addSubview:itemsViewController.view];
+    [self.contentView addSubview:itemsViewController.view];
     
     [self addChildViewController:itemsViewController];
-    
-    }
     
 }
 

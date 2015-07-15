@@ -8,16 +8,35 @@
 
 #import "MyItemCellView.h"
 
+@interface MyItemCellView()
+
+@property (nonatomic,strong)UIButton* mytrash;
+
+@end
+
 @implementation MyItemCellView
 
-- (id)initWithFrame:(CGRect)frame
+
+- (id) initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        self.mytrash = [[UIButton alloc]initWithFrame:CGRectMake(self.width-6, 12, 21 , 21)];
+        self.mytrash.backgroundColor = [UIColor greenColor];
+        [self.mytrash addTarget:self action:@selector(moveToTrash) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self addSubview:self.mytrash];
+        
     }
     return self;
 }
+
+- (void) moveToTrash
+{
+
+}
+
 
 -(void)setItem:(HWItem *)item
 {
@@ -45,6 +64,16 @@
         [self.itemImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
     }
     [self setNeedsLayout];
+    
+    self.mytrash.frame = CGRectMake(self.width-31, 12, 21 , 21);
+    
+
+    
+    [self.mytrash setBackgroundImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
+    self.mytrash.layer.cornerRadius = 5;
+    self.mytrash.layer.masksToBounds = YES;
+
+    
 }
 
 - (void)awakeFromNib {
@@ -56,6 +85,6 @@
     self.layer.cornerRadius = 5.0f;
     self.layer.masksToBounds = YES;
     
-}
+  }
 
 @end

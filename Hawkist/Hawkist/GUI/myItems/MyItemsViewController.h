@@ -10,6 +10,5 @@
 
 @interface MyItemsViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic,strong) NSMutableArray* items;
 
 @end
