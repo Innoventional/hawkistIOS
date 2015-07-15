@@ -93,6 +93,9 @@
 		C35CB4AF1B4EA3BA00956150 /* HWTapBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4AD1B4EA3BA00956150 /* HWTapBarViewController.m */; };
 		C35CB4B31B4EA7E200956150 /* HWTapBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4B21B4EA7E200956150 /* HWTapBarView.m */; };
 		C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4B51B4FF04900956150 /* HWItem+Extensions.m */; };
+		CE8721EE1B55289B003C47E5 /* noPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE8721ED1B55289B003C47E5 /* noPhoto.jpg */; };
+		CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8721F11B553684003C47E5 /* HWProfileViewController.m */; };
+		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +247,10 @@
 		C35CB4B21B4EA7E200956150 /* HWTapBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTapBarView.m; sourceTree = "<group>"; };
 		C35CB4B41B4FF04900956150 /* HWItem+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HWItem+Extensions.h"; sourceTree = "<group>"; };
 		C35CB4B51B4FF04900956150 /* HWItem+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HWItem+Extensions.m"; sourceTree = "<group>"; };
+		CE8721ED1B55289B003C47E5 /* noPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = noPhoto.jpg; path = GUI/noPhoto.jpg; sourceTree = "<group>"; };
+		CE8721F01B553684003C47E5 /* HWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWProfileViewController.h; path = ProfileScreen/HWProfileViewController.h; sourceTree = "<group>"; };
+		CE8721F11B553684003C47E5 /* HWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWProfileViewController.m; path = ProfileScreen/HWProfileViewController.m; sourceTree = "<group>"; };
+		CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWProfileViewController.xib; path = ProfileScreen/HWProfileViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -502,6 +509,7 @@
 				C35A4C1E1B2F2DF7002E1F26 /* ViewController.h */,
 				C35A4C1F1B2F2DF7002E1F26 /* ViewController.m */,
 				C35A4C241B2F2DF7002E1F26 /* Images.xcassets */,
+				CE8721ED1B55289B003C47E5 /* noPhoto.jpg */,
 				C35A4C261B2F2DF7002E1F26 /* LaunchScreen.xib */,
 				C35A4C171B2F2DF7002E1F26 /* Supporting Files */,
 			);
@@ -565,6 +573,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				CE8721EF1B553569003C47E5 /* ProfileScreen */,
 				3A0BAF691B53FA2B004DFF86 /* MyItems */,
 				C35CB4AB1B4EA39600956150 /* TapBarScreen */,
 				3ACC6B921B43A1A20076004F /* SellAnItem */,
@@ -666,6 +675,16 @@
 			path = TapBarScreen;
 			sourceTree = "<group>";
 		};
+		CE8721EF1B553569003C47E5 /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CE8721F01B553684003C47E5 /* HWProfileViewController.h */,
+				CE8721F11B553684003C47E5 /* HWProfileViewController.m */,
+				CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */,
+			);
+			name = ProfileScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -756,6 +775,7 @@
 				7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */,
 				3ACC6BEE1B44A75E0076004F /* money.xib in Resources */,
 				7C9E7B011B4FCD58001DF8BE /* open-sans.extrabold.ttf in Resources */,
+				CE8721EE1B55289B003C47E5 /* noPhoto.jpg in Resources */,
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
@@ -763,6 +783,7 @@
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
+				CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */,
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
 				3A0BAF6C1B53FAA6004DFF86 /* myItemCell.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
@@ -851,6 +872,7 @@
 				C35A4C4A1B3031F4002E1F26 /* NetworkDecorator.m in Sources */,
 				C35A4C661B3035D2002E1F26 /* OCUtilites.m in Sources */,
 				C35CB49F1B4BE91B00956150 /* HWItem.m in Sources */,
+				CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				C35CB4B31B4EA7E200956150 /* HWTapBarView.m in Sources */,
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,

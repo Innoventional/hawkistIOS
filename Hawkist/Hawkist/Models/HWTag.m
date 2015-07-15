@@ -11,3 +11,19 @@
 @implementation HWTag
 
 @end
+
+@implementation HWCategory
+
+@end
+
+@implementation HWSubCategories
+
+@end
+
+@implementation HWColor
+
+@end
+
+@implementation HWCondition
+
+@end

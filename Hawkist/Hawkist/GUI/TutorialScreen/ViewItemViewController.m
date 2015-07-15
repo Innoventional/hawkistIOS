@@ -16,7 +16,15 @@
 @property (nonatomic, strong) HWItem* item;
 @property (nonatomic, strong) NSMutableArray* imagesArray;
 
+@property (nonatomic, strong) NSArray *selectedItemsArray;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, assign) CGFloat lastHeightCollectionView;
+
 @end
+
+
+
 
 @implementation ViewItemViewController
 
@@ -30,6 +38,7 @@
             [[NetworkManager shared] getItemById: self.item.id
             successBlock:^(HWItem *item) {
                 self.item = item;
+                
                 [self updateItem];
             } failureBlock:^(NSError *error) {
                 
@@ -84,6 +93,8 @@
     self.sellerAvatar.layer.borderWidth = 0;
     
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans" size:14.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    
+    
 //    NSArray *itemArray = [NSArray arrayWithObjects: @"Similar Items", @"User Items", nil];
 //    
 //    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
@@ -111,6 +122,8 @@
     self.navigationView.delegate = self;
     
     
+ 
+    
 }
 #pragma mark - update item
 - (void) updateItem
@@ -124,10 +137,10 @@
     self.oldPrice.text = self.item.retail_price;
     self.descriptionOfItem.text = self.item.item_description;
     self.added.text = [self.item stringItemCreationDate];
-    self.platform.text = [[AppEngine shared] categoryNameById: self.item.platform];
-    self.condition.text = [[AppEngine shared] categoryNameById: self.item.condition];
-    self.category.text = [[AppEngine shared] categoryNameById: self.item.category];
-    self.colour.text = [[AppEngine shared] categoryNameById: self.item.color];
+    self.platform.text = [[AppEngine shared] GetPlatformById:[NSString stringWithFormat: @"%ld", self.item.platform]];
+ //   self.condition.text = [[AppEngine shared] categoryNameById: self.item.condition];
+   // self.category.text = [[AppEngine shared] categoryNameById: self.item.category];
+   // self.colour.text = [[AppEngine shared] categoryNameById: self.item.color];
     self.delivery.text = self.item.shipping_price;
     //self.discount.text = self.item.discount;
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
@@ -143,6 +156,29 @@
         [self.imagesArray addObject: self.item.barcode];
     
     [self setImages];
+    
+    
+    
+    self.selectedItemsArray = self.item.similar_items;
+    
+    [self.collectionView reloadData];
+    [self reloadScrollViewSize];
+    
+}
+
+
+- (void) reloadScrollViewSize
+{
+    
+    //reload scroll view size
+    
+    
+    [self.collectionView layoutIfNeeded];
+    CGSize size = self.scrollView.contentSize;
+    size.height += self.collectionView.contentSize.height - self.lastHeightCollectionView;
+    self.scrollView.contentSize = size;
+    
+    self.lastHeightCollectionView = self.collectionView.contentSize.height ;
     
 }
 
@@ -181,29 +217,70 @@
 //{
 //    return YES;
 //}
+#pragma mark -
+#pragma mark UISegmentedControl
+ 
+
+- (IBAction)segmentSwith:(UISegmentedControl *)sender {
+    
+    //select similar or user's items
+    switch (sender.selectedSegmentIndex) {
+        case 0:
+            self.selectedItemsArray = self.item.similar_items;
+            break;
+            
+        case 1:
+            self.selectedItemsArray = self.item.user_items;
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self.collectionView reloadData];
+    [self reloadScrollViewSize];
+    
+}
+
+
 #pragma mark ending
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark UICollectionView
+#pragma mark UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 0;
+    return [self.selectedItemsArray count];
 }
 
 
 - (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
-    cell.item = [self.items objectAtIndex: indexPath.row];
+   
+    HWItem *item = [[HWItem alloc] initWithDictionary:  [self.selectedItemsArray objectAtIndex: indexPath.row]  error: nil];
+    
+    cell.item = item;
     
     return cell;
 }
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+     HWItem *item = [[HWItem alloc] initWithDictionary:  [self.selectedItemsArray objectAtIndex: indexPath.row]  error: nil];
+    ViewItemViewController* vc = [[ViewItemViewController alloc] initWithItem:item];
+    [self.navigationController pushViewController: vc animated: YES];
+}
+
+
+
+
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(15, 12, 0, 12); // top, left, bottom, right
@@ -245,10 +322,4 @@
 
 - (IBAction)askButton:(id)sender {
 }
-
-
-
-
-
-
 @end

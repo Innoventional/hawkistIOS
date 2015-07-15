@@ -13,7 +13,7 @@
 
 @protocol ChoiceTableViewDelegata <NSObject>
 
-- (void) SelectedItemFrom:(id)sender WithItem:(HWTag*)tag;
+- (void) SelectedItemFrom:(id)sender WithItem:(NSObject*)selection;
 
 @end
 

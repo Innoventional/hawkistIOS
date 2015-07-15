@@ -50,14 +50,14 @@
 -(void)viewDidAppear:(BOOL)animated{
 //    long index;//= [items indexOfObject:self.previousSelected];
 //    
-    for (HWTag* tag in items)
-    {
-        if ([tag.name isEqualToString:self.previousSelected])
-        {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[items indexOfObject:tag] inSection:0];
-            [self.table selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-        }
-    }
+//    for (HWTag* tag in items)
+//    {
+//        if ([tag.platforms.name isEqualToString:self.previousSelected])
+//        {
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[items indexOfObject:tag] inSection:0];
+//            [self.table selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+//        }
+//    }
    
     
 }
@@ -84,50 +84,83 @@
     
     if (cell==nil) {
         
-        
-//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         cell = [[ChoiceCellView alloc]init];
     }
     
-    HWTag* currentItem = [items objectAtIndex:indexPath.row];
+    NSObject* currentItem = [items objectAtIndex:indexPath.row];
     
-    cell.myLabel.text = currentItem.name;
-    
-    if (!currentItem.children || self.isPlatform)
+    if ([currentItem isKindOfClass:[HWCategory class]])
+              {
+                  cell.myLabel.text = ((HWCategory*)currentItem).name;
+                  cell.forwardImage.hidden = NO;
+              }
+    else
+    {
+        cell.myLabel.text = ((HWTag*)currentItem).name;
         cell.forwardImage.hidden = YES;
+
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HWTag* currentItem = [items objectAtIndex:indexPath.row];
     
+     NSObject* currentItem = [items objectAtIndex:indexPath.row];
     
-   if (!currentItem.children|| self.isPlatform)
-   {
-       if (self.delegate && [self.delegate respondsToSelector: @selector(SelectedItemFrom:WithItem:)])
-        [self.delegate SelectedItemFrom:self.sender WithItem:currentItem];
-       [self dismissViewControllerAnimated:YES completion:nil];
-   }
-    else
+    if ([currentItem isKindOfClass:[HWCategory class]])
     {
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
         
-       
-        v.items = [NSMutableArray arrayWithArray:currentItem.children];
         
-        v.navigationView.title.text = self.navigationView.title.text;
+                v.items = [NSMutableArray arrayWithArray:((HWCategory*)currentItem).subcategories];
         
-        v.delegate = self.delegate;
+                v.navigationView.title.text = @"Select a Subcategory";
         
-        v.sender = self.sender;
+                v.delegate = self.delegate;
         
-        [self.navigationController pushViewController:v animated:YES];
+                v.sender = self.sender;
+        
+                [self.navigationController pushViewController:v animated:YES];
+        
+    }
+    
+    else
+    {
         if (self.delegate && [self.delegate respondsToSelector: @selector(SelectedItemFrom:WithItem:)])
             [self.delegate SelectedItemFrom:self.sender WithItem:currentItem];
-
+        [self dismissViewControllerAnimated:YES completion:nil];
+    
     }
+    
+   
+    
+    
+// //  if (!currentItem.children|| self.isPlatform)
+//   {
+//       if (self.delegate && [self.delegate respondsToSelector: @selector(SelectedItemFrom:WithItem:)])
+//        [self.delegate SelectedItemFrom:self.sender WithItem:currentItem];
+//       [self dismissViewControllerAnimated:YES completion:nil];
+//   }
+//    else
+//    {
+//        ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+//        
+//       
+// //       v.items = [NSMutableArray arrayWithArray:currentItem.children];
+    
+//        v.navigationView.title.text = self.navigationView.title.text;
+//        
+//        v.delegate = self.delegate;
+//        
+//        v.sender = self.sender;
+//        
+//        [self.navigationController pushViewController:v animated:YES];
+//        if (self.delegate && [self.delegate respondsToSelector: @selector(SelectedItemFrom:WithItem:)])
+//            [self.delegate SelectedItemFrom:self.sender WithItem:currentItem];
+//
+   // }
 }
 
 - (void)viewDidLoad {

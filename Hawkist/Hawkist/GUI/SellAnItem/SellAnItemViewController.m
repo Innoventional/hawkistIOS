@@ -25,7 +25,10 @@
 @property (nonatomic,weak) NetworkManager* netManager;
 @property (nonatomic,strong) NSMutableArray* tags;
 @property (nonatomic,weak) AWSS3Manager* awsManager;
+
 @property (nonatomic,weak) NSArray* tempTagsForCategory;
+@property (nonatomic,weak) NSArray* tempTagsForCondition;
+@property (nonatomic,weak) NSArray* tempTagsForColor;
 @property (nonatomic,assign) int idCategory;
 @property (nonatomic,strong)NSString* barUrl;
 @property (nonatomic,strong)NSString* img1Url;
@@ -142,6 +145,8 @@
      selectedImage = 0;
     
      category.userInteractionEnabled = NO;
+         color.userInteractionEnabled = NO;
+         condition.userInteractionEnabled = NO;
     
      descriptionField.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
      self.isPlaceholderHidden = NO;
@@ -520,13 +525,7 @@
         
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
       
-        for (HWTag* tag in self.tags)
-        {
-            if ([tag.name isEqualToString:@"colour"])
-            {
-                v.items = [NSMutableArray arrayWithArray:tag.children];
-            }
-        }
+        v.items = [NSMutableArray arrayWithArray:self.tempTagsForColor];
         
        v.navigationView.title.text = @"Select a Colour";
         v.delegate = self;
@@ -544,14 +543,7 @@
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
         UINavigationController* navigationController = [[UINavigationController alloc]init];
 
-        for (HWTag* tag in self.tags)
-        {
-            if ([tag.name isEqualToString:@"condition"])
-            {
-                v.items = [NSMutableArray arrayWithArray:tag.children];
-            }
-
-        }
+        v.items = [NSMutableArray arrayWithArray:self.tempTagsForCondition];
         v.navigationView.title.text = @"Select a Condition";
         v.delegate = self;
         v.sender = sender;
@@ -570,15 +562,8 @@
         
 
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+        v.items = [NSMutableArray arrayWithArray:self.tags];
         
-        for (HWTag* tag in self.tags)
-        {
-            if ([tag.name isEqualToString:@"platform"])
-            {
-                v.items = [NSMutableArray arrayWithArray:tag.children];
-            }
-            
-        }
         v.navigationView.title.text = @"Select a Platform";
         v.delegate = self;
         v.sender = sender;
@@ -627,37 +612,94 @@
     }
 }
 
-- (void) SelectedItemFrom:(id)sender WithItem:(HWTag *)tag
+- (void) SelectedItemFrom:(id)sender WithItem:(NSObject *)selection
 {
-    
-    CustomButton* currentButton = (CustomButton*)sender;
- 
-    currentButton.Text.textColor = self.textColor;
-    currentButton.Text.text = tag.name;
-    currentButton.Text.tag = [tag.id integerValue];
-    
-    if (sender == category&& category.isFirstSelection)
-    {
-            self.idCategory = [tag.id intValue];
-            category.isFirstSelection = NO;
-            category.Text.text = tag.name;
-            category.Text.tag = [tag.id integerValue];
-        
-    }
     
     if (sender == platform)
     {
-        platform.Text.textColor = self.textColor;
-        platform.Text.text = tag.name;
         
-        self.tempTagsForCategory = tag.children;
+        
+        platform.Text.textColor = self.textColor;
+        platform.Text.text = ((HWTag*)selection).name;
+        
+        self.tempTagsForCategory = ((HWTag*)selection).categories;
         category.Text.textColor = self.placeHolderColor;
         category.Text.text = @"Select a Category";
+        
+        color.Text.textColor = self.placeHolderColor;
+        color.Text.text = @"Select a Colour";
+        
+        condition.Text.textColor = self.placeHolderColor;
+        condition.Text.text = @"Select a Condition";
+        
         category.isFirstSelection = YES;
                     category.userInteractionEnabled = YES;
         
+                            color.userInteractionEnabled = NO;
+                            condition.userInteractionEnabled = NO;
+        
+        platform.Text.tag = [((HWTag*)selection).id integerValue];
+        
+        return;
+        
     }
-
+    
+    
+    if (sender == category)
+    {
+        
+        HWSubCategories* currentSubCategories = ((HWSubCategories*)selection);
+        
+        category.Text.textColor = self.textColor;
+        category.Text.text = ((HWSubCategories*)selection).name;
+        
+        self.tempTagsForCondition = currentSubCategories.condition;
+        
+        condition.Text.textColor = self.placeHolderColor;
+        condition.Text.text = @"Select a Condition";
+        
+        if (currentSubCategories.color.count == 1 && [((HWColor*)[((NSArray*)currentSubCategories.color) firstObject]).code isEqual:@""])
+        {
+            
+            color.Text.textColor = self.textColor;
+            color.Text.text = @"Not Applicable";
+            color.userInteractionEnabled = NO;
+            
+        }
+        else
+        {
+            
+            color.Text.textColor = self.placeHolderColor;
+            color.Text.text = @"Select a Colour";
+            color.userInteractionEnabled = YES;
+            self.tempTagsForColor = currentSubCategories.color;
+            
+        }
+        
+        
+        condition.userInteractionEnabled = YES;
+        
+        self.idCategory = ((HWSubCategories*)selection).parent_id;
+        category.Text.tag = [((HWSubCategories*)selection).id integerValue];
+        
+        return;
+    }
+    
+    if (sender == color)
+    {
+        color.Text.textColor = self.textColor;
+        color.Text.text = ((HWColor*)selection).name;
+        
+        color.Text.tag = [((HWColor*)selection).id integerValue];
+    }
+    
+    if (sender == condition)
+    {
+        condition.Text.textColor = self.textColor;
+        condition.Text.text = ((HWCondition*)selection).name;
+        
+        condition.Text.tag = [((HWCondition*)selection).id integerValue];
+    }
 }
 
 @end

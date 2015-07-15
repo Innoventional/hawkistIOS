@@ -304,7 +304,7 @@
 - (void) getListOfTags: (void (^)(NSMutableArray * tags)) successBlock
           failureBlock: (void (^)(NSError* error)) failureBlock
 {
-    [self.networkDecorator GET: @"tags"
+    [self.networkDecorator GET: @"metatags"
                     parameters: nil
      
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -322,12 +322,17 @@
                            
                            NSMutableArray* tags = [NSMutableArray array];
                            
-                           for (NSDictionary* tag in responseObject[@"tags"])
+
+                           
+                           
+                           //WithDictionary: tag error: &error];
+                           
+                           for (NSDictionary* tag in responseObject[@"tags"][@"platforms"])
                            {
-                                 HWTag* newTag = [[HWTag alloc] initWithDictionary: tag error: &error];
+                               HWTag* newTag = [[HWTag alloc] initWithDictionary: tag error: &error];
                                 [tags addObject:newTag];
                            }
-                           
+//
                            if(error)
                            {
                                failureBlock(error);
@@ -359,7 +364,7 @@
         [params setObject: searchString forKey: @"q"];
     }
     
-    [self.networkDecorator GET: @"items"
+    [self.networkDecorator GET: @"listings"
                     parameters: params
      
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -419,7 +424,7 @@
     
     NSDictionary* params = [item toDictionary];
     
-    [self.networkDecorator POST: @"items"
+    [self.networkDecorator POST: @"listings"
                     parameters: params
      
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -454,9 +459,9 @@
         successBlock: (void (^)(HWItem* item)) successBlock
         failureBlock: (void (^)(NSError* error)) failureBlock
 {
-    NSDictionary* params = @{@"item_id": itemId};
+    NSDictionary* params = @{@"listing_id": itemId};
     
-    [self.networkDecorator GET: @"items"
+    [self.networkDecorator GET: @"listings"
                     parameters: params
      
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -471,6 +476,9 @@
                            
                            NSError* error;
                            HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
+                           
+                           item.user_items =  responseObject[@"user_items"];
+                           item.similar_items = responseObject[@"similar_items"];
                            
                            if(error)
                            {
@@ -487,5 +495,7 @@
 
                        }];
 }
+
+
 
 @end

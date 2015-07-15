@@ -75,14 +75,14 @@
     _tags = tags;
 }
 
-- (NSString*) categoryNameById: (NSInteger) id
-{
-    HWTag* tag = [self tagWithId: [NSString stringWithFormat: @"%ld", id] fromArray: self.tags];
-    if(tag)
-        return tag.name;
-    else
-        return nil;
-}
+//- (NSString*) categoryNameById: (NSInteger) id
+//{
+//    HWTag* tag = [self tagWithId: [NSString stringWithFormat: @"%ld", id] fromArray: self.tags];
+//    if(tag)
+//        return tag.name;
+//    else
+//        return nil;
+//}
 
 - (void) setCity:(NSString *)city
 {
@@ -110,24 +110,38 @@
     
 }
 
-- (HWTag*) tagWithId: (NSString*) tagId fromArray: (NSArray*) array
-{
-    for(HWTag* tag in array)
-    {
-        if([tag.id isEqualToString: tagId])
-        {
-            return tag;
-        }
-        else if(tag.children && tag.children.count > 0)
-        {
-            HWTag* aTag = [self tagWithId: tagId fromArray: tag.children];
-            if(aTag)
-                return aTag;
-        }
-    }
-    return nil;
-}
+//- (HWTag*) tagWithId: (NSString*) tagId fromArray: (NSArray*) array
+//{
+//    for(HWTag* tag in array)
+//    {
+//        if([tag.id isEqualToString: tagId])
+//        {
+//            return tag;
+//        }
+//        else if(tag.children && tag.children.count > 0)
+//        {
+//            HWTag* aTag = [self tagWithId: tagId fromArray: tag.children];
+//            if(aTag)
+//                return aTag;
+//        }
+//    }
+//    return nil;
+//}
 
+
+- (NSString*) GetPlatformById:(NSString*)tagId
+{
+    for (HWTag* tag in self.tags)
+    {
+        if([tag.id isEqual:tagId])
+                    {
+                        return tag.name;
+                    }
+    }
+
+return nil;
+    
+}
 
 
 @end
