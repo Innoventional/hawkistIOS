@@ -942,7 +942,7 @@
     <resources>
         <image name="NoAvatar" width="500" height="500"/>
         <image name="askbutton" width="47" height="30"/>
-        <image name="bigimage" width="689" height="460"/>
+        <image name="bigimage" width="319" height="239"/>
         <image name="buybutton" width="290" height="40"/>
         <image name="fav" width="65" height="65"/>
         <image name="mot2.png" width="527" height="375"/>
