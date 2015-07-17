@@ -35,6 +35,7 @@
 #pragma mark Initialization
 
 - (void)setupView {
+    
 	self.clipsToBounds = YES;
 	_currentIdx = -1;
 	_star = [UIImage imageNamed:@"stargrey"];
@@ -60,6 +61,9 @@
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
+        
+        
+         
 		_numberOfStars = kDefaultNumberOfStars;
 		[self setupView];
 	}
@@ -69,6 +73,8 @@
 - (id)initWithFrame:(CGRect)frame andStars:(NSUInteger)numberOfStars {
 	self = [super initWithFrame:frame];
 	if (self) {
+        
+        
 		_numberOfStars = numberOfStars;
 		[self setupView];
 	}
@@ -106,7 +112,13 @@
 
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
-	CGPoint point = [touch locationInView:self];	
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(enabledTouch)])
+    {
+        return [self.delegate enabledTouch];
+    }
+    
+	CGPoint point = [touch locationInView:self];
 	NSUInteger index = [self indexForStarAtPoint:point];
 	if (index != NSNotFound) {
 		[self setRating:index+1];

@@ -41,7 +41,7 @@
                       UILabel *label = [[UILabel alloc]init];
                       [self addSubview:label];
                       [label setFont:[UIFont systemFontOfSize:21]];
-                      
+                      label.textColor = [UIColor colorWithRed:106./255. green:106./255. blue:106./255. alpha:1];
                       label.text = @"222";
                       
                       
@@ -54,6 +54,7 @@
                       UILabel *label = [[UILabel alloc]init];
                       [self addSubview:label];
                       [label setFont:[UIFont systemFontOfSize:12]];
+                      label.textColor = [UIColor colorWithRed:170./255. green:173./255. blue:173./255. alpha:1];
                       
                       label.text = @"FOLLOWING";
                       
@@ -66,7 +67,7 @@
                      {
                          UIImageView * imV = [[UIImageView alloc]init];
                          [self addSubview:imV];
-                         imV.image = [UIImage imageNamed:@"askbutton"];
+                         imV.image = [UIImage imageNamed:@"Profile_select"];
                          imV.hidden = YES;
                          
                          imV;

@@ -12,16 +12,40 @@
 #import "HWButtonForSegment.h"
 
 #import "FeedScreenCollectionViewCell.h"
+#import "HWFollowInProfileCell.h"
+#import "StarRatingControl.h"
 
-
-@interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *segmentView;
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
-@property (weak, nonatomic) IBOutlet UIImageView *avatarSeller;
+
+@property (weak, nonatomic) IBOutlet StarRatingControl *starRatingView;
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *avatarView;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *salesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastSeenLabel;
+@property (weak, nonatomic) IBOutlet UILabel *responsTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *followUnfollowButton;
+
+
+
 
 @property (strong, nonatomic) IBOutletCollection(HWButtonForSegment) NSArray *buttonSegmentCollection;
+@property (weak, nonatomic) IBOutlet HWButtonForSegment *itemsButton;
+@property (weak, nonatomic) IBOutlet HWButtonForSegment *followingButton;
+@property (weak, nonatomic) IBOutlet HWButtonForSegment *followersButton;
+@property (weak, nonatomic) IBOutlet HWButtonForSegment *wishlistButton;
 
 
 
@@ -50,13 +74,15 @@
     if(self)
     {
     
-    
     }
     
-    
     return self;
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
     
-    
+    [self segmentButtonAction:self.itemsButton];
 }
 
 
@@ -64,29 +90,11 @@
     [super viewDidLoad];
     
     [self commonInit];
-    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
+    
     self.navigationView.delegate = self;
-}
-
--(void)commonInit
-{
+    self.navigationView.title.text = @"Profile";
     
-    CGFloat yOriginForTableAndCollection = self.segmentView.frame.origin.y + self.segmentView.frame.size.height - 10;
-    CGRect rectMainScreen = [UIScreen mainScreen].bounds;
-    
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, yOriginForTableAndCollection, self.view.width, 200) style:UITableViewStylePlain];
-    [self.scrollView addSubview:self.tableView];
-    self.tableView.hidden = YES;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    self.collectionView =[[UICollectionView alloc] initWithFrame:CGRectMake(0, yOriginForTableAndCollection, rectMainScreen.size.width, 500) collectionViewLayout:layout];
-    [self.scrollView addSubview:self.collectionView];
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    
-    [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"collectionViewCell"];
+    [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
    
 }
 
@@ -96,8 +104,138 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)commonInit
+{
+    
+    CGFloat widthScreen = [UIScreen mainScreen].bounds.size.width;
+    CGFloat yOriginForTableAndCollection = self.segmentView.frame.origin.y + self.segmentView.frame.size.height - 10;
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, yOriginForTableAndCollection, widthScreen, 200) style:UITableViewStylePlain];
+    [self.scrollView addSubview:self.tableView];
+    self.tableView.hidden = YES;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[UINib nibWithNibName:@"HWFollowInProfileCell" bundle:nil] forCellReuseIdentifier:@"123"];
+    
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    self.collectionView =[[UICollectionView alloc] initWithFrame:CGRectMake(0, yOriginForTableAndCollection, widthScreen, 500) collectionViewLayout:layout];
+    [self.scrollView addSubview:self.collectionView];
+    self.collectionView.hidden = NO;
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"collectionViewCell"];
+    
+    [self setupSegmentButtonsConfig];
+    
+    self.starRatingView.delegate = self;
+    
+    
+   
+}
+
+#pragma mark - 
+#pragma mark StarRatingDelegate
+
+- (BOOL) enabledTouch
+{
+    return NO;
+}
+
+
+- (void) setupSegmentButtonsConfig
+{
+    self.itemsButton.titleButton.text = @"ITEMS";
+    self.itemsButton.count.text = @"45";
+    
+    self.followersButton.titleButton.text = @"FOLLOWERS";
+    self.followersButton.count.text = @"124";
+    
+    self.followingButton.titleButton.text = @"FOLLOWING";
+    self.followingButton.count.text = @"341";
+    
+    self.wishlistButton.titleButton.text = @"WISHLIST";
+    self.wishlistButton.count.text = @"12";
+}
+
+
+
+#pragma mark -
+#pragma mark reloadData
+
+- (void) reloadTableAndCollectionViewWithData:(NSArray*)dataArray forTableView:(BOOL)forTableView
+{
+    
+    CGFloat yOriginForTableAndCollection = self.segmentView.frame.origin.y + self.segmentView.frame.size.height;
+    
+    self.selectedSegmentArray = dataArray;
+    CGFloat heightForCollectionOrTable = 0;
+    
+    if(!forTableView)
+    {
+        self.tableView.hidden = YES;
+        self.collectionView.hidden = NO;
+        [self.collectionView reloadData];
+        [self.collectionView layoutIfNeeded];
+        heightForCollectionOrTable = self.collectionView.contentSize.height;
+        
+        CGRect frameCollection = self.collectionView.bounds;
+        
+        frameCollection.origin.y = yOriginForTableAndCollection;
+        frameCollection.size.height = self.collectionView.contentSize.height;
+        self.collectionView.frame = frameCollection;
+        
+    }
+    else
+    {
+        self.collectionView.hidden = YES;
+        self.tableView.hidden = NO;
+        [self.tableView reloadData];
+        [self.tableView layoutIfNeeded];
+        heightForCollectionOrTable = self.tableView.contentSize.height;
+        
+        CGRect frameTable = self.tableView.bounds;
+        frameTable.size.height = self.tableView.contentSize.height;
+        frameTable.origin.y = yOriginForTableAndCollection;
+        self.tableView.frame = frameTable;
+        
+    }
+    
+    [self setupHeightScrollView:heightForCollectionOrTable];
+    
+    
+}
+
+
+- (void) setupHeightScrollView:(CGFloat) height
+{
+    CGFloat heightForScrollView = self.segmentView.frame.origin.y + self.segmentView.frame.size.height + height;
+    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, heightForScrollView)];
+    
+}
+
+
+
 #pragma mark -
 #pragma mark Actions
+
+
+- (IBAction)aboutAction:(UIButton *)sender {
+}
+
+- (IBAction)followUnfollowAction:(UIButton *)sender {
+    
+   if ([sender.titleLabel.text isEqualToString:@"  FOLLOW  "])
+   {
+       [sender setTitle:@"UNFOLLOW" forState:UIControlStateNormal];
+   } else {
+       [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
+      
+   }
+}
 
 - (IBAction)segmentButtonAction:(HWButtonForSegment *)sender {
     
@@ -107,6 +245,26 @@
    }
     
     sender.selectedImage.hidden = NO;
+    switch (sender.tag) {
+        case 1:
+            [self reloadTableAndCollectionViewWithData:nil forTableView:NO];
+            break;
+        case 2:
+            [self reloadTableAndCollectionViewWithData:nil forTableView:YES];
+            break;
+        case 3:
+            [self reloadTableAndCollectionViewWithData:nil forTableView:YES];
+            break;
+        case 4:
+            [self reloadTableAndCollectionViewWithData:nil forTableView:NO];
+            break;
+            
+        default:
+            break;
+    }
+    
+
+    
 }
 
 
@@ -119,6 +277,7 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 -(void) rightButtonClick
 {
     
@@ -130,12 +289,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 14;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    HWFollowInProfileCell* cell = [tableView dequeueReusableCellWithIdentifier:@"123" forIndexPath:indexPath];
+    
+    
+
+    
+    return cell;
 }
 
 #pragma mark -
@@ -143,16 +307,20 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return 80;
 }
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
 
 
 #pragma mark -
 #pragma mark UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 33;
+    return 41;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
