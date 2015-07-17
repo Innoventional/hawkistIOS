@@ -75,32 +75,62 @@
     _tags = tags;
 }
 
-- (NSString*) categoryNameById: (NSInteger) id
+
+- (void) setCity:(NSString *)city
 {
-    HWTag* tag = [self tagWithId: [NSString stringWithFormat: @"%ld", id] fromArray: self.tags];
-    if(tag)
-        return tag.name;
-    else
-        return nil;
+    [[NSUserDefaults standardUserDefaults] setObject: city forKey: @"city"];
+    
 }
 
-- (HWTag*) tagWithId: (NSString*) tagId fromArray: (NSArray*) array
+
+- (NSString*) city
 {
-    for(HWTag* tag in array)
-    {
-        if([tag.id isEqualToString: tagId])
-        {
-            return tag;
-        }
-        else if(tag.children && tag.children.count > 0)
-        {
-            HWTag* aTag = [self tagWithId: tagId fromArray: tag.children];
-            if(aTag)
-                return aTag;
-        }
-    }
-    return nil;
+    return [[NSUserDefaults standardUserDefaults] objectForKey: @"city"];
+    
 }
+
+- (void) setPostCode:(NSString *)postCode
+{
+    [[NSUserDefaults standardUserDefaults] setObject: postCode forKey: @"postCode"];
+    
+}
+
+
+- (NSString*) postCode
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey: @"postCode"];
+    
+}
+
+
+//- (NSString*) categoryNameById: (NSInteger) id
+//{
+//    HWTag* tag = [self tagWithId: [NSString stringWithFormat: @"%ld", id] fromArray: self.tags];
+//    if(tag)
+//        return tag.name;
+//    else
+//        return nil;
+//}
+
+
+//- (HWTag*) tagWithId: (NSString*) tagId fromArray: (NSArray*) array
+//{
+//    for(HWTag* tag in array)
+//    {
+//        if([tag.id isEqualToString: tagId])
+//        {
+//            return tag;
+//        }
+//        else if(tag.children && tag.children.count > 0)
+//        {
+//            HWTag* aTag = [self tagWithId: tagId fromArray: tag.children];
+//            if(aTag)
+//                return aTag;
+//        }
+//    }
+//    return nil;
+//}
+
 
 
 

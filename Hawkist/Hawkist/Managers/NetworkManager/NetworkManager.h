@@ -76,4 +76,15 @@
         successBlock: (void (^)(HWItem* item)) successBlock
         failureBlock: (void (^)(NSError* error)) failureBlock;
 
+
+//remove item by id
+- (void) removeItemById: (NSString*) itemId
+           successBlock: (void (^)(HWItem* item)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock;
+
+// get items by user
+- (void) getItemsByUserId: (NSString*) userId
+             successBlock: (void (^)(NSArray* arrayWithItems)) successBlock
+             failureBlock: (void (^)(NSError* error)) failureBlock;
+
 @end

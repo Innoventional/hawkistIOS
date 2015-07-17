@@ -12,6 +12,8 @@
 @property (nonatomic,strong) HWUser* user;
 @property (nonatomic, strong) NSString* pin;
 @property (nonatomic,strong) NSMutableArray* tags;
+@property (nonatomic,strong) NSString* city;
+@property (nonatomic,strong) NSString* postCode;
 
 + (instancetype) shared;
 

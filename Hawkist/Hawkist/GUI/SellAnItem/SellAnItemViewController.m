@@ -24,19 +24,18 @@
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic,weak) NetworkManager* netManager;
 @property (nonatomic,strong) NSMutableArray* tags;
-
 @property (nonatomic,weak) AWSS3Manager* awsManager;
 
-
 @property (nonatomic,weak) NSArray* tempTagsForCategory;
+@property (nonatomic,weak) NSArray* tempTagsForCondition;
+@property (nonatomic,weak) NSArray* tempTagsForColor;
 @property (nonatomic,assign) int idCategory;
-
 @property (nonatomic,strong)NSString* barUrl;
 @property (nonatomic,strong)NSString* img1Url;
 @property (nonatomic,strong)NSString* img2Url;
 @property (nonatomic,strong)NSString* img3Url;
 
-
+@property (nonatomic,weak) AppEngine* engine;
 
 @end
 
@@ -64,6 +63,7 @@
 @synthesize youGetLabel;
 @synthesize netManager;
 @synthesize awsManager;
+@synthesize engine;
 
 - (instancetype) init
 {
@@ -96,17 +96,15 @@
         condition.Title.text = @"CONDITION";
         condition.delegate = self;
         
-        color.Title.text = @"COLOR";
+        color.Title.text = @"COLOUR";
         color.delegate = self;
-        
-        
-        
 
+       
+            engine = [AppEngine shared];
+            self.tags = engine.tags;
         
-//        [self registerForKeyboardNotifications];
         
         [self initDefault];
-        [self downloadData];
         
     }
     return self;
@@ -135,148 +133,28 @@
      sellingPrice.textField.text = @"0.00";
      sellingPrice.delegate = self;
     
-    checkBox1.selected = YES;
+     checkBox1.selected = YES;
     
      priceForShipping.textField.text = @"0.00";
      priceForShipping.delegate = self;
     
-    checkBox2.selected = YES;
+     checkBox2.selected = YES;
      postLabel.text=@"Enter post code";
      postField.text = @"";
     
-   
-    selectedImage = 0;
+     selectedImage = 0;
     
-   
-    category.userInteractionEnabled = NO;
+     category.userInteractionEnabled = NO;
+         color.userInteractionEnabled = NO;
+         condition.userInteractionEnabled = NO;
     
-    descriptionField.text = @"Brand new in box PS3 for sale with two controllers and 3 games";
-    self.isPlaceholderHidden = NO;
+     descriptionField.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
+     self.isPlaceholderHidden = NO;
     
-
+     postField.text = engine.postCode;
+     postLabel.text = engine.city;
     
 }
-
-
-- (void) downloadData
-{
-//    [netManager getListOfTags:^(NSMutableArray *tags) {
-//        
-//        
-//        self.tags = tags;
-//        
-//    } failureBlock:^(NSError *error) {
-//        
-//        [self showAlert:error];
-//    }];
-//
-    
-    AppEngine* engine = [AppEngine shared];
-    self.tags = engine.tags;
-
-}
-
-//- (void) showAlert: (NSError*)error
-//{
-//    NSLog(@"%@",error);
-//    
-//    switch(error.code) {
-//        case 13:
-//        {
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [[[UIAlertView alloc]initWithTitle:@"File Server Error"
-//                                           message:@"Please try again later"
-//                                          delegate:nil
-//                                 cancelButtonTitle:@"OK"
-//                                 otherButtonTitles:nil] show];
-//                
-//            });
-//            break;
-//        }
-//            
-//        
-//        case 7:
-//        {
-//       
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [[[UIAlertView alloc]initWithTitle:@"Incorrect Post Code"
-//                                           message:error.domain
-//                                          delegate:nil
-//                                 cancelButtonTitle:@"OK"
-//                                 otherButtonTitles:nil] show];
-//                
-//            });
-//            break;
-//        }
-//            
-//            
-//        
-//case 8:
-//    {
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [[[UIAlertView alloc]initWithTitle:@"Post Code Not Found"
-//                                       message:error.domain
-//                                      delegate:nil
-//                             cancelButtonTitle:@"OK"
-//                             otherButtonTitles:nil] show];
-//            
-//        });
-//        break;
-//    }
-//    
-//    
-//
-//case 6:
-//    {
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [[[UIAlertView alloc]initWithTitle:@"Missing Field"
-//                                       message:error.domain
-//                                      delegate:nil
-//                             cancelButtonTitle:@"OK"
-//                             otherButtonTitles:nil] show];
-//            
-//        });
-//        break;
-//    }
-//    
-//    
-//case 1:
-//    {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [[[UIAlertView alloc]initWithTitle:@"Error"
-//                                       message:error.domain
-//                                      delegate:nil
-//                             cancelButtonTitle:@"OK"
-//                             otherButtonTitles:nil] show];
-//        });
-//        break;
-//        
-//    }
-//        default:
-//        {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [[[UIAlertView alloc]initWithTitle:@"Error"
-//                                           message:@"Server error"
-//                                          delegate:nil
-//                                 cancelButtonTitle:@"OK"
-//                                 otherButtonTitles:nil] show];
-//            });
-//            break;
-//            
-//        }
-//            
-//            
-//            
-//    }
-//    
-//}
-
-
-
-
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
@@ -337,8 +215,6 @@
         }
     }
     
-    
-    
     return YES;
 }
 
@@ -347,36 +223,16 @@
     if([textView.text isEqualToString: @""])
     {
         descriptionField.textColor = _placeHolderColor;
-        textView.text = @"Brand new in box PS3 for sale with two controllers and 3 games";
+        textView.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
         self.isPlaceholderHidden = NO;
     }
     
 }
 
-
-
-
 - (void) leftButtonClick
 {
     [self.navigationController popViewControllerAnimated: YES];
 }
-
-
-- (void) rightButtonClick
-{
-    NSLog(@"RightButton");
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (IBAction)LinkAction:(id)sender {
     
@@ -415,8 +271,7 @@
    
     
     currentItem.platform = platform.Text.tag;
-    currentItem.category = self.idCategory;      //TODO: Why 0?
-    
+    currentItem.category = self.idCategory;
     
     currentItem.subcategory = category.Text.tag;
     currentItem.condition = condition.Text.tag;
@@ -439,6 +294,10 @@
     
     NSMutableArray* tmpArrayForImage = [[NSMutableArray alloc]init];
     
+    if (self.barUrl)
+        [tmpArrayForImage addObject:self.barUrl];
+    
+    
     if (self.img1Url)
         [tmpArrayForImage addObject:self.img1Url];
     
@@ -453,7 +312,7 @@
     
     currentItem.photos = [NSArray arrayWithArray:tmpArrayForImage];
     
-    currentItem.barcode = self.barUrl;
+  //  currentItem.barcode = self.barUrl;
     
 
     [self showHud];
@@ -463,6 +322,10 @@
         NSLog(@"--------------------------Saved");
         [self hideHud];
         [self.navigationController popViewControllerAnimated:YES];
+        
+        engine.city = postLabel.text;
+        engine.postCode = postField.text;
+        
     } failureBlock:^(NSError *error) {
         [self hideHud];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
@@ -665,21 +528,8 @@
    
         
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
-//        
-//        v.items = [NSMutableArray arrayWithObjects:@"Black",@"White",@"Red",@"Blue",@"Green",@"Orange",@"Yellow",@"Purple",@"Not Applicable",nil];
-        
-        for (HWTag* tag in self.tags)
-        {
-            if ([tag.name isEqualToString:@"colour"])
-            {
-                v.items = [NSMutableArray arrayWithArray:tag.children];
-//                
-//                    for (HWTags* nameColor in tag.children)
-//                    {
-//                        [v.items addObject:nameColor];
-//                    }
-            }
-        }
+      
+        v.items = [NSMutableArray arrayWithArray:self.tempTagsForColor];
         
        v.navigationView.title.text = @"Select a Colour";
         v.delegate = self;
@@ -697,16 +547,7 @@
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
         UINavigationController* navigationController = [[UINavigationController alloc]init];
 
-//        v.items = [NSMutableArray arrayWithObjects:@"Brand New in Box",@"Like New",@"Used",@"Refurbished",@"Not Working or Parts Only",nil];
-        
-        for (HWTag* tag in self.tags)
-        {
-            if ([tag.name isEqualToString:@"condition"])
-            {
-                v.items = [NSMutableArray arrayWithArray:tag.children];
-            }
-
-        }
+        v.items = [NSMutableArray arrayWithArray:self.tempTagsForCondition];
         v.navigationView.title.text = @"Select a Condition";
         v.delegate = self;
         v.sender = sender;
@@ -725,15 +566,8 @@
         
 
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+        v.items = [NSMutableArray arrayWithArray:self.tags];
         
-        for (HWTag* tag in self.tags)
-        {
-            if ([tag.name isEqualToString:@"platform"])
-            {
-                v.items = [NSMutableArray arrayWithArray:tag.children];
-            }
-            
-        }
         v.navigationView.title.text = @"Select a Platform";
         v.delegate = self;
         v.sender = sender;
@@ -754,16 +588,7 @@
         
         
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
-        
-//        for (HWTag* tag in self.tags)
-//        {
-//            if ([tag.name isEqualToString:@"category"])
-//            {
-//                v.items = [NSMutableArray arrayWithArray:tag.children];
-//            }
-//            
-//        }
-        
+
         v.items = [NSMutableArray arrayWithArray:self.tempTagsForCategory];
         v.navigationView.title.text = @"Select a Category";
         v.delegate = self;
@@ -791,57 +616,95 @@
     }
 }
 
-- (void) SelectedItemFrom:(id)sender WithItem:(HWTag *)tag
+- (void) SelectedItemFrom:(id)sender WithItem:(NSObject *)selection
 {
-    
-    CustomButton* currentButton = (CustomButton*)sender;
-    
-    
-    
-    currentButton.Text.textColor = self.textColor;
-    
-    currentButton.Text.text = tag.name;
-    currentButton.Text.tag = [tag.id integerValue];
-    
-//    
-//    if (sender == color)
-//    {
-//        color.Text.textColor = self.textColor;
-//        color.Text.text = tag.name;
-//    }
-//    
-//    if (sender == condition)
-//    {
-//        condition.Text.textColor = self.textColor;
-//        condition.Text.text = tag.name;
-//    }
-//
-    
-    
-    if (sender == category&& category.isFirstSelection)
-    {
-            self.idCategory = [tag.id intValue];
-            category.isFirstSelection = NO;
-            category.Text.text = tag.name;
-            category.Text.tag = [tag.id integerValue];
-        
-    }
     
     if (sender == platform)
     {
-        platform.Text.textColor = self.textColor;
-        platform.Text.text = tag.name;
         
-        self.tempTagsForCategory = tag.children;
+        
+        platform.Text.textColor = self.textColor;
+        platform.Text.text = ((HWTag*)selection).name;
+        
+        self.tempTagsForCategory = ((HWTag*)selection).categories;
         category.Text.textColor = self.placeHolderColor;
         category.Text.text = @"Select a Category";
+        
+        color.Text.textColor = self.placeHolderColor;
+        color.Text.text = @"Select a Colour";
+        
+        condition.Text.textColor = self.placeHolderColor;
+        condition.Text.text = @"Select a Condition";
+        
         category.isFirstSelection = YES;
                     category.userInteractionEnabled = YES;
         
+                            color.userInteractionEnabled = NO;
+                            condition.userInteractionEnabled = NO;
+        
+        platform.Text.tag = [((HWTag*)selection).id integerValue];
+        
+        return;
+        
     }
-
+    
+    
+    if (sender == category)
+    {
+        
+        HWSubCategories* currentSubCategories = ((HWSubCategories*)selection);
+        
+        category.Text.textColor = self.textColor;
+        category.Text.text = ((HWSubCategories*)selection).name;
+        
+        self.tempTagsForCondition = currentSubCategories.condition;
+        
+        condition.Text.textColor = self.placeHolderColor;
+        condition.Text.text = @"Select a Condition";
+        
+        if (currentSubCategories.color.count == 1 && [((HWColor*)[((NSArray*)currentSubCategories.color) firstObject]).code isEqual:@""])
+        {
+            
+            color.Text.textColor = self.textColor;
+            color.Text.text = @"Not Applicable";
+            color.userInteractionEnabled = NO;
+            color.Text.tag = [((HWColor*)selection).id integerValue];
+            
+        }
+        else
+        {
+            
+            color.Text.textColor = self.placeHolderColor;
+            color.Text.text = @"Select a Colour";
+            color.userInteractionEnabled = YES;
+            self.tempTagsForColor = currentSubCategories.color;
+            
+        }
+        
+        
+        condition.userInteractionEnabled = YES;
+        
+        self.idCategory = ((HWSubCategories*)selection).parent_id;
+        category.Text.tag = [((HWSubCategories*)selection).id integerValue];
+        
+        return;
+    }
+    
+    if (sender == color)
+    {
+        color.Text.textColor = self.textColor;
+        color.Text.text = ((HWColor*)selection).name;
+        
+        color.Text.tag = [((HWColor*)selection).id integerValue];
+    }
+    
+    if (sender == condition)
+    {
+        condition.Text.textColor = self.textColor;
+        condition.Text.text = ((HWCondition*)selection).name;
+        
+        condition.Text.tag = [((HWCondition*)selection).id integerValue];
+    }
 }
-
-
 
 @end

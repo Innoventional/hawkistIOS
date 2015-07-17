@@ -86,7 +86,9 @@
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock(error);
+                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                            return;
+
                         }];
 }
 
@@ -127,7 +129,9 @@
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock(error);
+                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                            return;
+
                         }];
 }
 
@@ -160,7 +164,9 @@
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock(error);
+                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                            return;
+
                         }];
 }
 
@@ -214,7 +220,9 @@
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock(error);
+                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                            return;
+
                         }];
 
 }
@@ -250,7 +258,9 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+
                        }];
 }
 
@@ -285,14 +295,16 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+
                        }];
 }
 
 - (void) getListOfTags: (void (^)(NSMutableArray * tags)) successBlock
           failureBlock: (void (^)(NSError* error)) failureBlock
 {
-    [self.networkDecorator GET: @"tags"
+    [self.networkDecorator GET: @"metatags"
                     parameters: nil
      
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -310,12 +322,17 @@
                            
                            NSMutableArray* tags = [NSMutableArray array];
                            
-                           for (NSDictionary* tag in responseObject[@"tags"])
+
+                           
+                           
+                           //WithDictionary: tag error: &error];
+                           
+                           for (NSDictionary* tag in responseObject[@"tags"][@"platforms"])
                            {
-                                 HWTag* newTag = [[HWTag alloc] initWithDictionary: tag error: &error];
+                               HWTag* newTag = [[HWTag alloc] initWithDictionary: tag error: &error];
                                 [tags addObject:newTag];
                            }
-                           
+//
                            if(error)
                            {
                                failureBlock(error);
@@ -326,7 +343,9 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+
                        }];
 }
 
@@ -345,7 +364,7 @@
         [params setObject: searchString forKey: @"q"];
     }
     
-    [self.networkDecorator GET: @"items"
+    [self.networkDecorator GET: @"listings"
                     parameters: params
      
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -386,7 +405,9 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+
                        }];
 }
 
@@ -403,7 +424,7 @@
     
     NSDictionary* params = [item toDictionary];
     
-    [self.networkDecorator POST: @"items"
+    [self.networkDecorator POST: @"listings"
                     parameters: params
      
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -429,7 +450,8 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
                        }];
 }
 
@@ -437,9 +459,9 @@
         successBlock: (void (^)(HWItem* item)) successBlock
         failureBlock: (void (^)(NSError* error)) failureBlock
 {
-    NSDictionary* params = @{@"item_id": itemId};
+    NSDictionary* params = @{@"listing_id": itemId};
     
-    [self.networkDecorator GET: @"items"
+    [self.networkDecorator GET: @"listings"
                     parameters: params
      
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -468,10 +490,108 @@
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock(error);
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+
                        }];
 }
 
+- (void) removeItemById: (NSString*) itemId
+           successBlock: (void (^)(HWItem* item)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    
+    NSDictionary* params = @{@"listing_id": itemId};
+    
 
+    
+    [self.networkDecorator DELETE:@"listings"
+     
+                       parameters: params
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+                           
+                           NSError* error;
+                           HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
+                         
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(item);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+                           
+                       }];
+}
+
+- (void) getItemsByUserId: (NSString*) userId
+             successBlock: (void (^)(NSArray* arrayWithItems)) successBlock
+             failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    NSDictionary* params = @{@"user_id": userId};
+    
+    [self.networkDecorator GET: @"listings"
+                    parameters: params
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+                           
+                           NSError* error;
+                           NSArray* items = responseObject[@"items"];
+                           
+                           NSMutableArray* arrayWithItems = [NSMutableArray array];
+                           
+                           for (NSDictionary* item in items) {
+                               HWItem* newItem = [[HWItem alloc] initWithDictionary: item error: &error];
+                               if(error)
+                               {
+                                   NSLog(@"Error occured during item entity parsing: %@", error);
+                                   error = nil;
+                               }
+                               else
+                               {
+                                   [arrayWithItems addObject: newItem];
+                               }
+                           }
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(arrayWithItems);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+                           
+                       }];
+}
 
 @end
+
+

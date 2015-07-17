@@ -10,6 +10,7 @@
 #import "HWBaseViewController.h"
 
 @interface WantToSellViewController : HWBaseViewController
+@property (weak, nonatomic) IBOutlet UIImageView *backGroundImage;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 - (IBAction)btnWantToSell:(id)sender;
-
 @end

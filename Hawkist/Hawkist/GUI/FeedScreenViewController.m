@@ -39,6 +39,7 @@
     //[self.refreshControl setBackgroundColor:[UIColor whiteColor]];
     [self.refreshControl setTintColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];
    // [self.refreshControl tintColorDidChange];
+    
     [self.collectionView addSubview:self.refreshControl];
     
     //self.collectionView.alwaysBounceVertical = YES;
@@ -137,7 +138,7 @@
 
 - (void)refresh
 {
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching listings..."];
     
     [[NetworkManager shared] getItemsWithPage: 1 searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
         [self.items removeAllObjects];
