@@ -49,7 +49,7 @@
                         <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1t-Mz-ZnN">
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1t-Mz-ZnN">
                         <rect key="frame" x="234" y="15" width="69" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="69" id="7TN-aP-lZp"/>
@@ -92,8 +92,8 @@
                     <constraint firstAttribute="bottomMargin" secondItem="d8V-ku-0Xd" secondAttribute="bottom" constant="10" id="VgJ-iZ-ECO"/>
                     <constraint firstItem="2jD-mj-6x2" firstAttribute="top" secondItem="a3f-al-p3f" secondAttribute="topMargin" constant="7" id="atQ-iN-yud"/>
                     <constraint firstAttribute="bottom" secondItem="tQy-Sf-Htj" secondAttribute="bottom" constant="-1" id="gfF-gf-NfK"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="d8V-ku-0Xd" secondAttribute="trailing" constant="64" id="p3R-zB-YTA"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="n1t-Mz-ZnN" secondAttribute="trailing" constant="9" id="qDu-PI-WiU"/>
+                    <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="d8V-ku-0Xd" secondAttribute="trailing" constant="64" id="p3R-zB-YTA"/>
+                    <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="n1t-Mz-ZnN" secondAttribute="trailing" constant="9" id="qDu-PI-WiU"/>
                     <constraint firstItem="wtm-sd-fek" firstAttribute="leading" secondItem="JAl-fh-Ivt" secondAttribute="trailing" constant="13" id="qKz-Ex-f8m"/>
                     <constraint firstItem="JAl-fh-Ivt" firstAttribute="leading" secondItem="a3f-al-p3f" secondAttribute="leadingMargin" constant="3" id="sgB-Dh-BMI"/>
                     <constraint firstItem="2jD-mj-6x2" firstAttribute="leading" secondItem="JAl-fh-Ivt" secondAttribute="trailing" constant="13" id="xFb-7H-uZj"/>

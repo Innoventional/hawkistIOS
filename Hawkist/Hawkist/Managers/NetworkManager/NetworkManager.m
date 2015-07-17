@@ -135,6 +135,60 @@
                         }];
 }
 
+
+
+- (void) getUserProfileWithUserID: (NSString*) userId
+                     successBlock: (void (^)(HWUser* user)) successBlock
+                     failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+ 
+    NSString *userIdStr;
+    
+    if (userId)
+    {
+        userIdStr  = [NSString stringWithFormat:@"user?id=%@",userId];
+    } else {
+        
+        userIdStr = @"user";
+    }
+    
+    
+    [self.networkDecorator GET: userIdStr
+                    parameters: nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               
+                               return;
+                           }
+                           
+                           NSError* error;
+                           HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(user);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+                           
+                       }];
+}
+
+
+
+
 - (void) getUserProfileWithSuccessBlock: (void (^)(HWUser* user)) successBlock
                            failureBlock: (void (^)(NSError* error)) failureBlock
 {

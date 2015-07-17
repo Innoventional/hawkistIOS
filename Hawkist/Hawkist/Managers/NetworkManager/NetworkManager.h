@@ -36,6 +36,10 @@
 - (void) getUserProfileWithSuccessBlock: (void (^)(HWUser* user)) successBlock
                            failureBlock: (void (^)(NSError* error)) failureBlock;
 
+- (void) getUserProfileWithUserID: (NSString*) userId
+                     successBlock: (void (^)(HWUser* user)) successBlock
+                     failureBlock: (void (^)(NSError* error)) failureBlock;
+
 // update user entity
 
 - (void) updateUserEntityWithUsername: (NSString*) username

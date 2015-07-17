@@ -22,4 +22,12 @@
 @property (nonatomic, strong) NSString<Optional>* thumbnail;
 @property (nonatomic, assign) BOOL first_login;
 
+
+@property (nonatomic, strong) NSString<Optional>* city;
+@property (nonatomic, strong) NSString<Optional>* last_activity;
+@property (nonatomic, strong) NSString<Optional>* number_of_sales;
+@property (nonatomic, strong) NSString<Optional>* rating;
+@property (nonatomic, strong) NSString<Optional>* review;
+@property (nonatomic, strong) NSString<Optional>* response_time;
+
 @end
