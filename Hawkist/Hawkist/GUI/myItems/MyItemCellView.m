@@ -41,7 +41,7 @@
 {
  [[NetworkManager shared]removeItemById:self.item.id
 
-    successBlock:^(HWItem *item) {
+    successBlock:^() {
         if (self.delegate && [self.delegate respondsToSelector: @selector(updateParent)])
             [_delegate updateParent];
      

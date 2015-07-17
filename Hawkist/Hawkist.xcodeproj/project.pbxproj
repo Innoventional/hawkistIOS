@@ -26,6 +26,7 @@
 		3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A968E271B4AD819005AA347 /* ChoiceCell.xib */; };
 		3A968E2B1B4AD92B005AA347 /* ChoiceCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E2A1B4AD92B005AA347 /* ChoiceCellView.m */; };
 		3A968E311B4C1188005AA347 /* HWTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E301B4C1188005AA347 /* HWTag.m */; };
+		3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A98D61D1B593F5D00D55FF9 /* BuyThisItem.xib */; };
 		3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6B8D1B43A0B90076004F /* Navigation.xib */; };
 		3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B901B43A0D90076004F /* NavigationVIew.m */; };
 		3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B941B43A1C40076004F /* SellAnItemViewController.m */; };
@@ -142,6 +143,7 @@
 		3A968E2A1B4AD92B005AA347 /* ChoiceCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChoiceCellView.m; path = SellAnItem/ChoiceFromButton/Cell/ChoiceCellView.m; sourceTree = "<group>"; };
 		3A968E2F1B4C1188005AA347 /* HWTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTag.h; sourceTree = "<group>"; };
 		3A968E301B4C1188005AA347 /* HWTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTag.m; sourceTree = "<group>"; };
+		3A98D61D1B593F5D00D55FF9 /* BuyThisItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuyThisItem.xib; path = BuyThisItem/BuyThisItem.xib; sourceTree = "<group>"; };
 		3ACC6B8D1B43A0B90076004F /* Navigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Navigation.xib; path = NavigationView/Navigation.xib; sourceTree = "<group>"; };
 		3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationVIew.h; path = NavigationView/NavigationVIew.h; sourceTree = "<group>"; };
 		3ACC6B901B43A0D90076004F /* NavigationVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationVIew.m; path = NavigationView/NavigationVIew.m; sourceTree = "<group>"; };
@@ -359,6 +361,14 @@
 				3A968E2A1B4AD92B005AA347 /* ChoiceCellView.m */,
 			);
 			name = ChoiceFromButton;
+			sourceTree = "<group>";
+		};
+		3A98D61C1B593F2900D55FF9 /* BuyThisItem */ = {
+			isa = PBXGroup;
+			children = (
+				3A98D61D1B593F5D00D55FF9 /* BuyThisItem.xib */,
+			);
+			name = BuyThisItem;
 			sourceTree = "<group>";
 		};
 		3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
@@ -586,6 +596,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				3A98D61C1B593F2900D55FF9 /* BuyThisItem */,
 				CE8721EF1B553569003C47E5 /* ProfileScreen */,
 				3A0BAF691B53FA2B004DFF86 /* MyItems */,
 				C35CB4AB1B4EA39600956150 /* TapBarScreen */,
@@ -811,6 +822,7 @@
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
 				CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */,
+				3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */,
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
 				3A0BAF6C1B53FAA6004DFF86 /* myItemCell.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,

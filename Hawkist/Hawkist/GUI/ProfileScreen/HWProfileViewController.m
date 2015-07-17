@@ -133,12 +133,7 @@
 {
 
      [self.avatarView setImageWithURL: [NSURL URLWithString: self.user.avatar] placeholderImage:nil];
-    self.userNameLabel.text = self.user.username;
-    self.locationLabel.text = self.user
-    self.responsTimeLabel.text
-    self.lastSeenLabel.text
-    self.responsTimeLabel.text
-    self.ratingLabel.text
+
     
     /*
      

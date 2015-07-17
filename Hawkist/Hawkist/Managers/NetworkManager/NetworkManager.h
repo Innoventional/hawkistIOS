@@ -83,7 +83,7 @@
 
 //remove item by id
 - (void) removeItemById: (NSString*) itemId
-           successBlock: (void (^)(HWItem* item)) successBlock
+           successBlock: (void (^)(void)) successBlock
            failureBlock: (void (^)(NSError* error)) failureBlock;
 
 // get items by user

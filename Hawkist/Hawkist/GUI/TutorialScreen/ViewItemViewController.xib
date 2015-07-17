@@ -226,8 +226,8 @@
                                     <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8s-Yh-Jkp">
-                                    <rect key="frame" x="286" y="28" width="21" height="1"/>
+                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I8s-Yh-Jkp">
+                                    <rect key="frame" x="286" y="29" width="21" height="1"/>
                                     <color key="backgroundColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="O7I-EN-UFf"/>
@@ -942,7 +942,7 @@
     <resources>
         <image name="NoAvatar" width="500" height="500"/>
         <image name="askbutton" width="47" height="30"/>
-        <image name="bigimage" width="689" height="460"/>
+        <image name="bigimage" width="319" height="239"/>
         <image name="buybutton" width="290" height="40"/>
         <image name="fav" width="65" height="65"/>
         <image name="mot2.png" width="527" height="375"/>
