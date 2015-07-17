@@ -12,11 +12,15 @@
 
 - (void) showError:(NSError*)error;
 
+
+
 @end
 
 #import <UIKit/UIKit.h>
 
 @interface MyItemCellView : UICollectionViewCell
+
+@property (nonatomic,strong)UIButton* mytrash;
 
 @property (nonatomic,strong) id <MyItemCellDelegate> delegate;
 

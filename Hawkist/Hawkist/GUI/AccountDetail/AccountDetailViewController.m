@@ -102,7 +102,8 @@
    // if(self.isLogeedWithFacebook)
      //   self.txtUserName.enabled = NO;
     
-    [_netManager getUserProfileWithSuccessBlock:^(HWUser *user) {
+    [_netManager getUserProfileWithUserID: nil
+                              successBlock:^(HWUser *user) {
         if ([user.avatar isEqualToString:@""])
         {
             _imgAvatar2.hidden = YES;

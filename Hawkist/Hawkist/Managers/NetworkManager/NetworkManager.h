@@ -33,8 +33,11 @@
                  failureBlock: (void (^)(NSError* error)) failureBlock;
 
 // get user profile
-- (void) getUserProfileWithSuccessBlock: (void (^)(HWUser* user)) successBlock
-                           failureBlock: (void (^)(NSError* error)) failureBlock;
+
+
+
+//- (void) getUserProfileWithSuccessBlock: (void (^)(HWUser* user)) successBlock
+//                           failureBlock: (void (^)(NSError* error)) failureBlock;
 
 - (void) getUserProfileWithUserID: (NSString*) userId
                      successBlock: (void (^)(HWUser* user)) successBlock
