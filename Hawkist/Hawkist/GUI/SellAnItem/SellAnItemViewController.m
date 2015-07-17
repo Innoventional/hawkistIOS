@@ -96,7 +96,7 @@
         condition.Title.text = @"CONDITION";
         condition.delegate = self;
         
-        color.Title.text = @"COLOR";
+        color.Title.text = @"COLOUR";
         color.delegate = self;
 
        
@@ -294,6 +294,10 @@
     
     NSMutableArray* tmpArrayForImage = [[NSMutableArray alloc]init];
     
+    if (self.barUrl)
+        [tmpArrayForImage addObject:self.barUrl];
+    
+    
     if (self.img1Url)
         [tmpArrayForImage addObject:self.img1Url];
     
@@ -308,7 +312,7 @@
     
     currentItem.photos = [NSArray arrayWithArray:tmpArrayForImage];
     
-    currentItem.barcode = self.barUrl;
+  //  currentItem.barcode = self.barUrl;
     
 
     [self showHud];
@@ -664,6 +668,7 @@
             color.Text.textColor = self.textColor;
             color.Text.text = @"Not Applicable";
             color.userInteractionEnabled = NO;
+            color.Text.tag = [((HWColor*)selection).id integerValue];
             
         }
         else

@@ -7,6 +7,7 @@
 //
 
 #import "FeedScreenCollectionViewCell.h"
+#import "HWTag+Extensions.h"
 
 @implementation FeedScreenCollectionViewCell
 
@@ -39,7 +40,12 @@
     self.sellItemLabel.text = self.item.title;
     self.currentPriceLable.text = self.item.selling_price;
     self.oldPriceLable.text = self.item.retail_price;
-//self.platform.text = self.item.platform;
+
+    HWTag* itemPlatform = [HWTag getPlatformById:self.item.platform from:[AppEngine shared].tags];
+    
+    self.consoleNameLable.text =  itemPlatform.name;
+    
+    //self.platform.text = self.item.platform;
     if(self.item.photos.count >= 1)
     {
         [self.itemImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];

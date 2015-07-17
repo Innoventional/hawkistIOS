@@ -75,14 +75,6 @@
     _tags = tags;
 }
 
-//- (NSString*) categoryNameById: (NSInteger) id
-//{
-//    HWTag* tag = [self tagWithId: [NSString stringWithFormat: @"%ld", id] fromArray: self.tags];
-//    if(tag)
-//        return tag.name;
-//    else
-//        return nil;
-//}
 
 - (void) setCity:(NSString *)city
 {
@@ -110,6 +102,17 @@
     
 }
 
+
+//- (NSString*) categoryNameById: (NSInteger) id
+//{
+//    HWTag* tag = [self tagWithId: [NSString stringWithFormat: @"%ld", id] fromArray: self.tags];
+//    if(tag)
+//        return tag.name;
+//    else
+//        return nil;
+//}
+
+
 //- (HWTag*) tagWithId: (NSString*) tagId fromArray: (NSArray*) array
 //{
 //    for(HWTag* tag in array)
@@ -129,19 +132,6 @@
 //}
 
 
-- (NSString*) GetPlatformById:(NSString*)tagId
-{
-    for (HWTag* tag in self.tags)
-    {
-        if([tag.id isEqual:tagId])
-                    {
-                        return tag.name;
-                    }
-    }
-
-return nil;
-    
-}
 
 
 @end

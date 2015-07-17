@@ -9,6 +9,7 @@
 #import "ChoiceTableViewController.h"
 #import "ChoiceCellView.h"
 #import "HWTag.h"
+#import "HWTag+Extensions.h"
 
 @interface ChoiceTableViewController ()
 
@@ -98,7 +99,14 @@
     {
         cell.myLabel.text = ((HWTag*)currentItem).name;
         cell.forwardImage.hidden = YES;
-
+        
+         if ([currentItem isKindOfClass:[HWColor class]])
+         {
+             NSString* hex = ((HWColor*)currentItem).code;
+             if (![hex isEqualToString:@""])
+                 [cell setBackgroundColor:[HWTag colorWithHexString:hex]];
+                
+         }
     }
     
     return cell;

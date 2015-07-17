@@ -91,7 +91,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9BH-Vc-3mV">
                             <rect key="frame" x="0.0" y="30" width="320" height="92"/>
                             <subviews>
-                                <imageView tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="takepic1" translatesAutoresizingMaskIntoConstraints="NO" id="Jrl-oG-QwE" userLabel="barCode">
+                                <imageView tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="takepic2" translatesAutoresizingMaskIntoConstraints="NO" id="Jrl-oG-QwE" userLabel="barCode">
                                     <rect key="frame" x="13" y="15" width="66" height="66"/>
                                     <gestureRecognizers/>
                                     <constraints>
@@ -826,7 +826,6 @@
         <image name="acdet_but" width="320" height="60"/>
         <image name="acdet_check" width="20" height="20"/>
         <image name="location" width="13" height="16"/>
-        <image name="takepic1" width="88" height="87"/>
         <image name="takepic2" width="88" height="87"/>
         <image name="uncheck" width="20" height="20"/>
     </resources>

@@ -30,5 +30,5 @@
 
 - (NSString*) categoryNameById: (NSInteger) id;
 
-- (NSString*) GetPlatformById:(NSString*)tagId;
+
 @end

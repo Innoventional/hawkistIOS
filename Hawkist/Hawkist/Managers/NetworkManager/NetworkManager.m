@@ -496,6 +496,102 @@
                        }];
 }
 
+- (void) removeItemById: (NSString*) itemId
+           successBlock: (void (^)(HWItem* item)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    
+    NSDictionary* params = @{@"listing_id": itemId};
+    
 
+    
+    [self.networkDecorator DELETE:@"listings"
+     
+                       parameters: params
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+                           
+                           NSError* error;
+                           HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
+                         
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(item);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+                           
+                       }];
+}
+
+- (void) getItemsByUserId: (NSString*) userId
+             successBlock: (void (^)(NSArray* arrayWithItems)) successBlock
+             failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    NSDictionary* params = @{@"user_id": userId};
+    
+    [self.networkDecorator GET: @"listings"
+                    parameters: params
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+                           
+                           NSError* error;
+                           NSArray* items = responseObject[@"items"];
+                           
+                           NSMutableArray* arrayWithItems = [NSMutableArray array];
+                           
+                           for (NSDictionary* item in items) {
+                               HWItem* newItem = [[HWItem alloc] initWithDictionary: item error: &error];
+                               if(error)
+                               {
+                                   NSLog(@"Error occured during item entity parsing: %@", error);
+                                   error = nil;
+                               }
+                               else
+                               {
+                                   [arrayWithItems addObject: newItem];
+                               }
+                           }
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(arrayWithItems);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+                           
+                       }];
+}
 
 @end
+
+

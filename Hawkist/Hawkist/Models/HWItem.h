@@ -51,6 +51,6 @@
 
 @property (nonatomic, strong) NSString<Optional>* user_avatar;
 @property (nonatomic, strong) NSString<Optional>* user_username;
-
+@property (nonatomic,assign) BOOL sold;
 
 @end

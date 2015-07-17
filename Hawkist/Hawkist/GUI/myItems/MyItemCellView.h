@@ -28,5 +28,4 @@
 @property (strong, nonatomic) IBOutlet UILabel *oldPrice;
 @property (strong, nonatomic) IBOutlet UILabel *currentPrice;
 
-
 @end

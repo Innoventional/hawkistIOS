@@ -11,6 +11,8 @@
 #import "HWItem.h"
 #import "UIImageView+AFNetworking.h"
 #import "AppEngine.h"
+#import "HWTag+Extensions.h"
+
 @interface ViewItemViewController ()
 
 @property (nonatomic, strong) HWItem* item;
@@ -137,10 +139,28 @@
     self.oldPrice.text = self.item.retail_price;
     self.descriptionOfItem.text = self.item.item_description;
     self.added.text = [self.item stringItemCreationDate];
-    self.platform.text = [[AppEngine shared] GetPlatformById:[NSString stringWithFormat: @"%ld", self.item.platform]];
- //   self.condition.text = [[AppEngine shared] categoryNameById: self.item.condition];
-   // self.category.text = [[AppEngine shared] categoryNameById: self.item.category];
-   // self.colour.text = [[AppEngine shared] categoryNameById: self.item.color];
+    
+
+    HWTag* itemPlatform = [HWTag getPlatformById:self.item.platform from:[AppEngine shared].tags];
+    
+    self.platform.text =  itemPlatform.name;
+    
+    HWCategory* itemCategory = [HWTag getCategoryById:self.item.category from:itemPlatform.categories];
+    
+    self.category.text = itemCategory.name;
+ 
+    
+    
+    HWSubCategories* itemSubCategory = [HWTag getSubCategoryById:self.item.subcategory from: itemCategory.subcategories];
+    
+    HWCondition* itemCondition = [HWTag getConditionById:self.item.condition from: itemSubCategory.condition];
+    
+    self.condition.text = itemCondition.name;
+   
+    HWColor* itemColor = [HWTag getColorById:self.item.color from:itemSubCategory.color];
+    
+    self.colour.text = itemColor.name;
+    
     self.delivery.text = self.item.shipping_price;
     //self.discount.text = self.item.discount;
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {

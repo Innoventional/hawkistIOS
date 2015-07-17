@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWBaseViewController.h"
 
-@interface MyItemsViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate>
+
+@interface MyItemsViewController : HWBaseViewController <UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
