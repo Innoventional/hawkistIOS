@@ -14,8 +14,11 @@
 #import "FeedScreenCollectionViewCell.h"
 #import "HWFollowInProfileCell.h"
 #import "StarRatingControl.h"
+#import "NetworkManager.h"
+#import "HWUser.h"
 
-@interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate>
+
+@interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *segmentView;
@@ -35,11 +38,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *responsTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 
-
 @property (weak, nonatomic) IBOutlet UIButton *followUnfollowButton;
-
-
-
 
 @property (strong, nonatomic) IBOutletCollection(HWButtonForSegment) NSArray *buttonSegmentCollection;
 @property (weak, nonatomic) IBOutlet HWButtonForSegment *itemsButton;
@@ -47,16 +46,12 @@
 @property (weak, nonatomic) IBOutlet HWButtonForSegment *followersButton;
 @property (weak, nonatomic) IBOutlet HWButtonForSegment *wishlistButton;
 
-
-
-
-
-
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UITableView *tableView;
 
-
 @property (nonatomic, strong) NSArray* selectedSegmentArray;
+
+@property (nonatomic, strong) HWUser *user;
 
 
 @end
@@ -66,6 +61,36 @@
 #pragma mark-
 #pragma mark Lifecycle
 
+
+- (instancetype) initWithUserID:(NSString *)userID
+{
+    self = [self init];
+    if(self)
+    {
+        
+        [[NetworkManager shared]getUserProfileWithUserID:@"12"
+                                            successBlock:^(HWUser *user) {
+                                                
+                                                self.user = user;
+                                                [self updateUser];
+                                                
+                                            } failureBlock:^(NSError *error) {
+            
+                                                
+                                                NSString *errorMessage = [NSString stringWithFormat:@"%@", error.localizedDescription];
+       
+                                                [[[UIAlertView alloc]initWithTitle:@"Error!"
+                                                                           message:errorMessage
+                                                                          delegate:self
+                                                                 cancelButtonTitle:@"Ok!"
+                                                                 otherButtonTitles: nil] show];
+                                            
+                                        }];
+        
+    }
+    
+    return self;
+}
 
 - (instancetype) init
 {
@@ -102,6 +127,47 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) updateUser
+{
+
+     [self.avatarView setImageWithURL: [NSURL URLWithString: self.user.avatar] placeholderImage:nil];
+    self.userNameLabel.text = self.user.username;
+    self.locationLabel.text = self.user
+    self.responsTimeLabel.text
+    self.lastSeenLabel.text
+    self.responsTimeLabel.text
+    self.ratingLabel.text
+    
+    /*
+     
+     
+ 
+     
+    
+   
+     
+     @property (nonatomic, strong) NSString<Optional>* city;
+     @property (nonatomic, strong) NSString<Optional>* last_activity;
+     @property (nonatomic, strong) NSString<Optional>* number_of_sales;
+     @property (nonatomic, strong) NSString<Optional>* rating;
+     @property (nonatomic, strong) NSString<Optional>* review;
+     @property (nonatomic, strong) NSString<Optional>* response_time;
+     
+
+     
+     
+     
+     @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+     
+     @property (weak, nonatomic) IBOutlet UILabel *salesLabel;
+     @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+     @property (weak, nonatomic) IBOutlet UILabel *lastSeenLabel;
+     @property (weak, nonatomic) IBOutlet UILabel *responsTimeLabel;
+     @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+     
+     */
 }
 
 
@@ -350,5 +416,14 @@
     return CGSizeMake(widthForView, (widthForView * 488) / 291);
 }
 
+#pragma mark -
+#pragma mark UIAlertViewDelegate
 
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 @end
