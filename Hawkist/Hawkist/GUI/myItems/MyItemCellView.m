@@ -14,7 +14,7 @@
 
 @interface MyItemCellView()
 
-@property (nonatomic,strong)UIButton* mytrash;
+//@property (nonatomic,strong)UIButton* mytrash;
 @property (nonatomic,strong) UIVisualEffectView* visualEffectView;
 
 @end

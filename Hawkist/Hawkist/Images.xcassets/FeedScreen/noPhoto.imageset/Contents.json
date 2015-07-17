@@ -3,15 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
+      "filename" : "noPhoto-2.jpg"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
       "filename" : "noPhoto.jpg"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "noPhoto-1.jpg"
     }
   ],
   "info" : {
