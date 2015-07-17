@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "HWBaseViewController.h"
+#import "MyItemCellView.h"
 
-
-@interface MyItemsViewController : HWBaseViewController <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface MyItemsViewController : HWBaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,MyItemCellDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

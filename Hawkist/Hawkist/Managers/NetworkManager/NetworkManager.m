@@ -497,7 +497,7 @@
 }
 
 - (void) removeItemById: (NSString*) itemId
-           successBlock: (void (^)(HWItem* item)) successBlock
+           successBlock: (void (^)(HWItem* item)) successBlock  //TODO: HWItem to void
            failureBlock: (void (^)(NSError* error)) failureBlock
 {
     
@@ -520,16 +520,16 @@
                                return;
                            }
                            
-                           NSError* error;
-                           HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
-                         
-                           if(error)
-                           {
-                               failureBlock(error);
-                               return;
-                           }
+//                           NSError* error;
+//                           HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
+//                         
+//                           if(error)
+//                           {
+//                               failureBlock(error);
+//                               return;
+//                           }
                            
-                           successBlock(item);
+                           successBlock(nil);
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {

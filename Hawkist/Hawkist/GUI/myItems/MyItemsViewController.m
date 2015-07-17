@@ -61,6 +61,10 @@
     }];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self refresh];
+}
 
 
 
@@ -82,10 +86,20 @@
     
     [cell setItem:currentItem];
    
+    cell.delegate = self;
     return cell;
 }
 
+- (void) showError:(NSError *)error
+{
+    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    [self refresh];
+}
 
+- (void) updateParent
+{
+    [self refresh];
+}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     ViewItemViewController* vc = [[ViewItemViewController alloc] initWithItem: [self.items objectAtIndex: indexPath.row]];

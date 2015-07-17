@@ -6,9 +6,19 @@
 //  Copyright (c) 2015 TecSynt Solutions. All rights reserved.
 //
 
+@protocol MyItemCellDelegate <NSObject>
+
+- (void) updateParent;
+
+- (void) showError:(NSError*)error;
+
+@end
+
 #import <UIKit/UIKit.h>
 
 @interface MyItemCellView : UICollectionViewCell
+
+@property (nonatomic,strong) id <MyItemCellDelegate> delegate;
 
 @property (nonatomic, strong) HWItem *item;
 
