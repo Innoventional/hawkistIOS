@@ -12,6 +12,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "AppEngine.h"
 #import "HWTag+Extensions.h"
+#import "BuyThisItemViewController.h"
 
 @interface ViewItemViewController ()
 
@@ -337,6 +338,8 @@
 }
 
 - (IBAction)buyButton:(id)sender {
+
+    [self.navigationController pushViewController: [[BuyThisItemViewController alloc] initWithItem:self.item]  animated: YES];
 }
 
 

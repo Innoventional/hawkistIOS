@@ -27,6 +27,7 @@
 		3A968E2B1B4AD92B005AA347 /* ChoiceCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E2A1B4AD92B005AA347 /* ChoiceCellView.m */; };
 		3A968E311B4C1188005AA347 /* HWTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E301B4C1188005AA347 /* HWTag.m */; };
 		3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A98D61D1B593F5D00D55FF9 /* BuyThisItem.xib */; };
+		3A98D6211B595A2300D55FF9 /* BuyThisItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98D6201B595A2300D55FF9 /* BuyThisItemViewController.m */; };
 		3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6B8D1B43A0B90076004F /* Navigation.xib */; };
 		3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B901B43A0D90076004F /* NavigationVIew.m */; };
 		3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B941B43A1C40076004F /* SellAnItemViewController.m */; };
@@ -144,6 +145,8 @@
 		3A968E2F1B4C1188005AA347 /* HWTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTag.h; sourceTree = "<group>"; };
 		3A968E301B4C1188005AA347 /* HWTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTag.m; sourceTree = "<group>"; };
 		3A98D61D1B593F5D00D55FF9 /* BuyThisItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuyThisItem.xib; path = BuyThisItem/BuyThisItem.xib; sourceTree = "<group>"; };
+		3A98D61F1B595A2300D55FF9 /* BuyThisItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyThisItemViewController.h; path = BuyThisItem/BuyThisItemViewController.h; sourceTree = "<group>"; };
+		3A98D6201B595A2300D55FF9 /* BuyThisItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyThisItemViewController.m; path = BuyThisItem/BuyThisItemViewController.m; sourceTree = "<group>"; };
 		3ACC6B8D1B43A0B90076004F /* Navigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Navigation.xib; path = NavigationView/Navigation.xib; sourceTree = "<group>"; };
 		3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationVIew.h; path = NavigationView/NavigationVIew.h; sourceTree = "<group>"; };
 		3ACC6B901B43A0D90076004F /* NavigationVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationVIew.m; path = NavigationView/NavigationVIew.m; sourceTree = "<group>"; };
@@ -367,6 +370,8 @@
 			isa = PBXGroup;
 			children = (
 				3A98D61D1B593F5D00D55FF9 /* BuyThisItem.xib */,
+				3A98D61F1B595A2300D55FF9 /* BuyThisItemViewController.h */,
+				3A98D6201B595A2300D55FF9 /* BuyThisItemViewController.m */,
 			);
 			name = BuyThisItem;
 			sourceTree = "<group>";
@@ -910,6 +915,7 @@
 				C35CB4AF1B4EA3BA00956150 /* HWTapBarViewController.m in Sources */,
 				7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */,
 				C35A4C4A1B3031F4002E1F26 /* NetworkDecorator.m in Sources */,
+				3A98D6211B595A2300D55FF9 /* BuyThisItemViewController.m in Sources */,
 				3AF37F9B1B57A8DD00E784DB /* HWTag+Extensions.m in Sources */,
 				C35A4C661B3035D2002E1F26 /* OCUtilites.m in Sources */,
 				C35CB49F1B4BE91B00956150 /* HWItem.m in Sources */,

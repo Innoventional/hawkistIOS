@@ -285,8 +285,8 @@
                                         <outlet property="delegate" destination="-1" id="9PC-f7-Gzj"/>
                                     </connections>
                                 </textView>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6GG-3K-pFl">
-                                    <rect key="frame" x="0.0" y="222" width="320" height="12"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GG-3K-pFl">
+                                    <rect key="frame" x="8" y="231" width="304" height="1"/>
                                     <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="xWa-i2-ze6"/>
@@ -329,8 +329,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4L5-gh-SML">
                             <rect key="frame" x="0.0" y="390" width="320" height="30"/>
                             <subviews>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zdv-Lh-2dK">
-                                    <rect key="frame" x="0.0" y="15" width="320" height="1"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zdv-Lh-2dK">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                                     <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="Qeq-p6-B3R"/>
@@ -390,8 +390,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4LB-Sl-VU3">
                             <rect key="frame" x="0.0" y="646" width="320" height="30"/>
                             <subviews>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Uy-5V-H7C">
-                                    <rect key="frame" x="0.0" y="15" width="320" height="1"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Uy-5V-H7C">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                                     <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="CxA-yr-JvV"/>
@@ -509,8 +509,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gks-MK-Z7p">
                             <rect key="frame" x="0.0" y="841" width="320" height="30"/>
                             <subviews>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adT-Kh-OE4">
-                                    <rect key="frame" x="0.0" y="15" width="320" height="1"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adT-Kh-OE4">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                                     <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="bhW-Ud-5Uv"/>
