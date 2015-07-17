@@ -18,6 +18,8 @@
 #import "HWUser.h"
 
 
+#import "MyItemCellView.h"
+
 @interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -68,7 +70,7 @@
     if(self)
     {
         
-        [[NetworkManager shared]getUserProfileWithUserID:@"12"
+        [[NetworkManager shared]getUserProfileWithUserID:@"77"
                                             successBlock:^(HWUser *user) {
                                                 
                                                 self.user = user;
@@ -132,16 +134,26 @@
 - (void) updateUser
 {
 
-     [self.avatarView setImageWithURL: [NSURL URLWithString: self.user.avatar] placeholderImage:nil];
-
+    [self.avatarView setImageWithURL: [NSURL URLWithString: self.user.avatar] placeholderImage:nil];
+    self.userNameLabel.text = self.user.username;
+    self.locationLabel.text = self.user.city;
+   
+    self.lastSeenLabel.text = self.user.last_activity;
+    
+    self.ratingLabel.text = self.user.rating;
+    self.salesLabel.text = self.user.number_of_sales;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    NSDate *dateFromString = [dateFormatter dateFromString:self.user.last_activity];
+    
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"hh:mm a MMM dd, yyyy"];
+    
+    self.lastSeenLabel.text = [dateFormatter1 stringFromDate:dateFromString];
     
     /*
      
-     
- 
-     
-    
-   
      
      @property (nonatomic, strong) NSString<Optional>* city;
      @property (nonatomic, strong) NSString<Optional>* last_activity;
@@ -151,9 +163,6 @@
      @property (nonatomic, strong) NSString<Optional>* response_time;
      
 
-     
-     
-     
      @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
      
      @property (weak, nonatomic) IBOutlet UILabel *salesLabel;
@@ -177,6 +186,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"HWFollowInProfileCell" bundle:nil] forCellReuseIdentifier:@"123"];
     
     
@@ -188,7 +199,9 @@
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
-    [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"collectionViewCell"];
+   // [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"collectionViewCell"];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"collectionViewCell"];
     
     [self setupSegmentButtonsConfig];
     
@@ -291,7 +304,7 @@
     
    if ([sender.titleLabel.text isEqualToString:@"  FOLLOW  "])
    {
-       [sender setTitle:@"UNFOLLOW" forState:UIControlStateNormal];
+       [sender setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
    } else {
        [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
       
@@ -323,8 +336,6 @@
         default:
             break;
     }
-    
-
     
 }
 

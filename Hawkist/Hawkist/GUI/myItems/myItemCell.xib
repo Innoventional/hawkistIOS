@@ -32,7 +32,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xjk-B8-XiP" userLabel="Image">
                     <rect key="frame" x="0.0" y="0.0" width="145" height="147"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyCell" translatesAutoresizingMaskIntoConstraints="NO" id="Jw4-4V-xo8">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Jw4-4V-xo8">
                             <rect key="frame" x="0.0" y="0.0" width="145" height="147"/>
                             <gestureRecognizers/>
                         </imageView>
@@ -49,17 +49,6 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1s-2m-kmu">
-                            <rect key="frame" x="114" y="12" width="21" height="21"/>
-                            <color key="backgroundColor" red="0.8862745098" green="0.2274509804" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="5dz-td-pjp"/>
-                                <constraint firstAttribute="width" constant="21" id="nPm-eQ-pjx"/>
-                            </constraints>
-                            <state key="normal">
-                                <color key="titleShadowColor" red="0.8862745098" green="0.2274509804" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -70,9 +59,7 @@
                         <constraint firstAttribute="trailing" secondItem="Jw4-4V-xo8" secondAttribute="trailing" id="Zef-ZW-sP7"/>
                         <constraint firstItem="Jw4-4V-xo8" firstAttribute="leading" secondItem="Xjk-B8-XiP" secondAttribute="leading" id="ZgN-uQ-Twg"/>
                         <constraint firstItem="rfc-HR-tkT" firstAttribute="trailing" secondItem="ehi-iH-bzH" secondAttribute="trailing" constant="2" id="Zlg-YM-FCW"/>
-                        <constraint firstAttribute="trailing" secondItem="H1s-2m-kmu" secondAttribute="trailing" constant="10" id="i0n-cU-O8m"/>
                         <constraint firstItem="rfc-HR-tkT" firstAttribute="leading" secondItem="Xjk-B8-XiP" secondAttribute="leading" id="lSO-Sj-NbI"/>
-                        <constraint firstItem="rfc-HR-tkT" firstAttribute="top" secondItem="H1s-2m-kmu" secondAttribute="top" id="xJV-FJ-Hs5"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjj-8z-kvJ" userLabel="Footer">
@@ -279,9 +266,9 @@
         </view>
     </objects>
     <resources>
-        <image name="MyCell" width="145" height="145"/>
         <image name="like" width="10" height="10"/>
         <image name="messages" width="10" height="10"/>
+        <image name="noPhoto.jpg" width="689" height="460"/>
         <image name="skidka" width="37" height="20"/>
     </resources>
 </document>
