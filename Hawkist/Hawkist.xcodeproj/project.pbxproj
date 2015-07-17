@@ -93,7 +93,6 @@
 		CE8721EE1B55289B003C47E5 /* noPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE8721ED1B55289B003C47E5 /* noPhoto.jpg */; };
 		CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8721F11B553684003C47E5 /* HWProfileViewController.m */; };
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
-		CEA725611B57BCEC0086F657 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA725601B57BCEC0086F657 /* 12.png */; };
 		CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */; };
 		CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */; };
 		CEC68DD11B5661510024AFC5 /* HWButtonForSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */; };
@@ -248,7 +247,6 @@
 		CE8721F01B553684003C47E5 /* HWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWProfileViewController.h; path = ProfileScreen/HWProfileViewController.h; sourceTree = "<group>"; };
 		CE8721F11B553684003C47E5 /* HWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWProfileViewController.m; path = ProfileScreen/HWProfileViewController.m; sourceTree = "<group>"; };
 		CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWProfileViewController.xib; path = ProfileScreen/HWProfileViewController.xib; sourceTree = "<group>"; };
-		CEA725601B57BCEC0086F657 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 12.png; path = ../../../../../../../Desktop/12.png; sourceTree = "<group>"; };
 		CEA725621B57ED590086F657 /* HWFollowInProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFollowInProfileCell.h; path = ProfileScreen/HWFollowInProfileCell.h; sourceTree = "<group>"; };
 		CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFollowInProfileCell.m; path = ProfileScreen/HWFollowInProfileCell.m; sourceTree = "<group>"; };
 		CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFollowInProfileCell.xib; path = ProfileScreen/HWFollowInProfileCell.xib; sourceTree = "<group>"; };
@@ -684,7 +682,6 @@
 				CEA725621B57ED590086F657 /* HWFollowInProfileCell.h */,
 				CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */,
 				CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */,
-				CEA725601B57BCEC0086F657 /* 12.png */,
 			);
 			name = ProfileScreen;
 			sourceTree = "<group>";
@@ -794,7 +791,6 @@
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
-				CEA725611B57BCEC0086F657 /* 12.png in Resources */,
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
 				CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */,

@@ -97,7 +97,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2l-Zo-haQ" userLabel="fotki">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="477"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bigimage" translatesAutoresizingMaskIntoConstraints="NO" id="Hsl-Tc-dOE">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="noPhoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Hsl-Tc-dOE">
                                     <rect key="frame" x="14" y="44" width="292" height="291"/>
                                     <color key="backgroundColor" red="0.86693102904040398" green="0.86693102904040398" blue="0.86693102904040398" alpha="1" colorSpace="calibratedRGB"/>
                                 </imageView>
@@ -214,8 +214,8 @@
                                         <constraint firstAttribute="height" constant="1" id="jLX-ia-fy2"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcf-SG-vzr">
-                                    <rect key="frame" x="293" y="12" width="14" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="33" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcf-SG-vzr">
+                                    <rect key="frame" x="293" y="12" width="14" height="20"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
@@ -891,11 +891,12 @@
     <resources>
         <image name="NoAvatar" width="500" height="500"/>
         <image name="askbutton" width="47" height="30"/>
-        <image name="bigimage" width="689" height="460"/>
+        <image name="bigimage" width="319" height="239"/>
         <image name="buybutton" width="290" height="40"/>
         <image name="fav" width="65" height="65"/>
         <image name="mot2.png" width="527" height="375"/>
         <image name="mot3.png" width="700" height="466"/>
+        <image name="noPhoto.jpg" width="689" height="460"/>
         <image name="skidka" width="37" height="20"/>
         <image name="smallButton" width="27" height="20"/>
     </resources>
