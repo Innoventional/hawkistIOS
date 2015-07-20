@@ -51,12 +51,14 @@
 
 
 - (IBAction)followButtonAction:(UIButton *)sender {
-    if ([sender.titleLabel.text isEqualToString:@"FOLLOW"])
+    if (self.isFollow)
     {
-        [self.followButton setTitle:@"UNFOLLOW"  forState:UIControlStateNormal];
+        self.isFollow = NO;
+        [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
     } else {
         
-         [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
+        self.isFollow = YES;
+        [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
     }
 }
 
@@ -86,7 +88,7 @@
     } else {
         
         self.isFollow = NO;
-        [self.followButton setTitle:@"UNFOLLOW"  forState:UIControlStateNormal];
+        [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
     }
     
     

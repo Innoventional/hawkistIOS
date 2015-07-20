@@ -53,7 +53,7 @@
                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1t-Mz-ZnN">
                         <rect key="frame" x="234" y="15" width="69" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="69" id="7TN-aP-lZp"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="7TN-aP-lZp"/>
                             <constraint firstAttribute="height" constant="25" id="d45-ee-3is"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
