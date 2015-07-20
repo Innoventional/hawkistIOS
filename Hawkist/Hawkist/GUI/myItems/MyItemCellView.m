@@ -112,12 +112,12 @@
         [self addSubview:self.visualEffectView];
         
         
-                UILabel* soldLabel = [[UILabel alloc]initWithFrame:CGRectMake(10,self.height/2 - 50, self.width,50)];
+                UILabel* soldLabel = [[UILabel alloc]initWithFrame:CGRectMake(5,self.height/2 -40, self.width,50)];
         
                 soldLabel.text = @"SOLD";
                 soldLabel.textColor = [UIColor color256RGBWithRed: 88  green: 184 blue: 164];
         
-                soldLabel.font = [UIFont fontWithName:@"OpenSans" size:60];
+                soldLabel.font = [UIFont fontWithName:@"OpenSans" size:54];
                 soldLabel.transform = CGAffineTransformMakeRotation(-M_PI/4);
         
                 [self.visualEffectView addSubview:soldLabel];

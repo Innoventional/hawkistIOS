@@ -13,6 +13,10 @@
 
 + (instancetype) shared;
 
+
+#pragma mark -
+#pragma mark User section
+
 // User section
 
 // user registration, requires phone or facebook token(another must be nil). Returns user entity.
@@ -34,11 +38,7 @@
 
 // get user profile
 
-
-
-//- (void) getUserProfileWithSuccessBlock: (void (^)(HWUser* user)) successBlock
-//                           failureBlock: (void (^)(NSError* error)) failureBlock;
-
+// for current user  userID == nil
 - (void) getUserProfileWithUserID: (NSString*) userId
                      successBlock: (void (^)(HWUser* user)) successBlock
                      failureBlock: (void (^)(NSError* error)) failureBlock;
@@ -62,8 +62,18 @@
               successBlock: (void (^)(NSString* city)) successBlock
               failureBlock: (void (^)(NSError* error)) failureBlock;
 
+
+#pragma mark -
+#pragma mark Tag
+
 - (void) getListOfTags: (void (^)(NSMutableArray* tags)) successBlock
           failureBlock: (void (^)(NSError* error)) failureBlock;
+
+
+
+
+#pragma mark -
+#pragma mark Items
 
 // get all items at page with search string
 - (void) getItemsWithPage: (NSInteger) page
@@ -93,5 +103,30 @@
 - (void) getItemsByUserId: (NSString*) userId
              successBlock: (void (^)(NSArray* arrayWithItems)) successBlock
              failureBlock: (void (^)(NSError* error)) failureBlock;
+
+#pragma mark -
+#pragma mark Follower
+
+
+//follow user
+- (void) followWithUserId:(NSString*)userId
+             successBlock:(void(^)(void)) successBlock
+             failureBlock: (void (^)(NSError* error)) failureBlock;
+
+// unfollow user
+- (void) unfollowWithUserId:(NSString*)userId
+               successBlock:(void(^)(void)) successBlock
+               failureBlock: (void (^)(NSError* error)) failureBlock;
+
+
+//get follower for userId
+- (void) getFollowersWithUserId:(NSString*)userId
+                   successBlock:(void(^)(NSArray* followersArray)) successBlock
+                   failureBlock: (void (^)(NSError* error)) failureBlock;
+
+//get following for userId
+- (void) getFollowingWithUserId:(NSString*)userId
+                   successBlock:(void(^)(NSArray* followingArray)) successBlock
+                   failureBlock:(void (^)(NSError* error)) failureBlock;
 
 @end

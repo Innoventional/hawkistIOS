@@ -12,6 +12,8 @@
 #define TEST_SERVER
 
 
+#define kUSER_ID @"user_id"
+
 #ifdef TEST_SERVER
 
 #define SERVER_URL @"http://45.55.197.87:8003/api/"

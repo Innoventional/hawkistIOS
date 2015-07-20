@@ -62,9 +62,8 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYe-lJ-r6J">
                     <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2U4-iU-E4C">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="2U4-iU-E4C">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="228"/>
-                            <color key="backgroundColor" red="0.12549019610000001" green="0.56078431370000004" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="228" id="EIo-bG-CfQ"/>
                             </constraints>
@@ -266,7 +265,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovl-2s-eoB">
-                            <rect key="frame" x="234" y="176" width="78" height="35"/>
+                            <rect key="frame" x="247" y="176" width="65" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="XHN-1I-nCX"/>
                             </constraints>
@@ -327,7 +326,7 @@
                         <constraint firstItem="bG6-zT-ZHN" firstAttribute="centerX" secondItem="eYe-lJ-r6J" secondAttribute="centerX" id="XJE-ew-cJX"/>
                         <constraint firstItem="qhG-Y7-xFW" firstAttribute="leading" secondItem="EEI-92-JdM" secondAttribute="trailing" constant="1" id="XTT-O5-m90"/>
                         <constraint firstItem="ceV-qV-ELj" firstAttribute="leading" secondItem="Ni4-69-4ed" secondAttribute="leading" id="Xhm-wP-Zlc"/>
-                        <constraint firstItem="ovl-2s-eoB" firstAttribute="leading" relation="lessThanOrEqual" secondItem="2U4-iU-E4C" secondAttribute="trailing" constant="-70" id="YTI-HC-LES"/>
+                        <constraint firstItem="ovl-2s-eoB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2U4-iU-E4C" secondAttribute="trailing" constant="-73" id="YTI-HC-LES"/>
                         <constraint firstItem="ceV-qV-ELj" firstAttribute="bottom" secondItem="XCs-VE-xj6" secondAttribute="bottom" constant="-2" id="YbX-9g-4UH"/>
                         <constraint firstItem="fka-Qv-YeX" firstAttribute="leading" secondItem="cKS-2q-p8e" secondAttribute="trailing" constant="-3" id="Zb8-nN-oVv"/>
                         <constraint firstItem="cKS-2q-p8e" firstAttribute="leading" secondItem="dOV-UV-N4Z" secondAttribute="trailing" constant="4" id="bqB-j5-q1d"/>
@@ -385,5 +384,6 @@
         <image name="Profile_time" width="7" height="7"/>
         <image name="Profile_view" width="13" height="7"/>
         <image name="askbutton" width="47" height="30"/>
+        <image name="noPhoto" width="689" height="460"/>
     </resources>
 </document>

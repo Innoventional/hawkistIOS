@@ -13,6 +13,7 @@
 #import "AppEngine.h"
 #import "HWTag+Extensions.h"
 #import "BuyThisItemViewController.h"
+#import "HWProfileViewController.h"
 
 @interface ViewItemViewController ()
 
@@ -27,7 +28,11 @@
 @end
 
 
+@interface ViewItemViewController () <FeedScreenCollectionViewCellDelegate>
 
+
+
+@end
 
 @implementation ViewItemViewController
 
@@ -287,6 +292,7 @@
     HWItem *item = [[HWItem alloc] initWithDictionary:  [self.selectedItemsArray objectAtIndex: indexPath.row]  error: nil];
     
     cell.item = item;
+    cell.delegate = self;
     
     return cell;
 }
@@ -345,4 +351,24 @@
 
 - (IBAction)askButton:(id)sender {
 }
+
+
+
+#pragma mark - 
+#pragma mark FeedScreenCollectionViewCellDelegate
+
+- (BOOL) willTransitionToUserProfileButton
+{
+    return YES;
+}
+
+- (void) transitionToProfileScreenWithUserId:(NSString*)userId
+{
+    HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUserID:userId];
+    
+    [self.navigationController pushViewController:profileVC animated:YES];
+}
+
+
 @end
+

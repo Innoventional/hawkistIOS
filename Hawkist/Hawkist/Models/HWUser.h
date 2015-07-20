@@ -29,5 +29,6 @@
 @property (nonatomic, strong) NSString<Optional>* rating;
 @property (nonatomic, strong) NSString<Optional>* review;
 @property (nonatomic, strong) NSString<Optional>* response_time;
+@property (nonatomic, assign) NSString<Optional>* following;
 
 @end
