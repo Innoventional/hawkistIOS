@@ -401,7 +401,7 @@
        
    }
     [self setFollowersArrayWithUserId:self.user.id];
-    [self setupSegmentButtonsConfig];
+   
 }
 
 - (IBAction)segmentButtonAction:(HWButtonForSegment *)sender {

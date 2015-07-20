@@ -687,10 +687,16 @@
                            NSArray *usersArray = responseObject[@"users"];
                            NSMutableArray *followersArray = [NSMutableArray array];
                            
+                           
+                           NSString *currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:kUSER_ID];
                            NSError *error;
                            for (NSDictionary *dict in usersArray)
                            {
                                HWFollowUser *user = [[HWFollowUser alloc]initWithDictionary:dict error:&error];
+                               if([currentUserId isEqualToString:user.id])
+                               {
+                                   continue;
+                               }
                                [followersArray addObject:user];
                                
                            }
