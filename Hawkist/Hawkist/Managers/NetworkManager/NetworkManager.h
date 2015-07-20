@@ -129,4 +129,12 @@
                    successBlock:(void(^)(NSArray* followingArray)) successBlock
                    failureBlock:(void (^)(NSError* error)) failureBlock;
 
+
+#pragma mark -
+#pragma mark Comments
+
+- (void) OfferPrice: (NSString*) newPrice
+             itemId: (NSString*) itemId
+       successBlock: (void (^)(void)) successBlock
+       failureBlock: (void (^)(NSError* error)) failureBlock;
 @end
