@@ -652,6 +652,8 @@
  
     [self.networkDecorator DELETE:unfollow
                        parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           successBlock();
                         
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

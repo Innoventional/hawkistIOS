@@ -381,7 +381,7 @@
    {
        [sender setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
        
-       [ [NetworkManager shared] followWithUserId:self.user.id successBlock:^{
+       [ self.networkManager followWithUserId:self.user.id successBlock:^{
            
            
        } failureBlock:^(NSError *error) {
@@ -391,7 +391,7 @@
    } else {
        
         [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
-       [[NetworkManager shared] unfollowWithUserId:self.user.id successBlock:^{
+       [self.networkManager unfollowWithUserId:self.user.id successBlock:^{
            
           
        } failureBlock:^(NSError *error) {

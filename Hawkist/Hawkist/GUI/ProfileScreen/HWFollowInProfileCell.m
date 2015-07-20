@@ -54,11 +54,29 @@
     if (self.isFollow)
     {
         self.isFollow = NO;
-        [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+        
+        [ [NetworkManager shared] unfollowWithUserId:self.userId successBlock:^{
+            
+            [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
+
+    
+        
     } else {
         
         self.isFollow = YES;
-        [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
+        
+        [ [NetworkManager shared] followWithUserId:self.userId successBlock:^{
+            
+            [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
+        
     }
 }
 
@@ -83,12 +101,16 @@
     if ([user.follow isEqualToString:@"1"])
     {
         self.isFollow = YES;
-        [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
+        
+        [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
         
     } else {
         
         self.isFollow = NO;
-        [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+       
+       [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
+     
+
     }
     
     
