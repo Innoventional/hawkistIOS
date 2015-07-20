@@ -28,13 +28,13 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-//    if ([string isEqualToString:@","])
-//    {
-//        
-//    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:@"."];
-//        return NO;
-//    }
-//    
+    if ([string isEqualToString:@","])
+    {
+        
+    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:@"."];
+        return NO;
+    }
+    
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     NSArray  *arrayOfString = [newString componentsSeparatedByString:@"."];
     
@@ -58,8 +58,8 @@
     if ([arrayOfString count] == 1 )
         textField.text=[textField.text stringByAppendingString:@".00"];
     
-    if (self.delegate && [self.delegate respondsToSelector: @selector(moneyField:ModifyTo:)])
-        [self.delegate moneyField:self ModifyTo:textField.text];
+    if (self.delegate && [self.delegate respondsToSelector: @selector(moneyField:modifyTo:)])
+        [self.delegate moneyField:self modifyTo:textField.text];
 
     return YES;
 }

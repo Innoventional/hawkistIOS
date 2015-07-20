@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "NavigationVIew.h"
 #import "HWBaseViewController.h"
+#import "MoneyField.h"
 
-@interface BuyThisItemViewController : HWBaseViewController <NavigationViewDelegate>
+@interface BuyThisItemViewController : HWBaseViewController <NavigationViewDelegate,MoneyFieldDelegate>
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
 @property (weak, nonatomic) IBOutlet UIImageView *bigImage;
 @property (weak, nonatomic) IBOutlet UIButton *buyButton;
@@ -18,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *itemTitle;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UILabel *oldPrice;
+@property (weak, nonatomic) IBOutlet UILabel *discount;
 
+@property (weak, nonatomic) IBOutlet MoneyField *moneyField;
 - (instancetype) initWithItem: (HWItem*) item;
 @end

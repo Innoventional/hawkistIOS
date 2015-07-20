@@ -44,7 +44,7 @@
         self.buyButton.layer.masksToBounds = YES;
         self.sendButton.layer.cornerRadius = 5.0f;
         self.sendButton.layer.masksToBounds = YES;
-        
+        self.moneyField.delegate = self;
     }
     return self;
 }
@@ -54,57 +54,39 @@
     
     self.itemTitle.text = self.item.title;
     
-//    self..text = self.item.selling_price;
-//    self.oldPrice.text = self.item.retail_price;
-//    self.descriptionOfItem.text = self.item.item_description;
-//    self.added.text = [self.item stringItemCreationDate];
-//    
-//    
-//    HWTag* itemPlatform = [HWTag getPlatformById:self.item.platform from:[AppEngine shared].tags];
-//    
-//    self.platform.text =  itemPlatform.name;
-//    
-//    HWCategory* itemCategory = [HWTag getCategoryById:self.item.category from:itemPlatform.categories];
-//    
-//    self.category.text = itemCategory.name;
-//    
-//    
-//    
-//    HWSubCategories* itemSubCategory = [HWTag getSubCategoryById:self.item.subcategory from: itemCategory.subcategories];
-//    
-//    HWCondition* itemCondition = [HWTag getConditionById:self.item.condition from: itemSubCategory.condition];
-//    
-//    self.condition.text = itemCondition.name;
-//    
-//    HWColor* itemColor = [HWTag getColorById:self.item.color from:itemSubCategory.color];
-//    
-//    self.colour.text = itemColor.name;
-//    
-//    self.delivery.text = self.item.shipping_price;
-//    //self.discount.text = self.item.discount;
-//    if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
-//        self.discount.text = @"1%";
-//    } else {
-//        self.discount.text = [NSString stringWithFormat:@"%@%%",self.item.discount];
-//    }
-//    [self.imagesArray removeAllObjects];
-//    
-//    if(self.item.photos)
-//        [self.imagesArray addObjectsFromArray: self.item.photos];
-//    if(self.item.barcode)
-//        [self.imagesArray addObject: self.item.barcode];
-//    
-//    [self setImages];
-//    
-//    
-//    
-//    self.selectedItemsArray = self.item.similar_items;
-//    
-//    [self.collectionView reloadData];
-//    [self reloadScrollViewSize];
+    self.price.text = self.item.selling_price;
+    self.oldPrice.text = self.item.retail_price;
+    
+    self.discount.text = self.item.discount;
+    if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
+        self.discount.text = @"1%";
+    } else {
+        self.discount.text = [NSString stringWithFormat:@"%@%%",self.item.discount];
+    }
+
+    [self.bigImage setImageWithURL: [NSURL URLWithString: [self.item.photos firstObject]] placeholderImage: nil];
+    
+    NSString* buttonTitle =  [@"BUY £" stringByAppendingString: self.price.text];
+    
+    [self.buyButton setTitle:buttonTitle forState:UIControlStateNormal];
+  
+    self.sendButton.enabled = false;
     
 }
 
+- (void) moneyField:(id)sender modifyTo:(NSString*)value
+{
+    if ([value doubleValue]> 0.00f)
+    {
+        [self.sendButton setBackgroundImage:[UIImage imageNamed:@"acdet_but"] forState:UIControlStateNormal];
+        self.sendButton.enabled = TRUE;
+    }
+    else
+    {
+        [self.sendButton setBackgroundImage:nil forState:UIControlStateNormal];
+        self.sendButton.enabled = false;
+    }
+}
 
 - (void) leftButtonClick
 {

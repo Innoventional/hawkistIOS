@@ -117,7 +117,7 @@
                 soldLabel.text = @"SOLD";
                 soldLabel.textColor = [UIColor color256RGBWithRed: 88  green: 184 blue: 164];
         
-                soldLabel.font = [UIFont fontWithName:@"OpenSans" size:60];
+                soldLabel.font = [UIFont fontWithName:@"OpenSans" size:40];
                 soldLabel.transform = CGAffineTransformMakeRotation(-M_PI/4);
         
                 [self.visualEffectView addSubview:soldLabel];

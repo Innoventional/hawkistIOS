@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol MoneyFieldDelegate <NSObject>
 
-- (void) moneyField:(id)sender ModifyTo:(NSString*)value;
+- (void) moneyField:(id)sender modifyTo:(NSString*)value;
 
 @end
 
