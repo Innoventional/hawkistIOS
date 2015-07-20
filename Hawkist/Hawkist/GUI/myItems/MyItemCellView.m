@@ -112,7 +112,7 @@
         [self addSubview:self.visualEffectView];
         
         
-                UILabel* soldLabel = [[UILabel alloc]initWithFrame:CGRectMake(10,self.height/2 - 50, self.width,50)];
+                UILabel* soldLabel = [[UILabel alloc]initWithFrame:CGRectMake(5,self.height/2 -40, self.width,50)];
         
                 soldLabel.text = @"SOLD";
                 soldLabel.textColor = [UIColor color256RGBWithRed: 88  green: 184 blue: 164];

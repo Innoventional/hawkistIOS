@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HWFollowUser;
 
 @interface HWFollowInProfileCell : UITableViewCell
+
+- (void) setCellWithFollowUser:(HWFollowUser*) user;
 
 @end

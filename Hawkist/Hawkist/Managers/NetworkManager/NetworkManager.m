@@ -9,6 +9,7 @@
 #import "NetworkManager.h"
 #import "NetworkDecorator.h"
 #import "HWTag.h"
+#import "HWFollowUser.h"
 
 @interface NetworkManager ()
 
@@ -75,6 +76,8 @@
                             NSError* error;
                             HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
                             
+                            [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:kUSER_ID];
+                            
                             if(error)
                             {
                                 failureBlock(error);
@@ -119,6 +122,7 @@
                             NSError* error;
                             HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
                             
+                            [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:kUSER_ID];
                             if(error)
                             {
                                 failureBlock(error);
@@ -143,18 +147,18 @@
 {
     
  
-    NSString *userIdStr;
+    NSString *URLString;
     
     if (userId)
     {
-        userIdStr  = [NSString stringWithFormat:@"user?id=%@",userId];
+        URLString  = [NSString stringWithFormat:@"user?id=%@",userId];
     } else {
         
-        userIdStr = @"user";
+        URLString = @"user";
     }
     
     
-    [self.networkDecorator GET: userIdStr
+    [self.networkDecorator GET: URLString
                     parameters: nil
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
@@ -170,7 +174,7 @@
                            NSError* error;
                            HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
                            
-                           if(error)
+                                                     if(error)
                            {
                                failureBlock(error);
                                return;
@@ -189,40 +193,6 @@
 
 
 
-- (void) getUserProfileWithSuccessBlock: (void (^)(HWUser* user)) successBlock
-                           failureBlock: (void (^)(NSError* error)) failureBlock
-{
-    [self.networkDecorator GET: @"user"
-                     parameters: nil
-                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            if([responseObject[@"status"] integerValue] != 0)
-                            {
-                                failureBlock(
-                                             
-                                             [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
-                                
-
-                                return;
-                            }
-                            
-                            NSError* error;
-                            HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
-                            
-                            if(error)
-                            {
-                                failureBlock(error);
-                                return;
-                            }
-                            
-                            successBlock(user);
-                            
-                        }
-                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                            return;
-
-                        }];
-}
 
 - (void) updateUserEntityWithUsername: (NSString*) username
                                 email: (NSString*) email
@@ -302,6 +272,8 @@
                            NSError* error;
                            HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
                            
+                           [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:kUSER_ID];
+                
                            if(error)
                            {
                                failureBlock(error);
@@ -355,6 +327,11 @@
                        }];
 }
 
+
+
+#pragma mark -
+#pragma mark Tag
+
 - (void) getListOfTags: (void (^)(NSMutableArray * tags)) successBlock
           failureBlock: (void (^)(NSError* error)) failureBlock
 {
@@ -402,6 +379,10 @@
 
                        }];
 }
+
+
+#pragma mark -
+#pragma mark Items
 
 - (void) getItemsWithPage: (NSInteger) page
              searchString: (NSString*) searchString // can be nil
@@ -636,6 +617,151 @@
                            
                        }];
 }
+
+#pragma mark -
+#pragma mark Follow
+
+- (void) followWithUserId:(NSString*)userId
+             successBlock:(void(^)(void)) successBlock
+             failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    
+    NSDictionary *parametr = @{@"user_id":userId};
+    
+    [self.networkDecorator POST:@"user/followers"
+                     parameters:parametr
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            successBlock();
+                            
+                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          NSLog(@"dd");
+                          
+                      }];
+    
+ 
+}
+
+
+- (void) unfollowWithUserId:(NSString*)userId
+               successBlock:(void(^)(void)) successBlock
+               failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    NSString *unfollow = [NSString stringWithFormat: @"user/followers?user_id=%@", userId];
+ 
+    [self.networkDecorator DELETE:unfollow
+                       parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           successBlock();
+                        
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           
+                       }];
+    
+    
+}
+
+- (void) getFollowersWithUserId:(NSString*)userId
+                   successBlock:(void(^)(NSArray* followersArray)) successBlock
+                   failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    NSString *URLString = [NSString stringWithFormat: @"user/followers?user_id=%@",userId];
+    
+    
+    [self.networkDecorator GET:URLString
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+
+                           NSArray *usersArray = responseObject[@"users"];
+                           NSMutableArray *followersArray = [NSMutableArray array];
+                           
+                           NSError *error;
+                           for (NSDictionary *dict in usersArray)
+                           {
+                               HWFollowUser *user = [[HWFollowUser alloc]initWithDictionary:dict error:&error];
+                               [followersArray addObject:user];
+                               
+                           }
+                           
+                           if(error){
+                               failureBlock(error);
+                               return ;
+                           }
+                           
+                           successBlock(followersArray);
+
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                       }];
+    
+    
+}
+
+- (void) getFollowingWithUserId:(NSString*)userId
+                   successBlock:(void(^)(NSArray* followingArray)) successBlock
+                   failureBlock:(void (^)(NSError* error)) failureBlock
+{
+    
+    
+    NSString *URLString = [NSString stringWithFormat:@"user/followers?following=true&user_id=%@",userId];
+    [self.networkDecorator GET:URLString
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+                           
+                           NSArray *usersArray = responseObject[@"users"];
+                           NSMutableArray *followersArray = [NSMutableArray array];
+                           
+                           NSError *error;
+                           for (NSDictionary *dict in usersArray)
+                           {
+                               HWFollowUser *user = [[HWFollowUser alloc]initWithDictionary:dict error:&error];
+                               [followersArray addObject:user];
+                               
+                           }
+                           
+                           if(error){
+                               failureBlock(error);
+                               return ;
+                           }
+                           
+                           successBlock(followersArray);
+                           
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                       }];
+    
+    
+}
+
+//- (void)
+//
+//   Url: 'listings/likes/LISTING_ID'
+//   Method: 'PUT')
 
 @end
 

@@ -16,10 +16,12 @@
 #import "StarRatingControl.h"
 #import "NetworkManager.h"
 #import "HWUser.h"
+#import "HWFollowUser.h"
 
 
 #import "MyItemCellView.h"
 #import "ViewItemViewController.h"
+
 
 
 @interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate, UIAlertViewDelegate>
@@ -29,13 +31,10 @@
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
 
 @property (weak, nonatomic) IBOutlet StarRatingControl *starRatingView;
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *salesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastSeenLabel;
@@ -53,9 +52,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UITableView *tableView;
 
-
 @property (nonatomic, strong) HWUser *user;
-
 
 @property (nonatomic, strong) NSArray* selectedSegmentArray;
 @property (nonatomic, strong) NSArray *itemsArray;
@@ -63,6 +60,9 @@
 @property (nonatomic, strong) NSArray *followersArray;
 @property (nonatomic, strong) NSArray *wishListArray;
 
+@property (nonatomic, strong) NetworkManager *networkManager;
+
+@property (nonatomic, strong) NSString *userId;
 
 @end
 
@@ -74,20 +74,20 @@
 
 - (instancetype) initWithUserID:(NSString *)userID
 {
-    self = [self init];
+    self = [super initWithNibName: @"HWProfileViewController" bundle: nil];
     if(self)
     {
+        self.networkManager = [NetworkManager shared];
+        self.userId = userID;
         
-        [[NetworkManager shared]getUserProfileWithUserID:@"77"
+        [self.networkManager getUserProfileWithUserID:userID
                                             successBlock:^(HWUser *user) {
                                                 
                                                 self.user = user;
                                                 [self updateUser];
-                                                [self setArrayForSegmentView];
                                                 
                                             } failureBlock:^(NSError *error) {
-            
-                                                
+
                                                 NSString *errorMessage = [NSString stringWithFormat:@"%@", error.localizedDescription];
        
                                                 [[[UIAlertView alloc]initWithTitle:@"Error!"
@@ -97,7 +97,8 @@
                                                                  otherButtonTitles: nil] show];
                                             
                                         }];
-        
+        [self setArrayForSegmentViewWithUserID:userID];
+    
     }
     
     return self;
@@ -105,7 +106,7 @@
 
 - (instancetype) init
 {
-    self = [super initWithNibName: @"HWProfileViewController" bundle: nil];
+    self = [self initWithUserID:nil];
     
     if(self)
     {
@@ -114,12 +115,6 @@
     
     return self;
 }
-
-
-//-(void)viewDidAppear:(BOOL)animated{
-//    
-//    [self segmentButtonAction:self.itemsButton];
-//}
 
 
 - (void)viewDidLoad {
@@ -131,12 +126,14 @@
     self.navigationView.title.text = @"Profile";
     
     [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
+    
+    [self segmentButtonAction:self.itemsButton];
    
 }
 
 
 #pragma mark -
-#pragma mark set/get
+#pragma mark commonInit
 
 
 -(void)commonInit
@@ -144,16 +141,23 @@
     
     CGFloat widthScreen = [UIScreen mainScreen].bounds.size.width;
     CGFloat yOriginForTableAndCollection = self.segmentView.frame.origin.y + self.segmentView.frame.size.height - 10;
+    
+    
+    // init tableView
+    
+    
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, yOriginForTableAndCollection, widthScreen, 200) style:UITableViewStylePlain];
     [self.scrollView addSubview:self.tableView];
     self.tableView.hidden = YES;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    self.tableView.scrollEnabled = NO;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"HWFollowInProfileCell" bundle:nil] forCellReuseIdentifier:@"tableViewCell"];
     
+    
+    // init tableView
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     self.collectionView =[[UICollectionView alloc] initWithFrame:CGRectMake(0, yOriginForTableAndCollection, widthScreen, 500) collectionViewLayout:layout];
@@ -163,56 +167,40 @@
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
-    
     [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"collectionViewCell"];
     
     [self setupSegmentButtonsConfig];
-    
     self.starRatingView.delegate = self;
     
-    
-    
+    NSString *currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:kUSER_ID];
+    if([currentUserId isEqualToString:self.userId])
+    {
+      
+        self.followUnfollowButton.hidden = YES;
+    }
+   
 }
-
-- (void) setArrayForSegmentView
-{
-    // items
-    
-    [[NetworkManager shared]getItemsByUserId:self.user.id
-                                successBlock:^(NSArray *arrayWithItems) {
-                                    
-                                    self.itemsArray = arrayWithItems;
-                                    [self setupSegmentButtonsConfig];
-                                    [self segmentButtonAction:self.itemsButton];
-                                    
-                                } failureBlock:^(NSError *error) {
-                                    
-                                    
-                                }];
-    
-    // following
-    
-    //followers
-    
-    //wishlist
-    
-}
-
-
 - (void) updateUser
 {
-
-    [self.avatarView setImageWithURL: [NSURL URLWithString: self.user.avatar] placeholderImage:nil];
-    self.userNameLabel.text = self.user.username;
-    self.locationLabel.text = self.user.city;
-   
-    self.lastSeenLabel.text = self.user.last_activity;
     
-    self.ratingLabel.text = self.user.rating;
+    if([self.user.following integerValue] == 1)
+    {
+        [self.followUnfollowButton setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
+    }
+    
+    [self.avatarView setImageWithURL: [NSURL URLWithString: self.user.avatar] placeholderImage:[UIImage imageNamed:@"noAvatar"]];
+    self.userNameLabel.text = self.user.username;
+    if(self.user.city)
+    {
+        self.locationLabel.text =  [NSString stringWithFormat:@"%@, United Kingdom", self.user.city];
+    }
+    self.starRatingView.rating = [self.user.rating integerValue];
+    self.ratingLabel.text = [NSString stringWithFormat:@"%@ (%@ reviews)",self.user.rating,self.user.review];
     self.salesLabel.text = self.user.number_of_sales;
     
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    [dateFormatter setDateFormat:@"YYYY'-'MM'-'dd'T'HH':'mm"];
     NSDate *dateFromString = [dateFormatter dateFromString:self.user.last_activity];
     
     NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
@@ -220,16 +208,6 @@
     
     self.lastSeenLabel.text = [dateFormatter1 stringFromDate:dateFromString];
     
-}
-
-
-
-#pragma mark - 
-#pragma mark StarRatingDelegate
-
-- (BOOL) enabledTouch
-{
-    return NO;
 }
 
 
@@ -248,6 +226,90 @@
     self.wishlistButton.count.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.wishListArray.count];
 }
 
+
+
+#pragma mark -
+#pragma set/get
+
+- (void) setArrayForSegmentViewWithUserID:(NSString*)userId
+{
+    // items
+    [self setItemsArrayWithUserId:userId];
+    
+    // following
+    
+    [self setFollowingArrayWithUserId:userId];
+   
+    
+    //followers
+    
+     [self setFollowersArrayWithUserId:userId];
+    
+    //wishlist
+    
+}
+
+
+// items
+- (void) setItemsArrayWithUserId:(NSString*)userId
+{
+    
+    [self.networkManager getItemsByUserId:userId
+                             successBlock:^(NSArray *arrayWithItems) {
+                                 
+                                 self.itemsArray = arrayWithItems;
+                                 [self setupSegmentButtonsConfig];
+                                 [self segmentButtonAction:self.itemsButton];
+                                 
+                             } failureBlock:^(NSError *error) {
+                                 NSLog(@"%@",error);
+                                 
+                             }];
+    
+}
+
+// following
+
+- (void) setFollowingArrayWithUserId:(NSString*)userId
+{
+    [self.networkManager getFollowingWithUserId:userId
+                                   successBlock:^(NSArray *followingArray) {
+                                       
+                                       self.followingArray = followingArray;
+                                       [self setupSegmentButtonsConfig];
+                                       
+                                   } failureBlock:^(NSError *error) {
+                                       NSLog(@"%@",error);
+                                   }];
+}
+
+//followers
+
+- (void) setFollowersArrayWithUserId:(NSString*)userId
+{
+    [self.networkManager getFollowersWithUserId:userId
+                                   successBlock:^(NSArray *followersArray) {
+                                       
+                                       self.followersArray = followersArray;
+                                       [self setupSegmentButtonsConfig];
+                                       
+                                } failureBlock:^(NSError *error) {
+                                       NSLog(@"%@",error);
+                                       
+                                       
+                                   }];
+    
+}
+
+
+
+#pragma mark - 
+#pragma mark StarRatingDelegate
+
+- (BOOL) enabledTouch
+{
+    return NO;
+}
 
 
 #pragma mark -
@@ -318,10 +380,28 @@
    if ([sender.titleLabel.text isEqualToString:@"  FOLLOW  "])
    {
        [sender setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
+       
+       [ self.networkManager followWithUserId:self.user.id successBlock:^{
+           
+           
+       } failureBlock:^(NSError *error) {
+           
+       }];
+ 
    } else {
-       [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
-      
+       
+        [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
+       [self.networkManager unfollowWithUserId:self.user.id successBlock:^{
+           
+          
+       } failureBlock:^(NSError *error) {
+           
+           
+       }];
+       
    }
+    [self setFollowersArrayWithUserId:self.user.id];
+    [self setupSegmentButtonsConfig];
 }
 
 - (IBAction)segmentButtonAction:(HWButtonForSegment *)sender {
@@ -389,6 +469,7 @@
 {
     HWFollowInProfileCell* cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
     
+    [cell setCellWithFollowUser:[self.selectedSegmentArray objectAtIndex:indexPath.row]];
     
 
     
@@ -440,7 +521,7 @@
 
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(15, 12, 15, 12); // top, left, bottom, right
+    return UIEdgeInsetsMake(11, 12, 15, 12); // top, left, bottom, right
 }
 
 
@@ -453,7 +534,8 @@
     // Make cell same width as application frame and 250 pixels tall.
     CGFloat width = self.view.width;
     CGFloat widthForView = (width - 36) / 2;
-    return CGSizeMake(widthForView, (widthForView * 488) / 291);
+ 
+    return CGSizeMake(widthForView, ((widthForView * 488) / 291)-38);
 }
 
 #pragma mark -

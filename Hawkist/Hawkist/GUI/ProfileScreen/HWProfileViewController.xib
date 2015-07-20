@@ -62,9 +62,8 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYe-lJ-r6J">
                     <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2U4-iU-E4C">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="2U4-iU-E4C">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="228"/>
-                            <color key="backgroundColor" red="0.12549019610000001" green="0.56078431370000004" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="228" id="EIo-bG-CfQ"/>
                             </constraints>
@@ -265,8 +264,8 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovl-2s-eoB">
-                            <rect key="frame" x="250" y="176" width="62" height="35"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovl-2s-eoB">
+                            <rect key="frame" x="234" y="176" width="78" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="XHN-1I-nCX"/>
                             </constraints>
@@ -327,6 +326,7 @@
                         <constraint firstItem="bG6-zT-ZHN" firstAttribute="centerX" secondItem="eYe-lJ-r6J" secondAttribute="centerX" id="XJE-ew-cJX"/>
                         <constraint firstItem="qhG-Y7-xFW" firstAttribute="leading" secondItem="EEI-92-JdM" secondAttribute="trailing" constant="1" id="XTT-O5-m90"/>
                         <constraint firstItem="ceV-qV-ELj" firstAttribute="leading" secondItem="Ni4-69-4ed" secondAttribute="leading" id="Xhm-wP-Zlc"/>
+                        <constraint firstItem="ovl-2s-eoB" firstAttribute="leading" relation="lessThanOrEqual" secondItem="2U4-iU-E4C" secondAttribute="trailing" constant="-70" id="YTI-HC-LES"/>
                         <constraint firstItem="ceV-qV-ELj" firstAttribute="bottom" secondItem="XCs-VE-xj6" secondAttribute="bottom" constant="-2" id="YbX-9g-4UH"/>
                         <constraint firstItem="fka-Qv-YeX" firstAttribute="leading" secondItem="cKS-2q-p8e" secondAttribute="trailing" constant="-3" id="Zb8-nN-oVv"/>
                         <constraint firstItem="cKS-2q-p8e" firstAttribute="leading" secondItem="dOV-UV-N4Z" secondAttribute="trailing" constant="4" id="bqB-j5-q1d"/>
@@ -338,7 +338,7 @@
                         <constraint firstAttribute="trailing" secondItem="khc-Pq-Ehs" secondAttribute="trailing" id="isk-Eb-3fi"/>
                         <constraint firstItem="wZU-eP-qWE" firstAttribute="baseline" secondItem="Sn9-ws-CVh" secondAttribute="firstBaseline" id="j43-Vy-LfU"/>
                         <constraint firstItem="dsm-t9-EQu" firstAttribute="leading" secondItem="Sn9-ws-CVh" secondAttribute="trailing" constant="71" id="msx-k9-ORO"/>
-                        <constraint firstAttribute="trailing" secondItem="ovl-2s-eoB" secondAttribute="trailing" constant="12" id="nc7-xE-Pej"/>
+                        <constraint firstAttribute="trailing" secondItem="ovl-2s-eoB" secondAttribute="trailing" constant="8" id="nc7-xE-Pej"/>
                         <constraint firstItem="qhG-Y7-xFW" firstAttribute="baseline" secondItem="EEI-92-JdM" secondAttribute="firstBaseline" constant="-1" id="oLF-2l-gaN"/>
                         <constraint firstItem="cKS-2q-p8e" firstAttribute="leading" secondItem="XCs-VE-xj6" secondAttribute="leading" id="p6f-BV-rP5"/>
                         <constraint firstItem="MjG-p9-bUj" firstAttribute="top" secondItem="6wK-y2-da7" secondAttribute="bottom" constant="6" id="qFF-WQ-1Ej"/>
@@ -352,7 +352,6 @@
                         <constraint firstItem="1Cb-tM-JeT" firstAttribute="leading" secondItem="Ni4-69-4ed" secondAttribute="leading" constant="1" id="xIf-w3-oiG"/>
                         <constraint firstItem="ACL-AH-qhr" firstAttribute="leading" secondItem="MjG-p9-bUj" secondAttribute="trailing" constant="8" symbolic="YES" id="xg0-2n-X5e"/>
                         <constraint firstItem="dsm-t9-EQu" firstAttribute="baseline" secondItem="wZU-eP-qWE" secondAttribute="firstBaseline" constant="10" id="xtb-LU-aK8"/>
-                        <constraint firstItem="ovl-2s-eoB" firstAttribute="leading" relation="lessThanOrEqual" secondItem="qhG-Y7-xFW" secondAttribute="trailing" constant="31" id="yDY-FR-KnB"/>
                         <constraint firstItem="Sn9-ws-CVh" firstAttribute="leading" secondItem="EEI-92-JdM" secondAttribute="leading" id="znd-Gl-WLV"/>
                     </constraints>
                     <variation key="default">
@@ -385,5 +384,6 @@
         <image name="Profile_time" width="7" height="7"/>
         <image name="Profile_view" width="13" height="7"/>
         <image name="askbutton" width="47" height="30"/>
+        <image name="noPhoto" width="689" height="460"/>
     </resources>
 </document>

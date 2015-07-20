@@ -23,7 +23,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iqD-ux-ohf" id="a3f-al-p3f">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JAl-fh-Ivt">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JAl-fh-Ivt">
                         <rect key="frame" x="11" y="12" width="56" height="56"/>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -34,9 +34,10 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="28"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtm-sd-fek" customClass="StarRatingControl">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtm-sd-fek" customClass="StarRatingControl">
                         <rect key="frame" x="80" y="49" width="79" height="11"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="79" id="8h9-cE-wZd"/>
@@ -44,15 +45,15 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treshola Smith" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jD-mj-6x2">
-                        <rect key="frame" x="80" y="15" width="139" height="28"/>
-                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                        <rect key="frame" x="80" y="15" width="132" height="26"/>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="19"/>
                         <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1t-Mz-ZnN">
                         <rect key="frame" x="234" y="15" width="69" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="69" id="7TN-aP-lZp"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="7TN-aP-lZp"/>
                             <constraint firstAttribute="height" constant="25" id="d45-ee-3is"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>

@@ -10,6 +10,8 @@
 #import "HWItem.h"
 #import "HWUser.h"
 
+@protocol FeedScreenCollectionViewCellDelegate;
+
 @interface FeedScreenCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) HWItem *item;
@@ -39,7 +41,18 @@
 @property (strong, nonatomic) IBOutlet UILabel *currentPriceLable;
 
 
+@property (nonatomic, weak) id <FeedScreenCollectionViewCellDelegate> delegate;
+
 @end
 
 
+@protocol FeedScreenCollectionViewCellDelegate <NSObject>
+
+@optional
+
+- (BOOL) willTransitionToUserProfileButton;
+- (void) transitionToProfileScreenWithUserId:(NSString*)userId;
+
+
+@end
 

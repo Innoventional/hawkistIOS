@@ -8,6 +8,14 @@
 
 #import "FeedScreenCollectionViewCell.h"
 #import "HWTag+Extensions.h"
+#import "HWProfileViewController.h"
+
+
+@interface FeedScreenCollectionViewCell ()
+
+@property (nonatomic, strong) NSString *userId;
+
+@end
 
 @implementation FeedScreenCollectionViewCell
 
@@ -22,6 +30,7 @@
 
 -(void)setItem:(HWItem *)item
 {
+    self.userId = item.user_id;
     self.avatarImage.image = nil;
     self.avatarImage.image = [UIImage imageNamed:@"NoAvatar"];
     self.itemImage.image = nil;
@@ -71,8 +80,34 @@
     
 }
 
+#pragma mark - 
+#pragma mark Action
+ 
+- (IBAction)transitionToUserProfileAction:(UIButton *)sender {
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(willTransitionToUserProfileButton)])
+    {
+        if ([self.delegate willTransitionToUserProfileButton])
+        {
+            
+            [self transitionToUserPtofile];
+           
+            
+        }
+    }
+    
+}
 
 
-
+- (void) transitionToUserPtofile
+{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(transitionToProfileScreenWithUserId:)])
+    {
+        
+        [self.delegate transitionToProfileScreenWithUserId:self.userId];
+        
+    }
+    
+}
 
 @end
