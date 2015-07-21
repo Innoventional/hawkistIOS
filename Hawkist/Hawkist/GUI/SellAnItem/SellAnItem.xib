@@ -605,7 +605,7 @@
                                     </constraints>
                                     <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="6gg-Sl-ydH"/>
@@ -633,7 +633,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FlP-uP-4cz">
-                                    <rect key="frame" x="16" y="177" width="187" height="1"/>
+                                    <rect key="frame" x="16" y="177" width="289" height="1"/>
                                     <color key="backgroundColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="134" id="N8O-av-mKi"/>
@@ -653,6 +653,7 @@
                                 <constraint firstItem="hHq-sm-00u" firstAttribute="centerY" secondItem="Hhs-is-8C5" secondAttribute="centerY" constant="1" id="4Nc-7j-0JK"/>
                                 <constraint firstItem="P4k-rL-sik" firstAttribute="leading" secondItem="LHG-qX-5vH" secondAttribute="leading" constant="16" id="83r-5o-DLa"/>
                                 <constraint firstItem="8ig-W1-vJi" firstAttribute="top" secondItem="P4k-rL-sik" secondAttribute="bottom" constant="50" id="8BD-Tn-jk1"/>
+                                <constraint firstAttribute="trailing" secondItem="FlP-uP-4cz" secondAttribute="trailing" constant="15" id="B7L-xv-uCw"/>
                                 <constraint firstItem="ko1-2z-Wt6" firstAttribute="centerY" secondItem="8ig-W1-vJi" secondAttribute="centerY" id="CNA-Vh-s9Y"/>
                                 <constraint firstItem="EXb-vJ-pSk" firstAttribute="top" secondItem="8ig-W1-vJi" secondAttribute="bottom" constant="22" id="CQw-3K-O1t"/>
                                 <constraint firstItem="fhX-VT-HSH" firstAttribute="leading" secondItem="Hhs-is-8C5" secondAttribute="trailing" id="IV3-Oa-oMC"/>
@@ -679,8 +680,9 @@
                                 <mask key="constraints">
                                     <exclude reference="LJy-bP-hqy"/>
                                     <exclude reference="zOc-wT-mGF"/>
-                                    <exclude reference="IV3-Oa-oMC"/>
                                     <exclude reference="Sqg-CQ-dIv"/>
+                                    <exclude reference="IV3-Oa-oMC"/>
+                                    <exclude reference="nxg-N1-xJZ"/>
                                 </mask>
                             </variation>
                         </view>
