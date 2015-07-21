@@ -25,5 +25,8 @@
 
 @optional
 - (void) transitionToUserProfileWithUserId:(NSString*)userId;
+- (void) followUnfollowButton:(UIButton*)button follow:(BOOL)isFollow forUserId:(NSString*)userId;
+
+- (BOOL) hideFollowUnfollowButtonForUserId:(NSString*)userId;
 
 @end

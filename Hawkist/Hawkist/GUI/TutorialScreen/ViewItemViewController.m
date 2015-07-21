@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, assign) CGFloat lastHeightCollectionView;
 
+@property (nonatomic, assign) BOOL isLikeItem;
+
 @end
 
 
@@ -96,32 +98,14 @@
 
 #pragma mark implementation model user and item
     
-    //[self updateItem];
+      
     self.sellerAvatar.layer.cornerRadius = self.sellerAvatar.frame.size.height /2;
     self.sellerAvatar.layer.masksToBounds = YES;
     self.sellerAvatar.layer.borderWidth = 0;
     
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans" size:14.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
     
-    
-//    NSArray *itemArray = [NSArray arrayWithObjects: @"Similar Items", @"User Items", nil];
-//    
-//    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-//    segmentedControl.frame = CGRectMake(10, 10
-//                                         , self.itemUser.width , self.itemUser.width);
-//    segmentedControl.contentMode = UIViewContentModeCenter;
-////    CGFloat width = self.itemUser.width - 30;
-////    CGFloat widthForView = (width - 36) / 2;
-////    CGSizeMake(widthForView, (widthForView * 488) / 291);
-//    //segmentedControl.segmentedControlStyle = UISegmentedControlStylePlain;
-//    segmentedControl.selectedSegmentIndex = 0;
-//    segmentedControl.tintColor = [UIColor colorWithRed:0.1f green:0.4f  blue:0.65f  alpha:1.0f];
-//    //segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-//    
-//    [segmentedControl addTarget:self
-//                         action:@selector(segmentChanged:)
-//               forControlEvents:UIControlEventValueChanged];
-//    [self.itemUser addSubview:segmentedControl];
+ 
 #pragma mark ending
     
     
@@ -137,6 +121,15 @@
 #pragma mark - update item
 - (void) updateItem
 {
+
+
+    self.isLikeItem = [self.item.liked integerValue];
+    if (self.isLikeItem)
+    {
+        [self.smallImage4 setImage:[UIImage imageNamed:@"starYellow"]];
+    }
+    
+    
     self.sellerName.text = self.item.user_username;
     [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user_avatar] placeholderImage:nil];
     
@@ -333,6 +326,10 @@
 }
 
 
+#pragma mark - 
+#pragma mark Action
+
+
 
 - (IBAction)imageTapped:(id)sender {
     UIGestureRecognizer *recognizer = (UIGestureRecognizer*) sender;
@@ -341,7 +338,28 @@
     
     if(tag == 4)
     {
-        //TODO: Implement favourites action
+        [[NetworkManager shared] likeDislikeWhithItemId:self.item.id
+                                           successBlock:^{
+                                               
+                                               if (self.isLikeItem)
+                                               {
+                                                   self.isLikeItem = NO;
+                                                   [self.smallImage4 setImage:[UIImage imageNamed:@"fav"]];
+                                               } else {
+                                                   
+                                                   self.isLikeItem = YES;
+                                                   [self.smallImage4 setImage:[UIImage imageNamed:@"starYellow"]];
+                                               }
+                                               
+             
+                                         } failureBlock:^(NSError *error) {
+            
+                                         
+                                             NSLog(@"ерунда");
+                                         }
+        
+        
+         ];
         return;
     }
     if(tag >= self.imagesArray.count)
@@ -362,6 +380,12 @@
 - (IBAction)askButton:(id)sender {
 }
 
+- (IBAction)transitionToProfile:(UIButton *)sender {
+    
+    HWProfileViewController *profileVC = [[HWProfileViewController alloc]initWithUserID:self.item.user_id];
+    [self.navigationController pushViewController:profileVC animated:YES];
+    
+}
 
 
 #pragma mark - 

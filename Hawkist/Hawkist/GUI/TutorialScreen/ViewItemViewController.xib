@@ -341,7 +341,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ul6-MW-hGx" userLabel="askview">
                             <rect key="frame" x="0.0" y="476" width="320" height="58"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYe-cl-JfU">
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYe-cl-JfU">
                                     <rect key="frame" x="260" y="13" width="46" height="30"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <state key="normal" title="ASK" backgroundImage="askbutton">
@@ -377,6 +377,15 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Fj-23-iky" customClass="StarRatingControl">
                                     <rect key="frame" x="51" y="32" width="60" height="20"/>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSc-Yx-U0x">
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="58"/>
+                                    <state key="normal">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="transitionToProfile:" destination="-1" eventType="touchUpInside" id="ie1-oa-PFX"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="86w-tp-Zkn" firstAttribute="leading" secondItem="Ul6-MW-hGx" secondAttribute="leading" constant="119" id="0Yd-PO-4LM"/>
@@ -386,12 +395,16 @@
                                 <constraint firstItem="3Fj-23-iky" firstAttribute="top" secondItem="WIr-Nv-oTn" secondAttribute="bottom" constant="2" id="Dtb-fT-3N2"/>
                                 <constraint firstItem="WIr-Nv-oTn" firstAttribute="top" secondItem="Ul6-MW-hGx" secondAttribute="top" constant="6" id="Jd2-Nz-vpc"/>
                                 <constraint firstItem="86w-tp-Zkn" firstAttribute="bottom" secondItem="3Fj-23-iky" secondAttribute="bottom" constant="-2" id="NM7-NA-phf"/>
+                                <constraint firstItem="xYe-cl-JfU" firstAttribute="leading" secondItem="GSc-Yx-U0x" secondAttribute="trailing" constant="10" id="OGA-uR-ZZx"/>
+                                <constraint firstItem="GSc-Yx-U0x" firstAttribute="top" secondItem="Ul6-MW-hGx" secondAttribute="top" id="SPJ-AJ-Dw7"/>
                                 <constraint firstItem="3Fj-23-iky" firstAttribute="leading" secondItem="WIr-Nv-oTn" secondAttribute="leading" id="TWy-hR-9rj"/>
                                 <constraint firstItem="OjR-qP-LPr" firstAttribute="top" secondItem="Ul6-MW-hGx" secondAttribute="top" constant="12" id="XnV-n5-1Nc"/>
                                 <constraint firstAttribute="bottom" secondItem="OjR-qP-LPr" secondAttribute="bottom" constant="14" id="ZgR-kE-pDn"/>
                                 <constraint firstItem="WIr-Nv-oTn" firstAttribute="leading" secondItem="OjR-qP-LPr" secondAttribute="trailing" constant="6" id="bQV-ck-5sL"/>
                                 <constraint firstItem="86w-tp-Zkn" firstAttribute="leading" secondItem="3Fj-23-iky" secondAttribute="trailing" constant="8" symbolic="YES" id="dlT-ch-94a"/>
+                                <constraint firstAttribute="bottom" secondItem="GSc-Yx-U0x" secondAttribute="bottom" id="kty-eG-fBf"/>
                                 <constraint firstItem="xYe-cl-JfU" firstAttribute="leading" secondItem="WIr-Nv-oTn" secondAttribute="trailing" constant="10" id="m5U-3B-9yb"/>
+                                <constraint firstItem="GSc-Yx-U0x" firstAttribute="leading" secondItem="Ul6-MW-hGx" secondAttribute="leading" id="mxm-Y5-sMZ"/>
                                 <constraint firstItem="OjR-qP-LPr" firstAttribute="leading" secondItem="Ul6-MW-hGx" secondAttribute="leading" constant="12" id="och-01-Ygj"/>
                                 <constraint firstAttribute="trailing" secondItem="xYe-cl-JfU" secondAttribute="trailing" constant="14" id="qHH-vx-qBL"/>
                                 <constraint firstItem="86w-tp-Zkn" firstAttribute="top" secondItem="Ul6-MW-hGx" secondAttribute="top" constant="25" id="vAZ-zm-8Ma"/>

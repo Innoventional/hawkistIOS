@@ -53,4 +53,8 @@
 @property (nonatomic, strong) NSString<Optional>* user_username;
 @property (nonatomic,assign) BOOL sold;
 
+@property (nonatomic, assign) NSString<Optional>* liked;
+@property (nonatomic, assign) NSString<Optional>* likes;
+
+
 @end
