@@ -53,6 +53,7 @@
             }];
         }
         
+      
         
         return self;
         
@@ -190,6 +191,15 @@
     [self.collectionView reloadData];
     [self reloadScrollViewSize];
     
+    
+    if ([[AppEngine shared].user.id isEqualToString:self.item.user_id])
+    {
+        self.buyThisItem.enabled = NO;
+    }
+    else
+    {
+         self.buyThisItem.enabled = YES;
+    }
 }
 
 

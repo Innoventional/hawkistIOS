@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *oldPrice;
 @property (weak, nonatomic) IBOutlet UILabel *discount;
 
+- (IBAction)sendOffer:(id)sender;
 @property (weak, nonatomic) IBOutlet MoneyField *moneyField;
+
 - (instancetype) initWithItem: (HWItem*) item;
 @end

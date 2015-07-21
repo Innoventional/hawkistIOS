@@ -51,6 +51,7 @@
             <connections>
                 <outlet property="added" destination="RZb-gx-bJD" id="n0y-29-t09"/>
                 <outlet property="bigImage" destination="Hsl-Tc-dOE" id="55S-ac-vjJ"/>
+                <outlet property="buyThisItem" destination="Rg4-LH-YBt" id="Hje-zt-vsf"/>
                 <outlet property="category" destination="BzK-lv-3dw" id="tJT-fU-l07"/>
                 <outlet property="collectionView" destination="oC7-ht-LMk" id="Aoy-SV-5pv"/>
                 <outlet property="colour" destination="2Fo-eF-aMI" id="Pja-ax-Pzk"/>

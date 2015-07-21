@@ -779,6 +779,39 @@
 //   Url: 'listings/likes/LISTING_ID'
 //   Method: 'PUT')
 
+#pragma mark -
+#pragma mark Comments
+
+- (void) OfferPrice: (NSString*) newPrice
+             itemId: (NSString*) itemId
+              successBlock: (void (^)(void)) successBlock
+              failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    NSString* post = [@"listings/offers/" stringByAppendingString: itemId];
+    [self.networkDecorator POST:post
+                    parameters: @{@"new_price": newPrice}
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+                        
+                           successBlock();
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+                           
+                       }];
+}
+
+
 @end
 
 

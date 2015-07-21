@@ -64,5 +64,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *comments;
 @property (strong, nonatomic) IBOutlet UILabel *category;
 @property (strong, nonatomic) IBOutlet UILabel *discount;
+@property (weak, nonatomic) IBOutlet UIButton *buyThisItem;
 
 @end

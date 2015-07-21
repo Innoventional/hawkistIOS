@@ -28,7 +28,7 @@
 
 - (NSString*) number;
 
-- (NSString*) categoryNameById: (NSInteger) id;
+//- (NSString*) categoryNameById: (NSInteger) id;
 
 
 @end
