@@ -116,4 +116,23 @@
     
 }
 
+
+
+#pragma mark -
+#pragma mark Action
+
+- (IBAction)transitionToUserProfileAction:(UIButton *)sender
+{
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(transitionToUserProfileWithUserId:)])
+    {
+        [self.delegate transitionToUserProfileWithUserId:self.userId];
+    
+    }
+    
+}
+
+
+
+
 @end

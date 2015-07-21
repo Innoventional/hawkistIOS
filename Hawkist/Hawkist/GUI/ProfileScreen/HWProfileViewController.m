@@ -24,7 +24,7 @@
 
 
 
-@interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate, UIAlertViewDelegate>
+@interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate, UIAlertViewDelegate, HWFollowInProfileCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *segmentView;
@@ -95,7 +95,6 @@
                                                                           delegate:self
                                                                  cancelButtonTitle:@"Ok!"
                                                                  otherButtonTitles: nil] show];
-                                            
                                         }];
         [self setArrayForSegmentViewWithUserID:userID];
     
@@ -117,6 +116,14 @@
 }
 
 
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self segmentButtonAction:self.itemsButton];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -127,7 +134,7 @@
     
     [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
     
-    [self segmentButtonAction:self.itemsButton];
+  //  [self segmentButtonAction:self.itemsButton];
    
 }
 
@@ -261,9 +268,11 @@
                                  [self setupSegmentButtonsConfig];
                                  [self segmentButtonAction:self.itemsButton];
                                  
-                             } failureBlock:^(NSError *error) {
-                                 NSLog(@"%@",error);
                                  
+                             } failureBlock:^(NSError *error) {
+                                 
+                                 [self showAlertWithTitle:@"Error!"
+                                                  Message:error.localizedDescription];
                              }];
     
 }
@@ -278,8 +287,12 @@
                                        self.followingArray = followingArray;
                                        [self setupSegmentButtonsConfig];
                                        
+                                       
                                    } failureBlock:^(NSError *error) {
-                                       NSLog(@"%@",error);
+                                       
+                                       [self showAlertWithTitle:@"Error!"
+                                                        Message:error.localizedDescription];
+                                       
                                    }];
 }
 
@@ -294,8 +307,10 @@
                                        [self setupSegmentButtonsConfig];
                                        
                                 } failureBlock:^(NSError *error) {
-                                       NSLog(@"%@",error);
-                                       
+                                    
+                                    [self showAlertWithTitle:@"Error!"
+                                                     Message:error.localizedDescription];
+                                    
                                        
                                    }];
     
@@ -422,11 +437,12 @@
         case 2:
             isTableView = YES;
             self.selectedSegmentArray = self.followingArray;
+            
             break;
         case 3:
             isTableView = YES;
             self.selectedSegmentArray = self.followersArray;
-            break;
+                       break;
         case 4:
            isTableView = NO;
             self.selectedSegmentArray = self.wishListArray;
@@ -436,7 +452,12 @@
             break;
     }
     
-      [self reloadTableAndCollectionViewWithData:self.selectedSegmentArray forTableView:isTableView];
+    
+    
+   
+    [self reloadTableAndCollectionViewWithData:self.selectedSegmentArray forTableView:isTableView];
+   
+
     
 }
 
@@ -470,7 +491,7 @@
     HWFollowInProfileCell* cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
     
     [cell setCellWithFollowUser:[self.selectedSegmentArray objectAtIndex:indexPath.row]];
-    
+    cell.delegate = self;
 
     
     return cell;
@@ -546,6 +567,16 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+#pragma mark - 
+#pragma mark HWFollowInProfileCellDelegate
+
+- (void) transitionToUserProfileWithUserId:(NSString*)userId
+{
+    HWProfileViewController *profileVC = [[HWProfileViewController alloc]initWithUserID:userId];
+    [self.navigationController pushViewController:profileVC animated:YES];
     
 }
 @end

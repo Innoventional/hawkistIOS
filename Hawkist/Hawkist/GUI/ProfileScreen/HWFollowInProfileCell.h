@@ -9,8 +9,21 @@
 #import <UIKit/UIKit.h>
 @class HWFollowUser;
 
+@protocol HWFollowInProfileCellDelegate;
+
+
 @interface HWFollowInProfileCell : UITableViewCell
 
+@property (nonatomic, weak) id <HWFollowInProfileCellDelegate> delegate;
+
 - (void) setCellWithFollowUser:(HWFollowUser*) user;
+
+@end
+
+
+@protocol HWFollowInProfileCellDelegate <NSObject>
+
+@optional
+- (void) transitionToUserProfileWithUserId:(NSString*)userId;
 
 @end

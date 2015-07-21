@@ -632,10 +632,12 @@
     [self.networkDecorator POST:@"user/followers"
                      parameters:parametr
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                             NSLog(@"%@",responseObject);
                             successBlock();
                             
                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          NSLog(@"dd");
+                         
+                          failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
                           
                       }];
     
@@ -653,11 +655,13 @@
     [self.networkDecorator DELETE:unfollow
                        parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            
+                            NSLog(@"%@",responseObject);
                            successBlock();
                         
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            
+                        failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
                            
                        }];
     
@@ -693,10 +697,10 @@
                            for (NSDictionary *dict in usersArray)
                            {
                                HWFollowUser *user = [[HWFollowUser alloc]initWithDictionary:dict error:&error];
-                               if([currentUserId isEqualToString:user.id])
-                               {
-                                   continue;
-                               }
+//                               if([currentUserId isEqualToString:user.id])
+//                               {
+//                                   continue;
+//                               }
                                [followersArray addObject:user];
                                
                            }
@@ -736,14 +740,19 @@
                                
                                return;
                            }
-                           
+                          
                            NSArray *usersArray = responseObject[@"users"];
                            NSMutableArray *followersArray = [NSMutableArray array];
                            
+                           NSString *currentUserId = [[NSUserDefaults standardUserDefaults]objectForKey:kUSER_ID];
                            NSError *error;
                            for (NSDictionary *dict in usersArray)
                            {
                                HWFollowUser *user = [[HWFollowUser alloc]initWithDictionary:dict error:&error];
+//                               if([currentUserId isEqualToString:user.id])
+//                               {
+//                                   continue;
+//                               }
                                [followersArray addObject:user];
                                
                            }
@@ -758,6 +767,7 @@
                            
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
                            
                        }];
     
