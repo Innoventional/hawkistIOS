@@ -130,6 +130,19 @@
                    failureBlock:(void (^)(NSError* error)) failureBlock;
 
 
+#pragma mark - like/dislike and add to wishlist
+- (void) likeDislikeWhithItemId:(NSString*)itemId
+                   successBlock:(void(^)(void)) succesBlock
+                   failureBlock:(void(^)(NSError* error)) failureBlock;
+
+
+- (void) getWishlistWithUserId:(NSString*)userId
+                  successBlock:(void(^)(NSArray *wishlistArray)) succesBlock
+                  failureBlock:(void(^)(NSError* error)) failureBlock;
+
+
+
+
 #pragma mark -
 #pragma mark Comments
 
@@ -137,4 +150,5 @@
              itemId: (NSString*) itemId
        successBlock: (void (^)(void)) successBlock
        failureBlock: (void (^)(NSError* error)) failureBlock;
+
 @end

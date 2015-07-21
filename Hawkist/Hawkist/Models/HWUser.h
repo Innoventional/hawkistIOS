@@ -31,4 +31,5 @@
 @property (nonatomic, strong) NSString<Optional>* response_time;
 @property (nonatomic, assign) NSString<Optional>* following;
 
+
 @end

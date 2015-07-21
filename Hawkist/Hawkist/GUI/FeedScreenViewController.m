@@ -8,8 +8,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "FeedScreenViewController.h"
 #import "ViewItemViewController.h"
+#import "HWProfileViewController.h"
 
-@interface FeedScreenViewController () <UITextFieldDelegate>
+
+@interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate>
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -109,6 +111,7 @@
 
 - (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
+    cell.delegate = self;
     cell.item = [self.items objectAtIndex: indexPath.row];
     
     return cell;
@@ -150,6 +153,21 @@
     }];
     
     
+}
+
+
+
+#pragma mark -
+#pragma mark  FeedScreenCollectionViewCellDelegate
+
+- (BOOL) willTransitionToUserProfileButton
+{
+    return YES;
+}
+- (void) transitionToProfileScreenWithUserId:(NSString*)userId
+{
+    HWProfileViewController *profileVC = [[HWProfileViewController alloc]initWithUserID:userId];
+    [self.navigationController pushViewController:profileVC animated:YES];
 }
 
 

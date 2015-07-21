@@ -64,6 +64,10 @@
 
 @property (nonatomic, strong) NSString *userId;
 
+
+@property (nonatomic, assign) NSInteger intArray;
+@property (nonatomic, strong) id lastPressSegmentButton;
+
 @end
 
 @implementation HWProfileViewController
@@ -117,10 +121,17 @@
 
 
 
-- (void) viewDidAppear:(BOOL)animated
+- (void) viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    [self segmentButtonAction:self.itemsButton];
+    [super viewWillAppear:animated];
+    if(!self.lastPressSegmentButton){
+        
+        [self segmentButtonAction:self.itemsButton];
+        
+    } else {
+    
+        [self segmentButtonAction:self.lastPressSegmentButton];
+    }
     
 }
 
@@ -199,7 +210,7 @@
     self.userNameLabel.text = self.user.username;
     if(self.user.city)
     {
-        self.locationLabel.text =  [NSString stringWithFormat:@"%@, United Kingdom", self.user.city];
+        self.locationLabel.text =  [NSString stringWithFormat:@"%@, United Kingdom  ", self.user.city];
     }
     self.starRatingView.rating = [self.user.rating integerValue];
     self.ratingLabel.text = [NSString stringWithFormat:@"%@ (%@ reviews)",self.user.rating,self.user.review];
@@ -231,6 +242,8 @@
     
     self.wishlistButton.titleButton.text = @"WISHLIST";
     self.wishlistButton.count.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.wishListArray.count];
+    
+    
 }
 
 
@@ -253,6 +266,7 @@
      [self setFollowersArrayWithUserId:userId];
     
     //wishlist
+    [self setWishlistArrayWithUsetId:userId];
     
 }
 
@@ -267,6 +281,7 @@
                                  self.itemsArray = arrayWithItems;
                                  [self setupSegmentButtonsConfig];
                                  [self segmentButtonAction:self.itemsButton];
+                                 
                                  
                                  
                              } failureBlock:^(NSError *error) {
@@ -286,6 +301,11 @@
                                        
                                        self.followingArray = followingArray;
                                        [self setupSegmentButtonsConfig];
+                                       if (self.intArray == 20)
+                                       {
+                                           [self reloadTableAndCollectionViewWithData:self.followingArray forTableView:YES];
+                                       }
+
                                        
                                        
                                    } failureBlock:^(NSError *error) {
@@ -306,6 +326,12 @@
                                        self.followersArray = followersArray;
                                        [self setupSegmentButtonsConfig];
                                        
+                                       if (self.intArray == 30)
+                                       {
+                                           
+                                           [self reloadTableAndCollectionViewWithData:self.followersArray forTableView:YES];
+                                       }
+                                       
                                 } failureBlock:^(NSError *error) {
                                     
                                     [self showAlertWithTitle:@"Error!"
@@ -316,7 +342,20 @@
     
 }
 
+// wishlist
 
+- (void) setWishlistArrayWithUsetId:(NSString*)userId
+{
+    [self.networkManager getWishlistWithUserId:userId
+                                  successBlock:^(NSArray *wishlistArray) {
+                                      
+                                      self.wishListArray = wishlistArray;
+                                      
+                                  } failureBlock:^(NSError *error) {
+                                      
+                                      
+                                  }];
+}
 
 #pragma mark - 
 #pragma mark StarRatingDelegate
@@ -337,6 +376,7 @@
     
     self.selectedSegmentArray = dataArray;
     CGFloat heightForCollectionOrTable = 0;
+    
     
     if(!forTableView)
     {
@@ -421,31 +461,45 @@
 
 - (IBAction)segmentButtonAction:(HWButtonForSegment *)sender {
     
+    
    for (HWButtonForSegment *button in self.buttonSegmentCollection)
    {
        button.selectedImage.hidden = YES;
    }
     
+    self.lastPressSegmentButton = sender;
     sender.selectedImage.hidden = NO;
     BOOL isTableView = NO;
     
     switch (sender.tag) {
         case 1:
             isTableView = NO;
+            
+            
             self.selectedSegmentArray = self.itemsArray;
+            
+             self.intArray = 0;
             break;
         case 2:
             isTableView = YES;
+            
             self.selectedSegmentArray = self.followingArray;
+            self.intArray = 20;
             
             break;
         case 3:
             isTableView = YES;
+            
             self.selectedSegmentArray = self.followersArray;
+            self.intArray = 30;
+            
+            
                        break;
         case 4:
            isTableView = NO;
             self.selectedSegmentArray = self.wishListArray;
+            
+            self.intArray = 0;
             break;
             
         default:
@@ -453,11 +507,15 @@
     }
     
     
+   
+    [self setFollowersArrayWithUserId:self.userId];
+    [self setFollowingArrayWithUserId:self.userId];
+    [self setWishlistArrayWithUsetId:self.userId];
     
-   
-    [self reloadTableAndCollectionViewWithData:self.selectedSegmentArray forTableView:isTableView];
-   
+    
 
+     [self reloadTableAndCollectionViewWithData:self.selectedSegmentArray forTableView:isTableView];
+    
     
 }
 
@@ -489,9 +547,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HWFollowInProfileCell* cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
-    
+      cell.delegate = self;
     [cell setCellWithFollowUser:[self.selectedSegmentArray objectAtIndex:indexPath.row]];
-    cell.delegate = self;
+  
 
     
     return cell;
@@ -578,5 +636,43 @@
     HWProfileViewController *profileVC = [[HWProfileViewController alloc]initWithUserID:userId];
     [self.navigationController pushViewController:profileVC animated:YES];
     
+}
+
+
+- (void) followUnfollowButton:(UIButton*)button follow:(BOOL)isFollow forUserId:(NSString*)userId
+{
+    if(!isFollow){
+        
+        [ [NetworkManager shared] unfollowWithUserId:userId successBlock:^{
+            
+                        [button setTitle:@"FOLLOW"  forState:UIControlStateNormal];
+            
+          //  [self reloadTableAndCollectionViewWithData:self.selectedSegmentArray forTableView:!self.tableView.hidden];
+            
+                    } failureBlock:^(NSError *error) {
+                        
+                    }];
+
+    } else {
+        
+        
+        [ [NetworkManager shared] followWithUserId:userId successBlock:^{
+            
+                        [button setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+            
+                    } failureBlock:^(NSError *error) {
+                        
+                    }];
+
+    }
+    
+    
+}
+
+- (BOOL) hideFollowUnfollowButtonForUserId:(NSString*)userId
+{
+    
+    NSString *currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:kUSER_ID];
+    return  ([currentUserId isEqualToString:userId]);
 }
 @end

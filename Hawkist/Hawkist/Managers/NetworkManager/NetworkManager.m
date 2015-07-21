@@ -68,7 +68,8 @@
                             {
                                 failureBlock(
                                              
-                                [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]
+                                             );
                                              
                             return;
                             }
@@ -691,16 +692,11 @@
                            NSArray *usersArray = responseObject[@"users"];
                            NSMutableArray *followersArray = [NSMutableArray array];
                            
-                           
-                           NSString *currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:kUSER_ID];
+    
                            NSError *error;
                            for (NSDictionary *dict in usersArray)
                            {
                                HWFollowUser *user = [[HWFollowUser alloc]initWithDictionary:dict error:&error];
-//                               if([currentUserId isEqualToString:user.id])
-//                               {
-//                                   continue;
-//                               }
                                [followersArray addObject:user];
                                
                            }
@@ -744,15 +740,11 @@
                            NSArray *usersArray = responseObject[@"users"];
                            NSMutableArray *followersArray = [NSMutableArray array];
                            
-                           NSString *currentUserId = [[NSUserDefaults standardUserDefaults]objectForKey:kUSER_ID];
                            NSError *error;
                            for (NSDictionary *dict in usersArray)
                            {
                                HWFollowUser *user = [[HWFollowUser alloc]initWithDictionary:dict error:&error];
-//                               if([currentUserId isEqualToString:user.id])
-//                               {
-//                                   continue;
-//                               }
+                               
                                [followersArray addObject:user];
                                
                            }
@@ -774,10 +766,40 @@
     
 }
 
-//- (void)
-//
-//   Url: 'listings/likes/LISTING_ID'
-//   Method: 'PUT')
+#pragma mark - like/dislike and add to wishlist
+- (void) likeDislikeWhithItemId:(NSString*)itemId
+                   successBlock:(void(^)(void)) succesBlock
+                   failureBlock:(void(^)(NSError* error)) failureBlock
+{
+    
+    NSString *URLString = [NSString stringWithFormat:@"listings/likes/%@",itemId];
+    
+    [self.networkDecorator PUT:URLString
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           NSLog(@"%@",responseObject);
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+                           
+                           succesBlock();
+                           
+                           
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                       }];
+    
+}
+
 
 #pragma mark -
 #pragma mark Comments
@@ -809,6 +831,62 @@
                            return;
                            
                        }];
+}
+
+
+#pragma mark - 
+#pragma mark wishlist
+
+
+
+- (void) getWishlistWithUserId:(NSString*)userId
+                  successBlock:(void(^)(NSArray *wishlistArray)) succesBlock
+                  failureBlock:(void(^)(NSError* error)) failureBlock
+{
+    
+    NSString *URLString = [NSString stringWithFormat:@"user/wishlist?user_id=%@",userId];
+    
+    [self.networkDecorator GET:URLString
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+                           
+                           NSMutableArray *wishlistArray = [NSMutableArray array];
+                           NSArray *array = responseObject[@"items"];
+                           
+                           NSError *error;
+                           
+                           for(NSDictionary *dict in array)
+                           {
+                               HWItem * item = [[HWItem alloc]initWithDictionary:dict error:&error];
+                               [wishlistArray addObject:item];
+                               
+                           }
+                           
+                           
+                           if(error){
+                               
+                               failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                               return;
+                           }
+                           
+                           succesBlock(wishlistArray);
+                           
+                           
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+                         failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                       }];
+    
+    
 }
 
 

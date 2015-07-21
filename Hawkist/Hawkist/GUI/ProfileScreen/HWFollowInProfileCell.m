@@ -54,14 +54,14 @@
     if (self.isFollow)
     {
         self.isFollow = NO;
-        
-        [ [NetworkManager shared] unfollowWithUserId:self.userId successBlock:^{
-            
-            [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
-            
-        } failureBlock:^(NSError *error) {
-            
-        }];
+       
+//        [ [NetworkManager shared] unfollowWithUserId:self.userId successBlock:^{
+//            
+//            [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
+//            
+//        } failureBlock:^(NSError *error) {
+//            
+//        }];
 
     
         
@@ -69,14 +69,19 @@
         
         self.isFollow = YES;
         
-        [ [NetworkManager shared] followWithUserId:self.userId successBlock:^{
-            
-            [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
-            
-        } failureBlock:^(NSError *error) {
-            
-        }];
+//        [ [NetworkManager shared] followWithUserId:self.userId successBlock:^{
+//            
+//            [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+//            
+//        } failureBlock:^(NSError *error) {
+//            
+//        }];
         
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(followUnfollowButton:follow: forUserId:)])
+    {
+        [self.delegate followUnfollowButton:sender follow:self.isFollow forUserId:self.userId];
     }
 }
 
@@ -98,11 +103,17 @@
      self.starView.rating = [user.rating integerValue];
      self.userId = user.id;
     
+    if(self.delegate && [self.delegate respondsToSelector:@selector(hideFollowUnfollowButtonForUserId:)])
+    {
+        self.followButton.hidden = [self.delegate hideFollowUnfollowButtonForUserId:self.userId];
+    }
+    
     if ([user.follow isEqualToString:@"1"])
     {
         self.isFollow = YES;
         
         [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+        
         
     } else {
         

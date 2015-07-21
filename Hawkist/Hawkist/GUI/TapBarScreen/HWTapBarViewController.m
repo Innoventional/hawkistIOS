@@ -87,8 +87,7 @@
         }
         case 4:
         {
-            HWProfileViewController * sss = [[HWProfileViewController alloc] initWithUserID:@"77"];
-            [self.navigationController pushViewController:sss animated:YES];
+          
             
             break;
         }
