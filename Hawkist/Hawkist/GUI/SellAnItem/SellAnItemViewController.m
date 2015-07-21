@@ -151,8 +151,12 @@
      descriptionField.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
      self.isPlaceholderHidden = NO;
     
-     postField.text = engine.postCode;
-     postLabel.text = engine.city;
+    if(engine.postCode)
+    {
+        postField.text = engine.postCode;
+        postLabel.text = engine.city;
+    }
+   
     
 }
 
@@ -228,6 +232,9 @@
     }
     
 }
+
+
+
 
 - (void) leftButtonClick
 {
