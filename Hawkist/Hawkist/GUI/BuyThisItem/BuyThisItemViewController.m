@@ -7,6 +7,8 @@
 //
 
 #import "BuyThisItemViewController.h"
+#import "NetworkManager.h"
+
 
 @interface BuyThisItemViewController ()
 @property (nonatomic,strong) HWItem* item;
@@ -91,5 +93,19 @@
 - (void) leftButtonClick
 {
     [self.navigationController popViewControllerAnimated: YES];
+}
+- (IBAction)sendOffer:(id)sender {
+    [[NetworkManager shared]OfferPrice:self.moneyField.textField.text
+                                itemId:self.item.id
+
+    successBlock:^{
+        NSLog(@"added");
+        
+    }
+    
+    failureBlock:^(NSError *error) {
+       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        
+    }];
 }
 @end
