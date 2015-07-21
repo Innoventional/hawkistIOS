@@ -288,6 +288,7 @@
                                        [self setupSegmentButtonsConfig];
                                        
                                        
+                                       
                                    } failureBlock:^(NSError *error) {
                                        
                                        [self showAlertWithTitle:@"Error!"
