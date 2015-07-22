@@ -121,7 +121,7 @@
     // Make cell same width as application frame and 250 pixels tall.
     CGFloat width = self.view.width;
     CGFloat widthForView = (width - 36) / 2;
-    return CGSizeMake(widthForView, (widthForView * 488) / 291);
+    return CGSizeMake(widthForView, ((widthForView * 488) / 291)-34);
 }
 
 - (void)refresh

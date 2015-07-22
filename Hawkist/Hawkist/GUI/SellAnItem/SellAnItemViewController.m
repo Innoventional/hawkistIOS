@@ -144,9 +144,14 @@
     
      selectedImage = 0;
     
-     category.userInteractionEnabled = NO;
-         color.userInteractionEnabled = NO;
-         condition.userInteractionEnabled = NO;
+    platform.isEnabled = YES;
+    category.isEnabled = NO;
+    condition.isEnabled = NO;
+    color.isEnabled = NO;
+    
+//     category.userInteractionEnabled = NO;
+//         color.userInteractionEnabled = NO;
+//         condition.userInteractionEnabled = NO;
     
      descriptionField.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
      self.isPlaceholderHidden = NO;
@@ -528,8 +533,27 @@
 - (void) selectAction:sender
 {
  
+    
         if (sender == color)
     {
+        
+        
+        if (!((CustomButton*)sender).isEnabled)
+        {
+            
+            [self showAlertWithTitle:@"Category required" Message:@"To select a Colour, please select a Category first"];
+            return;
+        }
+        
+        if (((CustomButton*)sender).notApplicable)
+        {
+            
+            [self showAlertWithTitle:@"Oops!" Message:@"Colour is not applicable for this category"];
+            return;
+        }
+
+      
+
         UINavigationController* navigationController = [[UINavigationController alloc]init];
         
    
@@ -551,6 +575,13 @@
     
     if (sender == condition)
     {
+        if (!((CustomButton*)sender).isEnabled)
+        {
+            [self showAlertWithTitle:@"Category required" Message:@"To select a Condition, please select a Category first"];
+            return;
+        }
+
+        
         ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
         UINavigationController* navigationController = [[UINavigationController alloc]init];
 
@@ -591,6 +622,13 @@
     
     if (sender == category)
     {
+        if (!((CustomButton*)sender).isEnabled)
+        {
+            [self showAlertWithTitle:@"Platform required" Message:@"To select a Category, please select a Platform first"];
+            return;
+        }
+
+        
         UINavigationController* navigationController = [[UINavigationController alloc]init];
         
         
@@ -626,6 +664,8 @@
 - (void) SelectedItemFrom:(id)sender WithItem:(NSObject *)selection
 {
     
+  
+    
     if (sender == platform)
     {
         
@@ -644,10 +684,20 @@
         condition.Text.text = @"Select a Condition";
         
         category.isFirstSelection = YES;
-                    category.userInteractionEnabled = YES;
+//                        category.userInteractionEnabled = YES;
+//        
+//                            color.userInteractionEnabled = NO;
+//                            condition.userInteractionEnabled = NO;
         
-                            color.userInteractionEnabled = NO;
-                            condition.userInteractionEnabled = NO;
+        category.isEnabled = YES;
+        color.isEnabled = NO;
+        condition.isEnabled = NO;
+        
+        color.Text.tag = 0;
+        condition.Text.tag = 0;
+        
+        
+        
         
         platform.Text.tag = [((HWTag*)selection).id integerValue];
         
@@ -674,8 +724,12 @@
             
             color.Text.textColor = self.textColor;
             color.Text.text = @"Not Applicable";
-            color.userInteractionEnabled = NO;
-            color.Text.tag = [((HWColor*)selection).id integerValue];
+            
+            color.notApplicable = YES;
+            color.isEnabled = YES;
+
+            
+            color.Text.tag = [((HWColor*)[((HWSubCategories*)selection).color firstObject]).id integerValue];
             
         }
         else
@@ -683,13 +737,14 @@
             
             color.Text.textColor = self.placeHolderColor;
             color.Text.text = @"Select a Colour";
-            color.userInteractionEnabled = YES;
+            color.isEnabled = YES;
+            color.notApplicable = NO;
             self.tempTagsForColor = currentSubCategories.color;
             
         }
         
         
-        condition.userInteractionEnabled = YES;
+            condition.isEnabled = YES;
         
         self.idCategory = ((HWSubCategories*)selection).parent_id;
         category.Text.tag = [((HWSubCategories*)selection).id integerValue];
