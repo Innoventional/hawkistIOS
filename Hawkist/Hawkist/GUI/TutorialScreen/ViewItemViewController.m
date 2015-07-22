@@ -15,6 +15,8 @@
 #import "BuyThisItemViewController.h"
 #import "HWProfileViewController.h"
 
+#import "HWCommentViewController.h"
+
 @interface ViewItemViewController ()
 
 @property (nonatomic, strong) HWItem* item;
@@ -126,7 +128,7 @@
     self.isLikeItem = [self.item.liked integerValue];
     if (self.isLikeItem)
     {
-        [self.smallImage4 setImage:[UIImage imageNamed:@"starYellow"]];
+        [self.smallImage4 setImage:[UIImage imageNamed:@"favLike"]];
     }
     
     
@@ -348,7 +350,7 @@
                                                } else {
                                                    
                                                    self.isLikeItem = YES;
-                                                   [self.smallImage4 setImage:[UIImage imageNamed:@"starYellow"]];
+                                                   [self.smallImage4 setImage:[UIImage imageNamed:@"favLike"]];
                                                }
                                                
              
@@ -378,6 +380,10 @@
 
 
 - (IBAction)askButton:(id)sender {
+    
+    HWCommentViewController *commentVC = [[HWCommentViewController alloc]initWithItemId:self.item.id];
+    [self.navigationController pushViewController:commentVC animated:YES];
+    
 }
 
 - (IBAction)transitionToProfile:(UIButton *)sender {

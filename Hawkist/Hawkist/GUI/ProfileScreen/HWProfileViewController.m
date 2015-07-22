@@ -286,8 +286,7 @@
                                  
                              } failureBlock:^(NSError *error) {
                                  
-                                 [self showAlertWithTitle:@"Error!"
-                                                  Message:error.localizedDescription];
+                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                              }];
     
 }
@@ -310,8 +309,7 @@
                                        
                                    } failureBlock:^(NSError *error) {
                                        
-                                       [self showAlertWithTitle:@"Error!"
-                                                        Message:error.localizedDescription];
+                                      [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                        
                                    }];
 }
@@ -334,9 +332,7 @@
                                        
                                 } failureBlock:^(NSError *error) {
                                     
-                                    [self showAlertWithTitle:@"Error!"
-                                                     Message:error.localizedDescription];
-                                    
+                                    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                        
                                    }];
     
@@ -353,6 +349,8 @@
                                       
                                   } failureBlock:^(NSError *error) {
                                       
+                                      [self showAlertWithTitle:@"Error!"
+                                                       Message:error.localizedDescription];
                                       
                                   }];
 }

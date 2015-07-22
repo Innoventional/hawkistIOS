@@ -10,6 +10,7 @@
 #import "NetworkDecorator.h"
 #import "HWTag.h"
 #import "HWFollowUser.h"
+#import "HWComment.h"
 
 @interface NetworkManager ()
 
@@ -633,7 +634,18 @@
     [self.networkDecorator POST:@"user/followers"
                      parameters:parametr
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                             NSLog(@"%@",responseObject);
+                            
+                            
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                failureBlock(
+                                             
+                                             [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                
+                                return;
+                            }
+                            
                             successBlock();
                             
                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -655,6 +667,15 @@
  
     [self.networkDecorator DELETE:unfollow
                        parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
                            
                             NSLog(@"%@",responseObject);
                            successBlock();
@@ -889,6 +910,90 @@
     
 }
 
+
+#pragma mark -
+#pragma mark Comments
+
+
+- (void) createNewCommentWithItemId:(NSString*)itemId
+                        textComment:(NSString*) textComment
+                       successBlock:(void(^)(void)) successBlock
+                       failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    NSString *URLString = [NSString stringWithFormat:@"listings/comments/%@",itemId];
+    NSDictionary *parametrs = @{@"text":textComment};
+    
+    [self.networkDecorator POST:URLString
+                     parameters:parametrs
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                failureBlock(
+                                             
+                                             [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                             failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                            
+                            
+                        }];
+    
+}
+
+
+- (void) getAllCommentsWithItemId:(NSString*)itemId
+                     successBlock:(void (^)(NSArray* commentsArray))successBlock
+                     failureBlock:(void(^)(NSError * error)) failureBlock
+{
+    
+    NSString *URLString = [NSString stringWithFormat:@"listings/comments/%@",itemId];
+    
+    [self.networkDecorator GET:URLString
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+                           
+                           NSArray * array = responseObject[@"comments"];
+                           NSMutableArray *commentsArray =[NSMutableArray array];
+                           
+                           NSError *error;
+                           
+                           for (NSDictionary *dict in array)
+                           {
+                               HWComment *comment = [[HWComment alloc]initWithDictionary:dict error:&error];
+                               [commentsArray addObject:comment];
+                           }
+                           
+                           if (error)
+                           {
+                               failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                               return;
+
+                           }
+                           
+                           successBlock(commentsArray);
+                           
+                          
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                       }];
+}
 
 @end
 
