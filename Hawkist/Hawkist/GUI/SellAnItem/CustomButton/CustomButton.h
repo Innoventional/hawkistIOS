@@ -20,6 +20,9 @@
 @property (weak,nonatomic) id <CustomButtonDelegate> delegate;
 @property (assign,nonatomic) BOOL isFirstSelection;
 
+@property (assign,nonatomic) BOOL isEnabled;
+@property (assign,nonatomic) BOOL notApplicable;
+
 - (IBAction)tapAction:(id)sender;
 
 @end

@@ -194,17 +194,6 @@
 //}
 
 
-- (void) DownloadData
-{
-    [_networkManager getListOfTags:^(NSMutableArray *tags) {
-        
-        _engine.tags = tags;
-        
-    } failureBlock:^(NSError *error) {
-       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-    }];
-
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -493,19 +482,31 @@
 
 - (void) logged:(HWUser*) user isLoggedWithFacebook: (BOOL) FaceBook
 {
-            _engine.user = user;
-    if (user.first_login)
-    {
+    
+    [_networkManager getListOfTags:^(NSMutableArray *tags) {
         
+         _engine.user = user;
+        _engine.tags = tags;
+       
+        if (user.first_login)
+        {
+            
             _accountDetailVC= [[AccountDetailViewController alloc]init];
             _accountDetailVC.isLogeedWithFacebook = FaceBook;
-         [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-    }
-    else
-    {
-        [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
-    }
-        [self DownloadData];
+            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
+        }
+        else
+        {
+            [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+        }
+
+        
+    } failureBlock:^(NSError *error) {
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    }];
+    
+    
+         //  [self DownloadData];
     
 
 }
