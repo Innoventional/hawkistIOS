@@ -976,7 +976,7 @@
         <image name="mot2.png" width="527" height="375"/>
         <image name="mot3.png" width="700" height="466"/>
         <image name="noPhoto" width="689" height="460"/>
-        <image name="skidka" width="37" height="20"/>
+        <image name="skidka" width="55" height="31"/>
         <image name="smallButton" width="27" height="20"/>
     </resources>
 </document>
