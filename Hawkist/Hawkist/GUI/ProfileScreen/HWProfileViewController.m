@@ -219,6 +219,7 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"YYYY'-'MM'-'dd'T'HH':'mm"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSDate *dateFromString = [dateFormatter dateFromString:self.user.last_activity];
     
     NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
