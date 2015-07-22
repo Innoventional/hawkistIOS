@@ -151,4 +151,16 @@
        successBlock: (void (^)(void)) successBlock
        failureBlock: (void (^)(NSError* error)) failureBlock;
 
+
+- (void) createNewCommentWithItemId:(NSString*)itemId
+                        textComment:(NSString*) textComment
+                       successBlock:(void(^)(void)) successBlock
+                       failureBlock:(void(^)(NSError *error)) failureBlock;
+
+- (void) getAllCommentsWithItemId:(NSString*)itemId
+                     successBlock:(void (^)(NSArray* commentsArray))successBlock
+                     failureBlock:(void(^)(NSError * error)) failureBlock;
+
+
+
 @end
