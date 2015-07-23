@@ -164,7 +164,7 @@
     self.colour.text = itemColor.name;
     
     self.delivery.text = self.item.shipping_price;
-    //self.discount.text = self.item.discount;
+    
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
         self.discount.text = @"1%";
     } else {
@@ -244,10 +244,7 @@
         
     }
 }
-//-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-//{
-//    return YES;
-//}
+
 #pragma mark -
 #pragma mark UISegmentedControl
  

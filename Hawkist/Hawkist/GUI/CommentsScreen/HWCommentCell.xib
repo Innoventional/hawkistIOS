@@ -48,7 +48,7 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="x4i-Fg-IEx">
                         <rect key="frame" x="47" y="44" width="9" height="9"/>
-                        <color key="backgroundColor" red="0.24928946120325812" green="0.34051755804101291" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.22352941176470589" green="0.69803921568627447" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.66666666669999997" green="0.69411764710000001" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="9" id="PJZ-AF-0In"/>
@@ -58,7 +58,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qar-WC-MiJ">
                         <rect key="frame" x="13" y="16" width="22" height="21"/>
                         <state key="normal">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>
                             <action selector="tapOnAvatarAction:" destination="HV8-IR-KI3" eventType="touchUpInside" id="Fpm-LJ-1bP"/>

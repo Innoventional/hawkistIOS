@@ -1,4 +1,6 @@
-//
+
+    
+ //
 //  NetworkManager.m
 //  Hawkist
 //
@@ -16,10 +18,19 @@
 
 @property (strong, nonatomic) NetworkDecorator *networkDecorator;
 
+
+
 @end
+
+typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
+    HWAcceptOffer = 1,
+    HWDeclineOffer = 2
+};
 
 
 @implementation NetworkManager
+
+
 
 
 #pragma mark -
@@ -855,6 +866,84 @@
 }
 
 
+- (void) acceptOfferWithItemId:(NSString*)itemId
+                         successBlock:(void(^)(void))successBlock
+                         failureBlock:(void(^)(NSError* error))failureBlock
+{
+    
+    [self acceptDeclineOfferWithItemId:itemId
+                         acceptDecline:HWAcceptOffer
+                          successBlock:^{
+                              
+                              successBlock();
+                              
+                          } failureBlock:^(NSError *error) {
+                              
+                              failureBlock(error);
+                          }];
+   
+    
+}
+
+- (void) declineOfferWithItemId:(NSString*)itemId
+                  successBlock:(void(^)(void))successBlock
+                  failureBlock:(void(^)(NSError* error))failureBlock
+{
+    
+    [self acceptDeclineOfferWithItemId:itemId
+                         acceptDecline:HWDeclineOffer
+                          successBlock:^{
+                              
+                              successBlock();
+                              
+                          } failureBlock:^(NSError *error) {
+                              
+                              failureBlock(error);
+                          }];
+    
+    
+}
+
+
+- (void) acceptDeclineOfferWithItemId:(NSString*)itemId
+                        acceptDecline:(HWAcceptDeclineOffer) acceptDecline
+                  successBlock:(void(^)(void))successBlock
+                  failureBlock:(void(^)(NSError* error))failureBlock
+{
+    
+    NSString *URLString = [NSString stringWithFormat:@"listings/offers/%@",itemId];
+    NSString *new_status = [NSString stringWithFormat:@"%ld", (long)acceptDecline];
+    
+    NSDictionary * parametrs = @{@"new_status":new_status};
+    
+    
+    [self.networkDecorator PUT:URLString
+                    parameters:parametrs
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               failureBlock(
+                                            
+                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               
+                               return;
+                           }
+                           
+                           successBlock();
+
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           return;
+                       }];
+
+
+}
+
+
+
+
 #pragma mark - 
 #pragma mark wishlist
 
@@ -974,15 +1063,49 @@
                            NSError *error;
                            
                            NSString *currentUser = [[NSUserDefaults standardUserDefaults] objectForKey:kUSER_ID];
-                           NSString *bossItem = item.user_id;
+                           NSString *bossItemId = item.user_id;
                            
                            for (NSDictionary *dict in array)
                            {
                                HWComment *comment = [[HWComment alloc]initWithDictionary:dict error:&error];
                                
-                                                              [commentsArray addObject:comment];
+                               
+                               // offer logic
+                               
+                               if(comment.offer)
+                               {
+                                   NSError *er;
+                                   HWOffer *offerForItem = [[HWOffer alloc]initWithDictionary:comment.offer error:&er];
+                                   
+                                   
+                                   if ([offerForItem.offer_creater_id isEqualToString:bossItemId] ||
+                                       [offerForItem.offer_receiver_id isEqualToString:currentUser]  ||
+                                       [offerForItem.offer_creater_id isEqualToString:currentUser])
+                                   {
+                                       
+                                      
+                                       if([offerForItem.status integerValue]>0) {
+                                           
+                                       } else  if ([offerForItem.offer_receiver_id isEqualToString:    currentUser]) {
+                                       
+                                           comment.isAcceptDeclineComment = @"Yes";
+                                       }
+                                       
+                                   } else {
+                                       
+                                       continue;
+                                   }
+                                   
+
+                                   if(er)
+                                   {
+                                       NSLog(@"%@",er);
+                                   }
+                                   
+                               }
+                               
+                                [commentsArray addObject:comment];
                            }
-                           
                            if (error)
                            {
                                failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);

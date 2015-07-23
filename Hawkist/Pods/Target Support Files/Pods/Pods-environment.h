@@ -234,6 +234,12 @@
 #define COCOAPODS_VERSION_MINOR_Masonry 5
 #define COCOAPODS_VERSION_PATCH_Masonry 3
 
+// SWTableViewCell
+#define COCOAPODS_POD_AVAILABLE_SWTableViewCell
+#define COCOAPODS_VERSION_MAJOR_SWTableViewCell 0
+#define COCOAPODS_VERSION_MINOR_SWTableViewCell 3
+#define COCOAPODS_VERSION_PATCH_SWTableViewCell 7
+
 // iCarousel
 #define COCOAPODS_POD_AVAILABLE_iCarousel
 #define COCOAPODS_VERSION_MAJOR_iCarousel 1

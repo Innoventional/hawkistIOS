@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 @class HWComment;
+#import "SWTableViewCell.h"
 
 @protocol HWCommentCellDelegate;
 
 
-@interface HWCommentCell : UITableViewCell
+@interface HWCommentCell : SWTableViewCell
 
+@property (nonatomic, strong) NSString *offerId;
 @property (nonatomic, weak) id <HWCommentCellDelegate> delegate;
 
 - (void) setCellWithComment:(HWComment*)comment;
