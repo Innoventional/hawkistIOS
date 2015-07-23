@@ -21,9 +21,10 @@
 
 @property (nonatomic, strong) NSDictionary<Optional>* offer;
 
+@property (nonatomic, assign) NSString<Optional>* isAcceptDeclineComment;
 
-
-
+@property (nonatomic, assign) NSString<Optional>* currentOfferId;
+@property (nonatomic, strong) NSString<Optional>* offer_id;
 
 
 

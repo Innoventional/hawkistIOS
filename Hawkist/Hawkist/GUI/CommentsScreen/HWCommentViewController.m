@@ -73,6 +73,7 @@
     [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
     self.navigationView.delegate = self;
     self.inputCommentView.delegate = self;
+    self.inputCommentView.textView.delegate = self;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"HWCommentCell" bundle:nil] forCellReuseIdentifier:@"tableViewCell"];
     
@@ -174,28 +175,22 @@
     HWComment *comment = [self.commentsArray objectAtIndex:indexPath.row];
     
     [cell setCellWithComment:comment];
- 
-     [cell layoutIfNeeded];
+    [cell layoutIfNeeded];
     
-    NSLog(@"%@",NSStringFromCGSize(tableView.contentSize));
+  // if current_user == offer_receiver_id
+    
+    if (comment.isAcceptDeclineComment)
+    {
+        cell.rightUtilityButtons = [self rightButtons];
+    } else {
+        
+        cell.rightUtilityButtons = nil;
+    }
     
     return cell;
     
 }
 
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [UIView animateWithDuration:0.3
-animations:^{
-  
-   
-//    [cell updateConstraintsIfNeeded];
-
-    
-}];
-    
-}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -258,7 +253,7 @@ animations:^{
                                          [self.tableView reloadData];
                                          [self.tableView layoutIfNeeded];
                                          NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.commentsArray.count -1) inSection:0];
-                                         
+                                        
                                          if(self.commentsArray.count)
                                          {
                                           [self.tableView scrollToRowAtIndexPath: indexPath atScrollPosition: UITableViewScrollPositionNone animated: NO];
@@ -285,6 +280,139 @@ animations:^{
 
 
 
+#pragma mark -
+#pragma mark HelpsMethod
 
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    
+    [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:55./255. green:185./255. blue:165./255. alpha:1]
+                                                 icon:[UIImage imageNamed:@"accept"]];
+    
+ 
+    
+    
+    [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1]
+                                                 icon:[UIImage imageNamed:@"decline"]];
+    
+    return rightUtilityButtons;
+}
+
+
+#pragma mark - SWTableViewDelegate
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell scrollingToState:(SWCellState)state
+{
+    switch (state) {
+        case 0:
+            NSLog(@"utility buttons closed");
+            break;
+        case 1:
+            NSLog(@"left utility buttons open");
+            break;
+        case 2:
+            NSLog(@"right utility buttons open");
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
+{
+    switch (index) {
+        case 0:
+            NSLog(@"left button 0 was pressed");
+            break;
+        case 1:
+            NSLog(@"left button 1 was pressed");
+            break;
+        case 2:
+            NSLog(@"left button 2 was pressed");
+            break;
+        case 3:
+            NSLog(@"left btton 3 was pressed");
+        default:
+            break;
+    }
+}
+
+- (void)swipeableTableViewCell:(HWCommentCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+{
+    switch (index) {
+        case 0:
+        {
+         
+            
+            [self.networkManager acceptOfferWithItemId:cell.offerId
+                                          successBlock:^{
+                                               
+                                              [self setCommentsArrayWithItem:self.currentItem];
+                                          } failureBlock:^(NSError *error) {
+                                              
+                                              [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                              
+                                          }];
+            
+                       break;
+        }
+        case 1:
+        {
+            [self.networkManager declineOfferWithItemId:cell.offerId
+                                           successBlock:^{
+                                               
+                                               [self setCommentsArrayWithItem:self.currentItem];
+                                               
+                                           } failureBlock:^(NSError *error) {
+                                               NSLog(@"success");
+                                                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                           }];
+         
+            
+                        break;
+        }
+        default:
+            break;
+    }
+}
+
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
+{
+    // allow just one cell's utility button to be open at once
+    return YES;
+}
+
+- (BOOL)swipeableTableViewCell:(SWTableViewCell *)cell canSwipeToState:(SWCellState)state
+{
+    switch (state) {
+        case 1:
+            // set to NO to disable all left utility buttons appearing
+            return YES;
+            break;
+        case 2:
+            // set to NO to disable all right utility buttons appearing
+            return YES;
+            break;
+        default:
+            break;
+    }
+    
+    return YES;
+}
+
+
+#pragma mark - 
+#pragma mark UITextViewDelegate
+
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+   if(textView.text.length>160)
+   {
+       return NO;
+   }
+    return YES;
+}
 
 @end

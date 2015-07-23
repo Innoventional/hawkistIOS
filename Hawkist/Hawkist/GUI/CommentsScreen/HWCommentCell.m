@@ -10,6 +10,7 @@
 #import "HWComment.h"
 #import "NSDate+NVTimeAgo.h"
 
+
 @interface HWCommentCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *textCommentLabel;
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) NSDate *time;
 @property (nonatomic, strong) NSString *commentId;
 
+ 
 
 @end
 
@@ -35,7 +37,8 @@
 
 - (void) setCellWithComment:(HWComment*)comment
 {
-    
+    self.offerId = comment.offer_id;
+     
     self.userId = comment.user_id;
     self.itemId = comment.listing_id;
     self.commentId = comment.id;
@@ -56,20 +59,47 @@
     
     NSRange rangeName = [self.textCommentLabel.text rangeOfString:self.user_username];
     
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithString:self.textCommentLabel.text];
+    NSMutableAttributedString *atrbString = [[NSMutableAttributedString alloc]initWithString:self.textCommentLabel.text];
     
-    [string beginEditing];
+    [atrbString beginEditing];
     
     UIColor *color = [UIColor colorWithRed:94./255. green:94./255. blue:94./255. alpha:1];
     UIFont *font = [UIFont fontWithName:@"OpenSans-Semibold" size:15];
     NSDictionary *attrs = @{ NSForegroundColorAttributeName : color, NSFontAttributeName : font  };
     
-    [string addAttributes:attrs
+    [atrbString addAttributes:attrs
                     range:rangeName];
     
-    [string endEditing];
+    [atrbString endEditing];
+    [self.textCommentLabel setAttributedText:atrbString];
     
-    [self.textCommentLabel setAttributedText:string];
+    
+    
+    
+    
+    
+NSRange range = [self.textCommentLabel.text rangeOfString:@"£"];
+    if(range.length == 0)
+    {
+        
+    } else {
+ 
+        NSString *substring = [self.textCommentLabel.text substringFromIndex:range.location-1];
+        
+        NSRange rangeForOffer = [self.textCommentLabel.text rangeOfString:substring];
+        
+        atrbString = [[NSMutableAttributedString alloc]initWithAttributedString:self.textCommentLabel.attributedText];
+        
+        [atrbString beginEditing];
+        [atrbString addAttribute:NSForegroundColorAttributeName
+                           value:[UIColor colorWithRed:57./255. green:178./255. blue:154./255. alpha:1]
+                           range:rangeForOffer];
+         [atrbString endEditing];
+        
+        self.textCommentLabel.attributedText = atrbString;
+     
+    }
+    
  
 }
 
@@ -87,5 +117,7 @@
     
     
 }
+
+
 
 @end

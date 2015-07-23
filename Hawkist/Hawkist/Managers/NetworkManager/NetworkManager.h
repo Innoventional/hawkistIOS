@@ -152,6 +152,15 @@
        failureBlock: (void (^)(NSError* error)) failureBlock;
 
 
+- (void) acceptOfferWithItemId:(NSString*)itemId
+                  successBlock:(void(^)(void))successBlock
+                  failureBlock:(void(^)(NSError* error))failureBlock;
+
+- (void) declineOfferWithItemId:(NSString*)itemId
+                  successBlock:(void(^)(void))successBlock
+                  failureBlock:(void(^)(NSError* error))failureBlock;
+
+
 - (void) createNewCommentWithItemId:(NSString*)itemId
                         textComment:(NSString*) textComment
                        successBlock:(void(^)(void)) successBlock
