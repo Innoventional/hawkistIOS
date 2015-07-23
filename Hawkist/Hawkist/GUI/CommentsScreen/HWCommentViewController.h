@@ -10,6 +10,6 @@
 
 @interface HWCommentViewController : HWBaseViewController
 
-- (instancetype) initWithItemId:(NSString*)itemId;
+- (instancetype) initWithItem:(HWItem* )item;
 
 @end

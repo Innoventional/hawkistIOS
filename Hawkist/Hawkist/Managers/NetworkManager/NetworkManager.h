@@ -157,7 +157,7 @@
                        successBlock:(void(^)(void)) successBlock
                        failureBlock:(void(^)(NSError *error)) failureBlock;
 
-- (void) getAllCommentsWithItemId:(NSString*)itemId
+- (void) getAllCommentsWithItem:(HWItem*)item
                      successBlock:(void (^)(NSArray* commentsArray))successBlock
                      failureBlock:(void(^)(NSError * error)) failureBlock;
 

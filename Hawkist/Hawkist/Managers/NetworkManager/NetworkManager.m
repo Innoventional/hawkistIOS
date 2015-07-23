@@ -948,12 +948,12 @@
 }
 
 
-- (void) getAllCommentsWithItemId:(NSString*)itemId
+- (void) getAllCommentsWithItem:(HWItem*)item
                      successBlock:(void (^)(NSArray* commentsArray))successBlock
                      failureBlock:(void(^)(NSError * error)) failureBlock
 {
     
-    NSString *URLString = [NSString stringWithFormat:@"listings/comments/%@",itemId];
+    NSString *URLString = [NSString stringWithFormat:@"listings/comments/%@",item.id];
     
     [self.networkDecorator GET:URLString
                     parameters:nil
@@ -973,10 +973,14 @@
                            
                            NSError *error;
                            
+                           NSString *currentUser = [[NSUserDefaults standardUserDefaults] objectForKey:kUSER_ID];
+                           NSString *bossItem = item.user_id;
+                           
                            for (NSDictionary *dict in array)
                            {
                                HWComment *comment = [[HWComment alloc]initWithDictionary:dict error:&error];
-                               [commentsArray addObject:comment];
+                               
+                                                              [commentsArray addObject:comment];
                            }
                            
                            if (error)

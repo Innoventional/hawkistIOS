@@ -26,6 +26,7 @@
 @property (nonatomic, strong) NetworkManager *networkManager;
 @property (nonatomic, strong) NSString *itemId;
 @property (nonatomic, strong) NSArray *commentsArray;
+@property (nonatomic, strong) HWItem *currentItem;
 
 @property CGFloat heightKey;
 @property CGFloat height;
@@ -41,11 +42,12 @@
 
 
 
-- (instancetype) initWithItemId:(NSString*)itemId
+- (instancetype) initWithItem:(HWItem* )item
 {
-    self.itemId = itemId;
+    self.itemId = item.id;
+    self.currentItem = item;
     
-    [self setCommentsArrayWithItemId:itemId];
+    [self setCommentsArrayWithItem:item];
     
     self = [super init];
     if(self)
@@ -58,7 +60,7 @@
 -  (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setCommentsArrayWithItemId:self.itemId];
+    [self setCommentsArrayWithItem:self.currentItem];
     
     [self commonInit];
   
@@ -95,6 +97,12 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(contentSizeCategoryChanged:)
+                                                 name:UIContentSizeCategoryDidChangeNotification
+                                               object:nil];
+
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -106,6 +114,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIContentSizeCategoryDidChangeNotification
+                                                  object:nil];
     
 }
 
@@ -140,7 +151,10 @@
    
 }
 
-
+- (void)contentSizeCategoryChanged:(NSNotification *)notification
+{
+    [self.tableView reloadData];
+}
 
 #pragma nark -
 #pragma mark UITableViewDataSource
@@ -160,9 +174,8 @@
     HWComment *comment = [self.commentsArray objectAtIndex:indexPath.row];
     
     [cell setCellWithComment:comment];
-    
-    [cell setNeedsUpdateConstraints];
-    [cell updateConstraintsIfNeeded];
+ 
+     [cell layoutIfNeeded];
     
     NSLog(@"%@",NSStringFromCGSize(tableView.contentSize));
     
@@ -171,7 +184,18 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [UIView animateWithDuration:0.3
+animations:^{
+  
+   
+//    [cell updateConstraintsIfNeeded];
 
+    
+}];
+    
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -202,6 +226,8 @@
 
 - (void) pressPostButton:(UIButton*)sender withCommentText:(NSString*)text
 {
+    [self.inputCommentView.textView resignFirstResponder];
+
     if([@"" isEqualToString:text] || [@" " isEqualToString:text]){
         return;
     }
@@ -210,7 +236,7 @@
                                         textComment:text
                                        successBlock:^{
                                            
-                                           [self setCommentsArrayWithItemId:self.itemId];
+                                           [self setCommentsArrayWithItem:self.currentItem];
                                            
                                        } failureBlock:^(NSError *error) {
                                            
@@ -223,9 +249,9 @@
 #pragma mark -
 #pragma mark set/get
 
-- (void) setCommentsArrayWithItemId:(NSString*)itemId
+- (void) setCommentsArrayWithItem:(HWItem*)item
 {
-    [self.networkManager getAllCommentsWithItemId:itemId
+    [self.networkManager getAllCommentsWithItem:item
                                      successBlock:^(NSArray *commentsArray) {
                                          
                                          self.commentsArray = commentsArray;

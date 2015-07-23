@@ -105,6 +105,7 @@
 		CE5909581B5FA94B00DAA7FF /* HWCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5909571B5FA94B00DAA7FF /* HWCommentCell.xib */; };
 		CE59095B1B5FD7E200DAA7FF /* HWComment.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59095A1B5FD7E200DAA7FF /* HWComment.m */; };
 		CE59095F1B5FE54400DAA7FF /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59095E1B5FE54300DAA7FF /* NSDate+NVTimeAgo.m */; };
+		CE7876521B60F3FF00A3970D /* HWOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7876511B60F3FF00A3970D /* HWOffer.m */; };
 		CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8721F11B553684003C47E5 /* HWProfileViewController.m */; };
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
 		CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */; };
@@ -282,6 +283,8 @@
 		CE59095A1B5FD7E200DAA7FF /* HWComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWComment.m; sourceTree = "<group>"; };
 		CE59095D1B5FE54300DAA7FF /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+NVTimeAgo.h"; path = "CommentsScreen/Category/NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
 		CE59095E1B5FE54300DAA7FF /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NVTimeAgo.m"; path = "CommentsScreen/Category/NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
+		CE7876501B60F3FF00A3970D /* HWOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWOffer.h; sourceTree = "<group>"; };
+		CE7876511B60F3FF00A3970D /* HWOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWOffer.m; sourceTree = "<group>"; };
 		CE8721F01B553684003C47E5 /* HWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWProfileViewController.h; path = ProfileScreen/HWProfileViewController.h; sourceTree = "<group>"; };
 		CE8721F11B553684003C47E5 /* HWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWProfileViewController.m; path = ProfileScreen/HWProfileViewController.m; sourceTree = "<group>"; };
 		CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWProfileViewController.xib; path = ProfileScreen/HWProfileViewController.xib; sourceTree = "<group>"; };
@@ -620,6 +623,8 @@
 				CE5909451B5ABBD700DAA7FF /* HWFollowUser.m */,
 				CE5909591B5FD7E200DAA7FF /* HWComment.h */,
 				CE59095A1B5FD7E200DAA7FF /* HWComment.m */,
+				CE7876501B60F3FF00A3970D /* HWOffer.h */,
+				CE7876511B60F3FF00A3970D /* HWOffer.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -979,6 +984,7 @@
 				3A968E161B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */,
 				C35CB4AF1B4EA3BA00956150 /* HWTapBarViewController.m in Sources */,
+				CE7876521B60F3FF00A3970D /* HWOffer.m in Sources */,
 				7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */,
 				C35A4C4A1B3031F4002E1F26 /* NetworkDecorator.m in Sources */,
 				3A98D6211B595A2300D55FF9 /* BuyThisItemViewController.m in Sources */,

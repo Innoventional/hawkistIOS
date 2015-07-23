@@ -381,7 +381,7 @@
 
 - (IBAction)askButton:(id)sender {
     
-    HWCommentViewController *commentVC = [[HWCommentViewController alloc]initWithItemId:self.item.id];
+    HWCommentViewController *commentVC = [[HWCommentViewController alloc]initWithItem:self.item];
     [self.navigationController pushViewController:commentVC animated:YES];
     
 }

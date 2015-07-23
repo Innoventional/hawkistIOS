@@ -7,6 +7,7 @@
 //
 
 #import "JSONModel.h"
+#import "HWOffer.h"
 
 @interface HWComment : JSONModel
 
@@ -17,5 +18,14 @@
 @property (nonatomic, strong) NSString<Optional>* user_avatar;
 @property (nonatomic, strong) NSString<Optional>* user_id;
 @property (nonatomic, strong) NSString<Optional>* user_username;
+
+@property (nonatomic, strong) NSDictionary<Optional>* offer;
+
+
+
+
+
+
+
 
 @end
