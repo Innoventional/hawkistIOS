@@ -35,6 +35,11 @@
         return NO;
     }
     
+    if (self.delegate && [self.delegate respondsToSelector: @selector(moneyField:shouldChangeCharactersInRange:replacementString:)])
+        [self.delegate moneyField:textField shouldChangeCharactersInRange:range replacementString:string];
+    
+
+    
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     NSArray  *arrayOfString = [newString componentsSeparatedByString:@"."];
     

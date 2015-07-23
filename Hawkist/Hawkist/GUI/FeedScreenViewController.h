@@ -10,6 +10,7 @@
 #import "FeedScreenCollectionViewCell.h"
 #import "UIColor+Extensions.h"
 #import "HWBaseViewController.h"
+#import "AddTagsView.h"
 
 @interface FeedScreenViewController : HWBaseViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate>
 
@@ -20,5 +21,6 @@
 
 @property (strong, nonatomic) IBOutlet UIView *searchView;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
+@property (weak, nonatomic) IBOutlet AddTagsView *addTagsView;
 
 @end

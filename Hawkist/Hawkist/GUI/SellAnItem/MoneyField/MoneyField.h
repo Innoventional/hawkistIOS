@@ -10,6 +10,9 @@
 @protocol MoneyFieldDelegate <NSObject>
 
 - (void) moneyField:(id)sender modifyTo:(NSString*)value;
+- (void)moneyField:(UITextField *)textField shouldChangeCharactersInRange:
+                    (NSRange)range replacementString:(NSString *)string;
+
 
 @end
 

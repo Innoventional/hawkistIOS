@@ -186,6 +186,9 @@
 }
 
 - (IBAction)nextButton:(id)sender {
+    
+    
+    
     [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
 
 }

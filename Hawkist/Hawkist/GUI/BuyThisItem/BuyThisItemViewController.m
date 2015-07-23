@@ -90,6 +90,25 @@
     }
 }
 
+- (void)moneyField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    if (newString.length>0)
+    {
+        [self.sendButton setBackgroundImage:[UIImage imageNamed:@"acdet_but"] forState:UIControlStateNormal];
+        self.sendButton.enabled = TRUE;
+    }
+    else
+    {
+        [self.sendButton setBackgroundImage:nil forState:UIControlStateNormal];
+        self.sendButton.enabled = false;
+    }
+        
+}
+
+
 - (void) leftButtonClick
 {
     [self.navigationController popViewControllerAnimated: YES];
@@ -100,7 +119,8 @@
 
     successBlock:^{
         NSLog(@"added");
-        
+        [self showAlertWithTitle:@"Success" Message:@"Offer sended"];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
     failureBlock:^(NSError *error) {

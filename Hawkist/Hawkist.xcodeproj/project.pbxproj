@@ -11,6 +11,10 @@
 		3A0BAF6F1B551BA6004DFF86 /* MyItemCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BAF6E1B551BA6004DFF86 /* MyItemCellView.m */; };
 		3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */; };
 		3A0BAF741B5527DD004DFF86 /* MyItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */; };
+		3A2AE3CA1B6111A000806D59 /* AddTagsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A2AE3C91B6111A000806D59 /* AddTagsView.xib */; };
+		3A2AE3CD1B6115E500806D59 /* AddTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AE3CC1B6115E500806D59 /* AddTagsView.m */; };
+		3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A2AE3CE1B6120DD00806D59 /* TagCell.xib */; };
+		3A2AE3D21B6122B600806D59 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AE3D11B6122B600806D59 /* TagCell.m */; };
 		3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCB1B3813620004A24B /* CustomAlertView.xib */; };
 		3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */; };
 		3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBD31B386FA60004A24B /* SignIn.xib */; };
@@ -131,6 +135,12 @@
 		3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyItemsView.xib; path = myItems/MyItemsView.xib; sourceTree = "<group>"; };
 		3A0BAF721B5527DD004DFF86 /* MyItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyItemsViewController.h; path = myItems/MyItemsViewController.h; sourceTree = "<group>"; };
 		3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItemsViewController.m; path = myItems/MyItemsViewController.m; sourceTree = "<group>"; };
+		3A2AE3C91B6111A000806D59 /* AddTagsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddTagsView.xib; path = AddTagsScreen/AddTagsView.xib; sourceTree = "<group>"; };
+		3A2AE3CB1B6115E500806D59 /* AddTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTagsView.h; path = AddTagsScreen/AddTagsView.h; sourceTree = "<group>"; };
+		3A2AE3CC1B6115E500806D59 /* AddTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTagsView.m; path = AddTagsScreen/AddTagsView.m; sourceTree = "<group>"; };
+		3A2AE3CE1B6120DD00806D59 /* TagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TagCell.xib; path = AddTagsScreen/TagCell.xib; sourceTree = "<group>"; };
+		3A2AE3D01B6122B600806D59 /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagCell.h; path = AddTagsScreen/TagCell.h; sourceTree = "<group>"; };
+		3A2AE3D11B6122B600806D59 /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagCell.m; path = AddTagsScreen/TagCell.m; sourceTree = "<group>"; };
 		3A61FBCB1B3813620004A24B /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeAlertView.xib; sourceTree = "<group>"; };
 		3A61FBD31B386FA60004A24B /* SignIn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignIn.xib; sourceTree = "<group>"; };
@@ -342,6 +352,19 @@
 				3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */,
 			);
 			name = MyItems;
+			sourceTree = "<group>";
+		};
+		3A2AE3C81B61114800806D59 /* AddTagsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3A2AE3C91B6111A000806D59 /* AddTagsView.xib */,
+				3A2AE3CB1B6115E500806D59 /* AddTagsView.h */,
+				3A2AE3CE1B6120DD00806D59 /* TagCell.xib */,
+				3A2AE3D01B6122B600806D59 /* TagCell.h */,
+				3A2AE3D11B6122B600806D59 /* TagCell.m */,
+				3A2AE3CC1B6115E500806D59 /* AddTagsView.m */,
+			);
+			name = AddTagsScreen;
 			sourceTree = "<group>";
 		};
 		3A61FBD51B3C11300004A24B /* WantToSell */ = {
@@ -632,6 +655,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				3A2AE3C81B61114800806D59 /* AddTagsScreen */,
 				CE5909501B5F9F9400DAA7FF /* TextViewWithPlaceholder */,
 				CE5909471B5E9C8A00DAA7FF /* CommentScreen */,
 				3A98D61C1B593F2900D55FF9 /* BuyThisItem */,
@@ -881,6 +905,7 @@
 				7CE0E8E21B4307F0003B8B3A /* FeedScreenViewController.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
+				3A2AE3CA1B6111A000806D59 /* AddTagsView.xib in Resources */,
 				CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */,
 				3A968E241B4A98B4005AA347 /* ChoiceTable.xib in Resources */,
 				7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */,
@@ -888,6 +913,7 @@
 				7C9E7B011B4FCD58001DF8BE /* open-sans.extrabold.ttf in Resources */,
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */,
+				3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
 				CE59094C1B5E9DD600DAA7FF /* HWCommentViewController.xib in Resources */,
@@ -963,6 +989,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A2AE3D21B6122B600806D59 /* TagCell.m in Sources */,
 				CE59095B1B5FD7E200DAA7FF /* HWComment.m in Sources */,
 				C35A4C621B3035D2002E1F26 /* NSDate+Extensions.m in Sources */,
 				3A0BAF741B5527DD004DFF86 /* MyItemsViewController.m in Sources */,
@@ -982,6 +1009,7 @@
 				C35A4C201B2F2DF7002E1F26 /* ViewController.m in Sources */,
 				CE59094F1B5F94F000DAA7FF /* HWCommentInputView.m in Sources */,
 				3A968E161B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				3A2AE3CD1B6115E500806D59 /* AddTagsView.m in Sources */,
 				3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */,
 				C35CB4AF1B4EA3BA00956150 /* HWTapBarViewController.m in Sources */,
 				CE7876521B60F3FF00A3970D /* HWOffer.m in Sources */,

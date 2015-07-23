@@ -297,7 +297,8 @@
             [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
         } failureBlock:^(NSError *error) {
             [self hideHud];
-            [self showAlert:error];
+            //[self showAlert:error];
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             
         }
          ];
