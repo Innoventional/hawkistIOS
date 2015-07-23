@@ -97,7 +97,7 @@
     [self.visualEffectView removeFromSuperview];
                     self.userInteractionEnabled = YES;
     
-    if ([self.item.id integerValue]%2 != 0)
+    if (self.item.sold)
         
     {
         UIVisualEffect *blurEffect;

@@ -9,7 +9,7 @@
 #import "FeedScreenViewController.h"
 #import "ViewItemViewController.h"
 #import "HWProfileViewController.h"
-
+#import "AddTagsView.h"
 
 @interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate>
 
@@ -32,8 +32,17 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+ //[self.addTagsView addTagsToView:[NSArray arrayWithObjects:@"PC",@"Playstation",@"XBOX",@"Nintendo",@"te",nil]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+   
+    
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.tintColor = [UIColor grayColor];

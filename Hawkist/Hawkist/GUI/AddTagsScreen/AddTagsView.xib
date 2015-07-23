@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="271" height="329"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tagsBG" translatesAutoresizingMaskIntoConstraints="NO" id="LRZ-U8-dsj">
+                    <rect key="frame" x="0.0" y="0.0" width="271" height="329"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="LRZ-U8-dsj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6AN-BG-gxB"/>
+                <constraint firstItem="LRZ-U8-dsj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Qh1-EE-N7p"/>
+                <constraint firstAttribute="trailing" secondItem="LRZ-U8-dsj" secondAttribute="trailing" id="Xkz-jq-CUA"/>
+                <constraint firstAttribute="bottom" secondItem="LRZ-U8-dsj" secondAttribute="bottom" id="z5l-hu-OOx"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="201.5" y="156.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tagsBG" width="320" height="568"/>
+    </resources>
+</document>
