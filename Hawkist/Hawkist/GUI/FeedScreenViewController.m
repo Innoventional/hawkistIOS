@@ -34,7 +34,42 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
- //[self.addTagsView addTagsToView:[NSArray arrayWithObjects:@"PC",@"Playstation",@"XBOX",@"Nintendo",@"te",nil]];
+
+    if (self.items.count == 0)
+    {
+       [self.scrollView setContentOffset:CGPointMake(0, 800) animated:NO];
+        self.scrollView.scrollEnabled = NO;
+    }
+    else
+    {
+        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+        self.scrollView.scrollEnabled = YES;
+
+
+    }
+    
+//    [self.addTagsView addTagsToView:[NSArray arrayWithObjects:@"WII",@"3DS",@"XBOX 360",@"First Person Shooter",@"PS3",@"Simulation",@"Grand Theft Auto",nil]];
+    
+    
+    [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
+        
+       [self.addTagsView addTagsToView:tags];
+        
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    }];
+    
+    self.addTagsView.delegate = self;
+
+    
+    
+}
+
+- (void) selectedItem
+{
+    [self refresh];
+    
 }
 
 - (void)viewDidLoad {
@@ -51,14 +86,14 @@
     [self.refreshControl setTintColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];
    // [self.refreshControl tintColorDidChange];
     
-    [self.collectionView addSubview:self.refreshControl];
+    [self.scrollView addSubview:self.refreshControl];
     
-    //self.collectionView.alwaysBounceVertical = YES;
+    self.collectionView.alwaysBounceVertical = YES;
     
    
     [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
-    
+    self.scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     self.searchView.backgroundColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164];
     [self.searchField setValue:[UIColor colorWithRed:189.0/255.0 green:215.0/255.0 blue:211.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
     self.searchField.delegate = self;
@@ -70,6 +105,8 @@
     } failureBlock:^(NSError *error) {
         
     }];
+    
+
 }
 
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -152,11 +189,30 @@
 {
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching listings..."];
     
+    [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
+        
+        [self.addTagsView addTagsToView:tags];
+      
+        [self.refreshControl beginRefreshing];
+
+    
     [[NetworkManager shared] getItemsWithPage: 1 searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
         [self.items removeAllObjects];
         [self.items addObjectsFromArray: arrayWithItems];
         [self.collectionView reloadData];
         [self.refreshControl endRefreshing];
+        
+        self.scrollView.scrollEnabled = YES;
+        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+        
+        
+        } failureBlock:^(NSError *error) {
+            
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        }];
+        
+
+        
     } failureBlock:^(NSError *error) {
         [self.refreshControl endRefreshing];
     }];

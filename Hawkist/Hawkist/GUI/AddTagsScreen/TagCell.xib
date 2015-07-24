@@ -4,10 +4,16 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TagCell">
             <connections>
-                <outlet property="label" destination="xwq-as-pb3" id="dI9-1I-f4P"/>
+                <outlet property="image" destination="Jba-6g-yoN" id="8bM-wY-hrG"/>
+                <outlet property="label" destination="93m-eK-uie" id="WEk-D2-RzF"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -15,38 +21,39 @@
             <rect key="frame" x="0.0" y="0.0" width="237" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag3" translatesAutoresizingMaskIntoConstraints="NO" id="Jba-6g-yoN">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag2" translatesAutoresizingMaskIntoConstraints="NO" id="Jba-6g-yoN">
                     <rect key="frame" x="0.0" y="0.0" width="237" height="60"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="exG-t5-n9e" appends="YES" id="UuW-Fs-Cpb"/>
+                    </connections>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwq-as-pb3">
-                    <rect key="frame" x="98" y="19" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93m-eK-uie">
+                    <rect key="frame" x="103" y="22" width="32" height="17"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="xwq-as-pb3" secondAttribute="centerY" id="2IT-i4-zmF"/>
                 <constraint firstItem="Jba-6g-yoN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4GE-fH-Rf7"/>
-                <constraint firstAttribute="centerX" secondItem="xwq-as-pb3" secondAttribute="centerX" id="6uL-5j-1WB"/>
-                <constraint firstAttribute="centerY" secondItem="xwq-as-pb3" secondAttribute="centerY" id="CI1-H6-UHt"/>
                 <constraint firstItem="Jba-6g-yoN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="M4v-Dl-kke"/>
-                <constraint firstAttribute="centerX" secondItem="xwq-as-pb3" secondAttribute="centerX" id="i3f-Mq-dW0"/>
+                <constraint firstAttribute="centerX" secondItem="93m-eK-uie" secondAttribute="centerX" id="cag-5h-GZ2"/>
+                <constraint firstAttribute="centerY" secondItem="93m-eK-uie" secondAttribute="centerY" id="eOJ-ID-puj"/>
                 <constraint firstAttribute="trailing" secondItem="Jba-6g-yoN" secondAttribute="trailing" id="kqA-NA-deV"/>
                 <constraint firstAttribute="bottom" secondItem="Jba-6g-yoN" secondAttribute="bottom" id="wWM-tl-Q4b"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="6uL-5j-1WB"/>
-                    <exclude reference="CI1-H6-UHt"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="396.5" y="394"/>
         </view>
+        <tapGestureRecognizer id="exG-t5-n9e">
+            <connections>
+                <action selector="click:" destination="-1" id="i2b-DG-QIp"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="tag3" width="69" height="30"/>
+        <image name="tag2" width="104" height="30"/>
     </resources>
 </document>
