@@ -394,100 +394,6 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 }
 
 
-- (void) getAvaliableTags:(void (^)(NSMutableArray * tags)) successBlock
-             failureBlock: (void (^)(NSError* error)) failureBlock
-{
-    [self.networkDecorator GET: @"user/metatags"
-                    parameters: nil
-     
-                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           if([responseObject[@"status"] integerValue] != 0)
-                           {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
-                               
-                               return;
-                           }
-                           
-                           NSError* error;
-                           
-                           
-                           NSMutableArray* tags = [NSMutableArray array];
-                           
-                           
-                           
-                           
-                           //WithDictionary: tag error: &error];
-                           
-                           for (NSDictionary* tag in responseObject[@"tags"])
-                           {
-                               HWTag* newTag = [[HWTag alloc] initWithDictionary: tag error: &error];
-                               [tags addObject:newTag];
-                           }
-                           //
-                           if(error)
-                           {
-                               failureBlock(error);
-                               return;
-                           }
-                           
-                           successBlock(tags);
-                           
-                       }
-                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
-                           
-                       }];
-}
-
-
-
-
-- (void) addTagToFeed:(NSString*)tagId
-         successBlock:(void(^)(void)) successBlock
-             failureBlock: (void (^)(NSError* error)) failureBlock
-{
-    
-    NSMutableDictionary* tag = [NSMutableDictionary dictionary];
-    
-        [tag setObject: tagId forKey: @"id"];
-        [tag setObject: @"0" forKey: @"type"];
-
-    NSMutableArray* param = [NSMutableArray array];
-    [param addObject:tag];
-    
-    NSMutableDictionary* params = [NSMutableDictionary dictionary];
-    
-    [params setObject:param forKey:@"tags"];
-    
-    
-    [self.networkDecorator PUT: @"user/metatags"
-                    parameters: params
-     
-                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           if([responseObject[@"status"] integerValue] != 0)
-                           {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
-                               
-                               return;
-                           }
-                           
-                           successBlock();
-                           
-                       }
-                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
-                           
-                       }];
-}
-
-
-
 #pragma mark -
 #pragma mark Items
 
@@ -1215,10 +1121,6 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
                        }];
 }
-
-
-
-
 
 @end
 

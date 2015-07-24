@@ -55,10 +55,27 @@
     {
         self.isFollow = NO;
        
+//        [ [NetworkManager shared] unfollowWithUserId:self.userId successBlock:^{
+//            
+//            [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
+//            
+//        } failureBlock:^(NSError *error) {
+//            
+//        }];
+
+    
+        
     } else {
         
         self.isFollow = YES;
-
+        
+//        [ [NetworkManager shared] followWithUserId:self.userId successBlock:^{
+//            
+//            [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+//            
+//        } failureBlock:^(NSError *error) {
+//            
+//        }];
         
     }
     
@@ -79,7 +96,7 @@
 
 - (void) setCellWithFollowUser:(HWFollowUser*) user
 {
-     [self.avatarImageView setImageWithURL:[NSURL URLWithString: user.avatar] placeholderImage:[UIImage imageNamed:@"noPhoto"]];
+    [self.avatarImageView setImageWithURL:[NSURL URLWithString: user.avatar] placeholderImage:[UIImage imageNamed:@"noPhoto"]];
     
      self.userNameLabel.text = user.username;
      self.ratingLabel.text = [NSString stringWithFormat:@"%@ (%@ reviews)",user.rating, user.review];

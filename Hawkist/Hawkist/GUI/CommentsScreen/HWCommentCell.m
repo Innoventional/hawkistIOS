@@ -47,21 +47,22 @@
     [self.avatarImageView setImageWithURL:[NSURL URLWithString: comment.user_avatar] placeholderImage:[UIImage imageNamed:@"noPhoto"]];
     self.textCommentLabel.text = [NSString stringWithFormat:@"%@ %@", comment.user_username, comment.text];
   
-   
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    [dateFormatter setDateFormat:@"YYYY'-'MM'-'dd'T'HH':'mm"];
+    self.time = [dateFormatter dateFromString:comment.created_at];
     
+     NSDateFormatter *dateFormatterForComment = [[NSDateFormatter alloc] init];
+     [dateFormatterForComment setDateFormat:@"MMMM dd hh':'mm a"];
     
-    self.time = [NSDate dateFromServerFormatString:comment.created_at];
-    
-     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-     [dateFormatter setDateFormat:@"MMMM dd hh':'mm a"];
-    
-    self.timeLabel.text =  [dateFormatter stringFromDate:self.time];
+    self.timeLabel.text =  [dateFormatterForComment stringFromDate:self.time];
     
     NSRange rangeName = [self.textCommentLabel.text rangeOfString:self.user_username];
+    
     NSMutableAttributedString *atrbString = [[NSMutableAttributedString alloc]initWithString:self.textCommentLabel.text];
     
     [atrbString beginEditing];
+    
     UIColor *color = [UIColor colorWithRed:94./255. green:94./255. blue:94./255. alpha:1];
     UIFont *font = [UIFont fontWithName:@"OpenSans-Semibold" size:15];
     NSDictionary *attrs = @{ NSForegroundColorAttributeName : color, NSFontAttributeName : font  };

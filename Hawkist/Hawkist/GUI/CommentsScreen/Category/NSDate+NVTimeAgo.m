@@ -314,13 +314,5 @@
  */
 
 
-+ (NSDate*)dateFromServerFormatString:(NSString *)dateString
-{
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY'-'MM'-'dd'T'HH':'mm"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    
-    return [dateFormatter dateFromString:dateString];
-}
+
 @end
