@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TagCell.h"
 
-@interface AddTagsView : UIView
+@protocol AddTags <NSObject>
 
+- (void) selectedItem;
+
+@end
+
+@interface AddTagsView : UIView <TagCell>
+
+@property (nonatomic,strong) id<AddTags> delegate;
 - (void)addTagsToView:(NSArray *)tags;
 
 @end

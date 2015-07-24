@@ -12,8 +12,9 @@
 #import "HWBaseViewController.h"
 #import "AddTagsView.h"
 
-@interface FeedScreenViewController : HWBaseViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate>
+@interface FeedScreenViewController : HWBaseViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate,AddTags>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -22,5 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIView *searchView;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
 @property (weak, nonatomic) IBOutlet AddTagsView *addTagsView;
+@property (weak, nonatomic) IBOutlet UIImageView *tagsBG;
 
 @end

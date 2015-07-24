@@ -14,6 +14,8 @@
 @property (nonatomic,strong) NSMutableArray* tags;
 @property (nonatomic,strong) NSString* city;
 @property (nonatomic,strong) NSString* postCode;
+@property (nonatomic,strong) NSMutableArray* avaliableTags;
+
 
 + (instancetype) shared;
 
