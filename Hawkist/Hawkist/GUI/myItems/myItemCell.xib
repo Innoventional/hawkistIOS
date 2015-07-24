@@ -262,7 +262,7 @@
                 <outlet property="platform" destination="6ff-l0-6Dz" id="rLs-ws-TY6"/>
                 <outlet property="title" destination="nJJ-cC-gUO" id="t4k-hV-6Tg"/>
             </connections>
-            <point key="canvasLocation" x="32.5" y="558"/>
+            <point key="canvasLocation" x="153.5" y="484"/>
         </view>
     </objects>
     <resources>
