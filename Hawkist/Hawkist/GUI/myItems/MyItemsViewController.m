@@ -84,7 +84,7 @@
 - (void) showError:(NSError *)error
 {
     [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-    [self refresh];й
+    [self refresh];
 }
 
 - (void) updateParent
