@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enterNumber" translatesAutoresizingMaskIntoConstraints="NO" id="dXL-hp-elu">
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewPin" translatesAutoresizingMaskIntoConstraints="NO" id="dXL-hp-elu">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="233"/>
                     <gestureRecognizers/>
                     <connections>
@@ -117,8 +117,8 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="NewPin" width="290" height="233"/>
         <image name="cancel" width="125" height="30"/>
-        <image name="enterNumber" width="290" height="233"/>
         <image name="send" width="125" height="30"/>
     </resources>
 </document>

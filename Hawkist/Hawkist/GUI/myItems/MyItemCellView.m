@@ -39,19 +39,34 @@
 
 - (void) moveToTrash
 {
- [[NetworkManager shared]removeItemById:self.item.id
+    
+    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Delete item" message:@"Do you want delete this item?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    
+    [alert show];
+    
 
-    successBlock:^() {
-        if (self.delegate && [self.delegate respondsToSelector: @selector(updateParent)])
-            [_delegate updateParent];
-     
- }
-    failureBlock:^(NSError *error) {
-        if (self.delegate && [self.delegate respondsToSelector: @selector(showError:)])
-            [_delegate showError:error];
- }];
     
 }
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex!=0)
+    [[NetworkManager shared]removeItemById:self.item.id
+     
+                              successBlock:^() {
+                                  if (self.delegate && [self.delegate respondsToSelector: @selector(updateParent)])
+                                      [_delegate updateParent];
+                                  
+                              }
+                              failureBlock:^(NSError *error) {
+                                  if (self.delegate && [self.delegate respondsToSelector: @selector(showError:)])
+                                      [_delegate showError:error];
+                              }];
+}
+
+
+
 
 
 -(void)setItem:(HWItem *)item

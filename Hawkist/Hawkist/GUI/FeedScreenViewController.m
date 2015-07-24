@@ -44,16 +44,20 @@
     {
         [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
         self.scrollView.scrollEnabled = YES;
-
-
     }
     
-//    [self.addTagsView addTagsToView:[NSArray arrayWithObjects:@"WII",@"3DS",@"XBOX 360",@"First Person Shooter",@"PS3",@"Simulation",@"Grand Theft Auto",nil]];
+   // [self.addTagsView addTagsToView:[NSArray arrayWithObjects:@"PC",nil]];
     
     
     [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
         
-       [self.addTagsView addTagsToView:tags];
+       [self.addTagsView addTagsToView:tags successBlock:^{
+           
+           
+       } failureBlock:^(NSError *error) {
+           
+           
+       }];
         
     } failureBlock:^(NSError *error) {
         
@@ -189,34 +193,50 @@
 {
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching listings..."];
     
+    [self.refreshControl beginRefreshing];
+    
     [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
         
-        [self.addTagsView addTagsToView:tags];
-      
-        [self.refreshControl beginRefreshing];
+        [self.addTagsView addTagsToView:tags successBlock:^{
+            
+            
+            [[NetworkManager shared] getItemsWithPage: 1 searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+                [self.items removeAllObjects];
+                [self.items addObjectsFromArray: arrayWithItems];
+                [self.collectionView reloadData];
+                [self.refreshControl endRefreshing];
+                
+                self.scrollView.scrollEnabled = YES;
+                
+                if (self.items.count>0)
+                {
+                    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+                }
+                
+                
+                [self.view setNeedsDisplay];
+                
+            } failureBlock:^(NSError *error) {
+                
+                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+            }];
 
-    
-    [[NetworkManager shared] getItemsWithPage: 1 searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
-        [self.items removeAllObjects];
-        [self.items addObjectsFromArray: arrayWithItems];
-        [self.collectionView reloadData];
-        [self.refreshControl endRefreshing];
-        
-        self.scrollView.scrollEnabled = YES;
-        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-        
-        
+            
+            
+            
         } failureBlock:^(NSError *error) {
             
-            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+            
         }];
         
-
         
     } failureBlock:^(NSError *error) {
-        [self.refreshControl endRefreshing];
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        
     }];
     
+    
+   
     
 }
 

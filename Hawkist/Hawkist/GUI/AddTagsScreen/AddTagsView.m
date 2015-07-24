@@ -34,19 +34,22 @@
     
     [[NetworkManager shared]addTagToFeed:tagId successBlock:^{
         
+        if (self.delegate && [self.delegate respondsToSelector: @selector(selectedItem)])
+            [self.delegate selectedItem];
         
     } failureBlock:^(NSError *error) {
-        
+        NSLog(error.domain);
         
     }];
     
-    if (self.delegate && [self.delegate respondsToSelector: @selector(selectedItem)])
-        [self.delegate selectedItem];
+   
     
     
 }
 
-- (void) addTagsToView:(NSArray *)tags
+- (void)addTagsToView:(NSArray *)tags
+         successBlock: (void (^)(void)) successBlock
+         failureBlock: (void (^)(NSError* error)) failureBlock;
 {
     self.startPositionX = 0;
     self.startPositionY = 0;
@@ -94,9 +97,9 @@
         else
         {
             
-       [self reorganizationLine:tempArrayForTags
+            [self reorganizationLine:tempArrayForTags
                         currentIndex:(NSInteger) i
-                        horizontal:(NSInteger) self.startPositionY];
+                          horizontal:(NSInteger) self.startPositionY];
             
             
             self.startPositionX = 0;
@@ -106,6 +109,8 @@
              self.startPositionX+=cell.width+20;
 
         }
+        
+       
         
         
     }
@@ -118,7 +123,9 @@
                   horizontal:(NSInteger) self.startPositionY];
 
     }
-   
+    
+    successBlock();
+    
 }
 
 

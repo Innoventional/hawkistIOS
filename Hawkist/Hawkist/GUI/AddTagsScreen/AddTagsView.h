@@ -18,6 +18,7 @@
 @interface AddTagsView : UIView <TagCell>
 
 @property (nonatomic,strong) id<AddTags> delegate;
-- (void)addTagsToView:(NSArray *)tags;
-
+- (void)addTagsToView:(NSArray *)tags
+         successBlock: (void (^)(void)) successBlock
+         failureBlock: (void (^)(NSError* error)) failureBlock;
 @end

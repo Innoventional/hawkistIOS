@@ -541,14 +541,14 @@
         if (!((CustomButton*)sender).isEnabled)
         {
             
-            [self showAlertWithTitle:@"Category required" Message:@"To select a Colour, please select a Category first"];
+            [self showAlertWithTitle:@"Choose a Category" Message:@"To select a Colour you must choose a Category first."];
             return;
         }
         
         if (((CustomButton*)sender).notApplicable)
         {
             
-            [self showAlertWithTitle:@"Oops!" Message:@"Colour is not applicable for this category"];
+            [self showAlertWithTitle:@"Colour Not Applicable" Message:@"The Category ‘Games’ does not have a colour. Please select Not Applicable."];
             return;
         }
 
@@ -577,7 +577,7 @@
     {
         if (!((CustomButton*)sender).isEnabled)
         {
-            [self showAlertWithTitle:@"Category required" Message:@"To select a Condition, please select a Category first"];
+            [self showAlertWithTitle:@"Choose a Category" Message:@"To select a Condition you must choose a Category first."];
             return;
         }
 
@@ -624,7 +624,7 @@
     {
         if (!((CustomButton*)sender).isEnabled)
         {
-            [self showAlertWithTitle:@"Platform required" Message:@"To select a Category, please select a Platform first"];
+            [self showAlertWithTitle:@"Choose a Platform" Message:@"To select a Category you must choose a Platform first."];
             return;
         }
 

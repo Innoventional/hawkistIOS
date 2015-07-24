@@ -39,6 +39,9 @@
     self.itemImage.image = nil;
     _item = item;
     
+    self.starsLable.text = item.likes;
+
+    
     self.userNameLable.text = self.item.user_username.uppercaseString;
     [self.avatarImage setImageWithURL: [NSURL URLWithString: self.item.user_avatar] placeholderImage:nil];
     

@@ -49,17 +49,8 @@
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
 
-    
-    [[NetworkManager shared] getItemsByUserId:[AppEngine shared].user.id successBlock:^(NSArray *arrayWithItems) {
-        
-        [self.items addObjectsFromArray: arrayWithItems];
-        [self.collectionView reloadData];
-        
-    } failureBlock:^(NSError *error) {
-        
-        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-    }];
-}
+  }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
