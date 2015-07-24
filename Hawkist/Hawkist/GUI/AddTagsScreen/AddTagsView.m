@@ -29,59 +29,152 @@
 }
 
 
+- (void) clicked:(NSString *)tagId
+{
+    
+    [[NetworkManager shared]addTagToFeed:tagId successBlock:^{
+        
+        
+    } failureBlock:^(NSError *error) {
+        
+        
+    }];
+    
+    if (self.delegate && [self.delegate respondsToSelector: @selector(selectedItem)])
+        [self.delegate selectedItem];
+    
+    
+}
 
 - (void) addTagsToView:(NSArray *)tags
 {
-    self.startPositionX = 20;
+    self.startPositionX = 0;
     self.startPositionY = 0;
     
+    [[self subviews]
+     makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     self.tags = tags;
+    
+    NSMutableArray* tempArrayForTags = [NSMutableArray array];
+    
     for (NSInteger i=0;i<self.tags.count;i++) {
         
-        TagCell* cell = [[TagCell alloc]init];
+        HWTag* currentTag = (HWTag*)[self.tags objectAtIndex:i];
         
-        CGSize myStringSize = [self getSize:[tags objectAtIndex:i]];
+        TagCell* cell = [[TagCell alloc]initWithName:currentTag.name tagId:currentTag.id];
+        
+        //[cell setPostion:CGPointMake(0, i*30)];
+        
+        cell.delegate = self;
+        
+        [tempArrayForTags addObject:cell];
+//        [self addSubview:cell];
+        
+    }
+    
+    
+    
+    for (NSInteger i=0;i<tempArrayForTags.count;i++) {
         
         
-        if ( (self.startPositionX+myStringSize.width+80) < self.width - 20)
-        {
+        TagCell* cell = (TagCell*)[tempArrayForTags objectAtIndex:i];
         
-            cell.frame = CGRectMake(self.startPositionX, self.startPositionY, myStringSize.width + 80, 30);
-            
-            cell.label.text = [tags objectAtIndex:i];
-            
-            self.startPositionX += cell.frame.size.width +20;
+        if (![self.subviews containsObject:cell])
             [self addSubview:cell];
-        
+       
+        if (self.startPositionX + cell.width + 20 < self.width)
+        {
+            [cell setPostion:CGPointMake(self.startPositionX, self.startPositionY)];
+            
+            self.startPositionX+=cell.width+20;
+            
         }
+        
         else
         {
-            self.startPositionY += 50;
-            self.startPositionX = 20;
-            cell.frame = CGRectMake(self.startPositionX, self.startPositionY, myStringSize.width + 80, 30);
             
-            cell.label.text = [tags objectAtIndex:i];
+       [self reorganizationLine:tempArrayForTags
+                        currentIndex:(NSInteger) i
+                        horizontal:(NSInteger) self.startPositionY];
             
-            self.startPositionX += cell.frame.size.width+20;
-            [self addSubview:cell];
+            
+            self.startPositionX = 0;
+            self.startPositionY += 70;
+            
+            [cell setPostion:CGPointMake(self.startPositionX, self.startPositionY)];
+             self.startPositionX+=cell.width+20;
 
         }
+        
+        
+    }
+    
+    if (tempArrayForTags.count == 1)
+    {
+    
+    [self reorganizationLine:tempArrayForTags
+                currentIndex:(NSInteger) tempArrayForTags.count
+                  horizontal:(NSInteger) self.startPositionY];
+
+    }
+   
+}
+
+
+- (void) reorganizationLine:(NSMutableArray*)allTags
+               currentIndex:(NSInteger) index
+                 horizontal:(NSInteger) position
+{
+    
+    NSMutableArray* previousLineTags = [NSMutableArray array];
+    
+    for (NSInteger j=0;j<index;j++)
+    {
+        TagCell* c = (TagCell*)[allTags objectAtIndex:j];
+        
+        if (c.frame.origin.y == position)
+        {
+            [previousLineTags addObject:c];
+        }
+        
+    }
+    
+    if (previousLineTags.count == 1)
+        
+    {
+        TagCell* c = (TagCell*)[previousLineTags lastObject];
+        [c setPostion: CGPointMake((self.frame.size.width - c.width)/2, c.y)];
+        return;
+        
+    }
+    
+    TagCell* lastTag = (TagCell*)[previousLineTags lastObject];
+    
+    float freeSpace = self.width - (lastTag.width+lastTag.x);
+    
+    float differ = freeSpace / previousLineTags.count;
+    
+    
+    for (NSInteger j=0; j<previousLineTags.count; j++) {
+        
+        TagCell* c = (TagCell*)[previousLineTags objectAtIndex:j];
+        
+        //[c setPostion: CGPointMake(c.+differ*j, c.y)];
+        
+        CGRect rect = c.frame;
+        
+        rect.size.width+=differ;
+        
+        if (j!=0)
+            rect.origin.x += differ*j;
+        
+        c.frame = rect;
+        
     }
 }
 
 
-- (CGSize) getSize:(NSString*) string
-{
-    
-    CGSize maximumSize = CGSizeMake(300, 9999);
-    NSString *myString = string;
-    UIFont *myFont = [UIFont fontWithName:@"OpenSans" size:12];
-    CGSize myStringSize = [myString sizeWithFont:myFont
-                               constrainedToSize:maximumSize
-                                   lineBreakMode:NSLineBreakByWordWrapping];
-    
-    
-    return myStringSize;
-}
+
 
 @end

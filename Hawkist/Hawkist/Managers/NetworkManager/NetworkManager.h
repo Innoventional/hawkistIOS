@@ -70,7 +70,13 @@
           failureBlock: (void (^)(NSError* error)) failureBlock;
 
 
+- (void) getAvaliableTags:(void (^)(NSMutableArray * tags)) successBlock
+             failureBlock: (void (^)(NSError* error)) failureBlock;
 
+
+- (void) addTagToFeed:(NSString*)tagId
+         successBlock:(void(^)(void)) successBlock
+         failureBlock: (void (^)(NSError* error)) failureBlock;
 
 #pragma mark -
 #pragma mark Items
@@ -169,6 +175,8 @@
 - (void) getAllCommentsWithItem:(HWItem*)item
                      successBlock:(void (^)(NSArray* commentsArray))successBlock
                      failureBlock:(void(^)(NSError * error)) failureBlock;
+
+
 
 
 
