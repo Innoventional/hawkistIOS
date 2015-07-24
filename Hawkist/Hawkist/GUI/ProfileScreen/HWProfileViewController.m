@@ -581,6 +581,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     HWItem *item = [self.selectedSegmentArray objectAtIndex:indexPath.row];
     ViewItemViewController* vc = [[ViewItemViewController alloc] initWithItem:item];
     [self.navigationController pushViewController: vc animated: YES];
+    self.selectedSegmentArray = nil;
 }
 
 
