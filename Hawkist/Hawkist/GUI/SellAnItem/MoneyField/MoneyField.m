@@ -57,11 +57,14 @@
         textField.text=@"0.00";
     }
     
+    
     NSString *newString = textField.text;
     NSArray  *arrayOfString = [newString componentsSeparatedByString:@"."];
     
     if ([arrayOfString count] == 1 )
         textField.text=[textField.text stringByAppendingString:@".00"];
+    
+    
     
     if (self.delegate && [self.delegate respondsToSelector: @selector(moneyField:modifyTo:)])
         [self.delegate moneyField:self modifyTo:textField.text];
