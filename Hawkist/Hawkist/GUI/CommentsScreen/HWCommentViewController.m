@@ -180,9 +180,11 @@
     if (comment.isAcceptDeclineComment)
     {
         cell.rightUtilityButtons = [self rightButtons];
+        cell.backgroundColor = [UIColor colorWithRed:1 green:231./255. blue:231./255 alpha:1];
     } else {
         
         cell.rightUtilityButtons = nil;
+        cell.backgroundColor = [UIColor whiteColor];
     }
     
     return cell;

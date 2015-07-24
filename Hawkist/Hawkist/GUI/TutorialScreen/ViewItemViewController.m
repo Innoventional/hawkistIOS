@@ -136,7 +136,7 @@
     [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user_avatar] placeholderImage:nil];
     
     self.nameOoStuff.text = self.item.title;
-
+    self.comments.text = self.item.comments;
     self.sellerPrice.text = self.item.selling_price;
     self.oldPrice.text = self.item.retail_price;
     self.descriptionOfItem.text = self.item.item_description;
