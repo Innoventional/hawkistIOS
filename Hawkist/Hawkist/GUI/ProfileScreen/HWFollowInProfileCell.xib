@@ -37,7 +37,7 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtm-sd-fek" customClass="StarRatingControl">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtm-sd-fek" customClass="StarRatingControl">
                         <rect key="frame" x="80" y="49" width="79" height="11"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="79" id="8h9-cE-wZd"/>
@@ -45,7 +45,10 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treshola Smith" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jD-mj-6x2">
-                        <rect key="frame" x="80" y="15" width="132" height="26"/>
+                        <rect key="frame" x="80" y="15" width="144" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="155" id="bda-eT-XqN"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="19"/>
                         <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -59,10 +62,10 @@
                             <action selector="transitionToUserProfileAction:" destination="iqD-ux-ohf" eventType="touchUpInside" id="eih-Om-oV2"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1t-Mz-ZnN">
-                        <rect key="frame" x="234" y="15" width="69" height="25"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1t-Mz-ZnN">
+                        <rect key="frame" x="232" y="15" width="80" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="7TN-aP-lZp"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="7TN-aP-lZp"/>
                             <constraint firstAttribute="height" constant="25" id="d45-ee-3is"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
@@ -100,14 +103,15 @@
                     <constraint firstItem="tBO-b8-1eS" firstAttribute="trailing" secondItem="tQy-Sf-Htj" secondAttribute="trailing" id="Lwr-Zb-hZj"/>
                     <constraint firstItem="tBO-b8-1eS" firstAttribute="top" secondItem="a3f-al-p3f" secondAttribute="top" id="MZJ-yH-CZA"/>
                     <constraint firstItem="n1t-Mz-ZnN" firstAttribute="top" secondItem="a3f-al-p3f" secondAttribute="topMargin" constant="7" id="N3S-rj-VsC"/>
-                    <constraint firstItem="wtm-sd-fek" firstAttribute="top" secondItem="2jD-mj-6x2" secondAttribute="bottom" constant="6" id="To5-hN-T5O"/>
+                    <constraint firstItem="wtm-sd-fek" firstAttribute="top" secondItem="2jD-mj-6x2" secondAttribute="bottom" constant="8" id="To5-hN-T5O"/>
                     <constraint firstAttribute="bottom" secondItem="tBO-b8-1eS" secondAttribute="bottom" id="VVE-JU-hcr"/>
                     <constraint firstAttribute="bottomMargin" secondItem="d8V-ku-0Xd" secondAttribute="bottom" constant="10" id="VgJ-iZ-ECO"/>
                     <constraint firstItem="2jD-mj-6x2" firstAttribute="top" secondItem="a3f-al-p3f" secondAttribute="topMargin" constant="7" id="atQ-iN-yud"/>
+                    <constraint firstItem="n1t-Mz-ZnN" firstAttribute="leading" secondItem="2jD-mj-6x2" secondAttribute="trailing" constant="8" id="f2y-qy-W7z"/>
                     <constraint firstAttribute="bottom" secondItem="tQy-Sf-Htj" secondAttribute="bottom" constant="-1" id="gfF-gf-NfK"/>
                     <constraint firstItem="tBO-b8-1eS" firstAttribute="leading" secondItem="tQy-Sf-Htj" secondAttribute="leading" id="kcz-Qq-ohv"/>
                     <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="d8V-ku-0Xd" secondAttribute="trailing" constant="64" id="p3R-zB-YTA"/>
-                    <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="n1t-Mz-ZnN" secondAttribute="trailing" constant="9" id="qDu-PI-WiU"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="n1t-Mz-ZnN" secondAttribute="trailing" id="qDu-PI-WiU"/>
                     <constraint firstItem="wtm-sd-fek" firstAttribute="leading" secondItem="JAl-fh-Ivt" secondAttribute="trailing" constant="13" id="qKz-Ex-f8m"/>
                     <constraint firstItem="JAl-fh-Ivt" firstAttribute="leading" secondItem="a3f-al-p3f" secondAttribute="leadingMargin" constant="3" id="sgB-Dh-BMI"/>
                     <constraint firstItem="2jD-mj-6x2" firstAttribute="leading" secondItem="JAl-fh-Ivt" secondAttribute="trailing" constant="13" id="xFb-7H-uZj"/>

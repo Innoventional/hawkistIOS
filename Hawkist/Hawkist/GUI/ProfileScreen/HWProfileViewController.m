@@ -17,7 +17,7 @@
 #import "NetworkManager.h"
 #import "HWUser.h"
 #import "HWFollowUser.h"
-
+#import "NSDate+NVTimeAgo.h"
 
 #import "MyItemCellView.h"
 #import "ViewItemViewController.h"
@@ -65,15 +65,27 @@
 @property (nonatomic, strong) NSString *userId;
 
 
-@property (nonatomic, assign) NSInteger intArray;
+@property (nonatomic, assign) NSInteger selectedArrayWithData;
 @property (nonatomic, strong) id lastPressSegmentButton;
 
 @end
+
+
+typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
+{
+    HWArrayWithItems = 10,
+    HWArrayWithFollowers = 20,
+    HWArrayWithFollowing = 30,
+    HWArrayWithWishlist = 40
+};
+
 
 @implementation HWProfileViewController
 
 #pragma mark-
 #pragma mark Lifecycle
+
+
 
 
 - (instancetype) initWithUserID:(NSString *)userID
@@ -208,7 +220,7 @@
     
     [self.avatarView setImageWithURL: [NSURL URLWithString: self.user.avatar] placeholderImage:[UIImage imageNamed:@"noAvatar"]];
     self.userNameLabel.text = self.user.username;
-    if(self.user.city)
+    if(![self.user.city isEqualToString:@""])
     {
         self.locationLabel.text =  [NSString stringWithFormat:@"%@, United Kingdom  ", self.user.city];
     }
@@ -217,15 +229,12 @@
     self.salesLabel.text = self.user.number_of_sales;
     
     
+    NSDate *lastActivityDate = [NSDate dateFromServerFormatString:self.user.last_activity];
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY'-'MM'-'dd'T'HH':'mm"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    NSDate *dateFromString = [dateFormatter dateFromString:self.user.last_activity];
+    [dateFormatter setDateFormat:@"hh:mm a MMM dd, yyyy"];
     
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
-    [dateFormatter1 setDateFormat:@"hh:mm a MMM dd, yyyy"];
-    
-    self.lastSeenLabel.text = [dateFormatter1 stringFromDate:dateFromString];
+    self.lastSeenLabel.text = [dateFormatter stringFromDate:lastActivityDate];
     
 }
 
@@ -250,23 +259,20 @@
 
 
 #pragma mark -
-#pragma set/get
+#pragma mark set/get
 
 - (void) setArrayForSegmentViewWithUserID:(NSString*)userId
 {
-    // items
+// items
     [self setItemsArrayWithUserId:userId];
     
-    // following
-    
+// following
     [self setFollowingArrayWithUserId:userId];
    
-    
-    //followers
-    
+//followers
      [self setFollowersArrayWithUserId:userId];
     
-    //wishlist
+//wishlist
     [self setWishlistArrayWithUsetId:userId];
     
 }
@@ -279,10 +285,12 @@
     [self.networkManager getItemsByUserId:userId
                              successBlock:^(NSArray *arrayWithItems) {
                                  
-                                 self.itemsArray = arrayWithItems;
-                                 [self setupSegmentButtonsConfig];
-                                 [self segmentButtonAction:self.itemsButton];
+                                  self.itemsArray = arrayWithItems;
                                  
+                                 if (self.selectedArrayWithData == HWArrayWithItems)
+                                 {
+                                     [self reloadDataIfSuccessBlockForTable:NO withDataArray:arrayWithItems];
+                                 }
                                  
                                  
                              } failureBlock:^(NSError *error) {
@@ -300,14 +308,12 @@
                                    successBlock:^(NSArray *followingArray) {
                                        
                                        self.followingArray = followingArray;
-                                       [self setupSegmentButtonsConfig];
-                                       if (self.intArray == 20)
+                                     
+                                       if (self.selectedArrayWithData == HWArrayWithFollowing)
                                        {
-                                           [self reloadTableAndCollectionViewWithData:self.followingArray forTableView:YES];
+                                           [self reloadDataIfSuccessBlockForTable:YES withDataArray:followingArray];
                                        }
 
-                                       
-                                       
                                    } failureBlock:^(NSError *error) {
                                        
                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
@@ -322,13 +328,11 @@
     [self.networkManager getFollowersWithUserId:userId
                                    successBlock:^(NSArray *followersArray) {
                                        
-                                       self.followersArray = followersArray;
-                                       [self setupSegmentButtonsConfig];
+                                      self.followersArray = followersArray;
                                        
-                                       if (self.intArray == 30)
+                                       if (self.selectedArrayWithData == HWArrayWithFollowers)
                                        {
-                                           
-                                           [self reloadTableAndCollectionViewWithData:self.followersArray forTableView:YES];
+                                           [self reloadDataIfSuccessBlockForTable:YES withDataArray:followersArray];
                                        }
                                        
                                 } failureBlock:^(NSError *error) {
@@ -348,6 +352,11 @@
                                       
                                       self.wishListArray = wishlistArray;
                                       
+                                      if (self.selectedArrayWithData == HWArrayWithWishlist)
+                                      {
+                                          [self reloadDataIfSuccessBlockForTable:NO withDataArray:wishlistArray];
+                                      }
+                                      
                                   } failureBlock:^(NSError *error) {
                                       
                                       [self showAlertWithTitle:@"Error!"
@@ -356,17 +365,98 @@
                                   }];
 }
 
-#pragma mark - 
-#pragma mark StarRatingDelegate
 
-- (BOOL) enabledTouch
-{
-    return NO;
+#pragma mark -
+#pragma mark Actions
+
+
+- (IBAction)aboutAction:(UIButton *)sender {
+}
+
+- (IBAction)followUnfollowAction:(UIButton *)sender {
+    
+    if ([sender.titleLabel.text isEqualToString:@"  FOLLOW  "])
+    {
+        [sender setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
+        
+        [ self.networkManager followWithUserId:self.user.id successBlock:^{
+            
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
+        
+    } else {
+        
+        [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
+        [self.networkManager unfollowWithUserId:self.user.id successBlock:^{
+            
+            
+        } failureBlock:^(NSError *error) {
+            
+            
+        }];
+        
+    }
+    [self setFollowersArrayWithUserId:self.user.id];
+    
+}
+
+- (IBAction)segmentButtonAction:(HWButtonForSegment *)sender {
+    
+    
+    for (HWButtonForSegment *button in self.buttonSegmentCollection)
+    {
+        button.selectedImage.hidden = YES;
+    }
+    
+    self.lastPressSegmentButton = sender;
+    sender.selectedImage.hidden = NO;
+    
+    
+    switch (sender.tag) {
+        case 1:
+            self.selectedArrayWithData = HWArrayWithItems;
+            
+            break;
+        case 2:
+            
+            self.selectedArrayWithData = HWArrayWithFollowing;
+            
+            break;
+        case 3:
+            
+            self.selectedArrayWithData = HWArrayWithFollowers;
+            
+            break;
+        case 4:
+            
+            self.selectedArrayWithData  = HWArrayWithWishlist;
+            
+            break;
+        default:
+            break;
+    }
+    
+    
+    [self setItemsArrayWithUserId:self.userId];
+    [self setFollowersArrayWithUserId:self.userId];
+    [self setFollowingArrayWithUserId:self.userId];
+    [self setWishlistArrayWithUsetId:self.userId];
+    
 }
 
 
 #pragma mark -
 #pragma mark reloadData
+
+- (void) reloadDataIfSuccessBlockForTable:(BOOL)isTableView withDataArray:(NSArray *)array
+{
+    self.selectedSegmentArray = array;
+    [self setupSegmentButtonsConfig];
+    [self reloadTableAndCollectionViewWithData:self.selectedSegmentArray forTableView:isTableView];
+    
+}
 
 - (void) reloadTableAndCollectionViewWithData:(NSArray*)dataArray forTableView:(BOOL)forTableView
 {
@@ -375,7 +465,6 @@
     
     self.selectedSegmentArray = dataArray;
     CGFloat heightForCollectionOrTable = 0;
-    
     
     if(!forTableView)
     {
@@ -409,7 +498,6 @@
     
     [self setupHeightScrollView:heightForCollectionOrTable];
     
-    
 }
 
 
@@ -419,105 +507,6 @@
     [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, heightForScrollView)];
     
 }
-
-
-
-#pragma mark -
-#pragma mark Actions
-
-
-- (IBAction)aboutAction:(UIButton *)sender {
-}
-
-- (IBAction)followUnfollowAction:(UIButton *)sender {
-    
-   if ([sender.titleLabel.text isEqualToString:@"  FOLLOW  "])
-   {
-       [sender setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
-       
-       [ self.networkManager followWithUserId:self.user.id successBlock:^{
-           
-           
-       } failureBlock:^(NSError *error) {
-           
-       }];
- 
-   } else {
-       
-        [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
-       [self.networkManager unfollowWithUserId:self.user.id successBlock:^{
-           
-          
-       } failureBlock:^(NSError *error) {
-           
-           
-       }];
-       
-   }
-    [self setFollowersArrayWithUserId:self.user.id];
-   
-}
-
-- (IBAction)segmentButtonAction:(HWButtonForSegment *)sender {
-    
-    
-   for (HWButtonForSegment *button in self.buttonSegmentCollection)
-   {
-       button.selectedImage.hidden = YES;
-   }
-    
-    self.lastPressSegmentButton = sender;
-    sender.selectedImage.hidden = NO;
-    BOOL isTableView = NO;
-    
-    switch (sender.tag) {
-        case 1:
-            isTableView = NO;
-            
-            
-            self.selectedSegmentArray = self.itemsArray;
-            
-             self.intArray = 0;
-            break;
-        case 2:
-            isTableView = YES;
-            
-            self.selectedSegmentArray = self.followingArray;
-            self.intArray = 20;
-            
-            break;
-        case 3:
-            isTableView = YES;
-            
-            self.selectedSegmentArray = self.followersArray;
-            self.intArray = 30;
-            
-            
-                       break;
-        case 4:
-           isTableView = NO;
-            self.selectedSegmentArray = self.wishListArray;
-            
-            self.intArray = 0;
-            break;
-            
-        default:
-            break;
-    }
-    
-    
-   
-    [self setFollowersArrayWithUserId:self.userId];
-    [self setFollowingArrayWithUserId:self.userId];
-    [self setWishlistArrayWithUsetId:self.userId];
-    
-    
-
-     [self reloadTableAndCollectionViewWithData:self.selectedSegmentArray forTableView:isTableView];
-    
-    
-}
-
 
 
 #pragma mark -
@@ -549,8 +538,6 @@
       cell.delegate = self;
     [cell setCellWithFollowUser:[self.selectedSegmentArray objectAtIndex:indexPath.row]];
   
-
-    
     return cell;
 }
 
@@ -594,6 +581,8 @@
     HWItem *item = [self.selectedSegmentArray objectAtIndex:indexPath.row];
     ViewItemViewController* vc = [[ViewItemViewController alloc] initWithItem:item];
     [self.navigationController pushViewController: vc animated: YES];
+    
+    self.selectedSegmentArray = nil;
 }
 
 
@@ -646,26 +635,19 @@
             
                         [button setTitle:@"FOLLOW"  forState:UIControlStateNormal];
             
-          //  [self reloadTableAndCollectionViewWithData:self.selectedSegmentArray forTableView:!self.tableView.hidden];
-            
-                    } failureBlock:^(NSError *error) {
+                                      } failureBlock:^(NSError *error) {
                         
                     }];
-
     } else {
-        
         
         [ [NetworkManager shared] followWithUserId:userId successBlock:^{
             
                         [button setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
             
-                    } failureBlock:^(NSError *error) {
+                                    } failureBlock:^(NSError *error) {
                         
                     }];
-
     }
-    
-    
 }
 
 - (BOOL) hideFollowUnfollowButtonForUserId:(NSString*)userId
@@ -674,4 +656,16 @@
     NSString *currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:kUSER_ID];
     return  ([currentUserId isEqualToString:userId]);
 }
+
+
+#pragma mark -
+#pragma mark StarRatingDelegate
+
+- (BOOL) enabledTouch
+{
+    return NO;
+}
+
+
+
 @end

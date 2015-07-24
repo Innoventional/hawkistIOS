@@ -73,5 +73,6 @@
     Returns the time formatted as Time Ago (in the style of Facebook's mobile date formatting)
  */
 - (NSString *)formattedAsTimeAgo;
++ (NSDate *)dateFromServerFormatString:(NSString *)dateString;
 
 @end

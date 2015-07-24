@@ -72,7 +72,8 @@
 -(void)setItem:(HWItem *)item
 {
     self.itemImage.image = nil;
-    
+    self.commentsCount.text = item.comments;
+    self.likesCount.text = item.likes;
     _item = item;
    
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {

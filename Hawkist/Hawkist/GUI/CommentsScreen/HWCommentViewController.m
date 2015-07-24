@@ -16,7 +16,7 @@
 #import "SZTextView.h"
 #import "HWComment.h"
 
-@interface HWCommentViewController () <NavigationViewDelegate, HWCommentInputViewDelegate, HWCommentCellDelegate>
+@interface HWCommentViewController () <NavigationViewDelegate, HWCommentInputViewDelegate, HWCommentCellDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -78,7 +78,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"HWCommentCell" bundle:nil] forCellReuseIdentifier:@"tableViewCell"];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 74.0;
+    self.tableView.estimatedRowHeight = 56.0;
     self.height = [[UIScreen mainScreen] bounds].size.height ;
 }
 
@@ -177,14 +177,14 @@
     [cell setCellWithComment:comment];
     [cell layoutIfNeeded];
     
-  // if current_user == offer_receiver_id
-    
     if (comment.isAcceptDeclineComment)
     {
         cell.rightUtilityButtons = [self rightButtons];
+        cell.backgroundColor = [UIColor colorWithRed:1 green:231./255. blue:231./255 alpha:1];
     } else {
         
         cell.rightUtilityButtons = nil;
+        cell.backgroundColor = [UIColor whiteColor];
     }
     
     return cell;

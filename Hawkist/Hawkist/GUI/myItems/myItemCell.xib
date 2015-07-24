@@ -269,6 +269,6 @@
         <image name="like" width="10" height="10"/>
         <image name="messages" width="10" height="10"/>
         <image name="noPhoto" width="689" height="460"/>
-        <image name="skidka" width="37" height="20"/>
+        <image name="skidka" width="55" height="31"/>
     </resources>
 </document>
