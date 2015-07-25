@@ -55,6 +55,9 @@
             } failureBlock:^(NSError *error) {
                 
             }];
+            
+            
+            
         }
         
       
@@ -141,7 +144,7 @@
     self.oldPrice.text = self.item.retail_price;
     self.descriptionOfItem.text = self.item.item_description;
     self.added.text = [self.item stringItemCreationDate];
-    
+        
 
     HWTag* itemPlatform = [HWTag getPlatformById:self.item.platform from:[AppEngine shared].tags];
     

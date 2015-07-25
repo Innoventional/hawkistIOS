@@ -29,41 +29,41 @@
 @property (weak) IBOutlet StarRatingControl *starRatingControl;
 
 
-@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic) IBOutlet UIView *itemUser;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *userItemsSegmentControl;
-@property (strong, nonatomic) IBOutlet UIImageView *bigImage;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *itemUser;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *userItemsSegmentControl;
+@property (weak, nonatomic) IBOutlet UIImageView *bigImage;
 - (IBAction)imageTapped:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UIImageView *smallImage1;
-@property (strong, nonatomic) IBOutlet UIImageView *smallImage2;
-@property (strong, nonatomic) IBOutlet UIImageView *smallImage3;
-@property (strong, nonatomic) IBOutlet UIImageView *smallImage4;
+@property (weak, nonatomic) IBOutlet UIImageView *smallImage1;
+@property (weak, nonatomic) IBOutlet UIImageView *smallImage2;
+@property (weak, nonatomic) IBOutlet UIImageView *smallImage3;
+@property (weak, nonatomic) IBOutlet UIImageView *smallImage4;
 
-@property (strong, nonatomic) IBOutlet UILabel *nameOoStuff;
+@property (weak, nonatomic) IBOutlet UILabel *nameOoStuff;
 
-@property (strong, nonatomic) IBOutlet UILabel *sellerPrice;
+@property (weak, nonatomic) IBOutlet UILabel *sellerPrice;
 
-@property (strong, nonatomic) IBOutlet UILabel *oldPrice;
+@property (weak, nonatomic) IBOutlet UILabel *oldPrice;
 - (IBAction)buyButton:(id)sender;
-@property (strong, nonatomic) IBOutlet UILabel *sellerName;
-@property (strong, nonatomic) IBOutlet UIImageView *sellerAvatar;
-@property (strong, nonatomic) IBOutlet UILabel *reviews;
+@property (weak, nonatomic) IBOutlet UILabel *sellerName;
+@property (weak, nonatomic) IBOutlet UIImageView *sellerAvatar;
+@property (weak, nonatomic) IBOutlet UILabel *reviews;
 - (IBAction)askButton:(id)sender;
-@property (strong, nonatomic) IBOutlet UILabel *descriptionOfItem;
-@property (strong, nonatomic) IBOutlet UILabel *hashTag3;
-@property (strong, nonatomic) IBOutlet UILabel *hashTag2;
-@property (strong, nonatomic) IBOutlet UILabel *hashTag1;
-@property (strong, nonatomic) IBOutlet UILabel *added;
-@property (strong, nonatomic) IBOutlet UILabel *platform;
-@property (strong, nonatomic) IBOutlet UILabel *condition;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionOfItem;
+@property (weak, nonatomic) IBOutlet UILabel *hashTag3;
+@property (weak, nonatomic) IBOutlet UILabel *hashTag2;
+@property (weak, nonatomic) IBOutlet UILabel *hashTag1;
+@property (weak, nonatomic) IBOutlet UILabel *added;
+@property (weak, nonatomic) IBOutlet UILabel *platform;
+@property (weak, nonatomic) IBOutlet UILabel *condition;
 
-@property (strong, nonatomic) IBOutlet UILabel *colour;
-@property (strong, nonatomic) IBOutlet UILabel *delivery;
-@property (strong, nonatomic) IBOutlet UILabel *counts;
-@property (strong, nonatomic) IBOutlet UILabel *comments;
-@property (strong, nonatomic) IBOutlet UILabel *category;
-@property (strong, nonatomic) IBOutlet UILabel *discount;
+@property (weak, nonatomic) IBOutlet UILabel *colour;
+@property (weak, nonatomic) IBOutlet UILabel *delivery;
+@property (weak, nonatomic) IBOutlet UILabel *counts;
+@property (weak, nonatomic) IBOutlet UILabel *comments;
+@property (weak, nonatomic) IBOutlet UILabel *category;
+@property (weak, nonatomic) IBOutlet UILabel *discount;
 @property (weak, nonatomic) IBOutlet UIButton *buyThisItem;
 
 @end
