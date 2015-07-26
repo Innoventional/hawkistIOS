@@ -67,6 +67,7 @@
 
 @property (nonatomic, assign) NSInteger selectedArrayWithData;
 @property (nonatomic, strong) id lastPressSegmentButton;
+@property (weak, nonatomic) IBOutlet UIButton *aboutButton;
 
 @end
 
@@ -84,7 +85,6 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 #pragma mark-
 #pragma mark Lifecycle
-
 
 
 
@@ -154,10 +154,10 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     self.navigationView.delegate = self;
     self.navigationView.title.text = @"Profile";
-    
+    [self.navigationView.title setFont: [UIFont fontWithName:@"OpenSans" size:18]];
     [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
-    
-  //  [self segmentButtonAction:self.itemsButton];
+    [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
+ 
    
 }
 
@@ -198,8 +198,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"collectionViewCell"];
-    
-    [self setupSegmentButtonsConfig];
+ 
     self.starRatingView.delegate = self;
     
     NSString *currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:kUSER_ID];
@@ -210,6 +209,9 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     }
    
 }
+
+
+
 - (void) updateUser
 {
     
@@ -220,14 +222,15 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     [self.avatarView setImageWithURL: [NSURL URLWithString: self.user.avatar] placeholderImage:[UIImage imageNamed:@"noAvatar"]];
     self.userNameLabel.text = self.user.username;
-    if(![self.user.city isEqualToString:@""])
+    if(self.user.city)
     {
         self.locationLabel.text =  [NSString stringWithFormat:@"%@, United Kingdom  ", self.user.city];
     }
     self.starRatingView.rating = [self.user.rating integerValue];
     self.ratingLabel.text = [NSString stringWithFormat:@"%@ (%@ reviews)",self.user.rating,self.user.review];
     self.salesLabel.text = self.user.number_of_sales;
-    
+    NSString *aboutTitle = [NSString stringWithFormat:@"    ABOUT %@",self.user.username.uppercaseString];
+    [self.aboutButton setTitle:aboutTitle forState:UIControlStateNormal];
     
     NSDate *lastActivityDate = [NSDate dateFromServerFormatString:self.user.last_activity];
     
@@ -270,7 +273,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     [self setFollowingArrayWithUserId:userId];
    
 //followers
-     [self setFollowersArrayWithUserId:userId];
+    [self setFollowersArrayWithUserId:userId];
     
 //wishlist
     [self setWishlistArrayWithUsetId:userId];
@@ -295,7 +298,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                  
                              } failureBlock:^(NSError *error) {
                                  
-                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                 [self showAlertWithError:error];
+                                 
                              }];
     
 }
@@ -316,7 +320,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
                                    } failureBlock:^(NSError *error) {
                                        
-                                      [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                       [self showAlertWithError:error];
                                        
                                    }];
 }
@@ -337,7 +341,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                        
                                 } failureBlock:^(NSError *error) {
                                     
-                                    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                   [self showAlertWithError:error];
                                        
                                    }];
     
@@ -359,18 +363,24 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                       
                                   } failureBlock:^(NSError *error) {
                                       
-                                      [self showAlertWithTitle:@"Error!"
-                                                       Message:error.localizedDescription];
+                                      [self showAlertWithError:error];
                                       
                                   }];
 }
 
+
+- (void) showAlertWithError:(NSError*)error
+{
+    [self showAlertWithTitle:@"Error!"
+                     Message:error.localizedDescription];
+}
 
 #pragma mark -
 #pragma mark Actions
 
 
 - (IBAction)aboutAction:(UIButton *)sender {
+    
 }
 
 - (IBAction)followUnfollowAction:(UIButton *)sender {
@@ -520,7 +530,14 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 -(void) rightButtonClick
 {
+    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                              delegate:nil
+                                                     cancelButtonTitle:@"Cancel"
+                                                destructiveButtonTitle:nil
+                                                     otherButtonTitles:@"Report",@"Block", nil];
     
+    
+    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 
 

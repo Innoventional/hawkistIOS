@@ -26,6 +26,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWProfileViewController">
             <connections>
+                <outlet property="aboutButton" destination="bG6-zT-ZHN" id="uvF-E9-RJG"/>
                 <outlet property="avatarView" destination="2U4-iU-E4C" id="amx-wr-iX1"/>
                 <outlet property="followUnfollowButton" destination="ovl-2s-eoB" id="6N5-LX-7h6"/>
                 <outlet property="followersButton" destination="XrF-5R-JCf" id="PPd-5J-hUd"/>
@@ -91,7 +92,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London, United Kingdom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yq7-6P-Cdd">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yq7-6P-Cdd">
                             <rect key="frame" x="86" y="146" width="144" height="16"/>
                             <rect key="contentStretch" x="0.10000000000000001" y="0.10000000000000001" width="1" height="1"/>
                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>

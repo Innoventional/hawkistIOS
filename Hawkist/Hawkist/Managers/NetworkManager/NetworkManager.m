@@ -23,8 +23,8 @@
 @end
 
 typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
-    HWAcceptOffer = 1,
-    HWDeclineOffer = 2
+    HWOfferAccept = 1,
+    HWOfferDecline = 2
 };
 
 
@@ -60,7 +60,32 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 }
 
 #pragma mark -
+#pragma mark Error section
+
+
+
+- (NSError*) errorWithResponseObject:(id)responseObject
+{
+    NSError *responseError = [NSError errorWithDomain:responseObject[@"title"]
+                                         code:[responseObject[@"status"] integerValue]
+                                     userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}];
+    return responseError;
+}
+
+
+- (NSError*)serverErrorWithError:(NSError*)error
+{
+    NSError *serverError = [NSError errorWithDomain:@"Server Error"
+                                                code:error.code
+                                            userInfo:error.userInfo];
+    return serverError;
+}
+
+
+
+#pragma mark -
 #pragma mark User section
+
 
 - (void) registerUserWithPhoneNumber: (NSString*) phoneNumber
                      orFacebookToken: (NSString*) facebookToken
@@ -68,20 +93,24 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                         failureBlock: (void (^)(NSError* error)) failureBlock
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
-    if(phoneNumber)
-       [params setObject: phoneNumber forKey: @"phone"];
-    else if (facebookToken)
+   
+    if(phoneNumber) {
+        
+        [params setObject: phoneNumber forKey: @"phone"];
+
+    } else if (facebookToken) {
+        
         [params setObject: facebookToken forKey: @"facebook_token"];
+    }
     
     [self.networkDecorator POST: @"users"
                      parameters: params
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock(
-                                             
-                               [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]
-                                             );
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
                                              
                             return;
                             }
@@ -102,8 +131,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                            return;
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
 
                         }];
 }
@@ -114,21 +145,24 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                  failureBlock: (void (^)(NSError* error)) failureBlock
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
-    if(phoneNumber)
-        [params setObject: phoneNumber forKey: @"phone"];
-    if (pin)
-        [params setObject: pin forKey: @"pin"];
     
-    [self.networkDecorator PUT: @"users"
+    if(phoneNumber) {
+        [params setObject: phoneNumber forKey: @"phone"];
+    }
+    
+    if (pin) {
+        [params setObject: pin forKey: @"pin"];
+    }
+    
+     [self.networkDecorator PUT: @"users"
                      parameters: params
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock(
-                                             
-                                             [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
                                 
-
+                                failureBlock(responseError);
+                                
                                 return;
                             }
                             
@@ -146,8 +180,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                            return;
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
 
                         }];
 }
@@ -176,9 +212,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                
                                return;
@@ -197,8 +233,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                          
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                            
                        }];
 }
@@ -236,11 +274,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock(
-                                             
-                                             [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
                                 
-
+                                failureBlock(responseError);
+                                
                                 return;
                             }
                             
@@ -257,8 +294,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                            return;
+                           
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
 
                         }];
 
@@ -274,9 +313,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
 
                                return;
@@ -297,8 +336,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                          
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
 
                        }];
 }
@@ -314,9 +355,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
                                             
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                            NSError *responseError = [self errorWithResponseObject:responseObject];
+                                            
+                                            failureBlock(responseError);
                                
                                return;
                            }
@@ -334,8 +376,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
 
                        }];
 }
@@ -354,9 +398,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -387,8 +431,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
 
                        }];
 }
@@ -403,9 +449,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -436,8 +482,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                          
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                            
                        }];
 }
@@ -469,9 +517,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -480,8 +528,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                            
                        }];
 }
@@ -512,9 +562,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -547,8 +597,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                          
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
 
                        }];
 }
@@ -572,9 +624,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -592,8 +644,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                        }];
 }
 
@@ -609,9 +663,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -632,8 +686,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                          
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
 
                        }];
 }
@@ -655,9 +711,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -666,8 +722,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                          
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                            
                        }];
 }
@@ -684,9 +742,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -719,9 +777,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
                            
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                        }];
 }
 
@@ -744,9 +803,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                             
                             if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock(
-                                             
-                                             [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
                                 
                                 return;
                             }
@@ -755,7 +814,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                             
                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                          
-                          failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                          NSError *serverError = [self serverErrorWithError:error];
+                          
+                          failureBlock(serverError);
                           
                       }];
     
@@ -775,20 +836,22 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
-                           
-                            NSLog(@"%@",responseObject);
+                      
                            successBlock();
                         
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            
-                        failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                            
                        }];
     
@@ -808,9 +871,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
         
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -836,7 +899,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                        }];
     
     
@@ -856,9 +921,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -885,7 +950,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                            
                        }];
     
@@ -907,9 +975,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            NSLog(@"%@",responseObject);
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -921,7 +989,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                        }];
     
 }
@@ -942,9 +1012,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                    NSError *responseError = [self errorWithResponseObject:responseObject];
+                                    
+                                    failureBlock(responseError);
                                
                                return;
                            }
@@ -953,8 +1023,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                          
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                            
                        }];
 }
@@ -966,7 +1038,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 {
     
     [self acceptDeclineOfferWithItemId:itemId
-                         acceptDecline:HWAcceptOffer
+                         acceptDecline:HWOfferAccept
                           successBlock:^{
                               
                               successBlock();
@@ -985,7 +1057,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 {
     
     [self acceptDeclineOfferWithItemId:itemId
-                         acceptDecline:HWDeclineOffer
+                         acceptDecline:HWOfferDecline
                           successBlock:^{
                               
                               successBlock();
@@ -1017,9 +1089,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -1028,8 +1100,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                           return;
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                        }];
 
 
@@ -1056,9 +1130,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -1087,8 +1161,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-                         failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
-                       }];
+                         NSError *serverError = [self serverErrorWithError:error];
+                         
+                         failureBlock(serverError);
+                     }];
     
     
 }
@@ -1112,9 +1188,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                             
                             if([responseObject[@"status"] integerValue] != 0)
                             {
-                                failureBlock(
-                                             
-                                             [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
                                 
                                 return;
                             }
@@ -1123,8 +1199,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             
-                             failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                            NSError *serverError = [self serverErrorWithError:error];
                             
+                            failureBlock(serverError);
                             
                         }];
     
@@ -1144,9 +1221,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                            if([responseObject[@"status"] integerValue] != 0)
                            {
-                               failureBlock(
-                                            
-                                            [NSError errorWithDomain:responseObject[@"title"] code:[responseObject[@"status"] integerValue] userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}]);
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
                                
                                return;
                            }
@@ -1202,7 +1279,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            }
                            if (error)
                            {
-                               failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                               NSError *serverError = [self serverErrorWithError:error];
+                               
+                               failureBlock(serverError);
+                               
                                return;
 
                            }
@@ -1212,7 +1292,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                           
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            
-                           failureBlock([NSError errorWithDomain:@"Server Error" code:error.code userInfo:error.userInfo]);
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
                        }];
 }
 

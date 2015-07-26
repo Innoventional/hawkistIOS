@@ -42,7 +42,7 @@
                       [self addSubview:label];
                       [label setFont:[UIFont systemFontOfSize:21]];
                       label.textColor = [UIColor colorWithRed:106./255. green:106./255. blue:106./255. alpha:1];
-                      label.text = @"222";
+                      label.text = @"0";
                       
                       
                       label;
@@ -56,7 +56,7 @@
                       [label setFont:[UIFont systemFontOfSize:12]];
                       label.textColor = [UIColor colorWithRed:170./255. green:173./255. blue:173./255. alpha:1];
                       
-                      label.text = @"FOLLOWING";
+                      label.text = @"list";
                       
                       label;
                   }
