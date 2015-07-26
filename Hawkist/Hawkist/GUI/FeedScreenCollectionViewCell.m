@@ -36,6 +36,7 @@
     
     self.opinionLable.text = item.comments;
     self.starsLable.text = item.likes;
+    
     self.userId = item.user_id;
     self.avatarImage.image = nil;
     self.avatarImage.image = [UIImage imageNamed:@"NoAvatar"];
