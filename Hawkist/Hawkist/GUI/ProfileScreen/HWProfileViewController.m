@@ -222,7 +222,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     [self.avatarView setImageWithURL: [NSURL URLWithString: self.user.avatar] placeholderImage:[UIImage imageNamed:@"noAvatar"]];
     self.userNameLabel.text = self.user.username;
-    if(![self.user.city isEqualToString:@""])
+    if(self.user.city)
     {
         self.locationLabel.text =  [NSString stringWithFormat:@"%@, United Kingdom  ", self.user.city];
     }
