@@ -86,6 +86,16 @@
      self.starView.rating = [user.rating integerValue];
      self.userId = user.id;
     
+    
+    NSString *currentUserId = [[NSUserDefaults standardUserDefaults]objectForKey:kUSER_ID];
+    if([currentUserId isEqualToString:user.id])
+    {
+        self.followButton.alpha = 0.5;
+    } else {
+        
+        self.followButton.alpha = 1;
+    }
+    
     if(self.delegate && [self.delegate respondsToSelector:@selector(hideFollowUnfollowButtonForUserId:)])
     {
         self.followButton.enabled = (![self.delegate hideFollowUnfollowButtonForUserId:self.userId]);

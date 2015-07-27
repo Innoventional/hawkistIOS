@@ -693,6 +693,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 {
     
     NSString *currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:kUSER_ID];
+     
     return  ([currentUserId isEqualToString:userId]);
 }
 

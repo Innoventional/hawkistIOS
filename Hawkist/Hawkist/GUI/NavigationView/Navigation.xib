@@ -37,7 +37,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptk-gz-sxi">
-                    <rect key="frame" x="17" y="21" width="60" height="79"/>
+                    <rect key="frame" x="15" y="12" width="60" height="88"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="R9e-1z-whC"/>
                     </constraints>
@@ -49,8 +49,8 @@
                         <action selector="leftButtonAction:" destination="-1" eventType="touchUpInside" id="ss0-iQ-9JR"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdq-ku-HdW">
-                    <rect key="frame" x="251" y="18" width="54" height="76"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdq-ku-HdW">
+                    <rect key="frame" x="245" y="18" width="60" height="76"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="qBQ-4O-HvY"/>
                     </constraints>
@@ -75,7 +75,7 @@
                 <constraint firstItem="Eh3-R5-HiL" firstAttribute="leading" secondItem="dCt-QH-WQs" secondAttribute="leading" id="WFS-wM-pVg"/>
                 <constraint firstItem="dZw-L5-lOK" firstAttribute="centerY" secondItem="Eh3-R5-HiL" secondAttribute="centerY" constant="6" id="XvE-4C-qYd"/>
                 <constraint firstItem="Eh3-R5-HiL" firstAttribute="top" secondItem="dCt-QH-WQs" secondAttribute="top" id="ZnB-YS-F9U"/>
-                <constraint firstItem="ptk-gz-sxi" firstAttribute="leading" secondItem="dCt-QH-WQs" secondAttribute="leading" constant="17" id="fTR-Wd-r6P"/>
+                <constraint firstItem="ptk-gz-sxi" firstAttribute="leading" secondItem="dCt-QH-WQs" secondAttribute="leading" constant="15" id="fTR-Wd-r6P"/>
                 <constraint firstAttribute="bottom" secondItem="ptk-gz-sxi" secondAttribute="bottom" id="flL-nb-Hnw"/>
                 <constraint firstItem="dZw-L5-lOK" firstAttribute="centerY" secondItem="ptk-gz-sxi" secondAttribute="centerY" id="t28-t5-YfR"/>
                 <constraint firstItem="dZw-L5-lOK" firstAttribute="centerY" secondItem="cdq-ku-HdW" secondAttribute="centerY" id="vJo-Uf-gZZ"/>

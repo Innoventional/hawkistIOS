@@ -161,11 +161,11 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6T-5N-QNn">
-                            <rect key="frame" x="93" y="32" width="14" height="14"/>
+                            <rect key="frame" x="93" y="32" width="20" height="14"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="FI7-72-NFO"/>
-                                <constraint firstAttribute="width" constant="14" id="IPw-Uk-H2Z"/>
+                                <constraint firstAttribute="width" constant="20" id="IPw-Uk-H2Z"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
                             <color key="textColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -210,7 +210,7 @@
                         <constraint firstItem="B6T-5N-QNn" firstAttribute="top" secondItem="nJJ-cC-gUO" secondAttribute="bottom" constant="5" id="d9n-Nv-ZXx"/>
                         <constraint firstItem="vLg-Vs-Qek" firstAttribute="top" secondItem="nJJ-cC-gUO" secondAttribute="bottom" constant="6" id="djC-ht-k10"/>
                         <constraint firstItem="2x2-Cc-Z48" firstAttribute="leading" secondItem="CIj-01-afA" secondAttribute="trailing" constant="1" id="hh2-dS-bC2"/>
-                        <constraint firstItem="IMO-JI-0mL" firstAttribute="leading" secondItem="B6T-5N-QNn" secondAttribute="trailing" constant="8" id="jq6-cA-lWp"/>
+                        <constraint firstItem="IMO-JI-0mL" firstAttribute="leading" secondItem="B6T-5N-QNn" secondAttribute="trailing" constant="2" id="jq6-cA-lWp"/>
                         <constraint firstItem="Y73-ba-JUE" firstAttribute="leading" secondItem="CIj-01-afA" secondAttribute="leading" id="kBH-2g-L0I"/>
                         <constraint firstItem="Y73-ba-JUE" firstAttribute="trailing" secondItem="2x2-Cc-Z48" secondAttribute="trailing" id="kI7-oM-INd"/>
                         <constraint firstItem="0QW-pN-FVA" firstAttribute="bottom" secondItem="CIj-01-afA" secondAttribute="bottom" id="lZe-n0-VMT"/>
