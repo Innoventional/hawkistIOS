@@ -720,9 +720,34 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            NSError* error;
                            HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
                            
-                           item.user_items =  responseObject[@"user_items"];
-                           item.similar_items = responseObject[@"similar_items"];
                            
+                           NSMutableArray *userItemsArray = [NSMutableArray array];
+                           NSArray *tempArray = responseObject[@"user_items"];
+                           NSError *userItemsError;
+                           
+                           for (NSDictionary *dict in tempArray)
+                           {
+                               HWItem *item = [[HWItem alloc]initWithDictionary:dict error:&userItemsError];
+                               [userItemsArray addObject:item];
+                           }
+                           item.user_items = (id)userItemsArray;
+                           
+                           NSMutableArray *similarItemsArray = [NSMutableArray array];
+                           tempArray = responseObject[@"similar_items"];
+                           NSError *similarItemsError;
+                           
+                           for (NSDictionary *dict in tempArray)
+                           {
+                               HWItem *item = [[HWItem alloc]initWithDictionary:dict error:&similarItemsError];
+                               [similarItemsArray addObject:item];
+                           }
+                           item.similar_items = (id)similarItemsArray;
+                           
+                           if(similarItemsError || userItemsError)
+                           {
+                               NSLog(@"%@ - user\n%@ - similar",userItemsError.localizedDescription, similarItemsError.localizedDescription);
+                               return;
+                           }
                            if(error)
                            {
                                failureBlock(error);

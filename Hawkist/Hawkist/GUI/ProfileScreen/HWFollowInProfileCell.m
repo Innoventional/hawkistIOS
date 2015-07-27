@@ -86,9 +86,19 @@
      self.starView.rating = [user.rating integerValue];
      self.userId = user.id;
     
+    
+    NSString *currentUserId = [[NSUserDefaults standardUserDefaults]objectForKey:kUSER_ID];
+    if([currentUserId isEqualToString:user.id])
+    {
+        self.followButton.alpha = 0.5;
+    } else {
+        
+        self.followButton.alpha = 1;
+    }
+    
     if(self.delegate && [self.delegate respondsToSelector:@selector(hideFollowUnfollowButtonForUserId:)])
     {
-        self.followButton.hidden = [self.delegate hideFollowUnfollowButtonForUserId:self.userId];
+        self.followButton.enabled = (![self.delegate hideFollowUnfollowButtonForUserId:self.userId]);
     }
     
     if ([user.follow isEqualToString:@"1"])
@@ -96,14 +106,14 @@
         self.isFollow = YES;
         
         [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
-        
+        self.followButton.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
         
     } else {
         
         self.isFollow = NO;
        
-       [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
-     
+       [self.followButton setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
+        self.followButton.backgroundColor = [UIColor colorWithRed:48./255. green:173./255. blue:148./255. alpha:1];
 
     }
     

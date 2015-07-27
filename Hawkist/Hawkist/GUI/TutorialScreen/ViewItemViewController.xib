@@ -49,6 +49,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewItemViewController">
             <connections>
+                <outlet property="activityIndicator" destination="wq9-kx-Gef" id="8LP-bH-ZPE"/>
                 <outlet property="added" destination="RZb-gx-bJD" id="n0y-29-t09"/>
                 <outlet property="bigImage" destination="Hsl-Tc-dOE" id="55S-ac-vjJ"/>
                 <outlet property="buyThisItem" destination="Rg4-LH-YBt" id="Hje-zt-vsf"/>
@@ -98,7 +99,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2l-Zo-haQ" userLabel="fotki">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="477"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Hsl-Tc-dOE">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hsl-Tc-dOE">
                                     <rect key="frame" x="14" y="44" width="292" height="291"/>
                                     <color key="backgroundColor" red="0.86693102904040398" green="0.86693102904040398" blue="0.86693102904040398" alpha="1" colorSpace="calibratedRGB"/>
                                 </imageView>
@@ -234,12 +235,16 @@
                                         <constraint firstAttribute="height" constant="1" id="O7I-EN-UFf"/>
                                     </constraints>
                                 </view>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wq9-kx-Gef">
+                                    <rect key="frame" x="150" y="180" width="20" height="20"/>
+                                </activityIndicatorView>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="8wo-XK-8rm" firstAttribute="leading" secondItem="I8s-Yh-Jkp" secondAttribute="leading" id="03J-MX-chK"/>
                                 <constraint firstItem="UR7-vb-gl3" firstAttribute="bottom" secondItem="c2g-Gx-pUg" secondAttribute="bottom" constant="3" id="0CH-AM-SRX"/>
                                 <constraint firstItem="L7e-2t-3KG" firstAttribute="leading" secondItem="YR3-wU-mwa" secondAttribute="leading" id="2fi-aB-V4Y"/>
                                 <constraint firstItem="c2g-Gx-pUg" firstAttribute="leading" secondItem="dfC-VT-yYf" secondAttribute="trailing" constant="1" id="3fL-cX-QJx"/>
+                                <constraint firstItem="wq9-kx-Gef" firstAttribute="leading" secondItem="N2l-Zo-haQ" secondAttribute="leading" constant="150" id="4Hc-kj-D8O"/>
                                 <constraint firstAttribute="trailing" secondItem="Fcf-SG-vzr" secondAttribute="trailing" constant="13" id="4R0-ef-jMD"/>
                                 <constraint firstAttribute="bottom" secondItem="Rg4-LH-YBt" secondAttribute="bottom" constant="16" id="4TK-FK-dDI"/>
                                 <constraint firstItem="5nY-34-Nt6" firstAttribute="top" secondItem="5Nd-Tt-GCU" secondAttribute="top" id="4VW-YV-ECp"/>
@@ -276,6 +281,7 @@
                                 <constraint firstItem="ssH-Uv-G7b" firstAttribute="bottom" secondItem="YR3-wU-mwa" secondAttribute="bottom" id="O2B-A5-vtT"/>
                                 <constraint firstItem="sjN-Y7-3hG" firstAttribute="height" secondItem="RSv-5e-TOl" secondAttribute="height" id="QLh-zA-f02"/>
                                 <constraint firstItem="sjN-Y7-3hG" firstAttribute="width" secondItem="5nY-34-Nt6" secondAttribute="width" constant="8" id="Qlc-u5-YvP"/>
+                                <constraint firstItem="wq9-kx-Gef" firstAttribute="top" secondItem="UR7-vb-gl3" secondAttribute="bottom" constant="144" id="Quy-RM-5y5"/>
                                 <constraint firstItem="5Nd-Tt-GCU" firstAttribute="width" secondItem="Lhz-kN-U05" secondAttribute="width" id="RAO-na-ijY"/>
                                 <constraint firstItem="UR7-vb-gl3" firstAttribute="bottom" secondItem="dfC-VT-yYf" secondAttribute="bottom" constant="3" id="RkO-Ld-DvH"/>
                                 <constraint firstItem="L7e-2t-3KG" firstAttribute="top" secondItem="N2l-Zo-haQ" secondAttribute="top" constant="85" id="SLk-SX-lnc"/>
@@ -296,6 +302,7 @@
                                 <constraint firstItem="dfC-VT-yYf" firstAttribute="leading" secondItem="UR7-vb-gl3" secondAttribute="trailing" constant="27" id="f4r-C3-Wof"/>
                                 <constraint firstItem="sjN-Y7-3hG" firstAttribute="width" secondItem="5FJ-rO-ueA" secondAttribute="width" constant="-1" id="fca-Rr-f0u"/>
                                 <constraint firstAttribute="trailing" secondItem="5FJ-rO-ueA" secondAttribute="trailing" id="fdZ-8z-wXF"/>
+                                <constraint firstAttribute="trailing" secondItem="wq9-kx-Gef" secondAttribute="trailing" constant="150" id="fdf-Mq-s6b"/>
                                 <constraint firstItem="sjN-Y7-3hG" firstAttribute="top" secondItem="YR3-wU-mwa" secondAttribute="top" id="g8H-6x-Ozd"/>
                                 <constraint firstItem="UR7-vb-gl3" firstAttribute="baseline" secondItem="Fcf-SG-vzr" secondAttribute="baseline" constant="2" id="g9Y-kJ-eOL"/>
                                 <constraint firstItem="RSv-5e-TOl" firstAttribute="centerX" secondItem="N2l-Zo-haQ" secondAttribute="centerX" id="hev-lj-vjs"/>
@@ -943,7 +950,7 @@
                 <constraint firstItem="xDE-9I-P7A" firstAttribute="leading" secondItem="Noy-fC-lwS" secondAttribute="leading" id="zjq-mz-qWn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="448" y="185.5"/>
+            <point key="canvasLocation" x="522" y="185.5"/>
         </view>
         <tapGestureRecognizer id="uYD-JT-eDb">
             <connections>
@@ -978,7 +985,6 @@
         <image name="fav" width="65" height="65"/>
         <image name="mot2.png" width="527" height="375"/>
         <image name="mot3.png" width="700" height="466"/>
-        <image name="noPhoto" width="689" height="460"/>
         <image name="skidka" width="55" height="31"/>
         <image name="smallButton" width="27" height="20"/>
     </resources>

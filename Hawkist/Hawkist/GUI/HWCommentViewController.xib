@@ -35,7 +35,7 @@
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="J15-0Q-0dE">
                     <rect key="frame" x="0.0" y="65" width="320" height="451"/>
-                    <color key="backgroundColor" red="0.66666666669999997" green="0.67843137249999996" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="jMi-aL-8KS"/>
                         <outlet property="delegate" destination="-1" id="Bkj-KZ-823"/>
@@ -48,15 +48,15 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         </imageView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHS-QY-1tv" customClass="SZTextView">
-                            <rect key="frame" x="18" y="8" width="216" height="34"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <rect key="frame" x="18" y="5" width="216" height="37"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Write a comment"/>
                             </userDefinedRuntimeAttributes>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fM-aA-P9x">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fM-aA-P9x">
                             <rect key="frame" x="244" y="7" width="70" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="CDO-uU-jkL"/>
@@ -82,7 +82,7 @@
                         <constraint firstAttribute="bottom" secondItem="UHS-QY-1tv" secondAttribute="bottom" constant="8" id="7gp-n6-Z3k"/>
                         <constraint firstItem="8fM-aA-P9x" firstAttribute="leading" secondItem="UHS-QY-1tv" secondAttribute="trailing" constant="10" id="JRQ-sB-R15"/>
                         <constraint firstItem="Fo7-tU-vSG" firstAttribute="leading" secondItem="10m-SX-ups" secondAttribute="leading" constant="18" id="JkK-eF-aVV"/>
-                        <constraint firstItem="UHS-QY-1tv" firstAttribute="top" secondItem="10m-SX-ups" secondAttribute="top" constant="8" id="Jzr-aw-24j"/>
+                        <constraint firstItem="UHS-QY-1tv" firstAttribute="top" secondItem="10m-SX-ups" secondAttribute="top" constant="5" id="Jzr-aw-24j"/>
                         <constraint firstItem="UHS-QY-1tv" firstAttribute="leading" secondItem="10m-SX-ups" secondAttribute="leading" constant="18" id="Lmp-55-eWe"/>
                         <constraint firstAttribute="bottom" secondItem="Fo7-tU-vSG" secondAttribute="bottom" constant="8" id="OUV-pg-Fxe"/>
                         <constraint firstAttribute="bottom" secondItem="hbN-q4-xPG" secondAttribute="bottom" id="RdN-GK-VdD"/>
@@ -96,6 +96,7 @@
                         <constraint firstAttribute="trailing" secondItem="8fM-aA-P9x" secondAttribute="trailing" constant="6" id="yar-md-DdG"/>
                     </constraints>
                     <connections>
+                        <outlet property="pressButton" destination="8fM-aA-P9x" id="4Vf-OJ-OAb"/>
                         <outlet property="textView" destination="UHS-QY-1tv" id="UAO-Iv-reQ"/>
                     </connections>
                 </view>
