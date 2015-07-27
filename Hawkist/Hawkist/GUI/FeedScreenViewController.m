@@ -16,6 +16,9 @@
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSString* searchString;
+@property (nonatomic, assign) CGFloat lastHeightCollectionView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCollectionConstraint;
 
 @end
 
@@ -219,14 +222,14 @@
                 }
                 
                 
-                [self.view setNeedsDisplay];
+                  [self reloadScrollViewSize];
                 
             } failureBlock:^(NSError *error) {
                 
                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             }];
 
-            
+       
             
             
         } failureBlock:^(NSError *error) {
@@ -245,6 +248,22 @@
     
 }
 
+- (void) reloadScrollViewSize
+{
+    
+    //reload scroll view size
+    
+    
+    [self.collectionView layoutIfNeeded];
+    [self.scrollView layoutIfNeeded];
+    CGSize size = self.scrollView.contentSize;
+    size.height += self.collectionView.contentSize.height - self.lastHeightCollectionView;
+    
+    self.heightCollectionConstraint.constant = size.height;
+    
+    self.lastHeightCollectionView = self.collectionView.contentSize.height ;
+    
+}
 
 
 #pragma mark -

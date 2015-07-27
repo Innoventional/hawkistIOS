@@ -155,8 +155,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     self.navigationView.delegate = self;
     self.navigationView.title.text = @"Profile";
-    [self.navigationView.title setFont: [UIFont fontWithName:@"OpenSans" size:17]];
-    [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
+   
+  
     [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
  
    
