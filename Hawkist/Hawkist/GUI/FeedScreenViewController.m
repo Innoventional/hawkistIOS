@@ -17,10 +17,6 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSString* searchString;
 
-@property (nonatomic, assign) CGFloat lastHeightCollectionView;
-@property (weak, nonatomic) IBOutlet UIView *viewBottom;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCollection;
-
 @end
 
 @implementation FeedScreenViewController
@@ -217,15 +213,13 @@
                 
                 self.scrollView.scrollEnabled = YES;
                 
-//                if (self.items.count>0)
-//                {
-//                    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-//                }
-//                
-//                
-//                [self.view setNeedsDisplay];
+                if (self.items.count>0)
+                {
+                    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+                }
                 
-                [self reloadScrollViewSize];
+                
+                [self.view setNeedsDisplay];
                 
             } failureBlock:^(NSError *error) {
                 
@@ -248,28 +242,6 @@
     
     
    
-    
-}
-
-
-- (void) reloadScrollViewSize
-{
-    
-    //reload scroll view size
-    
-    
-    [self.collectionView layoutIfNeeded];
-    [self.scrollView layoutIfNeeded];
-    CGSize size = self.scrollView.contentSize;
-    size.height += self.collectionView.contentSize.height - self.lastHeightCollectionView;
-   // self.scrollView.contentSize = size;
-    
-    self.heightCollection.constant = self.collectionView.contentSize.height;
-    
-    
-    
-    
-    self.lastHeightCollectionView = self.collectionView.contentSize.height ;
     
 }
 
