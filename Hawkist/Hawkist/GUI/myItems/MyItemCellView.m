@@ -40,7 +40,7 @@
 - (void) moveToTrash
 {
     
-    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Delete item" message:@"Do you want delete this item?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Are you sure?" message:@"Please confirm that you wish to delete this listing." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
     
     [alert show];
     
@@ -71,6 +71,11 @@
 
 -(void)setItem:(HWItem *)item
 {
+    
+    self.commentsCount.text = item.comments;
+    self.likesCount.text = item.likes;
+    
+    
     self.itemImage.image = nil;
     self.commentsCount.text = item.comments;
     self.likesCount.text = item.likes;

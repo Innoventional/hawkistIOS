@@ -399,7 +399,9 @@
 }
 
 - (IBAction)btnSignUpFB:(id)sender {
+        [self showHud];
     [_socManager loginFacebookSuccess:^(NSDictionary *response) {
+
         [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
 //            _engine.user = user;
 //                _accountDetailVC= [[AccountDetailViewController alloc]init];
@@ -408,11 +410,15 @@
 //                         [self DownloadData];
             
         [self logged:user isLoggedWithFacebook:YES];
+            [self hideHud];
         } failureBlock:^(NSError *error) {
+            [self hideHud];
             [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         }];
         
     } failure:^(NSError *error) {
+        
+        [self hideHud];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         
     }];
@@ -461,7 +467,7 @@
     
         [_txtCode resignFirstResponder];
     
-    
+    [self showHud];
     [_networkManager loginWithPhoneNumber:_txtNumber.text pin:_txtCode.text successBlock:^(HWUser *user) {
 ////            _accountDetailVC= [[AccountDetailViewController alloc]init];
 ////        _accountDetailVC.isLogeedWithFacebook = NO;
@@ -472,9 +478,10 @@
         [self logged:user isLoggedWithFacebook:NO];
         _engine.number = user.phone;
                 _engine.pin = _txtCode.text;
-        
+        [self hideHud];
     } failureBlock:^(NSError *error) {
        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        [self hideHud];
     }];
 
 }
@@ -482,7 +489,6 @@
 
 - (void) logged:(HWUser*) user isLoggedWithFacebook: (BOOL) FaceBook
 {
-     
     [_networkManager getListOfTags:^(NSMutableArray *tags) {
         
          _engine.user = user;
@@ -532,7 +538,10 @@
 }
 
 - (IBAction)btnSignInFB:(id)sender {
+    [self showHud];
     [_socManager loginFacebookSuccess:^(NSDictionary *response) {
+        
+    
         [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
 //            _engine.user = user;
 //                _accountDetailVC= [[AccountDetailViewController alloc]init];
@@ -540,12 +549,14 @@
 //            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
 //            
         [self logged:user isLoggedWithFacebook:YES];
-            
+            [self hideHud];
         } failureBlock:^(NSError *error) {
-         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+            [self hideHud];
+                     [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         }];
         
     } failure:^(NSError *error) {
+        [self hideHud];
        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
 }
@@ -565,6 +576,7 @@
 }
 
 - (IBAction)btnSignInMobile:(id)sender {
+    [self showHud];
     [_networkManager loginWithPhoneNumber:_txtMobileNum.text pin:_txtPin.text successBlock:^(HWUser *user) {
 //        _engine.user = user;
 //            _accountDetailVC= [[AccountDetailViewController alloc]init];
@@ -574,13 +586,15 @@
         
         _engine.number = user.phone;
         _engine.pin = _txtPin.text;
+        
+        [self hideHud];
 //        [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
      //    [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
         //[self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
   
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        
+        [self hideHud];
     }];
 
 }

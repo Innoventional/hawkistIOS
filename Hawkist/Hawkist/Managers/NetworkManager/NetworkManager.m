@@ -651,6 +651,53 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        }];
 }
 
+
+- (void) updateItem: (HWItem*) item
+       successBlock: (void (^)(HWItem* item)) successBlock
+       failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    if(!item)
+    {
+        NSLog(@"No item to create");
+        failureBlock([NSError errorWithDomain: @"No item to create" code: 101 userInfo: nil]);
+        return;
+    }
+    
+    NSDictionary* params = [item toDictionary];
+    
+    [self.networkDecorator PUT: @"listings"
+                     parameters: params
+     
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
+                                
+                                return;
+                            }
+                            
+                            NSError* error;
+                            HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
+                            
+                            if(error)
+                            {
+                                failureBlock(error);
+                                return;
+                            }
+                            
+                            successBlock(item);
+                            
+                        }
+                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
+                        }];
+}
+
 - (void) getItemById: (NSString*) itemId
         successBlock: (void (^)(HWItem* item)) successBlock
         failureBlock: (void (^)(NSError* error)) failureBlock

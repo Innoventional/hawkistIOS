@@ -14,6 +14,8 @@
 #import "HWTag+Extensions.h"
 #import "BuyThisItemViewController.h"
 #import "HWProfileViewController.h"
+#import "SellAnItemViewController.h"
+
 
 #import "HWCommentViewController.h"
 
@@ -59,6 +61,8 @@
             
             
             
+            
+            
         }
         
       
@@ -69,11 +73,6 @@
     }
 
 
-- (void) leftButtonClick
-{
-    [self.navigationController popViewControllerAnimated:YES];
-    [self updateItem];
-}
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -93,7 +92,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationView.title.text = @"View Item";
+    
+    if ([self.item.user_id isEqualToString:[AppEngine shared].user.id])
+    {
+        self.navigationView.rightButtonOutlet.enabled = YES;
+        [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
+
+    }
+    else
+    {
+        self.navigationView.rightButtonOutlet.enabled = NO;
+    }
+    
+    
+       self.navigationView.title.text = @"View Item";
     
     _starRatingControl.delegate = self;
     
@@ -120,7 +132,7 @@
 #pragma mark implementation model user and item
     
       
-    self.sellerAvatar.layer.cornerRadius = self.sellerAvatar.frame.size.height /2;
+    self.sellerAvatar.layer.cornerRadius = self.sellerAvatar.frame.size.width /2;
     self.sellerAvatar.layer.masksToBounds = YES;
     self.sellerAvatar.layer.borderWidth = 0;
     
@@ -139,6 +151,64 @@
  
     
 }
+
+
+#pragma mark -
+#pragma mark Navigation Delegate
+
+- (void) leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    [self updateItem];
+}
+
+- (void) rightButtonClick
+{
+        UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil
+                                                           delegate: self
+                                                  cancelButtonTitle: @"Cancel"
+                                             destructiveButtonTitle: nil
+                                                  otherButtonTitles: @"Edit", nil];
+        popup.tag = 1;
+    
+    [popup showInView:self.view];
+
+     
+    }
+    
+- (void) actionSheet: (UIActionSheet*) popup
+         clickedButtonAtIndex: (NSInteger) buttonIndex
+    {
+        switch (popup.tag)
+        {
+            case 1:
+            {
+                switch (buttonIndex)
+                {
+                    case 0:
+                    {
+                        SellAnItemViewController* vc = [[SellAnItemViewController alloc]initWithItem:self.item];
+                        
+                        [self.navigationController pushViewController:vc animated:NO];
+                         
+                        break;
+                    }
+                    default:
+                        break;
+                }
+                break;
+            }
+            default:
+                break;
+                
+        }
+    }
+
+
+
+
+
+
 #pragma mark - update item
 - (void) updateItem
 {
@@ -280,7 +350,7 @@
             }
             case 1:
             {
-                [self.smallImage1 setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage: nil];
+                [self.smallImage1 setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage:nil];
                 break;
             }
             case 2:

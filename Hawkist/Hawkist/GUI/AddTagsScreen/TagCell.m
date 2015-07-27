@@ -21,9 +21,9 @@
         CGSize myStringSize = [self getSize:text];
         
         if ((myStringSize.width*1.5)<50)
-            sub.frame = CGRectMake(0, 0, 50, myStringSize.height*2.5);
+            sub.frame = CGRectMake(0, 0, 50, 35);
         else
-        sub.frame = CGRectMake(0, 0, myStringSize.width*1.5, myStringSize.height*2.5);
+        sub.frame = CGRectMake(0, 0, myStringSize.width*1.5, 35);
         
         self.label.text = text;
         
@@ -50,6 +50,8 @@
 - (IBAction)click:(id)sender {
     
     self.image.image = [UIImage imageNamed:@"tag6"];
+    
+    self.label.textColor = [UIColor whiteColor];
     
     if (self.delegate && [self.delegate respondsToSelector: @selector(clicked:)])
         [self.delegate clicked:self.tagId];

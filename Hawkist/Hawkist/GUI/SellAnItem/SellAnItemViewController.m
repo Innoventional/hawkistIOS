@@ -13,6 +13,7 @@
 #import "ChoiceTableViewController.h"
 #import "NetworkManager.h"
 #import "AppEngine.h"
+#import "HWTag+Extensions.h"
 
 #import "AWSS3Manager.h"
 
@@ -36,6 +37,9 @@
 @property (nonatomic,strong)NSString* img3Url;
 
 @property (nonatomic,weak) AppEngine* engine;
+
+@property (nonatomic,assign)BOOL isCreate;
+@property (nonatomic,strong)NSString* itemId;
 
 @end
 
@@ -110,10 +114,187 @@
     return self;
 }
 
+- (instancetype) initWithItem:(HWItem*)currentItem
+{
+    if (self = [self init])
+    {
+        HWTag* currentTag = [HWTag getPlatformById:currentItem.platform from:self.tags];
+        
+        HWCategory* currentCategory = [HWTag getCategoryById:currentItem.category from:currentTag.categories];
+        
+        HWSubCategories* currentSubCategory = [HWTag getSubCategoryById:currentItem.subcategory from:currentCategory.subcategories];
+        
+        HWColor* currentColor = [HWTag getColorById:currentItem.color from:currentSubCategory.color];
+        
+        HWCondition* currentCondition = [HWTag getConditionById:currentItem.condition from:currentSubCategory.condition];
+        
+        
+        
+        platform.Text.textColor = self.textColor;
+        category.Text.textColor = self.textColor;
+        color.Text.textColor = self.textColor;
+        condition.Text.textColor = self.textColor;
+        
+        
+        titleField.text = currentItem.title;
+        descriptionField.text = currentItem.item_description;
+        descriptionField.textColor = self.textColor;
+        
+        color.isEnabled = YES;
+        condition.isEnabled = YES;
+        category.isEnabled = YES;
+        
+        
+        platform.Text.text = currentTag.name;
+        platform.Text.tag = currentItem.platform;
+        
+        self.idCategory = [currentCategory.id integerValue];
+        category.Text.text = currentCategory.name;
+        category.Text.tag = [currentSubCategory.id integerValue];
+        
+        color.Text.text = currentColor.name;
+        color.Text.tag = [currentColor.id integerValue];
+        
+        condition.Text.text = currentCondition.name;
+        condition.Text.tag = [currentCondition.id integerValue];
+        
+
+        if (currentSubCategory.color.count == 1 && [((HWColor*)[((NSArray*)currentSubCategory.color) firstObject]).code isEqual:@""])
+        {
+            color.notApplicable = YES;
+            color.isEnabled = YES;
+        }
+        else
+        {
+            color.isEnabled = YES;
+            color.notApplicable = NO;
+        }
+
+        
+        
+        
+        self.tempTagsForCategory = currentTag.categories;
+        self.tempTagsForCondition = currentSubCategory.condition;
+        self.tempTagsForColor = currentSubCategory.color;
+        
+        
+        
+        
+        retailPrice.textField.text = currentItem.retail_price;
+        sellingPrice.textField.text = currentItem.selling_price;
+        
+        float val =  [currentItem.selling_price floatValue]*0.875;
+        youGetLabel.text = [NSString stringWithFormat:@"%.2f.", val];
+
+        
+        if ([currentItem.shipping_price doubleValue]>0)
+        {
+            priceForShipping.textField.text =  currentItem.shipping_price;
+            checkBox1.selected = YES;
+            priceForShipping.textField.enabled = YES;
+            priceForShipping.textField.textColor = self.textColor;
+             priceForShipping.label.textColor = self.textColor;
+        }
+        else
+        {
+            checkBox1.selected = NO;
+            priceForShipping.textField.enabled = NO;
+            priceForShipping.textField.textColor = self.placeHolderColor;
+             priceForShipping.label.textColor = self.placeHolderColor;
+        }
+        
+        checkBox2.selected = currentItem.collection_only;
+       
+        postField.text = currentItem.post_code;
+
+        postLabel.text = currentItem.city;
+        
+        [self setImages:currentItem.photos];
+        
+
+        
+        
+        
+        
+//        NSMutableArray* tmpArrayForImage = [[NSMutableArray alloc]init];
+//        
+//        if (self.barUrl)
+//            [tmpArrayForImage addObject:self.barUrl];
+//        
+//        
+//        if (self.img1Url)
+//            [tmpArrayForImage addObject:self.img1Url];
+//        
+//        
+//        if (self.img2Url)
+//            [tmpArrayForImage addObject:self.img2Url];
+//        
+//        if (self.img3Url)
+//            [tmpArrayForImage addObject:self.img3Url];
+//        
+//        
+//        
+//        currentItem.photos = [NSArray arrayWithArray:tmpArrayForImage];
+        
+        
+        [self.sellButton setTitle:@"Save" forState:UIControlStateNormal];
+        
+        self.sellButton.enabled = YES;
+        self.itemId = currentItem.id;
+        
+        self.isCreate = NO;
+        
+    }
+
+    return self;
+}
+
+
+- (void) setImages:(NSArray*)imagesArray
+{
+    for(NSInteger index = 0; index < imagesArray.count; index++)
+    {
+        switch (index) {
+            case 0:
+            {
+                [self.barCode setImageWithURL: [NSURL URLWithString: [imagesArray objectAtIndex: index]] placeholderImage: nil];
+                
+                self.barUrl = [imagesArray objectAtIndex: index];
+                break;
+            }
+            case 1:
+            {
+                [self.takePic1 setImageWithURL: [NSURL URLWithString: [imagesArray objectAtIndex: index]] placeholderImage:nil];
+                self.img1Url = [imagesArray objectAtIndex: index];
+                break;
+            }
+            case 2:
+            {
+                [self.takePic2 setImageWithURL: [NSURL URLWithString: [imagesArray objectAtIndex: index]] placeholderImage: nil];
+                self.img2Url = [imagesArray objectAtIndex: index];
+                break;
+            }
+            case 3:
+            {
+                [self.takePic3 setImageWithURL: [NSURL URLWithString: [imagesArray objectAtIndex: index]] placeholderImage: nil];
+                self.img3Url = [imagesArray objectAtIndex: index];
+                break;
+            }
+            default:
+                break;
+        }
+        
+}
+}
+
+
 
 - (void) initDefault
 {
-
+    
+    self.sellButton.enabled = NO;
+    self.isCreate = YES;
+    
      self.placeHolderColor = descriptionField.textColor;
      self.textColor = titleField.textColor;
     
@@ -191,7 +372,9 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if (textField == postField)
+    self.sellButton.enabled = NO;
+    
+    if (textField == postField && [textField.text isEqualToString:@""])
     {
         self.sellButton.enabled = NO;
     }
@@ -203,24 +386,29 @@
     
     if (textField == postField)
     {
-        self.sellButton.enabled = YES;
+        
        if (textField.text.length>0)
        {
+           
         [self showHud];
         [netManager getCityByPostCode:textField.text successBlock:^(NSString *city) {
             [self hideHud];
             postLabel.text = city;
+            self.sellButton.enabled = YES;
+            
             
         }
             failureBlock:^(NSError *error) {
             [self hideHud];
            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                self.sellButton.enabled = NO;
                 
         }];
         }
         else
         {
             postLabel.text = @"Enter post code";
+            self.sellButton.enabled = NO;
         }
     }
     
@@ -328,7 +516,8 @@
     
 
     [self showHud];
-    
+
+    if (self.isCreate)
     [netManager createItem:currentItem successBlock:^(HWItem *item) {
         
         NSLog(@"--------------------------Saved");
@@ -343,6 +532,23 @@
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }
      ];
+    else
+    { currentItem.id = self.itemId ;
+        [netManager updateItem:currentItem successBlock:^(HWItem *item) {
+            
+            NSLog(@"--------------------------updated");
+            [self hideHud];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            engine.city = postLabel.text;
+            engine.postCode = postField.text;
+            
+        } failureBlock:^(NSError *error) {
+            [self hideHud];
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        }
+         ];
+    }
     
 }
 
@@ -651,14 +857,27 @@
 }
 
 
-- (void) moneyField:(id)sender ModifyTo:(NSString *)value
+- (void) moneyFieldDidBeginEditing:(id)sender
+{
+    self.sellButton.enabled = NO;
+}
+
+- (void) moneyFieldPriceToHight:(id)sender
+{
+   [[[UIAlertView alloc]initWithTitle:@"Price Too High" message:@"You cannot set a price which is greater than £5000." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    
+    self.sellButton.enabled = NO;
+}
+
+- (void) moneyField:(id)sender modifyTo:(NSString *)value
 {
     if (sender == sellingPrice)
     {
-        
         float val =  [value floatValue]*0.875;
         youGetLabel.text = [NSString stringWithFormat:@"%.2f.", val];
     }
+    
+    self.sellButton.enabled = YES;
 }
 
 - (void) SelectedItemFrom:(id)sender WithItem:(NSObject *)selection

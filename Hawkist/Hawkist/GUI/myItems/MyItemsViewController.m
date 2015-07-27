@@ -118,6 +118,7 @@
 - (void)refresh
 {
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching listings..."];
+    [self.refreshControl beginRefreshing];
     
     [[NetworkManager shared] getItemsByUserId:[AppEngine shared].user.id successBlock:^(NSArray *arrayWithItems) {
         

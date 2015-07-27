@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet NavigationVIew *nav;
 
+- (instancetype) initWithItem:(HWItem*)currentItem;
 
 @property (weak, nonatomic) IBOutlet UIImageView *barCode;
 @property (weak, nonatomic) IBOutlet UIImageView *takePic1;

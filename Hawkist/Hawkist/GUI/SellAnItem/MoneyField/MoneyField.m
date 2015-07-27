@@ -49,6 +49,13 @@
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (self.delegate && [self.delegate respondsToSelector: @selector(moneyFieldDidBeginEditing:)])
+        [self.delegate moneyFieldDidBeginEditing:self];
+}
+
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
 
@@ -57,15 +64,32 @@
         textField.text=@"0.00";
     }
     
+    
     NSString *newString = textField.text;
     NSArray  *arrayOfString = [newString componentsSeparatedByString:@"."];
     
     if ([arrayOfString count] == 1 )
         textField.text=[textField.text stringByAppendingString:@".00"];
     
-    if (self.delegate && [self.delegate respondsToSelector: @selector(moneyField:modifyTo:)])
-        [self.delegate moneyField:self modifyTo:textField.text];
-
+    if ([textField.text doubleValue] > 5000)
+    {
+        if (self.delegate && [self.delegate respondsToSelector: @selector(moneyFieldPriceToHight:)])
+            [self.delegate moneyFieldPriceToHight:self];
+        
+        textField.text = @"0.00";
+    }
+    else
+    
+    {
+       NSString* result = [NSString stringWithFormat:@"%0.2f", [textField.text doubleValue]];
+        
+        
+        textField.text = result;
+        if (self.delegate && [self.delegate respondsToSelector: @selector(moneyField:modifyTo:)])
+        [self.delegate moneyField:self modifyTo:result];
+    
+    
+    }
     return YES;
 }
 

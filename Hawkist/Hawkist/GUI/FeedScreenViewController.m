@@ -66,7 +66,7 @@
     
     self.addTagsView.delegate = self;
 
-    
+  
     
 }
 
@@ -74,6 +74,11 @@
 {
     [self refresh];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [self refresh];
 }
 
 - (void)viewDidLoad {
