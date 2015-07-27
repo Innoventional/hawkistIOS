@@ -86,11 +86,11 @@
         if (![self.subviews containsObject:cell])
             [self addSubview:cell];
        
-        if (self.startPositionX + cell.width + 20 < self.width)
+        if (self.startPositionX + cell.width + 17 < self.width)
         {
             [cell setPostion:CGPointMake(self.startPositionX, self.startPositionY)];
             
-            self.startPositionX+=cell.width+20;
+            self.startPositionX+=cell.width+17;
             
         }
         
@@ -103,10 +103,10 @@
             
             
             self.startPositionX = 0;
-            self.startPositionY += 70;
+            self.startPositionY += 55;
             
             [cell setPostion:CGPointMake(self.startPositionX, self.startPositionY)];
-             self.startPositionX+=cell.width+20;
+             self.startPositionX+=cell.width+17;
 
         }
         

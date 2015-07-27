@@ -14,6 +14,8 @@
 #import "HWTag+Extensions.h"
 #import "BuyThisItemViewController.h"
 #import "HWProfileViewController.h"
+#import "SellAnItemViewController.h"
+
 
 #import "HWCommentViewController.h"
 
@@ -70,26 +72,24 @@
     }
 
 
-- (void) viewDidAppear:(BOOL)animated
-{
-//[self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
-}
-
-- (void) leftButtonClick
-{
-    [self.navigationController popViewControllerAnimated:YES];
-    [self updateItem];
-}
-
-- (void) rightButtonClick
-{
-   // [self showAlertWithTitle:@"Navigation" Message:@"Ok"];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationView.title.text = @"View Item";
+    
+    if ([self.item.user_id isEqualToString:[AppEngine shared].user.id])
+    {
+        self.navigationView.rightButtonOutlet.enabled = YES;
+        [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
+
+    }
+    else
+    {
+        self.navigationView.rightButtonOutlet.enabled = NO;
+    }
+    
+    
+       self.navigationView.title.text = @"View Item";
     
     _starRatingControl.delegate = self;
     
@@ -135,6 +135,64 @@
  
     
 }
+
+
+#pragma mark -
+#pragma mark Navigation Delegate
+
+- (void) leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    [self updateItem];
+}
+
+- (void) rightButtonClick
+{
+        UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil
+                                                           delegate: self
+                                                  cancelButtonTitle: @"Cancel"
+                                             destructiveButtonTitle: nil
+                                                  otherButtonTitles: @"Edit", nil];
+        popup.tag = 1;
+    
+    [popup showInView:self.view];
+
+     
+    }
+    
+- (void) actionSheet: (UIActionSheet*) popup
+         clickedButtonAtIndex: (NSInteger) buttonIndex
+    {
+        switch (popup.tag)
+        {
+            case 1:
+            {
+                switch (buttonIndex)
+                {
+                    case 0:
+                    {
+                        SellAnItemViewController* vc = [[SellAnItemViewController alloc]initWithItem:self.item];
+                        
+                        [self.navigationController pushViewController:vc animated:NO];
+                         
+                        break;
+                    }
+                    default:
+                        break;
+                }
+                break;
+            }
+            default:
+                break;
+                
+        }
+    }
+
+
+
+
+
+
 #pragma mark - update item
 - (void) updateItem
 {

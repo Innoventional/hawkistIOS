@@ -15,6 +15,6 @@
     [super keyMapper];
     return [[JSONKeyMapper alloc] initWithDictionary:@{
                                                        @"description": @"item_description"
-                                                       }];
+                                                                    }];
 }
 @end

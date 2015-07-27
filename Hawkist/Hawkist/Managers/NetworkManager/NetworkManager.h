@@ -94,6 +94,12 @@
        successBlock: (void (^)(HWItem* item)) successBlock
        failureBlock: (void (^)(NSError* error)) failureBlock;
 
+// update an item
+- (void) updateItem: (HWItem*) item
+       successBlock: (void (^)(HWItem* item)) successBlock
+       failureBlock: (void (^)(NSError* error)) failureBlock;
+
+
 // get item by id
 - (void) getItemById: (NSString*) itemId
         successBlock: (void (^)(HWItem* item)) successBlock
