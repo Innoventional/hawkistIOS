@@ -191,7 +191,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if (textField == postField)
+    if (textField == postField && [textField.text isEqualToString:@""])
     {
         self.sellButton.enabled = NO;
     }
@@ -203,24 +203,29 @@
     
     if (textField == postField)
     {
-        self.sellButton.enabled = YES;
+        
        if (textField.text.length>0)
        {
+           
         [self showHud];
         [netManager getCityByPostCode:textField.text successBlock:^(NSString *city) {
             [self hideHud];
             postLabel.text = city;
+            self.sellButton.enabled = YES;
+            
             
         }
             failureBlock:^(NSError *error) {
             [self hideHud];
            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                self.sellButton.enabled = NO;
                 
         }];
         }
         else
         {
             postLabel.text = @"Enter post code";
+            self.sellButton.enabled = NO;
         }
     }
     
@@ -651,11 +656,10 @@
 }
 
 
-- (void) moneyField:(id)sender ModifyTo:(NSString *)value
+- (void) moneyField:(id)sender modifyTo:(NSString *)value
 {
     if (sender == sellingPrice)
     {
-        
         float val =  [value floatValue]*0.875;
         youGetLabel.text = [NSString stringWithFormat:@"%.2f.", val];
     }

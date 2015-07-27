@@ -51,6 +51,8 @@
     
     self.image.image = [UIImage imageNamed:@"tag6"];
     
+    self.label.textColor = [UIColor whiteColor];
+    
     if (self.delegate && [self.delegate respondsToSelector: @selector(clicked:)])
         [self.delegate clicked:self.tagId];
     

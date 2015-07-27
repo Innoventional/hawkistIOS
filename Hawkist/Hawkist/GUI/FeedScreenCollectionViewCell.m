@@ -78,7 +78,7 @@
     self.layer.cornerRadius = 5.0f;
     self.layer.masksToBounds = YES;
     
-    self.avatarImage.layer.cornerRadius = self.avatarImage.frame.size.height /2;
+    self.avatarImage.layer.cornerRadius = self.avatarImage.frame.size.width /2;
     self.avatarImage.layer.masksToBounds = YES;
     self.avatarImage.layer.borderWidth = 0;
     

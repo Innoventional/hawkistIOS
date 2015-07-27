@@ -22,6 +22,7 @@
 		3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366761B30668E00208FC5 /* LoginViewController.m */; };
 		3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366801B31A85900208FC5 /* AccountDetailView.xib */; };
 		3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */; };
+		3A8679A11B65B315009659BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8679A01B65B315009659BF /* Images.xcassets */; };
 		3A968E161B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */; };
 		3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E181B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		3A968E221B4A8542005AA347 /* ChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E211B4A8542005AA347 /* ChoiceTableViewController.m */; };
@@ -67,7 +68,6 @@
 		C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C191B2F2DF7002E1F26 /* main.m */; };
 		C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */; };
 		C35A4C201B2F2DF7002E1F26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C1F1B2F2DF7002E1F26 /* ViewController.m */; };
-		C35A4C251B2F2DF7002E1F26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35A4C241B2F2DF7002E1F26 /* Images.xcassets */; };
 		C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35A4C261B2F2DF7002E1F26 /* LaunchScreen.xib */; };
 		C35A4C341B2F2DF8002E1F26 /* HawkistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C331B2F2DF8002E1F26 /* HawkistTests.m */; };
 		C35A4C441B302D05002E1F26 /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C431B302D05002E1F26 /* HWBaseViewController.m */; };
@@ -150,6 +150,7 @@
 		3A8366801B31A85900208FC5 /* AccountDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetailView.xib; sourceTree = "<group>"; };
 		3A8366821B31AAAD00208FC5 /* AccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountDetailViewController.h; path = AccountDetail/AccountDetailViewController.h; sourceTree = "<group>"; };
 		3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountDetailViewController.m; path = AccountDetail/AccountDetailViewController.m; sourceTree = "<group>"; };
+		3A8679A01B65B315009659BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Hawkist/Images.xcassets; sourceTree = "<group>"; };
 		3A968E141B468EBB005AA347 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		3A968E171B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
@@ -218,7 +219,6 @@
 		C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C35A4C1E1B2F2DF7002E1F26 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C35A4C1F1B2F2DF7002E1F26 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		C35A4C241B2F2DF7002E1F26 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C35A4C271B2F2DF7002E1F26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C35A4C2D1B2F2DF8002E1F26 /* HawkistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HawkistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35A4C321B2F2DF8002E1F26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -555,6 +555,7 @@
 		C35A4C0B1B2F2DF7002E1F26 = {
 			isa = PBXGroup;
 			children = (
+				3A8679A01B65B315009659BF /* Images.xcassets */,
 				C35A4C161B2F2DF7002E1F26 /* Hawkist */,
 				C35A4C301B2F2DF8002E1F26 /* HawkistTests */,
 				C35A4C151B2F2DF7002E1F26 /* Products */,
@@ -583,7 +584,6 @@
 				C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */,
 				C35A4C1E1B2F2DF7002E1F26 /* ViewController.h */,
 				C35A4C1F1B2F2DF7002E1F26 /* ViewController.m */,
-				C35A4C241B2F2DF7002E1F26 /* Images.xcassets */,
 				C35A4C261B2F2DF7002E1F26 /* LaunchScreen.xib */,
 				C35A4C171B2F2DF7002E1F26 /* Supporting Files */,
 			);
@@ -916,6 +916,7 @@
 				3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
+				3A8679A11B65B315009659BF /* Images.xcassets in Resources */,
 				CE59094C1B5E9DD600DAA7FF /* HWCommentViewController.xib in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
@@ -935,7 +936,6 @@
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
 				7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */,
 				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
-				C35A4C251B2F2DF7002E1F26 /* Images.xcassets in Resources */,
 				3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
 				7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */,

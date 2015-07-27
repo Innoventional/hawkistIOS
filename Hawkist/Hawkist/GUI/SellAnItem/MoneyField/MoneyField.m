@@ -64,11 +64,24 @@
     if ([arrayOfString count] == 1 )
         textField.text=[textField.text stringByAppendingString:@".00"];
     
+    if ([textField.text doubleValue] > 5000)
+    {
+        [[[UIAlertView alloc]initWithTitle:@"Price Too High" message:@"You cannot set a price which is greater than £5000." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        
+        textField.text = @"5000";
+    }
+    else
+    
+    {
+       NSString* result = [NSString stringWithFormat:@"%0.2f", [textField.text doubleValue]];
+        
+        
+        textField.text = result;
+        if (self.delegate && [self.delegate respondsToSelector: @selector(moneyField:modifyTo:)])
+        [self.delegate moneyField:self modifyTo:result];
     
     
-    if (self.delegate && [self.delegate respondsToSelector: @selector(moneyField:modifyTo:)])
-        [self.delegate moneyField:self modifyTo:textField.text];
-
+    }
     return YES;
 }
 

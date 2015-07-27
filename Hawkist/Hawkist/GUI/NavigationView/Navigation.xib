@@ -36,7 +36,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptk-gz-sxi">
-                    <rect key="frame" x="20" y="21" width="60" height="79"/>
+                    <rect key="frame" x="20" y="20" width="60" height="80"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="R9e-1z-whC"/>
                     </constraints>
@@ -47,14 +47,14 @@
                         <action selector="leftButtonAction:" destination="-1" eventType="touchUpInside" id="ss0-iQ-9JR"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdq-ku-HdW">
-                    <rect key="frame" x="258" y="18" width="54" height="76"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdq-ku-HdW">
+                    <rect key="frame" x="240" y="20" width="60" height="74"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="54" id="qBQ-4O-HvY"/>
+                        <constraint firstAttribute="width" constant="60" id="qBQ-4O-HvY"/>
                     </constraints>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title=" ">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -66,17 +66,17 @@
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Eh3-R5-HiL" secondAttribute="bottom" id="00u-Lq-Gm6"/>
-                <constraint firstItem="ptk-gz-sxi" firstAttribute="top" secondItem="dCt-QH-WQs" secondAttribute="top" constant="21" id="13H-xh-HNd"/>
+                <constraint firstItem="ptk-gz-sxi" firstAttribute="top" secondItem="dCt-QH-WQs" secondAttribute="top" constant="20" id="13H-xh-HNd"/>
                 <constraint firstAttribute="trailing" secondItem="Eh3-R5-HiL" secondAttribute="trailing" id="3Lg-0B-hVU"/>
                 <constraint firstItem="dZw-L5-lOK" firstAttribute="centerX" secondItem="Eh3-R5-HiL" secondAttribute="centerX" constant="0.5" id="5Sb-E0-qH9"/>
                 <constraint firstAttribute="bottom" secondItem="cdq-ku-HdW" secondAttribute="bottom" constant="6" id="DCg-yF-Bae"/>
-                <constraint firstAttribute="trailing" secondItem="cdq-ku-HdW" secondAttribute="trailing" constant="8" id="Pon-WF-pNO"/>
+                <constraint firstAttribute="trailing" secondItem="cdq-ku-HdW" secondAttribute="trailing" constant="20" id="Pon-WF-pNO"/>
                 <constraint firstItem="Eh3-R5-HiL" firstAttribute="leading" secondItem="dCt-QH-WQs" secondAttribute="leading" id="WFS-wM-pVg"/>
                 <constraint firstItem="dZw-L5-lOK" firstAttribute="centerY" secondItem="Eh3-R5-HiL" secondAttribute="centerY" constant="6" id="XvE-4C-qYd"/>
                 <constraint firstItem="Eh3-R5-HiL" firstAttribute="top" secondItem="dCt-QH-WQs" secondAttribute="top" id="ZnB-YS-F9U"/>
                 <constraint firstItem="ptk-gz-sxi" firstAttribute="leading" secondItem="dCt-QH-WQs" secondAttribute="leading" constant="20" id="fTR-Wd-r6P"/>
                 <constraint firstAttribute="bottom" secondItem="ptk-gz-sxi" secondAttribute="bottom" id="flL-nb-Hnw"/>
-                <constraint firstItem="cdq-ku-HdW" firstAttribute="top" secondItem="dCt-QH-WQs" secondAttribute="top" constant="18" id="jna-jL-t12"/>
+                <constraint firstItem="cdq-ku-HdW" firstAttribute="top" secondItem="dCt-QH-WQs" secondAttribute="top" constant="20" id="jna-jL-t12"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="247" y="148"/>

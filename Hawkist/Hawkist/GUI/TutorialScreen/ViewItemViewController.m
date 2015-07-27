@@ -58,6 +58,8 @@
             
             
             
+            
+            
         }
         
       
@@ -68,10 +70,20 @@
     }
 
 
+- (void) viewDidAppear:(BOOL)animated
+{
+//[self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
+}
+
 - (void) leftButtonClick
 {
     [self.navigationController popViewControllerAnimated:YES];
     [self updateItem];
+}
+
+- (void) rightButtonClick
+{
+   // [self showAlertWithTitle:@"Navigation" Message:@"Ok"];
 }
 
 - (void)viewDidLoad {
@@ -104,7 +116,7 @@
 #pragma mark implementation model user and item
     
       
-    self.sellerAvatar.layer.cornerRadius = self.sellerAvatar.frame.size.height /2;
+    self.sellerAvatar.layer.cornerRadius = self.sellerAvatar.frame.size.width /2;
     self.sellerAvatar.layer.masksToBounds = YES;
     self.sellerAvatar.layer.borderWidth = 0;
     
@@ -230,7 +242,7 @@
             }
             case 1:
             {
-                [self.smallImage1 setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage: nil];
+                [self.smallImage1 setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage:nil];
                 break;
             }
             case 2:

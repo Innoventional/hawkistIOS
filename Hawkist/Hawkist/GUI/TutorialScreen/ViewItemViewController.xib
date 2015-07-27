@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -31,6 +30,7 @@
             <string>OpenSans-Semibold</string>
         </mutableArray>
         <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -108,7 +108,7 @@
                                         <constraint firstAttribute="width" constant="207" id="fhb-79-TNr"/>
                                         <constraint firstAttribute="height" constant="28" id="sU3-ss-B0t"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                     <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -352,7 +352,7 @@
                                         <action selector="askButton:" destination="-1" eventType="touchUpInside" id="Pgv-Cx-a1c"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="OjR-qP-LPr">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="OjR-qP-LPr">
                                     <rect key="frame" x="12" y="12" width="33" height="32"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIr-Nv-oTn">
@@ -803,7 +803,7 @@
                                 <constraint firstItem="RZb-gx-bJD" firstAttribute="leading" secondItem="BMu-QI-pmB" secondAttribute="leading" id="KAX-uk-sRD"/>
                                 <constraint firstItem="tHq-0k-NUk" firstAttribute="top" secondItem="6AF-2b-d9S" secondAttribute="bottom" constant="1" id="KtI-qp-mSv"/>
                                 <constraint firstItem="Jkl-TP-E6E" firstAttribute="centerY" secondItem="e0W-59-Pim" secondAttribute="centerY" id="LNn-XN-mR4"/>
-                                <constraint firstItem="ryb-mr-4Id" firstAttribute="leading" secondItem="gSa-86-U0O" secondAttribute="trailing" constant="-2" id="LVX-Po-wCX"/>
+                                <constraint firstItem="ryb-mr-4Id" firstAttribute="leading" secondItem="gSa-86-U0O" secondAttribute="trailing" constant="2" id="LVX-Po-wCX"/>
                                 <constraint firstItem="MDo-ZY-6me" firstAttribute="height" secondItem="RpC-Hs-FoM" secondAttribute="height" id="MTu-Eq-Hig"/>
                                 <constraint firstItem="Jkl-TP-E6E" firstAttribute="leading" secondItem="BzK-lv-3dw" secondAttribute="leading" id="N98-rs-xQT"/>
                                 <constraint firstItem="MDo-ZY-6me" firstAttribute="centerX" secondItem="RpC-Hs-FoM" secondAttribute="centerX" constant="1" id="Nzt-8K-km4"/>
@@ -816,7 +816,7 @@
                                 <constraint firstItem="Npo-PE-hzc" firstAttribute="trailing" secondItem="yxt-cT-xAm" secondAttribute="trailing" id="WVY-1j-TJs"/>
                                 <constraint firstItem="2Fo-eF-aMI" firstAttribute="trailing" secondItem="Jkl-TP-E6E" secondAttribute="trailing" id="WZg-pI-Kvw"/>
                                 <constraint firstItem="MDo-ZY-6me" firstAttribute="centerY" secondItem="RpC-Hs-FoM" secondAttribute="centerY" id="Wn7-kJ-RTP"/>
-                                <constraint firstItem="ryb-mr-4Id" firstAttribute="bottom" secondItem="gSa-86-U0O" secondAttribute="bottom" constant="1" id="XMQ-KV-XnL"/>
+                                <constraint firstItem="ryb-mr-4Id" firstAttribute="bottom" secondItem="gSa-86-U0O" secondAttribute="bottom" id="XMQ-KV-XnL"/>
                                 <constraint firstItem="yxt-cT-xAm" firstAttribute="leading" secondItem="Zw4-MU-xCf" secondAttribute="leading" id="Z3e-xc-qnw"/>
                                 <constraint firstItem="RpC-Hs-FoM" firstAttribute="leading" secondItem="YEq-Si-eHU" secondAttribute="leading" id="aSs-fU-yTV"/>
                                 <constraint firstItem="RZb-gx-bJD" firstAttribute="leading" secondItem="c5T-eQ-yef" secondAttribute="leading" constant="158" id="c4T-np-RbO"/>
