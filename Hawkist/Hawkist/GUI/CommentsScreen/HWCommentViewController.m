@@ -408,6 +408,12 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    if([textView.text isEqualToString:@""] ){
+        self.inputCommentView.pressButton.enabled = NO;
+    } else {
+    self.inputCommentView.pressButton.enabled = YES;
+    }
+    
    if(textView.text.length>160)
    {
        return NO;

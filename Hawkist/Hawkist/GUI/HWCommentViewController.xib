@@ -56,7 +56,7 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Write a comment"/>
                             </userDefinedRuntimeAttributes>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fM-aA-P9x">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fM-aA-P9x">
                             <rect key="frame" x="244" y="7" width="70" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="CDO-uU-jkL"/>
@@ -96,6 +96,7 @@
                         <constraint firstAttribute="trailing" secondItem="8fM-aA-P9x" secondAttribute="trailing" constant="6" id="yar-md-DdG"/>
                     </constraints>
                     <connections>
+                        <outlet property="pressButton" destination="8fM-aA-P9x" id="4Vf-OJ-OAb"/>
                         <outlet property="textView" destination="UHS-QY-1tv" id="UAO-Iv-reQ"/>
                     </connections>
                 </view>
