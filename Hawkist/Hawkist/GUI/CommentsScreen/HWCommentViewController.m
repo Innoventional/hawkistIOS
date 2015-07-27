@@ -61,6 +61,7 @@
     [super viewDidLoad];
     
     [self setCommentsArrayWithItem:self.currentItem];
+    self.inputCommentView.pressButton.enabled = NO;
     
     [self commonInit];
   
@@ -90,7 +91,7 @@
     
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWasShown:)
+                                             selector:@selector(keyboardWillShown:)
                                                  name:UIKeyboardWillShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -122,7 +123,7 @@
 }
 
 
-- (void)keyboardWasShown:(NSNotification *)aNotification
+- (void)keyboardWillShown:(NSNotification *)aNotification
 {
     NSValue *value = [aNotification.userInfo objectForKey: UIKeyboardFrameEndUserInfoKey];
     CGRect keyEndFrame = [value CGRectValue];
@@ -134,22 +135,23 @@
     frame.size.height = self.height;
     self.view.frame = frame;
     
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         
+//    [UIView animateWithDuration:0.3
+//                     animations:^{
+    
                          self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - keyHeight);
-                     }];
+                         
+//                     }];
+    
+    [self scrollToBotton];
     
 
 }
 
 - (void)keyboardWillBeHidden:(NSNotification *)aNotification
 {
-   
-                        
-                        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, _height);
-
-   
+    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, _height);
+    
+    
 }
 
 - (void)contentSizeCategoryChanged:(NSNotification *)notification
@@ -190,6 +192,7 @@
     return cell;
     
 }
+ 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -215,32 +218,6 @@
     
 }
 
-#pragma mark - 
-#pragma mark HWCommentInputViewDelegate
-
-
-- (void) pressPostButton:(UIButton*)sender withCommentText:(NSString*)text
-{
-    [self.inputCommentView.textView resignFirstResponder];
-
-    if([@"" isEqualToString:text] || [@" " isEqualToString:text]){
-        return;
-    }
-    
-    [self.networkManager createNewCommentWithItemId:self.itemId
-                                        textComment:text
-                                       successBlock:^{
-                                           
-                                           [self setCommentsArrayWithItem:self.currentItem];
-                                           
-                                       } failureBlock:^(NSError *error) {
-                                           
-                                           [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-                                           
-                                       }];
-    
-}
-
 #pragma mark -
 #pragma mark set/get
 
@@ -250,20 +227,29 @@
                                      successBlock:^(NSArray *commentsArray) {
                                          
                                          self.commentsArray = commentsArray;
-                                         [self.tableView reloadData];
-                                         [self.tableView layoutIfNeeded];
-                                         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.commentsArray.count -1) inSection:0];
-                                        
-                                         if(self.commentsArray.count)
-                                         {
-                                          [self.tableView scrollToRowAtIndexPath: indexPath atScrollPosition: UITableViewScrollPositionNone animated: NO];
-                                         }
+                                       
+                                         [self scrollToBotton];
+                                         [self scrollToBotton];
                                          
                                      } failureBlock:^(NSError *error) {
                                          
                                          [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                          
                                      }];
+    
+}
+
+- (void) scrollToBotton
+{
+    
+    [self.tableView reloadData];
+    [self.tableView layoutIfNeeded];
+    if (self.commentsArray.count) {
+        
+        NSIndexPath* indexPath = [NSIndexPath indexPathForRow: ([self.tableView numberOfRowsInSection:([self.tableView numberOfSections]-1)]-1) inSection: ([self.tableView numberOfSections]-1)];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:NO];
+
+    }
     
 }
 
@@ -402,23 +388,64 @@
 }
 
 
+
+#pragma mark -
+#pragma mark HWCommentInputViewDelegate
+
+
+- (void) pressPostButton:(UIButton*)sender withCommentText:(NSString*)text
+{
+    self.inputCommentView.pressButton.enabled = NO;
+    [self.inputCommentView.textView resignFirstResponder];
+    
+    NSString *textToSend = text;
+    
+    NSString *trimmedString = [textToSend stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    
+    if([@"" isEqualToString:trimmedString]){
+        return;
+    }
+    
+    [self.networkManager createNewCommentWithItemId:self.itemId
+                                        textComment:trimmedString
+                                       successBlock:^{
+                                           
+                                           [self setCommentsArrayWithItem:self.currentItem];
+                                           
+                                       } failureBlock:^(NSError *error) {
+                                           
+                                           [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                           
+                                       }];
+    
+}
+
+
 #pragma mark - 
 #pragma mark UITextViewDelegate
 
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    if([textView.text isEqualToString:@""] ){
-        self.inputCommentView.pressButton.enabled = NO;
-    } else {
-    self.inputCommentView.pressButton.enabled = YES;
-    }
-    
-   if(textView.text.length>160)
-   {
-       return NO;
-   }
-    return YES;
-}
+       NSInteger permissibleLenght = 160;
+       NSUInteger newLength = [textView.text length] + [text length] - range.length;
+       return (newLength > permissibleLenght) ? NO : YES;
+ 
+ }
 
+- (void)textViewDidChange:(UITextView *)textView
+{
+    
+    if ([textView.text isEqualToString:@""])
+    {
+        self.inputCommentView.pressButton.enabled = NO;
+        
+    } else {
+        
+        self.inputCommentView.pressButton.enabled = YES;
+        
+    }
+}
 @end

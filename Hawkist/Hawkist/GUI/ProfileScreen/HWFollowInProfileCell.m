@@ -96,14 +96,14 @@
         self.isFollow = YES;
         
         [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
-        
+        self.followButton.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
         
     } else {
         
         self.isFollow = NO;
        
        [self.followButton setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
-     
+        self.followButton.backgroundColor = [UIColor colorWithRed:48./255. green:173./255. blue:148./255. alpha:1];
 
     }
     

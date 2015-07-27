@@ -869,15 +869,15 @@
                                     <exclude reference="oOl-Fd-XJq"/>
                                     <exclude reference="xgk-kl-kf1"/>
                                     <exclude reference="fnw-qU-Amm"/>
-                                    <exclude reference="BDD-sV-5wJ"/>
-                                    <exclude reference="EFg-P4-Dyl"/>
-                                    <exclude reference="F2A-DJ-uue"/>
-                                    <exclude reference="nBl-pD-dGu"/>
                                     <exclude reference="4HU-tp-M0E"/>
                                     <exclude reference="6iM-54-U1e"/>
                                     <exclude reference="CyV-yL-FXs"/>
                                     <exclude reference="nr1-yR-3zp"/>
                                     <exclude reference="wyr-t6-aZP"/>
+                                    <exclude reference="BDD-sV-5wJ"/>
+                                    <exclude reference="EFg-P4-Dyl"/>
+                                    <exclude reference="F2A-DJ-uue"/>
+                                    <exclude reference="nBl-pD-dGu"/>
                                     <exclude reference="30H-Dw-Xke"/>
                                     <exclude reference="rTc-lV-PTE"/>
                                     <exclude reference="1yG-OR-bvM"/>
@@ -949,7 +949,7 @@
                 <constraint firstItem="xDE-9I-P7A" firstAttribute="leading" secondItem="Noy-fC-lwS" secondAttribute="leading" id="zjq-mz-qWn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="448" y="185.5"/>
+            <point key="canvasLocation" x="522" y="185.5"/>
         </view>
         <tapGestureRecognizer id="uYD-JT-eDb">
             <connections>

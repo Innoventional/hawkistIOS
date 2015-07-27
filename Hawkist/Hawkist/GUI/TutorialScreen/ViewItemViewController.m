@@ -74,6 +74,21 @@
     [self updateItem];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NetworkManager shared] getItemById: self.item.id
+                            successBlock:^(HWItem *item) {
+                                self.item = item;
+                                
+                                [self updateItem];
+                            } failureBlock:^(NSError *error) {
+                                
+                            }];
+
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -296,7 +311,7 @@
 - (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
    
-    HWItem *item = [[HWItem alloc] initWithDictionary:  [self.selectedItemsArray objectAtIndex: indexPath.row]  error: nil];
+    HWItem *item  = [self.selectedItemsArray objectAtIndex: indexPath.row] ;
     
     cell.item = item;
     cell.delegate = self;
@@ -307,7 +322,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-     HWItem *item = [[HWItem alloc] initWithDictionary:  [self.selectedItemsArray objectAtIndex: indexPath.row]  error: nil];
+     HWItem *item =  [self.selectedItemsArray objectAtIndex: indexPath.row];
     ViewItemViewController* vc = [[ViewItemViewController alloc] initWithItem:item];
     [self.navigationController pushViewController: vc animated: YES];
 }

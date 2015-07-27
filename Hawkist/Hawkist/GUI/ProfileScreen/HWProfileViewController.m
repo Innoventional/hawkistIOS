@@ -651,6 +651,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         [ [NetworkManager shared] unfollowWithUserId:userId successBlock:^{
             
                         [button setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
+            button.backgroundColor = [UIColor colorWithRed:48./255. green:173./255. blue:148./255. alpha:1];
             
                                       } failureBlock:^(NSError *error) {
                         
@@ -660,6 +661,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         [ [NetworkManager shared] followWithUserId:userId successBlock:^{
             
                         [button setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+            button.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
             
                                     } failureBlock:^(NSError *error) {
                         
