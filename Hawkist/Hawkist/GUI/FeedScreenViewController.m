@@ -16,9 +16,10 @@
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSString* searchString;
-@property (nonatomic, assign) CGFloat lastHeightCollectionView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCollectionConstraint;
+@property (nonatomic, assign) CGFloat lastHeightCollectionView;
+@property (weak, nonatomic) IBOutlet UIView *viewBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCollection;
 
 @end
 
@@ -216,20 +217,22 @@
                 
                 self.scrollView.scrollEnabled = YES;
                 
-                if (self.items.count>0)
-                {
-                    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-                }
+//                if (self.items.count>0)
+//                {
+//                    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+//                }
+//                
+//                
+//                [self.view setNeedsDisplay];
                 
-                
-                  [self reloadScrollViewSize];
+                [self reloadScrollViewSize];
                 
             } failureBlock:^(NSError *error) {
                 
                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             }];
 
-       
+            
             
             
         } failureBlock:^(NSError *error) {
@@ -248,6 +251,7 @@
     
 }
 
+
 - (void) reloadScrollViewSize
 {
     
@@ -258,12 +262,17 @@
     [self.scrollView layoutIfNeeded];
     CGSize size = self.scrollView.contentSize;
     size.height += self.collectionView.contentSize.height - self.lastHeightCollectionView;
+   // self.scrollView.contentSize = size;
     
-    self.heightCollectionConstraint.constant = size.height;
+    self.heightCollection.constant = self.collectionView.contentSize.height;
+    
+    
+    
     
     self.lastHeightCollectionView = self.collectionView.contentSize.height ;
     
 }
+
 
 
 #pragma mark -
