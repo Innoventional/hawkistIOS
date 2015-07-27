@@ -68,6 +68,7 @@
 @property (nonatomic, assign) NSInteger selectedArrayWithData;
 @property (nonatomic, strong) id lastPressSegmentButton;
 @property (weak, nonatomic) IBOutlet UIButton *aboutButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
 @end
 
@@ -219,8 +220,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     {
         [self.followUnfollowButton setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
     }
-    
-    [self.avatarView setImageWithURL: [NSURL URLWithString: self.user.avatar] placeholderImage:[UIImage imageNamed:@"noAvatar"]];
+    [self avatarInit];
     self.userNameLabel.text = self.user.username;
     if(self.user.city)
     {
@@ -241,6 +241,26 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
 }
 
+- (void) avatarInit
+{
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: self.user.avatar]];
+    
+    [self.avatarView setImageWithURLRequest:request
+                           placeholderImage:nil
+                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                        
+                                        
+                                        self.avatarView.image = image;
+                                        [self.indicator stopAnimating];
+                                        
+                                    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                        
+                                        
+                                        self.avatarView.image = [UIImage imageNamed:@"noPhoto"];
+                                        [self.indicator stopAnimating];
+                                    }];
+
+}
 
 - (void) setupSegmentButtonsConfig
 {

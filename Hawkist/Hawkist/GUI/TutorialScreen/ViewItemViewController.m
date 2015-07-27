@@ -28,6 +28,7 @@
 @property (nonatomic, assign) CGFloat lastHeightCollectionView;
 
 @property (nonatomic, assign) BOOL isLikeItem;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -141,8 +142,8 @@
 #pragma mark - update item
 - (void) updateItem
 {
-
-
+    self.reviews.text = [NSString stringWithFormat:@"%@ (%@ reviews)", self.item.user.rating,self.item.user.review];
+    self.starRatingControl.rating = [self.item.user.rating integerValue];
     self.isLikeItem = [self.item.liked integerValue];
     if (self.isLikeItem)
     {
@@ -151,7 +152,13 @@
     
     
     self.sellerName.text = self.item.user_username;
-    [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user_avatar] placeholderImage:nil];
+  //  [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user_avatar] placeholderImage:nil];
+    [self avatarInit];
+    
+    
+    
+    
+    
     
     self.nameOoStuff.text = self.item.title;
     self.comments.text = self.item.comments;
@@ -169,8 +176,6 @@
     
     self.category.text = itemCategory.name;
  
-    
-    
     HWSubCategories* itemSubCategory = [HWTag getSubCategoryById:self.item.subcategory from: itemCategory.subcategories];
     
     HWCondition* itemCondition = [HWTag getConditionById:self.item.condition from: itemSubCategory.condition];
@@ -216,7 +221,37 @@
     }
 }
 
+- (void) avatarInit
+{
+//    __block UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+//    activityIndicator.center = self.sellerAvatar.center;
+//    
+//    activityIndicator.hidesWhenStopped = YES;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: self.item.user_avatar]];
+    
+    
+//    [self.sellerAvatar addSubview:activityIndicator];
+//    [activityIndicator startAnimating];
+    
+    [self.sellerAvatar setImageWithURLRequest:request
+                           placeholderImage:nil
+                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                        
+                                       
+                                      
+                                        self.sellerAvatar.image = image;
+                                          [self.activityIndicator stopAnimating];
+                                        
+                                    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                        
+                                       [self.activityIndicator stopAnimating];
+                                        self.sellerAvatar.image = [UIImage imageNamed:@"noPhoto"];
+                                    }];
+    
+    
 
+
+}
 - (void) reloadScrollViewSize
 {
     
