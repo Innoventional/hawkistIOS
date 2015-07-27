@@ -239,6 +239,7 @@
         
         [self.sellButton setTitle:@"Save" forState:UIControlStateNormal];
         
+        self.sellButton.enabled = YES;
         self.itemId = currentItem.id;
         
         self.isCreate = NO;
@@ -290,6 +291,8 @@
 
 - (void) initDefault
 {
+    
+    self.sellButton.enabled = NO;
     self.isCreate = YES;
     
      self.placeHolderColor = descriptionField.textColor;
@@ -369,6 +372,8 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    self.sellButton.enabled = NO;
+    
     if (textField == postField && [textField.text isEqualToString:@""])
     {
         self.sellButton.enabled = NO;
@@ -528,7 +533,7 @@
     }
      ];
     else
-        currentItem.id = self.itemId ;
+    { currentItem.id = self.itemId ;
         [netManager updateItem:currentItem successBlock:^(HWItem *item) {
             
             NSLog(@"--------------------------updated");
@@ -543,7 +548,7 @@
             [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         }
          ];
-
+    }
     
 }
 
@@ -852,6 +857,18 @@
 }
 
 
+- (void) moneyFieldDidBeginEditing:(id)sender
+{
+    self.sellButton.enabled = NO;
+}
+
+- (void) moneyFieldPriceToHight:(id)sender
+{
+   [[[UIAlertView alloc]initWithTitle:@"Price Too High" message:@"You cannot set a price which is greater than £5000." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    
+    self.sellButton.enabled = NO;
+}
+
 - (void) moneyField:(id)sender modifyTo:(NSString *)value
 {
     if (sender == sellingPrice)
@@ -859,6 +876,8 @@
         float val =  [value floatValue]*0.875;
         youGetLabel.text = [NSString stringWithFormat:@"%.2f.", val];
     }
+    
+    self.sellButton.enabled = YES;
 }
 
 - (void) SelectedItemFrom:(id)sender WithItem:(NSObject *)selection

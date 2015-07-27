@@ -15,6 +15,9 @@
                     (NSRange)range replacementString:(NSString *)string;
 
 
+- (void)moneyFieldPriceToHight:(id)sender;
+
+- (void)moneyFieldDidBeginEditing:(id)sender;
 @end
 
 @interface MoneyField : UIView <UITextFieldDelegate>

@@ -49,6 +49,13 @@
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (self.delegate && [self.delegate respondsToSelector: @selector(moneyFieldDidBeginEditing:)])
+        [self.delegate moneyFieldDidBeginEditing:self];
+}
+
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
 
@@ -66,9 +73,10 @@
     
     if ([textField.text doubleValue] > 5000)
     {
-        [[[UIAlertView alloc]initWithTitle:@"Price Too High" message:@"You cannot set a price which is greater than £5000." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        if (self.delegate && [self.delegate respondsToSelector: @selector(moneyFieldPriceToHight:)])
+            [self.delegate moneyFieldPriceToHight:self];
         
-        textField.text = @"5000";
+        textField.text = @"0.00";
     }
     else
     

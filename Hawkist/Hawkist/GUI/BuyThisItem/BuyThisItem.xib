@@ -13,6 +13,8 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
         </mutableArray>
         <mutableArray key="OpenSansRegular.ttf">
             <string>OpenSans</string>
@@ -58,7 +60,7 @@
                     <rect key="frame" x="0.0" y="63" width="320" height="541"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZb-gu-zVD" userLabel="view">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="514"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ZXt-3C-Tbe">
                                     <rect key="frame" x="14" y="44" width="292" height="292"/>
@@ -139,6 +141,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="41" id="wcm-vJ-N4s"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                     <state key="normal" title="SEND MY OFFER">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" red="0.74901960784313726" green="0.78431372549019607" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
@@ -157,6 +160,7 @@
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="D5d-Ok-Lad"/>
                                         <constraint firstAttribute="height" constant="40" id="cNv-1N-3X0"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                     <state key="normal" title="BUY £24" backgroundImage="acdet_but">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -190,7 +194,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xQ-R5-cY1" customClass="MoneyField">
-                                    <rect key="frame" x="17" y="472" width="110" height="40"/>
+                                    <rect key="frame" x="17" y="466" width="110" height="40"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="GnS-iM-Ntl"/>
@@ -200,7 +204,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER A NEW OFFERED PRICE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGi-JI-0Qe">
-                                    <rect key="frame" x="15" y="442" width="199" height="20"/>
+                                    <rect key="frame" x="15" y="446" width="199" height="20"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                     <color key="textColor" red="0.67843137254901964" green="0.67843137254901964" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -220,7 +224,7 @@
                                 <constraint firstItem="LP7-zg-x5d" firstAttribute="leading" secondItem="ATO-Uf-JV5" secondAttribute="trailing" constant="4" id="HI4-Fe-W84"/>
                                 <constraint firstItem="ZXt-3C-Tbe" firstAttribute="trailing" secondItem="ezg-3g-0ri" secondAttribute="trailing" id="Nvr-Lc-jHE"/>
                                 <constraint firstItem="Qyv-eC-aVy" firstAttribute="centerY" secondItem="qvW-Fx-KEM" secondAttribute="top" id="OvD-gs-Keu"/>
-                                <constraint firstItem="cGi-JI-0Qe" firstAttribute="top" secondItem="vr2-xa-TVe" secondAttribute="bottom" constant="6" id="QFx-Jh-xNr"/>
+                                <constraint firstItem="cGi-JI-0Qe" firstAttribute="top" secondItem="vr2-xa-TVe" secondAttribute="bottom" constant="10" id="QFx-Jh-xNr"/>
                                 <constraint firstAttribute="trailing" secondItem="vr2-xa-TVe" secondAttribute="trailing" id="Quc-bs-Wj7"/>
                                 <constraint firstItem="Q5A-Cw-nmp" firstAttribute="leading" secondItem="ZXt-3C-Tbe" secondAttribute="leading" id="QwO-I8-DHg"/>
                                 <constraint firstItem="cGi-JI-0Qe" firstAttribute="leading" secondItem="sZb-gu-zVD" secondAttribute="leading" constant="15" id="TUT-75-hd7"/>
@@ -239,7 +243,7 @@
                                 <constraint firstItem="szL-T9-38Q" firstAttribute="centerX" secondItem="CEg-SZ-AHu" secondAttribute="centerX" id="ntT-Nq-xYU"/>
                                 <constraint firstItem="CEg-SZ-AHu" firstAttribute="leading" secondItem="ZXt-3C-Tbe" secondAttribute="leading" id="px5-YU-KPN"/>
                                 <constraint firstItem="PhL-ts-n6D" firstAttribute="bottom" secondItem="Qyv-eC-aVy" secondAttribute="bottom" constant="1" id="rMV-pY-fjP"/>
-                                <constraint firstItem="2xQ-R5-cY1" firstAttribute="top" secondItem="cGi-JI-0Qe" secondAttribute="bottom" constant="10" id="siM-Oo-XAk"/>
+                                <constraint firstItem="2xQ-R5-cY1" firstAttribute="top" secondItem="cGi-JI-0Qe" secondAttribute="bottom" id="siM-Oo-XAk"/>
                                 <constraint firstItem="CEg-SZ-AHu" firstAttribute="top" secondItem="ZXt-3C-Tbe" secondAttribute="top" constant="39" id="uDj-ek-SXW"/>
                                 <constraint firstAttribute="bottom" secondItem="2xQ-R5-cY1" secondAttribute="bottom" constant="8" id="wpP-Au-i3Q"/>
                                 <constraint firstItem="PhL-ts-n6D" firstAttribute="bottom" secondItem="LP7-zg-x5d" secondAttribute="bottom" constant="1" id="xAE-dv-LRr"/>
