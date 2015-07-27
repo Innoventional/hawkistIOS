@@ -154,7 +154,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     self.navigationView.delegate = self;
     self.navigationView.title.text = @"Profile";
-    [self.navigationView.title setFont: [UIFont fontWithName:@"OpenSans" size:18]];
+    [self.navigationView.title setFont: [UIFont fontWithName:@"OpenSans" size:17]];
     [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
     [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
  
@@ -650,7 +650,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         
         [ [NetworkManager shared] unfollowWithUserId:userId successBlock:^{
             
-                        [button setTitle:@"FOLLOW"  forState:UIControlStateNormal];
+                        [button setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
             
                                       } failureBlock:^(NSError *error) {
                         

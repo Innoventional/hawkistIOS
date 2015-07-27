@@ -88,7 +88,7 @@
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(hideFollowUnfollowButtonForUserId:)])
     {
-        self.followButton.hidden = [self.delegate hideFollowUnfollowButtonForUserId:self.userId];
+        self.followButton.enabled = (![self.delegate hideFollowUnfollowButtonForUserId:self.userId]);
     }
     
     if ([user.follow isEqualToString:@"1"])
@@ -102,7 +102,7 @@
         
         self.isFollow = NO;
        
-       [self.followButton setTitle:@"FOLLOW"  forState:UIControlStateNormal];
+       [self.followButton setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
      
 
     }
