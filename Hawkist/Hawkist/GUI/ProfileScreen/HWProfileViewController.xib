@@ -293,7 +293,7 @@
                                 <action selector="followUnfollowAction:" destination="-1" eventType="touchUpInside" id="2UY-0e-knY"/>
                             </connections>
                         </button>
-                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="7qd-VM-apP">
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="7qd-VM-apP">
                             <rect key="frame" x="282" y="227" width="38" height="47"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="47" id="0Fv-dL-rMz"/>

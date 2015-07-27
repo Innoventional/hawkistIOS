@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="addTagsView" destination="78Q-tw-65a" id="eNs-zq-DXL"/>
                 <outlet property="collectionView" destination="5QT-zT-QBm" id="Itu-zH-ftg"/>
+                <outlet property="heightCollection" destination="hEs-mM-fC8" id="RlY-0y-UUc"/>
                 <outlet property="scrollView" destination="djY-pk-gMl" id="iEr-W7-wne"/>
                 <outlet property="searchField" destination="fxe-IB-pPP" id="VSc-JY-jJj"/>
                 <outlet property="searchView" destination="wbD-0x-nei" id="SKY-G6-CsP"/>
