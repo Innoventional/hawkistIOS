@@ -256,19 +256,9 @@
 {
     
     //reload scroll view size
-    
-    
+
     [self.collectionView layoutIfNeeded];
-    [self.scrollView layoutIfNeeded];
-    CGSize size = self.scrollView.contentSize;
-    size.height += self.collectionView.contentSize.height - self.lastHeightCollectionView;
-   // self.scrollView.contentSize = size;
-    
     self.heightCollection.constant = self.collectionView.contentSize.height;
-    
-    
-    
-    
     self.lastHeightCollectionView = self.collectionView.contentSize.height ;
     
 }
