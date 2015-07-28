@@ -55,7 +55,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qar-WC-MiJ">
-                        <rect key="frame" x="13" y="16" width="22" height="21"/>
+                        <rect key="frame" x="0.0" y="0.0" width="35" height="37"/>
                         <state key="normal">
                             <color key="titleShadowColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
@@ -76,12 +76,12 @@
                     <constraint firstAttribute="bottom" secondItem="RAN-EH-MKi" secondAttribute="bottom" id="HrC-FH-sG6"/>
                     <constraint firstItem="Bih-rx-ey3" firstAttribute="top" secondItem="RKH-5T-lCu" secondAttribute="topMargin" constant="4" id="REx-WT-J9E"/>
                     <constraint firstItem="mu0-FS-t7H" firstAttribute="top" secondItem="qar-WC-MiJ" secondAttribute="bottom" constant="-21" id="UJK-8W-HFv"/>
-                    <constraint firstItem="qar-WC-MiJ" firstAttribute="leading" secondItem="mu0-FS-t7H" secondAttribute="trailing" constant="-22" id="VFm-qT-8EN"/>
+                    <constraint firstItem="qar-WC-MiJ" firstAttribute="leading" secondItem="mu0-FS-t7H" secondAttribute="trailing" constant="-35" id="VFm-qT-8EN"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Bih-rx-ey3" secondAttribute="bottom" constant="28" id="YTs-sn-XrL"/>
-                    <constraint firstItem="qar-WC-MiJ" firstAttribute="width" secondItem="mu0-FS-t7H" secondAttribute="width" id="b5I-k0-0w2"/>
+                    <constraint firstItem="qar-WC-MiJ" firstAttribute="width" secondItem="mu0-FS-t7H" secondAttribute="width" constant="13" id="b5I-k0-0w2"/>
                     <constraint firstAttribute="trailing" secondItem="RAN-EH-MKi" secondAttribute="trailing" id="dT4-Xy-G4m"/>
                     <constraint firstItem="mu0-FS-t7H" firstAttribute="leading" secondItem="RKH-5T-lCu" secondAttribute="leadingMargin" constant="5" id="en0-a4-gbf"/>
-                    <constraint firstItem="qar-WC-MiJ" firstAttribute="height" secondItem="mu0-FS-t7H" secondAttribute="height" constant="-1" id="f21-Oo-cot"/>
+                    <constraint firstItem="qar-WC-MiJ" firstAttribute="height" secondItem="mu0-FS-t7H" secondAttribute="height" constant="15" id="f21-Oo-cot"/>
                     <constraint firstItem="Bih-rx-ey3" firstAttribute="leading" secondItem="mu0-FS-t7H" secondAttribute="trailing" constant="11" id="gyc-dU-cHf"/>
                     <constraint firstItem="RAN-EH-MKi" firstAttribute="leading" secondItem="RKH-5T-lCu" secondAttribute="leading" id="hZh-gh-ICW"/>
                     <constraint firstItem="Bih-rx-ey3" firstAttribute="trailing" secondItem="RKH-5T-lCu" secondAttribute="trailingMargin" id="isQ-TK-kgo"/>

@@ -236,7 +236,7 @@
     self.oldPrice.text = self.item.retail_price;
     self.descriptionOfItem.text = self.item.item_description;
     self.added.text = [self.item stringItemCreationDate];
-        
+   
 
     HWTag* itemPlatform = [HWTag getPlatformById:self.item.platform from:[AppEngine shared].tags];
     
@@ -255,8 +255,13 @@
     HWColor* itemColor = [HWTag getColorById:self.item.color from:itemSubCategory.color];
     
     self.colour.text = itemColor.name;
-    
-    self.delivery.text = self.item.shipping_price;
+    if(self.item.collection_only)
+    {
+       self.delivery.text = @"Collection only";
+    } else {
+        
+    self.delivery.text = [NSString stringWithFormat:@"£ %@", self.item.shipping_price];
+    }
     
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
         self.discount.text = @"1%";
