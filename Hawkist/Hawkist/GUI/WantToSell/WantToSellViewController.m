@@ -35,7 +35,8 @@
     
     itemsViewController.view.frame = self.contentView.frame;
     
-    [self.contentView addSubview:itemsViewController.view];
+    [self.view addSubview: itemsViewController.view];
+    
     
     [self addChildViewController:itemsViewController];
     

@@ -39,16 +39,16 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 
-    if (self.items.count == 0)
-    {
-       [self.scrollView setContentOffset:CGPointMake(0, 800) animated:NO];
-        self.scrollView.scrollEnabled = NO;
-    }
-    else
-    {
-        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-        self.scrollView.scrollEnabled = YES;
-    }
+//    if (self.items.count == 0)
+//    {
+//       [self.scrollView setContentOffset:CGPointMake(0, 800) animated:NO];
+//        self.scrollView.scrollEnabled = NO;
+//    }
+//    else
+//    {
+//        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+//        self.scrollView.scrollEnabled = YES;
+//    }
     
    // [self.addTagsView addTagsToView:[NSArray arrayWithObjects:@"PC",nil]];
     
@@ -56,7 +56,7 @@
     [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
         
        [self.addTagsView addTagsToView:tags successBlock:^{
-           
+           [self refresh];
            
        } failureBlock:^(NSError *error) {
            
@@ -80,10 +80,6 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-  [self refresh];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -216,15 +212,6 @@
                 [self.refreshControl endRefreshing];
                 
                 self.scrollView.scrollEnabled = YES;
-                
-//                if (self.items.count>0)
-//                {
-//                    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-//                }
-//                
-//                
-//                [self.view setNeedsDisplay];
-                
                 [self reloadScrollViewSize];
                 
             } failureBlock:^(NSError *error) {
@@ -259,7 +246,9 @@
 
     [self.collectionView layoutIfNeeded];
     self.heightCollection.constant = self.collectionView.contentSize.height;
-    self.lastHeightCollectionView = self.collectionView.contentSize.height ;
+    self.lastHeightCollectionView = self.collectionView.contentSize.height;
+    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+
     
 }
 

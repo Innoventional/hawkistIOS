@@ -33,6 +33,12 @@
         subView.frame = self.bounds;
         
         [self addSubview:subView];
+        
+        UIEdgeInsets inset = self.leftButtonOutlet.imageEdgeInsets;
+        
+        inset.top+=2;
+        
+        self.leftButtonOutlet.imageEdgeInsets = inset;
     }
     return self;
 }

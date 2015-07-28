@@ -8,6 +8,7 @@
         <mutableArray key="OpenSansRegular.ttf">
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -32,16 +33,16 @@
                         <constraint firstAttribute="width" constant="223" id="R4c-ot-sUj"/>
                         <constraint firstAttribute="height" constant="30" id="U2C-Xb-be4"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptk-gz-sxi">
-                    <rect key="frame" x="15" y="12" width="60" height="88"/>
+                    <rect key="frame" x="15" y="13" width="90" height="87"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="R9e-1z-whC"/>
+                        <constraint firstAttribute="width" constant="90" id="R9e-1z-whC"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                     <state key="normal" image="acdet_back">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -50,10 +51,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdq-ku-HdW">
-                    <rect key="frame" x="245" y="18" width="60" height="76"/>
+                    <rect key="frame" x="225" y="18" width="80" height="76"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="qBQ-4O-HvY"/>
+                        <constraint firstAttribute="width" constant="80" id="qBQ-4O-HvY"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title=" ">
                         <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

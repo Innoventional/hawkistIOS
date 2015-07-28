@@ -75,16 +75,23 @@
                                         </mask>
                                     </variation>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X99A GAMING 9 ACK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sU6-GO-rmI">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="X99A GAMING 9 ACK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sU6-GO-rmI">
                                     <rect key="frame" x="14" y="8" width="207" height="28"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="3vB-4j-75T"/>
+                                        <constraint firstAttribute="width" constant="207" id="7dP-d1-wcV"/>
                                         <constraint firstAttribute="height" constant="28" id="fhY-mS-N8k"/>
                                         <constraint firstAttribute="width" constant="207" id="sMQ-cN-p1y"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                     <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="3vB-4j-75T"/>
+                                            <exclude reference="sMQ-cN-p1y"/>
+                                        </mask>
+                                    </variation>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATO-Uf-JV5">
                                     <rect key="frame" x="265" y="13" width="16" height="20"/>
@@ -233,6 +240,7 @@
                                 <constraint firstItem="Qyv-eC-aVy" firstAttribute="trailing" secondItem="qvW-Fx-KEM" secondAttribute="trailing" id="WgT-p8-0aB"/>
                                 <constraint firstAttribute="width" constant="320" id="a6l-AC-xGx"/>
                                 <constraint firstItem="ZXt-3C-Tbe" firstAttribute="top" secondItem="sU6-GO-rmI" secondAttribute="bottom" constant="8" id="byb-mV-ZTh"/>
+                                <constraint firstItem="PhL-ts-n6D" firstAttribute="leading" relation="lessThanOrEqual" secondItem="sU6-GO-rmI" secondAttribute="trailing" priority="800" constant="10" id="fXd-Te-Pvg"/>
                                 <constraint firstAttribute="trailing" secondItem="Qyv-eC-aVy" secondAttribute="trailing" constant="14" id="gOY-7t-ZNi"/>
                                 <constraint firstItem="2xQ-R5-cY1" firstAttribute="leading" secondItem="sZb-gu-zVD" secondAttribute="leading" constant="17" id="jYm-Xw-fN9"/>
                                 <constraint firstItem="ATO-Uf-JV5" firstAttribute="leading" secondItem="PhL-ts-n6D" secondAttribute="trailing" id="job-SH-nJD"/>
@@ -252,6 +260,7 @@
                                 <mask key="constraints">
                                     <exclude reference="a6l-AC-xGx"/>
                                     <exclude reference="72g-rG-L9c"/>
+                                    <exclude reference="fXd-Te-Pvg"/>
                                 </mask>
                             </variation>
                         </view>

@@ -40,7 +40,7 @@
 - (void) moveToTrash
 {
     
-    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Are you sure?" message:@"Please confirm that you wish to delete this listing." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Are you sure?" message:@"Please confirm that you wish to delete this listing." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     
     [alert show];
     

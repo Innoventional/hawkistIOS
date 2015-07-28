@@ -113,13 +113,15 @@
 {
     [self.navigationController popViewControllerAnimated: YES];
 }
+
+
 - (IBAction)sendOffer:(id)sender {
     [[NetworkManager shared]OfferPrice:self.moneyField.textField.text
                                 itemId:self.item.id
 
     successBlock:^{
         NSLog(@"added");
-        [self showAlertWithTitle:@"Success" Message:@"Offer sended"];
+        [self showAlertWithTitle:@"New Price Offered" Message:@"We have notified the listing owner of your new offered price."];
         [self.navigationController popViewControllerAnimated:YES];
     }
     

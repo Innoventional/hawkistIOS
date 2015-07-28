@@ -43,7 +43,11 @@
 
 - (NSError*) noConnectionError
 {
-    return [NSError errorWithDomain: @"Internet connection" code: 499 userInfo: @{NSLocalizedDescriptionKey:@"No Internet connection. You are offline."}];
+//    return [NSError errorWithDomain: @"Internet connection" code: 499 userInfo: @{NSLocalizedDescriptionKey:@"No Internet connection. You are offline."}];
+    
+    return [NSError errorWithDomain:@"No Connection"
+            code:499
+            userInfo:@{NSLocalizedDescriptionKey:@"You appear to be offline"}];
 }
 
 #pragma mark - Public stuff

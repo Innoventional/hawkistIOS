@@ -14,6 +14,7 @@
 #import "HWFollowUser.h"
 #import "HWComment.h"
 
+
 @interface NetworkManager ()
 
 @property (strong, nonatomic) NetworkDecorator *networkDecorator;
@@ -75,9 +76,21 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 
 - (NSError*)serverErrorWithError:(NSError*)error
 {
-    NSError *serverError = [NSError errorWithDomain:@"Server Error"
+    NSError *serverError;
+    
+    if (error.code == 499)   /// Internet disconnected
+    {
+        return error;
+    }
+        
+    else
+    {
+
+    serverError = [NSError errorWithDomain:@"Server Error"
                                                 code:error.code
                                             userInfo:error.userInfo];
+    }
+    
     return serverError;
 }
 
@@ -92,6 +105,9 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                         successBlock: (void (^)(HWUser* user)) successBlock
                         failureBlock: (void (^)(NSError* error)) failureBlock
 {
+    
+
+    
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
    
     if(phoneNumber) {
@@ -135,7 +151,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                             NSError *serverError = [self serverErrorWithError:error];
                             
                             failureBlock(serverError);
-
+                            
                         }];
 }
 

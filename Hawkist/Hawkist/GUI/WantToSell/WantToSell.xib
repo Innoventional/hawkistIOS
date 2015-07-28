@@ -22,8 +22,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oopsBack" translatesAutoresizingMaskIntoConstraints="NO" id="HNi-dC-Ji7">
-                    <rect key="frame" x="0.0" y="32" width="600" height="568"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0t-BG-V1R">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="535"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oopsBack" translatesAutoresizingMaskIntoConstraints="NO" id="HNi-dC-Ji7">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="535"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Nf-4L-nP6">
                     <rect key="frame" x="0.0" y="535" width="600" height="65"/>
@@ -38,11 +43,6 @@
                         <action selector="btnWantToSell:" destination="-1" eventType="touchUpInside" id="kLr-Ce-D4X"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0t-BG-V1R">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="535"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </view>
             </subviews>
             <color key="backgroundColor" red="0.90745877896613192" green="0.90745877896613192" blue="0.90745877896613192" alpha="1" colorSpace="calibratedRGB"/>
             <color key="tintColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,11 +53,22 @@
                 <constraint firstAttribute="bottom" secondItem="5Nf-4L-nP6" secondAttribute="bottom" id="CZC-Nd-I4A"/>
                 <constraint firstItem="5Nf-4L-nP6" firstAttribute="top" secondItem="U0t-BG-V1R" secondAttribute="bottom" id="GGv-By-xLT"/>
                 <constraint firstItem="HNi-dC-Ji7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Hap-sC-VGh"/>
+                <constraint firstAttribute="bottom" secondItem="HNi-dC-Ji7" secondAttribute="bottom" constant="65" id="OmF-1n-y7p"/>
+                <constraint firstItem="HNi-dC-Ji7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Rj0-Kb-Lql"/>
                 <constraint firstItem="5Nf-4L-nP6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aBC-Jb-N7Y"/>
                 <constraint firstAttribute="trailing" secondItem="5Nf-4L-nP6" secondAttribute="trailing" id="bkp-Kf-vEn"/>
+                <constraint firstItem="HNi-dC-Ji7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gZk-kC-7Lf"/>
                 <constraint firstItem="U0t-BG-V1R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jM9-IA-Sjj"/>
                 <constraint firstAttribute="trailing" secondItem="U0t-BG-V1R" secondAttribute="trailing" id="ug0-Vl-lLZ"/>
+                <constraint firstAttribute="trailing" secondItem="HNi-dC-Ji7" secondAttribute="trailing" id="vCP-5Z-2iO"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="2R4-u9-xbw"/>
+                    <exclude reference="gZk-kC-7Lf"/>
+                    <exclude reference="vCP-5Z-2iO"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>

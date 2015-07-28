@@ -71,7 +71,7 @@
 - (void) commonInit
 {
     self.navigationView.title.text = @"Comments";
-    [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
+   // [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
     self.navigationView.delegate = self;
     self.inputCommentView.delegate = self;
     self.inputCommentView.textView.delegate = self;

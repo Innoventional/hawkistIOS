@@ -46,8 +46,9 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
     
+
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
-    
+
 
   }
 
@@ -127,6 +128,17 @@
         [self.items addObjectsFromArray: arrayWithItems];
         [self.collectionView reloadData];
         [self.refreshControl endRefreshing];
+        
+        if (self.items.count == 0)
+        {
+            self.view.hidden = YES;
+            
+        }
+        else
+        {
+            self.view.hidden = NO;
+        }
+
         
     } failureBlock:^(NSError *error) {
         

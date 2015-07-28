@@ -5,9 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
-            <string>OpenSans-Semibold</string>
+        <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -24,14 +24,14 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJI-EC-T92">
                     <rect key="frame" x="0.0" y="8" width="10" height="24"/>
-                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                     <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8sP-1x-ZGv">
-                    <rect key="frame" x="13" y="7" width="97" height="24"/>
+                    <rect key="frame" x="13" y="8" width="97" height="24"/>
                     <color key="textColor" red="0.41960784313725491" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWx-dY-osf">
@@ -46,14 +46,21 @@
             <constraints>
                 <constraint firstItem="GJI-EC-T92" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1u8-4x-a0j"/>
                 <constraint firstItem="8sP-1x-ZGv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="2Ya-cy-cmD"/>
+                <constraint firstAttribute="centerY" secondItem="GJI-EC-T92" secondAttribute="centerY" id="6aa-HH-Au4"/>
                 <constraint firstAttribute="trailing" secondItem="8sP-1x-ZGv" secondAttribute="trailing" id="CXj-Yq-Wso"/>
                 <constraint firstAttribute="centerY" secondItem="GJI-EC-T92" secondAttribute="centerY" id="DJV-jG-fLY"/>
-                <constraint firstAttribute="centerY" secondItem="8sP-1x-ZGv" secondAttribute="centerY" constant="1" id="QM7-Ld-jM2"/>
+                <constraint firstAttribute="centerY" secondItem="8sP-1x-ZGv" secondAttribute="centerY" id="QM7-Ld-jM2"/>
                 <constraint firstItem="zWx-dY-osf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RDW-xQ-A8H"/>
                 <constraint firstAttribute="bottom" secondItem="zWx-dY-osf" secondAttribute="bottom" id="SVV-8U-RFS"/>
+                <constraint firstAttribute="centerY" secondItem="8sP-1x-ZGv" secondAttribute="centerY" id="fAv-3I-0CU"/>
                 <constraint firstAttribute="trailing" secondItem="zWx-dY-osf" secondAttribute="trailing" id="llP-wW-boJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="DJV-jG-fLY"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="316" y="318"/>
         </view>
     </objects>

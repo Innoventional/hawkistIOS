@@ -399,9 +399,16 @@
 }
 
 - (IBAction)btnSignUpFB:(id)sender {
-        [self showHud];
-    [_socManager loginFacebookSuccess:^(NSDictionary *response) {
+    
 
+        [self showHud];
+    
+    
+    [_socManager loginFacebookSuccess:^(NSDictionary *response) {
+        
+    
+        
+        
         [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
 //            _engine.user = user;
 //                _accountDetailVC= [[AccountDetailViewController alloc]init];
@@ -410,15 +417,28 @@
 //                         [self DownloadData];
             
         [self logged:user isLoggedWithFacebook:YES];
-            [self hideHud];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideHud];
+            });
+
+            
         } failureBlock:^(NSError *error) {
-            [self hideHud];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideHud];
+            });
+
             [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         }];
         
     } failure:^(NSError *error) {
         
-        [self hideHud];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideHud];
+        });
+
+        
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         
     }];
@@ -538,7 +558,9 @@
 }
 
 - (IBAction)btnSignInFB:(id)sender {
+
     [self showHud];
+    
     [_socManager loginFacebookSuccess:^(NSDictionary *response) {
         
     
@@ -549,14 +571,26 @@
 //            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
 //            
         [self logged:user isLoggedWithFacebook:YES];
-            [self hideHud];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideHud];
+            });
+            
         } failureBlock:^(NSError *error) {
-            [self hideHud];
-                     [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideHud];
+            });
+            
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         }];
         
     } failure:^(NSError *error) {
-        [self hideHud];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideHud];
+        });
+        
        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
 }
