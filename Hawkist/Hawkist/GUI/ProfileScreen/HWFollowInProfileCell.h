@@ -17,6 +17,8 @@
 @property (nonatomic, weak) id <HWFollowInProfileCellDelegate> delegate;
 
 - (void) setCellWithFollowUser:(HWFollowUser*) user;
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
+@property (nonatomic, assign) BOOL isFollow;
 
 @end
 

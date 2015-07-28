@@ -21,13 +21,19 @@
 @property (strong, nonatomic) NSString *userId;
 
 @property (weak, nonatomic) IBOutlet StarRatingControl *starView;
-@property (weak, nonatomic) IBOutlet UIButton *followButton;
 
-@property (nonatomic, assign) BOOL isFollow;
+
+//@property (nonatomic, assign) BOOL isFollow;
 
 @end
 
+
+#define IS_FOLLOW @"1"
+
+
+
 @implementation HWFollowInProfileCell
+
 
 - (void) setStarView:(StarRatingControl *)starView
 {
@@ -45,7 +51,7 @@
 - (instancetype) awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
     self = [super awakeAfterUsingCoder:aDecoder];
-    
+  
     return self;
 }
 
@@ -79,6 +85,7 @@
 
 - (void) setCellWithFollowUser:(HWFollowUser*) user
 {
+    
      [self.avatarImageView setImageWithURL:[NSURL URLWithString: user.avatar] placeholderImage:[UIImage imageNamed:@"noPhoto"]];
     
      self.userNameLabel.text = user.username;
@@ -101,18 +108,30 @@
         self.followButton.enabled = (![self.delegate hideFollowUnfollowButtonForUserId:self.userId]);
     }
     
-    if ([user.follow isEqualToString:@"1"])
+    if ([user.follow isEqualToString:IS_FOLLOW])
     {
         self.isFollow = YES;
         
-        [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+        [UIView performWithoutAnimation:^{
+            
+             [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+        }];
+        
+        
+       
         self.followButton.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
         
     } else {
         
         self.isFollow = NO;
        
-       [self.followButton setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
+        [UIView performWithoutAnimation:^{
+            
+                   [self.followButton setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
+        }];
+        
+        
+
         self.followButton.backgroundColor = [UIColor colorWithRed:48./255. green:173./255. blue:148./255. alpha:1];
 
     }

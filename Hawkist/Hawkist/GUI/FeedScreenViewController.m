@@ -18,7 +18,6 @@
 @property (nonatomic, strong) NSString* searchString;
 
 @property (nonatomic, assign) CGFloat lastHeightCollectionView;
-@property (weak, nonatomic) IBOutlet UIView *viewBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCollection;
 
 @end

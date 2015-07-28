@@ -293,16 +293,9 @@
 
 - (void) avatarInit
 {
-//    __block UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-//    activityIndicator.center = self.sellerAvatar.center;
-//    
-//    activityIndicator.hidesWhenStopped = YES;
+
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: self.item.user_avatar]];
-    
-    
-//    [self.sellerAvatar addSubview:activityIndicator];
-//    [activityIndicator startAnimating];
-    
+
     [self.sellerAvatar setImageWithURLRequest:request
                            placeholderImage:nil
                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
@@ -330,6 +323,7 @@
     
     [self.collectionView layoutIfNeeded];
      [self.scrollView layoutIfNeeded];
+    
     CGSize size = self.scrollView.contentSize;
     size.height += self.collectionView.contentSize.height - self.lastHeightCollectionView;
     self.scrollView.contentSize = size;

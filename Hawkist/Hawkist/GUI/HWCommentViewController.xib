@@ -34,7 +34,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="J15-0Q-0dE">
-                    <rect key="frame" x="0.0" y="65" width="320" height="451"/>
+                    <rect key="frame" x="0.0" y="65" width="320" height="454"/>
                     <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="jMi-aL-8KS"/>
@@ -103,7 +103,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="10m-SX-ups" firstAttribute="top" secondItem="J15-0Q-0dE" secondAttribute="bottom" constant="3" id="3I5-eu-obi"/>
+                <constraint firstItem="10m-SX-ups" firstAttribute="top" secondItem="J15-0Q-0dE" secondAttribute="bottom" id="3I5-eu-obi"/>
                 <constraint firstItem="J15-0Q-0dE" firstAttribute="leading" secondItem="xxJ-dT-yJX" secondAttribute="leading" id="4AQ-if-KbC"/>
                 <constraint firstItem="10m-SX-ups" firstAttribute="leading" secondItem="xxJ-dT-yJX" secondAttribute="leading" id="4my-B0-PUw"/>
                 <constraint firstItem="brm-sF-Uf5" firstAttribute="top" secondItem="xxJ-dT-yJX" secondAttribute="top" id="As9-q8-bWC"/>

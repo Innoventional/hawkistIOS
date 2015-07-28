@@ -515,7 +515,9 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     {
         self.collectionView.hidden = YES;
         self.tableView.hidden = NO;
+        
         [self.tableView reloadData];
+ 
         [self.tableView layoutIfNeeded];
         heightForCollectionOrTable = self.tableView.contentSize.height;
         
@@ -573,7 +575,12 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 {
     HWFollowInProfileCell* cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
       cell.delegate = self;
-    [cell setCellWithFollowUser:[self.selectedSegmentArray objectAtIndex:indexPath.row]];
+    
+    [cell.followButton setTitle:@" " forState:UIControlStateNormal];
+    
+        [cell setCellWithFollowUser:[self.selectedSegmentArray objectAtIndex:indexPath.row]];
+  
+    
   
     return cell;
 }
@@ -591,6 +598,28 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     return NO;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    HWFollowInProfileCell *cell1 = (id)cell;
+    
+  if(!cell1.isFollow)
+  {
+      [UIView performWithoutAnimation:^{
+          [cell1.followButton setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
+          [cell1.followButton layoutIfNeeded];
+      }];
+  } else {
+      
+      [UIView performWithoutAnimation:^{
+          [cell1.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+          [cell1.followButton layoutIfNeeded];
+
+       }];
+      
+  }
+       
+}
 
 #pragma mark -
 #pragma mark UICollectionViewDataSource
@@ -620,8 +649,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     [self.navigationController pushViewController: vc animated: YES];
     
     self.selectedSegmentArray = nil;
+    
 }
-
 
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -670,8 +699,15 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         
         [ [NetworkManager shared] unfollowWithUserId:userId successBlock:^{
             
-                        [button setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
-            button.backgroundColor = [UIColor colorWithRed:48./255. green:173./255. blue:148./255. alpha:1];
+            [UIView performWithoutAnimation:^{
+                 [button setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
+                [button layoutIfNeeded];
+            }];
+            
+           
+            
+            
+             button.backgroundColor = [UIColor colorWithRed:48./255. green:173./255. blue:148./255. alpha:1];
             
                                       } failureBlock:^(NSError *error) {
                         
@@ -680,7 +716,14 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         
         [ [NetworkManager shared] followWithUserId:userId successBlock:^{
             
-                        [button setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+            
+            [UIView performWithoutAnimation:^{
+                [button setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+                [button layoutIfNeeded];
+            }];
+          
+            
+            
             button.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
             
                                     } failureBlock:^(NSError *error) {
