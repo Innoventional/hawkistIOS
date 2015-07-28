@@ -519,6 +519,12 @@
 
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.isInternetConnectionAlertShowed = NO;
+    
+}
+
 
 - (void) logged:(HWUser*) user isLoggedWithFacebook: (BOOL) FaceBook
 {

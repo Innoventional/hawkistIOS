@@ -299,7 +299,10 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     [self setWishlistArrayWithUsetId:userId];
     
 }
-
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.isInternetConnectionAlertShowed = NO;
+}
 
 // items
 - (void) setItemsArrayWithUserId:(NSString*)userId

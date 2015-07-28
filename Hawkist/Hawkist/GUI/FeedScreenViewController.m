@@ -38,6 +38,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 
+
+        self.isInternetConnectionAlertShowed = NO;
+    
+
 //    if (self.items.count == 0)
 //    {
 //       [self.scrollView setContentOffset:CGPointMake(0, 800) animated:NO];

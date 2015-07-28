@@ -156,6 +156,13 @@
 #pragma mark -
 #pragma mark Navigation Delegate
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.isInternetConnectionAlertShowed = NO;
+    
+}
+
+
 - (void) leftButtonClick
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -320,6 +327,8 @@
 
 
 }
+
+
 - (void) reloadScrollViewSize
 {
     

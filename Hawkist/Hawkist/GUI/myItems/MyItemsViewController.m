@@ -53,11 +53,14 @@
   }
 
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self refresh];
-}
 
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.isInternetConnectionAlertShowed = NO;
+    [self refresh];
+
+}
 
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

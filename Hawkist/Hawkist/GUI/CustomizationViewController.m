@@ -58,6 +58,11 @@
 
 - (void) viewDidAppear: (BOOL) animated
 {
+   
+        self.isInternetConnectionAlertShowed = NO;
+        
+
+    
     [super viewDidAppear: animated];
     [self.arrayWithImageViews removeAllObjects];
     
@@ -184,6 +189,8 @@
     
     
 }
+
+
 
 - (IBAction)nextButton:(id)sender {
     

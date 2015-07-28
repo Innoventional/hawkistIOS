@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface HWBaseViewController : UIViewController
+@property (nonatomic,assign)BOOL isInternetConnectionAlertShowed;
+
 
 - (void) showHud;
 - (void) hideHud;
 - (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message;
+
 @end
