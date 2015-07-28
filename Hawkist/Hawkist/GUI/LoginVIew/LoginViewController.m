@@ -254,6 +254,19 @@
     
     [_signIn setHidden:YES];
     
+    float imageWidth = (180.f/320.0f)*self.view.width;
+    float imageHight = (180.f/568.0f)*self.view.height;
+    float imageY = (37.5f/568)*self.view.height;
+    
+    
+    CGRect rect = CGRectMake((self.view.width - imageWidth)/2,imageY,imageWidth,imageHight);
+
+    
+    UIImageView* backgroundLogo = [[UIImageView alloc]initWithFrame:rect];
+    [backgroundLogo setImage:[UIImage imageNamed:@"NoAvatar"]];
+    
+    [self.signIn addSubview:backgroundLogo];
+    
     [self.view addSubview:_signIn];
 
     
