@@ -51,7 +51,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                             <gestureRecognizers/>
                                         </imageView>
-                                        <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acdet_circle" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-P3-l3e">
+                                        <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="acdet_circle" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-P3-l3e">
                                             <rect key="frame" x="178" y="50" width="245" height="240"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
@@ -76,8 +76,9 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-N1-rI7">
-                                            <rect key="frame" x="239" y="25" width="123" height="21"/>
+                                            <rect key="frame" x="239" y="24" width="123" height="21"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" constant="123" id="7g3-uk-Qd2"/>
                                                 <constraint firstAttribute="height" constant="21" id="kP8-gK-Dt0"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
@@ -100,12 +101,12 @@
                                     <constraints>
                                         <constraint firstItem="5dC-Sn-3lK" firstAttribute="leading" secondItem="49n-Xd-8MH" secondAttribute="leading" constant="12" id="58H-pJ-VFq"/>
                                         <constraint firstItem="9Mv-P3-l3e" firstAttribute="top" secondItem="Fuq-N1-rI7" secondAttribute="bottom" constant="4" id="97f-d3-ZgX"/>
-                                        <constraint firstItem="Fuq-N1-rI7" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" constant="25" id="BG1-9X-CgI"/>
                                         <constraint firstItem="LZ2-hg-ahV" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" id="Bw0-Pa-tWr"/>
                                         <constraint firstItem="5dC-Sn-3lK" firstAttribute="top" secondItem="49n-Xd-8MH" secondAttribute="top" constant="17" id="CTu-Fm-xdq"/>
                                         <constraint firstItem="Fuq-N1-rI7" firstAttribute="centerX" secondItem="LZ2-hg-ahV" secondAttribute="centerX" id="Dn7-21-a7a"/>
                                         <constraint firstAttribute="bottom" secondItem="LZ2-hg-ahV" secondAttribute="bottom" id="P4b-jh-9V9"/>
                                         <constraint firstAttribute="trailing" secondItem="LZ2-hg-ahV" secondAttribute="trailing" id="RDc-Df-HKB"/>
+                                        <constraint firstItem="Fuq-N1-rI7" firstAttribute="centerY" secondItem="5dC-Sn-3lK" secondAttribute="centerY" id="hOG-nN-HVp"/>
                                         <constraint firstAttribute="centerX" secondItem="LQW-7s-CWm" secondAttribute="centerX" id="hZK-HA-FYv" userLabel="Center X Alignment - (0) - Top - Image View"/>
                                         <constraint firstItem="LZ2-hg-ahV" firstAttribute="leading" secondItem="49n-Xd-8MH" secondAttribute="leading" id="iRo-Ys-88c"/>
                                         <constraint firstAttribute="bottom" secondItem="9Mv-P3-l3e" secondAttribute="bottom" constant="10" id="vlV-kz-jIR"/>
