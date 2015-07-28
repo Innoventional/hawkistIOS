@@ -318,8 +318,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                  
                              } failureBlock:^(NSError *error) {
                                  
-                                 [self showAlertWithError:error];
-                                 
+                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];                                 
                              }];
     
 }
@@ -340,8 +339,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
                                    } failureBlock:^(NSError *error) {
                                        
-                                       [self showAlertWithError:error];
-                                       
+                                        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                    }];
 }
 
@@ -361,8 +359,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                        
                                 } failureBlock:^(NSError *error) {
                                     
-                                   [self showAlertWithError:error];
-                                       
+                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                    }];
     
 }
@@ -383,17 +380,12 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                       
                                   } failureBlock:^(NSError *error) {
                                       
-                                      [self showAlertWithError:error];
-                                      
+                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                   }];
 }
 
 
-- (void) showAlertWithError:(NSError*)error
-{
-    [self showAlertWithTitle:@"Error!"
-                     Message:error.localizedDescription];
-}
+
 
 #pragma mark -
 #pragma mark Actions
