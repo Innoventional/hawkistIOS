@@ -516,11 +516,14 @@
     
 
     [self showHud];
-
-    if (self.isCreate)
-    [netManager createItem:currentItem successBlock:^(HWItem *item) {
+//
+    
+    currentItem.id = self.itemId;
+    
+    
+    [netManager createOrUpdateItem:currentItem successBlock:^(HWItem *item) {
         
-        NSLog(@"--------------------------Saved");
+        NSLog(@"--------------------------Ok");
         [self hideHud];
         [self.navigationController popViewControllerAnimated:YES];
         
@@ -532,24 +535,6 @@
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }
      ];
-    else
-    { currentItem.id = self.itemId ;
-        [netManager updateItem:currentItem successBlock:^(HWItem *item) {
-            
-            NSLog(@"--------------------------updated");
-            [self hideHud];
-            [self.navigationController popViewControllerAnimated:YES];
-            
-            engine.city = postLabel.text;
-            engine.postCode = postField.text;
-            
-        } failureBlock:^(NSError *error) {
-            [self hideHud];
-            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        }
-         ];
-    }
-    
 }
 
 - (IBAction)imageClick:(id)sender {
