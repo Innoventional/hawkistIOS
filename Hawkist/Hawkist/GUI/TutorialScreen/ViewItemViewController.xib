@@ -517,7 +517,9 @@
                                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEQ-Se-cIp">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <items>
-                                        <barButtonItem systemItem="action" id="TZh-WD-7PW"/>
+                                        <barButtonItem systemItem="action" id="TZh-WD-7PW">
+                                            <color key="tintColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </barButtonItem>
                                     </items>
                                     <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </toolbar>
