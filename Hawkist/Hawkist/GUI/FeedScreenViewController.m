@@ -38,6 +38,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 
+
+        self.isInternetConnectionAlertShowed = NO;
+    
+
 //    if (self.items.count == 0)
 //    {
 //       [self.scrollView setContentOffset:CGPointMake(0, 800) animated:NO];
@@ -244,7 +248,15 @@
     //reload scroll view size
 
     [self.collectionView layoutIfNeeded];
-    self.heightCollection.constant = self.collectionView.contentSize.height;
+    
+    if (self.items.count == 0)
+    {
+        self.heightCollection.constant = self.collectionView.contentSize.height-50;
+    }
+    else{
+      
+        self.heightCollection.constant = self.collectionView.contentSize.height+200;
+    }
     self.lastHeightCollectionView = self.collectionView.contentSize.height;
     [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
 

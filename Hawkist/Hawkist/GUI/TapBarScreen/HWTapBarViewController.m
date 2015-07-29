@@ -59,6 +59,13 @@
     [self.contentView setNeedsLayout];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.isInternetConnectionAlertShowed = NO;
+    
+}
+
+
 #pragma mark -
 #pragma mark HWTapBarViewDelegate
 

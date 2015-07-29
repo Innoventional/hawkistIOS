@@ -12,13 +12,13 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
-            <string>OpenSans-Semibold</string>
-            <string>OpenSans-Semibold</string>
         </mutableArray>
         <mutableArray key="OpenSansRegular.ttf">
             <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="open-sans.bold.ttf">
+            <string>OpenSans-Bold</string>
+            <string>OpenSans-Bold</string>
             <string>OpenSans-Bold</string>
         </mutableArray>
     </customFonts>
@@ -71,34 +71,34 @@
                                 <constraint firstAttribute="width" constant="7" id="Xnh-MX-jmP"/>
                                 <constraint firstAttribute="height" constant="17" id="aN7-gD-Gty"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                             <color key="textColor" red="0.2156862745" green="0.72549019609999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QW-pN-FVA">
-                            <rect key="frame" x="18" y="48" width="16" height="17"/>
+                            <rect key="frame" x="18" y="48" width="14" height="17"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                             <color key="textColor" red="0.2156862745" green="0.72549019609999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIj-01-afA">
-                            <rect key="frame" x="37" y="49" width="7" height="15"/>
+                            <rect key="frame" x="35" y="50" width="6" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="15" id="fmU-NT-cdt"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
                             <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-Cc-Z48">
-                            <rect key="frame" x="45" y="49" width="14" height="15"/>
+                            <rect key="frame" x="42" y="50" width="12" height="15"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="kpe-Yy-5Oc"/>
                                 <constraint firstAttribute="width" constant="1" id="zt5-96-RCg"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
                             <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <variation key="default">
@@ -109,7 +109,7 @@
                             </variation>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y73-ba-JUE">
-                            <rect key="frame" x="37" y="57" width="22" height="1"/>
+                            <rect key="frame" x="35" y="58" width="19" height="1"/>
                             <color key="backgroundColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="ifc-dC-uhV"/>
@@ -132,12 +132,12 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ff-l0-6Dz">
-                            <rect key="frame" x="8" y="30" width="15" height="16"/>
+                            <rect key="frame" x="8" y="30" width="13" height="16"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="16" id="rrc-vN-84Z"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
                             <color key="textColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -177,7 +177,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="708-7B-9a6"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
                             <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -185,12 +185,14 @@
                     <constraints>
                         <constraint firstItem="Y73-ba-JUE" firstAttribute="top" secondItem="2x2-Cc-Z48" secondAttribute="centerY" id="2Jf-Lc-ePT"/>
                         <constraint firstItem="0QW-pN-FVA" firstAttribute="bottom" secondItem="CIj-01-afA" secondAttribute="bottom" id="3J8-wm-MO3"/>
+                        <constraint firstItem="CIj-01-afA" firstAttribute="bottom" secondItem="2x2-Cc-Z48" secondAttribute="bottom" id="3w0-WD-lEq"/>
                         <constraint firstItem="u8q-j1-x9X" firstAttribute="leading" secondItem="rjj-8z-kvJ" secondAttribute="leading" constant="9" id="7QP-WI-PMJ"/>
                         <constraint firstItem="IMO-JI-0mL" firstAttribute="top" secondItem="nJJ-cC-gUO" secondAttribute="bottom" constant="5" id="7x1-gz-lJU"/>
                         <constraint firstAttribute="trailing" secondItem="nJJ-cC-gUO" secondAttribute="trailing" constant="8" id="8mw-O5-qai"/>
                         <constraint firstItem="0QW-pN-FVA" firstAttribute="bottom" secondItem="u8q-j1-x9X" secondAttribute="bottom" id="9ly-MC-d6E"/>
                         <constraint firstItem="0QW-pN-FVA" firstAttribute="leading" secondItem="u8q-j1-x9X" secondAttribute="trailing" constant="2" id="CyU-mb-Mt9"/>
                         <constraint firstItem="2x2-Cc-Z48" firstAttribute="leading" secondItem="CIj-01-afA" secondAttribute="trailing" constant="1" id="Dpm-eS-Gnz"/>
+                        <constraint firstItem="CIj-01-afA" firstAttribute="bottom" secondItem="0QW-pN-FVA" secondAttribute="bottom" id="EdB-b1-uvW"/>
                         <constraint firstItem="u8q-j1-x9X" firstAttribute="bottom" secondItem="CIj-01-afA" secondAttribute="bottom" constant="1" id="Ela-Re-Udt"/>
                         <constraint firstItem="6ff-l0-6Dz" firstAttribute="leading" secondItem="rjj-8z-kvJ" secondAttribute="leading" constant="8" id="FKr-gb-bL7"/>
                         <constraint firstAttribute="trailing" secondItem="R9K-Ey-ZRP" secondAttribute="trailing" id="LyB-zb-QAM"/>
@@ -199,6 +201,7 @@
                         <constraint firstItem="R9K-Ey-ZRP" firstAttribute="leading" secondItem="IMO-JI-0mL" secondAttribute="trailing" constant="1" id="NMi-s9-U3S"/>
                         <constraint firstItem="0QW-pN-FVA" firstAttribute="top" secondItem="2x2-Cc-Z48" secondAttribute="top" id="QoT-nZ-QC9"/>
                         <constraint firstItem="6ff-l0-6Dz" firstAttribute="top" secondItem="nJJ-cC-gUO" secondAttribute="bottom" constant="3" id="Rdk-tG-6lz"/>
+                        <constraint firstItem="2x2-Cc-Z48" firstAttribute="centerY" secondItem="Y73-ba-JUE" secondAttribute="top" id="Rdy-No-pzQ"/>
                         <constraint firstItem="0QW-pN-FVA" firstAttribute="top" secondItem="u8q-j1-x9X" secondAttribute="top" id="T4o-KS-EKQ"/>
                         <constraint firstItem="0QW-pN-FVA" firstAttribute="bottom" secondItem="u8q-j1-x9X" secondAttribute="bottom" id="TRt-49-zQM"/>
                         <constraint firstItem="Y73-ba-JUE" firstAttribute="trailing" secondItem="2x2-Cc-Z48" secondAttribute="trailing" id="TUa-ds-SrV"/>
@@ -222,17 +225,22 @@
                         <constraint firstItem="nJJ-cC-gUO" firstAttribute="leading" secondItem="rjj-8z-kvJ" secondAttribute="leading" constant="8" id="tIN-sw-6pL"/>
                         <constraint firstItem="CIj-01-afA" firstAttribute="leading" secondItem="0QW-pN-FVA" secondAttribute="trailing" constant="3" id="tfa-Zp-7J4"/>
                         <constraint firstItem="0QW-pN-FVA" firstAttribute="top" secondItem="u8q-j1-x9X" secondAttribute="top" id="u9A-OZ-oEB"/>
+                        <constraint firstItem="0QW-pN-FVA" firstAttribute="bottom" secondItem="CIj-01-afA" secondAttribute="bottom" id="v0i-OL-urt"/>
                         <constraint firstItem="CIj-01-afA" firstAttribute="leading" secondItem="0QW-pN-FVA" secondAttribute="trailing" constant="3" id="zMN-mz-SXh"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="Ela-Re-Udt"/>
                             <exclude reference="3J8-wm-MO3"/>
+                            <exclude reference="9ly-MC-d6E"/>
                             <exclude reference="MCn-lA-wDw"/>
                             <exclude reference="Mwy-pn-sdA"/>
                             <exclude reference="QoT-nZ-QC9"/>
                             <exclude reference="lZe-n0-VMT"/>
+                            <exclude reference="v0i-OL-urt"/>
                             <exclude reference="zMN-mz-SXh"/>
                             <exclude reference="Dpm-eS-Gnz"/>
+                            <exclude reference="2Jf-Lc-ePT"/>
                             <exclude reference="kBH-2g-L0I"/>
                             <exclude reference="kI7-oM-INd"/>
                             <exclude reference="s2f-5e-5hy"/>

@@ -82,14 +82,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="145" height="147"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skidka" translatesAutoresizingMaskIntoConstraints="NO" id="3WA-3G-8hz">
-                                        <rect key="frame" x="0.0" y="10" width="43" height="22"/>
+                                        <rect key="frame" x="0.0" y="12" width="43" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="43" id="PBn-y1-h6S"/>
                                             <constraint firstAttribute="height" constant="22" id="uog-Qr-Abx"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1se-cG-QcW">
-                                        <rect key="frame" x="7" y="13" width="29" height="15"/>
+                                        <rect key="frame" x="7" y="15" width="29" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="pb4-FA-oU5"/>
                                         </constraints>
@@ -104,7 +104,7 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="3WA-3G-8hz" firstAttribute="top" secondItem="Jzg-In-8hJ" secondAttribute="top" constant="10" id="4R4-lC-xdz"/>
+                                    <constraint firstItem="3WA-3G-8hz" firstAttribute="top" secondItem="Jzg-In-8hJ" secondAttribute="top" constant="12" id="4R4-lC-xdz"/>
                                     <constraint firstItem="AS9-vi-cBD" firstAttribute="leading" secondItem="Jzg-In-8hJ" secondAttribute="leading" id="9dp-af-H6l"/>
                                     <constraint firstItem="1se-cG-QcW" firstAttribute="centerY" secondItem="3WA-3G-8hz" secondAttribute="centerY" id="W5q-cT-o6J"/>
                                     <constraint firstAttribute="bottom" secondItem="AS9-vi-cBD" secondAttribute="bottom" id="b9h-zt-G3y"/>

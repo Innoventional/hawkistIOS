@@ -95,8 +95,8 @@
     
     if ([self.item.user_id isEqualToString:[AppEngine shared].user.id])
     {
-        self.navigationView.rightButtonOutlet.enabled = YES;
-        [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
+//        self.navigationView.rightButtonOutlet.enabled = YES;
+//        [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
 
     }
     else
@@ -156,26 +156,33 @@
 #pragma mark -
 #pragma mark Navigation Delegate
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.isInternetConnectionAlertShowed = NO;
+    
+}
+
+
 - (void) leftButtonClick
 {
     [self.navigationController popViewControllerAnimated:YES];
     [self updateItem];
 }
 
-- (void) rightButtonClick
-{
-        UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil
-                                                           delegate: self
-                                                  cancelButtonTitle: @"Cancel"
-                                             destructiveButtonTitle: nil
-                                                  otherButtonTitles: @"Edit", nil];
-        popup.tag = 1;
-    
-    [popup showInView:self.view];
+//- (void) rightButtonClick
+//{
+//        UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil
+//                                                           delegate: self
+//                                                  cancelButtonTitle: @"Cancel"
+//                                             destructiveButtonTitle: nil
+//                                                  otherButtonTitles: @"Edit", nil];
+//        popup.tag = 1;
+//    
+//    [popup showInView:self.view];
+//
+//     
+//    }
 
-     
-    }
-    
 - (void) actionSheet: (UIActionSheet*) popup
          clickedButtonAtIndex: (NSInteger) buttonIndex
     {
@@ -322,6 +329,8 @@
 
 
 }
+
+
 - (void) reloadScrollViewSize
 {
     

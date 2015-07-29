@@ -51,6 +51,11 @@
     return self;
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.isInternetConnectionAlertShowed = NO;
+}
+
 - (void) updateItem
 {
     

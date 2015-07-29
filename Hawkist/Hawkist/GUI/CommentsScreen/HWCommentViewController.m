@@ -84,6 +84,11 @@
 }
 
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.isInternetConnectionAlertShowed = NO;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     

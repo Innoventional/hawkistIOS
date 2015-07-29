@@ -46,6 +46,8 @@
 
 - (void) viewDidAppear: (BOOL) animated
 {
+    
+        self.isInternetConnectionAlertShowed = NO;
 
     [super viewDidAppear: animated];
     
@@ -57,6 +59,7 @@
     CGSize scrollViewSize = self.scrollView.frame.size;
     
     CGSize slideSize = CGSizeMake(self.scrollView.frame.size.width - 100, self.scrollView.frame.size.height);
+    
     for (NSInteger i = 0; i < [self.images count]; i++)
     {
         CGRect slideRect = CGRectMake((self.scrollView.frame.size.width - slideSize.width)/2 + slideSize.width * i, 0, slideSize.width, scrollViewSize.height);
@@ -64,7 +67,7 @@
         UIView *slide = [[UIView alloc] initWithFrame:slideRect];
         [slide setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, slideRect.size.width, self.scrollView.frame.size.height)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, slideRect.size.width, self.scrollView.frame.size.height*1.2f)];
         imageView.backgroundColor = [UIColor clearColor];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         [imageView setImage:[UIImage imageNamed:[self.images objectAtIndex:i]]];

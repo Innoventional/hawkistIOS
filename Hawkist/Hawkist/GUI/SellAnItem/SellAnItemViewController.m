@@ -537,6 +537,13 @@
      ];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.isInternetConnectionAlertShowed = NO;
+    
+}
+
+
 - (IBAction)imageClick:(id)sender {
     
     UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil

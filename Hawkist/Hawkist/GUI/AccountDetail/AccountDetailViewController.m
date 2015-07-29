@@ -42,6 +42,8 @@
 
 
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -69,13 +71,13 @@
     
     [attributedString addAttribute: NSFontAttributeName value: font range: NSMakeRange(0, attributedString.length)];
     [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor whiteColor] range:NSMakeRange(0, attributedString.length)];
-    NSRange range = NSMakeRange(9, 11);
+    NSRange range = NSMakeRange(9, 12);
     
     
     [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor redColor] range:range];
     [attributedString addAttribute: NSLinkAttributeName value: @"http://www.hawkist.com/privacy-policy" range: range];
     
-    range = NSMakeRange(25, 14);
+    range = NSMakeRange(25, 15);
     [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor color256RGBWithRed: 63 green: 147 blue: 126] range:range];
     [attributedString addAttribute: NSLinkAttributeName value: @"http://www.hawkist.com/terms-conditions" range: range];
     
@@ -141,7 +143,9 @@
 {
     
     [_txtURLS scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
-    
+   
+        self.isInternetConnectionAlertShowed = NO;
+        
 }
 
 
