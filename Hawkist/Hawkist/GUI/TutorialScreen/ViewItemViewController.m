@@ -255,9 +255,11 @@
     HWColor* itemColor = [HWTag getColorById:self.item.color from:itemSubCategory.color];
     
     self.colour.text = itemColor.name;
-    if(self.item.collection_only)
+    if(self.item.collection_only  )
     {
        self.delivery.text = @"Collection only";
+
+        
     } else {
         
     self.delivery.text = [NSString stringWithFormat:@"£ %@", self.item.shipping_price];
