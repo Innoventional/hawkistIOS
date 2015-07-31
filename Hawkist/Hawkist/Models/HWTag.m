@@ -9,7 +9,13 @@
 #import "HWTag.h"
 
 @implementation HWTag
-
++(JSONKeyMapper*)keyMapper
+{
+    [super keyMapper];
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"description": @"item_description"
+                                                       }];
+}
 @end
 
 @implementation HWCategory

@@ -187,7 +187,7 @@
         youGetLabel.text = [NSString stringWithFormat:@"%.2f.", val];
 
         
-        if ([currentItem.shipping_price doubleValue]>0)
+        if (currentItem.shipping_price)
         {
             priceForShipping.textField.text =  currentItem.shipping_price;
             checkBox1.selected = YES;
@@ -199,12 +199,15 @@
         {
             checkBox1.selected = NO;
             priceForShipping.textField.enabled = NO;
+            priceForShipping.textField.text = @"0.00";
             priceForShipping.textField.textColor = self.placeHolderColor;
-             priceForShipping.label.textColor = self.placeHolderColor;
+            priceForShipping.label.textColor = self.placeHolderColor;
         }
         
         checkBox2.selected = currentItem.collection_only;
        
+        
+        
         postField.text = currentItem.post_code;
 
         postLabel.text = currentItem.city;
@@ -480,7 +483,14 @@
     currentItem.retail_price = retailPrice.textField.text;
     currentItem.selling_price = sellingPrice.textField.text;
     
-    currentItem.shipping_price = priceForShipping.textField.text;
+    if (checkBox1.selected)
+         currentItem.shipping_price = priceForShipping.textField.text;
+    
+    else
+        currentItem.shipping_price = @"not_applicable";
+    
+    
+   
     
     currentItem.collection_only = checkBox2.selected;
     

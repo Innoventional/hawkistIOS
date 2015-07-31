@@ -9,6 +9,7 @@
 #import "FeedScreenViewController.h"
 #import "ViewItemViewController.h"
 #import "HWProfileViewController.h"
+#import "CustomizationViewController.h"
 #import "AddTagsView.h"
 
 @interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate>
@@ -37,44 +38,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-
-
-        self.isInternetConnectionAlertShowed = NO;
-    
-
-//    if (self.items.count == 0)
-//    {
-//       [self.scrollView setContentOffset:CGPointMake(0, 800) animated:NO];
-//        self.scrollView.scrollEnabled = NO;
-//    }
-//    else
-//    {
-//        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-//        self.scrollView.scrollEnabled = YES;
-//    }
-    
-   // [self.addTagsView addTagsToView:[NSArray arrayWithObjects:@"PC",nil]];
-    
-    
-    [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
-        
-       [self.addTagsView addTagsToView:tags successBlock:^{
-           [self refresh];
-           
-       } failureBlock:^(NSError *error) {
-           
-           
-       }];
-        
-    } failureBlock:^(NSError *error) {
-        
-        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-    }];
-    
-    self.addTagsView.delegate = self;
-
-  
-    
+    self.isInternetConnectionAlertShowed = NO;
+    [self refresh];
 }
 
 - (void) selectedItem
@@ -86,11 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-   
-    
-    
+        self.addTagsView.delegate = self;
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.tintColor = [UIColor grayColor];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -151,10 +112,6 @@
     [self.view endEditing: YES];
     return YES;
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -205,6 +162,20 @@
     
     [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
         
+        if ([AppEngine shared].tags.count== tags.count)
+        {
+            
+            CustomizationViewController* vc = [[CustomizationViewController alloc]init];
+            vc.avaliableTags = tags;
+            
+            [self.navigationController pushViewController:vc animated:NO];
+            
+            NSLog(@"Customization");
+            
+        }
+        
+        else
+        {
         [self.addTagsView addTagsToView:tags successBlock:^{
             
             
@@ -221,15 +192,13 @@
                 
                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             }];
-
-            
-            
-            
-        } failureBlock:^(NSError *error) {
-            
-            
+ 
+        }
+         failureBlock:^(NSError *error) {
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         }];
         
+        }
         
     } failureBlock:^(NSError *error) {
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
