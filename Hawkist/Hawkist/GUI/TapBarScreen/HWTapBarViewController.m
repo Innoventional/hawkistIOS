@@ -10,7 +10,7 @@
 #import "HWTapBarView.h"
 #import "FeedScreenViewController.h"
 #import "WantToSellViewController.h"
-
+#import "HWMyAccountViewController.h"
 
 
 #import "HWProfileViewController.h"
@@ -87,6 +87,8 @@
         }
         case 3:
         {
+            HWMyAccountViewController *vc = [[HWMyAccountViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
               
             break;
         }
