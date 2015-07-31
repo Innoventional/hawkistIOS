@@ -18,14 +18,12 @@
 @property (nonatomic, strong) NSString<Optional>* user_avatar;
 @property (nonatomic, strong) NSString<Optional>* user_id;
 @property (nonatomic, strong) NSString<Optional>* user_username;
-
 @property (nonatomic, strong) NSDictionary<Optional>* offer;
-
 @property (nonatomic, assign) NSString<Optional>* isAcceptDeclineComment;
-
 @property (nonatomic, assign) NSString<Optional>* currentOfferId;
 @property (nonatomic, strong) NSString<Optional>* offer_id;
 
+@property (nonatomic, strong) NSArray<Optional>* mentions;
 
 
 

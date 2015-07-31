@@ -15,5 +15,6 @@
 - (void) showHud;
 - (void) hideHud;
 - (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message;
+- (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message withDelegate:(id)delegate;
 
 @end

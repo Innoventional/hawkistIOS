@@ -178,6 +178,12 @@
 
 
 
+#pragma mark -
+#pragma mark MentionInComment
+
+- (void) getMentionInCommentsWithString:(NSString*)text
+                           successBlock:(void(^)(NSArray *mentionsArray))successBlock
+                           failureBlock:(void(^)(NSError *error)) failureBlock;
 
 
 @end

@@ -57,6 +57,7 @@
                 [self updateItem];
             } failureBlock:^(NSError *error) {
                 
+                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             }];
             
             
@@ -85,6 +86,7 @@
                                 [self updateItem];
                             } failureBlock:^(NSError *error) {
                                 
+                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                             }];
 
     
@@ -265,6 +267,10 @@
     if(self.item.collection_only  )
     {
        self.delivery.text = @"Collection only";
+        
+        if (self.item.shipping_price) {
+            self.delivery.text = [NSString stringWithFormat:@"£ %@ or Collection only", self.item.shipping_price];
+        }
 
         
     } else {

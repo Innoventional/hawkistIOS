@@ -1,5 +1,4 @@
-
-    
+ 
  //
 //  NetworkManager.m
 //  Hawkist
@@ -13,6 +12,7 @@
 #import "HWTag.h"
 #import "HWFollowUser.h"
 #import "HWComment.h"
+#import "HWMention.h"
 
 
 @interface NetworkManager ()
@@ -1212,7 +1212,6 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
     
 }
 
-
 #pragma mark -
 #pragma mark Comments
 
@@ -1342,7 +1341,59 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 }
 
 
+#pragma mark -
+#pragma mark MentionInComment
 
+- (void) getMentionInCommentsWithString:(NSString*)text
+                           successBlock:(void(^)(NSArray *mentionsArray))successBlock
+                           failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+ 
+
+    NSString *URLString = [NSString stringWithFormat:@"listings/comments_people?q=%@",text];
+    
+    [self.networkDecorator GET:URLString
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           NSArray *tempArray = responseObject[@"users"];
+                           NSMutableArray *mentionArray = [NSMutableArray array];
+                           NSError *error;
+                           
+                           for (NSDictionary *dict in tempArray)
+                           {
+                               HWMention *mention = [[HWMention alloc]initWithDictionary:dict error:&error];
+                               [mentionArray addObject:mention];
+                           }
+                           
+                           if(error){
+                               NSLog(@"%@",error.localizedDescription);
+                           }
+                           
+                           successBlock(mentionArray);
+                           
+                           
+                           
+                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                       }];
+    
+    
+    
+}
 
 
 @end

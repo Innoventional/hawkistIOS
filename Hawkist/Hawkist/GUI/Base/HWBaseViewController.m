@@ -71,4 +71,32 @@
         };
 }
 
+
+- (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message withDelegate:(id)delegate
+{
+    if ([title isEqualToString:@"No Connection"]&& self.isInternetConnectionAlertShowed)
+    {
+        return;
+    }
+    else
+    {
+        if ([title isEqualToString:@"No Connection"])
+        {
+            self.isInternetConnectionAlertShowed = YES;
+        }
+        
+        NSLog(@"%@",message);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc]initWithTitle:title
+                                       message:message
+                                      delegate:delegate
+                             cancelButtonTitle:@"OK"
+                             otherButtonTitles:nil] show];
+            
+        });
+    };
+}
+
+
 @end
