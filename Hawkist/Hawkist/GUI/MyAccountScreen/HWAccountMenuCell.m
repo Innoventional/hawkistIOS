@@ -11,7 +11,7 @@
 @implementation HWAccountMenuCell
 
 - (void)awakeFromNib {
-    /e
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
