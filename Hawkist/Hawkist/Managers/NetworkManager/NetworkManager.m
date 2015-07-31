@@ -85,12 +85,27 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
         
     else
     {
+        NSInteger statusCode = [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
 
-    serverError = [NSError errorWithDomain:@"Server Error"
-                                                code:error.code
-                                            userInfo:error.userInfo];
+        switch (statusCode) {
+            case 401:
+                
+            {
+                serverError = [NSError errorWithDomain:@"Server Error"
+                                                  code:401
+                                              userInfo:@{NSLocalizedDescriptionKey:@"Unauthorized"}];
+                break;
+            }
+            default:
+            {
+                serverError = [NSError errorWithDomain:@"Server Error"
+                                                  code:error.code
+                                              userInfo:error.userInfo];
+                break;
+            }
+        }
+        
     }
-    
     return serverError;
 }
 
@@ -825,6 +840,37 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                            failureBlock(serverError);
                        }];
+}
+
+
+- (void) check_selling_ability:(void(^)(void))successBlock
+                  failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    [self.networkDecorator GET:@"check_selling_ability"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           else successBlock();
+
+     
+                            }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         
+                            NSError *serverError = [self serverErrorWithError:error];
+         
+                            failureBlock(serverError);
+         
+     }];
+
 }
 
 #pragma mark -

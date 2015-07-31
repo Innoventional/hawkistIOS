@@ -13,6 +13,9 @@
 #import "TutorialViewController.h"
 #import "SocialManager.h"
 #import "HWTapBarViewController.h"
+#import "CustomizationViewController.h"
+#import "FeedScreenViewController.h"
+
 
 @interface LoginViewController ()
 
@@ -539,12 +542,12 @@
             _accountDetailVC= [[AccountDetailViewController alloc]init];
             _accountDetailVC.isLogeedWithFacebook = FaceBook;
             [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-        }
+                   }
         else
         {
             [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
         }
-
+        
         
     } failureBlock:^(NSError *error) {
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];

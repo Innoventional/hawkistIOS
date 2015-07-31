@@ -7,6 +7,7 @@
 //
 
 #import "HWBaseViewController.h"
+#import "LoginViewController.h"
 
 @interface HWBaseViewController ()
 
@@ -60,6 +61,19 @@
         
     NSLog(@"%@",message);
     
+            if ([message isEqualToString:@"Unauthorized"]||[title isEqualToString:@"Account Is Suspended"])
+        
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            LoginViewController* vc = [[LoginViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:NO];
+
+            
+        });
+
+        
+    }
+            
     dispatch_async(dispatch_get_main_queue(), ^{
         [[[UIAlertView alloc]initWithTitle:title
                                    message:message
@@ -68,6 +82,10 @@
                          otherButtonTitles:nil] show];
         
     });
+        
+        
+            
+            
         };
 }
 

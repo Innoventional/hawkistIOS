@@ -14,6 +14,7 @@
 #import "CustomizationViewController.h"
 #import "NetworkManager.h"
 #import "UIColor+Extensions.h"
+#import "FeedScreenViewController.h"
 
 
 @interface AccountDetailViewController ()
@@ -288,7 +289,7 @@
     [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:aboutString photo:_imgAvatar2.image successBlock:^(HWUser *user) {
         
         [self hideHud];
-        [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
+        [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
         [self hideHud];
         [self showAlert:error];
@@ -298,7 +299,7 @@
     {
         [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:aboutString photo:nil successBlock:^(HWUser *user) {
             [self hideHud];
-            [self.navigationController pushViewController:[[CustomizationViewController alloc]init] animated:(YES)];
+            [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
         } failureBlock:^(NSError *error) {
             [self hideHud];
             //[self showAlert:error];
@@ -330,8 +331,6 @@
     self.btnContinue.enabled = false;
     }
 }
-
-
 
 - (IBAction)tapImage:(id)sender {
     UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil

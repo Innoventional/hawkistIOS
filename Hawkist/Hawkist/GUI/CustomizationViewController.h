@@ -10,12 +10,15 @@
 #import "HWBaseViewController.h"
 
 @interface CustomizationViewController : HWBaseViewController <UIScrollViewDelegate>
+
+- (instancetype)initWithTags:(NSMutableArray*)tags;
 @property (strong, nonatomic) IBOutlet UIView *viewTop;
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 
 @property (strong, nonatomic) IBOutlet UIView *viewScroll;
 
+@property (nonatomic,strong)NSMutableArray* avaliableTags;
 
 @property (strong, nonatomic) IBOutlet UIView *viewBottom;
 

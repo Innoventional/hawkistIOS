@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="cardView">
+            <rect key="frame" x="0.0" y="0.0" width="581" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fq7-Th-t3A">
+                    <rect key="frame" x="107" y="201" width="27" height="32"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="23"/>
+                    <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="lzv-vV-Yls">
+                    <rect key="frame" x="458" y="32" width="80" height="80"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="6es-p8-dII"/>
+                        <constraint firstAttribute="height" constant="80" id="Kum-6N-eoA"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="A9G-lc-KZV" appends="YES" id="L6c-7N-Ucn"/>
+                    </connections>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Delete" translatesAutoresizingMaskIntoConstraints="NO" id="A84-Jz-QVJ">
+                    <rect key="frame" x="458" y="135" width="80" height="80"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="DlY-QI-zfb"/>
+                        <constraint firstAttribute="width" constant="80" id="nag-ls-n6q"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="zcz-NG-Cde" appends="YES" id="AmG-XA-SKM"/>
+                    </connections>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CARD HOLDER NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqn-pc-ZBo">
+                    <rect key="frame" x="23" y="18" width="183" height="25"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="18"/>
+                    <color key="textColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXPIRATION DATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vw-53-rN2">
+                    <rect key="frame" x="23" y="168" width="153" height="25"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="18"/>
+                    <color key="textColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CARD NUMBER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccL-bU-X3x">
+                    <rect key="frame" x="23" y="94" width="131" height="25"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="18"/>
+                    <color key="textColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rober John Smith" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nb-FH-NJw">
+                    <rect key="frame" x="44" y="46" width="194" height="32"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="23"/>
+                    <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-TG-XLN">
+                    <rect key="frame" x="44" y="135" width="201" height="8"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tf-Nv-J1g">
+                    <rect key="frame" x="44" y="201" width="27" height="32"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="23"/>
+                    <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxR-ry-WL0">
+                    <rect key="frame" x="85" y="201" width="9" height="32"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="23"/>
+                    <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYP-ma-Za0" userLabel="Line">
+                    <rect key="frame" x="418" y="0.0" width="1" height="250"/>
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="bNx-Cn-8aU"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcV-wX-5PR">
+                    <rect key="frame" x="267" y="123" width="53" height="32"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="23"/>
+                    <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="6nb-FH-NJw" firstAttribute="leading" secondItem="4tf-Nv-J1g" secondAttribute="leading" id="2qR-8S-6eO"/>
+                <constraint firstItem="GxR-ry-WL0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="85" id="3gk-V7-X8j"/>
+                <constraint firstItem="qcV-wX-5PR" firstAttribute="leading" secondItem="xt4-TG-XLN" secondAttribute="trailing" constant="22" id="6EQ-1B-AhU"/>
+                <constraint firstItem="lzv-vV-Yls" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="A0I-IN-Chj"/>
+                <constraint firstItem="A84-Jz-QVJ" firstAttribute="trailing" secondItem="lzv-vV-Yls" secondAttribute="trailing" id="B48-9v-kmP"/>
+                <constraint firstItem="4tf-Nv-J1g" firstAttribute="top" secondItem="5vw-53-rN2" secondAttribute="bottom" constant="8" id="BaJ-VP-gyN"/>
+                <constraint firstItem="YYP-ma-Za0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CG9-PZ-ajD"/>
+                <constraint firstItem="Fqn-pc-ZBo" firstAttribute="leading" secondItem="5vw-53-rN2" secondAttribute="leading" id="Cbr-pB-n0W"/>
+                <constraint firstItem="fq7-Th-t3A" firstAttribute="centerY" secondItem="4tf-Nv-J1g" secondAttribute="centerY" id="NZL-OV-ajv"/>
+                <constraint firstItem="fq7-Th-t3A" firstAttribute="leading" secondItem="GxR-ry-WL0" secondAttribute="trailing" constant="13" id="O7b-0G-BBy"/>
+                <constraint firstAttribute="bottom" secondItem="YYP-ma-Za0" secondAttribute="bottom" id="S2l-rE-OgY"/>
+                <constraint firstItem="xt4-TG-XLN" firstAttribute="leading" secondItem="6nb-FH-NJw" secondAttribute="leading" id="SG1-sN-Yu8"/>
+                <constraint firstItem="5vw-53-rN2" firstAttribute="top" secondItem="xt4-TG-XLN" secondAttribute="bottom" constant="25" id="SPy-Fa-ft5"/>
+                <constraint firstItem="xt4-TG-XLN" firstAttribute="top" secondItem="ccL-bU-X3x" secondAttribute="bottom" constant="16" id="TP9-Ud-JVL"/>
+                <constraint firstAttribute="bottom" secondItem="A84-Jz-QVJ" secondAttribute="bottom" constant="35" id="UTY-z8-Zr8"/>
+                <constraint firstItem="Fqn-pc-ZBo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="VZM-sK-zdd"/>
+                <constraint firstItem="lzv-vV-Yls" firstAttribute="leading" secondItem="YYP-ma-Za0" secondAttribute="trailing" constant="39" id="hzb-sa-OAE"/>
+                <constraint firstItem="qcV-wX-5PR" firstAttribute="centerY" secondItem="xt4-TG-XLN" secondAttribute="centerY" id="jA7-P1-yRP"/>
+                <constraint firstItem="GxR-ry-WL0" firstAttribute="centerY" secondItem="4tf-Nv-J1g" secondAttribute="centerY" id="kup-Nv-K9o"/>
+                <constraint firstItem="Fqn-pc-ZBo" firstAttribute="leading" secondItem="ccL-bU-X3x" secondAttribute="leading" id="mCe-iW-2Va"/>
+                <constraint firstAttribute="trailing" secondItem="lzv-vV-Yls" secondAttribute="trailing" constant="43" id="rTc-Km-cYK"/>
+                <constraint firstItem="Fqn-pc-ZBo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="23" id="sdE-XE-bJT"/>
+                <constraint firstItem="6nb-FH-NJw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="44" id="tKo-LG-9Bn"/>
+                <constraint firstItem="6nb-FH-NJw" firstAttribute="top" secondItem="Fqn-pc-ZBo" secondAttribute="bottom" constant="3" id="u5T-u8-iUB"/>
+                <constraint firstItem="GxR-ry-WL0" firstAttribute="centerY" secondItem="4tf-Nv-J1g" secondAttribute="centerY" id="wXb-wE-RCG"/>
+                <constraint firstItem="ccL-bU-X3x" firstAttribute="top" secondItem="6nb-FH-NJw" secondAttribute="bottom" constant="16" id="wy0-yZ-1nL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="kup-Nv-K9o"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="cardName" destination="6nb-FH-NJw" id="IoG-7v-4Ye"/>
+                <outlet property="lastNumber" destination="qcV-wX-5PR" id="gS4-f4-xhi"/>
+                <outlet property="month" destination="4tf-Nv-J1g" id="CkN-eu-jLC"/>
+                <outlet property="year" destination="fq7-Th-t3A" id="z0e-jf-acl"/>
+            </connections>
+            <point key="canvasLocation" x="369.5" y="490"/>
+        </view>
+        <tapGestureRecognizer id="A9G-lc-KZV">
+            <connections>
+                <action selector="editAction:" destination="iN0-l3-epB" id="PhP-E6-Eh5"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="zcz-NG-Cde">
+            <connections>
+                <action selector="deleteAction:" destination="iN0-l3-epB" id="pgt-aH-t4N"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="Delete" width="80" height="80"/>
+        <image name="Edit" width="80" height="80"/>
+        <image name="Ellipse" width="201" height="8"/>
+    </resources>
+</document>

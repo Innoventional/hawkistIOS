@@ -38,7 +38,7 @@
             [self.delegate selectedItem];
         
     } failureBlock:^(NSError *error) {
-        NSLog(error.domain);
+        
         
     }];
     

@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong) NSString* id;
 @property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong) NSString* item_description;
+@property (nonatomic, strong) NSString* image_url;
 @property (nonatomic, strong) NSArray<HWCategory,Optional>* categories;
 @end
 
