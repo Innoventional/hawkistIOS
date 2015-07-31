@@ -110,6 +110,8 @@
              successBlock: (void (^)(NSArray* arrayWithItems)) successBlock
              failureBlock: (void (^)(NSError* error)) failureBlock;
 
+- (void) check_selling_ability:(void(^)(void))successBlock
+                  failureBlock: (void (^)(NSError* error)) failureBlock;
 #pragma mark -
 #pragma mark Follower
 

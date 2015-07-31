@@ -110,6 +110,14 @@
         
         [self initDefault];
         
+        [[NetworkManager shared]check_selling_ability:^{
+            
+            
+        } failureBlock:^(NSError *error) {
+            
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        }];
+        
     }
     return self;
 }
@@ -295,7 +303,7 @@
 - (void) initDefault
 {
     
-    self.sellButton.enabled = NO;
+    self.sellButton.enabled = YES;
     self.isCreate = YES;
     
      self.placeHolderColor = descriptionField.textColor;

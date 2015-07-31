@@ -332,8 +332,6 @@
     }
 }
 
-
-
 - (IBAction)tapImage:(id)sender {
     UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil
                                                        delegate: self
