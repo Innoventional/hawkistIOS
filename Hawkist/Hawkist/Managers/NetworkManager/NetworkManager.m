@@ -416,6 +416,38 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 }
 
 
+- (void) logOutWithSuccessBlock:(void(^)(void))successBlock
+                   failureBlock:(void(^)(NSError *error))failureBlock
+
+{
+NSString *URLString = @"user/logout";
+
+    [self.networkDecorator PUT:URLString
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           successBlock();
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+
+                       }];
+
+}
+
+
+
 
 #pragma mark -
 #pragma mark Tag

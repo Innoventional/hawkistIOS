@@ -124,6 +124,8 @@
 		CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */; };
 		CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAF991B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m */; };
 		CEBAAF9C1B6CC48E00AFE4C6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAF9B1B6CC48E00AFE4C6 /* LaunchScreen.xib */; };
+		CEBAAF9F1B6CE9DF00AFE4C6 /* HWSingOutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAF9E1B6CE9DF00AFE4C6 /* HWSingOutCell.m */; };
+		CEBAAFA11B6CE9FD00AFE4C6 /* HWSingOutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAFA01B6CE9FD00AFE4C6 /* HWSingOutCell.xib */; };
 		CEC68DD11B5661510024AFC5 /* HWButtonForSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */; };
 /* End PBXBuildFile section */
 
@@ -328,6 +330,9 @@
 		CEBAAF981B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAccountMenuDataModel.h; path = MyAccountScreen/HWAccountMenuDataModel.h; sourceTree = "<group>"; };
 		CEBAAF991B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAccountMenuDataModel.m; path = MyAccountScreen/HWAccountMenuDataModel.m; sourceTree = "<group>"; };
 		CEBAAF9B1B6CC48E00AFE4C6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../LaunchScreen.xib; sourceTree = "<group>"; };
+		CEBAAF9D1B6CE9DF00AFE4C6 /* HWSingOutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSingOutCell.h; path = MyAccountScreen/HWSingOutCell.h; sourceTree = "<group>"; };
+		CEBAAF9E1B6CE9DF00AFE4C6 /* HWSingOutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSingOutCell.m; path = MyAccountScreen/HWSingOutCell.m; sourceTree = "<group>"; };
+		CEBAAFA01B6CE9FD00AFE4C6 /* HWSingOutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWSingOutCell.xib; path = MyAccountScreen/HWSingOutCell.xib; sourceTree = "<group>"; };
 		CEC68DCF1B5661510024AFC5 /* HWButtonForSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWButtonForSegment.h; path = ProfileScreen/CustomSegment/HWButtonForSegment.h; sourceTree = "<group>"; };
 		CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWButtonForSegment.m; path = ProfileScreen/CustomSegment/HWButtonForSegment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -851,6 +856,9 @@
 				CE70EDD61B6BD54B005664FA /* HWAccountMenuCell.xib */,
 				CEBAAF981B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.h */,
 				CEBAAF991B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m */,
+				CEBAAF9D1B6CE9DF00AFE4C6 /* HWSingOutCell.h */,
+				CEBAAF9E1B6CE9DF00AFE4C6 /* HWSingOutCell.m */,
+				CEBAAFA01B6CE9FD00AFE4C6 /* HWSingOutCell.xib */,
 			);
 			name = MyAccountScreen;
 			sourceTree = "<group>";
@@ -994,6 +1002,7 @@
 				7CF22CA41B4FCE18002CF7ED /* open-sans.bold.ttf in Resources */,
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
 				7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */,
+				CEBAAFA11B6CE9FD00AFE4C6 /* HWSingOutCell.xib in Resources */,
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
@@ -1096,6 +1105,7 @@
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,
 				CE70EDD21B6BC62F005664FA /* HWMyAccountViewController.m in Sources */,
 				3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				CEBAAF9F1B6CE9DF00AFE4C6 /* HWSingOutCell.m in Sources */,
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
 				CE5909531B5F9FF400DAA7FF /* SZTextView.m in Sources */,
 				3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */,

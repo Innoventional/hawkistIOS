@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWMyAccountViewController">
             <connections>
+                <outlet property="navigationView" destination="wb7-9Y-Nmi" id="Okt-o1-IIj"/>
                 <outlet property="tableView" destination="eCe-bs-2Xo" id="c09-k8-Z3g"/>
                 <outlet property="view" destination="l7V-u7-xng" id="Kmw-Gv-67p"/>
             </connections>
@@ -16,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb7-9Y-Nmi">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wb7-9Y-Nmi" customClass="NavigationVIew">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                     <color key="backgroundColor" red="1" green="0.13883237130000001" blue="0.18401007259999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -24,7 +25,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eCe-bs-2Xo">
-                    <rect key="frame" x="0.0" y="67" width="375" height="600"/>
+                    <rect key="frame" x="0.0" y="66" width="375" height="601"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
@@ -36,7 +37,7 @@
                 <constraint firstItem="wb7-9Y-Nmi" firstAttribute="leading" secondItem="l7V-u7-xng" secondAttribute="leading" id="gcF-Ky-gjX"/>
                 <constraint firstItem="wb7-9Y-Nmi" firstAttribute="top" secondItem="l7V-u7-xng" secondAttribute="top" id="lEz-4A-ph5"/>
                 <constraint firstAttribute="trailing" secondItem="eCe-bs-2Xo" secondAttribute="trailing" id="o3J-8v-oCf"/>
-                <constraint firstItem="eCe-bs-2Xo" firstAttribute="top" secondItem="wb7-9Y-Nmi" secondAttribute="bottom" constant="2" id="pr6-hQ-al3"/>
+                <constraint firstItem="eCe-bs-2Xo" firstAttribute="top" secondItem="wb7-9Y-Nmi" secondAttribute="bottom" constant="1" id="pr6-hQ-al3"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="479.5" y="394.5"/>

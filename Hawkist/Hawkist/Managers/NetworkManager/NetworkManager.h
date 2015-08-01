@@ -63,6 +63,10 @@
               failureBlock: (void (^)(NSError* error)) failureBlock;
 
 
+- (void) logOutWithSuccessBlock:(void(^)(void))successBlock
+                   failureBlock:(void(^)(NSError *error))failureBlock;
+
+
 #pragma mark -
 #pragma mark Tag
 
