@@ -122,6 +122,8 @@
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
 		CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */; };
 		CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */; };
+		CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAF991B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m */; };
+		CEBAAF9C1B6CC48E00AFE4C6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAF9B1B6CC48E00AFE4C6 /* LaunchScreen.xib */; };
 		CEC68DD11B5661510024AFC5 /* HWButtonForSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */; };
 /* End PBXBuildFile section */
 
@@ -323,6 +325,9 @@
 		CEA725621B57ED590086F657 /* HWFollowInProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFollowInProfileCell.h; path = ProfileScreen/HWFollowInProfileCell.h; sourceTree = "<group>"; };
 		CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFollowInProfileCell.m; path = ProfileScreen/HWFollowInProfileCell.m; sourceTree = "<group>"; };
 		CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFollowInProfileCell.xib; path = ProfileScreen/HWFollowInProfileCell.xib; sourceTree = "<group>"; };
+		CEBAAF981B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAccountMenuDataModel.h; path = MyAccountScreen/HWAccountMenuDataModel.h; sourceTree = "<group>"; };
+		CEBAAF991B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAccountMenuDataModel.m; path = MyAccountScreen/HWAccountMenuDataModel.m; sourceTree = "<group>"; };
+		CEBAAF9B1B6CC48E00AFE4C6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../LaunchScreen.xib; sourceTree = "<group>"; };
 		CEC68DCF1B5661510024AFC5 /* HWButtonForSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWButtonForSegment.h; path = ProfileScreen/CustomSegment/HWButtonForSegment.h; sourceTree = "<group>"; };
 		CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWButtonForSegment.m; path = ProfileScreen/CustomSegment/HWButtonForSegment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -577,6 +582,7 @@
 		C35A4C0B1B2F2DF7002E1F26 = {
 			isa = PBXGroup;
 			children = (
+				CEBAAF9B1B6CC48E00AFE4C6 /* LaunchScreen.xib */,
 				C35A4C161B2F2DF7002E1F26 /* Hawkist */,
 				C35A4C301B2F2DF8002E1F26 /* HawkistTests */,
 				C35A4C151B2F2DF7002E1F26 /* Products */,
@@ -597,6 +603,7 @@
 		C35A4C161B2F2DF7002E1F26 /* Hawkist */ = {
 			isa = PBXGroup;
 			children = (
+				3A45ABDF1B6B316800FD56D6 /* Images.xcassets */,
 				C35A4C4E1B3035D2002E1F26 /* Helper */,
 				C35A4C3F1B2F340F002E1F26 /* GUI */,
 				C35A4C3E1B2F33FA002E1F26 /* Models */,
@@ -615,7 +622,6 @@
 		C35A4C171B2F2DF7002E1F26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3A45ABDF1B6B316800FD56D6 /* Images.xcassets */,
 				C35A4C181B2F2DF7002E1F26 /* Info.plist */,
 				C35A4C191B2F2DF7002E1F26 /* main.m */,
 				C35A4C451B302FB1002E1F26 /* PrefixHeader.pch */,
@@ -843,6 +849,8 @@
 				CE70EDD31B6BD51D005664FA /* HWAccountMenuCell.h */,
 				CE70EDD41B6BD51D005664FA /* HWAccountMenuCell.m */,
 				CE70EDD61B6BD54B005664FA /* HWAccountMenuCell.xib */,
+				CEBAAF981B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.h */,
+				CEBAAF991B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m */,
 			);
 			name = MyAccountScreen;
 			sourceTree = "<group>";
@@ -963,6 +971,7 @@
 				3A968E241B4A98B4005AA347 /* ChoiceTable.xib in Resources */,
 				7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */,
 				3ACC6BEE1B44A75E0076004F /* money.xib in Resources */,
+				CEBAAF9C1B6CC48E00AFE4C6 /* LaunchScreen.xib in Resources */,
 				7C9E7B011B4FCD58001DF8BE /* open-sans.extrabold.ttf in Resources */,
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */,
@@ -1059,6 +1068,7 @@
 				3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */,
 				CE70EDD51B6BD51D005664FA /* HWAccountMenuCell.m in Sources */,
 				C35A4C861B303BCF002E1F26 /* SocialManager.m in Sources */,
+				CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */,
 				CE5909561B5FA8C800DAA7FF /* HWCommentCell.m in Sources */,
 				3A968E221B4A8542005AA347 /* ChoiceTableViewController.m in Sources */,
 				CE70EDC71B6A7053005664FA /* HWMention.m in Sources */,

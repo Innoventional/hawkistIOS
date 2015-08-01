@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWAccountMenuDataModel.h"
 
 @interface HWAccountMenuCell : UITableViewCell
+
+
+- (void) setCellWithMenuDataModel:(HWAccountMenuDataModel*)dataModel;
 
 @end

@@ -8,6 +8,13 @@
 
 #import "HWAccountMenuCell.h"
 
+@interface HWAccountMenuCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *titleCell;
+@property (weak, nonatomic) IBOutlet UIImageView *imageCell;
+
+@end
+
 @implementation HWAccountMenuCell
 
 - (void)awakeFromNib {
@@ -18,6 +25,13 @@
     [super setSelected:selected animated:animated];
 
    
+}
+
+
+- (void) setCellWithMenuDataModel:(HWAccountMenuDataModel*)dataModel
+{
+    self.titleCell.text = dataModel.title;
+    [self.imageCell setImage:dataModel.image];
 }
 
 @end
