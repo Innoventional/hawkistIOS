@@ -15,11 +15,7 @@
 		3A2AE3CD1B6115E500806D59 /* AddTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AE3CC1B6115E500806D59 /* AddTagsView.m */; };
 		3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A2AE3CE1B6120DD00806D59 /* TagCell.xib */; };
 		3A2AE3D21B6122B600806D59 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AE3D11B6122B600806D59 /* TagCell.m */; };
-		3A45ABDE1B6B299B00FD56D6 /* cardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A45ABDD1B6B299B00FD56D6 /* cardView.xib */; };
 		3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A45ABDF1B6B316800FD56D6 /* Images.xcassets */; };
-		3A45ABE31B6B3A8E00FD56D6 /* cardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45ABE21B6B3A8E00FD56D6 /* cardView.m */; };
-		3A45ABE61B6B3C9C00FD56D6 /* HWCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45ABE51B6B3C9C00FD56D6 /* HWCard.m */; };
-		3A45ABE81B6B419500FD56D6 /* ManageBankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A45ABE71B6B419500FD56D6 /* ManageBankView.xib */; };
 		3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCB1B3813620004A24B /* CustomAlertView.xib */; };
 		3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */; };
 		3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBD31B386FA60004A24B /* SignIn.xib */; };
@@ -72,7 +68,6 @@
 		C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C191B2F2DF7002E1F26 /* main.m */; };
 		C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */; };
 		C35A4C201B2F2DF7002E1F26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C1F1B2F2DF7002E1F26 /* ViewController.m */; };
-		C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35A4C261B2F2DF7002E1F26 /* LaunchScreen.xib */; };
 		C35A4C341B2F2DF8002E1F26 /* HawkistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C331B2F2DF8002E1F26 /* HawkistTests.m */; };
 		C35A4C441B302D05002E1F26 /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C431B302D05002E1F26 /* HWBaseViewController.m */; };
 		C35A4C4A1B3031F4002E1F26 /* NetworkDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C491B3031F4002E1F26 /* NetworkDecorator.m */; };
@@ -154,13 +149,7 @@
 		3A2AE3CE1B6120DD00806D59 /* TagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TagCell.xib; path = AddTagsScreen/TagCell.xib; sourceTree = "<group>"; };
 		3A2AE3D01B6122B600806D59 /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagCell.h; path = AddTagsScreen/TagCell.h; sourceTree = "<group>"; };
 		3A2AE3D11B6122B600806D59 /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagCell.m; path = AddTagsScreen/TagCell.m; sourceTree = "<group>"; };
-		3A45ABDD1B6B299B00FD56D6 /* cardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = cardView.xib; path = manageBank/cardView.xib; sourceTree = "<group>"; };
 		3A45ABDF1B6B316800FD56D6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3A45ABE11B6B3A8E00FD56D6 /* cardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cardView.h; path = manageBank/cardView.h; sourceTree = "<group>"; };
-		3A45ABE21B6B3A8E00FD56D6 /* cardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cardView.m; path = manageBank/cardView.m; sourceTree = "<group>"; };
-		3A45ABE41B6B3C9C00FD56D6 /* HWCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCard.h; sourceTree = "<group>"; };
-		3A45ABE51B6B3C9C00FD56D6 /* HWCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWCard.m; sourceTree = "<group>"; };
-		3A45ABE71B6B419500FD56D6 /* ManageBankView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManageBankView.xib; path = manageBank/ManageBankView.xib; sourceTree = "<group>"; };
 		3A61FBCB1B3813620004A24B /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeAlertView.xib; sourceTree = "<group>"; };
 		3A61FBD31B386FA60004A24B /* SignIn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignIn.xib; sourceTree = "<group>"; };
@@ -398,17 +387,6 @@
 				3A2AE3CC1B6115E500806D59 /* AddTagsView.m */,
 			);
 			name = AddTagsScreen;
-			sourceTree = "<group>";
-		};
-		3A45ABDC1B6B294800FD56D6 /* mangeBank */ = {
-			isa = PBXGroup;
-			children = (
-				3A45ABDD1B6B299B00FD56D6 /* cardView.xib */,
-				3A45ABE11B6B3A8E00FD56D6 /* cardView.h */,
-				3A45ABE21B6B3A8E00FD56D6 /* cardView.m */,
-				3A45ABE71B6B419500FD56D6 /* ManageBankView.xib */,
-			);
-			name = mangeBank;
 			sourceTree = "<group>";
 		};
 		3A61FBD51B3C11300004A24B /* WantToSell */ = {
@@ -978,7 +956,6 @@
 				CE5909581B5FA94B00DAA7FF /* HWCommentCell.xib in Resources */,
 				7CE0E8E21B4307F0003B8B3A /* FeedScreenViewController.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
-				3A45ABE81B6B419500FD56D6 /* ManageBankView.xib in Resources */,
 				3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
 				3A2AE3CA1B6111A000806D59 /* AddTagsView.xib in Resources */,
@@ -993,7 +970,6 @@
 				3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
-				3A45ABDE1B6B299B00FD56D6 /* cardView.xib in Resources */,
 				CE59094C1B5E9DD600DAA7FF /* HWCommentViewController.xib in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
@@ -1005,7 +981,6 @@
 				CE70EDD71B6BD54B005664FA /* HWAccountMenuCell.xib in Resources */,
 				3A0BAF6C1B53FAA6004DFF86 /* myItemCell.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
-				C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */,
 				7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */,
 				7CF22CA41B4FCE18002CF7ED /* open-sans.bold.ttf in Resources */,
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
@@ -1071,7 +1046,6 @@
 			files = (
 				3A2AE3D21B6122B600806D59 /* TagCell.m in Sources */,
 				CE59095B1B5FD7E200DAA7FF /* HWComment.m in Sources */,
-				3A45ABE31B6B3A8E00FD56D6 /* cardView.m in Sources */,
 				C35A4C621B3035D2002E1F26 /* NSDate+Extensions.m in Sources */,
 				3A0BAF741B5527DD004DFF86 /* MyItemsViewController.m in Sources */,
 				CE39C88C1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.m in Sources */,
@@ -1116,7 +1090,6 @@
 				CE5909531B5F9FF400DAA7FF /* SZTextView.m in Sources */,
 				3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */,
 				C35A4C8D1B31A408002E1F26 /* AppEngine.m in Sources */,
-				3A45ABE61B6B3C9C00FD56D6 /* HWCard.m in Sources */,
 				CE59094A1B5E9CD700DAA7FF /* HWCommentViewController.m in Sources */,
 				C35A4C441B302D05002E1F26 /* HWBaseViewController.m in Sources */,
 				7CE0E8E11B4307F0003B8B3A /* FeedScreenViewController.m in Sources */,

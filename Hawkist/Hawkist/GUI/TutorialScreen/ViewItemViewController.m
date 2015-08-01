@@ -231,10 +231,6 @@
     [self avatarInit];
     
     
-    
-    
-    
-    
     self.nameOoStuff.text = self.item.title;
     self.comments.text = self.item.comments;
     self.sellerPrice.text = self.item.selling_price;
@@ -335,8 +331,9 @@
                                         
                                        dispatch_async(dispatch_get_main_queue(), ^{
                                            
-                                           [self.activityIndicator stopAnimating];
+                                         
                                            self.sellerAvatar.image = image;
+                                             [self.activityIndicator stopAnimating];
 
                                        });
                                         
