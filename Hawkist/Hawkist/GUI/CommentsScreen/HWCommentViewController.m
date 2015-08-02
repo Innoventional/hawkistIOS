@@ -15,6 +15,9 @@
 
 #import "SZTextView.h"
 #import "HWComment.h"
+#import "HWMention.h"
+#import "HWMentionUserCell.h"
+ 
 
 @interface HWCommentViewController () <NavigationViewDelegate, HWCommentInputViewDelegate, HWCommentCellDelegate, UITextViewDelegate>
 
@@ -31,6 +34,11 @@
 @property CGFloat heightKey;
 @property CGFloat height;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorLoad;
+
+@property (nonatomic, strong) NSArray *mentionsArray;
+@property (nonatomic, assign) BOOL isCommentsArray;
+
 @end
 
 
@@ -40,7 +48,8 @@
 #pragma mark -
 #pragma mark UIViewController
 
-
+#define commentCellIdentifier @"commentCellIdentifier"
+#define mentionCellIdentifier @"mentionCellIdentifier"
 
 - (instancetype) initWithItem:(HWItem* )item
 {
@@ -59,27 +68,27 @@
 
 -  (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.isCommentsArray = YES;
     [self setCommentsArrayWithItem:self.currentItem];
     self.inputCommentView.pressButton.enabled = NO;
     
     [self commonInit];
-  
+
 }
 
 
 - (void) commonInit
 {
     self.navigationView.title.text = @"Comments";
-   // [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
     self.navigationView.delegate = self;
     self.inputCommentView.delegate = self;
     self.inputCommentView.textView.delegate = self;
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"HWCommentCell" bundle:nil] forCellReuseIdentifier:@"tableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HWCommentCell" bundle:nil] forCellReuseIdentifier:commentCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HWMentionUserCell" bundle:nil] forCellReuseIdentifier:mentionCellIdentifier];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 56.0;
+    self.tableView.estimatedRowHeight =  63;//56.0;
     self.height = [[UIScreen mainScreen] bounds].size.height ;
 }
 
@@ -140,13 +149,10 @@
     frame.size.height = self.height;
     self.view.frame = frame;
     
-//    [UIView animateWithDuration:0.3
-//                     animations:^{
+ 
     
-                         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - keyHeight);
-                         
-//                     }];
-    
+    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - keyHeight);
+ 
     [self scrollToBotton];
     
 
@@ -169,15 +175,38 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
+    if(self.isCommentsArray){
     
     return [self.commentsArray count];
+    
+    } else {
+        
+        return [self.mentionsArray count];
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(self.isCommentsArray){
     
-    HWCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
+    HWCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:commentCellIdentifier forIndexPath:indexPath];
+    cell = [self setupCommentCell:cell withIndexPath:indexPath];
+    return cell;
+    
+    } else {
+        
+        HWMentionUserCell * cell = [tableView dequeueReusableCellWithIdentifier:mentionCellIdentifier forIndexPath:indexPath];
+        cell = [self setupMentionCellWithCell:cell withIndexPath:indexPath];
+        return cell;
+    }
+    
+}
+
+
+- (HWCommentCell*) setupCommentCell:(HWCommentCell*) cell withIndexPath:(NSIndexPath*) indexPath
+{
+    cell.clipsToBounds = YES;
     cell.delegate = self;
     HWComment *comment = [self.commentsArray objectAtIndex:indexPath.row];
     
@@ -193,20 +222,43 @@
         cell.rightUtilityButtons = nil;
         cell.backgroundColor = [UIColor whiteColor];
     }
+    if(indexPath.row == self.commentsArray.count -1)
+    {
+        [self.indicatorLoad stopAnimating];
+    }
     
     return cell;
     
 }
- 
+
+-(HWMentionUserCell *) setupMentionCellWithCell:(HWMentionUserCell*)cell withIndexPath:(NSIndexPath*)indexPath
+{
+    HWMention *mention = [self.mentionsArray objectAtIndex:indexPath.row];
+    
+    [cell.avatarImageView  setImageWithURL:[NSURL URLWithString:mention.avatar] placeholderImage:[UIImage imageNamed:@"noPhoto"]];
+    
+    cell.userNameLabel.text =  mention.username ;
+    
+    return cell;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-     [self.inputCommentView.textView resignFirstResponder];
+    if(!self.isCommentsArray)
+    {
+        
+    }
+    
   
 }
 
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return !self.isCommentsArray;
+}
  #pragma nark -
 #pragma mark NavigationViewDelegate
 
@@ -232,13 +284,20 @@
                                      successBlock:^(NSArray *commentsArray) {
                                          
                                          self.commentsArray = commentsArray;
+                                        
+                                         if(!self.commentsArray.count)
+                                         {
+                                             [self.indicatorLoad stopAnimating];
+                                         }
                                        
                                          [self scrollToBotton];
                                          [self scrollToBotton];
                                          
                                      } failureBlock:^(NSError *error) {
                                          
-                                         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"] withDelegate:self];
+                                         
+                                       //  [self.navigationController popViewControllerAnimated:YES];
                                          
                                      }];
     
@@ -247,7 +306,7 @@
 - (void) scrollToBotton
 {
     
-    [self.tableView reloadData];
+       [self.tableView reloadData];
     [self.tableView layoutIfNeeded];
     if (self.commentsArray.count) {
         
@@ -269,6 +328,15 @@
     [self.navigationController pushViewController:profileVC animated:YES];
 }
 
+- (void) stringWithTapWord:(NSString*)text
+{
+    [self.inputCommentView.textView resignFirstResponder];
+    NSLog(@"%@", text);
+    
+    NSString *textViewString = self.inputCommentView.textView.text;
+    
+    [self.inputCommentView.textView setText:[NSString stringWithFormat:@"%@%@", textViewString,text]];
+}
 
 
 #pragma mark -
@@ -402,6 +470,7 @@
 {
     self.inputCommentView.pressButton.enabled = NO;
     [self.inputCommentView.textView resignFirstResponder];
+    self.isCommentsArray = YES;
     
     NSString *textToSend = text;
     
@@ -436,8 +505,10 @@
 {
        NSInteger permissibleLenght = 160;
        NSUInteger newLength = [textView.text length] + [text length] - range.length;
-       return (newLength > permissibleLenght) ? NO : YES;
- 
+   
+    
+        return (newLength > permissibleLenght) ? NO : YES;
+  
  }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -452,5 +523,62 @@
         self.inputCommentView.pressButton.enabled = YES;
         
     }
+    if([textView.text isEqualToString:@""]) return;
+    NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSArray *arraySubstring = [textView.text componentsSeparatedByCharactersInSet:charSet];
+    
+    NSString *str = arraySubstring.lastObject;
+    if ([str isEqualToString:@""]) return;
+    
+    if ([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"@"])
+    {
+        
+            [self getMantionUsersArrayWithText:[str substringFromIndex:1]];
+   
+    } else  if(!self.isCommentsArray){
+        
+       
+        self.isCommentsArray = YES;
+        [self scrollToBotton];
+    }
+
+    
+    
+    
+    
 }
+
+
+-(void) getMantionUsersArrayWithText:(NSString*)text
+{
+    NSLog(@"%@",text);
+     
+    [self.networkManager getMentionInCommentsWithString:text
+                                           successBlock:^(NSArray *mentionsArray) {
+                                               
+                                               self.mentionsArray = mentionsArray;
+                                               self.isCommentsArray = !(mentionsArray.count);
+                                               [self.tableView reloadData];
+                                               
+                                           } failureBlock:^(NSError *error) {
+                                              
+                                                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                               
+                                           }];
+    
+    
+    
+}
+
+#pragma mark -
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    
+}
+
+
 @end

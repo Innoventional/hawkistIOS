@@ -26,5 +26,7 @@
 @protocol HWCommentCellDelegate <NSObject>
 
 - (void) transitionToProfileWithUserId:(NSString*)userId;
+- (void) stringWithTapWord:(NSString*)text;
+
 
 @end

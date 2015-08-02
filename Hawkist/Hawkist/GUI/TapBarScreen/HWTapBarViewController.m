@@ -11,7 +11,7 @@
 #import "FeedScreenViewController.h"
 #import "WantToSellViewController.h"
 
-
+#import "ManageBankViewController.h"
 
 #import "HWProfileViewController.h"
 
@@ -25,6 +25,8 @@
 @property (nonatomic, strong) FeedScreenViewController* feedVC;
 @property (nonatomic, strong) WantToSellViewController* sellVC;
 
+
+@property (nonatomic,strong) ManageBankViewController* bankVC;
 @end
 
 @implementation HWTapBarViewController
@@ -43,7 +45,7 @@
     [self addChildViewController: self.sellVC];
     
     [self.contentView addContentView: self.feedVC.view];
-    
+   
     self.currentSelectedItem = 1;
 }
 
@@ -93,6 +95,8 @@
         case 4:
         {
           
+            self.bankVC = [[ManageBankViewController alloc]init];
+            [self.navigationController pushViewController:self.bankVC animated:NO];
             
             break;
         }

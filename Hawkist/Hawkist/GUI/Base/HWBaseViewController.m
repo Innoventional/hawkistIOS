@@ -65,8 +65,8 @@
         
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            LoginViewController* vc = [[LoginViewController alloc]init];
-            [self.navigationController pushViewController:vc animated:NO];
+            //LoginViewController* vc = [[LoginViewController alloc]init];
+            [self.navigationController popToRootViewControllerAnimated:NO];
 
             
         });
@@ -88,5 +88,33 @@
             
         };
 }
+
+
+- (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message withDelegate:(id)delegate
+{
+    if ([title isEqualToString:@"No Connection"]&& self.isInternetConnectionAlertShowed)
+    {
+        return;
+    }
+    else
+    {
+        if ([title isEqualToString:@"No Connection"])
+        {
+            self.isInternetConnectionAlertShowed = YES;
+        }
+        
+        NSLog(@"%@",message);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc]initWithTitle:title
+                                       message:message
+                                      delegate:delegate
+                             cancelButtonTitle:@"OK"
+                             otherButtonTitles:nil] show];
+            
+        });
+    };
+}
+
 
 @end

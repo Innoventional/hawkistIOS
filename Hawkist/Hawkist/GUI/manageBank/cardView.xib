@@ -29,7 +29,7 @@
                     <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="lzv-vV-Yls">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="lzv-vV-Yls">
                     <rect key="frame" x="458" y="32" width="80" height="80"/>
                     <gestureRecognizers/>
                     <constraints>
@@ -40,7 +40,7 @@
                         <outletCollection property="gestureRecognizers" destination="A9G-lc-KZV" appends="YES" id="L6c-7N-Ucn"/>
                     </connections>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Delete" translatesAutoresizingMaskIntoConstraints="NO" id="A84-Jz-QVJ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardTrash" translatesAutoresizingMaskIntoConstraints="NO" id="A84-Jz-QVJ">
                     <rect key="frame" x="458" y="135" width="80" height="80"/>
                     <gestureRecognizers/>
                     <constraints>
@@ -75,7 +75,7 @@
                     <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-TG-XLN">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-TG-XLN">
                     <rect key="frame" x="44" y="135" width="201" height="8"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tf-Nv-J1g">
@@ -159,8 +159,8 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="Delete" width="80" height="80"/>
-        <image name="Edit" width="80" height="80"/>
-        <image name="Ellipse" width="201" height="8"/>
+        <image name="cardTrash" width="40" height="40"/>
+        <image name="edit" width="40" height="40"/>
+        <image name="ellipse" width="201" height="8"/>
     </resources>
 </document>

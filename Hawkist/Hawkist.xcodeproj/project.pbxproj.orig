@@ -20,7 +20,6 @@
 		3A45ABE31B6B3A8E00FD56D6 /* cardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45ABE21B6B3A8E00FD56D6 /* cardView.m */; };
 		3A45ABE61B6B3C9C00FD56D6 /* HWCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45ABE51B6B3C9C00FD56D6 /* HWCard.m */; };
 		3A45ABE81B6B419500FD56D6 /* ManageBankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A45ABE71B6B419500FD56D6 /* ManageBankView.xib */; };
-		3A45ABEB1B6BBCAB00FD56D6 /* ManageBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45ABEA1B6BBCAB00FD56D6 /* ManageBankViewController.m */; };
 		3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCB1B3813620004A24B /* CustomAlertView.xib */; };
 		3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */; };
 		3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBD31B386FA60004A24B /* SignIn.xib */; };
@@ -158,8 +157,6 @@
 		3A45ABE41B6B3C9C00FD56D6 /* HWCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCard.h; sourceTree = "<group>"; };
 		3A45ABE51B6B3C9C00FD56D6 /* HWCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWCard.m; sourceTree = "<group>"; };
 		3A45ABE71B6B419500FD56D6 /* ManageBankView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManageBankView.xib; path = manageBank/ManageBankView.xib; sourceTree = "<group>"; };
-		3A45ABE91B6BBCAB00FD56D6 /* ManageBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManageBankViewController.h; path = manageBank/ManageBankViewController.h; sourceTree = "<group>"; };
-		3A45ABEA1B6BBCAB00FD56D6 /* ManageBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManageBankViewController.m; path = manageBank/ManageBankViewController.m; sourceTree = "<group>"; };
 		3A61FBCB1B3813620004A24B /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeAlertView.xib; sourceTree = "<group>"; };
 		3A61FBD31B386FA60004A24B /* SignIn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignIn.xib; sourceTree = "<group>"; };
@@ -400,8 +397,6 @@
 				3A45ABE11B6B3A8E00FD56D6 /* cardView.h */,
 				3A45ABE21B6B3A8E00FD56D6 /* cardView.m */,
 				3A45ABE71B6B419500FD56D6 /* ManageBankView.xib */,
-				3A45ABE91B6BBCAB00FD56D6 /* ManageBankViewController.h */,
-				3A45ABEA1B6BBCAB00FD56D6 /* ManageBankViewController.m */,
 			);
 			name = mangeBank;
 			sourceTree = "<group>";
@@ -688,10 +683,13 @@
 				CE59095A1B5FD7E200DAA7FF /* HWComment.m */,
 				CE7876501B60F3FF00A3970D /* HWOffer.h */,
 				CE7876511B60F3FF00A3970D /* HWOffer.m */,
+<<<<<<< HEAD
 				3A45ABE41B6B3C9C00FD56D6 /* HWCard.h */,
 				3A45ABE51B6B3C9C00FD56D6 /* HWCard.m */,
+=======
 				CE70EDC51B6A7053005664FA /* HWMention.h */,
 				CE70EDC61B6A7053005664FA /* HWMention.m */,
+>>>>>>> sergey's-branch-24.07
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1102,7 +1100,6 @@
 				7CE0E8E11B4307F0003B8B3A /* FeedScreenViewController.m in Sources */,
 				C35CB4A61B4D3A2E00956150 /* AWSS3Manager.m in Sources */,
 				C35A4C681B3035D2002E1F26 /* UIImage+Extensions.m in Sources */,
-				3A45ABEB1B6BBCAB00FD56D6 /* ManageBankViewController.m in Sources */,
 				3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */,
 				3A968E2B1B4AD92B005AA347 /* ChoiceCellView.m in Sources */,
 				C35A4C4D1B3032B1002E1F26 /* NetworkManager.m in Sources */,
