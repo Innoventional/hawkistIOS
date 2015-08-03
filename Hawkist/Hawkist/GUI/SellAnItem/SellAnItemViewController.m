@@ -110,14 +110,7 @@
         
         [self initDefault];
         
-        [[NetworkManager shared]check_selling_ability:^{
-            
-            
-        } failureBlock:^(NSError *error) {
-            
-            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        }];
-        
+                
     }
     return self;
 }

@@ -48,6 +48,7 @@
 		3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6BF01B44A9E30076004F /* MoneyField.m */; };
 		3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */; };
 		3AF37F9B1B57A8DD00E784DB /* HWTag+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF37F9A1B57A8DD00E784DB /* HWTag+Extensions.m */; };
+		3AF831F11B6EFB7600CC750D /* tempCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AF831F01B6EFB7600CC750D /* tempCard.png */; };
 		7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C735D3E1B3893B000295472 /* CustomizationViewController.m */; };
 		7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D3F1B3893B000295472 /* CustomizationViewController.xib */; };
 		7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */; };
@@ -72,7 +73,6 @@
 		80E1CD0A02CE700CA374803C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D8ABABE09C6B8E36C39881 /* libPods.a */; };
 		C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C191B2F2DF7002E1F26 /* main.m */; };
 		C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */; };
-		C35A4C201B2F2DF7002E1F26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C1F1B2F2DF7002E1F26 /* ViewController.m */; };
 		C35A4C281B2F2DF7002E1F26 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35A4C261B2F2DF7002E1F26 /* LaunchScreen.xib */; };
 		C35A4C341B2F2DF8002E1F26 /* HawkistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C331B2F2DF8002E1F26 /* HawkistTests.m */; };
 		C35A4C441B302D05002E1F26 /* HWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C431B302D05002E1F26 /* HWBaseViewController.m */; };
@@ -115,7 +115,6 @@
 		CE5909581B5FA94B00DAA7FF /* HWCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5909571B5FA94B00DAA7FF /* HWCommentCell.xib */; };
 		CE59095B1B5FD7E200DAA7FF /* HWComment.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59095A1B5FD7E200DAA7FF /* HWComment.m */; };
 		CE59095F1B5FE54400DAA7FF /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59095E1B5FE54300DAA7FF /* NSDate+NVTimeAgo.m */; };
-		CE70EDC41B6A0106005664FA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE70EDC31B6A0105005664FA /* Default-568h@2x.png */; };
 		CE70EDC71B6A7053005664FA /* HWMention.m in Sources */ = {isa = PBXBuildFile; fileRef = CE70EDC61B6A7053005664FA /* HWMention.m */; };
 		CE70EDCA1B6B723D005664FA /* HWMentionUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE70EDC91B6B723D005664FA /* HWMentionUserCell.m */; };
 		CE70EDCC1B6B728E005664FA /* HWMentionUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE70EDCB1B6B728E005664FA /* HWMentionUserCell.xib */; };
@@ -201,6 +200,7 @@
 		3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WantToSellViewController.m; path = WantToSell/WantToSellViewController.m; sourceTree = "<group>"; };
 		3AF37F991B57A8DD00E784DB /* HWTag+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HWTag+Extensions.h"; sourceTree = "<group>"; };
 		3AF37F9A1B57A8DD00E784DB /* HWTag+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HWTag+Extensions.m"; sourceTree = "<group>"; };
+		3AF831F01B6EFB7600CC750D /* tempCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tempCard.png; sourceTree = "<group>"; };
 		6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7C735D3D1B3893B000295472 /* CustomizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizationViewController.h; sourceTree = "<group>"; };
 		7C735D3E1B3893B000295472 /* CustomizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizationViewController.m; sourceTree = "<group>"; };
@@ -235,8 +235,6 @@
 		C35A4C191B2F2DF7002E1F26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C35A4C1B1B2F2DF7002E1F26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C35A4C1E1B2F2DF7002E1F26 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C35A4C1F1B2F2DF7002E1F26 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C35A4C271B2F2DF7002E1F26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C35A4C2D1B2F2DF8002E1F26 /* HawkistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HawkistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35A4C321B2F2DF8002E1F26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -313,7 +311,6 @@
 		CE59095A1B5FD7E200DAA7FF /* HWComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWComment.m; sourceTree = "<group>"; };
 		CE59095D1B5FE54300DAA7FF /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+NVTimeAgo.h"; path = "CommentsScreen/Category/NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
 		CE59095E1B5FE54300DAA7FF /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NVTimeAgo.m"; path = "CommentsScreen/Category/NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
-		CE70EDC31B6A0105005664FA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CE70EDC51B6A7053005664FA /* HWMention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWMention.h; sourceTree = "<group>"; };
 		CE70EDC61B6A7053005664FA /* HWMention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWMention.m; sourceTree = "<group>"; };
 		CE70EDC81B6B723D005664FA /* HWMentionUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMentionUserCell.h; path = CommentsScreen/HWMentionUserCell.h; sourceTree = "<group>"; };
@@ -397,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				3A45ABDD1B6B299B00FD56D6 /* cardView.xib */,
+				3AF831F01B6EFB7600CC750D /* tempCard.png */,
 				3A45ABE11B6B3A8E00FD56D6 /* cardView.h */,
 				3A45ABE21B6B3A8E00FD56D6 /* cardView.m */,
 				3A45ABE71B6B419500FD56D6 /* ManageBankView.xib */,
@@ -620,10 +618,7 @@
 				C35A4C3D1B2F33EA002E1F26 /* Managers */,
 				C35A4C1B1B2F2DF7002E1F26 /* AppDelegate.h */,
 				C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */,
-				C35A4C1E1B2F2DF7002E1F26 /* ViewController.h */,
-				C35A4C1F1B2F2DF7002E1F26 /* ViewController.m */,
 				C35A4C261B2F2DF7002E1F26 /* LaunchScreen.xib */,
-				CE70EDC31B6A0105005664FA /* Default-568h@2x.png */,
 				C35A4C171B2F2DF7002E1F26 /* Supporting Files */,
 			);
 			path = Hawkist;
@@ -982,6 +977,7 @@
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
 				CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */,
+				3AF831F11B6EFB7600CC750D /* tempCard.png in Resources */,
 				3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */,
 				CE70EDCC1B6B728E005664FA /* HWMentionUserCell.xib in Resources */,
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
@@ -997,7 +993,6 @@
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
 				7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */,
 				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
-				CE70EDC41B6A0106005664FA /* Default-568h@2x.png in Resources */,
 				3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
 				7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */,
@@ -1072,7 +1067,6 @@
 				3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */,
 				7CE1D15A1B4D352B00CC92D3 /* StarRatingControl.m in Sources */,
 				C35A4C611B3035D2002E1F26 /* CGGeometry+CoreGraphicsHelpers.m in Sources */,
-				C35A4C201B2F2DF7002E1F26 /* ViewController.m in Sources */,
 				CE59094F1B5F94F000DAA7FF /* HWCommentInputView.m in Sources */,
 				3A968E161B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3A2AE3CD1B6115E500806D59 /* AddTagsView.m in Sources */,

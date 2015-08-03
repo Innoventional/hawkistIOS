@@ -10,10 +10,11 @@
 
 @interface cardView()
 
-@property (weak, nonatomic) IBOutlet UILabel *cardName;
-@property (weak, nonatomic) IBOutlet UILabel *lastNumber;
-@property (weak, nonatomic) IBOutlet UILabel *month;
-@property (weak, nonatomic) IBOutlet UILabel *year;
+@property (strong, nonatomic) IBOutlet UILabel *cardName;
+@property (strong, nonatomic) IBOutlet UILabel *lastNumber;
+@property (strong, nonatomic) IBOutlet UILabel *month;
+@property (strong, nonatomic) IBOutlet UILabel *year;
+
 
 - (IBAction)editAction:(id)sender;
 - (IBAction)deleteAction:(id)sender;
@@ -21,20 +22,29 @@
 
 @implementation cardView
 
-- (instancetype)initWithCard:(HWCard*)card
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    if (self = [super init])
+    if (self = [super initWithFrame:frame])
     {
         UIView* view = [[[NSBundle mainBundle]loadNibNamed:@"cardView" owner:self options:nil]firstObject];
+      
         view.frame = self.bounds;
+        
+        view.clipsToBounds = NO;
         [self addSubview:view];
 
-        self.cardName.text = card.cardName;
-        self.lastNumber.text = card.lastNumber;
-        self.month.text = card.month;
-        self.year.text = card.year;
     }
     return self;
+}
+
+
+
+- (void) setCard:(HWCard*)card
+{
+    self.cardName.text = card.cardName;
+    self.lastNumber.text = card.lastNumber;
+    self.month.text = card.month;
+    self.year.text = card.year;
 }
 
 - (IBAction)editAction:(id)sender {

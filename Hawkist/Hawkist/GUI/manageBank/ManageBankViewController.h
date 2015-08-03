@@ -10,8 +10,11 @@
 #import "HWBaseViewController.h"
 #import "NavigationVIew.h"
 
-@interface ManageBankViewController : HWBaseViewController <NavigationViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ManageBankViewController : HWBaseViewController <NavigationViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigation;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentHeight;
 
 @end

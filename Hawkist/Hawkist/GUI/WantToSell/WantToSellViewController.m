@@ -65,7 +65,16 @@
 */
 
 - (IBAction)btnWantToSell:(id)sender {
-    [self.navigationController pushViewController: [[SellAnItemViewController alloc] init]  animated: YES];
+    
+    [[NetworkManager shared]check_selling_ability:^{
+        [self.navigationController pushViewController: [[SellAnItemViewController alloc] init]  animated: YES];
+        
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    }];
+
+    
     
 }
 @end

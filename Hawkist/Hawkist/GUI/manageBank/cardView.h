@@ -16,6 +16,9 @@
 @end
 
 @interface cardView : UIView
-- (instancetype)initWithCard:(HWCard*)card;
+
+
 @property (nonatomic,strong)id <cardViewDelegate> delegate;
+
+- (void) setCard:(HWCard*)card;
 @end
