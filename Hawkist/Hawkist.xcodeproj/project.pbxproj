@@ -105,6 +105,7 @@
 		C35CB4AF1B4EA3BA00956150 /* HWTapBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4AD1B4EA3BA00956150 /* HWTapBarViewController.m */; };
 		C35CB4B31B4EA7E200956150 /* HWTapBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4B21B4EA7E200956150 /* HWTapBarView.m */; };
 		C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4B51B4FF04900956150 /* HWItem+Extensions.m */; };
+		C35CB5431B6F5D5E00956150 /* StripeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB5421B6F5D5E00956150 /* StripeManager.m */; };
 		CE39C88C1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.m in Sources */ = {isa = PBXBuildFile; fileRef = CE39C88B1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.m */; };
 		CE5909461B5ABBD700DAA7FF /* HWFollowUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5909451B5ABBD700DAA7FF /* HWFollowUser.m */; };
 		CE59094A1B5E9CD700DAA7FF /* HWCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5909491B5E9CD700DAA7FF /* HWCommentViewController.m */; };
@@ -295,6 +296,8 @@
 		C35CB4B21B4EA7E200956150 /* HWTapBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTapBarView.m; sourceTree = "<group>"; };
 		C35CB4B41B4FF04900956150 /* HWItem+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HWItem+Extensions.h"; sourceTree = "<group>"; };
 		C35CB4B51B4FF04900956150 /* HWItem+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HWItem+Extensions.m"; sourceTree = "<group>"; };
+		C35CB5411B6F5D5E00956150 /* StripeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeManager.h; sourceTree = "<group>"; };
+		C35CB5421B6F5D5E00956150 /* StripeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeManager.m; sourceTree = "<group>"; };
 		CE39C88A1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextViewWithDetectedWord.h; path = textViewHelper/TextViewWithDetectedWord.h; sourceTree = "<group>"; };
 		CE39C88B1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextViewWithDetectedWord.m; path = textViewHelper/TextViewWithDetectedWord.m; sourceTree = "<group>"; };
 		CE5909441B5ABBD700DAA7FF /* HWFollowUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWFollowUser.h; sourceTree = "<group>"; };
@@ -661,6 +664,7 @@
 		C35A4C3D1B2F33EA002E1F26 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				C35CB5401B6F5D4500956150 /* StripeManager */,
 				C35CB4A01B4D391500956150 /* AWSS3Manager */,
 				C35A4C8A1B31A3F7002E1F26 /* AppEngine */,
 				C35A4C7D1B303BB4002E1F26 /* SocialManager */,
@@ -805,6 +809,15 @@
 				C35CB4B21B4EA7E200956150 /* HWTapBarView.m */,
 			);
 			path = TapBarScreen;
+			sourceTree = "<group>";
+		};
+		C35CB5401B6F5D4500956150 /* StripeManager */ = {
+			isa = PBXGroup;
+			children = (
+				C35CB5411B6F5D5E00956150 /* StripeManager.h */,
+				C35CB5421B6F5D5E00956150 /* StripeManager.m */,
+			);
+			path = StripeManager;
 			sourceTree = "<group>";
 		};
 		CE39C8891B68FA8000B8A2D2 /* textViewHelper */ = {
@@ -1102,6 +1115,7 @@
 				7CE0E8E11B4307F0003B8B3A /* FeedScreenViewController.m in Sources */,
 				C35CB4A61B4D3A2E00956150 /* AWSS3Manager.m in Sources */,
 				C35A4C681B3035D2002E1F26 /* UIImage+Extensions.m in Sources */,
+				C35CB5431B6F5D5E00956150 /* StripeManager.m in Sources */,
 				3A45ABEB1B6BBCAB00FD56D6 /* ManageBankViewController.m in Sources */,
 				3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */,
 				3A968E2B1B4AD92B005AA347 /* ChoiceCellView.m in Sources */,

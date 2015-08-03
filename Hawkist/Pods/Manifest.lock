@@ -20,76 +20,82 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AWSAutoScaling (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSCloudWatch (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSCore (2.2.0)
-  - AWSDynamoDB (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSEC2 (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSElasticLoadBalancing (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSiOSSDKv2 (2.2.0):
-    - AWSiOSSDKv2/AutoScaling (= 2.2.0)
-    - AWSiOSSDKv2/AWSCore (= 2.2.0)
-    - AWSiOSSDKv2/CloudWatch (= 2.2.0)
-    - AWSiOSSDKv2/DynamoDB (= 2.2.0)
-    - AWSiOSSDKv2/EC2 (= 2.2.0)
-    - AWSiOSSDKv2/ElasticLoadBalancing (= 2.2.0)
-    - AWSiOSSDKv2/Kinesis (= 2.2.0)
-    - AWSiOSSDKv2/MobileAnalytics (= 2.2.0)
-    - AWSiOSSDKv2/S3 (= 2.2.0)
-    - AWSiOSSDKv2/SES (= 2.2.0)
-    - AWSiOSSDKv2/SimpleDB (= 2.2.0)
-    - AWSiOSSDKv2/SNS (= 2.2.0)
-    - AWSiOSSDKv2/SQS (= 2.2.0)
-  - AWSiOSSDKv2/AutoScaling (2.2.0):
-    - AWSAutoScaling (= 2.2.0)
-  - AWSiOSSDKv2/AWSCore (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSiOSSDKv2/CloudWatch (2.2.0):
-    - AWSCloudWatch (= 2.2.0)
-  - AWSiOSSDKv2/DynamoDB (2.2.0):
-    - AWSDynamoDB (= 2.2.0)
-  - AWSiOSSDKv2/EC2 (2.2.0):
-    - AWSEC2 (= 2.2.0)
-  - AWSiOSSDKv2/ElasticLoadBalancing (2.2.0):
-    - AWSElasticLoadBalancing (= 2.2.0)
-  - AWSiOSSDKv2/Kinesis (2.2.0):
-    - AWSKinesis (= 2.2.0)
-  - AWSiOSSDKv2/MobileAnalytics (2.2.0):
-    - AWSMobileAnalytics (= 2.2.0)
-  - AWSiOSSDKv2/S3 (2.2.0):
-    - AWSS3 (= 2.2.0)
-  - AWSiOSSDKv2/SES (2.2.0):
-    - AWSSES (= 2.2.0)
-  - AWSiOSSDKv2/SimpleDB (2.2.0):
-    - AWSSimpleDB (= 2.2.0)
-  - AWSiOSSDKv2/SNS (2.2.0):
-    - AWSSNS (= 2.2.0)
-  - AWSiOSSDKv2/SQS (2.2.0):
-    - AWSSQS (= 2.2.0)
-  - AWSKinesis (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSMobileAnalytics (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSS3 (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSSES (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSSimpleDB (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSSNS (2.2.0):
-    - AWSCore (= 2.2.0)
-  - AWSSQS (2.2.0):
-    - AWSCore (= 2.2.0)
+  - AWSAutoScaling (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSCloudWatch (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSCore (2.2.2)
+  - AWSDynamoDB (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSEC2 (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSElasticLoadBalancing (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSiOSSDKv2 (2.2.2):
+    - AWSiOSSDKv2/AutoScaling (= 2.2.2)
+    - AWSiOSSDKv2/AWSCore (= 2.2.2)
+    - AWSiOSSDKv2/CloudWatch (= 2.2.2)
+    - AWSiOSSDKv2/DynamoDB (= 2.2.2)
+    - AWSiOSSDKv2/EC2 (= 2.2.2)
+    - AWSiOSSDKv2/ElasticLoadBalancing (= 2.2.2)
+    - AWSiOSSDKv2/Kinesis (= 2.2.2)
+    - AWSiOSSDKv2/MobileAnalytics (= 2.2.2)
+    - AWSiOSSDKv2/S3 (= 2.2.2)
+    - AWSiOSSDKv2/SES (= 2.2.2)
+    - AWSiOSSDKv2/SimpleDB (= 2.2.2)
+    - AWSiOSSDKv2/SNS (= 2.2.2)
+    - AWSiOSSDKv2/SQS (= 2.2.2)
+  - AWSiOSSDKv2/AutoScaling (2.2.2):
+    - AWSAutoScaling (= 2.2.2)
+  - AWSiOSSDKv2/AWSCore (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSiOSSDKv2/CloudWatch (2.2.2):
+    - AWSCloudWatch (= 2.2.2)
+  - AWSiOSSDKv2/DynamoDB (2.2.2):
+    - AWSDynamoDB (= 2.2.2)
+  - AWSiOSSDKv2/EC2 (2.2.2):
+    - AWSEC2 (= 2.2.2)
+  - AWSiOSSDKv2/ElasticLoadBalancing (2.2.2):
+    - AWSElasticLoadBalancing (= 2.2.2)
+  - AWSiOSSDKv2/Kinesis (2.2.2):
+    - AWSKinesis (= 2.2.2)
+  - AWSiOSSDKv2/MobileAnalytics (2.2.2):
+    - AWSMobileAnalytics (= 2.2.2)
+  - AWSiOSSDKv2/S3 (2.2.2):
+    - AWSS3 (= 2.2.2)
+  - AWSiOSSDKv2/SES (2.2.2):
+    - AWSSES (= 2.2.2)
+  - AWSiOSSDKv2/SimpleDB (2.2.2):
+    - AWSSimpleDB (= 2.2.2)
+  - AWSiOSSDKv2/SNS (2.2.2):
+    - AWSSNS (= 2.2.2)
+  - AWSiOSSDKv2/SQS (2.2.2):
+    - AWSSQS (= 2.2.2)
+  - AWSKinesis (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSMobileAnalytics (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSS3 (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSSES (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSSimpleDB (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSSNS (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSSQS (2.2.2):
+    - AWSCore (= 2.2.2)
   - Heap (2.1.5)
   - iCarousel (1.7.6)
   - JSONModel (1.1.0)
   - Masonry (0.5.3)
   - MBProgressHUD (0.9.1)
+  - Stripe (4.0.3):
+    - Stripe/Checkout (= 4.0.3)
+    - Stripe/Core (= 4.0.3)
+  - Stripe/Checkout (4.0.3):
+    - Stripe/Core
+  - Stripe/Core (4.0.3)
   - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
@@ -100,29 +106,31 @@ DEPENDENCIES:
   - JSONModel (~> 1.1.0)
   - Masonry (~> 0.5.3)
   - MBProgressHUD (~> 0.5)
+  - Stripe
   - SWTableViewCell (~> 0.3.7)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  AWSAutoScaling: f3da5982444dee41391a1cb0c1b9664d504c55b1
-  AWSCloudWatch: e35b6040087e15010d6957986aecbfd949b508fb
-  AWSCore: 36712cbe827a50b81f1660349e0c202339797f23
-  AWSDynamoDB: d22680504585e4c7a344e3490459bcfd2972c41c
-  AWSEC2: cdee0bead09d5cb6a4619756010de1c3e12f7c18
-  AWSElasticLoadBalancing: bf299b22243ae46dcf58a207f41a0d66dc8a0e16
-  AWSiOSSDKv2: e89c0e467f76735b56fd7cb8acd0211e5961e8ee
-  AWSKinesis: c06624c3e5dc542ca47128e5a008544b3d20e20a
-  AWSMobileAnalytics: 213632654384eeb1af24a505d3b3299073ff9125
-  AWSS3: 5efcdff6010353fe53ef065be7760d60419c65b1
-  AWSSES: 84045d8e09afc7ca688d73aa77dd5badb1ff1317
-  AWSSimpleDB: f2b3e0cf1c5a8e6ddc7b921b6844fe17dd4489f9
-  AWSSNS: aec37737c542007a0f45017886b263d39ce2e0a9
-  AWSSQS: 08f547b79e13d68b18d4af230f78f109fb6d36c7
+  AWSAutoScaling: 4a178f86ecc44d8d3e2f1cb807e9d303762f8636
+  AWSCloudWatch: 18282e8e3c90a78afea7e7b368feb8736821f281
+  AWSCore: 3e969334460cc7ba16504fb2e074f59f95880800
+  AWSDynamoDB: 26acc42c6a6b98cd03112d3e8e733dde9b9b595e
+  AWSEC2: 848442150e9ec0f2746f5e6ee2a72c677fe6a0e2
+  AWSElasticLoadBalancing: 5c98f723f850ae21831ae3c8439c3a2b1790db1b
+  AWSiOSSDKv2: b0efca0d1fde496b931dda506cd515d13d50177d
+  AWSKinesis: 2764560fdb8ee5bc4373cc236bd5377c638901c2
+  AWSMobileAnalytics: cf091087c94ef969111fb38f798eb9514f173971
+  AWSS3: 4f89fcc0ef11303f94f561310979a0d2ec816fff
+  AWSSES: dc4bb949af7300c566aa05b6859e1578139561e8
+  AWSSimpleDB: b5b2113a68ee82cf37cb4f988a8cd7b38f15c39b
+  AWSSNS: a984cf9ea5286e57a3cbd8f819cc9f71cf270dec
+  AWSSQS: d60d84d7e5c759d893c880fb0315d7801c85f105
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   iCarousel: ddd7f142c7c2f3429b0ce5fb8ea37f4a059394cd
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   Masonry: 9f515466afe48632562342a40a1c224071a1a022
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Stripe: 43a4307dc789483a61668d187c4a917d1348b0b6
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.37.2
