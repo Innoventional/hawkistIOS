@@ -10,3 +10,4 @@ pod 'Heap', '~> 2.1.5'
 pod 'AWSiOSSDKv2'
 
 pod 'SWTableViewCell', '~> 0.3.7'
+pod 'Stripe'
