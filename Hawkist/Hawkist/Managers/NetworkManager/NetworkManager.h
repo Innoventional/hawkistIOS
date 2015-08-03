@@ -188,4 +188,15 @@
                            failureBlock:(void(^)(NSError *error)) failureBlock;
 
 
+
+#pragma mark -
+#pragma mark BankCard
+
+- (void) addNewBankCard:(NSString*)tokenId
+           successBlock:(void(^)(void)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock;
+
+- (void) getAllBankCards:(void(^)(NSArray *cards))successBlock
+            failureBlock:(void(^)(NSError *error)) failureBlock;
+
 @end

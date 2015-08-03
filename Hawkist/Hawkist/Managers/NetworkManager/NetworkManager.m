@@ -1,4 +1,4 @@
- 
+
  //
 //  NetworkManager.m
 //  Hawkist
@@ -1439,7 +1439,103 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
     
     
     
+    
 }
+
+
+#pragma mark -
+#pragma mark BankCard
+
+
+- (void) addNewBankCard:(NSString*)tokenId
+             successBlock:(void(^)(void)) successBlock
+             failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    
+    NSDictionary *parameter = @{@"stripe_token":tokenId};
+    
+    [self.networkDecorator POST:@"user/cards"
+                     parameters:parameter
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
+                                
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
+                            
+                        }];
+    
+    
+}
+
+
+
+- (void) getAllBankCards:(void(^)(NSArray *cards))successBlock
+                           failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    [self.networkDecorator GET:@"user/cards"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           NSError* error;
+                           NSMutableArray* cards = [NSMutableArray array];
+                           for (NSDictionary* card in responseObject[@"cards"])
+                           {
+                               HWCard* newCard = [[HWCard alloc]initWithDictionary: card error: &error];
+                               [cards addObject:newCard];
+                           }
+                           //
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(cards);
+                           
+                           
+                           
+                           
+                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                       }];
+    
+    
+    
+    
+}
+
+
+
+
 
 
 @end

@@ -16,7 +16,11 @@
                           expMonth: (NSUInteger) expMonth
                            expYear: (NSUInteger) expYear
                                cvc: (NSString*) cvc
+                      addressLine1: (NSString*) addressLine1
+                      addressLine2: (NSString*) addressLine2
+                              name: (NSString*) name
+                          postCode: (NSString*) postCode
+                              city: (NSString*) city
                         completion: (void (^) (NSString* tokenId, NSError* error)) completion;
-
 
 @end

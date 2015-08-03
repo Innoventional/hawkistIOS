@@ -29,6 +29,11 @@
                           expMonth: (NSUInteger) expMonth
                            expYear: (NSUInteger) expYear
                                cvc: (NSString*) cvc
+                      addressLine1: (NSString*) addressLine1
+                      addressLine2: (NSString*) addressLine2
+                              name: (NSString*) name
+                          postCode: (NSString*) postCode
+                              city: (NSString*) city
                         completion: (void (^) (NSString* tokenId, NSError* error)) completion
 {
     STPCard *card = [[STPCard alloc] init];
@@ -36,6 +41,11 @@
     card.expMonth = expMonth;
     card.expYear = expYear;
     card.cvc = cvc;
+    card.addressLine1 = addressLine1;
+    card.addressLine2 = addressLine2;
+    card.name = name;
+    card.addressCity = city;
+    card.addressZip = postCode;
     STPAPIClient *client = [[STPAPIClient alloc] initWithPublishableKey: STRIPE_KEY];
     [client createTokenWithCard:card completion:^(STPToken *token, NSError *error) {
         if (error) {

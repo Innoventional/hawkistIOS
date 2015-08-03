@@ -41,10 +41,10 @@
 
 - (void) setCard:(HWCard*)card
 {
-    self.cardName.text = card.cardName;
-    self.lastNumber.text = card.lastNumber;
-    self.month.text = card.month;
-    self.year.text = card.year;
+    self.cardName.text = card.name;
+    self.lastNumber.text = card.last4;
+    self.month.text = card.exp_month;
+    self.year.text = card.exp_year;
 }
 
 - (IBAction)editAction:(id)sender {

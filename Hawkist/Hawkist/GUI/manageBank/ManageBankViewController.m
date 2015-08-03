@@ -9,6 +9,7 @@
 #import "ManageBankViewController.h"
 #import "cardView.h"
 #import "UIView+Extensions.h"
+#import "AddCardViewController.h"
 
 @interface ManageBankViewController ()
 @property (nonatomic,strong)NSArray* cards;
@@ -26,62 +27,61 @@
     return self;
 }
 
--(void)viewDidLoad
+- (void) viewDidLoad
 {
-self.navigation.delegate = self;
-    
-    HWCard* card1 = [[HWCard alloc]init];
-    HWCard* card2 = [[HWCard alloc]init];
-    
-    card1.cardName = @"my Great Card";
-    
-    card1.lastNumber = @"9873";
-    
-    card1.month = @"05";
-    
-    card1.year = @"10";
-    
-    card2.cardName = @"my second Card";
-    
-    card2.lastNumber = @"1111";
-    
-    card2.month = @"11";
-    
-    card2.year = @"04";
-    
-    self.cards = [NSArray arrayWithObjects:card1,card2,card1, nil];
-    
+    self.navigation.delegate = self;
+    self.navigation.title.text = @"My Bank Cards";
 }
 
 
-- (void)viewWillAppear:(BOOL)animated
+- (void) reload
 {
     
-    float cardWidth = self.view.width - 30;
-    float cardHeight = cardWidth * 127 / 293;
     
-    for (int i = 0; i<self.cards.count; i++) {
-      
-        cardView* card = [[cardView alloc]initWithFrame:CGRectMake(15, i*(cardHeight+20)+15, cardWidth, cardHeight)];
-        
-        [card setCard:(HWCard*)[self.cards objectAtIndex:i]];
-       
-       
-        
-        [self.contentView addSubview:card];
-        
+    for(UIView* subview in [self.contentView subviews]) {
+        if ([subview isKindOfClass:[cardView class]])
+            [subview removeFromSuperview];
     }
     
-    if (((cardHeight+20)*self.cards.count +85)< self.view.height-95)
-    {
-        self.contentHeight.constant = self.view.height - 95;
+    [[NetworkManager shared]getAllBankCards:^(NSArray *cards) {
+        
+        self.cards = [NSArray arrayWithArray:cards];
+        float cardWidth = self.view.width - 30;
+        float cardHeight = cardWidth * 127 / 293;
+        
+        for (int i = 0; i<self.cards.count; i++) {
+            cardView* card = [[cardView alloc]initWithFrame:CGRectMake(15, i*(cardHeight+20)+15, cardWidth, cardHeight)];
+            [card setCard:(HWCard*)[self.cards objectAtIndex:i]];
+            [self.contentView addSubview:card];
+        }
+        
+        if (((cardHeight+20)*self.cards.count +85)< self.view.height-95)
+        {
+            self.contentHeight.constant = self.view.height - 95;
 
-    }
-    else
-    {
-        self.contentHeight.constant = ((cardHeight+20)*self.cards.count)+85;
-    }
+        }
+        else
+        {
+            self.contentHeight.constant = ((cardHeight+20)*self.cards.count)+85;
 
+        }
+        
+    } failureBlock:^(NSError *error) {
+        NSLog(@"%@",error);
+        
+    }];
+    
+    
+  
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self reload];
+}
+- (IBAction)addNewCard:(id)sender {
+    
+    [self.navigationController pushViewController:[[AddCardViewController alloc]init] animated:NO];
 }
 
 -(void)leftButtonClick

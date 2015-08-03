@@ -48,7 +48,7 @@
                     <color key="textColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-TG-XLN">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-TG-XLN">
                     <rect key="frame" x="22" y="69" width="100" height="4"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="4" id="Bft-0I-OPc"/>
@@ -161,8 +161,8 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="Ellipse" width="201" height="8"/>
         <image name="cardTrash" width="40" height="40"/>
         <image name="edit" width="40" height="40"/>
-        <image name="ellipse" width="201" height="8"/>
     </resources>
 </document>

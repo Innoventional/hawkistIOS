@@ -29,5 +29,5 @@
 #endif
 
 #define FACEBOOK_APP_ID @"1592531330997204"
-#define STRIPE_KEY @"sk_test_O8ks294fD18Z2W9CvaKqiRCa"
+#define STRIPE_KEY @"pk_test_oury2cSVAi0FgbINEHbGbyV6"
 #endif

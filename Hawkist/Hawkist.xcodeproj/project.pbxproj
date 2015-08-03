@@ -49,6 +49,10 @@
 		3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */; };
 		3AF37F9B1B57A8DD00E784DB /* HWTag+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF37F9A1B57A8DD00E784DB /* HWTag+Extensions.m */; };
 		3AF831F11B6EFB7600CC750D /* tempCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AF831F01B6EFB7600CC750D /* tempCard.png */; };
+		3AF831F41B6F64B900CC750D /* AddCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF831F31B6F64B900CC750D /* AddCardView.xib */; };
+		3AF831F61B6F6CB600CC750D /* CustomField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF831F51B6F6CB600CC750D /* CustomField.xib */; };
+		3AF831FC1B6F6E7D00CC750D /* CustomField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF831FB1B6F6E7D00CC750D /* CustomField.m */; };
+		3AF832021B6F7F4400CC750D /* AddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF832011B6F7F4400CC750D /* AddCardViewController.m */; };
 		7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C735D3E1B3893B000295472 /* CustomizationViewController.m */; };
 		7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D3F1B3893B000295472 /* CustomizationViewController.xib */; };
 		7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */; };
@@ -202,6 +206,12 @@
 		3AF37F991B57A8DD00E784DB /* HWTag+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HWTag+Extensions.h"; sourceTree = "<group>"; };
 		3AF37F9A1B57A8DD00E784DB /* HWTag+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HWTag+Extensions.m"; sourceTree = "<group>"; };
 		3AF831F01B6EFB7600CC750D /* tempCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tempCard.png; sourceTree = "<group>"; };
+		3AF831F31B6F64B900CC750D /* AddCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCardView.xib; path = addCard/AddCardView.xib; sourceTree = "<group>"; };
+		3AF831F51B6F6CB600CC750D /* CustomField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomField.xib; sourceTree = "<group>"; };
+		3AF831FA1B6F6E7D00CC750D /* CustomField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomField.h; path = addCard/CustomField.h; sourceTree = "<group>"; };
+		3AF831FB1B6F6E7D00CC750D /* CustomField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomField.m; path = addCard/CustomField.m; sourceTree = "<group>"; };
+		3AF832001B6F7F4400CC750D /* AddCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCardViewController.h; path = addCard/AddCardViewController.h; sourceTree = "<group>"; };
+		3AF832011B6F7F4400CC750D /* AddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCardViewController.m; path = addCard/AddCardViewController.m; sourceTree = "<group>"; };
 		6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7C735D3D1B3893B000295472 /* CustomizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizationViewController.h; sourceTree = "<group>"; };
 		7C735D3E1B3893B000295472 /* CustomizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizationViewController.m; sourceTree = "<group>"; };
@@ -393,7 +403,7 @@
 			name = AddTagsScreen;
 			sourceTree = "<group>";
 		};
-		3A45ABDC1B6B294800FD56D6 /* mangeBank */ = {
+		3A45ABDC1B6B294800FD56D6 /* manageBank */ = {
 			isa = PBXGroup;
 			children = (
 				3A45ABDD1B6B299B00FD56D6 /* cardView.xib */,
@@ -404,7 +414,7 @@
 				3A45ABE91B6BBCAB00FD56D6 /* ManageBankViewController.h */,
 				3A45ABEA1B6BBCAB00FD56D6 /* ManageBankViewController.m */,
 			);
-			name = mangeBank;
+			name = manageBank;
 			sourceTree = "<group>";
 		};
 		3A61FBD51B3C11300004A24B /* WantToSell */ = {
@@ -510,6 +520,19 @@
 				3ACC6BF01B44A9E30076004F /* MoneyField.m */,
 			);
 			name = MoneyField;
+			sourceTree = "<group>";
+		};
+		3AF831F21B6F649500CC750D /* AddCard */ = {
+			isa = PBXGroup;
+			children = (
+				3AF831F31B6F64B900CC750D /* AddCardView.xib */,
+				3AF832001B6F7F4400CC750D /* AddCardViewController.h */,
+				3AF832011B6F7F4400CC750D /* AddCardViewController.m */,
+				3AF831F51B6F6CB600CC750D /* CustomField.xib */,
+				3AF831FA1B6F6E7D00CC750D /* CustomField.h */,
+				3AF831FB1B6F6E7D00CC750D /* CustomField.m */,
+			);
+			name = AddCard;
 			sourceTree = "<group>";
 		};
 		7CBC69E41B42B1F300AE535C /* FeedScreen */ = {
@@ -698,7 +721,8 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				3A45ABDC1B6B294800FD56D6 /* mangeBank */,
+				3AF831F21B6F649500CC750D /* AddCard */,
+				3A45ABDC1B6B294800FD56D6 /* manageBank */,
 				3A2AE3C81B61114800806D59 /* AddTagsScreen */,
 				CE5909501B5F9F9400DAA7FF /* TextViewWithPlaceholder */,
 				CE5909471B5E9C8A00DAA7FF /* CommentScreen */,
@@ -977,10 +1001,12 @@
 				CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */,
 				3A968E241B4A98B4005AA347 /* ChoiceTable.xib in Resources */,
 				7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */,
+				3AF831F41B6F64B900CC750D /* AddCardView.xib in Resources */,
 				3ACC6BEE1B44A75E0076004F /* money.xib in Resources */,
 				7C9E7B011B4FCD58001DF8BE /* open-sans.extrabold.ttf in Resources */,
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */,
+				3AF831F61B6F6CB600CC750D /* CustomField.xib in Resources */,
 				3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
@@ -1071,6 +1097,7 @@
 				3A0BAF6F1B551BA6004DFF86 /* MyItemCellView.m in Sources */,
 				C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */,
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
+				3AF832021B6F7F4400CC750D /* AddCardViewController.m in Sources */,
 				CE70EDCA1B6B723D005664FA /* HWMentionUserCell.m in Sources */,
 				3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */,
 				C35A4C861B303BCF002E1F26 /* SocialManager.m in Sources */,
@@ -1096,6 +1123,7 @@
 				CE59095F1B5FE54400DAA7FF /* NSDate+NVTimeAgo.m in Sources */,
 				CE5909461B5ABBD700DAA7FF /* HWFollowUser.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
+				3AF831FC1B6F6E7D00CC750D /* CustomField.m in Sources */,
 				C35CB4B31B4EA7E200956150 /* HWTapBarView.m in Sources */,
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,
 				3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,

@@ -82,6 +82,9 @@
                                     <state key="normal" title="ADD NEW CARD" backgroundImage="acdet_but">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="addNewCard:" destination="-1" eventType="touchUpInside" id="OMC-n3-6bI"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
