@@ -11,7 +11,7 @@
 @protocol cardViewDelegate <NSObject>
 
 - (void)editCard:(id)sender;
-- (void)removeCard:(id)sender;
+- (void)removeCard:(NSString*)cardId;
 
 @end
 

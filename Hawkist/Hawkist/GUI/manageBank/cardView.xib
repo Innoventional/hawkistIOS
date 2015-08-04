@@ -55,14 +55,14 @@
                         <constraint firstAttribute="width" constant="100" id="Rao-gJ-SMU"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="lzv-vV-Yls">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="lzv-vV-Yls">
                     <rect key="frame" x="230" y="16" width="40" height="40"/>
                     <gestureRecognizers/>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="A9G-lc-KZV" appends="YES" id="L6c-7N-Ucn"/>
                     </connections>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardTrash" translatesAutoresizingMaskIntoConstraints="NO" id="A84-Jz-QVJ">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardTrash" translatesAutoresizingMaskIntoConstraints="NO" id="A84-Jz-QVJ">
                     <rect key="frame" x="230" y="69" width="40" height="40"/>
                     <gestureRecognizers/>
                     <connections>

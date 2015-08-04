@@ -31,6 +31,7 @@
 {
     self.navigation.delegate = self;
     self.navigation.title.text = @"My Bank Cards";
+     self.contentHeight.constant = self.view.height - 95;
 }
 
 
@@ -53,6 +54,8 @@
             cardView* card = [[cardView alloc]initWithFrame:CGRectMake(15, i*(cardHeight+20)+15, cardWidth, cardHeight)];
             [card setCard:(HWCard*)[self.cards objectAtIndex:i]];
             [self.contentView addSubview:card];
+            
+            card.delegate = self;
         }
         
         if (((cardHeight+20)*self.cards.count +85)< self.view.height-95)
@@ -75,19 +78,31 @@
   
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void) viewDidAppear:(BOOL)animated
 {
     [self reload];
 }
-- (IBAction)addNewCard:(id)sender {
+- (IBAction) addNewCard:(id)sender {
     
     [self.navigationController pushViewController:[[AddCardViewController alloc]init] animated:NO];
 }
 
--(void)leftButtonClick
+- (void) leftButtonClick
 {
     [self.navigationController popViewControllerAnimated:NO];
 }
 
+
+- (void)removeCard:(NSString *)cardId
+{
+    [[NetworkManager shared]RemoveBankCard:cardId successBlock:^{
+        
+        [self reload];
+        
+    } failureBlock:^(NSError *error) {
+
+        NSLog(@"--------------%@",error);
+    }];
+}
 
 @end

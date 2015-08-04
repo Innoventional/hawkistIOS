@@ -1519,8 +1519,6 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            successBlock(cards);
                            
                            
-                           
-                           
                        }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            
                            NSError *serverError = [self serverErrorWithError:error];
@@ -1528,11 +1526,42 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            failureBlock(serverError);
                        }];
     
+}
+
+- (void) RemoveBankCard:(NSString*)cardId
+           successBlock:(void(^)(void)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock
+{
     
+//    NSString* url = [NSString stringWithFormat:@"user/cards?card_id=CARD_TO_DELETE_ID%@",]
+    
+    NSDictionary *parameter = @{@"card_id":cardId};
+    
+    [self.networkDecorator DELETE:@"user/cards"
+                     parameters:parameter
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
+                                
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
+                            
+                        }];
     
     
 }
-
 
 
 

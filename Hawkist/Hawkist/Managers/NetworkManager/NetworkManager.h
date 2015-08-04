@@ -199,4 +199,8 @@
 - (void) getAllBankCards:(void(^)(NSArray *cards))successBlock
             failureBlock:(void(^)(NSError *error)) failureBlock;
 
+- (void) RemoveBankCard:(NSString*)cardId
+           successBlock:(void(^)(void)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock;
+
 @end

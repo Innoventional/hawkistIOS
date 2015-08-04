@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lastNumber;
 @property (strong, nonatomic) IBOutlet UILabel *month;
 @property (strong, nonatomic) IBOutlet UILabel *year;
+@property (strong, nonatomic) NSString *cardId;
 
 
 - (IBAction)editAction:(id)sender;
@@ -45,6 +46,7 @@
     self.lastNumber.text = card.last4;
     self.month.text = card.exp_month;
     self.year.text = card.exp_year;
+    self.cardId = card.id;
 }
 
 - (IBAction)editAction:(id)sender {
@@ -54,7 +56,7 @@
 
 - (IBAction)deleteAction:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector: @selector(removeCard:)])
-        [self.delegate removeCard:self];
+        [self.delegate removeCard:self.cardId];
 
 }
 @end
