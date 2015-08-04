@@ -7,11 +7,11 @@
 //
 
 #import "ManageBankViewController.h"
-#import "cardView.h"
 #import "UIView+Extensions.h"
 #import "AddCardViewController.h"
 
 @interface ManageBankViewController ()
+
 @property (nonatomic,strong)NSArray* cards;
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWCard.h"
 
 @protocol cardViewDelegate <NSObject>
 

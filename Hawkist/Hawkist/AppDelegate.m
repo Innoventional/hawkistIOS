@@ -16,6 +16,11 @@
 #import "ViewItemViewController.h"
 #import "FeedScreenViewController.h"
 
+
+
+#import "HWPaymentViewController.h"
+
+
 @interface AppDelegate ()
 @property (nonatomic,strong) LoginViewController* viewController;
 //@property (nonatomic,strong) AccountDetailViewController* viewController;
@@ -32,7 +37,7 @@
     
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.rootViewController = [[UINavigationController alloc] init];
-    
+ 
    [self.rootViewController pushViewController:[[LoginViewController alloc] init]  animated: NO];
    //   [self.rootViewController pushViewController:[[WantToSellViewController alloc] init]  animated: NO];
     self.rootViewController.navigationBarHidden = YES;

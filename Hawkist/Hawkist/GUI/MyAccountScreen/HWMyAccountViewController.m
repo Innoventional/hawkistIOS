@@ -1,0 +1,316 @@
+//
+//  HWMyAccountViewController.m
+//  Hawkist
+//
+//  Created by User on 31.07.15.
+//  Copyright (c) 2015 TecSynt Solutions. All rights reserved.
+//
+
+#import "HWMyAccountViewController.h"
+#import "HWAccountMenuDataModel.h"
+#import "HWAccountMenuCell.h"
+#import "NavigationVIew.h"
+#import "HWSingOutCell.h"
+#import "NetworkManager.h"
+
+
+@interface HWMyAccountViewController () <UITableViewDataSource, UITableViewDelegate, NavigationViewDelegate,HWSingOutCellDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
+@property (nonatomic, strong) NetworkManager *networkManager;
+
+@property (nonatomic, strong) NSArray *accountDetailsArray;
+@property (nonatomic, strong) NSArray *paymentOptionsArray;
+@property (nonatomic, strong) NSArray *sharingAndNitificationsArray;
+@property (nonatomic, strong) NSArray *privacyArray;
+
+@property(nonatomic, strong) NSArray *nameForGroupArray;
+@property (nonatomic, strong) NSArray *groupArray;
+
+
+@end
+
+@implementation HWMyAccountViewController
+
+#define menuCellIdentifier @"HWAccountMenuCell"
+#define singOutCellIdentifier @"HWSingOutCell"
+
+-(instancetype) init{
+    
+    self = [super initWithNibName: @"HWMyAccountVIew" bundle: nil];
+    
+    return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.networkManager = [NetworkManager shared];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.bounces = NO;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight =  63;//56.0;
+
+    self.navigationView.delegate = self;
+    self.navigationView.title.text = @"My Account";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"HWAccountMenuCell" bundle:nil] forCellReuseIdentifier:menuCellIdentifier];
+     [self.tableView registerNib:[UINib nibWithNibName:@"HWSingOutCell" bundle:nil] forCellReuseIdentifier:singOutCellIdentifier];
+    
+    
+    
+    [self setupMenuArray];
+    
+}
+
+- (void) setupMenuArray
+{
+    self.accountDetailsArray = @[
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"username" withTitle:@"User name"],
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"email" withTitle:@"Email Address"],
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"about me" withTitle:@"About Me"],
+                                ];
+    
+    self.paymentOptionsArray = @[
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"manage" withTitle:@"Manage Bank Cards"],
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"manageAd" withTitle:@"Manage Addresses"]
+                                ];
+    
+    self.sharingAndNitificationsArray = @[
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"manage" withTitle:@"Mobile Notifications"],
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"manageAd" withTitle:@"Email Notifications"]
+                                 ];
+    self.privacyArray = @[@"SingOut"];
+
+    self.nameForGroupArray = @[@"ACCOUNT DETAILS", @"PAYMENT OPTIONS", @"SHARING AND NOTIFICATIONS", @"PRIVACY"];
+    
+    self.groupArray = @[_accountDetailsArray, _paymentOptionsArray,_sharingAndNitificationsArray,_privacyArray];
+    
+}
+
+
+#pragma mark -
+#pragma mark UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.groupArray.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSArray *array = [self.groupArray objectAtIndex:section];
+    return array.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *ar = [self.groupArray objectAtIndex:indexPath.section];
+    
+    if([[ar objectAtIndex:indexPath.row] isKindOfClass:[NSString class]])
+    {
+        HWSingOutCell *cell = [tableView dequeueReusableCellWithIdentifier:singOutCellIdentifier];
+        cell.delegate = self;
+        return cell;
+    }
+    
+    HWAccountMenuDataModel * model = [ar objectAtIndex:indexPath.row];
+
+    HWAccountMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:menuCellIdentifier];
+    [cell setCellWithMenuDataModel:model];
+    
+    return cell;
+    
+}
+
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  
+    NSArray *ar = [self.groupArray objectAtIndex:indexPath.section];
+    
+    if([[ar objectAtIndex:indexPath.row] isKindOfClass:[NSString class]])
+    {
+        return NO;
+    }
+    
+    return YES;
+    
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *groupName = [self.nameForGroupArray objectAtIndex:section];
+    return groupName;
+}
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    switch (indexPath.section) {
+        case 0:
+            
+            [self selectAccountDetail:indexPath.row];
+            break;
+        case 1:
+            
+            [self selectPaymentOptions:indexPath.row];
+            break;
+        case 2:
+            
+            [self selectSharingAndNotifications:indexPath.row];
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+
+
+
+-(void)selectAccountDetail:(NSInteger)row
+{
+    switch (row) {
+        case 0:
+            
+            NSLog(@"User name");
+            break;
+            
+        case 1:
+            
+            NSLog(@"Email Address");
+            break;
+            
+        case 2:
+            
+            NSLog(@"About Me");
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+-(void)selectPaymentOptions:(NSInteger)row
+
+{
+    switch (row) {
+        case 0:
+            
+            NSLog(@"Manage Bank Cards");
+            break;
+            
+        case 1:
+            
+            NSLog(@"Manage Addresses");
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)selectSharingAndNotifications:(NSInteger)row
+
+{
+    
+    switch (row) {
+        case 0:
+            
+            NSLog(@"Mobile Notifications");
+            break;
+            
+        case 1:
+            
+            NSLog(@"Email Notifications");
+            break;
+            
+        default:
+            break;
+    }
+
+    
+}
+
+#pragma mark -
+#pragma mark UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 34;
+    
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    CGRect frame = [UIScreen mainScreen].bounds;
+    
+    UILabel *myLabel = [[UILabel alloc] init];
+    myLabel.frame = CGRectMake(20, 8, frame.size.width, 20);
+    
+    myLabel.font = [UIFont fontWithName:@"OpenSans-Bold" size:12];
+    myLabel.textColor = [UIColor colorWithRed:110./255. green:110./255. blue:110./255. alpha:1];
+    myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    
+    
+    UIView *headerView = [[UIView alloc] init];
+    headerView.backgroundColor = [UIColor colorWithRed:240./255. green:240./255. blue:240./255. alpha:1];
+    [headerView addSubview:myLabel];
+    
+    return headerView;
+}
+
+#pragma mark -
+#pragma mark NavigationViewDelegate
+
+
+-(void) leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) rightButtonClick
+{
+    
+    
+}
+
+#pragma mark - 
+#pragma mark HWSingOutCellDelegate
+
+- (void) pressNotifySellerButton:(UIButton*)sender
+{
+    [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+}
+
+- (void) pressLetMemberButton:(UIButton*)sender
+{
+    [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+}
+
+- (void) pressSingOutButton:(UIButton*)sender
+{
+    [self.networkManager logOutWithSuccessBlock:^{
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        
+    }];
+    
+}
+
+
+@end

@@ -249,10 +249,12 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                            placeholderImage:nil
                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                         
+                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                       
+                                             self.avatarView.image = image;
+                                             [self.indicator stopAnimating];
                                         
-                                        self.avatarView.image = image;
-                                        [self.indicator stopAnimating];
-                                        
+                                         });
                                     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
                                         
                                         

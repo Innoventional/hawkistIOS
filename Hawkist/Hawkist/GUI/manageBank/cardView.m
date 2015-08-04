@@ -19,6 +19,7 @@
 
 - (IBAction)editAction:(id)sender;
 - (IBAction)deleteAction:(id)sender;
+
 @end
 
 @implementation cardView

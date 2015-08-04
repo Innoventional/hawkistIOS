@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="53" id="Ldb-pc-eIa" customClass="HWAccountMenuCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ldb-pc-eIa" id="Jem-dm-lJc">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd0-Ae-ATX">
+                        <rect key="frame" x="61" y="16" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.43210971355438232" green="0.43212047219276428" blue="0.43211466073989868" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-M3-lCq">
+                        <rect key="frame" x="288" y="16" width="13" height="21"/>
+                        <color key="backgroundColor" red="1" green="0.82263860791703092" blue="0.31134851340145042" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.37647058823529411" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="13" id="J20-UN-0XZ"/>
+                            <constraint firstAttribute="height" constant="21" id="X9R-4n-GiO"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="WOt-As-189">
+                        <rect key="frame" x="0.0" y="53" width="320" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="kkf-Sm-wdf"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TYt-ck-Rwg">
+                        <rect key="frame" x="12" y="11" width="31" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="KwA-Wv-Xb3"/>
+                            <constraint firstAttribute="width" constant="31" id="eV6-d9-lnV"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="TYt-ck-Rwg" firstAttribute="leading" secondItem="Jem-dm-lJc" secondAttribute="leading" constant="12" id="2uW-wL-giO"/>
+                    <constraint firstItem="TYt-ck-Rwg" firstAttribute="top" secondItem="Jem-dm-lJc" secondAttribute="top" constant="11" id="30S-ba-ODl"/>
+                    <constraint firstAttribute="trailing" secondItem="WOt-As-189" secondAttribute="trailing" id="B0B-Pt-Ow5"/>
+                    <constraint firstItem="sd0-Ae-ATX" firstAttribute="leading" secondItem="TYt-ck-Rwg" secondAttribute="trailing" constant="18" id="FJZ-mt-ZSO"/>
+                    <constraint firstItem="WOt-As-189" firstAttribute="leading" secondItem="Jem-dm-lJc" secondAttribute="leading" id="FQB-XI-r26"/>
+                    <constraint firstItem="Yvc-M3-lCq" firstAttribute="trailing" secondItem="Jem-dm-lJc" secondAttribute="trailingMargin" constant="-11" id="FRB-yf-SPy"/>
+                    <constraint firstItem="sd0-Ae-ATX" firstAttribute="top" secondItem="Jem-dm-lJc" secondAttribute="topMargin" constant="8" id="FxO-ht-ay5"/>
+                    <constraint firstAttribute="bottom" secondItem="WOt-As-189" secondAttribute="bottom" constant="-1" id="G8q-8q-91L"/>
+                    <constraint firstItem="Yvc-M3-lCq" firstAttribute="top" secondItem="Jem-dm-lJc" secondAttribute="topMargin" constant="8" id="jj6-iq-uHB"/>
+                    <constraint firstItem="WOt-As-189" firstAttribute="top" secondItem="TYt-ck-Rwg" secondAttribute="bottom" constant="11" id="oTZ-YC-zjg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageCell" destination="TYt-ck-Rwg" id="mXA-ta-cqV"/>
+                <outlet property="titleCell" destination="sd0-Ae-ATX" id="YiD-B4-IoO"/>
+            </connections>
+            <point key="canvasLocation" x="149" y="297"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrow" width="8" height="13"/>
+        <image name="line" width="1" height="1"/>
+    </resources>
+</document>

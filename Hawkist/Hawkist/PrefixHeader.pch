@@ -20,5 +20,5 @@
 #import "UIImageView+AFNetworking.h"
 #import "NetworkManager.h"
 #import "AppEngine.h"
-#import "HWCard.h"
+ 
 #endif

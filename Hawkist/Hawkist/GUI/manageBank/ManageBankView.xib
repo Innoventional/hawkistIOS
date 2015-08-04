@@ -71,28 +71,9 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r75-wq-IJh">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARl-E4-FD9">
-                                    <rect key="frame" x="0.0" y="335" width="375" height="65"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="WJA-75-OQG"/>
-                                        <constraint firstAttribute="height" constant="65" id="cjU-c2-V7Y"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
-                                    <state key="normal" title="ADD NEW CARD" backgroundImage="acdet_but">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="addNewCard:" destination="-1" eventType="touchUpInside" id="OMC-n3-6bI"/>
-                                    </connections>
-                                </button>
-                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="400" id="B5N-kB-EZc"/>
-                                <constraint firstAttribute="trailing" secondItem="ARl-E4-FD9" secondAttribute="trailing" id="JyN-Hq-OsC"/>
-                                <constraint firstItem="ARl-E4-FD9" firstAttribute="leading" secondItem="r75-wq-IJh" secondAttribute="leading" id="iXA-B3-9DS"/>
-                                <constraint firstAttribute="bottom" secondItem="ARl-E4-FD9" secondAttribute="bottom" id="yyM-vy-UhO"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -105,6 +86,21 @@
                         <constraint firstAttribute="bottom" secondItem="r75-wq-IJh" secondAttribute="bottom" id="lbU-zn-Fqn"/>
                     </constraints>
                 </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARl-E4-FD9">
+                    <rect key="frame" x="0.0" y="667" width="375" height="65"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="65" id="5oG-c9-7nT"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="WJA-75-OQG"/>
+                        <constraint firstAttribute="height" constant="65" id="cjU-c2-V7Y"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
+                    <state key="normal" title="ADD NEW CARD" backgroundImage="acdet_but">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="addNewCard:" destination="-1" eventType="touchUpInside" id="OMC-n3-6bI"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -112,11 +108,14 @@
                 <constraint firstItem="xXw-b6-jxz" firstAttribute="top" secondItem="mWY-YY-IP4" secondAttribute="bottom" id="9Op-7J-JYg"/>
                 <constraint firstAttribute="bottom" secondItem="Vfl-vK-QUH" secondAttribute="bottom" id="LOm-Ca-l94"/>
                 <constraint firstAttribute="trailing" secondItem="Vfl-vK-QUH" secondAttribute="trailing" id="MBx-il-GQ6"/>
+                <constraint firstAttribute="trailing" secondItem="ARl-E4-FD9" secondAttribute="trailing" id="O8v-ph-jvN"/>
                 <constraint firstItem="xXw-b6-jxz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Sp4-Wf-ROT"/>
                 <constraint firstAttribute="trailing" secondItem="xXw-b6-jxz" secondAttribute="trailing" id="VPV-xr-ysw"/>
                 <constraint firstItem="mWY-YY-IP4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eai-B3-Evw"/>
+                <constraint firstAttribute="bottom" secondItem="ARl-E4-FD9" secondAttribute="bottom" id="ehg-L7-6GA"/>
                 <constraint firstItem="mWY-YY-IP4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lrw-4P-FCU"/>
                 <constraint firstAttribute="trailing" secondItem="mWY-YY-IP4" secondAttribute="trailing" id="pkf-8h-qEu"/>
+                <constraint firstItem="ARl-E4-FD9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qt2-3V-nee"/>
                 <constraint firstItem="Vfl-vK-QUH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zcg-d8-j1I"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

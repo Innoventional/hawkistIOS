@@ -94,20 +94,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    if ([self.item.user_id isEqualToString:[AppEngine shared].user.id])
-    {
-        self.navigationView.rightButtonOutlet.enabled = YES;
-        [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
-
-    }
-    else
-    {
-        self.navigationView.rightButtonOutlet.enabled = NO;
-    }
-    
-    
-       self.navigationView.title.text = @"View Item";
+    self.navigationView.title.text = @"View Item";
     
     _starRatingControl.delegate = self;
     
@@ -130,6 +117,7 @@
     self.bigImage.layer.cornerRadius = 5.0f;
     self.bigImage.layer.masksToBounds = YES;
     
+    [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
 
 #pragma mark implementation model user and item
     
@@ -173,44 +161,50 @@
 
 - (void) rightButtonClick
 {
-        UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil
-                                                           delegate: self
-                                                  cancelButtonTitle: @"Cancel"
-                                             destructiveButtonTitle: nil
-                                                  otherButtonTitles: @"Edit", nil];
-        popup.tag = 1;
+    
+    NSString *buttonNameStr ;
+    
+    UIActionSheet* popup;
+    
+    if([[AppEngine shared].user.id isEqualToString:self.item.user.id])
+    {
+        popup = [[UIActionSheet alloc] initWithTitle: nil
+                                           delegate: self
+                                  cancelButtonTitle: @"Cancel"
+                             destructiveButtonTitle: nil
+                                  otherButtonTitles: @"Edit", nil];
+    } else {
+        
+        popup = [[UIActionSheet alloc] initWithTitle: nil
+                                           delegate: self
+                                  cancelButtonTitle: @"Cancel"
+                             destructiveButtonTitle: nil
+                                  otherButtonTitles: @"Report", nil];
+    }
+    
     
     [popup showInView:self.view];
 
      
-    }
+}
 
 - (void) actionSheet: (UIActionSheet*) popup
          clickedButtonAtIndex: (NSInteger) buttonIndex
     {
-        switch (popup.tag)
+        if([[AppEngine shared].user.id isEqualToString:self.item.user.id])
         {
-            case 1:
-            {
-                switch (buttonIndex)
-                {
-                    case 0:
-                    {
-                        SellAnItemViewController* vc = [[SellAnItemViewController alloc]initWithItem:self.item];
-                        
-                        [self.navigationController pushViewController:vc animated:NO];
-                         
-                        break;
-                    }
-                    default:
-                        break;
-                }
-                break;
-            }
-            default:
-                break;
-                
+        
+            SellAnItemViewController* vc = [[SellAnItemViewController alloc]initWithItem:self.item];
+            [self.navigationController pushViewController:vc animated:NO];
+        
+        } else {
+            
+            
+            
         }
+
+        
+  
     }
 
 
@@ -221,6 +215,8 @@
 #pragma mark - update item
 - (void) updateItem
 {
+    self.navigationView.title.text = self.item.title;
+    
     self.reviews.text = [NSString stringWithFormat:@"%@ (%@ reviews)", self.item.user.rating,self.item.user.review];
     self.starRatingControl.rating = [self.item.user.rating integerValue];
     self.isLikeItem = [self.item.liked integerValue];
@@ -235,15 +231,12 @@
     [self avatarInit];
     
     
-    
-    
-    
-    
     self.nameOoStuff.text = self.item.title;
     self.comments.text = self.item.comments;
     self.sellerPrice.text = self.item.selling_price;
     self.oldPrice.text = self.item.retail_price;
-    self.descriptionOfItem.text = self.item.item_description;
+
+    [self setupDescription];
     self.added.text = [self.item stringItemCreationDate];
    
 
@@ -252,17 +245,13 @@
     self.platform.text =  itemPlatform.name;
     
     HWCategory* itemCategory = [HWTag getCategoryById:self.item.category from:itemPlatform.categories];
-    
     self.category.text = itemCategory.name;
  
     HWSubCategories* itemSubCategory = [HWTag getSubCategoryById:self.item.subcategory from: itemCategory.subcategories];
-    
     HWCondition* itemCondition = [HWTag getConditionById:self.item.condition from: itemSubCategory.condition];
-    
     self.condition.text = itemCondition.name;
    
     HWColor* itemColor = [HWTag getColorById:self.item.color from:itemSubCategory.color];
-    
     self.colour.text = itemColor.name;
     if(self.item.collection_only  )
     {
@@ -311,6 +300,26 @@
     }
 }
 
+- (void) setupDescription
+{
+    NSString *str = [NSString stringWithFormat:@"%@\n%@", self.item.title, self.item.item_description];
+    NSRange rangeTitle = [str rangeOfString:self.item.title];
+    NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc] initWithString: str ];
+    
+    [atrStr beginEditing];
+    
+    UIColor *color = [UIColor colorWithRed:94./255. green:94./255. blue:94./255. alpha:1];
+    UIFont *font = [UIFont fontWithName:@"OpenSans-Semibold" size:15];
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : color, NSFontAttributeName : font  };
+    [atrStr addAttributes:attrs
+                        range:rangeTitle];
+    
+    [atrStr endEditing];
+
+    self.descriptionOfItem.attributedText = atrStr;
+
+    
+}
 - (void) avatarInit
 {
 
@@ -320,10 +329,14 @@
                            placeholderImage:nil
                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                         
-                                       
-                                      
-                                        self.sellerAvatar.image = image;
-                                          [self.activityIndicator stopAnimating];
+                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                           
+                                         
+                                           self.sellerAvatar.image = image;
+                                             [self.activityIndicator stopAnimating];
+
+                                       });
+                                        
                                         
                                     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
                                         
@@ -336,6 +349,7 @@
 
 }
 
+ 
 
 - (void) reloadScrollViewSize
 {
@@ -344,7 +358,7 @@
     
     
     [self.collectionView layoutIfNeeded];
-     [self.scrollView layoutIfNeeded];
+    [self.scrollView layoutIfNeeded];
     
     CGSize size = self.scrollView.contentSize;
     size.height += self.collectionView.contentSize.height - self.lastHeightCollectionView;

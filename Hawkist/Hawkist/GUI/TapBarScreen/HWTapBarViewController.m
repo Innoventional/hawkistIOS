@@ -10,7 +10,7 @@
 #import "HWTapBarView.h"
 #import "FeedScreenViewController.h"
 #import "WantToSellViewController.h"
-#import "AddCardViewController.h"
+#import "HWMyAccountViewController.h"
 
 #import "ManageBankViewController.h"
 
@@ -90,6 +90,8 @@
         }
         case 3:
         {
+            HWMyAccountViewController *vc = [[HWMyAccountViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
               
             break;
         }
@@ -97,6 +99,7 @@
         {
             ManageBankViewController* bankVC = [[ManageBankViewController alloc]init];
             [self.navigationController pushViewController:bankVC animated:NO];
+          
             
             break;
         }
