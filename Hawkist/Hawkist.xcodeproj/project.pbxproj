@@ -145,6 +145,7 @@
 		CEBAAFB61B6E116200AFE4C6 /* HWPaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAFB51B6E116200AFE4C6 /* HWPaymentCell.xib */; };
 		CEBAAFBC1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAFBB1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m */; };
 		CEBAAFBE1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAFBD1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib */; };
+		CEBAAFC11B70E67B00AFE4C6 /* HWAddDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAFC01B70E67B00AFE4C6 /* HWAddDataModel.m */; };
 		CEC68DD11B5661510024AFC5 /* HWButtonForSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */; };
 /* End PBXBuildFile section */
 
@@ -381,6 +382,8 @@
 		CEBAAFBA1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddCardAndAdressCell.h; path = "Payment Screen/SelectCell/HWAddCardAndAdressCell.h"; sourceTree = "<group>"; };
 		CEBAAFBB1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddCardAndAdressCell.m; path = "Payment Screen/SelectCell/HWAddCardAndAdressCell.m"; sourceTree = "<group>"; };
 		CEBAAFBD1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWAddCardAndAdressCell.xib; path = "Payment Screen/SelectCell/HWAddCardAndAdressCell.xib"; sourceTree = "<group>"; };
+		CEBAAFBF1B70E67B00AFE4C6 /* HWAddDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddDataModel.h; path = "Payment Screen/HWAddDataModel.h"; sourceTree = "<group>"; };
+		CEBAAFC01B70E67B00AFE4C6 /* HWAddDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddDataModel.m; path = "Payment Screen/HWAddDataModel.m"; sourceTree = "<group>"; };
 		CEC68DCF1B5661510024AFC5 /* HWButtonForSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWButtonForSegment.h; path = ProfileScreen/CustomSegment/HWButtonForSegment.h; sourceTree = "<group>"; };
 		CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWButtonForSegment.m; path = ProfileScreen/CustomSegment/HWButtonForSegment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1006,6 +1009,8 @@
 				CEBAAFBA1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.h */,
 				CEBAAFBB1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m */,
 				CEBAAFBD1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib */,
+				CEBAAFBF1B70E67B00AFE4C6 /* HWAddDataModel.h */,
+				CEBAAFC01B70E67B00AFE4C6 /* HWAddDataModel.m */,
 			);
 			name = selectCell;
 			sourceTree = "<group>";
@@ -1256,6 +1261,7 @@
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
 				CE5909531B5F9FF400DAA7FF /* SZTextView.m in Sources */,
 				3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */,
+				CEBAAFC11B70E67B00AFE4C6 /* HWAddDataModel.m in Sources */,
 				C35A4C8D1B31A408002E1F26 /* AppEngine.m in Sources */,
 				3AF832081B70E4EB00CC750D /* HWCard.m in Sources */,
 				CEBAAFA71B6DF4C800AFE4C6 /* HWPaymentViewController.m in Sources */,

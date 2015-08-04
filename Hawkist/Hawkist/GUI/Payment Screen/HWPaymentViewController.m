@@ -11,11 +11,13 @@
 
 #import "HWPaymentOptionCell.h"
 #import "HWAddressOptionCell.h"
+#import "HWAddCardAndAdressCell.h"
+#import "NavigationVIew.h"
 
-
-@interface HWPaymentViewController () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HWPaymentViewController () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, NavigationViewDelegate>
  
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
 
 @property (nonatomic, strong) UICollectionView *paymentCollectionView;
 @property (nonatomic, strong) UICollectionView *addressCollectionView;
@@ -25,12 +27,22 @@
 
 @property (nonatomic, strong) NSArray *paymentOptionArray;
 @property (nonatomic, strong) NSArray *addressOptionArray;
+@property (nonatomic, strong) NSArray *dataModelArray;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *itemPriceLable;
+@property (weak, nonatomic) IBOutlet UILabel *shippingLable;
+@property (weak, nonatomic) IBOutlet UILabel *totalLable;
+
+
+
 
 @end
 
 @implementation HWPaymentViewController
 
-#define cellIdentifier @"cellID"
+#define cellWithCollectionViewIdentifier @"HWPaymentCell"
+#define cellForAddDataIdentifier @"HWAddCardAndAdressCell"
 
 #define paymentOptionCell @"paymentOptionCell"
 #define addressOptionCell @"addressOptionCell"
@@ -48,14 +60,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationView.title.text = @"Payment";
+    self.navigationView.delegate = self;
     self.screenWidth = [UIScreen mainScreen].bounds.size.width;
+    [self setupDataModelArray];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
-//    self.tableView.estimatedRowHeight =  63;//56.0;
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"HWPaymentCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HWPaymentCell" bundle:nil] forCellReuseIdentifier:cellWithCollectionViewIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HWAddCardAndAdressCell" bundle:nil] forCellReuseIdentifier:cellForAddDataIdentifier];
 
     [self.tableView layoutIfNeeded ];
     NSLog(@"%f",self.tableView.frame.size.height);
@@ -63,6 +77,23 @@
     self.tableView.bounces= NO;
     CGFloat cellHeight = self.tableView.bounds.size.height;
     self.cellHeightl = cellHeight/2 - 34;
+    
+}
+
+
+-(void) setupDataModelArray
+{
+    self.dataModelArray = @[
+                            [[HWAddDataModel alloc] initWithTitle:@"Payment details missing!"
+                                                     description:@"You need to add debit or credit card to complete this transaction."
+                                                  titleForButton:@"ADD DEBIT OR CREDIT CARD"],
+                            
+                            [[HWAddDataModel alloc]initWithTitle:@"Delivery address missing!"
+                                                     description:@"You need to add delivery address to complete this transaction."
+                                                  titleForButton:@"ADD DELIVERY ADDRESS"]
+                            ];
+    
+    self.paymentOptionArray = self.dataModelArray;
     
 }
 
@@ -94,7 +125,22 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HWPaymentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if(indexPath.section == 0 && !self.paymentOptionArray.count)
+    {
+        HWAddCardAndAdressCell *cell = [tableView dequeueReusableCellWithIdentifier:cellForAddDataIdentifier];
+        [cell setCellWithData:[self.dataModelArray objectAtIndex:indexPath.section]];
+        return cell;
+    }
+    else if (indexPath.section == 1 && !self.addressOptionArray.count)
+    {
+        HWAddCardAndAdressCell *cell = [tableView dequeueReusableCellWithIdentifier:cellForAddDataIdentifier];
+        [cell setCellWithData:[self.dataModelArray objectAtIndex:indexPath.section]];
+        return cell;
+    }
+    
+    
+    HWPaymentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellWithCollectionViewIdentifier];
     
     if(indexPath.section == 0)
         {
@@ -142,6 +188,10 @@
     return headerView;
 }
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -173,8 +223,6 @@
           width = (self.screenWidth - self.screenWidth/1.2)/2;
     }
 
-    
-    
     
     
     return UIEdgeInsetsMake(5, width, 5, width); // top, left, bottom, right
@@ -215,11 +263,11 @@
 {
     if([collectionView isEqual:self.paymentCollectionView])
     {
-        return 5;//self.paymentOptionArray.count;
+        return [self.paymentOptionArray count];
         
     } else if([collectionView isEqual:self.addressCollectionView])
     {
-        return 5;//self.addressOptionArray.count;
+        return [self.addressOptionArray count];
         
     } else {
         
@@ -264,6 +312,26 @@
 }
 
 
+#pragma mark -
+#pragma mark Action
 
+- (IBAction)pressBuyNowButton:(UIButton *)sender
+{
+
+
+}
+
+#pragma mark -
+#pragma mark NavigationViewDelegate
+
+-(void) leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) rightButtonClick
+{
+    
+}
 
 @end

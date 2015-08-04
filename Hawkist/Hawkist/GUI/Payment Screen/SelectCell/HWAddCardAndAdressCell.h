@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWAddDataModel.h"
 
 @interface HWAddCardAndAdressCell : UITableViewCell
+
+- (void) setCellWithData:(HWAddDataModel*)dataModel;
 
 @end
