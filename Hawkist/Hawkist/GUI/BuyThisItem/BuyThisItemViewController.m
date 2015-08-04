@@ -8,6 +8,7 @@
 
 #import "BuyThisItemViewController.h"
 #import "NetworkManager.h"
+#import "HWPaymentViewController.h"
 
 
 @interface BuyThisItemViewController ()
@@ -135,4 +136,16 @@
         
     }];
 }
+
+
+#pragma mark - 
+#pragma mark Action 
+- (IBAction)pressBuyButton:(UIButton *)sender
+{
+    HWPaymentViewController *vc = [[HWPaymentViewController alloc] initWithItem:self.item];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+
 @end

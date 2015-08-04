@@ -172,6 +172,9 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="pressBuyButton:" destination="-1" eventType="touchUpInside" id="g8d-Cr-7oT"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vr2-xa-TVe">
                                     <rect key="frame" x="0.0" y="406" width="320" height="30"/>

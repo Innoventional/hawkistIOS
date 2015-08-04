@@ -9,8 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "HWAddDataModel.h"
 
+@protocol HWAddCardAndAdressCellDelegat;
+
 @interface HWAddCardAndAdressCell : UITableViewCell
 
+@property (nonatomic, weak) id<HWAddCardAndAdressCellDelegat> delegate;
 - (void) setCellWithData:(HWAddDataModel*)dataModel;
+
+@end
+
+
+@protocol HWAddCardAndAdressCellDelegat <NSObject>
+
+-(void) pressAddButton:(UIButton*)sender;
 
 @end

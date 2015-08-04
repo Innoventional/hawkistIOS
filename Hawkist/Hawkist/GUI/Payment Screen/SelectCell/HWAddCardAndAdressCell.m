@@ -36,4 +36,14 @@
     [self.addButton setTitle:dataModel.titleForButtonStr forState:UIControlStateNormal];
 }
 
+- (IBAction)pressAddButton:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pressAddButton:)])
+    {
+        [self.delegate pressAddButton:sender];
+    }
+    
+}
+
+
 @end

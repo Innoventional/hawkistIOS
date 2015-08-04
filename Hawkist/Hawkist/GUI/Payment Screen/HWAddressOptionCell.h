@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HWAddressOptionCell : UICollectionViewCell
+@property (nonatomic, assign) BOOL isSelected;
 
-@property (nonatomic, strong) IBOutlet UIImageView *im;
+-(void) setCellWithAddress:(id) address;
 
 @end

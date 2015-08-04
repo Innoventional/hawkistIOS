@@ -7,7 +7,10 @@
 //
 
 #import "HWBaseViewController.h"
+@class HWItem;
 
 @interface HWPaymentViewController : HWBaseViewController
+
+- (instancetype)initWithItem:(HWItem*)item;
 
 @end
