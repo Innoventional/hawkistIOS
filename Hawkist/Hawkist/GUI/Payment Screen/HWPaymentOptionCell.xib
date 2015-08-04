@@ -97,7 +97,11 @@
             </constraints>
             <size key="customSize" width="320" height="166"/>
             <connections>
+                <outlet property="activeImage" destination="J7f-8V-QIV" id="SL9-aO-wot"/>
+                <outlet property="expirationDateLabel" destination="Y7H-U8-9i3" id="T2T-QE-tmJ"/>
+                <outlet property="fullNameLabel" destination="Ptt-fF-bhx" id="jO2-9B-qWj"/>
                 <outlet property="im" destination="hKf-H5-EWs" id="VdP-Vs-gCG"/>
+                <outlet property="numberCardLabel" destination="LLR-PJ-1xA" id="KJE-dc-rzf"/>
             </connections>
             <point key="canvasLocation" x="724" y="398"/>
         </collectionViewCell>

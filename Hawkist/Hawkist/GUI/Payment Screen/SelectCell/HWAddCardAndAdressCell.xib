@@ -6,6 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
         <mutableArray key="OpenSansRegular.ttf">
             <string>OpenSans</string>
         </mutableArray>
@@ -13,68 +17,75 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="IGd-Ak-PBF">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="IGd-Ak-PBF" customClass="HWAddCardAndAdressCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IGd-Ak-PBF" id="ANB-Zr-v3D">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpB-k0-xPf">
-                        <rect key="frame" x="16" y="105" width="289" height="38"/>
+                        <rect key="frame" x="16" y="96" width="289" height="46"/>
                         <color key="backgroundColor" red="0.91764705882352937" green="0.25098039215686274" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="38" id="as4-xU-cCN"/>
+                            <constraint firstAttribute="height" constant="46" id="Ptm-77-aKf"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                         <state key="normal" title="ADD DEBIT OR CREDIT CARD">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="15"/>
+                                <integer key="value" value="4"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment details missing!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKa-fw-Uow">
-                        <rect key="frame" x="66" y="8" width="191" height="21"/>
+                        <rect key="frame" x="66" y="16" width="208" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="AP8-Js-6ZX"/>
+                            <constraint firstAttribute="height" constant="21" id="gT0-yI-tlb"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                        <color key="textColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need to add adebit or credit card to complete this transaction." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLH-wy-uTM">
-                        <rect key="frame" x="66" y="31" width="246" height="49"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <rect key="frame" x="66" y="41" width="246" height="41"/>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                        <color key="textColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LY5-cs-SbE">
-                        <rect key="frame" x="23" y="23" width="35" height="35"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warningImage" translatesAutoresizingMaskIntoConstraints="NO" id="LY5-cs-SbE">
+                        <rect key="frame" x="23" y="33" width="35" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="Czw-Mc-cKm"/>
-                            <constraint firstAttribute="height" constant="35" id="KF2-m4-yhv"/>
+                            <constraint firstAttribute="width" constant="35" id="V1V-il-Y1n"/>
+                            <constraint firstAttribute="height" constant="24" id="aCb-pq-7ng"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bLH-wy-uTM" firstAttribute="trailing" secondItem="ANB-Zr-v3D" secondAttribute="trailingMargin" id="6AI-WR-tgg"/>
-                    <constraint firstItem="bLH-wy-uTM" firstAttribute="leading" secondItem="LY5-cs-SbE" secondAttribute="trailing" constant="8" id="DS3-xB-ibw"/>
-                    <constraint firstItem="LpB-k0-xPf" firstAttribute="leading" secondItem="ANB-Zr-v3D" secondAttribute="leadingMargin" constant="8" id="MqW-ak-azi"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="LpB-k0-xPf" secondAttribute="trailing" constant="7" id="PMA-pr-LFS"/>
-                    <constraint firstItem="LY5-cs-SbE" firstAttribute="top" secondItem="ANB-Zr-v3D" secondAttribute="topMargin" constant="15" id="S9U-31-bOP"/>
-                    <constraint firstItem="LY5-cs-SbE" firstAttribute="leading" secondItem="ANB-Zr-v3D" secondAttribute="leadingMargin" constant="15" id="SXE-2T-rs1"/>
-                    <constraint firstItem="DKa-fw-Uow" firstAttribute="top" secondItem="ANB-Zr-v3D" secondAttribute="topMargin" id="TSy-iU-Fk8"/>
-                    <constraint firstItem="LpB-k0-xPf" firstAttribute="top" secondItem="bLH-wy-uTM" secondAttribute="bottom" constant="25" id="Y7W-YZ-6jk"/>
-                    <constraint firstItem="bLH-wy-uTM" firstAttribute="top" secondItem="DKa-fw-Uow" secondAttribute="bottom" constant="2" id="sHG-fV-JSi"/>
-                    <constraint firstItem="DKa-fw-Uow" firstAttribute="leading" secondItem="LY5-cs-SbE" secondAttribute="trailing" constant="8" id="sbY-Mp-JUJ"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="DKa-fw-Uow" secondAttribute="trailing" constant="55" id="vMO-Mj-Gxl"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="LpB-k0-xPf" secondAttribute="bottom" constant="8" id="yGV-K4-t7g"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="LpB-k0-xPf" secondAttribute="bottom" constant="9" id="3gY-ba-jma"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LpB-k0-xPf" secondAttribute="trailing" constant="7" id="5pz-EC-GHK"/>
+                    <constraint firstItem="bLH-wy-uTM" firstAttribute="leading" secondItem="LY5-cs-SbE" secondAttribute="trailing" constant="8" id="Eiw-VF-cXr"/>
+                    <constraint firstItem="LpB-k0-xPf" firstAttribute="leading" secondItem="ANB-Zr-v3D" secondAttribute="leadingMargin" constant="8" id="J1l-dS-ICP"/>
+                    <constraint firstItem="DKa-fw-Uow" firstAttribute="top" secondItem="ANB-Zr-v3D" secondAttribute="topMargin" constant="8" id="Xhp-ed-1vh"/>
+                    <constraint firstItem="DKa-fw-Uow" firstAttribute="leading" secondItem="LY5-cs-SbE" secondAttribute="trailing" constant="8" id="Ye2-Eb-ghZ"/>
+                    <constraint firstItem="LY5-cs-SbE" firstAttribute="top" secondItem="ANB-Zr-v3D" secondAttribute="topMargin" constant="25" id="aHX-OH-vUX"/>
+                    <constraint firstItem="bLH-wy-uTM" firstAttribute="trailing" secondItem="ANB-Zr-v3D" secondAttribute="trailingMargin" id="gkk-lP-PVY"/>
+                    <constraint firstItem="LY5-cs-SbE" firstAttribute="leading" secondItem="ANB-Zr-v3D" secondAttribute="leadingMargin" constant="15" id="mvt-g6-NFb"/>
+                    <constraint firstItem="bLH-wy-uTM" firstAttribute="top" secondItem="ANB-Zr-v3D" secondAttribute="topMargin" constant="33" id="rNl-Gb-WBl"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="DKa-fw-Uow" secondAttribute="trailing" constant="38" id="xfV-V3-PF2"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="addButton" destination="LpB-k0-xPf" id="esL-w6-yQw"/>
+                <outlet property="descriptionLabel" destination="bLH-wy-uTM" id="XVF-BN-UOd"/>
+                <outlet property="titleLabel" destination="DKa-fw-Uow" id="nE8-a4-dtl"/>
+            </connections>
             <point key="canvasLocation" x="306" y="304"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="warningImage" width="600" height="529"/>
+    </resources>
 </document>

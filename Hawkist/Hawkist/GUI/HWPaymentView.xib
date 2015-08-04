@@ -22,7 +22,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWPaymentViewController">
             <connections>
+                <outlet property="itemPriceLable" destination="dMp-ec-9w6" id="9C0-Fr-RIx"/>
+                <outlet property="navigationView" destination="KXq-Je-hHF" id="g3o-bn-Ttp"/>
+                <outlet property="shippingLable" destination="hEu-Rg-4tI" id="eOX-0P-Yw9"/>
                 <outlet property="tableView" destination="J9x-Sf-xD5" id="krq-u9-DA6"/>
+                <outlet property="totalLable" destination="W8B-Ky-FDH" id="P2T-w1-0N2"/>
                 <outlet property="view" destination="c1g-EU-y4B" id="xM4-dt-xI1"/>
             </connections>
         </placeholder>
@@ -127,13 +131,16 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="pressBuyNowButton:" destination="-1" eventType="touchUpInside" id="16P-1v-D0Q"/>
+                            </connections>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="J9x-Sf-xD5">
                             <rect key="frame" x="0.0" y="110" width="375" height="422"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" red="0.19805525090000001" green="0.18983093570000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.38039215686274508" green="0.47450980392156861" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="SAf-Wp-fvv" secondAttribute="trailing" id="6sj-Gc-iW7"/>
                         <constraint firstItem="SAf-Wp-fvv" firstAttribute="leading" secondItem="H6Q-B0-q1g" secondAttribute="leading" id="FiQ-Mu-t5r"/>
