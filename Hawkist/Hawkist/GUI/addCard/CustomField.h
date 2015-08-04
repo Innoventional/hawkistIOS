@@ -12,5 +12,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *inputField;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UIImageView *forward;
-
+@property (nonatomic, assign) BOOL isCardNumber;
 @end

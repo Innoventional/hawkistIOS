@@ -26,4 +26,6 @@
 @property (strong, nonatomic) IBOutlet CustomField *postCode;
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 - (IBAction)saveAction:(id)sender;
+
+@property (assign, nonatomic)BOOL isEdit;
 @end

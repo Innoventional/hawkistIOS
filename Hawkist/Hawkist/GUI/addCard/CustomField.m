@@ -28,4 +28,23 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (self.isCardNumber)
+    {
+        NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        
+        if (newString.length > 19)
+            return NO;
+        
+        if (newString.length%5==0)
+        {
+            textField.text = [textField.text stringByReplacingCharactersInRange:range withString:@" "];
+            return YES;
+        }
+    }
+
+    return YES;
+}
 @end

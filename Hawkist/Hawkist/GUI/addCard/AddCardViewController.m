@@ -9,6 +9,7 @@
 #import "AddCardViewController.h"
 #import "ManageBankViewController.h"
 #import "StripeManager.h"
+#import "UIColor+Extensions.h"
 
 
 @interface AddCardViewController ()
@@ -43,10 +44,19 @@
 - (void) initDefault
 {
     self.navigation.delegate = self;
-    self.datePicker = [[UIDatePicker alloc]init];
+    self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
+    
     
     [self.datePicker setDatePickerMode:UIDatePickerModeDate];
     [self.datePicker addTarget:self action:@selector(dateChanged) forControlEvents:UIControlEventValueChanged];
+    
+    [self.datePicker setBackgroundColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];
+
+    [self.datePicker setValue:[UIColor whiteColor] forKeyPath:@"textColor"];
+    
+//    UIView* day = (UIView*)[[[self.datePicker subviews] objectAtIndex:1]objectAtIndex:2];
+//    
+//    day.hidden = YES;
     
     self.navigation.title.text = @"Add New Card";
     self.firstName.title.text = @"YOUR NAME";
@@ -58,7 +68,7 @@
     self.cvv.inputField.keyboardType = UIKeyboardTypeNumberPad;
     
     self.cardNumber.inputField.keyboardType = UIKeyboardTypeNumberPad;
-    
+    self.cardNumber.isCardNumber = YES;
     self.postCode.inputField.keyboardType = UIKeyboardTypeNumberPad;
     
     self.dateField.title.text = @"EXPIRATION DATE";
@@ -71,6 +81,8 @@
     
     self.city.title.text = @"CITY";
     self.postCode.title.text = @"POST CODE";
+    
+    
 }
 
 
