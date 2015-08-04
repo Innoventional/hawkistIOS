@@ -141,6 +141,12 @@
 }
 
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *groupName = [self.nameForGroupArray objectAtIndex:section];
+    return groupName;
+}
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -235,11 +241,6 @@
     
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString *groupName = [self.nameForGroupArray objectAtIndex:section];
-    return groupName;
-}
 #pragma mark -
 #pragma mark UITableViewDelegate
 

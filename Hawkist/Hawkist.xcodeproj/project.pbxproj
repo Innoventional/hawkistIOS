@@ -126,6 +126,16 @@
 		CEBAAF9C1B6CC48E00AFE4C6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAF9B1B6CC48E00AFE4C6 /* LaunchScreen.xib */; };
 		CEBAAF9F1B6CE9DF00AFE4C6 /* HWSingOutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAF9E1B6CE9DF00AFE4C6 /* HWSingOutCell.m */; };
 		CEBAAFA11B6CE9FD00AFE4C6 /* HWSingOutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAFA01B6CE9FD00AFE4C6 /* HWSingOutCell.xib */; };
+		CEBAAFA41B6DF44800AFE4C6 /* HWPaymentOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAFA31B6DF44800AFE4C6 /* HWPaymentOptionCell.xib */; };
+		CEBAAFA71B6DF4C800AFE4C6 /* HWPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAFA61B6DF4C800AFE4C6 /* HWPaymentViewController.m */; };
+		CEBAAFAA1B6DF52500AFE4C6 /* HWPaymentOptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAFA91B6DF52500AFE4C6 /* HWPaymentOptionCell.m */; };
+		CEBAAFAD1B6DF57F00AFE4C6 /* HWAddressOptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAFAC1B6DF57F00AFE4C6 /* HWAddressOptionCell.m */; };
+		CEBAAFAF1B6DF5A600AFE4C6 /* HWAddressOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAFAE1B6DF5A600AFE4C6 /* HWAddressOptionCell.xib */; };
+		CEBAAFB11B6DF5CC00AFE4C6 /* HWPaymentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAFB01B6DF5CC00AFE4C6 /* HWPaymentView.xib */; };
+		CEBAAFB41B6E10AD00AFE4C6 /* HWPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAFB31B6E10AD00AFE4C6 /* HWPaymentCell.m */; };
+		CEBAAFB61B6E116200AFE4C6 /* HWPaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAFB51B6E116200AFE4C6 /* HWPaymentCell.xib */; };
+		CEBAAFBC1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAFBB1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m */; };
+		CEBAAFBE1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAFBD1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib */; };
 		CEC68DD11B5661510024AFC5 /* HWButtonForSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */; };
 /* End PBXBuildFile section */
 
@@ -333,6 +343,21 @@
 		CEBAAF9D1B6CE9DF00AFE4C6 /* HWSingOutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWSingOutCell.h; path = MyAccountScreen/HWSingOutCell.h; sourceTree = "<group>"; };
 		CEBAAF9E1B6CE9DF00AFE4C6 /* HWSingOutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWSingOutCell.m; path = MyAccountScreen/HWSingOutCell.m; sourceTree = "<group>"; };
 		CEBAAFA01B6CE9FD00AFE4C6 /* HWSingOutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWSingOutCell.xib; path = MyAccountScreen/HWSingOutCell.xib; sourceTree = "<group>"; };
+		CEBAAFA31B6DF44800AFE4C6 /* HWPaymentOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWPaymentOptionCell.xib; path = "Payment Screen/HWPaymentOptionCell.xib"; sourceTree = "<group>"; };
+		CEBAAFA51B6DF4C800AFE4C6 /* HWPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWPaymentViewController.h; path = "Payment Screen/HWPaymentViewController.h"; sourceTree = "<group>"; };
+		CEBAAFA61B6DF4C800AFE4C6 /* HWPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWPaymentViewController.m; path = "Payment Screen/HWPaymentViewController.m"; sourceTree = "<group>"; };
+		CEBAAFA81B6DF52500AFE4C6 /* HWPaymentOptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWPaymentOptionCell.h; path = "Payment Screen/HWPaymentOptionCell.h"; sourceTree = "<group>"; };
+		CEBAAFA91B6DF52500AFE4C6 /* HWPaymentOptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWPaymentOptionCell.m; path = "Payment Screen/HWPaymentOptionCell.m"; sourceTree = "<group>"; };
+		CEBAAFAB1B6DF57F00AFE4C6 /* HWAddressOptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddressOptionCell.h; path = "Payment Screen/HWAddressOptionCell.h"; sourceTree = "<group>"; };
+		CEBAAFAC1B6DF57F00AFE4C6 /* HWAddressOptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddressOptionCell.m; path = "Payment Screen/HWAddressOptionCell.m"; sourceTree = "<group>"; };
+		CEBAAFAE1B6DF5A600AFE4C6 /* HWAddressOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWAddressOptionCell.xib; path = "Payment Screen/HWAddressOptionCell.xib"; sourceTree = "<group>"; };
+		CEBAAFB01B6DF5CC00AFE4C6 /* HWPaymentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWPaymentView.xib; sourceTree = "<group>"; };
+		CEBAAFB21B6E10AD00AFE4C6 /* HWPaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWPaymentCell.h; path = "Payment Screen/HWPaymentCell.h"; sourceTree = "<group>"; };
+		CEBAAFB31B6E10AD00AFE4C6 /* HWPaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWPaymentCell.m; path = "Payment Screen/HWPaymentCell.m"; sourceTree = "<group>"; };
+		CEBAAFB51B6E116200AFE4C6 /* HWPaymentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWPaymentCell.xib; path = "Payment Screen/HWPaymentCell.xib"; sourceTree = "<group>"; };
+		CEBAAFBA1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddCardAndAdressCell.h; path = "Payment Screen/SelectCell/HWAddCardAndAdressCell.h"; sourceTree = "<group>"; };
+		CEBAAFBB1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddCardAndAdressCell.m; path = "Payment Screen/SelectCell/HWAddCardAndAdressCell.m"; sourceTree = "<group>"; };
+		CEBAAFBD1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWAddCardAndAdressCell.xib; path = "Payment Screen/SelectCell/HWAddCardAndAdressCell.xib"; sourceTree = "<group>"; };
 		CEC68DCF1B5661510024AFC5 /* HWButtonForSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWButtonForSegment.h; path = ProfileScreen/CustomSegment/HWButtonForSegment.h; sourceTree = "<group>"; };
 		CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWButtonForSegment.m; path = ProfileScreen/CustomSegment/HWButtonForSegment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -691,6 +716,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				CEBAAFA21B6DF3F100AFE4C6 /* Payment */,
 				CE70EDCD1B6BC58C005664FA /* MyAccountScreen */,
 				3A2AE3C81B61114800806D59 /* AddTagsScreen */,
 				CE5909501B5F9F9400DAA7FF /* TextViewWithPlaceholder */,
@@ -877,6 +903,52 @@
 			name = ProfileScreen;
 			sourceTree = "<group>";
 		};
+		CEBAAFA21B6DF3F100AFE4C6 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				CEBAAFA51B6DF4C800AFE4C6 /* HWPaymentViewController.h */,
+				CEBAAFA61B6DF4C800AFE4C6 /* HWPaymentViewController.m */,
+				CEBAAFB01B6DF5CC00AFE4C6 /* HWPaymentView.xib */,
+				CEBAAFB91B70CA3400AFE4C6 /* selectCell */,
+				CEBAAFB71B70B3E200AFE4C6 /* Payment collection Cell */,
+				CEBAAFB81B70B41500AFE4C6 /* Adress collection Cell */,
+			);
+			name = Payment;
+			sourceTree = "<group>";
+		};
+		CEBAAFB71B70B3E200AFE4C6 /* Payment collection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEBAAFA81B6DF52500AFE4C6 /* HWPaymentOptionCell.h */,
+				CEBAAFA91B6DF52500AFE4C6 /* HWPaymentOptionCell.m */,
+				CEBAAFA31B6DF44800AFE4C6 /* HWPaymentOptionCell.xib */,
+			);
+			name = "Payment collection Cell";
+			sourceTree = "<group>";
+		};
+		CEBAAFB81B70B41500AFE4C6 /* Adress collection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEBAAFAB1B6DF57F00AFE4C6 /* HWAddressOptionCell.h */,
+				CEBAAFAC1B6DF57F00AFE4C6 /* HWAddressOptionCell.m */,
+				CEBAAFAE1B6DF5A600AFE4C6 /* HWAddressOptionCell.xib */,
+			);
+			name = "Adress collection Cell";
+			sourceTree = "<group>";
+		};
+		CEBAAFB91B70CA3400AFE4C6 /* selectCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEBAAFB21B6E10AD00AFE4C6 /* HWPaymentCell.h */,
+				CEBAAFB31B6E10AD00AFE4C6 /* HWPaymentCell.m */,
+				CEBAAFB51B6E116200AFE4C6 /* HWPaymentCell.xib */,
+				CEBAAFBA1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.h */,
+				CEBAAFBB1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m */,
+				CEBAAFBD1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib */,
+			);
+			name = selectCell;
+			sourceTree = "<group>";
+		};
 		CEC68DCE1B565DAF0024AFC5 /* CustomSegment */ = {
 			isa = PBXGroup;
 			children = (
@@ -971,6 +1043,8 @@
 			files = (
 				CE5909581B5FA94B00DAA7FF /* HWCommentCell.xib in Resources */,
 				7CE0E8E21B4307F0003B8B3A /* FeedScreenViewController.xib in Resources */,
+				CEBAAFBE1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib in Resources */,
+				CEBAAFB11B6DF5CC00AFE4C6 /* HWPaymentView.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
@@ -987,6 +1061,7 @@
 				3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
 				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
+				CEBAAFA41B6DF44800AFE4C6 /* HWPaymentOptionCell.xib in Resources */,
 				CE59094C1B5E9DD600DAA7FF /* HWCommentViewController.xib in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
@@ -995,6 +1070,7 @@
 				3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */,
 				CE70EDCC1B6B728E005664FA /* HWMentionUserCell.xib in Resources */,
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
+				CEBAAFAF1B6DF5A600AFE4C6 /* HWAddressOptionCell.xib in Resources */,
 				CE70EDD71B6BD54B005664FA /* HWAccountMenuCell.xib in Resources */,
 				3A0BAF6C1B53FAA6004DFF86 /* myItemCell.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
@@ -1006,6 +1082,7 @@
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
+				CEBAAFB61B6E116200AFE4C6 /* HWPaymentCell.xib in Resources */,
 				7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */,
 				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
 				CE70EDC41B6A0106005664FA /* Default-568h@2x.png in Resources */,
@@ -1066,6 +1143,7 @@
 				CE59095B1B5FD7E200DAA7FF /* HWComment.m in Sources */,
 				C35A4C621B3035D2002E1F26 /* NSDate+Extensions.m in Sources */,
 				3A0BAF741B5527DD004DFF86 /* MyItemsViewController.m in Sources */,
+				CEBAAFAA1B6DF52500AFE4C6 /* HWPaymentOptionCell.m in Sources */,
 				CE39C88C1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.m in Sources */,
 				C35A4C6C1B3036D0002E1F26 /* HWUser.m in Sources */,
 				CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */,
@@ -1099,9 +1177,11 @@
 				C35CB49F1B4BE91B00956150 /* HWItem.m in Sources */,
 				CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */,
 				CE59095F1B5FE54400DAA7FF /* NSDate+NVTimeAgo.m in Sources */,
+				CEBAAFAD1B6DF57F00AFE4C6 /* HWAddressOptionCell.m in Sources */,
 				CE5909461B5ABBD700DAA7FF /* HWFollowUser.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				C35CB4B31B4EA7E200956150 /* HWTapBarView.m in Sources */,
+				CEBAAFB41B6E10AD00AFE4C6 /* HWPaymentCell.m in Sources */,
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,
 				CE70EDD21B6BC62F005664FA /* HWMyAccountViewController.m in Sources */,
 				3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -1110,12 +1190,14 @@
 				CE5909531B5F9FF400DAA7FF /* SZTextView.m in Sources */,
 				3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */,
 				C35A4C8D1B31A408002E1F26 /* AppEngine.m in Sources */,
+				CEBAAFA71B6DF4C800AFE4C6 /* HWPaymentViewController.m in Sources */,
 				CE59094A1B5E9CD700DAA7FF /* HWCommentViewController.m in Sources */,
 				C35A4C441B302D05002E1F26 /* HWBaseViewController.m in Sources */,
 				7CE0E8E11B4307F0003B8B3A /* FeedScreenViewController.m in Sources */,
 				C35CB4A61B4D3A2E00956150 /* AWSS3Manager.m in Sources */,
 				C35A4C681B3035D2002E1F26 /* UIImage+Extensions.m in Sources */,
 				3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */,
+				CEBAAFBC1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m in Sources */,
 				3A968E2B1B4AD92B005AA347 /* ChoiceCellView.m in Sources */,
 				C35A4C4D1B3032B1002E1F26 /* NetworkManager.m in Sources */,
 				7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */,
