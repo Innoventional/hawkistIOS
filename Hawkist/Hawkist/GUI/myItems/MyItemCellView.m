@@ -13,29 +13,55 @@
 
 
 @interface MyItemCellView()
-
-//@property (nonatomic,strong)UIButton* mytrash;
+ 
 @property (nonatomic,strong) UIVisualEffectView* visualEffectView;
+@property (nonatomic, strong) UIButton *commentButton;
+@property (nonatomic, strong) UIButton *likeButton;
+
+@property (weak, nonatomic) IBOutlet UIImageView *likeImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *commentView;
+
+
 
 @end
 
 @implementation MyItemCellView
 
 
-- (id) initWithCoder:(NSCoder *)aDecoder
+
+-(instancetype) awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithCoder:aDecoder];
+    self = [super awakeAfterUsingCoder:aDecoder];
     if (self)
     {
         self.mytrash = [[UIButton alloc]initWithFrame:CGRectMake(self.width-6, 12, 21 , 21)];
         self.mytrash.backgroundColor = [UIColor greenColor];
         [self.mytrash addTarget:self action:@selector(moveToTrash) forControlEvents:UIControlEventTouchUpInside];
-        
         [self addSubview:self.mytrash];
+        
+        
+        self.commentButton = [[UIButton alloc]initWithFrame:CGRectMake(0, self.bounds.size.height - 40, 40, 40)];
+       // self.commentButton.backgroundColor = [UIColor redColor];
+        [self.commentButton addTarget:self
+                               action:@selector(pressCommentAction:)
+                     forControlEvents:UIControlEventTouchUpInside];
+        
+         [self addSubview:self.commentButton];
+        
+        self.likeButton = [[UIButton alloc]initWithFrame:CGRectMake(self.bounds.size.width - 50, self.bounds.size.height - 40, 40, 40)];
+        //self.likeButton.backgroundColor = [UIColor redColor];
+        [self.likeButton addTarget:self
+                               action:@selector(pressLikeAction:)
+                     forControlEvents:UIControlEventTouchUpInside];
+         [self addSubview:self.likeButton];
+
 
     }
+    
     return self;
 }
+
+
 
 - (void) moveToTrash
 {
@@ -71,6 +97,13 @@
 
 -(void)setItem:(HWItem *)item
 {
+    if(item.liked)
+    {
+        self.likeImageView.image = [UIImage imageNamed:@"starYellow"];
+    } else {
+        
+        self.likeImageView.image = [UIImage imageNamed:@"starYellow"];
+    }
     
     self.commentsCount.text = item.comments;
     self.likesCount.text = item.likes;
@@ -82,12 +115,12 @@
     _item = item;
    
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
-        self.discount.text = @"1%";
+        self.discount.text = @"-1%";
     }
     else
     
     {
-        self.discount.text = [NSString stringWithFormat:@"%@%%",self.item.discount];
+        self.discount.text = [NSString stringWithFormat:@"-%@%%",self.item.discount];
     }
     
     
@@ -97,9 +130,26 @@
     
     self.title.text = self.item.title;
     
-    self.currentPrice.text = self.item.selling_price;
+    self.currentPrice.text = [NSString stringWithFormat:@"£ %@", self.item.selling_price];
+     
+    NSString *oldPriceWithTuning = [NSString stringWithFormat:@"£ %@", self.item.retail_price];
+    self.oldPrice.text = [NSString stringWithFormat:@"(%@)", oldPriceWithTuning];
+    NSRange oldPriceRange = [self.oldPrice.text rangeOfString:oldPriceWithTuning];
     
-    self.oldPrice.text = self.item.retail_price;
+    NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc]initWithAttributedString:self.oldPrice.attributedText];
+    
+    
+    [atrStr beginEditing];
+    
+    [atrStr addAttribute:NSStrikethroughStyleAttributeName
+                   value:[NSNumber numberWithInteger:NSUnderlineStyleSingle]
+                   range:oldPriceRange];
+    self.oldPrice.attributedText = atrStr;
+    
+    [atrStr endEditing];
+    
+    
+    
     
     if(self.item.photos.count >= 1)
     {
@@ -150,6 +200,10 @@
     
     
 }
+ 
+
+
+
 
 - (void)awakeFromNib {
     
@@ -161,5 +215,27 @@
     self.layer.masksToBounds = YES;
     
   }
+
+#pragma mark -
+#pragma mark Action
+ 
+-(void) pressCommentAction:(UIButton*)sender
+{
+    if( self.delegate && [self.delegate respondsToSelector:@selector(pressCommentButton: withItem:)])
+    {
+        [self.delegate pressCommentButton:sender withItem:self.item];
+    }
+    
+}
+
+- (void) pressLikeAction:(UIButton*)sender
+{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(pressLikeButton: withItem:)])
+    {
+        [self.delegate pressLikeButton:sender withItem:self.item];
+        
+    }
+}
+
 
 @end

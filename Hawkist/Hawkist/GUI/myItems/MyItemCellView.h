@@ -6,17 +6,21 @@
 //  Copyright (c) 2015 TecSynt Solutions. All rights reserved.
 //
 
+
+#import <UIKit/UIKit.h>
+
+
 @protocol MyItemCellDelegate <NSObject>
-
+@optional
 - (void) updateParent;
-
 - (void) showError:(NSError*)error;
 
-
+- (void) pressCommentButton:(UIButton*)sender withItem:(HWItem*)item;
+- (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item;
 
 @end
 
-#import <UIKit/UIKit.h>
+
 
 @interface MyItemCellView : UICollectionViewCell
 
@@ -41,5 +45,10 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *oldPrice;
 @property (strong, nonatomic) IBOutlet UILabel *currentPrice;
+
+
+ 
+
+
 
 @end
