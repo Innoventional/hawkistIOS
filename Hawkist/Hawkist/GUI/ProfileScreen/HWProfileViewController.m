@@ -19,12 +19,13 @@
 #import "HWFollowUser.h"
 #import "NSDate+NVTimeAgo.h"
 
-#import "MyItemCellView.h"
+#import "myItemCell.h"
 #import "ViewItemViewController.h"
+#import "HWCommentViewController.h"
 
 
 
-@interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate, UIAlertViewDelegate, HWFollowInProfileCellDelegate>
+@interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate, UIAlertViewDelegate, HWFollowInProfileCellDelegate, MyItemCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *segmentView;
@@ -637,8 +638,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    MyItemCellView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewCell" forIndexPath:indexPath];
-    
+    myItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewCell" forIndexPath:indexPath];
+    cell.delegate = self;
     cell.item = [self.selectedSegmentArray objectAtIndex:indexPath.row];
     cell.mytrash.hidden = YES;
     return cell;
@@ -665,6 +666,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 }
 
 
+
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 10.0;
 }
@@ -675,7 +677,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     CGFloat width = self.view.width;
     CGFloat widthForView = (width - 36) / 2;
  
-    return CGSizeMake(widthForView, ((widthForView * 488) / 291)-38);
+    return CGSizeMake(widthForView, ((widthForView * 488) / 291)-5);
 }
 
 #pragma mark -
@@ -756,6 +758,22 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     return NO;
 }
 
+#pragma mark -
+#pragma mark MyItemCellDelegate
+
+- (void) pressCommentButton:(UIButton*)sender withItem:(HWItem*)item
+{
+    HWCommentViewController *vc = [[HWCommentViewController alloc] initWithItem:item];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
+- (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item
+{
+    
+    
+    
+}
 
 
 @end

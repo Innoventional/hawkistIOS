@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A0BAF6C1B53FAA6004DFF86 /* myItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0BAF6B1B53FAA6004DFF86 /* myItemCell.xib */; };
-		3A0BAF6F1B551BA6004DFF86 /* MyItemCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BAF6E1B551BA6004DFF86 /* MyItemCellView.m */; };
+		3A0BAF6F1B551BA6004DFF86 /* myItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BAF6E1B551BA6004DFF86 /* myItemCell.m */; };
 		3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */; };
 		3A0BAF741B5527DD004DFF86 /* MyItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */; };
 		3A2AE3CA1B6111A000806D59 /* AddTagsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A2AE3C91B6111A000806D59 /* AddTagsView.xib */; };
@@ -162,8 +162,8 @@
 /* Begin PBXFileReference section */
 		3906BE83E13D87CC9252A21D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3A0BAF6B1B53FAA6004DFF86 /* myItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = myItemCell.xib; path = myItems/myItemCell.xib; sourceTree = "<group>"; };
-		3A0BAF6D1B551BA6004DFF86 /* MyItemCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyItemCellView.h; path = myItems/MyItemCellView.h; sourceTree = "<group>"; };
-		3A0BAF6E1B551BA6004DFF86 /* MyItemCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItemCellView.m; path = myItems/MyItemCellView.m; sourceTree = "<group>"; };
+		3A0BAF6D1B551BA6004DFF86 /* myItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myItemCell.h; path = myItems/myItemCell.h; sourceTree = "<group>"; };
+		3A0BAF6E1B551BA6004DFF86 /* myItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myItemCell.m; path = myItems/myItemCell.m; sourceTree = "<group>"; };
 		3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyItemsView.xib; path = myItems/MyItemsView.xib; sourceTree = "<group>"; };
 		3A0BAF721B5527DD004DFF86 /* MyItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyItemsViewController.h; path = myItems/MyItemsViewController.h; sourceTree = "<group>"; };
 		3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItemsViewController.m; path = myItems/MyItemsViewController.m; sourceTree = "<group>"; };
@@ -428,8 +428,8 @@
 			isa = PBXGroup;
 			children = (
 				3A0BAF6B1B53FAA6004DFF86 /* myItemCell.xib */,
-				3A0BAF6D1B551BA6004DFF86 /* MyItemCellView.h */,
-				3A0BAF6E1B551BA6004DFF86 /* MyItemCellView.m */,
+				3A0BAF6D1B551BA6004DFF86 /* myItemCell.h */,
+				3A0BAF6E1B551BA6004DFF86 /* myItemCell.m */,
 				3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */,
 				3A0BAF721B5527DD004DFF86 /* MyItemsViewController.h */,
 				3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */,
@@ -1218,7 +1218,7 @@
 				C35A4C6C1B3036D0002E1F26 /* HWUser.m in Sources */,
 				CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */,
 				C35A4C671B3035D2002E1F26 /* UIColor+Extensions.m in Sources */,
-				3A0BAF6F1B551BA6004DFF86 /* MyItemCellView.m in Sources */,
+				3A0BAF6F1B551BA6004DFF86 /* myItemCell.m in Sources */,
 				C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */,
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
 				3AF832021B6F7F4400CC750D /* AddCardViewController.m in Sources */,
