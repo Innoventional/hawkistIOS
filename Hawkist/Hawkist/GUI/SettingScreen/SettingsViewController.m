@@ -8,6 +8,8 @@
 
 #import "SettingsViewController.h"
 #import "HWAccountMenuCell.h"
+#import "StarRatingControl.h"
+#import "HWMyAccountViewController.h"
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -18,6 +20,11 @@
 @property (nonatomic, strong) NSArray *sectionFourth;
 
 @property (nonatomic, strong) NSArray *groupArray;
+
+@property (weak, nonatomic) IBOutlet UILabel *raiting;
+@property (weak, nonatomic) IBOutlet StarRatingControl *starRatingControl;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
 
 @end
 
@@ -43,26 +50,65 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"HWAccountMenuCell" bundle:nil] forCellReuseIdentifier:menuCellIdentifier];
     
     [self setupMenuArray];
+    
+    HWUser* userInfo = [AppEngine shared].user;
 
+    self.starRatingControl.rating = [userInfo.rating integerValue];
+    self.userName.text = userInfo.username;
+    self.raiting.text = [NSString stringWithFormat:@"%@ (%@ reviews)", userInfo.rating,userInfo.review];
+    
+    [self avatarInit:userInfo.avatar];
+    self.avatar.layer.cornerRadius = self.avatar.frame.size.width /2;
+    self.avatar.layer.masksToBounds = YES;
+}
+
+
+- (void) avatarInit:(NSString*)url
+{
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    [self.avatar setImageWithURLRequest:request
+                             placeholderImage:nil
+                                      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                          
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              
+                                              
+                                              self.avatar.image = image;
+                                              
+                                              
+                                          });
+                                          
+                                          
+                                      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                          
+                                          
+                                          self.avatar.image = [UIImage imageNamed:@"noPhoto"];
+                                      }];
+    
+    
+    
+    
 }
 
 - (void) setupMenuArray
 {
     self.sectionFirst = @[
-                          [[HWAccountMenuDataModel alloc]initWithImageName:@"username" withTitle:@"Manage My Account"]];
+                          [[HWAccountMenuDataModel alloc]initWithImageName:@"1" withTitle:@"Manage My Account"]];
     
     self.sectionSecond = @[
-                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"manage" withTitle:@"My Favourites"],
-                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"manageAd" withTitle:@"My Balance"],
-                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"manage" withTitle:@"My Orders"],
-                                [[HWAccountMenuDataModel alloc]initWithImageName:@"manage" withTitle:@"Personalisation"]
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"2" withTitle:@"My Favourites"],
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"3" withTitle:@"My Balance"],
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"4" withTitle:@"My Orders"],
+                                [[HWAccountMenuDataModel alloc]initWithImageName:@"5" withTitle:@"Personalisation"]
                                  ];
     
     self.sectionThird = @[
-                                          [[HWAccountMenuDataModel alloc]initWithImageName:@"manage" withTitle:@"Holiday Mode"]
+                                          [[HWAccountMenuDataModel alloc]initWithImageName:@"6" withTitle:@"Holiday Mode"]
                                           ];
     self.sectionFourth = @[
-                           [[HWAccountMenuDataModel alloc]initWithImageName:@"manage" withTitle:@"Find Friends"]
+                           [[HWAccountMenuDataModel alloc]initWithImageName:@"7" withTitle:@"Find Friends"]
                            ];
 
     
@@ -129,15 +175,20 @@
     switch (indexPath.section) {
         case 0:
             
-            [self selectAccountDetail:indexPath.row];
+            [self sectionFirst:indexPath.row];
             break;
         case 1:
             
-            [self selectPaymentOptions:indexPath.row];
+            [self sectionSecond:indexPath.row];
             break;
         case 2:
             
-            [self selectSharingAndNotifications:indexPath.row];
+            [self sectionThird:indexPath.row];
+            break;
+            
+        case 3:
+            
+            [self sectionFourth:indexPath.row];
             break;
             
         default:
@@ -149,62 +200,77 @@
 
 
 
--(void)selectAccountDetail:(NSInteger)row
+-(void)sectionFirst:(NSInteger)row
+{
+    switch (row) {
+        case 0:
+        {
+            //NSLog(@"Manage My account");
+            HWMyAccountViewController *vc = [[HWMyAccountViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+
+-(void)sectionSecond:(NSInteger)row
+
 {
     switch (row) {
         case 0:
             
-            NSLog(@"User name");
+            NSLog(@"My Fav");
             break;
             
         case 1:
             
-            NSLog(@"Email Address");
+            NSLog(@"My Balance");
             break;
-            
+        
         case 2:
             
-            NSLog(@"About Me");
+            NSLog(@"My Orgers");
             break;
+        
+        case 3:
             
+            NSLog(@"Personalisation");
+            break;
+       
         default:
             break;
     }
 }
 
-
--(void)selectPaymentOptions:(NSInteger)row
-
-{
-    switch (row) {
-        case 0:
-            
-            NSLog(@"Manage Bank Cards");
-            break;
-            
-        case 1:
-            
-            NSLog(@"Manage Addresses");
-            break;
-            
-        default:
-            break;
-    }
-}
-
--(void)selectSharingAndNotifications:(NSInteger)row
+-(void)sectionThird:(NSInteger)row
 
 {
     
     switch (row) {
         case 0:
             
-            NSLog(@"Mobile Notifications");
+            NSLog(@"Holiday Mode");
             break;
             
-        case 1:
+        default:
+            break;
+    }
+    
+    
+}
+
+-(void)sectionFourth:(NSInteger)row
+
+{
+    
+    switch (row) {
+        case 0:
             
-            NSLog(@"Email Notifications");
+            NSLog(@"Find Friends");
             break;
             
         default:

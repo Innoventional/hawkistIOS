@@ -95,16 +95,14 @@
         }
         case 3:
         {
-            HWMyAccountViewController *vc = [[HWMyAccountViewController alloc]init];
-            [self.navigationController pushViewController:vc animated:YES];
-              
+            
             break;
         }
         case 4:
         {
-            ManageBankViewController* bankVC = [[ManageBankViewController alloc]init];
-            [self.navigationController pushViewController:bankVC animated:NO];
-          
+//            ManageBankViewController* bankVC = [[ManageBankViewController alloc]init];
+//            [self.navigationController pushViewController:bankVC animated:NO];
+//          
             
             break;
         }

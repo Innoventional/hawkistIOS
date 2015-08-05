@@ -698,7 +698,6 @@
 		C35A4C161B2F2DF7002E1F26 /* Hawkist */ = {
 			isa = PBXGroup;
 			children = (
-				3A45ABDF1B6B316800FD56D6 /* Images.xcassets */,
 				C35A4C4E1B3035D2002E1F26 /* Helper */,
 				C35A4C3F1B2F340F002E1F26 /* GUI */,
 				C35A4C3E1B2F33FA002E1F26 /* Models */,
@@ -715,6 +714,7 @@
 			isa = PBXGroup;
 			children = (
 				C35A4C181B2F2DF7002E1F26 /* Info.plist */,
+				3A45ABDF1B6B316800FD56D6 /* Images.xcassets */,
 				C35A4C191B2F2DF7002E1F26 /* main.m */,
 				C35A4C451B302FB1002E1F26 /* PrefixHeader.pch */,
 				C35A4C461B3030DD002E1F26 /* const.h */,

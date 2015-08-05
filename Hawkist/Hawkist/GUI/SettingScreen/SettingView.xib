@@ -12,7 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
+                <outlet property="avatar" destination="ASE-GQ-aVh" id="lrw-Mu-WcA"/>
+                <outlet property="raiting" destination="uZQ-oD-umo" id="BvI-gb-fVT"/>
+                <outlet property="starRatingControl" destination="orK-OY-KKA" id="eS7-fP-rz1"/>
                 <outlet property="tableView" destination="yHV-s2-goy" id="zL4-wK-18Q"/>
+                <outlet property="userName" destination="H0x-5G-qfD" id="SdS-Wo-x04"/>
                 <outlet property="view" destination="iN0-l3-epB" id="P9P-B2-EW6"/>
             </connections>
         </placeholder>
