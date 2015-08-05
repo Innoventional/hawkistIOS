@@ -16,7 +16,7 @@
 
 @end
 
-@interface cardView : UIView
+@interface CardView : UIView
 
 
 @property (nonatomic,strong)id <cardViewDelegate> delegate;

@@ -50,8 +50,8 @@
 		3AF831FC1B6F6E7D00CC750D /* CustomField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF831FB1B6F6E7D00CC750D /* CustomField.m */; };
 		3AF832021B6F7F4400CC750D /* AddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF832011B6F7F4400CC750D /* AddCardViewController.m */; };
 		3AF832081B70E4EB00CC750D /* HWCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF832071B70E4EB00CC750D /* HWCard.m */; };
-		3AF8320A1B70E5AF00CC750D /* cardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF832091B70E5AF00CC750D /* cardView.xib */; };
-		3AF8320D1B70E60B00CC750D /* cardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8320C1B70E60B00CC750D /* cardView.m */; };
+		3AF8320A1B70E5AF00CC750D /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF832091B70E5AF00CC750D /* CardView.xib */; };
+		3AF8320D1B70E60B00CC750D /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8320C1B70E60B00CC750D /* CardView.m */; };
 		3AF8320F1B70E73100CC750D /* ManageBankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF8320E1B70E73100CC750D /* ManageBankView.xib */; };
 		7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C735D3E1B3893B000295472 /* CustomizationViewController.m */; };
 		7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D3F1B3893B000295472 /* CustomizationViewController.xib */; };
@@ -226,9 +226,9 @@
 		3AF832011B6F7F4400CC750D /* AddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCardViewController.m; path = addCard/AddCardViewController.m; sourceTree = "<group>"; };
 		3AF832061B70E4EB00CC750D /* HWCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCard.h; sourceTree = "<group>"; };
 		3AF832071B70E4EB00CC750D /* HWCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWCard.m; sourceTree = "<group>"; };
-		3AF832091B70E5AF00CC750D /* cardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = cardView.xib; path = manageBank/cardView.xib; sourceTree = "<group>"; };
-		3AF8320B1B70E60B00CC750D /* cardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cardView.h; path = manageBank/cardView.h; sourceTree = "<group>"; };
-		3AF8320C1B70E60B00CC750D /* cardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cardView.m; path = manageBank/cardView.m; sourceTree = "<group>"; };
+		3AF832091B70E5AF00CC750D /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardView.xib; path = manageBank/CardView.xib; sourceTree = "<group>"; };
+		3AF8320B1B70E60B00CC750D /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardView.h; path = manageBank/CardView.h; sourceTree = "<group>"; };
+		3AF8320C1B70E60B00CC750D /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardView.m; path = manageBank/CardView.m; sourceTree = "<group>"; };
 		3AF8320E1B70E73100CC750D /* ManageBankView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManageBankView.xib; path = manageBank/ManageBankView.xib; sourceTree = "<group>"; };
 		6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7C735D3D1B3893B000295472 /* CustomizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizationViewController.h; sourceTree = "<group>"; };
@@ -454,10 +454,10 @@
 			isa = PBXGroup;
 			children = (
 				3AF831F01B6EFB7600CC750D /* tempCard.png */,
-				3AF832091B70E5AF00CC750D /* cardView.xib */,
-				3AF8320B1B70E60B00CC750D /* cardView.h */,
+				3AF832091B70E5AF00CC750D /* CardView.xib */,
+				3AF8320B1B70E60B00CC750D /* CardView.h */,
 				3AF8320E1B70E73100CC750D /* ManageBankView.xib */,
-				3AF8320C1B70E60B00CC750D /* cardView.m */,
+				3AF8320C1B70E60B00CC750D /* CardView.m */,
 				3A45ABE91B6BBCAB00FD56D6 /* ManageBankViewController.h */,
 				3A45ABEA1B6BBCAB00FD56D6 /* ManageBankViewController.m */,
 			);
@@ -1107,7 +1107,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AF8320A1B70E5AF00CC750D /* cardView.xib in Resources */,
+				3AF8320A1B70E5AF00CC750D /* CardView.xib in Resources */,
 				CE5909581B5FA94B00DAA7FF /* HWCommentCell.xib in Resources */,
 				7CE0E8E21B4307F0003B8B3A /* FeedScreenViewController.xib in Resources */,
 				CEBAAFBE1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib in Resources */,
@@ -1225,7 +1225,7 @@
 				CE70EDCA1B6B723D005664FA /* HWMentionUserCell.m in Sources */,
 				3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */,
 				CE70EDD51B6BD51D005664FA /* HWAccountMenuCell.m in Sources */,
-				3AF8320D1B70E60B00CC750D /* cardView.m in Sources */,
+				3AF8320D1B70E60B00CC750D /* CardView.m in Sources */,
 				C35A4C861B303BCF002E1F26 /* SocialManager.m in Sources */,
 				CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */,
 				CE5909561B5FA8C800DAA7FF /* HWCommentCell.m in Sources */,

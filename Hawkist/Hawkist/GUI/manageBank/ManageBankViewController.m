@@ -40,7 +40,7 @@
     
     
     for(UIView* subview in [self.contentView subviews]) {
-        if ([subview isKindOfClass:[cardView class]])
+        if ([subview isKindOfClass:[CardView class]])
             [subview removeFromSuperview];
     }
     
@@ -51,7 +51,7 @@
         float cardHeight = cardWidth * 127 / 293;
         
         for (int i = 0; i<self.cards.count; i++) {
-            cardView* card = [[cardView alloc]initWithFrame:CGRectMake(15, i*(cardHeight+20)+15, cardWidth, cardHeight)];
+            CardView* card = [[CardView alloc]initWithFrame:CGRectMake(15, i*(cardHeight+20)+15, cardWidth, cardHeight)];
             [card setCard:(HWCard*)[self.cards objectAtIndex:i]];
             [self.contentView addSubview:card];
             

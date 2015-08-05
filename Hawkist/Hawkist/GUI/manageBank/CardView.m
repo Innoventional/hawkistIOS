@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 TecSynt Solutions. All rights reserved.
 //
 
-#import "cardView.h"
+#import "CardView.h"
 
-@interface cardView()
+@interface CardView()
 
 @property (strong, nonatomic) IBOutlet UILabel *cardName;
 @property (strong, nonatomic) IBOutlet UILabel *lastNumber;
@@ -22,13 +22,13 @@
 
 @end
 
-@implementation cardView
+@implementation CardView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame])
     {
-        UIView* view = [[[NSBundle mainBundle]loadNibNamed:@"cardView" owner:self options:nil]firstObject];
+        UIView* view = [[[NSBundle mainBundle]loadNibNamed:@"CardView" owner:self options:nil]firstObject];
       
         view.frame = self.bounds;
         
