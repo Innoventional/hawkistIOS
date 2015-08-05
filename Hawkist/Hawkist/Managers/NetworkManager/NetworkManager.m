@@ -1560,12 +1560,10 @@ NSString *URLString = @"user/logout";
     
 }
 
-- (void) RemoveBankCard:(NSString*)cardId
+- (void) removeBankCard:(NSString*)cardId
            successBlock:(void(^)(void)) successBlock
            failureBlock: (void (^)(NSError* error)) failureBlock
 {
-    
-//    NSString* url = [NSString stringWithFormat:@"user/cards?card_id=CARD_TO_DELETE_ID%@",]
     
     NSDictionary *parameter = @{@"card_id":cardId};
     
@@ -1595,7 +1593,38 @@ NSString *URLString = @"user/logout";
     
 }
 
-
+- (void) updateBankCard:(HWCard*)card
+           successBlock:(void(^)(void)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    NSDictionary *parameter = [card toDictionary];
+    
+    [self.networkDecorator PUT:@"user/cards"
+                       parameters:parameter
+                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              
+                              if([responseObject[@"status"] integerValue] != 0)
+                              {
+                                  NSError *responseError = [self errorWithResponseObject:responseObject];
+                                  
+                                  failureBlock(responseError);
+                                  
+                                  return;
+                              }
+                              
+                              successBlock();
+                              
+                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              
+                              NSError *serverError = [self serverErrorWithError:error];
+                              
+                              failureBlock(serverError);
+                              
+                          }];
+    
+    
+}
 
 
 

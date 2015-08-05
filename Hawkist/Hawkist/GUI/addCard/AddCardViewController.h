@@ -10,6 +10,7 @@
 #import "HWBaseViewController.h"
 #import "NavigationVIew.h"
 #import "CustomField.h"
+#import "HWCard.h"
 
 @interface AddCardViewController : HWBaseViewController <NavigationViewDelegate,UIPickerViewDelegate>
 
@@ -27,5 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 - (IBAction)saveAction:(id)sender;
 
-@property (assign, nonatomic)BOOL isEdit;
+
+- (instancetype) initWithCard:(HWCard*)card;
+
 @end

@@ -104,7 +104,14 @@
          {
              NSString* hex = ((HWColor*)currentItem).code;
              if (![hex isEqualToString:@""])
-                 [cell setBackgroundColor:[HWTag colorWithHexString:hex]];
+                // [cell setBackgroundColor:[HWTag colorWithHexString:hex]];
+             {
+                 cell.colorView.hidden = NO;
+                 [cell.colorView setBackgroundColor:[HWTag colorWithHexString:hex]];
+                 
+                 cell.colorView.layer.cornerRadius = 5.0f;
+             
+             }
                 
          }
     }

@@ -121,6 +121,9 @@
 
 
 - (IBAction)sendOffer:(id)sender {
+    
+    [self.moneyField.textField resignFirstResponder];
+    
     [[NetworkManager shared]OfferPrice:self.moneyField.textField.text
                                 itemId:self.item.id
 

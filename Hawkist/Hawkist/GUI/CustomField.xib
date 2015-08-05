@@ -7,9 +7,7 @@
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
-        </mutableArray>
-        <mutableArray key="OpenSansRegular.ttf">
-            <string>OpenSans</string>
+            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -45,11 +43,11 @@
                         <constraint firstAttribute="width" constant="15" id="JUp-B0-7sO"/>
                     </constraints>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="joi-3D-unZ">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="joi-3D-unZ">
                     <rect key="frame" x="0.0" y="22" width="160" height="20"/>
                     <color key="textColor" red="0.47843137254901963" green="0.47843137254901963" blue="0.47843137254901963" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="tdd-hh-yEz"/>
                     </connections>

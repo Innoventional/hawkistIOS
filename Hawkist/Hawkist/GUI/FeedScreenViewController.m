@@ -74,7 +74,8 @@
     
     [[NetworkManager shared] getItemsWithPage: self.currentPage + 1 searchString: nil successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
         [self.items addObjectsFromArray: arrayWithItems];
-        [self.collectionView reloadData];
+//        [self.collectionView reloadData];
+        [self refresh];
     } failureBlock:^(NSError *error) {
         
     }];
@@ -90,7 +91,8 @@
         self.currentPage = 1;
         [self.items removeAllObjects];
         [self.items addObjectsFromArray: arrayWithItems];
-        [self.collectionView reloadData];
+        //[self.collectionView reloadData];
+        [self refresh];
     } failureBlock:^(NSError *error) {
         self.currentPage = 1;
     }];
@@ -104,7 +106,8 @@
         self.currentPage = 1;
         [self.items removeAllObjects];
         [self.items addObjectsFromArray: arrayWithItems];
-        [self.collectionView reloadData];
+        //[self.collectionView reloadData];
+        [self refresh];
     } failureBlock:^(NSError *error) {
         self.currentPage = 1;
     }];

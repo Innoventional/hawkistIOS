@@ -15,7 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *month;
 @property (strong, nonatomic) IBOutlet UILabel *year;
 @property (strong, nonatomic) NSString *cardId;
-
+@property (strong, nonatomic) HWCard* currentCard;
 
 - (IBAction)editAction:(id)sender;
 - (IBAction)deleteAction:(id)sender;
@@ -33,6 +33,7 @@
         view.frame = self.bounds;
         
         view.clipsToBounds = NO;
+        view.layer.cornerRadius = 5.0f;
         [self addSubview:view];
 
     }
@@ -43,6 +44,7 @@
 
 - (void) setCard:(HWCard*)card
 {
+    self.currentCard = card;
     self.cardName.text = card.name;
     self.lastNumber.text = card.last4;
     self.month.text = card.exp_month;
@@ -52,12 +54,12 @@
 
 - (IBAction)editAction:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector: @selector(editCard:)])
-        [self.delegate editCard:self];
+        [self.delegate editCard:self.currentCard];
 }
 
 - (IBAction)deleteAction:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector: @selector(removeCard:)])
-        [self.delegate removeCard:self.cardId];
+        [self.delegate removeCard:self.currentCard.id];
 
 }
 @end
