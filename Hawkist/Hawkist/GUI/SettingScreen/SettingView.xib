@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -13,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
                 <outlet property="avatar" destination="ASE-GQ-aVh" id="lrw-Mu-WcA"/>
-                <outlet property="raiting" destination="uZQ-oD-umo" id="BvI-gb-fVT"/>
+                <outlet property="raiting" destination="Ddz-zB-LEK" id="v3Z-vr-A9O"/>
                 <outlet property="starRatingControl" destination="orK-OY-KKA" id="eS7-fP-rz1"/>
                 <outlet property="tableView" destination="yHV-s2-goy" id="zL4-wK-18Q"/>
                 <outlet property="userName" destination="H0x-5G-qfD" id="SdS-Wo-x04"/>
@@ -56,20 +55,11 @@
                                         <constraint firstAttribute="height" constant="20" id="rqT-CC-ERx"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.9 (146 rewiews)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZQ-oD-umo">
-                                    <rect key="frame" x="113" y="35" width="88" height="14"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="88" id="JkI-jh-bUv"/>
-                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="ggt-L7-JmX"/>
-                                    </constraints>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.9 (146 rewiews)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddz-zB-LEK">
+                                    <rect key="frame" x="119" y="30" width="83" height="14"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
-                                    <color key="textColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.69019607843137254" green="0.69019607843137254" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="ggt-L7-JmX"/>
-                                        </mask>
-                                    </variation>
                                 </label>
                             </subviews>
                             <constraints>
@@ -77,14 +67,14 @@
                                 <constraint firstItem="H0x-5G-qfD" firstAttribute="top" secondItem="iUc-qH-mBQ" secondAttribute="top" constant="6" id="8Vx-Nr-XgF"/>
                                 <constraint firstAttribute="height" constant="60" id="8oz-VA-znW"/>
                                 <constraint firstItem="orK-OY-KKA" firstAttribute="top" secondItem="H0x-5G-qfD" secondAttribute="bottom" constant="2" id="C80-LT-Qqw"/>
-                                <constraint firstItem="uZQ-oD-umo" firstAttribute="centerY" secondItem="orK-OY-KKA" secondAttribute="centerY" id="GjD-Xs-CqV"/>
                                 <constraint firstItem="H0x-5G-qfD" firstAttribute="leading" secondItem="orK-OY-KKA" secondAttribute="leading" id="HdK-iV-jza"/>
+                                <constraint firstItem="orK-OY-KKA" firstAttribute="centerY" secondItem="Ddz-zB-LEK" secondAttribute="centerY" constant="5" id="KT6-Mu-OvM"/>
                                 <constraint firstItem="orK-OY-KKA" firstAttribute="leading" secondItem="H0x-5G-qfD" secondAttribute="leading" id="QFL-Kh-IaE"/>
                                 <constraint firstItem="H0x-5G-qfD" firstAttribute="leading" secondItem="ASE-GQ-aVh" secondAttribute="trailing" constant="6" id="bPR-zJ-6pX"/>
-                                <constraint firstItem="uZQ-oD-umo" firstAttribute="leading" secondItem="orK-OY-KKA" secondAttribute="trailing" constant="2" id="eZn-kt-zvJ"/>
                                 <constraint firstItem="ASE-GQ-aVh" firstAttribute="top" secondItem="iUc-qH-mBQ" secondAttribute="top" constant="12" id="emN-et-ucf"/>
                                 <constraint firstItem="orK-OY-KKA" firstAttribute="top" secondItem="H0x-5G-qfD" secondAttribute="bottom" constant="2" id="jdk-vs-qcT"/>
                                 <constraint firstItem="ASE-GQ-aVh" firstAttribute="leading" secondItem="iUc-qH-mBQ" secondAttribute="leading" constant="12" id="nlF-Ex-Z4S"/>
+                                <constraint firstItem="Ddz-zB-LEK" firstAttribute="leading" secondItem="orK-OY-KKA" secondAttribute="trailing" constant="8" id="pbR-Lh-TQG"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -119,6 +109,7 @@
                 <constraint firstItem="KAx-yv-eg3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ya0-VH-hgU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="342" y="292"/>
         </view>
     </objects>
     <resources>
