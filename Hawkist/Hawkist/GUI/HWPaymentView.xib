@@ -22,6 +22,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWPaymentViewController">
             <connections>
+                <outlet property="buyButton" destination="Sp5-am-RUI" id="49H-XC-I9T"/>
                 <outlet property="itemPriceLable" destination="dMp-ec-9w6" id="9C0-Fr-RIx"/>
                 <outlet property="navigationView" destination="KXq-Je-hHF" id="g3o-bn-Ttp"/>
                 <outlet property="shippingLable" destination="hEu-Rg-4tI" id="eOX-0P-Yw9"/>
@@ -121,12 +122,13 @@
                                 <constraint firstAttribute="height" constant="110" id="zhl-gr-jZU"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sp5-am-RUI">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sp5-am-RUI">
                             <rect key="frame" x="0.0" y="532" width="375" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="gFe-SX-3Nw"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                            <color key="tintColor" red="0.18823529411764706" green="0.67843137254901964" blue="0.58039215686274515" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="BUY NOW" backgroundImage="acdet_but">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -140,7 +142,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" red="0.38039215686274508" green="0.47450980392156861" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="SAf-Wp-fvv" secondAttribute="trailing" id="6sj-Gc-iW7"/>
                         <constraint firstItem="SAf-Wp-fvv" firstAttribute="leading" secondItem="H6Q-B0-q1g" secondAttribute="leading" id="FiQ-Mu-t5r"/>

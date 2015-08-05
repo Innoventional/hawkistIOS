@@ -13,6 +13,8 @@
 #import "HWSingOutCell.h"
 #import "NetworkManager.h"
 
+#import "ManageBankViewController.h"
+
 
 @interface HWMyAccountViewController () <UITableViewDataSource, UITableViewDelegate, NavigationViewDelegate,HWSingOutCellDelegate>
 
@@ -203,12 +205,18 @@
 -(void)selectPaymentOptions:(NSInteger)row
 
 {
+    
+    
     switch (row) {
         case 0:
+            {
+            ManageBankViewController *vc = [[ManageBankViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
             
             NSLog(@"Manage Bank Cards");
-            break;
             
+            break;
+            }
         case 1:
             
             NSLog(@"Manage Addresses");

@@ -921,7 +921,7 @@ NSString *URLString = @"user/logout";
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             
                             
-                            
+                            NSLog(@"%@",responseObject);
                             if([responseObject[@"status"] integerValue] != 0)
                             {
                                 NSError *responseError = [self errorWithResponseObject:responseObject];
@@ -955,6 +955,7 @@ NSString *URLString = @"user/logout";
     [self.networkDecorator DELETE:unfollow
                        parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            
+                            NSLog(@"%@",responseObject);
                            if([responseObject[@"status"] integerValue] != 0)
                            {
                                NSError *responseError = [self errorWithResponseObject:responseObject];

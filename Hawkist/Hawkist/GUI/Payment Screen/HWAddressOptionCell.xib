@@ -19,17 +19,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="yAa-Wh-qKL" customClass="HWPaymentOptionCell">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="yAa-Wh-qKL" customClass="HWAddressOptionCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zv2-sZ-Vfb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADDRESS LINE 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v46-cB-lgd">
                         <rect key="frame" x="19" y="12" width="85" height="15"/>
                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="11"/>
@@ -88,14 +84,12 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="zv2-sZ-Vfb" secondAttribute="bottom" id="37I-gs-aR2"/>
                 <constraint firstAttribute="trailing" secondItem="4To-24-DXv" secondAttribute="trailing" constant="36" id="4zZ-DB-Qyj"/>
                 <constraint firstItem="AVe-m2-yAo" firstAttribute="top" secondItem="yAa-Wh-qKL" secondAttribute="top" constant="8" id="6Ve-6F-4du"/>
                 <constraint firstItem="Mc3-3Y-YRT" firstAttribute="top" secondItem="u7z-S5-zii" secondAttribute="bottom" constant="30" id="Ara-SQ-AZ9"/>
                 <constraint firstAttribute="trailing" secondItem="uZl-ex-2xb" secondAttribute="trailing" constant="36" id="CFV-21-3UQ"/>
-                <constraint firstItem="zv2-sZ-Vfb" firstAttribute="top" secondItem="yAa-Wh-qKL" secondAttribute="top" id="Dvp-tJ-EzO"/>
-                <constraint firstItem="zv2-sZ-Vfb" firstAttribute="leading" secondItem="yAa-Wh-qKL" secondAttribute="leading" id="Elj-Gu-dJC"/>
                 <constraint firstAttribute="trailing" secondItem="Xq3-9P-6Mp" secondAttribute="trailing" constant="30" id="Ey9-9m-yn1"/>
                 <constraint firstAttribute="trailing" secondItem="AVe-m2-yAo" secondAttribute="trailing" constant="8" id="Fcj-79-2PV"/>
                 <constraint firstItem="uZl-ex-2xb" firstAttribute="top" secondItem="u7z-S5-zii" secondAttribute="bottom" constant="3" id="NUp-og-Czq"/>
@@ -112,11 +106,14 @@
                 <constraint firstItem="Xq3-9P-6Mp" firstAttribute="top" secondItem="uZl-ex-2xb" secondAttribute="bottom" constant="6" id="uT1-T0-LFY"/>
                 <constraint firstItem="u7z-S5-zii" firstAttribute="top" secondItem="4To-24-DXv" secondAttribute="bottom" constant="10" id="xgR-EF-h4q"/>
                 <constraint firstItem="P5q-z0-ecw" firstAttribute="centerX" secondItem="Xq3-9P-6Mp" secondAttribute="centerX" id="xux-W7-MQQ"/>
-                <constraint firstAttribute="trailing" secondItem="zv2-sZ-Vfb" secondAttribute="trailing" id="zaB-2E-GUC"/>
             </constraints>
             <size key="customSize" width="320" height="166"/>
             <connections>
-                <outlet property="im" destination="zv2-sZ-Vfb" id="DPf-sF-a9X"/>
+                <outlet property="activeImage" destination="AVe-m2-yAo" id="qNK-zN-r7w"/>
+                <outlet property="address_line1" destination="4To-24-DXv" id="WTZ-2M-6QG"/>
+                <outlet property="adress_line2" destination="uZl-ex-2xb" id="CgJ-Wc-L0F"/>
+                <outlet property="cityLabel" destination="eD5-Fm-qf3" id="sI5-xb-Sb5"/>
+                <outlet property="postCodeLable" destination="P5q-z0-ecw" id="p6M-gh-bbR"/>
             </connections>
             <point key="canvasLocation" x="191" y="281"/>
         </collectionViewCell>

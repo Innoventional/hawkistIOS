@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWCard.h"
 
 @interface HWPaymentOptionCell : UICollectionViewCell
-@property (nonatomic, strong) IBOutlet UIImageView *im;
+
+@property (nonatomic, assign) BOOL isSelected;
+
+- (void) setCellWithCard:(HWCard*)card;
+
 @end

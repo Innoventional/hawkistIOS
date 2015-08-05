@@ -281,14 +281,20 @@
                         </button>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovl-2s-eoB">
                             <rect key="frame" x="234" y="175" width="78" height="35"/>
+                            <color key="backgroundColor" red="0.18823529411764706" green="0.67843137254901964" blue="0.58039215686274515" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="XHN-1I-nCX"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
-                            <state key="normal" title="  FOLLOW  " backgroundImage="askbutton">
+                            <state key="normal" title="  FOLLOW  ">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="followUnfollowAction:" destination="-1" eventType="touchUpInside" id="2UY-0e-knY"/>
                             </connections>

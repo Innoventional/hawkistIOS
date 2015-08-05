@@ -10,6 +10,7 @@
 #import "UIColor+Extensions.h"
 #import "MyItemCellView.h"
 #import "ViewItemViewController.h"
+#import "HWCommentViewController.h"
 
 @interface MyItemsViewController ()
 
@@ -73,7 +74,7 @@
 }
 
 
-- (MyItemCellView *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     MyItemCellView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
    
@@ -149,6 +150,23 @@
         [self.refreshControl endRefreshing];
     }];
 
+    
+}
+
+#pragma mark -
+#pragma mark MyItemCellDelegate
+
+- (void) pressCommentButton:(UIButton*)sender withItem:(HWItem*)item
+{
+    HWCommentViewController *vc = [[HWCommentViewController alloc] initWithItem:item];
+    [self.navigationController pushViewController:vc animated:YES];
+     
+    
+}
+- (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item
+{
+    
+    
     
 }
 
