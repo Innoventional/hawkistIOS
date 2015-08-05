@@ -44,6 +44,14 @@
             return YES;
         }
     }
+    
+    if (self.isCVV)
+    {
+        NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        
+        if (newString.length > 3)
+            return NO;
+    }
 
     return YES;
 }

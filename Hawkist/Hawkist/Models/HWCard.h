@@ -9,6 +9,7 @@
 #import "JSONModel.h"
 
 @interface HWCard : JSONModel
+
 @property (strong, nonatomic)NSString* id;
 @property (strong, nonatomic)NSString* address_line1;
 @property (strong, nonatomic)NSString<Optional>* address_line2;

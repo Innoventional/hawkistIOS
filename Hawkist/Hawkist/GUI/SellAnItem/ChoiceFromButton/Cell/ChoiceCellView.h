@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *myLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *forwardImage;
+@property (weak, nonatomic) IBOutlet UIView *colorView;
 
 @end

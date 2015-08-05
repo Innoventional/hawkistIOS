@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UIImageView *forward;
 @property (nonatomic, assign) BOOL isCardNumber;
+@property (nonatomic, assign) BOOL isCVV;
 @end

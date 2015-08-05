@@ -44,15 +44,16 @@
 		3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6BF01B44A9E30076004F /* MoneyField.m */; };
 		3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */; };
 		3AF37F9B1B57A8DD00E784DB /* HWTag+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF37F9A1B57A8DD00E784DB /* HWTag+Extensions.m */; };
-		3AF831F11B6EFB7600CC750D /* tempCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AF831F01B6EFB7600CC750D /* tempCard.png */; };
 		3AF831F41B6F64B900CC750D /* AddCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF831F31B6F64B900CC750D /* AddCardView.xib */; };
 		3AF831F61B6F6CB600CC750D /* CustomField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF831F51B6F6CB600CC750D /* CustomField.xib */; };
 		3AF831FC1B6F6E7D00CC750D /* CustomField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF831FB1B6F6E7D00CC750D /* CustomField.m */; };
 		3AF832021B6F7F4400CC750D /* AddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF832011B6F7F4400CC750D /* AddCardViewController.m */; };
 		3AF832081B70E4EB00CC750D /* HWCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF832071B70E4EB00CC750D /* HWCard.m */; };
-		3AF8320A1B70E5AF00CC750D /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF832091B70E5AF00CC750D /* CardView.xib */; };
+
 		3AF8320D1B70E60B00CC750D /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8320C1B70E60B00CC750D /* CardView.m */; };
 		3AF8320F1B70E73100CC750D /* ManageBankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF8320E1B70E73100CC750D /* ManageBankView.xib */; };
+		3AF832401B7190FB00CC750D /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF8323F1B7190FB00CC750D /* SettingView.xib */; };
+		3AF832431B723AAF00CC750D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF832421B723AAF00CC750D /* SettingsViewController.m */; };
 		7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C735D3E1B3893B000295472 /* CustomizationViewController.m */; };
 		7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D3F1B3893B000295472 /* CustomizationViewController.xib */; };
 		7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */; };
@@ -217,7 +218,6 @@
 		3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WantToSellViewController.m; path = WantToSell/WantToSellViewController.m; sourceTree = "<group>"; };
 		3AF37F991B57A8DD00E784DB /* HWTag+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HWTag+Extensions.h"; sourceTree = "<group>"; };
 		3AF37F9A1B57A8DD00E784DB /* HWTag+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HWTag+Extensions.m"; sourceTree = "<group>"; };
-		3AF831F01B6EFB7600CC750D /* tempCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tempCard.png; sourceTree = "<group>"; };
 		3AF831F31B6F64B900CC750D /* AddCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCardView.xib; path = addCard/AddCardView.xib; sourceTree = "<group>"; };
 		3AF831F51B6F6CB600CC750D /* CustomField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomField.xib; sourceTree = "<group>"; };
 		3AF831FA1B6F6E7D00CC750D /* CustomField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomField.h; path = addCard/CustomField.h; sourceTree = "<group>"; };
@@ -226,10 +226,13 @@
 		3AF832011B6F7F4400CC750D /* AddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCardViewController.m; path = addCard/AddCardViewController.m; sourceTree = "<group>"; };
 		3AF832061B70E4EB00CC750D /* HWCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCard.h; sourceTree = "<group>"; };
 		3AF832071B70E4EB00CC750D /* HWCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWCard.m; sourceTree = "<group>"; };
-		3AF832091B70E5AF00CC750D /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardView.xib; path = manageBank/CardView.xib; sourceTree = "<group>"; };
+
 		3AF8320B1B70E60B00CC750D /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardView.h; path = manageBank/CardView.h; sourceTree = "<group>"; };
 		3AF8320C1B70E60B00CC750D /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardView.m; path = manageBank/CardView.m; sourceTree = "<group>"; };
 		3AF8320E1B70E73100CC750D /* ManageBankView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManageBankView.xib; path = manageBank/ManageBankView.xib; sourceTree = "<group>"; };
+		3AF8323F1B7190FB00CC750D /* SettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingView.xib; path = SettingScreen/SettingView.xib; sourceTree = "<group>"; };
+		3AF832411B723AAF00CC750D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = SettingScreen/SettingsViewController.h; sourceTree = "<group>"; };
+		3AF832421B723AAF00CC750D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = SettingScreen/SettingsViewController.m; sourceTree = "<group>"; };
 		6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7C735D3D1B3893B000295472 /* CustomizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizationViewController.h; sourceTree = "<group>"; };
 		7C735D3E1B3893B000295472 /* CustomizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizationViewController.m; sourceTree = "<group>"; };
@@ -450,18 +453,17 @@
 			name = AddTagsScreen;
 			sourceTree = "<group>";
 		};
-		3A45ABDC1B6B294800FD56D6 /* manageBank */ = {
+		3A45ABDC1B6B294800FD56D6 /* ManageBank */ = {
 			isa = PBXGroup;
 			children = (
-				3AF831F01B6EFB7600CC750D /* tempCard.png */,
-				3AF832091B70E5AF00CC750D /* CardView.xib */,
+
 				3AF8320B1B70E60B00CC750D /* CardView.h */,
 				3AF8320E1B70E73100CC750D /* ManageBankView.xib */,
 				3AF8320C1B70E60B00CC750D /* CardView.m */,
 				3A45ABE91B6BBCAB00FD56D6 /* ManageBankViewController.h */,
 				3A45ABEA1B6BBCAB00FD56D6 /* ManageBankViewController.m */,
 			);
-			name = manageBank;
+			name = ManageBank;
 			sourceTree = "<group>";
 		};
 		3A61FBD51B3C11300004A24B /* WantToSell */ = {
@@ -582,6 +584,16 @@
 			name = AddCard;
 			sourceTree = "<group>";
 		};
+		3AF8323E1B7190C800CC750D /* SettingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3AF8323F1B7190FB00CC750D /* SettingView.xib */,
+				3AF832411B723AAF00CC750D /* SettingsViewController.h */,
+				3AF832421B723AAF00CC750D /* SettingsViewController.m */,
+			);
+			name = SettingScreen;
+			sourceTree = "<group>";
+		};
 		7CBC69E41B42B1F300AE535C /* FeedScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -686,7 +698,6 @@
 		C35A4C161B2F2DF7002E1F26 /* Hawkist */ = {
 			isa = PBXGroup;
 			children = (
-				3A45ABDF1B6B316800FD56D6 /* Images.xcassets */,
 				C35A4C4E1B3035D2002E1F26 /* Helper */,
 				C35A4C3F1B2F340F002E1F26 /* GUI */,
 				C35A4C3E1B2F33FA002E1F26 /* Models */,
@@ -703,6 +714,7 @@
 			isa = PBXGroup;
 			children = (
 				C35A4C181B2F2DF7002E1F26 /* Info.plist */,
+				3A45ABDF1B6B316800FD56D6 /* Images.xcassets */,
 				C35A4C191B2F2DF7002E1F26 /* main.m */,
 				C35A4C451B302FB1002E1F26 /* PrefixHeader.pch */,
 				C35A4C461B3030DD002E1F26 /* const.h */,
@@ -769,8 +781,9 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				3AF8323E1B7190C800CC750D /* SettingScreen */,
 				3AF831F21B6F649500CC750D /* AddCard */,
-				3A45ABDC1B6B294800FD56D6 /* manageBank */,
+				3A45ABDC1B6B294800FD56D6 /* ManageBank */,
 				CEBAAFA21B6DF3F100AFE4C6 /* Payment */,
 				CE70EDCD1B6BC58C005664FA /* MyAccountScreen */,
 				3A2AE3C81B61114800806D59 /* AddTagsScreen */,
@@ -1136,7 +1149,6 @@
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
 				CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */,
-				3AF831F11B6EFB7600CC750D /* tempCard.png in Resources */,
 				3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */,
 				CE70EDCC1B6B728E005664FA /* HWMentionUserCell.xib in Resources */,
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
@@ -1157,6 +1169,7 @@
 				7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */,
 				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
 				3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */,
+				3AF832401B7190FB00CC750D /* SettingView.xib in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
 				7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */,
 			);
@@ -1284,6 +1297,7 @@
 				3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */,
 				3A968E311B4C1188005AA347 /* HWTag.m in Sources */,
 				7CF0F9821B455DB30041F58F /* ViewItemViewController.m in Sources */,
+				3AF832431B723AAF00CC750D /* SettingsViewController.m in Sources */,
 				C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */,
 				C35A4C631B3035D2002E1F26 /* NSDictionary+Extensions.m in Sources */,
 				7CDD9A621B343AD2000FA498 /* TutorialViewController.m in Sources */,

@@ -67,6 +67,13 @@
         
         [self.scrollView addSubview:slide];
         [self.arrayWithImageViews addObject: slide];
+        
+        if(i == self.currentIndex)
+        {
+            slide.layer.borderWidth = 4.0f;
+            slide.layer.borderColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164].CGColor;
+        }
+
     }
 
 }
@@ -105,6 +112,12 @@
     
     [self.viewScroll addSubview:self.scrollView];
     
+    self.currentIndex = (int)self.avaliableTags.count/2;
+    
+    [self.scrollView setContentOffset:CGPointMake(self.currentIndex*slideSize.width, 0) animated:NO];
+
+    
+    
 }
 
 - (UIView*) setCellScrollView:(NSInteger)index
@@ -120,11 +133,17 @@
     
     
     NSString* descriptionText = currentTag.item_description;
+    
+   
     CGSize descriptionSize = [descriptionText sizeWithFont: [UIFont fontWithName:@"OpenSans" size:10.0f]
                                          constrainedToSize: CGSizeMake(slideSize.width - 15.0f, CGFLOAT_MAX)
                                              lineBreakMode: NSLineBreakByWordWrapping];
     
-    CGRect descriptionRect= CGRectMake(10.0f, slideTitle.maxY + 2.0f, descriptionSize.width, descriptionSize.height);
+    float descriptionHeight = slide.height - slideTitle.maxY;
+    
+    CGRect descriptionRect= CGRectMake(10.0f, slideTitle.maxY + 2.0f, descriptionSize.width, descriptionHeight);
+    
+    
     UILabel* description = [self setDescription:descriptionText withRect:descriptionRect];
     
     

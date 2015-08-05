@@ -44,6 +44,8 @@
             [subview removeFromSuperview];
     }
     
+    [self showHud];
+    
     [[NetworkManager shared]getAllBankCards:^(NSArray *cards) {
         
         self.cards = [NSArray arrayWithArray:cards];
@@ -52,6 +54,8 @@
         
         for (int i = 0; i<self.cards.count; i++) {
             CardView* card = [[CardView alloc]initWithFrame:CGRectMake(15, i*(cardHeight+20)+15, cardWidth, cardHeight)];
+            
+            
             [card setCard:(HWCard*)[self.cards objectAtIndex:i]];
             [self.contentView addSubview:card];
             
@@ -69,8 +73,11 @@
 
         }
         
+        [self hideHud];
+        
     } failureBlock:^(NSError *error) {
-        NSLog(@"%@",error);
+        [self hideHud];
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         
     }];
     
@@ -95,14 +102,25 @@
 
 - (void)removeCard:(NSString *)cardId
 {
-    [[NetworkManager shared]RemoveBankCard:cardId successBlock:^{
-        
+    [self showHud];
+    [[NetworkManager shared]removeBankCard:cardId successBlock:^{
+        [self hideHud];
         [self reload];
         
     } failureBlock:^(NSError *error) {
 
-        NSLog(@"--------------%@",error);
+        [self hideHud];
+         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
 }
 
+- (void)editCard:(HWCard *)card
+{
+    AddCardViewController* vc = [[AddCardViewController alloc]initWithCard:card];
+
+    
+    
+     [self.navigationController pushViewController:vc animated:NO];
+
+}
 @end

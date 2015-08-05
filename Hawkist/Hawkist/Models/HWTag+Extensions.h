@@ -17,5 +17,5 @@
 + (HWColor*) getColorById:(NSInteger)tagId from:(NSArray*)colors;
 
 + (UIColor *)colorWithHexString:(NSString *)str;
-
++ (UIColor *)darkerColorForColor:(UIColor *)c;
 @end

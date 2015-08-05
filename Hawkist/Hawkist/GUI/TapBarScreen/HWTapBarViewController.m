@@ -13,6 +13,7 @@
 #import "HWMyAccountViewController.h"
 
 #import "ManageBankViewController.h"
+#import "SettingsViewController.h"
 
 #import "HWProfileViewController.h"
 
@@ -25,6 +26,7 @@
 // view controllers
 @property (nonatomic, strong) FeedScreenViewController* feedVC;
 @property (nonatomic, strong) WantToSellViewController* sellVC;
+@property (nonatomic, strong) SettingsViewController* settingVC;
 
 
 @property (nonatomic,strong) ManageBankViewController* bankVC;
@@ -47,6 +49,9 @@
     
     [self.contentView addContentView: self.feedVC.view];
    
+    self.settingVC = [[SettingsViewController alloc]init];
+    [self addChildViewController:self.settingVC];
+    
     self.currentSelectedItem = 1;
 }
 
@@ -90,19 +95,23 @@
         }
         case 3:
         {
-            HWMyAccountViewController *vc = [[HWMyAccountViewController alloc]init];
-            [self.navigationController pushViewController:vc animated:YES];
-              
+            
             break;
         }
         case 4:
         {
-            ManageBankViewController* bankVC = [[ManageBankViewController alloc]init];
-            [self.navigationController pushViewController:bankVC animated:NO];
-          
+//            ManageBankViewController* bankVC = [[ManageBankViewController alloc]init];
+//            [self.navigationController pushViewController:bankVC animated:NO];
+//          
             
             break;
         }
+            
+        case 5:
+            
+            [self.contentView addContentView: self.settingVC.view];
+            break;
+            
         default:
             break;
     }

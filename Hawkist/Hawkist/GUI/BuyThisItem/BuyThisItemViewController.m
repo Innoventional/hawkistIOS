@@ -122,12 +122,15 @@
 
 
 - (IBAction)sendOffer:(id)sender {
+    
+    [self.moneyField.textField resignFirstResponder];
+    
     [[NetworkManager shared]OfferPrice:self.moneyField.textField.text
                                 itemId:self.item.id
 
     successBlock:^{
         NSLog(@"added");
-        [self showAlertWithTitle:@"New Price Offered" Message:@"We have notified the listing owner of your new offered price."];
+        [self showAlertWithTitle:@"Your Offer Confirmed" Message:@"Your offered price for this listing has been sent to the seller."];
         [self.navigationController popViewControllerAnimated:YES];
     }
     

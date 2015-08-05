@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HWTag.h"
+#import "HWCard.h"
 
 @interface NetworkManager : NSObject
 
@@ -203,7 +204,11 @@
 - (void) getAllBankCards:(void(^)(NSArray *cards))successBlock
             failureBlock:(void(^)(NSError *error)) failureBlock;
 
-- (void) RemoveBankCard:(NSString*)cardId
+- (void) removeBankCard:(NSString*)cardId
+           successBlock:(void(^)(void)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock;
+
+- (void) updateBankCard:(HWCard*)card
            successBlock:(void(^)(void)) successBlock
            failureBlock: (void (^)(NSError* error)) failureBlock;
 
