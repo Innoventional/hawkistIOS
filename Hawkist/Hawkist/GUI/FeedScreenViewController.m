@@ -11,8 +11,10 @@
 #import "HWProfileViewController.h"
 #import "CustomizationViewController.h"
 #import "AddTagsView.h"
+#import "myItemCell.h"
+#import "HWCommentViewController.h"
 
-@interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate>
+@interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate, MyItemCellDelegate>
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -64,7 +66,12 @@
     self.collectionView.alwaysBounceVertical = YES;
     
    
-    [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
+   // [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
+
+    
+    
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     self.scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     self.searchView.backgroundColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164];
@@ -127,10 +134,15 @@
 }
 
 
-- (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+   // FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
+    
+    myItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
+    
     cell.delegate = self;
     cell.item = [self.items objectAtIndex: indexPath.row];
+    cell.mytrash.hidden = YES;
     
     return cell;
 }
@@ -154,7 +166,7 @@
     // Make cell same width as application frame and 250 pixels tall.
     CGFloat width = self.view.width;
     CGFloat widthForView = (width - 36) / 2;
-    return CGSizeMake(widthForView, (widthForView * 488) / 291);
+    return CGSizeMake(widthForView, (widthForView * 488) / 291 - 5);
 }
 
 - (void)refresh
@@ -235,7 +247,22 @@
     
 }
 
+#pragma mark -
+#pragma mark MyItemCellDelegate
 
+- (void) pressCommentButton:(UIButton*)sender withItem:(HWItem*)item
+{
+    HWCommentViewController *vc = [[HWCommentViewController alloc] initWithItem:item];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
+- (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item
+{
+    
+    
+    
+}
 
 #pragma mark -
 #pragma mark  FeedScreenCollectionViewCellDelegate

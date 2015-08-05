@@ -22,7 +22,7 @@
 
 
 
-@interface MyItemCellView : UICollectionViewCell
+@interface myItemCell : UICollectionViewCell
 
 @property (nonatomic,strong)UIButton* mytrash;
 

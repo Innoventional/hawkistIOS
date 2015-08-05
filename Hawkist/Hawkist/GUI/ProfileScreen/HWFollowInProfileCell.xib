@@ -53,7 +53,7 @@
                             <constraint firstAttribute="height" constant="23" id="fud-9G-oeZ"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Treshola Smith" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jD-mj-6x2">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treshola Smith" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jD-mj-6x2">
                         <rect key="frame" x="80" y="15" width="136" height="26"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" priority="900" constant="144" id="7Hi-Ie-EAX"/>

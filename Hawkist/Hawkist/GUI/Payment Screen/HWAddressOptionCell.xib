@@ -115,7 +115,7 @@
                 <outlet property="cityLabel" destination="eD5-Fm-qf3" id="sI5-xb-Sb5"/>
                 <outlet property="postCodeLable" destination="P5q-z0-ecw" id="p6M-gh-bbR"/>
             </connections>
-            <point key="canvasLocation" x="191" y="281"/>
+            <point key="canvasLocation" x="129" y="385"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -8,7 +8,7 @@
 
 #import "MyItemsViewController.h"
 #import "UIColor+Extensions.h"
-#import "MyItemCellView.h"
+#import "myItemCell.h"
 #import "ViewItemViewController.h"
 #import "HWCommentViewController.h"
 
@@ -76,7 +76,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    MyItemCellView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
+    myItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
    
     HWItem* currentItem = [self.items objectAtIndex:indexPath.row];
     
@@ -117,7 +117,7 @@
     // Make cell same width as application frame and 250 pixels tall.
     CGFloat width = self.view.width;
     CGFloat widthForView = (width - 36) / 2;
-    return CGSizeMake(widthForView, ((widthForView * 488) / 291)-34);
+    return CGSizeMake(widthForView, ((widthForView * 488) / 291)-5);
 }
 
 - (void)refresh

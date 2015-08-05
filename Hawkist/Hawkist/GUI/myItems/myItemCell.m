@@ -6,26 +6,28 @@
 //  Copyright (c) 2015 TecSynt Solutions. All rights reserved.
 //
 
-#import "MyItemCellView.h"
+#import "myItemCell.h"
 #import "HWTag+Extensions.h"
 #import "NetworkManager.h"
 #import "UIColor+Extensions.h"
 
 
-@interface MyItemCellView()
+@interface myItemCell()
  
 @property (nonatomic,strong) UIVisualEffectView* visualEffectView;
-@property (nonatomic, strong) UIButton *commentButton;
-@property (nonatomic, strong) UIButton *likeButton;
+
+@property (nonatomic, strong) IBOutlet  UIButton *commentButton;
+@property (nonatomic, strong) IBOutlet  UIButton *likeButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *likeImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *commentView;
 
+@property (weak, nonatomic) IBOutlet UIButton *asd;
 
 
 @end
 
-@implementation MyItemCellView
+@implementation myItemCell
 
 
 
@@ -34,27 +36,14 @@
     self = [super awakeAfterUsingCoder:aDecoder];
     if (self)
     {
+        [self layoutIfNeeded];
         self.mytrash = [[UIButton alloc]initWithFrame:CGRectMake(self.width-6, 12, 21 , 21)];
         self.mytrash.backgroundColor = [UIColor greenColor];
         [self.mytrash addTarget:self action:@selector(moveToTrash) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.mytrash];
         
         
-        self.commentButton = [[UIButton alloc]initWithFrame:CGRectMake(0, self.bounds.size.height - 40, 40, 40)];
-       // self.commentButton.backgroundColor = [UIColor redColor];
-        [self.commentButton addTarget:self
-                               action:@selector(pressCommentAction:)
-                     forControlEvents:UIControlEventTouchUpInside];
-        
-         [self addSubview:self.commentButton];
-        
-        self.likeButton = [[UIButton alloc]initWithFrame:CGRectMake(self.bounds.size.width - 50, self.bounds.size.height - 40, 40, 40)];
-        //self.likeButton.backgroundColor = [UIColor redColor];
-        [self.likeButton addTarget:self
-                               action:@selector(pressLikeAction:)
-                     forControlEvents:UIControlEventTouchUpInside];
-         [self addSubview:self.likeButton];
-
+      
 
     }
     
@@ -97,19 +86,20 @@
 
 -(void)setItem:(HWItem *)item
 {
+    
     if(item.liked)
     {
         self.likeImageView.image = [UIImage imageNamed:@"starYellow"];
     } else {
         
-        self.likeImageView.image = [UIImage imageNamed:@"starYellow"];
+        self.likeImageView.image = [UIImage imageNamed:@"stargrey"];
     }
     
     self.commentsCount.text = item.comments;
     self.likesCount.text = item.likes;
     
     
-    self.itemImage.image = nil;
+//    self.itemImage.image = nil;
     self.commentsCount.text = item.comments;
     self.likesCount.text = item.likes;
     _item = item;
@@ -168,6 +158,8 @@
     [self.visualEffectView removeFromSuperview];
                     self.userInteractionEnabled = YES;
     
+    
+    
     if (self.item.sold)
         
     {
@@ -196,8 +188,10 @@
                 self.userInteractionEnabled = NO;
         
         
+    
     }
     
+    [self bringSubviewToFront: self.asd];
     
 }
  
@@ -208,18 +202,20 @@
 - (void)awakeFromNib {
     
     
-    self.backgroundColor = [UIColor whiteColor];
-    self.itemImage.layer.cornerRadius = 5.0f;
-    self.itemImage.layer.masksToBounds = YES;
+//    self.backgroundColor = [UIColor whiteColor];
+//    self.itemImage.layer.cornerRadius = 5.0f;
+//    self.itemImage.layer.masksToBounds = YES;
     self.layer.cornerRadius = 5.0f;
     self.layer.masksToBounds = YES;
+    
     
   }
 
 #pragma mark -
 #pragma mark Action
- 
--(void) pressCommentAction:(UIButton*)sender
+
+
+-(IBAction) pressCommentAction:(id )sender
 {
     if( self.delegate && [self.delegate respondsToSelector:@selector(pressCommentButton: withItem:)])
     {
@@ -228,7 +224,7 @@
     
 }
 
-- (void) pressLikeAction:(UIButton*)sender
+- (IBAction) pressLikeAction:(id )sender
 {
     if(self.delegate && [self.delegate respondsToSelector:@selector(pressLikeButton: withItem:)])
     {
