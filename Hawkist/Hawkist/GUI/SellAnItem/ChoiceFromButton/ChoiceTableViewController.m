@@ -107,9 +107,14 @@
                 // [cell setBackgroundColor:[HWTag colorWithHexString:hex]];
              {
                  cell.colorView.hidden = NO;
-                 [cell.colorView setBackgroundColor:[HWTag colorWithHexString:hex]];
+                 UIColor* color = [HWTag colorWithHexString:hex];
+                 [cell.colorView setBackgroundColor:color];
                  
-                 cell.colorView.layer.cornerRadius = 5.0f;
+                 cell.colorView.layer.cornerRadius = cell.colorView.width/2;
+                 
+                 
+                 [cell.colorView.layer setBorderColor:[HWTag darkerColorForColor:color].CGColor];
+                 cell.colorView.layer.borderWidth = 1.0f;
              
              }
                 

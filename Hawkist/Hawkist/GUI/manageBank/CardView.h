@@ -9,17 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "HWCard.h"
 
-@protocol cardViewDelegate <NSObject>
+@protocol CardViewDelegate <NSObject>
 
 - (void)editCard:(HWCard*)card;
 - (void)removeCard:(NSString*)cardId;
 
 @end
 
-@interface cardView : UIView
+@interface CardView : UIView
 
 
-@property (nonatomic,strong)id <cardViewDelegate> delegate;
+@property (nonatomic,strong)id <CardViewDelegate> delegate;
 
 - (void) setCard:(HWCard*)card;
 @end

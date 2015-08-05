@@ -11,7 +11,7 @@
 #import "NavigationVIew.h"
 #import "cardView.h"
 
-@interface ManageBankViewController : HWBaseViewController <NavigationViewDelegate,cardViewDelegate>
+@interface ManageBankViewController : HWBaseViewController <NavigationViewDelegate,CardViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigation;
 @property (weak, nonatomic) IBOutlet UIView *contentView;

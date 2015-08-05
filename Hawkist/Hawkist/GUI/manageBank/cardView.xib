@@ -17,7 +17,7 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="cardView">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView">
             <connections>
                 <outlet property="cardName" destination="6nb-FH-NJw" id="eKf-Hp-R62"/>
                 <outlet property="lastNumber" destination="qcV-wX-5PR" id="e3T-4f-EU0"/>

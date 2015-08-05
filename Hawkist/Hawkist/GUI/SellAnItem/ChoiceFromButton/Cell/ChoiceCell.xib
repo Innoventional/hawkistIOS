@@ -44,7 +44,7 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcI-sY-buY" userLabel="colorView">
-                    <rect key="frame" x="291" y="5" width="20" height="20"/>
+                    <rect key="frame" x="280" y="5" width="20" height="20"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="Hl3-Qq-5p1"/>
@@ -57,6 +57,7 @@
                 <constraint firstAttribute="trailing" secondItem="KQd-fC-fN5" secondAttribute="trailing" id="2ol-po-zq5"/>
                 <constraint firstItem="Wk7-Lh-7M6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="417-Lb-zRw"/>
                 <constraint firstItem="Ld0-TI-PF5" firstAttribute="centerY" secondItem="vcI-sY-buY" secondAttribute="centerY" id="8dd-rF-nTn"/>
+                <constraint firstAttribute="trailing" secondItem="vcI-sY-buY" secondAttribute="trailing" constant="20" id="Llx-6N-ygM"/>
                 <constraint firstItem="KQd-fC-fN5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Luw-qC-TRk"/>
                 <constraint firstAttribute="trailing" secondItem="Wk7-Lh-7M6" secondAttribute="trailing" constant="20" id="Zsb-WD-k8e"/>
                 <constraint firstItem="Ld0-TI-PF5" firstAttribute="trailing" secondItem="vcI-sY-buY" secondAttribute="trailing" id="fO4-8U-5b6"/>
@@ -65,6 +66,11 @@
                 <constraint firstAttribute="centerY" secondItem="Wk7-Lh-7M6" secondAttribute="centerY" id="y3O-9j-X04"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="fO4-8U-5b6"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="369" y="273"/>
         </view>
     </objects>
