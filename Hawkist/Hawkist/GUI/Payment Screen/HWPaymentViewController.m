@@ -82,7 +82,7 @@
     if (self)
     {
         self.networkManager = [NetworkManager shared];
-       // [self setupUserData];
+        //[self setupUserData];
     }
   
     
@@ -94,7 +94,7 @@
         [self.networkManager getAllBankCards:^(NSArray *cards) {
             
             self.paymentOptionArray = cards;
-           // [self.tableView reloadData];
+            [self.tableView reloadData];
             
         } failureBlock:^(NSError *error) {
             

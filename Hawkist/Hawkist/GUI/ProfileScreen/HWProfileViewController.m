@@ -219,6 +219,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     if([self.user.following integerValue] == 1)
     {
         [self.followUnfollowButton setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
+        self.followUnfollowButton.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
     }
     [self avatarInit];
     self.userNameLabel.text = self.user.username;
@@ -404,9 +405,15 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     if ([sender.titleLabel.text isEqualToString:@"  FOLLOW  "])
     {
-        [sender setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
+//        [sender setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
+//        sender.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
         
         [ self.networkManager followWithUserId:self.user.id successBlock:^{
+        
+            
+            [sender setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
+            sender.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
+
             
             
         } failureBlock:^(NSError *error) {
@@ -415,9 +422,12 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         
     } else {
         
-        [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
+//        [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
+//        sender.backgroundColor = [UIColor colorWithRed:55./255. green:185./255. blue:165./255. alpha:1];
+        
         [self.networkManager unfollowWithUserId:self.user.id successBlock:^{
-            
+            [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
+            sender.backgroundColor = [UIColor colorWithRed:55./255. green:185./255. blue:165./255. alpha:1];
             
         } failureBlock:^(NSError *error) {
             
