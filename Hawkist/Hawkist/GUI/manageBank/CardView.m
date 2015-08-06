@@ -28,7 +28,7 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        UIView* view = [[[NSBundle mainBundle]loadNibNamed:@"сardView" owner:self options:nil]firstObject];
+        UIView* view = [[[NSBundle mainBundle]loadNibNamed:@"cardView" owner:self options:nil]firstObject];
       
         view.frame = self.bounds;
         
