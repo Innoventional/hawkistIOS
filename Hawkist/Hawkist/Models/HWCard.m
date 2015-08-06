@@ -12,4 +12,15 @@
 
 
 
+- (NSString*) month
+{
+   return [NSString stringWithFormat:@"%02ld",[self.exp_month integerValue]];
+
+}
+
+- (NSString*) year
+{
+    return [self.exp_year substringFromIndex:self.exp_year.length -2];
+}
+
 @end

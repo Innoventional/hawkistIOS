@@ -11,8 +11,9 @@
 #import "NavigationVIew.h"
 #import "CustomField.h"
 #import "HWCard.h"
+#import "CDatePickerViewEx.h"
 
-@interface AddCardViewController : HWBaseViewController <NavigationViewDelegate,UIPickerViewDelegate>
+@interface AddCardViewController : HWBaseViewController <NavigationViewDelegate,UIPickerViewDelegate,CDatePickerViewExDelegate>
 
 @property (strong, nonatomic) IBOutlet NavigationVIew *navigation;
 @property (strong, nonatomic) IBOutlet CustomField *firstName;

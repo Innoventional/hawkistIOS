@@ -11,10 +11,11 @@
 #import "StripeManager.h"
 #import "UIColor+Extensions.h"
 #import "HWCard.h"
+#import "CDatePickerViewEx.h"
 
 
 @interface AddCardViewController ()
-@property (nonatomic,strong)UIDatePicker* datePicker;
+@property (nonatomic,strong)CDatePickerViewEx* datePicker;
 @property (nonatomic,assign)NSUInteger selectedMonth;
 @property (nonatomic,assign)NSUInteger selectedYear;
 @property (nonatomic,assign) BOOL isEdit;
@@ -61,17 +62,9 @@
         self.cvv.inputField.enabled = NO;
         self.cardNumber.inputField.enabled = NO;
         
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *components = [[NSDateComponents alloc] init];
+
         
-        
-        [components setMonth:[self.card.exp_month intValue]];
-        [components setYear:[self.card.exp_year intValue]];
-        
-        
-        NSDate *date = [calendar dateFromComponents:components];
-        
-        self.datePicker.date = date;
+        [self.datePicker settingDate:[self.card.exp_month intValue] year:[self.card.exp_year intValue]];
         
         NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
         [formatter setDateFormat:@"M - MMMM YYY"];
@@ -85,7 +78,8 @@
         self.navigation.title.text = @"Edit Card";
         [self.saveButton setTitle:@"UPDATE" forState:UIControlStateNormal];
         
-    }
+        
+           }
 }
 
 
@@ -104,17 +98,20 @@
 - (void) initDefault
 {
     self.navigation.delegate = self;
-    self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
+    self.datePicker = [[CDatePickerViewEx alloc]init];//WithFrame:CGRectMake(0, 0, 200, 50)];
     
-    
-    [self.datePicker setDatePickerMode:UIDatePickerModeDate];
-    [self.datePicker addTarget:self action:@selector(dateChanged) forControlEvents:UIControlEventValueChanged];
+    self.datePicker.deleg = self;
+
+
     
     
     
     [self.datePicker setBackgroundColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];
 
-    [self.datePicker setValue:[UIColor whiteColor] forKeyPath:@"textColor"];
+    [self.datePicker setMonthTextColor:[UIColor whiteColor]];
+    [self.datePicker setYearTextColor:[UIColor whiteColor]];
+    
+    [self.datePicker selectToday];
     
     self.navigation.title.text = @"Add New Card";
     self.firstName.title.text = @"YOUR NAME";
@@ -141,10 +138,44 @@
     self.postCode.title.text = @"POST CODE";
     
     
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    numberToolbar.barStyle = UIBarStyleDefault;
+    
+    UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                   style:UIBarButtonItemStyleDone target:self
+                                                                  action:@selector(hideKeyboard)];
+    
+    
+    UIButton* customButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 30)];
+    
+    [customButton setBackgroundImage:[UIImage imageNamed:@"signBut"] forState:UIControlStateNormal];
+    
+    [customButton setTitle:@"Done" forState:UIControlStateNormal];
+    
+    [customButton addTarget:self action:@selector(hideKeyboard) forControlEvents:UIControlEventTouchDown];
+    
+    doneButton.customView = customButton;
+    
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           doneButton,
+                           nil];
+    [numberToolbar sizeToFit];
+    
+    
+    self.dateField.inputField.inputAccessoryView = numberToolbar;
+    
+
+    
+    
 }
 
+- (void) hideKeyboard
+{
+    [self.dateField.inputField resignFirstResponder];
+}
 
-- (void)dateChanged
+- (void)didSelect
 {
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"M - MMMM YYY"];

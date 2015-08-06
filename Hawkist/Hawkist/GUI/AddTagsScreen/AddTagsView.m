@@ -8,6 +8,7 @@
 
 #import "AddTagsView.h"
 #import "TagCell.h"
+#import "UIColor+Extensions.h"
 
 @interface AddTagsView()
 
@@ -110,8 +111,7 @@
 
         }
         
-       
-        
+
         
     }
     
@@ -124,10 +124,47 @@
 
     }
     
-    successBlock();
     
+  
+    
+    successBlock();
+    if (tempArrayForTags.count == 0)
+    {
+        
+        NSString* text = @"Additional tags can be found in your profile";
+        
+        UIFont* font = [UIFont fontWithName:@"OpenSans" size:14.0f];
+        
+        CGSize descriptionSize = [text sizeWithFont: font                                             constrainedToSize: CGSizeMake(self.width, CGFLOAT_MAX)
+                                                 lineBreakMode: NSLineBreakByWordWrapping];
+        
+        
+       
+        UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake((self.width - descriptionSize.width)/2, self.startPositionY, descriptionSize.width, descriptionSize.height)];
+        
+        
+        
+        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle),NSForegroundColorAttributeName: [UIColor color256RGBWithRed: 82 green: 166 blue: 144],NSFontAttributeName:font
+};
+
+        
+        label.attributedText = [[NSAttributedString alloc] initWithString:text                                                            attributes:underlineAttribute];
+
+        label.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapGesture =
+        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goToPersonalisation)];
+        [label addGestureRecognizer:tapGesture];
+        
+        [self addSubview:label];
+    }
 }
 
+
+- (void) goToPersonalisation
+{
+    if (self.delegate && [self.delegate respondsToSelector: @selector(clickToPersonalisation)])
+        [self.delegate clickToPersonalisation];
+}
 
 - (void) reorganizationLine:(NSMutableArray*)allTags
                currentIndex:(NSInteger) index

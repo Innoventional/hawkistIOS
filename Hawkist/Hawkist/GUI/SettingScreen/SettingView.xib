@@ -7,6 +7,9 @@
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
         </mutableArray>
+        <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
@@ -44,7 +47,7 @@
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="199" id="AYk-2Z-V5r"/>
                                         <constraint firstAttribute="width" constant="199" id="KjC-PU-aZp"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                     <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>

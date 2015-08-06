@@ -20,5 +20,8 @@
 @property (strong, nonatomic)NSString* exp_month;
 @property (strong, nonatomic)NSString* exp_year;
 
+
+- (NSString*) month;
+- (NSString*) year;
 @end
 

@@ -10,6 +10,7 @@
 #import "HWAccountMenuCell.h"
 #import "StarRatingControl.h"
 #import "HWMyAccountViewController.h"
+#import "PersonalisationViewController.h"
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -236,11 +237,11 @@
             NSLog(@"My Orgers");
             break;
         
-        case 3:
-            
-            NSLog(@"Personalisation");
+        case 3:{
+            PersonalisationViewController* vc = [[PersonalisationViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:NO];
             break;
-       
+        }
         default:
             break;
     }
