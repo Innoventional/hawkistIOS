@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HWBaseViewController.h"
 #import "NavigationVIew.h"
-#import "cardView.h"
+#import "CardView.h"
 
 @interface ManageBankViewController : HWBaseViewController <NavigationViewDelegate,CardViewDelegate>
 
