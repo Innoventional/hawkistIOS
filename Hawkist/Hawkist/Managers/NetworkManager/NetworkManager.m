@@ -1428,9 +1428,12 @@ NSString *URLString = @"user/logout";
                            failureBlock:(void(^)(NSError *error)) failureBlock
 {
     
- 
 
-    NSString *URLString = [NSString stringWithFormat:@"listings/comments_people?q=%@",text];
+    NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *decodevalue = [[NSString alloc] initWithData:data encoding:NSNonLossyASCIIStringEncoding];
+    
+
+    NSString *URLString = [NSString stringWithFormat:@"listings/comments_people?q=%@",decodevalue];
     
     [self.networkDecorator GET:URLString
                     parameters:nil

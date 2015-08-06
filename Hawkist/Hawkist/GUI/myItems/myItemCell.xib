@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -51,6 +50,19 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYj-47-K3n">
+                                <rect key="frame" x="114" y="19" width="21" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="Naa-tc-C69"/>
+                                    <constraint firstAttribute="height" constant="21" id="PJ9-UL-AHb"/>
+                                </constraints>
+                                <state key="normal" image="trash">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveToTrash:" destination="e6Q-Ie-sgH" eventType="touchUpInside" id="6xW-yw-bnu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.69781523879999996" green="0.68823407589999996" blue="0.69541994809999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -59,8 +71,10 @@
                             <constraint firstItem="sEe-Qj-DCZ" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="FfJ-XN-X2k"/>
                             <constraint firstAttribute="trailing" secondItem="hYM-vX-ds8" secondAttribute="trailing" id="Fjg-bp-bGO"/>
                             <constraint firstItem="sEe-Qj-DCZ" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" constant="19" id="N00-WT-nXo"/>
+                            <constraint firstAttribute="trailing" secondItem="iYj-47-K3n" secondAttribute="trailing" constant="10" id="T0R-4M-UZt"/>
                             <constraint firstItem="hYM-vX-ds8" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" id="Y57-LT-Eac"/>
                             <constraint firstItem="Fdb-aG-Vuq" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" constant="20" id="riE-Eb-AVe"/>
+                            <constraint firstItem="iYj-47-K3n" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" constant="19" id="uRb-pG-VAW"/>
                             <constraint firstItem="hYM-vX-ds8" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="zVS-FY-3Da"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -208,6 +222,7 @@
                 <outlet property="likeButton" destination="9sK-Ie-nzr" id="CRe-i9-oOf"/>
                 <outlet property="likeImageView" destination="YzE-P2-NKs" id="QcD-Dk-2Ps"/>
                 <outlet property="likesCount" destination="ha9-wj-8t3" id="Sjj-iH-q5Y"/>
+                <outlet property="mytrash" destination="iYj-47-K3n" id="bf3-zu-R7G"/>
                 <outlet property="oldPrice" destination="lSV-id-3OE" id="w1W-EJ-D5e"/>
                 <outlet property="platform" destination="eUQ-4M-ZK6" id="aKP-Tj-GlO"/>
                 <outlet property="title" destination="97z-YM-TJw" id="IIw-VW-byJ"/>
@@ -219,5 +234,6 @@
         <image name="like" width="10" height="10"/>
         <image name="messages" width="10" height="10"/>
         <image name="skidka" width="55" height="31"/>
+        <image name="trash" width="20" height="20"/>
     </resources>
 </document>
