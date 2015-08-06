@@ -12,12 +12,14 @@
 @protocol AddTags <NSObject>
 
 - (void) selectedItem;
+- (void) clickToPersonalisation;
 
 @end
 
 @interface AddTagsView : UIView <TagCell>
 
 @property (nonatomic,strong) id<AddTags> delegate;
+
 - (void)addTagsToView:(NSArray *)tags
          successBlock: (void (^)(void)) successBlock
          failureBlock: (void (^)(NSError* error)) failureBlock;

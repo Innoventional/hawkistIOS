@@ -13,6 +13,8 @@
 #import "AddTagsView.h"
 #import "myItemCell.h"
 #import "HWCommentViewController.h"
+#import "PersonalisationViewController.h"
+
 
 @interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate, MyItemCellDelegate>
 
@@ -203,18 +205,20 @@
                 [self reloadScrollViewSize];
                 
             } failureBlock:^(NSError *error) {
-                
+                [self.refreshControl endRefreshing];
                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             }];
  
         }
          failureBlock:^(NSError *error) {
+            [self.refreshControl endRefreshing];
             [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         }];
         
         }
         
     } failureBlock:^(NSError *error) {
+        [self.refreshControl endRefreshing];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         
     }];
@@ -222,6 +226,12 @@
     
    
     
+}
+
+- (void)clickToPersonalisation
+{
+    PersonalisationViewController* vc = [[PersonalisationViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 

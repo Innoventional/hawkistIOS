@@ -20,6 +20,9 @@
 		3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCB1B3813620004A24B /* CustomAlertView.xib */; };
 		3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */; };
 		3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBD31B386FA60004A24B /* SignIn.xib */; };
+		3A6901511B72DEBF00B618B8 /* PersonalisationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6901501B72DEBF00B618B8 /* PersonalisationView.xib */; };
+		3A6901541B72DF1500B618B8 /* PersonalisationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6901531B72DF1500B618B8 /* PersonalisationViewController.m */; };
+		3A6901571B72EDFF00B618B8 /* CDatePickerViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6901561B72EDFF00B618B8 /* CDatePickerViewEx.m */; };
 		3A8366781B30668E00208FC5 /* Login.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366741B30668E00208FC5 /* Login.xib */; };
 		3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366761B30668E00208FC5 /* LoginViewController.m */; };
 		3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366801B31A85900208FC5 /* AccountDetailView.xib */; };
@@ -180,6 +183,11 @@
 		3A61FBCB1B3813620004A24B /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeAlertView.xib; sourceTree = "<group>"; };
 		3A61FBD31B386FA60004A24B /* SignIn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignIn.xib; sourceTree = "<group>"; };
+		3A6901501B72DEBF00B618B8 /* PersonalisationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonalisationView.xib; path = Personalisation/PersonalisationView.xib; sourceTree = "<group>"; };
+		3A6901521B72DF1500B618B8 /* PersonalisationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalisationViewController.h; path = Personalisation/PersonalisationViewController.h; sourceTree = "<group>"; };
+		3A6901531B72DF1500B618B8 /* PersonalisationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalisationViewController.m; path = Personalisation/PersonalisationViewController.m; sourceTree = "<group>"; };
+		3A6901551B72EDFF00B618B8 /* CDatePickerViewEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDatePickerViewEx.h; sourceTree = "<group>"; };
+		3A6901561B72EDFF00B618B8 /* CDatePickerViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDatePickerViewEx.m; sourceTree = "<group>"; };
 		3A8366741B30668E00208FC5 /* Login.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Login.xib; sourceTree = "<group>"; };
 		3A8366751B30668E00208FC5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3A8366761B30668E00208FC5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -476,6 +484,16 @@
 			name = WantToSell;
 			sourceTree = "<group>";
 		};
+		3A69014F1B72DE9000B618B8 /* Personalisation */ = {
+			isa = PBXGroup;
+			children = (
+				3A6901501B72DEBF00B618B8 /* PersonalisationView.xib */,
+				3A6901521B72DF1500B618B8 /* PersonalisationViewController.h */,
+				3A6901531B72DF1500B618B8 /* PersonalisationViewController.m */,
+			);
+			name = Personalisation;
+			sourceTree = "<group>";
+		};
 		3A8366711B30668E00208FC5 /* LoginVIew */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +595,8 @@
 				3AF831F31B6F64B900CC750D /* AddCardView.xib */,
 				3AF832001B6F7F4400CC750D /* AddCardViewController.h */,
 				3AF832011B6F7F4400CC750D /* AddCardViewController.m */,
+				3A6901551B72EDFF00B618B8 /* CDatePickerViewEx.h */,
+				3A6901561B72EDFF00B618B8 /* CDatePickerViewEx.m */,
 				3AF831F51B6F6CB600CC750D /* CustomField.xib */,
 				3AF831FA1B6F6E7D00CC750D /* CustomField.h */,
 				3AF831FB1B6F6E7D00CC750D /* CustomField.m */,
@@ -781,6 +801,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				3A69014F1B72DE9000B618B8 /* Personalisation */,
 				3AF8323E1B7190C800CC750D /* SettingScreen */,
 				3AF831F21B6F649500CC750D /* AddCard */,
 				3A45ABDC1B6B294800FD56D6 /* ManageBank */,
@@ -1164,6 +1185,7 @@
 				CEBAAFA11B6CE9FD00AFE4C6 /* HWSingOutCell.xib in Resources */,
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
+				3A6901511B72DEBF00B618B8 /* PersonalisationView.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
 				CEBAAFB61B6E116200AFE4C6 /* HWPaymentCell.xib in Resources */,
 				7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */,
@@ -1242,6 +1264,7 @@
 				C35A4C861B303BCF002E1F26 /* SocialManager.m in Sources */,
 				CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */,
 				CE5909561B5FA8C800DAA7FF /* HWCommentCell.m in Sources */,
+				3A6901541B72DF1500B618B8 /* PersonalisationViewController.m in Sources */,
 				3A968E221B4A8542005AA347 /* ChoiceTableViewController.m in Sources */,
 				CE70EDC71B6A7053005664FA /* HWMention.m in Sources */,
 				3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */,
@@ -1260,6 +1283,7 @@
 				C35A4C661B3035D2002E1F26 /* OCUtilites.m in Sources */,
 				C35CB49F1B4BE91B00956150 /* HWItem.m in Sources */,
 				CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */,
+				3A6901571B72EDFF00B618B8 /* CDatePickerViewEx.m in Sources */,
 				CE59095F1B5FE54400DAA7FF /* NSDate+NVTimeAgo.m in Sources */,
 				CEBAAFAD1B6DF57F00AFE4C6 /* HWAddressOptionCell.m in Sources */,
 				CE5909461B5ABBD700DAA7FF /* HWFollowUser.m in Sources */,
@@ -1426,7 +1450,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1444,7 +1468,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
