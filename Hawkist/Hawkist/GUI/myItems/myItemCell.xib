@@ -227,7 +227,7 @@
                 <outlet property="platform" destination="eUQ-4M-ZK6" id="aKP-Tj-GlO"/>
                 <outlet property="title" destination="97z-YM-TJw" id="IIw-VW-byJ"/>
             </connections>
-            <point key="canvasLocation" x="184.5" y="869.5"/>
+            <point key="canvasLocation" x="80.5" y="645.5"/>
         </collectionViewCell>
     </objects>
     <resources>

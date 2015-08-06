@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NavigationVIew.h"
 
 @interface HWBaseViewController : UIViewController
 @property (nonatomic,assign)BOOL isInternetConnectionAlertShowed;
