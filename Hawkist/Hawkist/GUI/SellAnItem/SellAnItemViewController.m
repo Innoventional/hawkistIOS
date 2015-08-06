@@ -380,7 +380,7 @@
     
     if (textField == postField && [textField.text isEqualToString:@""])
     {
-      //  self.sellButton.enabled = NO;
+        self.sellButton.enabled = NO;
     }
     return YES;
 }
@@ -398,7 +398,7 @@
         [netManager getCityByPostCode:textField.text successBlock:^(NSString *city) {
             [self hideHud];
             postLabel.text = city;
-           // self.sellButton.enabled = YES;
+           self.sellButton.enabled = YES;
             
             
         }
