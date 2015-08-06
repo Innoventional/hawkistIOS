@@ -15,7 +15,11 @@
 {
     NSDate* date = [self.created_at dateFromString];
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat: @"MM, dd, yyyy"];
+    [formatter setDateFormat: @"MMMM dd, yyyy"];
+    
+    
+    
+    
     return [formatter stringFromDate: date];
 }
 

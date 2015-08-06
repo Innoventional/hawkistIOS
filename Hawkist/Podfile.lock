@@ -90,6 +90,7 @@ PODS:
   - JSONModel (1.1.0)
   - Masonry (0.5.3)
   - MBProgressHUD (0.9.1)
+  - pop (1.0.7)
   - Stripe (4.0.3):
     - Stripe/Checkout (= 4.0.3)
     - Stripe/Core (= 4.0.3)
@@ -106,6 +107,7 @@ DEPENDENCIES:
   - JSONModel (~> 1.1.0)
   - Masonry (~> 0.5.3)
   - MBProgressHUD (~> 0.5)
+  - pop (~> 1.0)
   - Stripe
   - SWTableViewCell (~> 0.3.7)
 
@@ -130,7 +132,8 @@ SPEC CHECKSUMS:
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   Masonry: 9f515466afe48632562342a40a1c224071a1a022
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   Stripe: 43a4307dc789483a61668d187c4a917d1348b0b6
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.36.3

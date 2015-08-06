@@ -771,7 +771,12 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 - (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item
 {
     
-    
+    [[NetworkManager shared] likeDislikeWhithItemId:item.id
+                                       successBlock:^{
+                                           
+                                       } failureBlock:^(NSError *error) {
+                                           
+                                       }];
     
 }
 

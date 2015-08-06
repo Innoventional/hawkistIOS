@@ -7,7 +7,7 @@
 //
 
 #import "ViewItemViewController.h"
-#import "FeedScreenCollectionViewCell.h"
+//#import "FeedScreenCollectionViewCell.h"
 #import "HWItem.h"
 #import "UIImageView+AFNetworking.h"
 #import "AppEngine.h"
@@ -15,7 +15,7 @@
 #import "BuyThisItemViewController.h"
 #import "HWProfileViewController.h"
 #import "SellAnItemViewController.h"
-
+#import "myItemCell.h"
 
 #import "HWCommentViewController.h"
 
@@ -35,7 +35,7 @@
 @end
 
 
-@interface ViewItemViewController () <FeedScreenCollectionViewCellDelegate>
+@interface ViewItemViewController () < MyItemCellDelegate>
 
 
 
@@ -132,7 +132,7 @@
 #pragma mark ending
     
     
-    [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
     self.navigationView.delegate = self;
@@ -162,8 +162,6 @@
 - (void) rightButtonClick
 {
     
-    NSString *buttonNameStr ;
-    
     UIActionSheet* popup;
     
     if([[AppEngine shared].user.id isEqualToString:self.item.user.id])
@@ -191,6 +189,8 @@
 - (void) actionSheet: (UIActionSheet*) popup
          clickedButtonAtIndex: (NSInteger) buttonIndex
     {
+        if(buttonIndex == 1) return;
+        
         if([[AppEngine shared].user.id isEqualToString:self.item.user.id])
         {
         
@@ -206,8 +206,6 @@
         
   
     }
-
-
 
 
 #pragma mark - update item
@@ -235,6 +233,9 @@
     self.oldPrice.text = self.item.retail_price;
 
     [self setupDescription];
+    
+ 
+    
     self.added.text = [self.item stringItemCreationDate];
    
 
@@ -296,6 +297,8 @@
     {
          self.buyThisItem.enabled = YES;
     }
+    
+    
 }
 
 - (void) setupDescription
@@ -441,11 +444,12 @@
 }
 
 
-- (FeedScreenCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    myItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
    
     HWItem *item  = [self.selectedItemsArray objectAtIndex: indexPath.row] ;
-    
+    cell.mytrash.hidden = YES;
     cell.item = item;
     cell.delegate = self;
     
@@ -559,6 +563,30 @@
     [self.navigationController pushViewController:profileVC animated:YES];
 }
 
+
+#pragma mark -
+#pragma mark MyItemCellDelegate
+
+- (void) pressCommentButton:(UIButton*)sender withItem:(HWItem*)item
+{
+    HWCommentViewController *vc = [[HWCommentViewController alloc] initWithItem:item];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
+- (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item
+{
+    
+    [[NetworkManager shared] likeDislikeWhithItemId:item.id
+                                      successBlock:^{
+    
+    
+                                      } failureBlock:^(NSError *error) {
+    
+    
+                                      }];
+    
+}
 
 @end
 

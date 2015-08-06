@@ -84,7 +84,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djY-pk-gMl">
                     <rect key="frame" x="0.0" y="44" width="357" height="1333"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5QT-zT-QBm">
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5QT-zT-QBm">
                             <rect key="frame" x="0.0" y="0.0" width="357" height="700"/>
                             <color key="backgroundColor" red="0.8862745098" green="0.2274509804" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>

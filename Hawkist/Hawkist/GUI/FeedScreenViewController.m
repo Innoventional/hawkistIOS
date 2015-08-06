@@ -23,6 +23,7 @@
 @property (nonatomic, assign) CGFloat lastHeightCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCollection;
 
+
 @end
 
 @implementation FeedScreenViewController
@@ -65,9 +66,6 @@
     
     self.collectionView.alwaysBounceVertical = YES;
     
-   
-   // [self.collectionView registerNib:[UINib nibWithNibName:@"FeedScreenCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
-    
     [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
 
     
@@ -86,6 +84,9 @@
     } failureBlock:^(NSError *error) {
         
     }];
+    
+    
+     
     
 
 }
@@ -135,9 +136,7 @@
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-   // FeedScreenCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
-    
+  
     myItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
     
     cell.delegate = self;
@@ -260,7 +259,14 @@
 - (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item
 {
     
-    
+    [[NetworkManager shared] likeDislikeWhithItemId:item.id
+                                       successBlock:^{
+                                           
+                                           
+                                       } failureBlock:^(NSError *error) {
+                                           
+                                           
+                                       }];
     
 }
 
