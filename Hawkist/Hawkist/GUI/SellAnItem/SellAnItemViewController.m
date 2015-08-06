@@ -471,8 +471,15 @@
     HWItem* currentItem = [[HWItem alloc]init];
     
     currentItem.title = titleField.text;
+    
+    
     currentItem.item_description = descriptionField.text;
    
+    
+    if (descriptionField.textColor == self.placeHolderColor)
+    {
+        currentItem.item_description = @"";
+    }
     
     currentItem.platform = platform.Text.tag;
     currentItem.category = self.idCategory;
