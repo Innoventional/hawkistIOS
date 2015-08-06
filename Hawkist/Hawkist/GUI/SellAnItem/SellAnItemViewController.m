@@ -338,8 +338,8 @@
 //         color.userInteractionEnabled = NO;
 //         condition.userInteractionEnabled = NO;
     
-     descriptionField.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
-     self.isPlaceholderHidden = NO;
+     descriptionField.placeholder = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
+     //self.isPlaceholderHidden = NO;
     
     if(engine.postCode)
     {
@@ -350,18 +350,18 @@
     
 }
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
-{
-    
-    if (!self.isPlaceholderHidden)
-    {
-        descriptionField.textColor = self.textColor;
-        descriptionField.text =@"";
-
-        self.isPlaceholderHidden = YES;
-    }
-    return YES;
-}
+//- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+//{
+//    
+//    if (!self.isPlaceholderHidden)
+//    {
+//        descriptionField.textColor = self.textColor;
+//        descriptionField.text =@"";
+//
+//        self.isPlaceholderHidden = YES;
+//    }
+//    return YES;
+//}
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -421,12 +421,12 @@
 
 - (void) textViewDidEndEditing: (UITextView*) textView
 {
-    if([textView.text isEqualToString: @""])
-    {
-        descriptionField.textColor = _placeHolderColor;
-        textView.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
-        self.isPlaceholderHidden = NO;
-    }
+//    if([textView.text isEqualToString: @""])
+//    {
+//        descriptionField.textColor = _placeHolderColor;
+//        textView.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
+//        self.isPlaceholderHidden = NO;
+//    }
     
 }
 
@@ -475,12 +475,6 @@
     
     currentItem.item_description = descriptionField.text;
    
-    
-    if (descriptionField.textColor == self.placeHolderColor)
-    {
-        currentItem.item_description = @"";
-    }
-    
     currentItem.platform = platform.Text.tag;
     currentItem.category = self.idCategory;
     
