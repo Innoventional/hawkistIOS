@@ -19,7 +19,14 @@
 
 #import "HWCommentViewController.h"
 
-@interface ViewItemViewController ()
+
+#import <Social/Social.h>
+#import <Accounts/Accounts.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
+
+
+@interface ViewItemViewController () <MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, strong) HWItem* item;
 @property (nonatomic, strong) NSMutableArray* imagesArray;
@@ -32,14 +39,17 @@
 @property (nonatomic, assign) BOOL isLikeItem;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
+@property (nonatomic, strong) UIActionSheet* editActionSheet;
+@property (nonatomic, strong) UIActionSheet *sendToFrandActionSheet;
+
+
+@property (nonatomic, strong) SLComposeViewController *mySLComposerSheet;
+
+
+
 @end
 
 
-@interface ViewItemViewController () < MyItemCellDelegate>
-
-
-
-@end
 
 @implementation ViewItemViewController
 
@@ -162,18 +172,18 @@
 - (void) rightButtonClick
 {
     
-    UIActionSheet* popup;
+    
     
     if([[AppEngine shared].user.id isEqualToString:self.item.user.id])
     {
-        popup = [[UIActionSheet alloc] initWithTitle: nil
+        self.editActionSheet = [[UIActionSheet alloc] initWithTitle: nil
                                            delegate: self
                                   cancelButtonTitle: @"Cancel"
                              destructiveButtonTitle: nil
                                   otherButtonTitles: @"Edit", nil];
     } else {
         
-        popup = [[UIActionSheet alloc] initWithTitle: nil
+        self.editActionSheet = [[UIActionSheet alloc] initWithTitle: nil
                                            delegate: self
                                   cancelButtonTitle: @"Cancel"
                              destructiveButtonTitle: nil
@@ -181,31 +191,11 @@
     }
     
     
-    [popup showInView:self.view];
+    [self.editActionSheet showInView:self.view];
 
      
 }
 
-- (void) actionSheet: (UIActionSheet*) popup
-         clickedButtonAtIndex: (NSInteger) buttonIndex
-    {
-        if(buttonIndex == 1) return;
-        
-        if([[AppEngine shared].user.id isEqualToString:self.item.user.id])
-        {
-        
-            SellAnItemViewController* vc = [[SellAnItemViewController alloc]initWithItem:self.item];
-            [self.navigationController pushViewController:vc animated:NO];
-        
-        } else {
-            
-            
-            
-        }
-
-        
-  
-    }
 
 
 #pragma mark - update item
@@ -548,6 +538,22 @@
 }
 
 
+- (IBAction)sendToAFriendAction:(id)sender {
+    
+    self.sendToFrandActionSheet = [[UIActionSheet alloc] initWithTitle: nil
+                                                       delegate: self
+                                              cancelButtonTitle: @"Cancel"
+                                         destructiveButtonTitle: nil
+                                              otherButtonTitles: @"Share on Facebook", @"Share on Twitter", @"  Send an email", @"Send a text message", nil];
+    
+    
+    [self.sendToFrandActionSheet showInView:self.view];
+  
+    
+    
+}
+
+
 #pragma mark - 
 #pragma mark FeedScreenCollectionViewCellDelegate
 
@@ -587,6 +593,209 @@
                                       }];
     
 }
+
+
+
+#pragma mark -Action Sheet
+
+- (void) actionSheet: (UIActionSheet*) actionSheet clickedButtonAtIndex: (NSInteger) buttonIndex
+{
+    
+    if([actionSheet isEqual:self.editActionSheet])
+    {
+            if(buttonIndex == 1) return;
+            
+            if([[AppEngine shared].user.id isEqualToString:self.item.user.id])
+            {
+                
+                SellAnItemViewController* vc = [[SellAnItemViewController alloc]initWithItem:self.item];
+                [self.navigationController pushViewController:vc animated:NO];
+                
+            } else {
+                
+                
+                
+            }
+    }
+    
+    else if ([actionSheet isEqual:self.sendToFrandActionSheet])
+        
+    {
+        NSLog(@"%d", buttonIndex);
+        switch (buttonIndex) {
+            case 0:
+                 //Share on Facebook
+                
+                [self shareOnSocialWithNameNet:SLServiceTypeFacebook];
+                break;
+            case 1:
+                //Share on Twitter
+                
+                [self shareOnSocialWithNameNet:SLServiceTypeTwitter];
+                break;
+            case 2:
+                // Send an email
+                
+                [self shareOnEmail];
+                break;
+            case 3:
+                //Send a text message
+                
+                [self shareOnMessage];
+                
+                break;
+                
+            default:
+                break;
+        }
+        
+        
+    }
+
+}
+
+#pragma mark -
+#pragma mark Share
+
+-(void)shareOnSocialWithNameNet:(NSString*)socialNetName
+{
+   
+    
+    if([SLComposeViewController isAvailableForServiceType:socialNetName]) //check if Facebook Account is linked
+    {
+        _mySLComposerSheet = [[SLComposeViewController alloc] init]; //initiate the Social Controller
+        _mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:socialNetName]; //Tell him with what social plattform to use it, e.g. facebook or twitter
+        
+        NSString *postText = [NSString stringWithFormat:@"%@ for sale on Hawkist.com. Only £%@",self.item.title, self.item.retail_price];
+        
+        
+        [_mySLComposerSheet setInitialText:postText]; //the message you want to post
+        
+        UIImage *image = self.bigImage.image;
+        
+        [_mySLComposerSheet addImage:image];
+     
+        [self presentViewController:_mySLComposerSheet animated:YES completion:nil];
+    }
+    
+    else{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Sign in!" message:@"Please first Sign In!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
+    [_mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
+        NSString *output;
+        switch (result) {
+            case SLComposeViewControllerResultCancelled:
+                output = @"Action Cancelled";
+                break;
+            case SLComposeViewControllerResultDone:
+                output = @"Post Successfull";
+                break;
+            default:
+                break;
+        } //check if everything worked properly. Give out a message on the state.
+        
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    }];
+    
+}
+
+
+
+
+-(void) shareOnEmail
+{
+        
+    if([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *mailCont = [[MFMailComposeViewController alloc] init];
+        mailCont.mailComposeDelegate = self;
+       // [mailCont setSubject:@"Your email"];
+        
+        NSString *messageText = [NSString stringWithFormat:
+                                 @"Hey, I found this %@ for sale on Hawkist.com. Thought you might be interested as it’s only £%@",self.item.title, self.item.retail_price];
+        
+        [mailCont setMessageBody:messageText isHTML:NO];
+        
+        UIImage *image = self.bigImage.image;
+        NSData *data =  UIImageJPEGRepresentation (image, 1.0);
+        
+        [mailCont addAttachmentData:data
+                          mimeType: @"image/jpeg"
+                           fileName:self.item.title];
+        
+        [self presentViewController:mailCont animated:YES completion:nil];
+        
+    
+    }
+    
+}
+
+#pragma mark -
+#pragma mark MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    //handle any error
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Result: canceled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Result: saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Result: sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Result: failed");
+            break;
+        default:
+            NSLog(@"Result: not sent");
+            break;
+    }
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+-(void) shareOnMessage
+{
+    
+if(![MFMessageComposeViewController canSendText]) {
+    UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [warningAlert show];
+    return;
+}
+    
+    NSString *message = [NSString stringWithFormat:@"%@ for sale on Hawkist.com. Only £%@", self.item.title, self.item.retail_price];
+    
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    messageController.messageComposeDelegate = self;
+    [messageController setBody:message];
+    
+    // Present message view controller on screen
+    [self presentViewController:messageController animated:YES completion:nil];
+    
+    
+}
+    
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    [controller dismissModalViewControllerAnimated:YES];
+    
+    if (result == MessageComposeResultCancelled)
+        NSLog(@"Message cancelled");
+        else if (result == MessageComposeResultSent)
+            NSLog(@"Message sent");
+            else
+                NSLog(@"Message failed");
+                
+}
+
+
 
 @end
 

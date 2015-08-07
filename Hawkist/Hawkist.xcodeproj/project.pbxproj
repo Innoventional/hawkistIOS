@@ -75,7 +75,6 @@
 		7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE778C71B3D51E600856A36 /* Icon-60@2x.png */; };
 		7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE778C81B3D51E600856A36 /* Icon-60@3x.png */; };
 		7CF0F9821B455DB30041F58F /* ViewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0F9801B455DB30041F58F /* ViewItemViewController.m */; };
-		7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CF0F9811B455DB30041F58F /* ViewItemViewController.xib */; };
 		7CF22CA41B4FCE18002CF7ED /* open-sans.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CF22CA31B4FCE18002CF7ED /* open-sans.bold.ttf */; };
 		80E1CD0A02CE700CA374803C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D8ABABE09C6B8E36C39881 /* libPods.a */; };
 		C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C35A4C191B2F2DF7002E1F26 /* main.m */; };
@@ -137,6 +136,7 @@
 		CE7876521B60F3FF00A3970D /* HWOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7876511B60F3FF00A3970D /* HWOffer.m */; };
 		CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8721F11B553684003C47E5 /* HWProfileViewController.m */; };
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
+		CE954C611B74B4DB0063A719 /* ViewItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */; };
 		CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */; };
 		CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */; };
 		CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAF991B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m */; };
@@ -269,7 +269,6 @@
 		7CE778C81B3D51E600856A36 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
 		7CF0F97F1B455DB30041F58F /* ViewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewItemViewController.h; sourceTree = "<group>"; };
 		7CF0F9801B455DB30041F58F /* ViewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewItemViewController.m; sourceTree = "<group>"; };
-		7CF0F9811B455DB30041F58F /* ViewItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewItemViewController.xib; sourceTree = "<group>"; };
 		7CF22CA31B4FCE18002CF7ED /* open-sans.bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "open-sans.bold.ttf"; sourceTree = "<group>"; };
 		80D8ABABE09C6B8E36C39881 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35A4C141B2F2DF7002E1F26 /* Hawkist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hawkist.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +377,7 @@
 		CE8721F01B553684003C47E5 /* HWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWProfileViewController.h; path = ProfileScreen/HWProfileViewController.h; sourceTree = "<group>"; };
 		CE8721F11B553684003C47E5 /* HWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWProfileViewController.m; path = ProfileScreen/HWProfileViewController.m; sourceTree = "<group>"; };
 		CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWProfileViewController.xib; path = ProfileScreen/HWProfileViewController.xib; sourceTree = "<group>"; };
+		CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewItemViewController.xib; sourceTree = "<group>"; };
 		CEA725621B57ED590086F657 /* HWFollowInProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFollowInProfileCell.h; path = ProfileScreen/HWFollowInProfileCell.h; sourceTree = "<group>"; };
 		CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFollowInProfileCell.m; path = ProfileScreen/HWFollowInProfileCell.m; sourceTree = "<group>"; };
 		CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFollowInProfileCell.xib; path = ProfileScreen/HWFollowInProfileCell.xib; sourceTree = "<group>"; };
@@ -677,7 +677,7 @@
 				7CE1D15D1B4D353100CC92D3 /* star */,
 				7CF0F97F1B455DB30041F58F /* ViewItemViewController.h */,
 				7CF0F9801B455DB30041F58F /* ViewItemViewController.m */,
-				7CF0F9811B455DB30041F58F /* ViewItemViewController.xib */,
+				CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */,
 				7CDBCE931B4BF63B00CDA5FD /* smile.png */,
 				7CDBCE8F1B4BF39200CDA5FD /* mot2.png */,
 				7CDBCE901B4BF39200CDA5FD /* mot3.png */,
@@ -1196,6 +1196,7 @@
 				7C735D411B3893B000295472 /* CustomizationViewController.xib in Resources */,
 				CEBAAFAF1B6DF5A600AFE4C6 /* HWAddressOptionCell.xib in Resources */,
 				CE70EDD71B6BD54B005664FA /* HWAccountMenuCell.xib in Resources */,
+				CE954C611B74B4DB0063A719 /* ViewItemViewController.xib in Resources */,
 				3A0BAF6C1B53FAA6004DFF86 /* myItemCell.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
 				7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */,
@@ -1210,7 +1211,6 @@
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
 				CE2579FE1B73AFD000A0DEE9 /* HWMyOrdersView.xib in Resources */,
 				CEBAAFB61B6E116200AFE4C6 /* HWPaymentCell.xib in Resources */,
-				7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */,
 				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
 				3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */,
 				3AF832401B7190FB00CC750D /* SettingView.xib in Resources */,

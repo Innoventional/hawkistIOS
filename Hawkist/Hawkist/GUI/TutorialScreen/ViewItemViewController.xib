@@ -518,6 +518,9 @@
                                     <items>
                                         <barButtonItem systemItem="action" id="TZh-WD-7PW">
                                             <color key="tintColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="sendToAFriendAction:" destination="-1" id="DMf-Bu-ZLW"/>
+                                            </connections>
                                         </barButtonItem>
                                     </items>
                                     <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -702,7 +705,7 @@
                                     <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Red/Black" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fo-eF-aMI">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" ambiguous="YES" misplaced="YES" text="Red/Black" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fo-eF-aMI">
                                     <rect key="frame" x="158" y="99" width="80" height="16"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
@@ -763,11 +766,11 @@
                                         </mask>
                                     </variation>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDo-ZY-6me">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDo-ZY-6me">
                                     <rect key="frame" x="158" y="150" width="26" height="19"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="26" id="3ab-7Z-T3f"/>
-                                        <constraint firstAttribute="height" constant="19" id="p6g-em-E9n"/>
+                                        <constraint firstAttribute="height" constant="19" id="FKU-6d-VLE"/>
+                                        <constraint firstAttribute="width" constant="26" id="RJq-Ib-oHA"/>
                                     </constraints>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -782,6 +785,7 @@
                                 <constraint firstItem="ga2-3T-vnT" firstAttribute="top" secondItem="e0W-59-Pim" secondAttribute="bottom" constant="1" id="1lH-rN-Gdd"/>
                                 <constraint firstItem="gSa-86-U0O" firstAttribute="leading" secondItem="2Fo-eF-aMI" secondAttribute="leading" constant="-15" id="1wX-AI-AaW"/>
                                 <constraint firstItem="RpC-Hs-FoM" firstAttribute="leading" secondItem="RZb-gx-bJD" secondAttribute="leading" id="1yG-OR-bvM"/>
+                                <constraint firstItem="MDo-ZY-6me" firstAttribute="top" secondItem="c5T-eQ-yef" secondAttribute="top" constant="150" id="2Po-LW-gn8"/>
                                 <constraint firstItem="Jkl-TP-E6E" firstAttribute="leading" secondItem="BzK-lv-3dw" secondAttribute="leading" id="2dB-Gd-JME"/>
                                 <constraint firstItem="6N1-LV-Tz2" firstAttribute="top" secondItem="RpC-Hs-FoM" secondAttribute="top" id="30H-Dw-Xke"/>
                                 <constraint firstItem="gSa-86-U0O" firstAttribute="centerY" secondItem="6AF-2b-d9S" secondAttribute="centerY" id="3YU-RU-qZP"/>
@@ -832,10 +836,9 @@
                                 <constraint firstItem="RZb-gx-bJD" firstAttribute="leading" secondItem="c5T-eQ-yef" secondAttribute="leading" constant="158" id="c4T-np-RbO"/>
                                 <constraint firstAttribute="bottom" secondItem="RpC-Hs-FoM" secondAttribute="bottom" constant="12" id="c6f-Br-LKJ"/>
                                 <constraint firstItem="yDR-zn-qW5" firstAttribute="leading" secondItem="tHq-0k-NUk" secondAttribute="leading" id="caE-D4-J2T"/>
-                                <constraint firstItem="MDo-ZY-6me" firstAttribute="top" secondItem="YEq-Si-eHU" secondAttribute="bottom" constant="1" id="chJ-94-6OA"/>
                                 <constraint firstItem="RpC-Hs-FoM" firstAttribute="centerY" secondItem="yDR-zn-qW5" secondAttribute="centerY" id="ddE-E0-ASe"/>
-                                <constraint firstItem="MDo-ZY-6me" firstAttribute="leading" secondItem="yDR-zn-qW5" secondAttribute="trailing" constant="79" id="eBd-R4-jyl"/>
                                 <constraint firstItem="6N1-LV-Tz2" firstAttribute="centerY" secondItem="RpC-Hs-FoM" secondAttribute="centerY" id="eWs-CY-Lwr"/>
+                                <constraint firstItem="MDo-ZY-6me" firstAttribute="leading" secondItem="c5T-eQ-yef" secondAttribute="leading" constant="158" id="f2L-dI-FVE"/>
                                 <constraint firstItem="ga2-3T-vnT" firstAttribute="trailing" secondItem="e0W-59-Pim" secondAttribute="trailing" id="faa-uA-IMX"/>
                                 <constraint firstItem="gSa-86-U0O" firstAttribute="leading" secondItem="2Fo-eF-aMI" secondAttribute="leading" id="fnw-qU-Amm"/>
                                 <constraint firstAttribute="centerX" secondItem="RZb-gx-bJD" secondAttribute="leading" constant="2" id="fxb-xY-xJq"/>
@@ -853,6 +856,7 @@
                                 <constraint firstItem="e0W-59-Pim" firstAttribute="trailing" secondItem="Zw4-MU-xCf" secondAttribute="trailing" id="qAL-Fn-dKQ"/>
                                 <constraint firstItem="6N1-LV-Tz2" firstAttribute="leading" secondItem="RpC-Hs-FoM" secondAttribute="leading" id="rTc-lV-PTE"/>
                                 <constraint firstItem="RpC-Hs-FoM" firstAttribute="top" secondItem="yDR-zn-qW5" secondAttribute="top" id="sGl-gL-l2C"/>
+                                <constraint firstAttribute="trailing" secondItem="MDo-ZY-6me" secondAttribute="trailing" constant="136" id="udN-cD-Yv7"/>
                                 <constraint firstItem="e0W-59-Pim" firstAttribute="leading" secondItem="Zw4-MU-xCf" secondAttribute="leading" id="wTd-9z-PHn"/>
                                 <constraint firstAttribute="trailing" secondItem="ryb-mr-4Id" secondAttribute="trailing" constant="114" id="wyr-t6-aZP"/>
                                 <constraint firstItem="S4K-ob-xvg" firstAttribute="leading" secondItem="c5T-eQ-yef" secondAttribute="leading" constant="12" id="x7s-OH-LTq"/>

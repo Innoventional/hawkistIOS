@@ -8,6 +8,7 @@
 
 #import "HWMyOrdersViewController.h"
 #import "HWitemForOrdersCell.h"
+#import "ViewItemViewController.h"
 
 @interface HWMyOrdersViewController () <HWitemForOrdersCellDelegate, NavigationViewDelegate>
 
@@ -15,6 +16,10 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
+
+@property (nonatomic, strong) NSArray *itemsArray;
 
 @end
 
@@ -75,7 +80,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+//    ViewItemViewController *vc = [[ViewItemViewController alloc]initWithItem:[self.itemsArray objectAtIndex:indexPath.row]];
+//    [self.navigationController pushViewController:vc animated:YES];
     
     
 }
@@ -145,5 +151,14 @@
     
 }
 
+#pragma mark - 
+#pragma mark UITextFieldDelegate
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 
 @end
