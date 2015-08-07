@@ -133,23 +133,33 @@
         
         NSString* text = @"Additional tags can be found in your profile";
         
-        UIFont* font = [UIFont fontWithName:@"OpenSans" size:14.0f];
+        UIFont* font = [UIFont fontWithName:@"OpenSans" size:12.0f];
         
-        CGSize descriptionSize = [text sizeWithFont: font                                             constrainedToSize: CGSizeMake(self.width, CGFLOAT_MAX)
-                                                 lineBreakMode: NSLineBreakByWordWrapping];
+//        CGRect r = [text boundingRectWithSize:CGSizeMake(self.width, 0)
+//                           options:NSStringDrawingUsesLineFragmentOrigin
+//                        attributes:@{NSFontAttributeName:font}
+//                           context:nil];
+        
+        UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.width, 40)];
+        
+        NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
+        paragraphStyle.alignment                = NSTextAlignmentCenter;
+
         
         
-       
-        UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake((self.width - descriptionSize.width)/2, self.startPositionY, descriptionSize.width, descriptionSize.height)];
-        
-        
-        
-        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle),NSForegroundColorAttributeName: [UIColor color256RGBWithRed: 82 green: 166 blue: 144],NSFontAttributeName:font
+        NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName:      @(NSUnderlineStyleSingle),
+                                             
+                            NSForegroundColorAttributeName: [UIColor color256RGBWithRed: 82 green: 166 blue: 144],
+                            NSFontAttributeName:font,
+                            NSParagraphStyleAttributeName:paragraphStyle
+                                             
 };
 
         
         label.attributedText = [[NSAttributedString alloc] initWithString:text                                                            attributes:underlineAttribute];
-
+        
+        
+        
         label.userInteractionEnabled = YES;
         UITapGestureRecognizer *tapGesture =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goToPersonalisation)];

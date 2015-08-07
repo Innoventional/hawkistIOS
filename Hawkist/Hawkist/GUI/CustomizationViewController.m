@@ -61,6 +61,8 @@
     
     [self setScrollView];
     
+    
+    
     for (NSInteger i = 0; i < [self.avaliableTags count]; i++)
     {
         UIView* slide = [self setCellScrollView:i];
@@ -153,6 +155,10 @@
     [slide addSubview: description];
     [slide addSubview:frontImage];
     
+    //frontImage.layer.cornerRadius = 5.0f;
+    
+    //frontImage.clipsToBounds = YES;
+    
     return slide;
 }
 
@@ -168,6 +174,8 @@
     [slide setBackgroundColor:[UIColor whiteColor]];
     
     slide.layer.cornerRadius = 5.0f;
+    slide.clipsToBounds = YES;
+    
     return slide;
 }
 

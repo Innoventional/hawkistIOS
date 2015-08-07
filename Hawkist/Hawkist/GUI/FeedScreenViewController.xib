@@ -133,6 +133,7 @@
                             </variation>
                         </view>
                     </subviews>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="5QT-zT-QBm" secondAttribute="width" id="1z2-gK-RY1"/>
                         <constraint firstItem="MMW-Mf-Znq" firstAttribute="top" secondItem="5QT-zT-QBm" secondAttribute="bottom" id="29J-zo-avI"/>
@@ -169,6 +170,9 @@
                             <exclude reference="wfi-3r-oxC"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="pYf-Ne-hH7" appends="YES" id="U6e-Ec-V6G"/>
+                    </connections>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -186,6 +190,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="157.5" y="710.5"/>
         </view>
+        <tapGestureRecognizer id="pYf-Ne-hH7">
+            <connections>
+                <action selector="tapToScrollView:" destination="-1" id="5v2-nV-WgX"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="searchLupa" width="14" height="13"/>
