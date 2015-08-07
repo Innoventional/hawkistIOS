@@ -104,9 +104,6 @@
                                             <exclude reference="L7b-Ob-edT"/>
                                         </mask>
                                     </variation>
-                                    <connections>
-                                        <outletCollection property="gestureRecognizers" destination="ffc-t6-r2G" appends="YES" id="AYJ-yL-fdn"/>
-                                    </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8O-II-HiO" customClass="CustomField">
                                     <rect key="frame" x="14" y="120" width="186" height="46"/>
@@ -151,6 +148,15 @@
                                             <color key="textColor" red="0.45490196078431372" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qf1-F6-nML">
+                                            <rect key="frame" x="247" y="-7" width="46" height="30"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="test:" destination="-1" eventType="touchUpInside" id="lN1-CC-nGM"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -171,7 +177,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEM-wY-PnP" customClass="CustomField">
-                                    <rect key="frame" x="165" y="45" width="147" height="53"/>
+                                    <rect key="frame" x="175" y="45" width="137" height="53"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="53" id="IVP-dG-2zk"/>
@@ -262,7 +268,7 @@
                                 <constraint firstItem="mPe-om-oIY" firstAttribute="trailing" secondItem="kEM-wY-PnP" secondAttribute="trailing" id="r15-cn-Ijx"/>
                                 <constraint firstItem="33S-Vs-Dof" firstAttribute="top" secondItem="Jzd-0m-PIg" secondAttribute="bottom" constant="26" id="rPo-fK-1Tz"/>
                                 <constraint firstItem="mPe-om-oIY" firstAttribute="trailing" secondItem="33S-Vs-Dof" secondAttribute="trailing" id="rem-Nn-90a"/>
-                                <constraint firstAttribute="centerX" secondItem="kEM-wY-PnP" secondAttribute="leading" constant="-5" id="snS-0W-L2s"/>
+                                <constraint firstAttribute="centerX" secondItem="kEM-wY-PnP" secondAttribute="leading" constant="-15" id="snS-0W-L2s"/>
                                 <constraint firstItem="kEM-wY-PnP" firstAttribute="top" secondItem="gqk-m1-E7M" secondAttribute="bottom" constant="15" id="u44-rn-tpS"/>
                                 <constraint firstAttribute="trailing" secondItem="kEM-wY-PnP" secondAttribute="trailing" constant="8" id="ydG-Yk-uQF"/>
                                 <constraint firstItem="Psk-Cw-Y0P" firstAttribute="top" secondItem="gqk-m1-E7M" secondAttribute="bottom" constant="15" id="zj5-v1-CVO"/>
@@ -323,11 +329,6 @@
             </variation>
             <point key="canvasLocation" x="281" y="504.5"/>
         </view>
-        <tapGestureRecognizer id="ffc-t6-r2G">
-            <connections>
-                <action selector="dateModify:" destination="-1" id="gev-Y2-m5y"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="acdet_but" width="320" height="60"/>

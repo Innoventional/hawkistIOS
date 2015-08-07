@@ -9,9 +9,10 @@
 #import "ManageBankViewController.h"
 #import "UIView+Extensions.h"
 #import "AddCardViewController.h"
+#import "CardIO.h"
 
 @interface ManageBankViewController ()
-
+@property (nonatomic,strong) CardIOPaymentViewController* cardIO;
 @property (nonatomic,strong)NSArray* cards;
 @end
 
@@ -29,6 +30,8 @@
 
 - (void) viewDidLoad
 {
+    
+    
     self.navigation.delegate = self;
     self.navigation.title.text = @"My Bank Cards";
      self.contentHeight.constant = self.view.height - 95;
@@ -113,6 +116,7 @@
          [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
 }
+
 
 - (void)editCard:(HWCard *)card
 {
