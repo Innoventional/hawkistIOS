@@ -22,6 +22,9 @@
     }
     return self;
 }
+- (IBAction)selectCell:(id)sender {
+    [self.inputField becomeFirstResponder];
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
