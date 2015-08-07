@@ -113,6 +113,10 @@
 		C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB4B51B4FF04900956150 /* HWItem+Extensions.m */; };
 		C35CB5431B6F5D5E00956150 /* StripeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CB5421B6F5D5E00956150 /* StripeManager.m */; };
 		CE2579F01B73427500A0DEE9 /* cardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579EE1B7339A800A0DEE9 /* cardView.xib */; };
+		CE2579F41B73A93800A0DEE9 /* HWMyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */; };
+		CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579F81B73AA1900A0DEE9 /* HWitemForOrdersCell.xib */; };
+		CE2579FC1B73AB0100A0DEE9 /* HWitemForOrdersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2579FB1B73AB0100A0DEE9 /* HWitemForOrdersCell.m */; };
+		CE2579FE1B73AFD000A0DEE9 /* HWMyOrdersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579FD1B73AFD000A0DEE9 /* HWMyOrdersView.xib */; };
 		CE39C88C1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.m in Sources */ = {isa = PBXBuildFile; fileRef = CE39C88B1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.m */; };
 		CE5909461B5ABBD700DAA7FF /* HWFollowUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5909451B5ABBD700DAA7FF /* HWFollowUser.m */; };
 		CE59094A1B5E9CD700DAA7FF /* HWCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5909491B5E9CD700DAA7FF /* HWCommentViewController.m */; };
@@ -334,6 +338,12 @@
 		C35CB5411B6F5D5E00956150 /* StripeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeManager.h; sourceTree = "<group>"; };
 		C35CB5421B6F5D5E00956150 /* StripeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeManager.m; sourceTree = "<group>"; };
 		CE2579EE1B7339A800A0DEE9 /* cardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = cardView.xib; path = manageBank/cardView.xib; sourceTree = "<group>"; };
+		CE2579F21B73A93800A0DEE9 /* HWMyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMyOrdersViewController.h; path = MyOrdersScreen/HWMyOrdersViewController.h; sourceTree = "<group>"; };
+		CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWMyOrdersViewController.m; path = MyOrdersScreen/HWMyOrdersViewController.m; sourceTree = "<group>"; };
+		CE2579F81B73AA1900A0DEE9 /* HWitemForOrdersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWitemForOrdersCell.xib; path = MyOrdersScreen/HWitemForOrdersCell.xib; sourceTree = "<group>"; };
+		CE2579FA1B73AB0100A0DEE9 /* HWitemForOrdersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWitemForOrdersCell.h; path = MyOrdersScreen/HWitemForOrdersCell.h; sourceTree = "<group>"; };
+		CE2579FB1B73AB0100A0DEE9 /* HWitemForOrdersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWitemForOrdersCell.m; path = MyOrdersScreen/HWitemForOrdersCell.m; sourceTree = "<group>"; };
+		CE2579FD1B73AFD000A0DEE9 /* HWMyOrdersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWMyOrdersView.xib; path = MyOrdersScreen/HWMyOrdersView.xib; sourceTree = "<group>"; };
 		CE39C88A1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextViewWithDetectedWord.h; path = textViewHelper/TextViewWithDetectedWord.h; sourceTree = "<group>"; };
 		CE39C88B1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextViewWithDetectedWord.m; path = textViewHelper/TextViewWithDetectedWord.m; sourceTree = "<group>"; };
 		CE5909441B5ABBD700DAA7FF /* HWFollowUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWFollowUser.h; sourceTree = "<group>"; };
@@ -798,6 +808,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				CE2579F11B73A74D00A0DEE9 /* My Orders Screen */,
 				3A69014F1B72DE9000B618B8 /* Personalisation */,
 				3AF8323E1B7190C800CC750D /* SettingScreen */,
 				3AF831F21B6F649500CC750D /* AddCard */,
@@ -918,6 +929,19 @@
 				C35CB5421B6F5D5E00956150 /* StripeManager.m */,
 			);
 			path = StripeManager;
+			sourceTree = "<group>";
+		};
+		CE2579F11B73A74D00A0DEE9 /* My Orders Screen */ = {
+			isa = PBXGroup;
+			children = (
+				CE2579F21B73A93800A0DEE9 /* HWMyOrdersViewController.h */,
+				CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */,
+				CE2579FD1B73AFD000A0DEE9 /* HWMyOrdersView.xib */,
+				CE2579FA1B73AB0100A0DEE9 /* HWitemForOrdersCell.h */,
+				CE2579FB1B73AB0100A0DEE9 /* HWitemForOrdersCell.m */,
+				CE2579F81B73AA1900A0DEE9 /* HWitemForOrdersCell.xib */,
+			);
+			name = "My Orders Screen";
 			sourceTree = "<group>";
 		};
 		CE39C8891B68FA8000B8A2D2 /* textViewHelper */ = {
@@ -1145,6 +1169,7 @@
 				CEBAAFB11B6DF5CC00AFE4C6 /* HWPaymentView.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */,
+				CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
 				3A2AE3CA1B6111A000806D59 /* AddTagsView.xib in Resources */,
 				CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */,
@@ -1183,6 +1208,7 @@
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				3A6901511B72DEBF00B618B8 /* PersonalisationView.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
+				CE2579FE1B73AFD000A0DEE9 /* HWMyOrdersView.xib in Resources */,
 				CEBAAFB61B6E116200AFE4C6 /* HWPaymentCell.xib in Resources */,
 				7CF0F9831B455DB30041F58F /* ViewItemViewController.xib in Resources */,
 				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
@@ -1283,6 +1309,7 @@
 				CE59095F1B5FE54400DAA7FF /* NSDate+NVTimeAgo.m in Sources */,
 				CEBAAFAD1B6DF57F00AFE4C6 /* HWAddressOptionCell.m in Sources */,
 				CE5909461B5ABBD700DAA7FF /* HWFollowUser.m in Sources */,
+				CE2579FC1B73AB0100A0DEE9 /* HWitemForOrdersCell.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				3AF831FC1B6F6E7D00CC750D /* CustomField.m in Sources */,
 				C35CB4B31B4EA7E200956150 /* HWTapBarView.m in Sources */,
@@ -1308,6 +1335,7 @@
 				3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */,
 				CEBAAFBC1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m in Sources */,
 				3A968E2B1B4AD92B005AA347 /* ChoiceCellView.m in Sources */,
+				CE2579F41B73A93800A0DEE9 /* HWMyOrdersViewController.m in Sources */,
 				C35A4C4D1B3032B1002E1F26 /* NetworkManager.m in Sources */,
 				7C735D401B3893B000295472 /* CustomizationViewController.m in Sources */,
 				C35A4C981B39DDFF002E1F26 /* UIPlaceholderTextView.m in Sources */,

@@ -96,6 +96,8 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     self.isInternetConnectionAlertShowed = NO;
+    [self scrollToBotton];
+    [self scrollToBotton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -117,9 +119,13 @@
                                              selector:@selector(contentSizeCategoryChanged:)
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
+    
+    
+    
 
     
 }
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -245,6 +251,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  
+    HWMention *mention = [self.mentionsArray objectAtIndex:indexPath.row];
+    NSString *nameWithSpace = [NSString stringWithFormat:@"%@ ",mention.username];
+    
+    if((self.inputCommentView.textView.text.length + nameWithSpace.length) > 160)
+    {
+        // max comment 160 character  
+        self.isCommentsArray = YES;
+        [self scrollToBotton ];
+        return;
+    }
+    
+    [self insertString:nameWithSpace intoTextView:self.inputCommentView.textView ];
+    
+     
     
     if(!self.isCommentsArray)
     {
@@ -253,6 +274,41 @@
     
   
 }
+
+- (void) insertString: (NSString *) insertingString intoTextView: (UITextView *) textView
+{
+    
+     NSRange range = textView.selectedRange;
+     NSString *string = [textView.text substringToIndex:range.location];
+    
+    
+     NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"@"];
+    
+     NSArray *array = [string componentsSeparatedByCharactersInSet:charSet];
+     NSString *lastWord = array.lastObject;
+    
+   
+    NSRange replaceRange = NSMakeRange(range.location - lastWord.length, lastWord.length);
+    
+    if (replaceRange.location != NSNotFound){
+        NSString* result = [textView.text stringByReplacingCharactersInRange:replaceRange withString:insertingString];
+        
+        textView.text = result;
+        
+        range.location += [insertingString length];
+        textView.selectedRange = range;
+        textView.scrollEnabled = YES;
+        
+        
+    }
+
+    self.isCommentsArray = YES;
+    [self scrollToBotton ];
+    
+}
+
+
+
 
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
@@ -333,9 +389,7 @@
     [self.inputCommentView.textView resignFirstResponder];
     NSLog(@"%@", text);
     
-    NSString *textViewString = self.inputCommentView.textView.text;
-    
-    [self.inputCommentView.textView setText:[NSString stringWithFormat:@"%@%@", textViewString,text]];
+   
 }
 
 
@@ -428,7 +482,6 @@
                                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                            }];
          
-            
                         break;
         }
         default:
@@ -506,14 +559,12 @@
        NSInteger permissibleLenght = 160;
        NSUInteger newLength = [textView.text length] + [text length] - range.length;
    
-    
         return (newLength > permissibleLenght) ? NO : YES;
   
  }
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    
     if ([textView.text isEqualToString:@""])
     {
         self.inputCommentView.pressButton.enabled = NO;
@@ -525,9 +576,14 @@
     }
     if([textView.text isEqualToString:@""]) return;
     NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    NSArray *arraySubstring = [textView.text componentsSeparatedByCharactersInSet:charSet];
+    
+    NSString *tempString = [textView.text substringToIndex:textView.selectedRange.location];
+    NSLog(@"%@",tempString);
+    
+    NSArray *arraySubstring = [tempString componentsSeparatedByCharactersInSet:charSet];
     
     NSString *str = arraySubstring.lastObject;
+    NSLog(@"%@",str);
     if ([str isEqualToString:@""]) return;
     
     if ([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"@"])
@@ -541,10 +597,7 @@
         self.isCommentsArray = YES;
         [self scrollToBotton];
     }
-
-    
-    
-    
+ 
     
 }
 

@@ -267,9 +267,9 @@
     }
     
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
-        self.discount.text = @"1%";
+        self.discount.text = @"-1%";
     } else {
-        self.discount.text = [NSString stringWithFormat:@"%@%%",self.item.discount];
+        self.discount.text = [NSString stringWithFormat:@"-%@%%",self.item.discount];
     }
     [self.imagesArray removeAllObjects];
     

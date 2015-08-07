@@ -184,24 +184,26 @@
 - (void) stringWithTapWord:(NSString*)text
 {
     
-    if(self.delegate && [self.delegate respondsToSelector:@selector(stringWithTapWord:)])
+    for(NSDictionary *dict in self.mentionsArray)
     {
-        for(NSDictionary *dict in self.mentionsArray)
+        HWMention *mention = [[HWMention alloc] initWithDictionary:dict error:nil];
+        
+        NSString *userName = [NSString stringWithFormat:@"@%@",mention.username];
+        if ([userName isEqualToString:text])
         {
-            HWMention *mention = [[HWMention alloc] initWithDictionary:dict error:nil];
-            
-            NSString *userName = [NSString stringWithFormat:@"@%@",mention.username];
-            if ([userName isEqualToString:text])
-            {
-                if (self.delegate && [self.delegate respondsToSelector:@selector(transitionToProfileWithUserId:)]) {
-                    
-                    [self.delegate transitionToProfileWithUserId:mention.id];
-                    break;
-                }
+            if (self.delegate && [self.delegate respondsToSelector:@selector(transitionToProfileWithUserId:)]) {
+                
+                [self.delegate transitionToProfileWithUserId:mention.id];
+                break;
             }
         }
+    }
+
+    
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(stringWithTapWord:)])
+    {
         
-        NSLog(@"%@",text);
         [self.delegate stringWithTapWord:text];
     }
     

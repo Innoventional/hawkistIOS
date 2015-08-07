@@ -15,7 +15,7 @@
 #import "ManageBankViewController.h"
 #import "SettingsViewController.h"
 
-#import "HWProfileViewController.h"
+#import "HWMyOrdersViewController.h"
 
 
 @interface HWTapBarViewController () <HWTapBarViewDelegate>
@@ -95,6 +95,8 @@
         }
         case 3:
         {
+            HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
             
             break;
         }

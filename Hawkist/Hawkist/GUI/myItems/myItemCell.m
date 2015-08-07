@@ -36,11 +36,13 @@
     self = [super awakeAfterUsingCoder:aDecoder];
     if (self)
     {
-        [self layoutIfNeeded];
-        self.mytrash = [[UIButton alloc]initWithFrame:CGRectMake(self.width-6, 12, 21 , 21)];
-        self.mytrash.backgroundColor = [UIColor greenColor];
-        [self.mytrash addTarget:self action:@selector(moveToTrash) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.mytrash];
+         
+        
+        
+//        self.mytrash = [[UIButton alloc]initWithFrame:CGRectMake(self.width-6, 12, 21 , 21)];
+//        self.mytrash.backgroundColor = [UIColor greenColor];
+//        [self.mytrash addTarget:self action:@selector(moveToTrash) forControlEvents:UIControlEventTouchUpInside];
+//        [self addSubview:self.mytrash];
         
         
       
@@ -52,7 +54,7 @@
 
 
 
-- (void) moveToTrash
+- (IBAction) moveToTrash:(UIButton*)sender
 {
     
     UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Are you sure?" message:@"Please confirm that you wish to delete this listing." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];

@@ -24,9 +24,9 @@
 
 @interface myItemCell : UICollectionViewCell
 
-@property (nonatomic,strong)UIButton* mytrash;
+@property (nonatomic,strong) IBOutlet UIButton* mytrash;
 
-@property (nonatomic,strong) id <MyItemCellDelegate> delegate;
+@property (nonatomic, weak) id <MyItemCellDelegate> delegate;
 
 @property (nonatomic, strong) HWItem *item;
 
