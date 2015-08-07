@@ -13,6 +13,9 @@
 #import "MoneyField.h"
 #import "ChoiceTableViewController.h"
 
+
+#import "SZTextView.h"
+
 @interface SellAnItemViewController : HWBaseViewController <NavigationViewDelegate,UIActionSheetDelegate,UINavigationControllerDelegate, UIActionSheetDelegate,UIImagePickerControllerDelegate, UITextViewDelegate,CustomButtonDelegate,ChoiceTableViewDelegata,MoneyFieldDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet NavigationVIew *nav;
@@ -25,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *takePic3;
 
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionField;
+@property (weak, nonatomic) IBOutlet SZTextView *descriptionField;
 
 @property (weak, nonatomic) IBOutlet CustomButton *platform;
 @property (weak, nonatomic) IBOutlet CustomButton *category;

@@ -338,8 +338,8 @@
 //         color.userInteractionEnabled = NO;
 //         condition.userInteractionEnabled = NO;
     
-     descriptionField.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
-     self.isPlaceholderHidden = NO;
+     descriptionField.placeholder = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
+     //self.isPlaceholderHidden = NO;
     
     if(engine.postCode)
     {
@@ -350,18 +350,18 @@
     
 }
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
-{
-    
-    if (!self.isPlaceholderHidden)
-    {
-        descriptionField.textColor = self.textColor;
-        descriptionField.text =@"";
-
-        self.isPlaceholderHidden = YES;
-    }
-    return YES;
-}
+//- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+//{
+//    
+//    if (!self.isPlaceholderHidden)
+//    {
+//        descriptionField.textColor = self.textColor;
+//        descriptionField.text =@"";
+//
+//        self.isPlaceholderHidden = YES;
+//    }
+//    return YES;
+//}
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -380,7 +380,7 @@
     
     if (textField == postField && [textField.text isEqualToString:@""])
     {
-      //  self.sellButton.enabled = NO;
+        self.sellButton.enabled = NO;
     }
     return YES;
 }
@@ -398,7 +398,7 @@
         [netManager getCityByPostCode:textField.text successBlock:^(NSString *city) {
             [self hideHud];
             postLabel.text = city;
-           // self.sellButton.enabled = YES;
+           self.sellButton.enabled = YES;
             
             
         }
@@ -421,12 +421,12 @@
 
 - (void) textViewDidEndEditing: (UITextView*) textView
 {
-    if([textView.text isEqualToString: @""])
-    {
-        descriptionField.textColor = _placeHolderColor;
-        textView.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
-        self.isPlaceholderHidden = NO;
-    }
+//    if([textView.text isEqualToString: @""])
+//    {
+//        descriptionField.textColor = _placeHolderColor;
+//        textView.text = @"Example: Brand new in box PS3 for sale with two controllers and 3 games";
+//        self.isPlaceholderHidden = NO;
+//    }
     
 }
 
@@ -471,9 +471,10 @@
     HWItem* currentItem = [[HWItem alloc]init];
     
     currentItem.title = titleField.text;
+    
+    
     currentItem.item_description = descriptionField.text;
    
-    
     currentItem.platform = platform.Text.tag;
     currentItem.category = self.idCategory;
     

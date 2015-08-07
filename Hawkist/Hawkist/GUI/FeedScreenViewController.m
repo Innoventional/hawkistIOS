@@ -293,7 +293,22 @@
     [self.navigationController pushViewController:profileVC animated:YES];
 }
 
- 
+
+- (IBAction)tapToScrollView:(id)sender {
+    
+    self.searchString = self.searchField.text;
+    [[NetworkManager shared] getItemsWithPage: 1 searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+        self.currentPage = 1;
+        [self.items removeAllObjects];
+        [self.items addObjectsFromArray: arrayWithItems];
+        //[self.collectionView reloadData];
+        [self refresh];
+    } failureBlock:^(NSError *error) {
+        self.currentPage = 1;
+    }];
+    
+    [self.view endEditing: YES];
+}
 
 
 @end
