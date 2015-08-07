@@ -305,7 +305,21 @@
 - (void)cardIOView:(CardIOView *)cardIOView didScanCard:(CardIOCreditCardInfo *)info {
    
     self.cardNumber.inputField.text = info.cardNumber;
+    
+    NSMutableString *mu = [NSMutableString stringWithString:info.cardNumber];
+    [mu insertString:@" " atIndex:4];
+    [mu insertString:@" " atIndex:9];
+    [mu insertString:@" " atIndex:14];
 
+    self.cardNumber.inputField.text = mu;
+    
+    if (info.expiryMonth != 0)
+    {
+    
+    [self.datePicker settingDate:info.expiryMonth year:info.expiryYear];
+    [self didSelect];
+    
+    }
     [cardIOView removeFromSuperview];
 }
 

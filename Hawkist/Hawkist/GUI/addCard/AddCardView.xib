@@ -148,9 +148,9 @@
                                             <color key="textColor" red="0.45490196078431372" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qf1-F6-nML">
-                                            <rect key="frame" x="247" y="-7" width="46" height="30"/>
-                                            <state key="normal" title="Button">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qf1-F6-nML">
+                                            <rect key="frame" x="248" y="0.0" width="54" height="30"/>
+                                            <state key="normal" title="Camera">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -161,11 +161,14 @@
                                     <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="VbI-BB-moh" firstAttribute="leading" secondItem="gqk-m1-E7M" secondAttribute="leading" constant="13" id="4c3-Ki-f6f"/>
+                                        <constraint firstAttribute="trailing" secondItem="qf1-F6-nML" secondAttribute="trailing" constant="18" id="4eR-zm-79f"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="9CN-vX-NSv"/>
                                         <constraint firstAttribute="height" constant="30" id="9Il-Fn-8mu"/>
                                         <constraint firstAttribute="centerY" secondItem="VbI-BB-moh" secondAttribute="centerY" id="AML-Hf-PS5"/>
                                         <constraint firstItem="k04-K5-Yzb" firstAttribute="leading" secondItem="gqk-m1-E7M" secondAttribute="leading" id="Mzu-cn-WDu"/>
+                                        <constraint firstAttribute="centerY" secondItem="qf1-F6-nML" secondAttribute="centerY" id="YM4-d0-zzA"/>
                                         <constraint firstItem="k04-K5-Yzb" firstAttribute="top" secondItem="gqk-m1-E7M" secondAttribute="top" id="exN-Qi-afP"/>
+                                        <constraint firstAttribute="centerY" secondItem="VbI-BB-moh" secondAttribute="centerY" id="g0W-px-jUl"/>
                                         <constraint firstAttribute="trailing" secondItem="k04-K5-Yzb" secondAttribute="trailing" id="hdq-gV-coG"/>
                                     </constraints>
                                 </view>

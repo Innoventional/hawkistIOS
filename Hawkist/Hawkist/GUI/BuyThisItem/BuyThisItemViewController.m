@@ -72,6 +72,8 @@
         self.discount.text = [NSString stringWithFormat:@"%@%%",self.item.discount];
     }
 
+    self.discount.text = [NSString stringWithFormat:@"-%@",self.discount.text];
+    
     [self.bigImage setImageWithURL: [NSURL URLWithString: [self.item.photos firstObject]] placeholderImage: nil];
     
     NSString* buttonTitle =  [@"BUY £" stringByAppendingString: self.price.text];

@@ -80,8 +80,12 @@
         
     } failureBlock:^(NSError *error) {
         [self hideHud];
+        if (error.code != 2)
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        
+        else
+        {
+            
+        }
     }];
     
     
