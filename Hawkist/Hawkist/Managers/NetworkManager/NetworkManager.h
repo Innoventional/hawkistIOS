@@ -212,4 +212,16 @@
            successBlock:(void(^)(void)) successBlock
            failureBlock: (void (^)(NSError* error)) failureBlock;
 
+#pragma mark - 
+#pragma mark BuyItem
+
+-(void) buyItemWithCardId:(NSString*)cardId
+               withItemId:(NSString*)itemId
+             successBlock:(void(^)(void))successBlock
+             failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
+-(void)getAllOrderItemWithSuccessBlock:(void(^)(NSArray *array)) successBlock
+                          failureBlock:(void(^)(NSError *error)) failureBlock;
+
 @end

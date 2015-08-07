@@ -53,8 +53,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYj-47-K3n">
                                 <rect key="frame" x="114" y="19" width="21" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="21" id="Naa-tc-C69"/>
-                                    <constraint firstAttribute="height" constant="21" id="PJ9-UL-AHb"/>
+                                    <constraint firstAttribute="height" constant="21" id="jJf-a4-EJs"/>
+                                    <constraint firstAttribute="width" constant="21" id="yQO-t8-cAD"/>
                                 </constraints>
                                 <state key="normal" image="trash">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -71,10 +71,10 @@
                             <constraint firstItem="sEe-Qj-DCZ" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="FfJ-XN-X2k"/>
                             <constraint firstAttribute="trailing" secondItem="hYM-vX-ds8" secondAttribute="trailing" id="Fjg-bp-bGO"/>
                             <constraint firstItem="sEe-Qj-DCZ" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" constant="19" id="N00-WT-nXo"/>
-                            <constraint firstAttribute="trailing" secondItem="iYj-47-K3n" secondAttribute="trailing" constant="10" id="T0R-4M-UZt"/>
                             <constraint firstItem="hYM-vX-ds8" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" id="Y57-LT-Eac"/>
+                            <constraint firstItem="iYj-47-K3n" firstAttribute="top" secondItem="Fdb-aG-Vuq" secondAttribute="top" constant="-1" id="qTU-T6-LEm"/>
                             <constraint firstItem="Fdb-aG-Vuq" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" constant="20" id="riE-Eb-AVe"/>
-                            <constraint firstItem="iYj-47-K3n" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" constant="19" id="uRb-pG-VAW"/>
+                            <constraint firstAttribute="trailing" secondItem="iYj-47-K3n" secondAttribute="trailing" constant="10" id="tSX-mt-B9J"/>
                             <constraint firstItem="hYM-vX-ds8" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="zVS-FY-3Da"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

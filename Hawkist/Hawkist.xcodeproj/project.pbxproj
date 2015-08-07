@@ -137,6 +137,7 @@
 		CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8721F11B553684003C47E5 /* HWProfileViewController.m */; };
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
 		CE954C611B74B4DB0063A719 /* ViewItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */; };
+		CE954C641B750C800063A719 /* HWOrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C631B750C800063A719 /* HWOrderItem.m */; };
 		CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */; };
 		CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */; };
 		CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAF991B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m */; };
@@ -378,6 +379,8 @@
 		CE8721F11B553684003C47E5 /* HWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWProfileViewController.m; path = ProfileScreen/HWProfileViewController.m; sourceTree = "<group>"; };
 		CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWProfileViewController.xib; path = ProfileScreen/HWProfileViewController.xib; sourceTree = "<group>"; };
 		CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewItemViewController.xib; sourceTree = "<group>"; };
+		CE954C621B750C800063A719 /* HWOrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWOrderItem.h; sourceTree = "<group>"; };
+		CE954C631B750C800063A719 /* HWOrderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWOrderItem.m; sourceTree = "<group>"; };
 		CEA725621B57ED590086F657 /* HWFollowInProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFollowInProfileCell.h; path = ProfileScreen/HWFollowInProfileCell.h; sourceTree = "<group>"; };
 		CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFollowInProfileCell.m; path = ProfileScreen/HWFollowInProfileCell.m; sourceTree = "<group>"; };
 		CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFollowInProfileCell.xib; path = ProfileScreen/HWFollowInProfileCell.xib; sourceTree = "<group>"; };
@@ -801,6 +804,8 @@
 				CE7876511B60F3FF00A3970D /* HWOffer.m */,
 				CE70EDC51B6A7053005664FA /* HWMention.h */,
 				CE70EDC61B6A7053005664FA /* HWMention.m */,
+				CE954C621B750C800063A719 /* HWOrderItem.h */,
+				CE954C631B750C800063A719 /* HWOrderItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1276,6 +1281,7 @@
 				CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */,
 				C35A4C671B3035D2002E1F26 /* UIColor+Extensions.m in Sources */,
 				3A0BAF6F1B551BA6004DFF86 /* myItemCell.m in Sources */,
+				CE954C641B750C800063A719 /* HWOrderItem.m in Sources */,
 				C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */,
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
 				3AF832021B6F7F4400CC750D /* AddCardViewController.m in Sources */,

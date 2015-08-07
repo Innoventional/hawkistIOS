@@ -21,6 +21,12 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
 @property (weak, nonatomic) IBOutlet UIButton *buyButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *itemPriceLable;
+@property (weak, nonatomic) IBOutlet UILabel *shippingLable;
+@property (weak, nonatomic) IBOutlet UILabel *totalLable;
+
+
 @property (strong, nonatomic) NetworkManager *networkManager;
 
 @property (nonatomic, strong) UICollectionView *paymentCollectionView;
@@ -34,9 +40,6 @@
 @property (nonatomic, strong) NSArray *dataModelArray;
 
 
-@property (weak, nonatomic) IBOutlet UILabel *itemPriceLable;
-@property (weak, nonatomic) IBOutlet UILabel *shippingLable;
-@property (weak, nonatomic) IBOutlet UILabel *totalLable;
 
 @property (nonatomic, assign) NSUInteger paymentSelectRow;
 @property (nonatomic, assign) NSUInteger addressSelectRow;
@@ -44,6 +47,8 @@
 @property (nonatomic, assign) CGFloat itemPrice;
 @property (nonatomic, assign) CGFloat shipping;
 @property (nonatomic, assign) CGFloat total;
+
+@property (nonatomic, strong) HWItem *item;
 
 @property (nonatomic, assign) NSInteger checkForBuy;
 
@@ -65,6 +70,7 @@
     if (self)
     {
         // set price info
+        self.item = item;
         self.itemPrice = [item.selling_price floatValue];
         self.shipping = [item.shipping_price floatValue];
         self.total = self.itemPrice + self.shipping;
@@ -165,8 +171,8 @@
     
     [_paymentCollectionView registerNib:[UINib nibWithNibName:@"HWPaymentOptionCell" bundle:nil] forCellWithReuseIdentifier:paymentOptionCell];
     
-    self.checkForBuy +=1;
-    self.buyButton.enabled = (self.checkForBuy == 2);
+//    self.checkForBuy +=1;
+    self.buyButton.enabled = YES;// (self.checkForBuy == 2);
 }
 
 -(void)setAddressCollectionView:(UICollectionView *)addressCollectionView
@@ -175,8 +181,8 @@
     
     [_addressCollectionView registerNib:[UINib nibWithNibName:@"HWAddressOptionCell" bundle:nil] forCellWithReuseIdentifier:addressOptionCell];
     
-    self.checkForBuy +=1;
-    self.buyButton.enabled = (self.checkForBuy == 2);
+//    self.checkForBuy +=1;
+    self.buyButton.enabled = YES;// (self.checkForBuy == 2);
 }
 
 
@@ -398,7 +404,22 @@
 
 - (IBAction)pressBuyNowButton:(UIButton *)sender
 {
-
+    
+    HWCard *card = [self.paymentOptionArray objectAtIndex:self.paymentSelectRow];
+    
+   [ self.networkManager buyItemWithCardId:card.id
+                                withItemId:self.item.id
+                              successBlock:^{
+                                    
+                                    NSLog(@"SuccessBlock");
+                                    
+    
+                                } failureBlock:^(NSError *error) {
+                                    
+                                    NSLog(@"FailureBlock");
+    
+                                    
+                                }];
 
 }
 

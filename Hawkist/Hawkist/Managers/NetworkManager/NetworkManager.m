@@ -14,6 +14,7 @@
 #import "HWComment.h"
 #import "HWMention.h"
 #import "HWCard.h"
+#import "HWOrderItem.h"
 
 @interface NetworkManager ()
 
@@ -1631,6 +1632,105 @@ NSString *URLString = @"user/logout";
 }
 
 
+#pragma mark - 
+#pragma mark Buy item 
+
+-(void) buyItemWithCardId:(NSString*)cardId
+               withItemId:(NSString*)itemId
+             successBlock:(void(^)(void))successBlock
+             failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    NSString *URLString = [NSString stringWithFormat:@"user/orders"];
+  
+    NSDictionary *parameters =  @{
+                                  @"stripe_card_id":cardId,
+                                  @"listing_id":itemId
+                                  
+                                  };
+    
+    [self.networkDecorator POST:URLString
+                     parameters:parameters
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
+                                
+                                return;
+                            }
+                            
+                            successBlock();
+
+                            
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
+                            
+                        }];
+    
+    
+    
+}
+
+-(void)getAllOrderItemWithSuccessBlock:(void(^)(NSArray *array)) successBlock
+                          failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    NSString *URLString = @"user/orders";
+    
+    [self.networkDecorator GET:URLString
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+
+                           NSError *error;
+                           NSArray *ordersArray = responseObject[@"orders"];
+                           NSMutableArray *array = [NSMutableArray array];
+                           
+                           for ( NSDictionary *dict in ordersArray) {
+                               NSDictionary *listingDict = dict[@"listing"];
+                               
+                               HWOrderItem *itemOrder = [[HWOrderItem alloc]initWithDictionary:listingDict
+                                                                                         error:&error];
+                               itemOrder.user_id = dict[@"id"];
+                               itemOrder.status = dict[@"status"];
+                               [array addObject:itemOrder];
+                               
+                           }
+                           
+                           if (error)
+                           {
+                               NSLog(@"%@",error);
+                               
+                           }
+                           
+                           successBlock(array);
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+    
+}
 
 @end
 
