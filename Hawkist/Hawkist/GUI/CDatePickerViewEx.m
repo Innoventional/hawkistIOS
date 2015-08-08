@@ -97,6 +97,8 @@ const NSInteger numberOfComponents = 2;
     [self loadDefaultsParameters];
 }
 
+
+
 #pragma mark - Open methods
 
 -(NSDate *)date
@@ -132,6 +134,7 @@ const NSInteger numberOfComponents = 2;
     [self selectRow: self.datePath.section
         inComponent: YEAR
            animated: NO];
+
 
 }
 

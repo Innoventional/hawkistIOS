@@ -97,10 +97,17 @@
 
 - (void) initDefault
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(adjustKeyboardFrame:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    
     self.navigation.delegate = self;
     self.datePicker = [[CDatePickerViewEx alloc]init];//WithFrame:CGRectMake(0, 0, 200, 50)];
     
     self.datePicker.deleg = self;
+    
 
 
     
@@ -112,7 +119,7 @@
     [self.datePicker setYearTextColor:[UIColor whiteColor]];
     
     [self.datePicker selectToday];
-    
+
     self.navigation.title.text = @"Add New Card";
     self.firstName.title.text = @"YOUR NAME";
     self.lastName.title.text=@"";
@@ -275,7 +282,48 @@
 
 }
 
-- (IBAction)dateModify:(id)sender {
+- (void) adjustKeyboardFrame: (NSNotification*) notification
+{
+   if ([self.dateField.inputField isFirstResponder] && [self.dateField.inputField.text isEqualToString:@""])
+   {
+       [self didSelect];
+   }
+}
+
+
+- (IBAction)test:(id)sender {
+    
+    [CardIOUtilities preload];
+    
+    CardIOView* view = [[CardIOView alloc]initWithFrame:self.view.bounds];
+    
+    view.delegate = self;
+    [self.view addSubview:view];
     
 }
+
+- (void)cardIOView:(CardIOView *)cardIOView didScanCard:(CardIOCreditCardInfo *)info {
+   
+    self.cardNumber.inputField.text = info.cardNumber;
+    
+    NSMutableString *mu = [NSMutableString stringWithString:info.cardNumber];
+    [mu insertString:@" " atIndex:4];
+    [mu insertString:@" " atIndex:9];
+    [mu insertString:@" " atIndex:14];
+
+    self.cardNumber.inputField.text = mu;
+    
+    if (info.expiryMonth != 0)
+    {
+    
+    [self.datePicker settingDate:info.expiryMonth year:info.expiryYear];
+    [self didSelect];
+    
+    }
+    [cardIOView removeFromSuperview];
+}
+
+
+
+
 @end

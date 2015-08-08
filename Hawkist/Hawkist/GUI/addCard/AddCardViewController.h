@@ -11,9 +11,9 @@
 #import "NavigationVIew.h"
 #import "CustomField.h"
 #import "HWCard.h"
-#import "CDatePickerViewEx.h"
+#import "CardIOViewDelegate.h"
 
-@interface AddCardViewController : HWBaseViewController <NavigationViewDelegate,UIPickerViewDelegate,CDatePickerViewExDelegate>
+@interface AddCardViewController : HWBaseViewController <NavigationViewDelegate,UIPickerViewDelegate,CardIOViewDelegate>
 
 @property (strong, nonatomic) IBOutlet NavigationVIew *navigation;
 @property (strong, nonatomic) IBOutlet CustomField *firstName;
@@ -21,7 +21,7 @@
 @property (strong, nonatomic) IBOutlet CustomField *cardNumber;
 @property (strong, nonatomic) IBOutlet CustomField *cvv;
 @property (strong, nonatomic) IBOutlet CustomField *dateField;
-- (IBAction)dateModify:(id)sender;
+
 @property (strong, nonatomic) IBOutlet CustomField *addressFirst;
 @property (strong, nonatomic) IBOutlet CustomField *addressSecond;
 @property (strong, nonatomic) IBOutlet CustomField *city;

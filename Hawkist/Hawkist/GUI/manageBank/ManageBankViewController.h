@@ -10,8 +10,9 @@
 #import "HWBaseViewController.h"
 #import "NavigationVIew.h"
 #import "CardView.h"
+#import "CardIO.h"
 
-@interface ManageBankViewController : HWBaseViewController <NavigationViewDelegate,CardViewDelegate>
+@interface ManageBankViewController : HWBaseViewController <NavigationViewDelegate,CardViewDelegate,CardIOViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigation;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
