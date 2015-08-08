@@ -138,6 +138,8 @@
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
 		CE954C611B74B4DB0063A719 /* ViewItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */; };
 		CE954C641B750C800063A719 /* HWOrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C631B750C800063A719 /* HWOrderItem.m */; };
+		CE954C681B75E3CD0063A719 /* HWAboutUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C671B75E3CD0063A719 /* HWAboutUserViewController.m */; };
+		CE954C6A1B75E3E80063A719 /* HWAboutUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE954C691B75E3E80063A719 /* HWAboutUserView.xib */; };
 		CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */; };
 		CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */; };
 		CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAF991B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m */; };
@@ -381,6 +383,9 @@
 		CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewItemViewController.xib; sourceTree = "<group>"; };
 		CE954C621B750C800063A719 /* HWOrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWOrderItem.h; sourceTree = "<group>"; };
 		CE954C631B750C800063A719 /* HWOrderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWOrderItem.m; sourceTree = "<group>"; };
+		CE954C661B75E3CD0063A719 /* HWAboutUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAboutUserViewController.h; path = AboutUserScreen/HWAboutUserViewController.h; sourceTree = "<group>"; };
+		CE954C671B75E3CD0063A719 /* HWAboutUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAboutUserViewController.m; path = AboutUserScreen/HWAboutUserViewController.m; sourceTree = "<group>"; };
+		CE954C691B75E3E80063A719 /* HWAboutUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWAboutUserView.xib; path = AboutUserScreen/HWAboutUserView.xib; sourceTree = "<group>"; };
 		CEA725621B57ED590086F657 /* HWFollowInProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFollowInProfileCell.h; path = ProfileScreen/HWFollowInProfileCell.h; sourceTree = "<group>"; };
 		CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFollowInProfileCell.m; path = ProfileScreen/HWFollowInProfileCell.m; sourceTree = "<group>"; };
 		CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFollowInProfileCell.xib; path = ProfileScreen/HWFollowInProfileCell.xib; sourceTree = "<group>"; };
@@ -825,6 +830,7 @@
 				CE5909471B5E9C8A00DAA7FF /* CommentScreen */,
 				3A98D61C1B593F2900D55FF9 /* BuyThisItem */,
 				CE8721EF1B553569003C47E5 /* ProfileScreen */,
+				CE954C651B75E38B0063A719 /* AboutUserScreen */,
 				3A0BAF691B53FA2B004DFF86 /* MyItems */,
 				C35CB4AB1B4EA39600956150 /* TapBarScreen */,
 				3ACC6B921B43A1A20076004F /* SellAnItem */,
@@ -1027,6 +1033,16 @@
 			name = ProfileScreen;
 			sourceTree = "<group>";
 		};
+		CE954C651B75E38B0063A719 /* AboutUserScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CE954C661B75E3CD0063A719 /* HWAboutUserViewController.h */,
+				CE954C671B75E3CD0063A719 /* HWAboutUserViewController.m */,
+				CE954C691B75E3E80063A719 /* HWAboutUserView.xib */,
+			);
+			name = AboutUserScreen;
+			sourceTree = "<group>";
+		};
 		CEBAAFA21B6DF3F100AFE4C6 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1186,6 +1202,7 @@
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */,
 				3AF831F61B6F6CB600CC750D /* CustomField.xib in Resources */,
+				CE954C6A1B75E3E80063A719 /* HWAboutUserView.xib in Resources */,
 				CE70EDCF1B6BC5CE005664FA /* HWMyAccountVIew.xib in Resources */,
 				3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
@@ -1303,6 +1320,7 @@
 				3A2AE3CD1B6115E500806D59 /* AddTagsView.m in Sources */,
 				3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */,
 				C35CB4AF1B4EA3BA00956150 /* HWTapBarViewController.m in Sources */,
+				CE954C681B75E3CD0063A719 /* HWAboutUserViewController.m in Sources */,
 				CE7876521B60F3FF00A3970D /* HWOffer.m in Sources */,
 				7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */,
 				C35A4C4A1B3031F4002E1F26 /* NetworkDecorator.m in Sources */,

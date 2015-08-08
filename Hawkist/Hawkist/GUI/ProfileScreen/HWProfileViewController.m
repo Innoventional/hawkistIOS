@@ -22,6 +22,7 @@
 #import "myItemCell.h"
 #import "ViewItemViewController.h"
 #import "HWCommentViewController.h"
+#import "HWAboutUserViewController.h"
 
 
 
@@ -305,6 +306,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 }
 - (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     self.isInternetConnectionAlertShowed = NO;
 }
 
@@ -398,7 +401,10 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 #pragma mark Actions
 
 
-- (IBAction)aboutAction:(UIButton *)sender {
+- (IBAction)aboutAction:(UIButton *)sender
+{
+    HWAboutUserViewController *vc = [[HWAboutUserViewController alloc] initWithUserId:self.user.id];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

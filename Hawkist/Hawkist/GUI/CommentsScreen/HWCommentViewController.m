@@ -95,7 +95,7 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    self.isInternetConnectionAlertShowed = NO;
+         self.isInternetConnectionAlertShowed = NO;
     [self scrollToBotton];
     [self scrollToBotton];
 }

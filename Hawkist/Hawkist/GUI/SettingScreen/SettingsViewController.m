@@ -11,6 +11,7 @@
 #import "StarRatingControl.h"
 #import "HWMyAccountViewController.h"
 #import "PersonalisationViewController.h"
+#import "HWMyOrdersViewController.h"
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -233,10 +234,13 @@
             break;
         
         case 2:
+        {
+            HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
             
             NSLog(@"My Orgers");
             break;
-        
+        }
         case 3:{
             PersonalisationViewController* vc = [[PersonalisationViewController alloc]init];
             [self.navigationController pushViewController:vc animated:NO];
