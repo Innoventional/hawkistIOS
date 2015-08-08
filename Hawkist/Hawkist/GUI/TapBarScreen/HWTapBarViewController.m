@@ -95,8 +95,8 @@
         }
         case 3:
         {
-            HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+//            HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
             
             break;
         }

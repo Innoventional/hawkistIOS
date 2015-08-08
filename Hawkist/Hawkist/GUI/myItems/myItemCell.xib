@@ -63,14 +63,19 @@
                                     <action selector="moveToTrash:" destination="e6Q-Ie-sgH" eventType="touchUpInside" id="6xW-yw-bnu"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="uiI-QW-u9K">
+                                <rect key="frame" x="62" y="66" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.69781523879999996" green="0.68823407589999996" blue="0.69541994809999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Fdb-aG-Vuq" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="9Tz-EN-vhp"/>
                             <constraint firstAttribute="bottom" secondItem="hYM-vX-ds8" secondAttribute="bottom" id="AY2-Dc-PB2"/>
+                            <constraint firstAttribute="centerX" secondItem="uiI-QW-u9K" secondAttribute="centerX" constant="0.5" id="BgJ-r2-SUv"/>
                             <constraint firstItem="sEe-Qj-DCZ" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="FfJ-XN-X2k"/>
                             <constraint firstAttribute="trailing" secondItem="hYM-vX-ds8" secondAttribute="trailing" id="Fjg-bp-bGO"/>
                             <constraint firstItem="sEe-Qj-DCZ" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" constant="19" id="N00-WT-nXo"/>
+                            <constraint firstAttribute="centerY" secondItem="uiI-QW-u9K" secondAttribute="centerY" constant="-0.5" id="WDK-Cn-R9y"/>
                             <constraint firstItem="hYM-vX-ds8" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" id="Y57-LT-Eac"/>
                             <constraint firstItem="iYj-47-K3n" firstAttribute="top" secondItem="Fdb-aG-Vuq" secondAttribute="top" constant="-1" id="qTU-T6-LEm"/>
                             <constraint firstItem="Fdb-aG-Vuq" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" constant="20" id="riE-Eb-AVe"/>
@@ -218,6 +223,7 @@
                 <outlet property="commentsCount" destination="967-bP-B25" id="3A7-jZ-5a7"/>
                 <outlet property="currentPrice" destination="Mj7-og-7gY" id="j5l-MU-sXp"/>
                 <outlet property="discount" destination="Fdb-aG-Vuq" id="LVa-VH-giB"/>
+                <outlet property="indicator" destination="uiI-QW-u9K" id="R53-NF-TVK"/>
                 <outlet property="itemImage" destination="hYM-vX-ds8" id="dug-8k-cE4"/>
                 <outlet property="likeButton" destination="9sK-Ie-nzr" id="CRe-i9-oOf"/>
                 <outlet property="likeImageView" destination="YzE-P2-NKs" id="QcD-Dk-2Ps"/>

@@ -15,6 +15,7 @@
 
 @interface myItemCell()
  
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (nonatomic,strong) UIVisualEffectView* visualEffectView;
 
 @property (nonatomic, strong) IBOutlet  UIButton *commentButton;
@@ -37,9 +38,6 @@
     if (self)
     {
          
-        
-  
-      
 
     }
     
@@ -82,7 +80,7 @@
 
 -(void)setItem:(HWItem *)item
 {
-    NSLog(@"%@", item.liked);
+  
     if([item.liked integerValue] != 0)
     {
         self.likeImageView.image = [UIImage imageNamed:@"starYellow"];
@@ -128,14 +126,10 @@
     self.oldPrice.attributedText = atrStr;
     [atrStr endEditing];
     
-    if(self.item.photos.count >= 1)
-    {
-        [self.itemImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
-    }
-    [self setNeedsLayout];
+    self.itemImage.image = nil;
     
-   
-   
+   [self avatarInit];
+    
     [self.visualEffectView removeFromSuperview];
                     self.userInteractionEnabled = YES;
     
@@ -169,6 +163,34 @@
    
     
 }
+
+
+- (void) avatarInit
+{
+    
+//    if(self.item.photos.count >= 1)
+//    {
+//        [self.itemImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
+//    }
+    
+    __weak __block myItemCell *my = self;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: self.item.photos.firstObject]];
+    
+    [self.itemImage setImageWithURLRequest:request
+                           placeholderImage:nil
+                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                        
+                                            my.itemImage.image = image;
+                                            [my.indicator stopAnimating];
+                                      
+                                    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                        
+                                        
+                                    }];
+    
+}
+
  
 
 
