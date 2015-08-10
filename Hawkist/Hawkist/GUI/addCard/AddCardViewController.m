@@ -43,6 +43,7 @@
     if ([self.cameraInput superview]==self.view)
     {
         [self.cameraInput removeFromSuperview];
+        self.saveButton.hidden = NO;
     }
     else
     [self.navigationController popViewControllerAnimated:NO];
@@ -315,6 +316,7 @@
    
     [self.view addSubview:self.cameraInput];
     [self.view bringSubviewToFront: self.navigation];
+    self.saveButton.hidden = YES;
    
     
 }
