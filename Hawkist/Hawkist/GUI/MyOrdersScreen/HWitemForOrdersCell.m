@@ -8,13 +8,14 @@
 
 #import "HWitemForOrdersCell.h"
 #import "HWOrderItem.h"
+#import "HWOrderButton.h"
 
 
 
 @interface HWitemForOrdersCell ()
 
-@property (weak, nonatomic) IBOutlet UIButton *receivedButton;
-@property (weak, nonatomic) IBOutlet UIButton *hasIssueButton;
+@property (weak, nonatomic) IBOutlet HWOrderButton *receivedButton;
+@property (weak, nonatomic) IBOutlet HWOrderButton *hasIssueButton;
 
 @property (nonatomic, strong) HWOrderItem *orderItem;
 
@@ -30,53 +31,63 @@
     if (self)
     {
         
+        
     }
     
     return self;
 }
 
-- (void) setCellWith:(HWOrderItem*)orderItem
+- (instancetype) awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
+    self = [super awakeAfterUsingCoder:aDecoder];
+    if(self)
+    {
+        
+    }
+    return self;
     
-    self.orderItem = orderItem;
-    self.title.text = orderItem.title;
-    
-    /*
-     
-     ptional>* id;
-     @property (nonatomic, strong) NSString<Optional>* title;
-     @property (nonatomic, strong) NSString<Optional>* image;
-     @property (nonatomic, strong) NSString<Optional>* retail_price;
-     @property (nonatomic, strong) NSString<Optional>* selling_price;
-     
-     @property (nonatomic, strong) NSString<Optional>* user_id;
-     @property (nonatomic, strong) NSString<Optional>* status;
-     
-     
-     
-     UIButton* mytrash;
-     
-     
-     @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
-     @property (strong, nonatomic) IBOutlet UILabel *discount;
-     
-     @property (strong, nonatomic) IBOutlet UILabel *title;
-     
-     @property (strong, nonatomic) IBOutlet UILabel *likesCount;
-     
-     @property (strong, nonatomic) IBOutlet UILabel *commentsCount;
-     
-     @property (strong, nonatomic) IBOutlet UILabel *platform;
-     
-     @property (strong, nonatomic) IBOutlet UILabel *oldPrice;
-     @property (strong, nonatomic) IBOutlet UILabel *currentPrice;
+}
 
+- (void) setCellWithOrderItem:(HWOrderItem*) orderItems;
+{
+    self.orderItem = orderItems;
+    self.item = orderItems.item;
+    
+     self.receivedButton.acceptImage.image = [UIImage imageNamed:@"green"];
+     self.receivedButton.title.text = @"Received";
+    
+    self.hasIssueButton.acceptImage.image = [UIImage imageNamed:@"red"];
+    self.hasIssueButton.title.text = @"Has issue";
 
-     
-     */
     
-   
+    if( orderItems.status != 0)
+    {
+        self.receivedButton.enabled = NO;
+        self.hasIssueButton.enabled = NO;
+    }
+    else
+    {
+        self.receivedButton.enabled = YES;
+        self.hasIssueButton.enabled = YES;
+    }
     
+     self.hasIssueButton.backgroundColor = [UIColor whiteColor];
+     self.receivedButton.backgroundColor = [UIColor whiteColor];
+    
+    switch (orderItems.status) {
+        case 1:
+            self.receivedButton.backgroundColor = [UIColor colorWithRed:1 green:200./255. blue:200./255 alpha:1];
+            self.hasIssueButton.backgroundColor = [UIColor whiteColor];
+            break;
+            
+        case 2:
+            self.hasIssueButton.backgroundColor = [UIColor colorWithRed:1 green:200./255. blue:200./255 alpha:1];
+            self.receivedButton.backgroundColor = [UIColor whiteColor];
+            
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark -
@@ -86,7 +97,7 @@
 {
     if (self.orderCellDelegate && [self.orderCellDelegate respondsToSelector:@selector(receivedAction:withItem:)])
     {
-        [self.orderCellDelegate receivedAction:sender withItem:self.item];
+        [self.orderCellDelegate receivedAction:sender withItem:self.orderItem];
     }
     
 }
@@ -95,9 +106,9 @@
 - (IBAction)hasIssueAction:(UIButton *)sender
 {
     
-    if (self.orderCellDelegate && [self.orderCellDelegate respondsToSelector:@selector(hasIssueAction:withItem:)])
+    if (self.orderCellDelegate && [self.orderCellDelegate respondsToSelector:@selector(hasIssueAction:withItem: )])
     {
-        [self.orderCellDelegate hasIssueAction:sender withItem:self.item];
+        [self.orderCellDelegate hasIssueAction:sender withItem:self.orderItem];
     }
     
     

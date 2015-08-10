@@ -23,6 +23,8 @@
 #import "ViewItemViewController.h"
 #import "HWCommentViewController.h"
 #import "HWAboutUserViewController.h"
+#import "UIImageView+Extensions.h"
+
 
 
 
@@ -223,7 +225,10 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         [self.followUnfollowButton setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
         self.followUnfollowButton.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
     }
-    [self avatarInit];
+    [self.avatarView setImageWithUrl:[NSURL URLWithString: self.user.avatar]
+                       withIndicator:self.indicator];
+    
+  
     self.userNameLabel.text = self.user.username;
     if(self.user.city)
     {
@@ -244,29 +249,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
 }
 
-- (void) avatarInit
-{
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: self.user.avatar]];
-    
-    [self.avatarView setImageWithURLRequest:request
-                           placeholderImage:nil
-                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                        
-                                         dispatch_async(dispatch_get_main_queue(), ^{
-                                       
-                                             self.avatarView.image = image;
-                                             [self.indicator stopAnimating];
-                                        
-                                         });
-                                    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-                                        
-                                        
-                                        self.avatarView.image = [UIImage imageNamed:@"noPhoto"];
-                                        [self.indicator stopAnimating];
-                                    }];
-
-}
-
+ 
 - (void) setupSegmentButtonsConfig
 {
     self.itemsButton.titleButton.text = @"ITEMS";

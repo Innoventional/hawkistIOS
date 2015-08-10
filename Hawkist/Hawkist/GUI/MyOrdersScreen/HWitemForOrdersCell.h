@@ -7,7 +7,7 @@
 //
 
 #import "myItemCell.h"
-#import "HWItem.h"
+#import "HWOrderItem.h"
 
 @protocol HWitemForOrdersCellDelegate;
 
@@ -15,12 +15,15 @@
 
 @property (nonatomic, weak) id <HWitemForOrdersCellDelegate> orderCellDelegate;
 
+
+- (void) setCellWithOrderItem:(HWOrderItem*) orderItems;
+
 @end
 
 
 @protocol HWitemForOrdersCellDelegate <MyItemCellDelegate>
 
-- (void) receivedAction:(UIButton*)sender withItem:(HWItem*)item;
-- (void) hasIssueAction:(UIButton*)sender withItem:(HWItem*)item;
+- (void) receivedAction:(UIButton*)sender withItem:(HWOrderItem*)item;
+- (void) hasIssueAction:(UIButton*)sender withItem:(HWOrderItem*)item;
 
 @end

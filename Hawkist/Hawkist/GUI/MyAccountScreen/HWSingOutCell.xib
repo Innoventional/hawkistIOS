@@ -37,7 +37,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9S-oF-fwQ">
-                        <rect key="frame" x="17" y="19" width="22" height="22"/>
+                        <rect key="frame" x="8" y="19" width="22" height="22"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="Pzx-Vb-YnR"/>
@@ -51,7 +51,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yR2-Oh-MO1">
-                        <rect key="frame" x="17" y="53" width="22" height="22"/>
+                        <rect key="frame" x="8" y="53" width="22" height="22"/>
                         <color key="backgroundColor" red="0.98074927219999997" green="0.98301863570000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="qFH-Vs-4FJ"/>
@@ -65,13 +65,13 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify sellers when I favourite their items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTy-Db-BTZ">
-                        <rect key="frame" x="49" y="21" width="269" height="20"/>
+                        <rect key="frame" x="36" y="21" width="269" height="20"/>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                         <color key="textColor" red="0.45490196078431372" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let members find me using Find Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnE-Or-Lt8">
-                        <rect key="frame" x="49" y="55" width="263" height="20"/>
+                        <rect key="frame" x="36" y="55" width="263" height="20"/>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                         <color key="textColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -79,16 +79,16 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="CnE-Or-Lt8" firstAttribute="top" secondItem="jTy-Db-BTZ" secondAttribute="bottom" constant="14" id="53d-WU-nQc"/>
-                    <constraint firstItem="yR2-Oh-MO1" firstAttribute="leading" secondItem="nUb-Tz-hWZ" secondAttribute="leadingMargin" constant="9" id="DHd-Ah-aPu"/>
+                    <constraint firstItem="yR2-Oh-MO1" firstAttribute="leading" secondItem="nUb-Tz-hWZ" secondAttribute="leadingMargin" id="DHd-Ah-aPu"/>
                     <constraint firstItem="yR2-Oh-MO1" firstAttribute="top" secondItem="m9S-oF-fwQ" secondAttribute="bottom" constant="12" id="E0c-rd-SAc"/>
                     <constraint firstItem="jTy-Db-BTZ" firstAttribute="top" secondItem="nUb-Tz-hWZ" secondAttribute="topMargin" constant="13" id="Irg-gA-r4L"/>
                     <constraint firstItem="m9S-oF-fwQ" firstAttribute="top" secondItem="nUb-Tz-hWZ" secondAttribute="topMargin" constant="11" id="Jbe-Xi-5m0"/>
                     <constraint firstItem="vDP-Rn-ej7" firstAttribute="leading" secondItem="nUb-Tz-hWZ" secondAttribute="leading" id="SWy-yP-mcL"/>
-                    <constraint firstItem="jTy-Db-BTZ" firstAttribute="leading" secondItem="m9S-oF-fwQ" secondAttribute="trailing" constant="10" id="Xb4-wu-pE8"/>
+                    <constraint firstItem="jTy-Db-BTZ" firstAttribute="leading" secondItem="m9S-oF-fwQ" secondAttribute="trailing" constant="6" id="Xb4-wu-pE8"/>
                     <constraint firstItem="vDP-Rn-ej7" firstAttribute="top" secondItem="yR2-Oh-MO1" secondAttribute="bottom" constant="19" id="cA1-Yw-W29"/>
                     <constraint firstAttribute="bottom" secondItem="vDP-Rn-ej7" secondAttribute="bottom" id="fpR-x7-fhA"/>
-                    <constraint firstItem="CnE-Or-Lt8" firstAttribute="leading" secondItem="yR2-Oh-MO1" secondAttribute="trailing" constant="10" id="k8R-Z0-aZZ"/>
-                    <constraint firstItem="m9S-oF-fwQ" firstAttribute="leading" secondItem="nUb-Tz-hWZ" secondAttribute="leadingMargin" constant="9" id="oEI-NH-p6y"/>
+                    <constraint firstItem="CnE-Or-Lt8" firstAttribute="leading" secondItem="yR2-Oh-MO1" secondAttribute="trailing" constant="6" id="k8R-Z0-aZZ"/>
+                    <constraint firstItem="m9S-oF-fwQ" firstAttribute="leading" secondItem="nUb-Tz-hWZ" secondAttribute="leadingMargin" id="oEI-NH-p6y"/>
                     <constraint firstAttribute="trailing" secondItem="vDP-Rn-ej7" secondAttribute="trailing" id="rqf-Hy-gsA"/>
                 </constraints>
             </tableViewCellContentView>

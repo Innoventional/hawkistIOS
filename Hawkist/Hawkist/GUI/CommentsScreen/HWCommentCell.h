@@ -10,6 +10,8 @@
 @class HWComment;
 #import "SWTableViewCell.h"
 
+#import "TextViewWithDetectedWord.h"
+
 @protocol HWCommentCellDelegate;
 
 
@@ -17,7 +19,10 @@
 
 @property (nonatomic, strong) NSString *offerId;
 @property (nonatomic, weak) id <HWCommentCellDelegate> delegate;
+@property (weak, nonatomic) IBOutlet TextViewWithDetectedWord *textView;
 
+
++ (CGFloat) heightWith:(NSString*)text;
 - (void) setCellWithComment:(HWComment*)comment;
 
 @end

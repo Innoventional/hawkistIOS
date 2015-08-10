@@ -12,6 +12,8 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="open-sans.bold.ttf">
             <string>OpenSans-Bold</string>
@@ -187,30 +189,37 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hx1-oK-7RZ">
                         <rect key="frame" x="0.0" y="227" width="145" height="47"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pb-Z4-c3l">
-                                <rect key="frame" x="0.0" y="1" width="72" height="46"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="QJP-O8-D4r"/>
-                                </constraints>
-                                <state key="normal" title="Res">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="receivedAction:" destination="fKj-af-pKl" eventType="touchUpInside" id="YXJ-dx-qHJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbY-EO-bHt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbY-EO-bHt" customClass="HWOrderButton">
                                 <rect key="frame" x="73" y="1" width="72" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="yhb-bv-Ue3"/>
                                 </constraints>
-                                <state key="normal" title="Has">
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                <inset key="titleEdgeInsets" minX="-14" minY="14" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="26" minY="-20" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Has Issue">
+                                    <color key="titleColor" red="0.83921568627450982" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="hasIssueAction:" destination="fKj-af-pKl" eventType="touchUpInside" id="YvH-bx-loe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pb-Z4-c3l" customClass="HWOrderButton">
+                                <rect key="frame" x="0.0" y="1" width="72" height="46"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="QJP-O8-D4r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                <inset key="titleEdgeInsets" minX="-6" minY="15" maxX="12" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="26" minY="-20" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Received">
+                                    <color key="titleColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="receivedAction:" destination="fKj-af-pKl" eventType="touchUpInside" id="YXJ-dx-qHJ"/>
                                 </connections>
                             </button>
                         </subviews>

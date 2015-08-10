@@ -143,6 +143,8 @@
 		CE954C641B750C800063A719 /* HWOrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C631B750C800063A719 /* HWOrderItem.m */; };
 		CE954C681B75E3CD0063A719 /* HWAboutUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C671B75E3CD0063A719 /* HWAboutUserViewController.m */; };
 		CE954C6A1B75E3E80063A719 /* HWAboutUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE954C691B75E3E80063A719 /* HWAboutUserView.xib */; };
+		CE954C6D1B77D9620063A719 /* UIImageView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C6C1B77D9620063A719 /* UIImageView+Extensions.m */; };
+		CE954C701B78EBEB0063A719 /* HWOrderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C6F1B78EBEB0063A719 /* HWOrderButton.m */; };
 		CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */; };
 		CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */; };
 		CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAF991B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m */; };
@@ -392,6 +394,10 @@
 		CE954C661B75E3CD0063A719 /* HWAboutUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAboutUserViewController.h; path = AboutUserScreen/HWAboutUserViewController.h; sourceTree = "<group>"; };
 		CE954C671B75E3CD0063A719 /* HWAboutUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAboutUserViewController.m; path = AboutUserScreen/HWAboutUserViewController.m; sourceTree = "<group>"; };
 		CE954C691B75E3E80063A719 /* HWAboutUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWAboutUserView.xib; path = AboutUserScreen/HWAboutUserView.xib; sourceTree = "<group>"; };
+		CE954C6B1B77D9620063A719 /* UIImageView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Extensions.h"; sourceTree = "<group>"; };
+		CE954C6C1B77D9620063A719 /* UIImageView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Extensions.m"; sourceTree = "<group>"; };
+		CE954C6E1B78EBEB0063A719 /* HWOrderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWOrderButton.h; path = MyOrdersScreen/HWOrderButton.h; sourceTree = "<group>"; };
+		CE954C6F1B78EBEB0063A719 /* HWOrderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWOrderButton.m; path = MyOrdersScreen/HWOrderButton.m; sourceTree = "<group>"; };
 		CEA725621B57ED590086F657 /* HWFollowInProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFollowInProfileCell.h; path = ProfileScreen/HWFollowInProfileCell.h; sourceTree = "<group>"; };
 		CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFollowInProfileCell.m; path = ProfileScreen/HWFollowInProfileCell.m; sourceTree = "<group>"; };
 		CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFollowInProfileCell.xib; path = ProfileScreen/HWFollowInProfileCell.xib; sourceTree = "<group>"; };
@@ -914,6 +920,8 @@
 				C35A4C5E1B3035D2002E1F26 /* UIImage+Extensions.m */,
 				C35A4C5F1B3035D2002E1F26 /* UIView+Extensions.h */,
 				C35A4C601B3035D2002E1F26 /* UIView+Extensions.m */,
+				CE954C6B1B77D9620063A719 /* UIImageView+Extensions.h */,
+				CE954C6C1B77D9620063A719 /* UIImageView+Extensions.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -976,6 +984,8 @@
 				CE2579FA1B73AB0100A0DEE9 /* HWitemForOrdersCell.h */,
 				CE2579FB1B73AB0100A0DEE9 /* HWitemForOrdersCell.m */,
 				CE2579F81B73AA1900A0DEE9 /* HWitemForOrdersCell.xib */,
+				CE954C6E1B78EBEB0063A719 /* HWOrderButton.h */,
+				CE954C6F1B78EBEB0063A719 /* HWOrderButton.m */,
 			);
 			name = "My Orders Screen";
 			sourceTree = "<group>";
@@ -1333,6 +1343,7 @@
 				CE70EDCA1B6B723D005664FA /* HWMentionUserCell.m in Sources */,
 				3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */,
 				CE70EDD51B6BD51D005664FA /* HWAccountMenuCell.m in Sources */,
+				CE954C701B78EBEB0063A719 /* HWOrderButton.m in Sources */,
 				3AF8320D1B70E60B00CC750D /* CardView.m in Sources */,
 				C35A4C861B303BCF002E1F26 /* SocialManager.m in Sources */,
 				CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */,
@@ -1372,6 +1383,7 @@
 				CEBAAF9F1B6CE9DF00AFE4C6 /* HWSingOutCell.m in Sources */,
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
 				CE5909531B5F9FF400DAA7FF /* SZTextView.m in Sources */,
+				CE954C6D1B77D9620063A719 /* UIImageView+Extensions.m in Sources */,
 				3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */,
 				CEBAAFC11B70E67B00AFE4C6 /* HWAddDataModel.m in Sources */,
 				C35A4C8D1B31A408002E1F26 /* AppEngine.m in Sources */,

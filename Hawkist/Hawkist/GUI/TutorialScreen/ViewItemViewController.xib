@@ -130,7 +130,7 @@
                                         <action selector="buyButton:" destination="-1" eventType="touchUpInside" id="10I-Ro-m2K"/>
                                     </connections>
                                 </button>
-                                <imageView tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bigimage" translatesAutoresizingMaskIntoConstraints="NO" id="YR3-wU-mwa" userLabel="smallImage1">
+                                <imageView tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="YR3-wU-mwa" userLabel="smallImage1">
                                     <rect key="frame" x="14" y="343" width="68" height="68"/>
                                     <gestureRecognizers/>
                                     <constraints>
@@ -143,7 +143,7 @@
                                         <outletCollection property="gestureRecognizers" destination="uYD-JT-eDb" appends="YES" id="NA1-eg-iBT"/>
                                     </connections>
                                 </imageView>
-                                <imageView tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mot2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Lhz-kN-U05" userLabel="smallImage2">
+                                <imageView tag="2" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Lhz-kN-U05" userLabel="smallImage2">
                                     <rect key="frame" x="89" y="343" width="68" height="68"/>
                                     <gestureRecognizers/>
                                     <constraints>
@@ -161,7 +161,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssH-Uv-G7b">
                                     <rect key="frame" x="83" y="343" width="5" height="68"/>
                                 </view>
-                                <imageView tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mot3.png" translatesAutoresizingMaskIntoConstraints="NO" id="nSJ-Wd-IBa" userLabel="smallImage3">
+                                <imageView tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="nSJ-Wd-IBa" userLabel="smallImage3">
                                     <rect key="frame" x="163" y="343" width="68" height="68"/>
                                     <gestureRecognizers/>
                                     <constraints>
@@ -531,15 +531,28 @@
                                     <color key="textColor" red="0.18823529411764706" green="0.67843137254901964" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWJ-Q1-CJf">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <state key="normal">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="sendToAFriendAction:" destination="-1" eventType="touchUpInside" id="YFh-Gf-rRc"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="aPj-ie-er8" firstAttribute="top" secondItem="EMw-bT-kPt" secondAttribute="top" constant="11" id="ERR-yG-pHt"/>
+                                <constraint firstAttribute="trailing" secondItem="OWJ-Q1-CJf" secondAttribute="trailing" id="UQC-YM-M90"/>
                                 <constraint firstItem="EEQ-Se-cIp" firstAttribute="top" secondItem="EMw-bT-kPt" secondAttribute="top" id="VXD-y1-2Lw"/>
                                 <constraint firstItem="EEQ-Se-cIp" firstAttribute="leading" secondItem="EMw-bT-kPt" secondAttribute="leading" id="VcF-yA-ifT"/>
                                 <constraint firstAttribute="bottom" secondItem="aPj-ie-er8" secondAttribute="bottom" constant="12" id="eiu-Pn-M3g"/>
                                 <constraint firstAttribute="trailing" secondItem="aPj-ie-er8" secondAttribute="trailing" constant="62" id="lST-62-RYJ"/>
+                                <constraint firstItem="OWJ-Q1-CJf" firstAttribute="leading" secondItem="EMw-bT-kPt" secondAttribute="leading" id="tZ7-W2-bJ5"/>
+                                <constraint firstAttribute="bottom" secondItem="OWJ-Q1-CJf" secondAttribute="bottom" id="tiP-zG-3Jx"/>
                                 <constraint firstAttribute="bottom" secondItem="EEQ-Se-cIp" secondAttribute="bottom" id="x6q-lA-aYV"/>
+                                <constraint firstItem="OWJ-Q1-CJf" firstAttribute="top" secondItem="EMw-bT-kPt" secondAttribute="top" id="xGA-rv-fSc"/>
                                 <constraint firstItem="aPj-ie-er8" firstAttribute="leading" secondItem="EMw-bT-kPt" secondAttribute="leading" constant="51" id="xki-sY-Rqk"/>
                                 <constraint firstAttribute="trailing" secondItem="EEQ-Se-cIp" secondAttribute="trailing" id="z3E-Mb-QgP"/>
                             </constraints>
@@ -988,11 +1001,9 @@
     <resources>
         <image name="NoAvatar" width="500" height="500"/>
         <image name="askbutton" width="47" height="30"/>
-        <image name="bigimage" width="319" height="239"/>
         <image name="buybutton" width="290" height="40"/>
         <image name="favLike" width="65" height="65"/>
-        <image name="mot2.png" width="527" height="375"/>
-        <image name="mot3.png" width="700" height="466"/>
+        <image name="noPhoto" width="689" height="460"/>
         <image name="skidka" width="55" height="31"/>
         <image name="smallButton" width="27" height="20"/>
     </resources>

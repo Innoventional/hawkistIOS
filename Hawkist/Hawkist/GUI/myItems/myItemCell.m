@@ -11,6 +11,8 @@
 #import "NetworkManager.h"
 #import "UIColor+Extensions.h"
 #import <pop/POP.h>
+#import "UIImageView+Extensions.h"
+
 
 
 @interface myItemCell()
@@ -26,11 +28,12 @@
 @property (nonatomic, assign) BOOL isLiked;
 
 
+@property (nonatomic, assign)  NSInteger countLike;
+
+
 @end
 
 @implementation myItemCell
-
-
 
 -(instancetype) awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
@@ -80,24 +83,10 @@
 
 -(void)setItem:(HWItem *)item
 {
-  
-    if([item.liked integerValue] != 0)
-    {
-        self.likeImageView.image = [UIImage imageNamed:@"starYellow"];
-    } else {
-        
-        self.likeImageView.image = [UIImage imageNamed:@"stargrey"];
-    }
-    
-    self.isLiked = [item.liked integerValue];
-    
     self.commentsCount.text = item.comments;
-    self.likesCount.text = item.likes;
-    
-    self.commentsCount.text = item.comments;
-    self.likesCount.text = item.likes;
     _item = item;
-   
+    [self setupLikeStar];
+    
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
         self.discount.text = @"-1%";
     }
@@ -106,7 +95,6 @@
     {
         self.discount.text = [NSString stringWithFormat:@"-%@%%",self.item.discount];
     }
-    
     
     HWTag* itemPlatform = [HWTag getPlatformById:self.item.platform from:[AppEngine shared].tags];
     self.platform.text =  itemPlatform.name;
@@ -126,82 +114,65 @@
     self.oldPrice.attributedText = atrStr;
     [atrStr endEditing];
     
-    self.itemImage.image = nil;
-    
-   [self avatarInit];
-    
+    [self.itemImage setImageWithUrl:[NSURL URLWithString: self.item.photos.firstObject]
+                      withIndicator:self.indicator];
+ 
     [self.visualEffectView removeFromSuperview];
                     self.userInteractionEnabled = YES;
     
 
     if (self.item.sold)
-        
     {
-        UIVisualEffect *blurEffect;
-        blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-        
-        self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        self.visualEffectView.frame = self.bounds;
-        self.visualEffectView.alpha = 0.7;
-        
-        [self addSubview:self.visualEffectView];
-        
-        
-                UILabel* soldLabel = [[UILabel alloc]initWithFrame:CGRectMake(17,self.height/2 - 60, self.width,50)];
-        
-                soldLabel.text = @"SOLD";
-                soldLabel.textColor = [UIColor color256RGBWithRed: 88  green: 184 blue: 164];
-        
-                soldLabel.font = [UIFont fontWithName:@"OpenSans" size:40];
-                soldLabel.transform = CGAffineTransformMakeRotation(-M_PI/4);
-                [self.visualEffectView addSubview:soldLabel];
-                self.userInteractionEnabled = NO;
-        
-        
-    
+        [self setupSold];
     }
    
     
 }
 
 
-- (void) avatarInit
+- (void) setupSold
 {
+    UIVisualEffect *blurEffect;
+    blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     
-//    if(self.item.photos.count >= 1)
-//    {
-//        [self.itemImage setImageWithURL: [NSURL URLWithString: [self.item.photos objectAtIndex:0]] placeholderImage:nil];
-//    }
+    self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    self.visualEffectView.frame = self.bounds;
+    self.visualEffectView.alpha = 0.7;
     
-    __weak __block myItemCell *my = self;
+    [self addSubview:self.visualEffectView];
+    UILabel* soldLabel = [[UILabel alloc]initWithFrame:CGRectMake(17,self.height/2 - 60, self.width,50)];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: self.item.photos.firstObject]];
+    soldLabel.text = @"SOLD";
+    soldLabel.textColor = [UIColor color256RGBWithRed: 88  green: 184 blue: 164];
     
-    [self.itemImage setImageWithURLRequest:request
-                           placeholderImage:nil
-                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                        
-                                            my.itemImage.image = image;
-                                            [my.indicator stopAnimating];
-                                      
-                                    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-                                        
-                                        
-                                    }];
+    soldLabel.font = [UIFont fontWithName:@"OpenSans" size:40];
+    soldLabel.transform = CGAffineTransformMakeRotation(-M_PI/4);
+    [self.visualEffectView addSubview:soldLabel];
+    self.userInteractionEnabled = NO;
     
+    
+
 }
-
+- (void) setupLikeStar
+{
  
-
+        self.isLiked = [self.item.liked integerValue];
+        self.likesCount.text = self.item.likes;
+        self.countLike = [self.item.likes integerValue];
+        
+        if(self.isLiked != 0)
+        {
+            self.likeImageView.image = [UIImage imageNamed:@"starYellow"];
+        } else {
+            
+            self.likeImageView.image = [UIImage imageNamed:@"stargrey"];
+        }
+}
 
 
 
 - (void)awakeFromNib {
-    
-    
-//    self.backgroundColor = [UIColor whiteColor];
-//    self.itemImage.layer.cornerRadius = 5.0f;
-//    self.itemImage.layer.masksToBounds = YES;
+ 
     self.layer.cornerRadius = 5.0f;
     self.layer.masksToBounds = YES;
     
@@ -227,38 +198,38 @@
     sprintAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
     sprintAnimation.velocity = [NSValue valueWithCGPoint:CGPointMake(10, 10)];
     sprintAnimation.springBounciness = 20.f;
-
-
-    NSInteger countLike = [self.likesCount.text intValue];
+ 
     
     if(self.isLiked)
     {
         
         self.likeImageView.image = [UIImage imageNamed:@"stargrey"];
-        countLike --;
+        self.countLike --;
         self.isLiked = NO;
+        
+        self.item.liked = @"0";
+        self.item.likes = [NSString stringWithFormat:@"%ld",(long)self.countLike];
         
     } else {
         
         self.likeImageView.image = [UIImage imageNamed:@"starYellow"];
-        countLike ++;
+        self.countLike ++;
         self.isLiked = YES;
+        
+        
+        self.item.liked = @"1";
+        self.item.likes = [NSString stringWithFormat:@"%ld",(long)self.countLike];
+        
     }
 
-    self.likesCount.text = [NSString stringWithFormat:@"%ld", (long)countLike];
-    
-    
+    self.likesCount.text = [NSString stringWithFormat:@"%ld", (long)self.countLike];
     [self.likeImageView pop_addAnimation:sprintAnimation forKey:@"springAnimation"];
-    
-    
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(pressLikeButton: withItem:)])
     {
         [self.delegate pressLikeButton:sender withItem:self.item];
         
     }
-    
-    
     
     
 }
