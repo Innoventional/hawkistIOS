@@ -94,7 +94,7 @@
     }
     else
     {
-        self.textView.text = @"Information about me is not filled!";
+        self.textView.text = @"This user has not provided any information yet.";
     }
     
     if(self.user.city && ![self.user.city isEqualToString:@""])

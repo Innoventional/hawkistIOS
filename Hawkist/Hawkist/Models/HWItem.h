@@ -58,6 +58,7 @@
 
 @property (nonatomic, strong) NSString<Optional>* comments;
 @property (nonatomic, strong) NSString<Optional>* views;
+@property (nonatomic, strong) NSString<Optional>* status;
 
 
 

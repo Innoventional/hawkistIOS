@@ -1703,12 +1703,14 @@ NSString *URLString = @"user/logout";
                            
                            for ( NSDictionary *dict in ordersArray) {
                                NSDictionary *listingDict = dict[@"listing"];
-                               
-                               HWOrderItem *itemOrder = [[HWOrderItem alloc]initWithDictionary:listingDict
+                            
+                               HWOrderItem * orderItem = [[HWOrderItem alloc] init];
+                               orderItem.item = [[HWItem alloc]initWithDictionary:listingDict
                                                                                          error:&error];
-                               itemOrder.user_id = dict[@"id"];
-                               itemOrder.status = dict[@"status"];
-                               [array addObject:itemOrder];
+                               orderItem.id = dict[@"id"];
+                               NSNumber *numb = dict[@"status"];
+                               orderItem.status = [numb intValue];
+                               [array addObject:orderItem];
                                
                            }
                            
@@ -1732,6 +1734,76 @@ NSString *URLString = @"user/logout";
     
 }
 
-@end
 
+- (void) orderReceivedWithOrderId:(NSString *)orderId
+                     successBlock:(void(^)(void)) successBlock
+                     failureBlock:(void(^)(NSError *error)) failureBlock
+
+{
+    NSString *URLString = @"user/orders";
+    NSDictionary *parametrs = @{@"order_id": orderId,
+                                 @"new_status": @"1"};
+    
+    [self.networkDecorator PUT:URLString
+                    parameters:parametrs
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+
+                           successBlock();
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                           
+                       }];
+    
+    
+}
+
+- (void) orderHasInIssueWithOrderId:(NSString*)orderId
+             withOrderIssuseReasons:(HWOrderIssuseReasons) orderIssuse
+                       successBlock:(void(^)(void)) successBlock
+                       failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    NSString *URLString = @"user/orders";
+    NSDictionary *parametrs = @{@"order_id": orderId,
+                                @"new_status": @"2",
+                                @"issue_reason": [NSString stringWithFormat:@"%ld",(long)orderIssuse]};
+    
+    [self.networkDecorator PUT:URLString
+                    parameters:parametrs
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+
+                           successBlock();
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                           
+                       }];
+    
+
+    
+    
+}
+@end
 

@@ -82,8 +82,8 @@
                                 ];
     
     self.sharingAndNitificationsArray = @[
-                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"manage" withTitle:@"Mobile Notifications"],
-                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"manageAd" withTitle:@"Email Notifications"]
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"MobileNot" withTitle:@"Mobile Notifications"],
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"EmailNot" withTitle:@"Email Notifications"]
                                  ];
     self.privacyArray = @[@"SingOut"];
 
@@ -264,7 +264,7 @@
     CGRect frame = [UIScreen mainScreen].bounds;
     
     UILabel *myLabel = [[UILabel alloc] init];
-    myLabel.frame = CGRectMake(20, 8, frame.size.width, 20);
+    myLabel.frame = CGRectMake(15, 8, frame.size.width, 20);
     
     myLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:11];
     myLabel.textColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];

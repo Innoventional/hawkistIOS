@@ -17,6 +17,7 @@
 #import "HWComment.h"
 #import "HWMention.h"
 #import "HWMentionUserCell.h"
+#import <pop/POP.h>
  
 
 @interface HWCommentViewController () <NavigationViewDelegate, HWCommentInputViewDelegate, HWCommentCellDelegate, UITextViewDelegate>
@@ -38,6 +39,7 @@
 
 @property (nonatomic, strong) NSArray *mentionsArray;
 @property (nonatomic, assign) BOOL isCommentsArray;
+@property (weak, nonatomic) IBOutlet UIView *v;
 
 @end
 
@@ -87,17 +89,15 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"HWCommentCell" bundle:nil] forCellReuseIdentifier:commentCellIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"HWMentionUserCell" bundle:nil] forCellReuseIdentifier:mentionCellIdentifier];
     
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight =  63;//56.0;
-    self.height = [[UIScreen mainScreen] bounds].size.height ;
+    self.height =  [[UIScreen mainScreen] bounds].size.height ;
 }
 
 
 - (void) viewDidAppear:(BOOL)animated
 {
          self.isInternetConnectionAlertShowed = NO;
-    [self scrollToBotton];
-    [self scrollToBotton];
+    
+   
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -114,11 +114,6 @@
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    
-    
-    
-    
-
     
 }
 
@@ -142,16 +137,14 @@
     CGRect keyEndFrame = [value CGRectValue];
     CGRect keyFrame = [self.view convertRect:keyEndFrame toView:nil];
     CGFloat keyHeight = keyFrame.size.height ;
-    self.heightKey = keyHeight;
+     self.heightKey = keyHeight;
     
     CGRect frame = self.view.frame;
     frame.size.height = self.height;
     self.view.frame = frame;
     
- 
-    
-    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - keyHeight);
- 
+     self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - keyHeight);
+  
     [self scrollToBotton];
     
 
@@ -159,9 +152,9 @@
 
 - (void)keyboardWillBeHidden:(NSNotification *)aNotification
 {
-    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, _height);
+     self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, _height);
     
-    
+     
 }
 
 - (void)contentSizeCategoryChanged:(NSNotification *)notification
@@ -184,6 +177,24 @@
     }
     
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.isCommentsArray)
+    {
+        HWComment *comment = [self.commentsArray objectAtIndex:indexPath.row];
+        return [HWCommentCell heightWith:comment.text];
+    }
+   else
+   {
+       return 66;
+   }
+
+}
+
+
+ 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -298,6 +309,7 @@
     self.isCommentsArray = YES;
     [self scrollToBotton ];
     
+    
 }
 
 
@@ -340,7 +352,7 @@
                                          }
                                        
                                          [self scrollToBotton];
-                                         [self scrollToBotton];
+                                        
                                          
                                      } failureBlock:^(NSError *error) {
                                          
@@ -380,9 +392,6 @@
 - (void) stringWithTapWord:(NSString*)text
 {
     [self.inputCommentView.textView resignFirstResponder];
-    NSLog(@"%@", text);
-    
-   
 }
 
 
@@ -551,7 +560,7 @@
 {
        NSInteger permissibleLenght = 160;
        NSUInteger newLength = [textView.text length] + [text length] - range.length;
-   
+  
         return (newLength > permissibleLenght) ? NO : YES;
   
  }
@@ -588,7 +597,7 @@
         
        
         self.isCommentsArray = YES;
-        [self scrollToBotton];
+        [self.tableView reloadData];
     }
  
     
@@ -622,7 +631,6 @@
 {
     
     [self.navigationController popViewControllerAnimated:YES];
-    
     
 }
 

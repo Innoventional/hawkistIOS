@@ -15,6 +15,7 @@
 #import "NavigationVIew.h"
 #import "NetworkManager.h"
 #import "AddCardViewController.h"
+#import "HWMyOrdersViewController.h"
 
 @interface HWPaymentViewController () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, NavigationViewDelegate, HWAddCardAndAdressCellDelegat>
  
@@ -407,11 +408,12 @@
     
     HWCard *card = [self.paymentOptionArray objectAtIndex:self.paymentSelectRow];
     
-   [ self.networkManager buyItemWithCardId:card.id
+    [self.networkManager buyItemWithCardId:card.id
                                 withItemId:self.item.id
                               successBlock:^{
                                     
-                                    NSLog(@"SuccessBlock");
+                                  HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
+                                  [self.navigationController pushViewController:vc animated:YES];
                                     
     
                                 } failureBlock:^(NSError *error) {

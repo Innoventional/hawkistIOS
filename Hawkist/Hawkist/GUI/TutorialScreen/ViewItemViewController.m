@@ -16,6 +16,7 @@
 #import "HWProfileViewController.h"
 #import "SellAnItemViewController.h"
 #import "myItemCell.h"
+#import "UIImageView+Extensions.h"
 
 #import "HWCommentViewController.h"
 #import <pop/POP.h>
@@ -112,15 +113,15 @@
     
    self.smallImage1.layer.cornerRadius = 5.0f;
    self.smallImage1.layer.masksToBounds = YES;
-    self.smallImage1.image = nil;
+    
     
     self.smallImage2.layer.cornerRadius = 5.0f;
     self.smallImage2.layer.masksToBounds = YES;
-    self.smallImage2.image = nil;
+    
     
     self.smallImage3.layer.cornerRadius = 5.0f;
     self.smallImage3.layer.masksToBounds = YES;
-    self.smallImage3.image = nil;
+    
     
     self.smallImage4.layer.cornerRadius = 5.0f;
     self.smallImage4.layer.masksToBounds = YES;
@@ -139,8 +140,7 @@
     
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans" size:14.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
     
-   
-  //  [[UISegmentedControl appearance] setTitleTextAttributes:nil forState:1];
+  
 #pragma mark ending
     
     
@@ -150,7 +150,7 @@
     self.navigationView.delegate = self;
     
     
- 
+    [self setImages];
     
 }
 
@@ -204,7 +204,6 @@
 - (void) updateItem
 {
     self.navigationView.title.text = self.item.title;
-    
     self.reviews.text = [NSString stringWithFormat:@"%@ (%@ reviews)", self.item.user.rating,self.item.user.review];
     self.starRatingControl.rating = [self.item.user.rating integerValue];
     self.isLikeItem = [self.item.liked integerValue];
@@ -215,7 +214,7 @@
     
     
     self.sellerName.text = self.item.user_username;
-  //  [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user_avatar] placeholderImage:nil];
+    
     [self avatarInit];
     
     self.counts.text = self.item.views;
@@ -226,11 +225,8 @@
 
     [self setupDescription];
     
- 
-    
     self.added.text = [self.item stringItemCreationDate];
-   
-
+    
     HWTag* itemPlatform = [HWTag getPlatformById:self.item.platform from:[AppEngine shared].tags];
     
     self.platform.text =  itemPlatform.name;
@@ -280,10 +276,14 @@
     [self reloadScrollViewSize];
     
     
-    if ([[AppEngine shared].user.id isEqualToString:self.item.user_id])
+    
+    
+    if ([[AppEngine shared].user.id isEqualToString:self.item.user_id] || [self.item.status isEqualToString:@"1"])
     {
         self.buyThisItem.enabled = NO;
-        self.smallImage4.alpha = 0.5;
+        
+        if([[AppEngine shared].user.id isEqualToString:self.item.user_id])
+                self.smallImage4.alpha = 0.5;
     }
     else
     {
@@ -371,22 +371,27 @@
         switch (index) {
             case 0:
             {
-                [self bigImageInitWithURL:[NSURL URLWithString: [self.imagesArray objectAtIndex: index]]];
+                [self.bigImage setImageWithUrl:[NSURL URLWithString: [self.imagesArray objectAtIndex: index]]
+                                 withIndicator:self.activityIndicator];
                 break;
             }
             case 1:
             {
-                [self.smallImage1 setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage:nil];
+             
+                [self setImageWithString:[self.imagesArray objectAtIndex: index] withImageView:self.smallImage1];
+
                 break;
             }
             case 2:
             {
-                [self.smallImage2 setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage: nil];
+                [self setImageWithString:[self.imagesArray objectAtIndex: index] withImageView:self.smallImage2];
+                
                 break;
             }
             case 3:
             {
-                [self.smallImage3 setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage: nil];
+                [self setImageWithString:[self.imagesArray objectAtIndex: index] withImageView:self.smallImage3];
+               
                 break;
             }
             default:
@@ -397,35 +402,19 @@
 }
 
 
-- (void) bigImageInitWithURL:(NSURL*)url
+-(void) setImageWithString:(NSString*)urlStr withImageView:(UIImageView*)iv
 {
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    [self.bigImage setImageWithURLRequest:request
-                             placeholderImage:nil
-                                      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                          
-                                          dispatch_async(dispatch_get_main_queue(), ^{
-                                              
-                                              
-                                              self.bigImage.image = image;
-                                              [self.activityIndicator stopAnimating];
-                                              
-                                          });
-                                          
-                                          
-                                      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-                                          
-                                          [self.bigImage stopAnimating];
-                                          self.sellerAvatar.image = [UIImage imageNamed:@"noPhoto"];
-                                      }];
-    
-    
-    
+    if(urlStr)
+    {
+        [iv setImageWithURL: [NSURL URLWithString: urlStr] placeholderImage:nil];
+    } else {
+        
+        iv.image = [UIImage imageNamed:@"noPhoto"];
+         
+    }
     
 }
-
 
 #pragma mark -
 #pragma mark UISegmentedControl
@@ -700,7 +689,15 @@
 
 -(void)shareOnSocialWithNameNet:(NSString*)socialNetName
 {
-   
+    NSString *socialName;
+    
+    if([socialNetName isEqualToString:SLServiceTypeFacebook])
+    {
+        socialName = @"Facebook";
+    } else {
+        
+        socialName = @"Twitter";
+    }
     
     if([SLComposeViewController isAvailableForServiceType:socialNetName]) //check if Facebook Account is linked
     {
@@ -715,11 +712,13 @@
         UIImage *image = self.bigImage.image;
         
         [_mySLComposerSheet addImage:image];
+        
      
         [self presentViewController:_mySLComposerSheet animated:YES completion:nil];
     }
     
-    else{
+    else
+    {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Sign in!" message:@"Please first Sign In!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
         [alert show];
     }
@@ -738,7 +737,8 @@
         } //check if everything worked properly. Give out a message on the state.
         
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+     
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:socialName message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [alert show];
     }];
     

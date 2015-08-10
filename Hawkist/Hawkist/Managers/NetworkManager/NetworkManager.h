@@ -15,6 +15,19 @@
 + (instancetype) shared;
 
 
+
+typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
+{
+    
+    HWItemHasNotArrived = 0,
+    HWItemIsNotAsDescribed = 1,
+    HWItemIsBrokenOrNotUsable = 2
+};
+
+
+
+
+
 #pragma mark -
 #pragma mark User section
 
@@ -221,7 +234,19 @@
              failureBlock:(void(^)(NSError *error)) failureBlock;
 
 
--(void)getAllOrderItemWithSuccessBlock:(void(^)(NSArray *array)) successBlock
+-(void) getAllOrderItemWithSuccessBlock:(void(^)(NSArray *array)) successBlock
                           failureBlock:(void(^)(NSError *error)) failureBlock;
+
+-(void) orderHasInIssueWithOrderId:(NSString*)orderId
+             withOrderIssuseReasons:(HWOrderIssuseReasons) orderIssuse
+                       successBlock:(void(^)(void)) successBlock
+                       failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
+-(void) orderReceivedWithOrderId:(NSString *)orderId
+                     successBlock:(void(^)(void)) successBlock
+                     failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
 
 @end

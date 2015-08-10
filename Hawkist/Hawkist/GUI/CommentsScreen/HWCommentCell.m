@@ -16,7 +16,7 @@
 @interface HWCommentCell () <TextViewWithDetectedWordDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet TextViewWithDetectedWord *textView;
+
 
 
 @property (nonatomic, strong) NSString *userId;
@@ -64,10 +64,6 @@
     
     CGSize size = [_textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
     [_textView sizeToFit];
-    NSLog( @"%f", self.textView.contentSize.height);
-    
-  
-    NSLog( @"%f", self.textView.contentSize.height);
     
     self.textView.bounds = CGRectMake(0, 0, size.width, size.height);
  
@@ -206,6 +202,21 @@
         
         [self.delegate stringWithTapWord:text];
     }
+    
+    
+}
+
+
++ (CGFloat) heightWith:(NSString*)text
+{
+
+    UITextView *textView = [[UITextView alloc]init];
+    textView.text = text;
+    
+    textView.font =  [UIFont fontWithName:@"OpenSans" size:15.f];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width - 54;
+    CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
+    return size.height + 28;
     
     
 }
