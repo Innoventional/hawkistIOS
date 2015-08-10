@@ -20,6 +20,8 @@
 @property (nonatomic,assign)NSUInteger selectedYear;
 @property (nonatomic,assign) BOOL isEdit;
 @property (nonatomic,strong) HWCard* card;
+@property (strong, nonatomic) IBOutlet UIButton *cameraButton;
+@property (nonatomic, strong) CardIOView* cameraInput;
 
 @end
 
@@ -43,6 +45,16 @@
 - (void)viewDidLoad
 {
     [self initDefault];
+    
+    if (![CardIOUtilities canReadCardWithCamera]) {
+        self.cameraButton.hidden = YES;
+    }
+    
+    [CardIOUtilities preload];
+    
+    self.cameraInput = [[CardIOView alloc]initWithFrame:self.view.bounds];
+    
+    self.cameraInput.delegate = self;
     
     if (self.isEdit) {
         NSArray  *arrayOfNames = [self.card.name componentsSeparatedByString:@" "];
@@ -219,8 +231,8 @@
                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                       [self hideHud];
                                                   });
-
-                                                  [self showAlertWithTitle:@"Stripe" Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                                  [self showAlertWithTitle:[error.userInfo objectForKey:@"NSLocalizedDescription"] Message:[error.userInfo objectForKey:@"com.stripe.lib:ErrorMessageKey"]
+];
                                               }
                                               else
                                               {
@@ -293,13 +305,21 @@
 
 - (IBAction)test:(id)sender {
     
-    [CardIOUtilities preload];
+    [self.view endEditing:YES];
     
-    CardIOView* view = [[CardIOView alloc]initWithFrame:self.view.bounds];
+    UIButton* cancel = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 50)];
     
-    view.delegate = self;
-    [self.view addSubview:view];
+    [cancel addTarget:self action:@selector(cancelCamera) forControlEvents:UIControlEventTouchUpInside];
     
+    [self.cameraInput addSubview:cancel];
+    
+    [self.view addSubview:self.cameraInput];
+    
+}
+
+- (void) cancelCamera
+{
+    [self.cameraInput removeFromSuperview];
 }
 
 - (void)cardIOView:(CardIOView *)cardIOView didScanCard:(CardIOCreditCardInfo *)info {

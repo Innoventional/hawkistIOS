@@ -23,6 +23,7 @@
 		3A6901511B72DEBF00B618B8 /* PersonalisationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6901501B72DEBF00B618B8 /* PersonalisationView.xib */; };
 		3A6901541B72DF1500B618B8 /* PersonalisationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6901531B72DF1500B618B8 /* PersonalisationViewController.m */; };
 		3A6901571B72EDFF00B618B8 /* CDatePickerViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6901561B72EDFF00B618B8 /* CDatePickerViewEx.m */; };
+		3A69015E1B783A3100B618B8 /* default.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A69015D1B783A3100B618B8 /* default.xib */; };
 		3A8366781B30668E00208FC5 /* Login.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366741B30668E00208FC5 /* Login.xib */; };
 		3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366761B30668E00208FC5 /* LoginViewController.m */; };
 		3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366801B31A85900208FC5 /* AccountDetailView.xib */; };
@@ -194,6 +195,7 @@
 		3A6901531B72DF1500B618B8 /* PersonalisationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalisationViewController.m; path = Personalisation/PersonalisationViewController.m; sourceTree = "<group>"; };
 		3A6901551B72EDFF00B618B8 /* CDatePickerViewEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDatePickerViewEx.h; sourceTree = "<group>"; };
 		3A6901561B72EDFF00B618B8 /* CDatePickerViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDatePickerViewEx.m; sourceTree = "<group>"; };
+		3A69015D1B783A3100B618B8 /* default.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = default.xib; path = manageBank/default.xib; sourceTree = "<group>"; };
 		3A8366741B30668E00208FC5 /* Login.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Login.xib; sourceTree = "<group>"; };
 		3A8366751B30668E00208FC5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3A8366761B30668E00208FC5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 		3A45ABDC1B6B294800FD56D6 /* ManageBank */ = {
 			isa = PBXGroup;
 			children = (
+				3A69015C1B783A1400B618B8 /* placeHolder */,
 				CE2579EE1B7339A800A0DEE9 /* cardView.xib */,
 				3AF8320B1B70E60B00CC750D /* CardView.h */,
 				3AF8320C1B70E60B00CC750D /* CardView.m */,
@@ -508,6 +511,14 @@
 				3A6901531B72DF1500B618B8 /* PersonalisationViewController.m */,
 			);
 			name = Personalisation;
+			sourceTree = "<group>";
+		};
+		3A69015C1B783A1400B618B8 /* placeHolder */ = {
+			isa = PBXGroup;
+			children = (
+				3A69015D1B783A3100B618B8 /* default.xib */,
+			);
+			name = placeHolder;
 			sourceTree = "<group>";
 		};
 		3A8366711B30668E00208FC5 /* LoginVIew */ = {
@@ -1211,6 +1222,7 @@
 				CE59094C1B5E9DD600DAA7FF /* HWCommentViewController.xib in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
+				3A69015E1B783A3100B618B8 /* default.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
 				CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */,
 				3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */,

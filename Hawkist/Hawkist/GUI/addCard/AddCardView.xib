@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="addressFirst" destination="33S-Vs-Dof" id="klk-rD-8bl"/>
                 <outlet property="addressSecond" destination="aTV-Ia-2ti" id="n93-Rq-ayD"/>
+                <outlet property="cameraButton" destination="qf1-F6-nML" id="7yE-fc-qjV"/>
                 <outlet property="cardNumber" destination="J8O-II-HiO" id="D8V-8o-HZo"/>
                 <outlet property="city" destination="b8l-98-UqO" id="YAX-NS-8h6"/>
                 <outlet property="cvv" destination="rjv-aI-ZJM" id="93h-77-bAD"/>
@@ -151,6 +152,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qf1-F6-nML">
                                             <rect key="frame" x="248" y="0.0" width="54" height="30"/>
                                             <state key="normal" title="Camera">
+                                                <color key="titleColor" red="0.29019607843137257" green="0.67450980392156867" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
