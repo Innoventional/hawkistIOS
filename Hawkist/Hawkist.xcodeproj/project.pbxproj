@@ -24,6 +24,8 @@
 		3A6901541B72DF1500B618B8 /* PersonalisationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6901531B72DF1500B618B8 /* PersonalisationViewController.m */; };
 		3A6901571B72EDFF00B618B8 /* CDatePickerViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6901561B72EDFF00B618B8 /* CDatePickerViewEx.m */; };
 		3A69015E1B783A3100B618B8 /* default.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A69015D1B783A3100B618B8 /* default.xib */; };
+		3A6901611B784D1F00B618B8 /* AddAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6901601B784D1F00B618B8 /* AddAddressView.xib */; };
+		3A6901631B78E6BA00B618B8 /* FeedToShort.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6901621B78E6BA00B618B8 /* FeedToShort.xib */; };
 		3A8366781B30668E00208FC5 /* Login.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366741B30668E00208FC5 /* Login.xib */; };
 		3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366761B30668E00208FC5 /* LoginViewController.m */; };
 		3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366801B31A85900208FC5 /* AccountDetailView.xib */; };
@@ -196,6 +198,8 @@
 		3A6901551B72EDFF00B618B8 /* CDatePickerViewEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDatePickerViewEx.h; sourceTree = "<group>"; };
 		3A6901561B72EDFF00B618B8 /* CDatePickerViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDatePickerViewEx.m; sourceTree = "<group>"; };
 		3A69015D1B783A3100B618B8 /* default.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = default.xib; path = manageBank/default.xib; sourceTree = "<group>"; };
+		3A6901601B784D1F00B618B8 /* AddAddressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddAddressView.xib; path = AddAdress/AddAddressView.xib; sourceTree = "<group>"; };
+		3A6901621B78E6BA00B618B8 /* FeedToShort.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedToShort.xib; sourceTree = "<group>"; };
 		3A8366741B30668E00208FC5 /* Login.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Login.xib; sourceTree = "<group>"; };
 		3A8366751B30668E00208FC5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3A8366761B30668E00208FC5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -521,6 +525,14 @@
 			name = placeHolder;
 			sourceTree = "<group>";
 		};
+		3A69015F1B784CFE00B618B8 /* AddAdress */ = {
+			isa = PBXGroup;
+			children = (
+				3A6901601B784D1F00B618B8 /* AddAddressView.xib */,
+			);
+			name = AddAdress;
+			sourceTree = "<group>";
+		};
 		3A8366711B30668E00208FC5 /* LoginVIew */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +659,7 @@
 				7CE0E8DC1B4307F0003B8B3A /* FeedScreenViewController.h */,
 				7CE0E8DD1B4307F0003B8B3A /* FeedScreenViewController.m */,
 				7CE0E8DE1B4307F0003B8B3A /* FeedScreenViewController.xib */,
+				3A6901621B78E6BA00B618B8 /* FeedToShort.xib */,
 				7CE0E8D91B4307F0003B8B3A /* FeedScreenCollectionViewCell.h */,
 				7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */,
 				7CE0E8DB1B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib */,
@@ -829,6 +842,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				3A69015F1B784CFE00B618B8 /* AddAdress */,
 				CE2579F11B73A74D00A0DEE9 /* My Orders Screen */,
 				3A69014F1B72DE9000B618B8 /* Personalisation */,
 				3AF8323E1B7190C800CC750D /* SettingScreen */,
@@ -1199,6 +1213,7 @@
 				7CE0E8E21B4307F0003B8B3A /* FeedScreenViewController.xib in Resources */,
 				CEBAAFBE1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib in Resources */,
 				CEBAAFB11B6DF5CC00AFE4C6 /* HWPaymentView.xib in Resources */,
+				3A6901631B78E6BA00B618B8 /* FeedToShort.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */,
 				CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */,
@@ -1239,6 +1254,7 @@
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
 				7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */,
 				CEBAAFA11B6CE9FD00AFE4C6 /* HWSingOutCell.xib in Resources */,
+				3A6901611B784D1F00B618B8 /* AddAddressView.xib in Resources */,
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				3A6901511B72DEBF00B618B8 /* PersonalisationView.xib in Resources */,
@@ -1509,7 +1525,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1526,7 +1542,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

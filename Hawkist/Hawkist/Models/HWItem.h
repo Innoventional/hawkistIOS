@@ -57,6 +57,7 @@
 @property (nonatomic, strong) NSString<Optional>* likes;
 
 @property (nonatomic, strong) NSString<Optional>* comments;
+@property (nonatomic, strong) NSString<Optional>* views;
 
 
 

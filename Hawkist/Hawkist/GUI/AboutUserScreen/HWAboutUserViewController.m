@@ -112,7 +112,7 @@
 
 -(void) leftButtonClick
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 

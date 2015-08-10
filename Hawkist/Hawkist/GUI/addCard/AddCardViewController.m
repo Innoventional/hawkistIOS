@@ -12,7 +12,7 @@
 #import "UIColor+Extensions.h"
 #import "HWCard.h"
 #import "CDatePickerViewEx.h"
-
+#import "TPKeyboardAvoidingScrollView.h"
 
 @interface AddCardViewController ()
 @property (nonatomic,strong)CDatePickerViewEx* datePicker;
@@ -22,6 +22,7 @@
 @property (nonatomic,strong) HWCard* card;
 @property (strong, nonatomic) IBOutlet UIButton *cameraButton;
 @property (nonatomic, strong) CardIOView* cameraInput;
+@property (strong, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *scrollView;
 
 @end
 
@@ -39,6 +40,11 @@
 
 - (void) leftButtonClick
 {
+    if ([self.cameraInput superview]==self.view)
+    {
+        [self.cameraInput removeFromSuperview];
+    }
+    else
     [self.navigationController popViewControllerAnimated:NO];
 }
 
@@ -306,21 +312,14 @@
 - (IBAction)test:(id)sender {
     
     [self.view endEditing:YES];
-    
-    UIButton* cancel = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 50)];
-    
-    [cancel addTarget:self action:@selector(cancelCamera) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.cameraInput addSubview:cancel];
-    
+   
     [self.view addSubview:self.cameraInput];
+    [self.view bringSubviewToFront: self.navigation];
+   
     
 }
 
-- (void) cancelCamera
-{
-    [self.cameraInput removeFromSuperview];
-}
+
 
 - (void)cardIOView:(CardIOView *)cardIOView didScanCard:(CardIOCreditCardInfo *)info {
    

@@ -18,6 +18,7 @@
 #import "myItemCell.h"
 
 #import "HWCommentViewController.h"
+#import <pop/POP.h>
 
 
 #import <Social/Social.h>
@@ -26,7 +27,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 
 
-@interface ViewItemViewController () <MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate>
+@interface ViewItemViewController () <MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,MyItemCellDelegate>
 
 @property (nonatomic, strong) HWItem* item;
 @property (nonatomic, strong) NSMutableArray* imagesArray;
@@ -60,15 +61,15 @@
         {
             self.imagesArray = [NSMutableArray array];
             self.item = item;
-            [[NetworkManager shared] getItemById: self.item.id
-            successBlock:^(HWItem *item) {
-                self.item = item;
-                
-                [self updateItem];
-            } failureBlock:^(NSError *error) {
-                
-                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-            }];
+//            [[NetworkManager shared] getItemById: self.item.id
+//            successBlock:^(HWItem *item) {
+//                self.item = item;
+//                
+//               // [self updateItem];
+//            } failureBlock:^(NSError *error) {
+//                
+//                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+//            }];
             
             
             
@@ -138,7 +139,8 @@
     
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans" size:14.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
     
- 
+   
+  //  [[UISegmentedControl appearance] setTitleTextAttributes:nil forState:1];
 #pragma mark ending
     
     
@@ -208,7 +210,7 @@
     self.isLikeItem = [self.item.liked integerValue];
     if (self.isLikeItem)
     {
-        [self.smallImage4 setImage:[UIImage imageNamed:@"favLike"]];
+        [self.smallImage4 setImage:[UIImage imageNamed:@"Newstar"]];
     }
     
     
@@ -216,7 +218,7 @@
   //  [self.sellerAvatar setImageWithURL: [NSURL URLWithString: self.item.user_avatar] placeholderImage:nil];
     [self avatarInit];
     
-    
+    self.counts.text = self.item.views;
     self.nameOoStuff.text = self.item.title;
     self.comments.text = self.item.comments;
     self.sellerPrice.text = self.item.selling_price;
@@ -324,14 +326,14 @@
                                            
                                          
                                            self.sellerAvatar.image = image;
-                                             [self.activityIndicator stopAnimating];
+                                           
 
                                        });
                                         
                                         
                                     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
                                         
-                                       [self.activityIndicator stopAnimating];
+                                     
                                         self.sellerAvatar.image = [UIImage imageNamed:@"noPhoto"];
                                     }];
     
@@ -340,7 +342,10 @@
 
 }
 
- 
+ - (void)setSellerAvatar:(UIImageView *)sellerAvatar
+{
+    _sellerAvatar = sellerAvatar;
+}
 
 - (void) reloadScrollViewSize
 {
@@ -366,7 +371,7 @@
         switch (index) {
             case 0:
             {
-                [self.bigImage setImageWithURL: [NSURL URLWithString: [self.imagesArray objectAtIndex: index]] placeholderImage: nil];
+                [self bigImageInitWithURL:[NSURL URLWithString: [self.imagesArray objectAtIndex: index]]];
                 break;
             }
             case 1:
@@ -390,6 +395,37 @@
         
     }
 }
+
+
+- (void) bigImageInitWithURL:(NSURL*)url
+{
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [self.bigImage setImageWithURLRequest:request
+                             placeholderImage:nil
+                                      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                          
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              
+                                              
+                                              self.bigImage.image = image;
+                                              [self.activityIndicator stopAnimating];
+                                              
+                                          });
+                                          
+                                          
+                                      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                          
+                                          [self.bigImage stopAnimating];
+                                          self.sellerAvatar.image = [UIImage imageNamed:@"noPhoto"];
+                                      }];
+    
+    
+    
+    
+}
+
 
 #pragma mark -
 #pragma mark UISegmentedControl
@@ -490,13 +526,18 @@
                                                if (self.isLikeItem)
                                                {
                                                    self.isLikeItem = NO;
-                                                   [self.smallImage4 setImage:[UIImage imageNamed:@"fav"]];
+                                                   [self.smallImage4 setImage:[UIImage imageNamed:@"favLike"]];
                                                } else {
                                                    
                                                    self.isLikeItem = YES;
-                                                   [self.smallImage4 setImage:[UIImage imageNamed:@"favLike"]];
+                                                   [self.smallImage4 setImage:[UIImage imageNamed:@"Newstar"]];
                                                }
                                                
+                                               POPSpringAnimation *sprintAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+                                               sprintAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
+                                               sprintAnimation.velocity = [NSValue valueWithCGPoint:CGPointMake(10, 10)];
+                                               sprintAnimation.springBounciness = 20.f;
+                                               [self.smallImage4 pop_addAnimation:sprintAnimation forKey:@"springAnimation"];
              
                                          } failureBlock:^(NSError *error) {
             
@@ -621,7 +662,7 @@
     else if ([actionSheet isEqual:self.sendToFrandActionSheet])
         
     {
-        NSLog(@"%d", buttonIndex);
+        NSLog(@"%ld", (long)buttonIndex);
         switch (buttonIndex) {
             case 0:
                  //Share on Facebook
@@ -784,7 +825,10 @@ if(![MFMessageComposeViewController canSendText]) {
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
-    [controller dismissModalViewControllerAnimated:YES];
+    [controller dismissViewControllerAnimated:YES completion:^{
+        
+        
+    }];
     
     if (result == MessageComposeResultCancelled)
         NSLog(@"Message cancelled");

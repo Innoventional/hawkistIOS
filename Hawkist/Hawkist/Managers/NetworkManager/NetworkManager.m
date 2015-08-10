@@ -89,7 +89,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
     else
     {
         
-        if (error.code == -1004 || error.code == -1009)
+        if (error.code == -1004 || error.code == -1009 || error.code == - 1005)
         {
             return [NSError errorWithDomain:@"Connection Error"
                                 code:499
