@@ -1633,7 +1633,7 @@ NSString *URLString = @"user/logout";
 
 
 #pragma mark - 
-#pragma mark Buy item 
+#pragma mark Buy item
 
 -(void) buyItemWithCardId:(NSString*)cardId
                withItemId:(NSString*)itemId
@@ -1678,6 +1678,11 @@ NSString *URLString = @"user/logout";
     
 }
 
+
+#pragma mark -
+#pragma mark OrderItem
+
+
 -(void)getAllOrderItemWithSuccessBlock:(void(^)(NSArray *array)) successBlock
                           failureBlock:(void(^)(NSError *error)) failureBlock
 {
@@ -1696,31 +1701,8 @@ NSString *URLString = @"user/logout";
                                
                                return;
                            }
-
-                           NSError *error;
-                           NSArray *ordersArray = responseObject[@"orders"];
-                           NSMutableArray *array = [NSMutableArray array];
-                           
-                           for ( NSDictionary *dict in ordersArray) {
-                               NSDictionary *listingDict = dict[@"listing"];
-                            
-                               HWOrderItem * orderItem = [[HWOrderItem alloc] init];
-                               orderItem.item = [[HWItem alloc]initWithDictionary:listingDict
-                                                                                         error:&error];
-                               orderItem.id = dict[@"id"];
-                               NSNumber *numb = dict[@"status"];
-                               orderItem.status = [numb intValue];
-                               [array addObject:orderItem];
-                               
-                           }
-                           
-                           if (error)
-                           {
-                               NSLog(@"%@",error);
-                               
-                           }
-                           
-                           successBlock(array);
+                                NSArray *array = [self getOrderItemsArrayWithResponse:responseObject];
+                                successBlock(array);
                            
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -1733,6 +1715,72 @@ NSString *URLString = @"user/logout";
                        }];
     
 }
+
+-(void) searchInOrdersWithString:(NSString*)searchText
+                    successBlock:(void(^)(NSArray *array)) successBlock
+                    failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    NSString *URLString = [NSString stringWithFormat:@"user/orders"];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    if(searchText && searchText.length > 0)
+    {
+        [params setObject: searchText forKey: @"q"];
+    }
+    
+    
+    [self.networkDecorator GET:URLString
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           NSArray *array = [self getOrderItemsArrayWithResponse:responseObject];
+                           successBlock(array);
+                           
+                           
+                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                       }];
+}
+
+
+- (NSArray*) getOrderItemsArrayWithResponse:(id)responseObject
+{
+    NSError *error;
+    NSArray *ordersArray = responseObject[@"orders"];
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for ( NSDictionary *dict in ordersArray) {
+        NSDictionary *listingDict = dict[@"listing"];
+        
+        HWOrderItem * orderItem = [[HWOrderItem alloc] init];
+        orderItem.item = [[HWItem alloc]initWithDictionary:listingDict
+                                                     error:&error];
+        orderItem.id = dict[@"id"];
+        NSNumber *numb = dict[@"status"];
+        orderItem.status = [numb intValue];
+        [array addObject:orderItem];
+    }
+    
+    if (error)
+    {
+        NSLog(@"%@",error);
+        
+    }
+    return array;
+}
+
 
 
 - (void) orderReceivedWithOrderId:(NSString *)orderId
@@ -1770,6 +1818,7 @@ NSString *URLString = @"user/logout";
     
 }
 
+
 - (void) orderHasInIssueWithOrderId:(NSString*)orderId
              withOrderIssuseReasons:(HWOrderIssuseReasons) orderIssuse
                        successBlock:(void(^)(void)) successBlock
@@ -1800,10 +1849,8 @@ NSString *URLString = @"user/logout";
                            failureBlock(serverError);
                            
                        }];
-    
-
-    
-    
 }
+
+
 @end
 

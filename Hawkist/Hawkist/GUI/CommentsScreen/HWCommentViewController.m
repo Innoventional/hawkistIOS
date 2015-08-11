@@ -12,6 +12,8 @@
 #import "HWCommentCell.h"
 #import "HWProfileViewController.h"
 #import "NetworkManager.h"
+#import "ViewItemViewController.h"
+
 
 #import "SZTextView.h"
 #import "HWComment.h"
@@ -47,11 +49,15 @@
 
 @implementation HWCommentViewController
 
-#pragma mark -
-#pragma mark UIViewController
+
 
 #define commentCellIdentifier @"commentCellIdentifier"
 #define mentionCellIdentifier @"mentionCellIdentifier"
+
+
+
+#pragma mark -
+#pragma mark UIViewController
 
 - (instancetype) initWithItem:(HWItem* )item
 {
@@ -130,6 +136,8 @@
     
 }
 
+#pragma mark -
+#pragma mark Notification
 
 - (void)keyboardWillShown:(NSNotification *)aNotification
 {
@@ -157,12 +165,54 @@
      
 }
 
-- (void)contentSizeCategoryChanged:(NSNotification *)notification
+
+#pragma mark -
+#pragma mark set/get
+
+- (void) setCommentsArrayWithItem:(HWItem*)item
 {
-    [self.tableView reloadData];
+    [self.networkManager getAllCommentsWithItem:item
+                                   successBlock:^(NSArray *commentsArray) {
+                                       
+                                       self.commentsArray = commentsArray;
+                                       
+                                       if(!self.commentsArray.count)
+                                       {
+                                           [self.indicatorLoad stopAnimating];
+                                       }
+                                       
+                                       [self scrollToBotton];
+                                       
+                                       
+                                   } failureBlock:^(NSError *error) {
+                                       
+                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"] withDelegate:self];
+                                       
+                                       //  [self.navigationController popViewControllerAnimated:YES];
+                                       
+                                   }];
+    
 }
 
-#pragma nark -
+#pragma mark -
+#pragma mark NavigationViewDelegate
+
+
+-(void) leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+
+-(void) rightButtonClick
+{
+    
+}
+
+
+
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -320,99 +370,8 @@
 {
     return !self.isCommentsArray;
 }
- #pragma nark -
-#pragma mark NavigationViewDelegate
 
 
--(void) leftButtonClick
-{
-    [self.navigationController popViewControllerAnimated:YES];
-    
-}
-
-
--(void) rightButtonClick
-{
-    
-}
-
-#pragma mark -
-#pragma mark set/get
-
-- (void) setCommentsArrayWithItem:(HWItem*)item
-{
-    [self.networkManager getAllCommentsWithItem:item
-                                     successBlock:^(NSArray *commentsArray) {
-                                         
-                                         self.commentsArray = commentsArray;
-                                        
-                                         if(!self.commentsArray.count)
-                                         {
-                                             [self.indicatorLoad stopAnimating];
-                                         }
-                                       
-                                         [self scrollToBotton];
-                                        
-                                         
-                                     } failureBlock:^(NSError *error) {
-                                         
-                                         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"] withDelegate:self];
-                                         
-                                       //  [self.navigationController popViewControllerAnimated:YES];
-                                         
-                                     }];
-    
-}
-
-- (void) scrollToBotton
-{
-    
-       [self.tableView reloadData];
-    [self.tableView layoutIfNeeded];
-    if (self.commentsArray.count) {
-        
-        NSIndexPath* indexPath = [NSIndexPath indexPathForRow: ([self.tableView numberOfRowsInSection:([self.tableView numberOfSections]-1)]-1) inSection: ([self.tableView numberOfSections]-1)];
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:NO];
-
-    }
-    
-}
-
-
-#pragma nark -
-#pragma mark HWCommentCellDelegate
-
-
-- (void) transitionToProfileWithUserId:(NSString*)userId
-{
-    HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUserID:userId];
-    [self.navigationController pushViewController:profileVC animated:YES];
-}
-
-- (void) stringWithTapWord:(NSString*)text
-{
-    [self.inputCommentView.textView resignFirstResponder];
-}
-
-
-#pragma mark -
-#pragma mark HelpsMethod
-
-- (NSArray *)rightButtons
-{
-    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    
-    [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:55./255. green:185./255. blue:165./255. alpha:1]
-                                                 icon:[UIImage imageNamed:@"accept"]];
-    
- 
-    
-    
-    [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1]
-                                                 icon:[UIImage imageNamed:@"decline"]];
-    
-    return rightUtilityButtons;
-}
 
 
 #pragma mark - SWTableViewDelegate
@@ -458,19 +417,16 @@
     switch (index) {
         case 0:
         {
-         
-            
             [self.networkManager acceptOfferWithItemId:cell.offerId
                                           successBlock:^{
-                                               
+                                              
                                               [self setCommentsArrayWithItem:self.currentItem];
                                           } failureBlock:^(NSError *error) {
                                               
                                               [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                               
                                           }];
-            
-                       break;
+            break;
         }
         case 1:
         {
@@ -481,10 +437,9 @@
                                                
                                            } failureBlock:^(NSError *error) {
                                                NSLog(@"success");
-                                                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                               [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                            }];
-         
-                        break;
+            break;
         }
         default:
             break;
@@ -513,6 +468,68 @@
     }
     
     return YES;
+}
+
+
+#pragma mark -
+#pragma mark HWCommentCellDelegate
+
+
+- (void) transitionToProfileWithUserId:(NSString*)userId
+{
+    HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUserID:userId];
+    [self.navigationController pushViewController:profileVC animated:YES];
+}
+
+
+
+- (void) transitionToViewItemWithItem:(HWItem*)item
+{
+    if (!item) return;
+    
+    ViewItemViewController *vc = [[ViewItemViewController alloc]initWithItem:item];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+- (void) stringWithTapWord:(NSString*)text
+{
+    [self.inputCommentView.textView resignFirstResponder];
+}
+
+
+#pragma mark -
+#pragma mark HelpsMethod
+
+
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    
+    [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:55./255. green:185./255. blue:165./255. alpha:1]
+                                                 icon:[UIImage imageNamed:@"accept"]];
+    
+ 
+    
+    
+    [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1]
+                                                 icon:[UIImage imageNamed:@"decline"]];
+    
+    return rightUtilityButtons;
+}
+
+
+- (void) scrollToBotton
+{
+    [self.tableView reloadData];
+    [self.tableView layoutIfNeeded];
+    if (self.commentsArray.count) {
+        
+        NSIndexPath* indexPath = [NSIndexPath indexPathForRow: ([self.tableView numberOfRowsInSection:([self.tableView numberOfSections]-1)]-1) inSection: ([self.tableView numberOfSections]-1)];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:NO];
+        
+    }
+    
 }
 
 
@@ -627,6 +644,7 @@
 
 #pragma mark -
 #pragma mark UIAlertViewDelegate
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     

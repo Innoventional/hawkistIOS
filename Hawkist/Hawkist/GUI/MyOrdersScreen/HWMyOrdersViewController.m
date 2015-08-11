@@ -272,9 +272,27 @@
     return YES;
 }
 
+- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+     NSString* searchString = [textField.text stringByReplacingCharactersInRange: range withString:string];
+    
+    [self.networkManager searchInOrdersWithString:searchString
+                                     successBlock:^(NSArray *array) {
+                                         
+                                         self.itemsArray = array ;
+                                         [self.collectionView reloadData];
+                                         
+                                     } failureBlock:^(NSError *error) {
+                                         [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                         
+                                     }];
+    
+    
+    return YES;
+}
 
-
-#pragma mark -UIAlertViewDelegate
+#pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -312,7 +330,7 @@
     
 }
 
-#pragma mark -UIActionSheetDelegate
+#pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {

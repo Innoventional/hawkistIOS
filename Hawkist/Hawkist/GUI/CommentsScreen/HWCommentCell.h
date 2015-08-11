@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class HWComment;
 #import "SWTableViewCell.h"
-
 #import "TextViewWithDetectedWord.h"
+
+@class HWComment;
+@class HWItem;
+
 
 @protocol HWCommentCellDelegate;
 
@@ -30,6 +32,7 @@
 
 @protocol HWCommentCellDelegate <NSObject>
 
+- (void) transitionToViewItemWithItem:(HWItem*)item;
 - (void) transitionToProfileWithUserId:(NSString*)userId;
 - (void) stringWithTapWord:(NSString*)text;
 

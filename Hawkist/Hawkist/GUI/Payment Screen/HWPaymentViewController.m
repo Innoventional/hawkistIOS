@@ -406,12 +406,23 @@
 - (IBAction)pressBuyNowButton:(UIButton *)sender
 {
     
+    NSString *desc =
+    [NSString stringWithFormat:@"You have purchased \"%@\" for £%@. Please confirm when you have received the item.",self.item.title, self.item.selling_price];
+    
+    
     HWCard *card = [self.paymentOptionArray objectAtIndex:self.paymentSelectRow];
     
     [self.networkManager buyItemWithCardId:card.id
                                 withItemId:self.item.id
                               successBlock:^{
-                                    
+                                  
+                                 
+                                  [[[UIAlertView alloc]initWithTitle:@"Purchase Completed"
+                                                             message:desc
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"Ok!"
+                                                   otherButtonTitles: nil ]show];
+                                  
                                   HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
                                   [self.navigationController pushViewController:vc animated:YES];
                                     

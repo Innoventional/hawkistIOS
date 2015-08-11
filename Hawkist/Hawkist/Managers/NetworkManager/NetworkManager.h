@@ -234,6 +234,10 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
              failureBlock:(void(^)(NSError *error)) failureBlock;
 
 
+#pragma mark -
+#pragma mark OrderItem
+
+
 -(void) getAllOrderItemWithSuccessBlock:(void(^)(NSArray *array)) successBlock
                           failureBlock:(void(^)(NSError *error)) failureBlock;
 
@@ -247,6 +251,9 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
                      successBlock:(void(^)(void)) successBlock
                      failureBlock:(void(^)(NSError *error)) failureBlock;
 
+-(void) searchInOrdersWithString:(NSString*)searchText
+                    successBlock:(void(^)(NSArray *array)) successBlock
+                    failureBlock:(void(^)(NSError *error)) failureBlock;
 
 
 @end

@@ -19,6 +19,6 @@
 @protocol TextViewWithDetectedWordDelegate <NSObject>
 
 - (void) stringWithTapWord:(NSString*)text;
-
+- (void) stringWithTapItem:(NSString*)text;
 
 @end

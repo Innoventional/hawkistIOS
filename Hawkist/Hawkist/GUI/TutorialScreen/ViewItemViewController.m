@@ -55,6 +55,9 @@
 
 @implementation ViewItemViewController
 
+
+#pragma mark - UIViewController
+
 - (instancetype) initWithItem: (HWItem*) item
     {
         self = [super initWithNibName: @"ViewItemViewController" bundle: nil];

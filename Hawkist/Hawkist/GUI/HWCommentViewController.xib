@@ -72,6 +72,7 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="maX-S4-blY" firstAttribute="leading" secondItem="fSQ-hB-bV8" secondAttribute="leading" id="1V9-Fl-z3E"/>
                                 <constraint firstItem="qh9-4t-rPN" firstAttribute="leading" secondItem="fSQ-hB-bV8" secondAttribute="leading" constant="18" id="1ep-JD-Hv7"/>
@@ -96,8 +97,8 @@
                             </connections>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hl6-eD-rsx">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="452"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="453"/>
+                            <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="V8q-XG-waM"/>
                                 <outlet property="delegate" destination="-1" id="OL4-xO-AzS"/>
@@ -107,7 +108,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="fSQ-hB-bV8" secondAttribute="bottom" id="2iO-Bl-jPR"/>
-                        <constraint firstItem="fSQ-hB-bV8" firstAttribute="top" secondItem="Hl6-eD-rsx" secondAttribute="bottom" constant="1" id="E8z-vC-749"/>
+                        <constraint firstItem="fSQ-hB-bV8" firstAttribute="top" secondItem="Hl6-eD-rsx" secondAttribute="bottom" id="E8z-vC-749"/>
                         <constraint firstItem="Hl6-eD-rsx" firstAttribute="top" secondItem="E8g-sr-nbx" secondAttribute="top" id="Iyj-lf-Qn8"/>
                         <constraint firstAttribute="trailing" secondItem="fSQ-hB-bV8" secondAttribute="trailing" id="PjA-uC-PBJ"/>
                         <constraint firstItem="Hl6-eD-rsx" firstAttribute="leading" secondItem="E8g-sr-nbx" secondAttribute="leading" id="deJ-j9-koi"/>

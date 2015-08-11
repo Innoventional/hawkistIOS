@@ -137,14 +137,12 @@
         
         if([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"@"])
         {
-            range = [self.textView.text rangeOfString:str];
-           
-            [atrbString beginEditing];
-            [atrbString addAttribute:NSForegroundColorAttributeName
-                               value:[UIColor colorWithRed:57./255. green:178./255. blue:154./255. alpha:1]
-                               range:range];
-            [atrbString endEditing];
-            
+            [self paintOverWordWithString:str withRange:range withAttributStr:atrbString];
+        }
+        
+        if([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"#"])
+        {
+            [self paintOverWordWithString:str withRange:range withAttributStr:atrbString];
         }
     }
     
@@ -155,7 +153,19 @@
 
 }
 
+-(void)paintOverWordWithString:(NSString*)str withRange:(NSRange)range withAttributStr:(NSMutableAttributedString*) atrbString
+{
+    
+    range = [self.textView.text rangeOfString:str];
+    
+    [atrbString beginEditing];
+    [atrbString addAttribute:NSForegroundColorAttributeName
+                       value:[UIColor colorWithRed:57./255. green:178./255. blue:154./255. alpha:1]
+                       range:range];
+    [atrbString endEditing];
 
+    
+}
 
 
 
@@ -177,6 +187,23 @@
 #pragma mark -
 #pragma mark HWCommentCelxlDelegate
 
+
+- (void) stringWithTapItem:(NSString*)text
+{
+    
+    NSLog(@"%@", text);
+    
+    HWItem *item = nil;
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(transitionToViewItemWithItem:)])
+    {
+        [self.delegate transitionToViewItemWithItem:item];
+    }
+    
+    
+}
+
+
 - (void) stringWithTapWord:(NSString*)text
 {
     
@@ -193,6 +220,7 @@
                 break;
             }
         }
+        
     }
 
     
