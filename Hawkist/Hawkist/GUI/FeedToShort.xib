@@ -10,7 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tagsBG" translatesAutoresizingMaskIntoConstraints="NO" id="wR3-O4-oEX">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tagsBG" translatesAutoresizingMaskIntoConstraints="NO" id="wR3-O4-oEX">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lva-Yy-fqi" customClass="AddTagsView">
@@ -24,6 +24,10 @@
             <constraints>
                 <constraint firstItem="lva-Yy-fqi" firstAttribute="leading" secondItem="YAx-Os-nHw" secondAttribute="leading" constant="35" id="NGq-R5-5Xg"/>
                 <constraint firstAttribute="bottom" secondItem="lva-Yy-fqi" secondAttribute="bottom" id="Nvh-kg-5ad"/>
+                <constraint firstItem="wR3-O4-oEX" firstAttribute="top" secondItem="YAx-Os-nHw" secondAttribute="top" id="SV1-8R-aII"/>
+                <constraint firstAttribute="trailing" secondItem="wR3-O4-oEX" secondAttribute="trailing" id="Uwc-d3-vz7"/>
+                <constraint firstItem="wR3-O4-oEX" firstAttribute="leading" secondItem="YAx-Os-nHw" secondAttribute="leading" id="ZfY-lx-Dbo"/>
+                <constraint firstAttribute="bottom" secondItem="wR3-O4-oEX" secondAttribute="bottom" id="h61-02-pyB"/>
                 <constraint firstAttribute="trailing" secondItem="lva-Yy-fqi" secondAttribute="trailing" constant="35" id="nRo-5S-P4Z"/>
             </constraints>
             <point key="canvasLocation" x="-92" y="251"/>
