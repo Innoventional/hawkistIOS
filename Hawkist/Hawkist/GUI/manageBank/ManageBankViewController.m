@@ -10,11 +10,13 @@
 #import "UIView+Extensions.h"
 #import "AddCardViewController.h"
 #import "CardIO.h"
+#import "UIColor+Extensions.h"
 
 @interface ManageBankViewController ()
 @property (nonatomic,strong) CardIOPaymentViewController* cardIO;
 @property (nonatomic,strong) NSArray* cards;
 @property (nonatomic,strong) UIView* placeHolder;
+
 
 @property (nonatomic, strong) NSString* removeCardId;
 @end
@@ -33,16 +35,23 @@
 
 - (void) viewDidLoad
 {
-    self.placeHolder =  [[[NSBundle mainBundle]loadNibNamed:@"default" owner:self options:nil]firstObject];
-    self.placeHolder.frame = CGRectMake(0,self.navigation.frame.size.height, self.view.width, self.view.height-100);
-    
-    [self.view addSubview:self.placeHolder];
-    
+   
     self.navigation.delegate = self;
     self.navigation.title.text = @"My Bank Cards";
      self.contentHeight.constant = self.view.height - 95;
 }
 
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    self.placeHolder =  [[[NSBundle mainBundle]loadNibNamed:@"default" owner:self options:nil]firstObject];
+    
+    self.placeHolder.frame = CGRectMake(0, self.navigation.height, self.view.width, self.view.height - 130);
+    
+    [self.view addSubview:self.placeHolder];
+
+ 
+}
 
 - (void) reload
 {
@@ -63,10 +72,12 @@
         
         if (cards.count ==0){
             self.placeHolder.hidden = NO;
+            
         }
         else
         {
             self.placeHolder.hidden = YES;
+            
         }
         for (int i = 0; i<self.cards.count; i++) {
             CardView* card = [[CardView alloc]initWithFrame:CGRectMake(15, i*(cardHeight+20)+15, cardWidth, cardHeight)];

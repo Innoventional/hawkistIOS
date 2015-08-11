@@ -139,7 +139,9 @@
         
         titleField.text = currentItem.title;
         descriptionField.text = currentItem.item_description;
-        descriptionField.textColor = self.textColor;
+       // descriptionField.textColor = self.textColor;
+        
+        descriptionField.placeholderTextColor = self.textColor;
         
         color.isEnabled = YES;
         condition.isEnabled = YES;

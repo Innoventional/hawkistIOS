@@ -28,6 +28,8 @@
 @property (nonatomic, assign) BOOL isLiked;
 
 
+
+
 @property (nonatomic, assign)  NSInteger countLike;
 
 
@@ -113,6 +115,8 @@
                    range:oldPriceRange];
     self.oldPrice.attributedText = atrStr;
     [atrStr endEditing];
+    
+    [self.itemImage setImage:nil];
     
     [self.itemImage setImageWithUrl:[NSURL URLWithString: self.item.photos.firstObject]
                       withIndicator:self.indicator];

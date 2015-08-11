@@ -207,7 +207,7 @@
 - (void)didSelect
 {
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"M - MMMM YYY"];
+    [formatter setDateFormat:@"MM - MMMM YYY"];
     NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     [formatter setLocale:usLocale];
     
@@ -221,8 +221,12 @@
 
 
 
+
+
 - (IBAction)saveAction:(id)sender {
     
+    if ([self validation])
+    {
     if (!self.isEdit){
     
     NSString* fullName =  [NSString stringWithFormat:@"%@ %@",self.firstName.inputField.text,self.lastName.inputField.text];
@@ -275,7 +279,7 @@
         [self showHud];
         
         HWCard* card = [[HWCard alloc]init];
-        
+        [self didSelect];
         card.name = fullName;
         card.exp_month = [NSString stringWithFormat:@"%ld", self.selectedMonth];
         card.exp_year = [NSString stringWithFormat:@"%ld", self.selectedYear];
@@ -303,9 +307,75 @@
                 
             }];
     }
+    }
 
 }
 
+
+- (BOOL) validation
+{
+    NSString* text = @"";
+    
+    if ([self.firstName.inputField.text isEqualToString:@""])
+    {
+        text = [text stringByAppendingString:@"First Name, "];
+    }
+    
+    if ([self.lastName.inputField.text isEqualToString:@""])
+    {
+        text = [text stringByAppendingString:@"Last Name, "];
+    }
+    
+    if ([self.cardNumber.inputField.text isEqualToString:@""])
+    {
+        text = [text stringByAppendingString:@"Card Number, "];
+    }
+    
+    
+    if ([self.cvv.inputField.text isEqualToString:@""])
+    {
+        text = [text stringByAppendingString:@"CVV, "];
+    }
+    
+    if ([self.dateField.inputField.text isEqualToString:@""])
+    {
+        text = [text stringByAppendingString:@"Expiration Date, "];
+    }
+    
+    
+    if ([self.addressFirst.inputField.text isEqualToString:@""])
+    {
+        text = [text stringByAppendingString:@"Address line 1, "];
+    }
+    
+    if ([self.city.inputField.text isEqualToString:@""])
+    {
+        text = [text stringByAppendingString:@"City, "];
+    }
+    
+    if ([self.postCode.inputField.text isEqualToString:@""])
+    {
+        text = [text stringByAppendingString:@"Post Code, "];
+    }
+    
+    
+    if ([text isEqualToString:@""])
+    {
+        return YES;
+    }
+    
+    else
+    {
+    NSString* titleMessage = [[text substringToIndex:text.length-2] stringByAppendingString:@" missing"];
+        
+    NSString* descMessage = [[@"You must input an " stringByAppendingString:[text substringToIndex:text.length-2]] stringByAppendingString:@" in order to create/update bank card."];
+    
+        [self showAlertWithTitle:titleMessage  Message:descMessage];
+        return NO;
+    }
+
+
+}
 
 
 - (void) stripeErrorHandler:(NSString*)message
