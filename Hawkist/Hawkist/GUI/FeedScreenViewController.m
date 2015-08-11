@@ -21,11 +21,7 @@
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSString* searchString;
-
-@property (nonatomic, assign) CGFloat lastHeightCollectionView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCollection;
-
-
+@property (nonatomic, strong) AddTagsView* addTags;
 @end
 
 @implementation FeedScreenViewController
@@ -56,74 +52,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        self.addTagsView.delegate = self;
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.tintColor = [UIColor grayColor];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    //[self.refreshControl setBackgroundColor:[UIColor whiteColor]];
     [self.refreshControl setTintColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];
-   // [self.refreshControl tintColorDidChange];
-    
-    [self.scrollView addSubview:self.refreshControl];
-    
-    self.collectionView.alwaysBounceVertical = YES;
-    
-    [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
+    [self.collectionView addSubview:self.refreshControl];
 
-    
-    
+    self.collectionView.alwaysBounceVertical = YES;
+    [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"FeedToShort" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
+     
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
-    self.scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
+    
     self.searchView.backgroundColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164];
     [self.searchField setValue:[UIColor colorWithRed:189.0/255.0 green:215.0/255.0 blue:211.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
     self.searchField.delegate = self;
-
-    
-    [[NetworkManager shared] getItemsWithPage: self.currentPage + 1 searchString: nil successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
-        [self.items addObjectsFromArray: arrayWithItems];
-//        [self.collectionView reloadData];
-        [self refresh];
-    } failureBlock:^(NSError *error) {
-        
-    }];
     
     
-     
-    
-
-}
-
-- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    NSString* searchString = [textField.text stringByReplacingCharactersInRange: range withString:string];
-    self.searchString = searchString;
-    [[NetworkManager shared] getItemsWithPage: 1 searchString: searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
-        self.currentPage = 1;
-        [self.items removeAllObjects];
-        [self.items addObjectsFromArray: arrayWithItems];
-        //[self.collectionView reloadData];
-        [self refresh];
-    } failureBlock:^(NSError *error) {
-        self.currentPage = 1;
-    }];
-    return YES;
-}
-
-- (BOOL) textFieldShouldReturn: (UITextField*) textField
-{
-    self.searchString = textField.text;
-    [[NetworkManager shared] getItemsWithPage: 1 searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
-        self.currentPage = 1;
-        [self.items removeAllObjects];
-        [self.items addObjectsFromArray: arrayWithItems];
-        //[self.collectionView reloadData];
-        [self refresh];
-    } failureBlock:^(NSError *error) {
-        self.currentPage = 1;
-    }];
-
-    [self.view endEditing: YES];
-    return YES;
+    [self refresh];
 }
 
 
@@ -171,6 +116,23 @@
     return CGSizeMake(widthForView, (widthForView * 488) / 291 - 5);
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)theCollectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)theIndexPath
+{
+    
+    UICollectionReusableView *theView;
+    
+    if(kind == UICollectionElementKindSectionFooter)
+    {
+       
+        theView = [theCollectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer" forIndexPath:theIndexPath];
+        
+        self.addTags = (AddTagsView*)[[theView subviews]lastObject];
+        self.addTags.delegate = self;
+    }
+    
+    return theView;
+}
+
 - (void)refresh
 {
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching listings..."];
@@ -179,7 +141,7 @@
     
     [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
         
-        if ([AppEngine shared].tags.count== tags.count)
+        if ([AppEngine shared].tags.count == tags.count)
         {
             
             CustomizationViewController* vc = [[CustomizationViewController alloc]init];
@@ -187,37 +149,33 @@
             
             [self.navigationController pushViewController:vc animated:NO];
             
-            NSLog(@"Customization");
-            
         }
         
         else
         {
-        [self.addTagsView addTagsToView:tags successBlock:^{
-            
-            
-            [[NetworkManager shared] getItemsWithPage: 1 searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
-                [self.items removeAllObjects];
-                [self.items addObjectsFromArray: arrayWithItems];
-                [self.collectionView reloadData];
-                [self.refreshControl endRefreshing];
-                
-                self.scrollView.scrollEnabled = YES;
-                [self reloadScrollViewSize];
+            __weak typeof(self) weakSelf = self;
+            [self.addTags addTagsToView:tags successBlock:^{
+
+                [[NetworkManager shared] getItemsWithPage: 1 searchString: weakSelf.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+                    [weakSelf.items removeAllObjects];
+                    [weakSelf.items addObjectsFromArray: arrayWithItems];
+                    [weakSelf.collectionView reloadData];
+                    [weakSelf.refreshControl endRefreshing];
+                    [weakSelf.collectionView setContentOffset:CGPointMake(0, 0) animated:NO];
+                    
+                    
+                    
+                } failureBlock:^(NSError *error) {
+                    [weakSelf.refreshControl endRefreshing];
+                    [weakSelf showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                }];
+
                 
             } failureBlock:^(NSError *error) {
-                [self.refreshControl endRefreshing];
-                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                
+                
             }];
- 
         }
-         failureBlock:^(NSError *error) {
-            [self.refreshControl endRefreshing];
-            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        }];
-        
-        }
-        
     } failureBlock:^(NSError *error) {
         [self.refreshControl endRefreshing];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
@@ -236,26 +194,6 @@
 }
 
 
-- (void) reloadScrollViewSize
-{
-    
-    //reload scroll view size
-
-    [self.collectionView layoutIfNeeded];
-    
-    if (self.items.count == 0)
-    {
-        self.heightCollection.constant = self.collectionView.contentSize.height-50;
-    }
-    else{
-      
-        self.heightCollection.constant = self.collectionView.contentSize.height+200;
-    }
-    self.lastHeightCollectionView = self.collectionView.contentSize.height;
-    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-
-    
-}
 
 #pragma mark -
 #pragma mark MyItemCellDelegate
@@ -294,21 +232,23 @@
     [self.navigationController pushViewController:profileVC animated:YES];
 }
 
+#pragma mark -
+#pragma mark  textFieldDelegate
 
-- (IBAction)tapToScrollView:(id)sender {
-    
-    self.searchString = self.searchField.text;
-    [[NetworkManager shared] getItemsWithPage: 1 searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
-        self.currentPage = 1;
-        [self.items removeAllObjects];
-        [self.items addObjectsFromArray: arrayWithItems];
-        //[self.collectionView reloadData];
-        [self refresh];
-    } failureBlock:^(NSError *error) {
-        self.currentPage = 1;
-    }];
-    
+- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString* searchString = [textField.text stringByReplacingCharactersInRange: range withString:string];
+    self.searchString = searchString;
+    [self refresh];
+    return YES;
+}
+
+- (BOOL) textFieldShouldReturn: (UITextField*) textField
+{
+    self.searchString = textField.text;
+    [self refresh];
     [self.view endEditing: YES];
+    return YES;
 }
 
 
