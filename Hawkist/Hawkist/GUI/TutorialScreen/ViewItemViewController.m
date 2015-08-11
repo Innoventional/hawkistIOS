@@ -518,7 +518,7 @@
                                                if (self.isLikeItem)
                                                {
                                                    self.isLikeItem = NO;
-                                                   [self.smallImage4 setImage:[UIImage imageNamed:@"favLike"]];
+                                                   [self.smallImage4 setImage:[UIImage imageNamed:@"fav"]];
                                                } else {
                                                    
                                                    self.isLikeItem = YES;
