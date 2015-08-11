@@ -58,13 +58,14 @@
                                         <constraint firstAttribute="height" constant="20" id="rqT-CC-ERx"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.9 (146 rewiews)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddz-zB-LEK">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="4.9 (146 rewiews)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddz-zB-LEK">
                                     <rect key="frame" x="119" y="30" width="83" height="14"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
                                     <color key="textColor" red="0.69019607843137254" green="0.69019607843137254" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="H0x-5G-qfD" firstAttribute="leading" secondItem="ASE-GQ-aVh" secondAttribute="trailing" constant="6" id="4K3-Lm-4wr"/>
                                 <constraint firstItem="H0x-5G-qfD" firstAttribute="top" secondItem="iUc-qH-mBQ" secondAttribute="top" constant="6" id="8Vx-Nr-XgF"/>
@@ -85,6 +86,9 @@
                                     <exclude reference="jdk-vs-qcT"/>
                                 </mask>
                             </variation>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="dSq-Xc-j3V" appends="YES" id="jHU-5f-XmO"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,6 +118,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="342" y="292"/>
         </view>
+        <tapGestureRecognizer id="dSq-Xc-j3V">
+            <connections>
+                <action selector="nickNameSelect:" destination="-1" id="wFY-qa-qLX"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="NoAvatar" width="500" height="500"/>

@@ -48,13 +48,13 @@
 
 - (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message
 {
-    if ([title isEqualToString:@"No Connection"]&& self.isInternetConnectionAlertShowed)
+    if ([title isEqualToString:@"Connection Error"]&& self.isInternetConnectionAlertShowed)
     {
         return;
     }
         else
         {
-            if ([title isEqualToString:@"No Connection"])
+            if ([title isEqualToString:@"Connection Error"])
             {
                 self.isInternetConnectionAlertShowed = YES;
             }
@@ -92,13 +92,13 @@
 
 - (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message withDelegate:(id)delegate
 {
-    if ([title isEqualToString:@"No Connection"]&& self.isInternetConnectionAlertShowed)
+    if ([title isEqualToString:@"Connection Error"]&& self.isInternetConnectionAlertShowed)
     {
         return;
     }
     else
     {
-        if ([title isEqualToString:@"No Connection"])
+        if ([title isEqualToString:@"Connection Error"])
         {
             self.isInternetConnectionAlertShowed = YES;
         }

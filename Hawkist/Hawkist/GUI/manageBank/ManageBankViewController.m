@@ -13,7 +13,8 @@
 
 @interface ManageBankViewController ()
 @property (nonatomic,strong) CardIOPaymentViewController* cardIO;
-@property (nonatomic,strong)NSArray* cards;
+@property (nonatomic,strong) NSArray* cards;
+@property (nonatomic,strong) UIView* placeHolder;
 @end
 
 @implementation ManageBankViewController
@@ -30,7 +31,10 @@
 
 - (void) viewDidLoad
 {
+    self.placeHolder =  [[[NSBundle mainBundle]loadNibNamed:@"default" owner:self options:nil]firstObject];
+    self.placeHolder.frame = CGRectMake(0,self.navigation.frame.size.height, self.view.width, self.view.height-100);
     
+    [self.view addSubview:self.placeHolder];
     
     self.navigation.delegate = self;
     self.navigation.title.text = @"My Bank Cards";
@@ -55,6 +59,13 @@
         float cardWidth = self.view.width - 30;
         float cardHeight = cardWidth * 127 / 293;
         
+        if (cards.count ==0){
+            self.placeHolder.hidden = NO;
+        }
+        else
+        {
+            self.placeHolder.hidden = YES;
+        }
         for (int i = 0; i<self.cards.count; i++) {
             CardView* card = [[CardView alloc]initWithFrame:CGRectMake(15, i*(cardHeight+20)+15, cardWidth, cardHeight)];
             
@@ -80,17 +91,16 @@
         
     } failureBlock:^(NSError *error) {
         [self hideHud];
-        if (error.code != 2)
+        
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        else
-        {
-            
-        }
-    }];
+        
+}];
     
     
   
 }
+
+
 
 - (void) viewDidAppear:(BOOL)animated
 {

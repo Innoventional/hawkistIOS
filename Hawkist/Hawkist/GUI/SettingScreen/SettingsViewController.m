@@ -12,6 +12,7 @@
 #import "HWMyAccountViewController.h"
 #import "PersonalisationViewController.h"
 #import "HWMyOrdersViewController.h"
+#import "HWProfileViewController.h"
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -312,6 +313,12 @@
     [headerView addSubview:myLabel];
     
     return headerView;
+}
+- (IBAction)nickNameSelect:(id)sender {
+    
+    HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUserID:[AppEngine shared].user.id];
+    
+    [self.navigationController pushViewController:profileVC animated:YES];
 }
 
 
