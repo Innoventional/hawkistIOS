@@ -99,9 +99,9 @@
     HWTag* itemPlatform = [HWTag getPlatformById:self.item.platform from:[AppEngine shared].tags];
     self.platform.text =  itemPlatform.name;
     self.title.text = self.item.title;
-    self.currentPrice.text = [NSString stringWithFormat:@"£ %@", self.item.selling_price];
+    self.currentPrice.text = [NSString stringWithFormat:@"£%@", self.item.selling_price];
      
-    NSString *oldPriceWithTuning = [NSString stringWithFormat:@"£ %@", self.item.retail_price];
+    NSString *oldPriceWithTuning = [NSString stringWithFormat:@"£%@", self.item.retail_price];
     self.oldPrice.text = [NSString stringWithFormat:@"(%@)", oldPriceWithTuning];
     NSRange oldPriceRange = [self.oldPrice.text rangeOfString:oldPriceWithTuning];
     

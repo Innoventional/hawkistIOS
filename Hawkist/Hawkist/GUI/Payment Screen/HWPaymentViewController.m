@@ -122,9 +122,9 @@
     self.screenWidth = [UIScreen mainScreen].bounds.size.width;
     [self setupDataModelArray];
     
-    self.itemPriceLable.text = [NSString stringWithFormat:@"£ %.2f",self.itemPrice];
-    self.shippingLable.text = [NSString stringWithFormat:@"£ %.2f",self.shipping];
-    self.totalLable.text = [NSString stringWithFormat:@"£ %.2f",self.total];
+    self.itemPriceLable.text = [NSString stringWithFormat:@"£%.2f",self.itemPrice];
+    self.shippingLable.text = [NSString stringWithFormat:@"£%.2f",self.shipping];
+    self.totalLable.text = [NSString stringWithFormat:@"£%.2f",self.total];
     
     
     // setup tableView
