@@ -704,7 +704,7 @@
         _mySLComposerSheet = [[SLComposeViewController alloc] init]; //initiate the Social Controller
         _mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:socialNetName]; //Tell him with what social plattform to use it, e.g. facebook or twitter
         
-        NSString *postText = [NSString stringWithFormat:@"%@ for sale on Hawkist.com. Only £%@",self.item.title, self.item.retail_price];
+        NSString *postText = [NSString stringWithFormat:@"%@ for sale on Hawkist.com. Only £%@",self.item.title, self.item.selling_price];
         
         
         [_mySLComposerSheet setInitialText:postText]; //the message you want to post
@@ -738,9 +738,9 @@
         
         
      
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:socialName message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [alert show];
-    }];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:socialName message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+//        [alert show];
+     }];
     
 }
 
@@ -756,7 +756,7 @@
        // [mailCont setSubject:@"Your email"];
         
         NSString *messageText = [NSString stringWithFormat:
-                                 @"Hey, I found this %@ for sale on Hawkist.com. Thought you might be interested as it’s only £%@",self.item.title, self.item.retail_price];
+                                 @"Hey, I found this %@ for sale on Hawkist.com. Thought you might be interested as it’s only £%@",self.item.title, self.item.selling_price];
         
         [mailCont setMessageBody:messageText isHTML:NO];
         
@@ -771,6 +771,27 @@
         
     
     }
+    
+}
+
+-(void) shareOnMessage
+{
+    
+    if(![MFMessageComposeViewController canSendText]) {
+        UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [warningAlert show];
+        return;
+    }
+    
+    NSString *message = [NSString stringWithFormat:@"%@ for sale on Hawkist.com. Only £%@", self.item.title, self.item.selling_price];
+    
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    messageController.messageComposeDelegate = self;
+    [messageController setBody:message];
+    
+    // Present message view controller on screen
+    [self presentViewController:messageController animated:YES completion:nil];
+    
     
 }
 
@@ -801,26 +822,7 @@
 }
 
 
--(void) shareOnMessage
-{
-    
-if(![MFMessageComposeViewController canSendText]) {
-    UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [warningAlert show];
-    return;
-}
-    
-    NSString *message = [NSString stringWithFormat:@"%@ for sale on Hawkist.com. Only £%@", self.item.title, self.item.retail_price];
-    
-    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
-    messageController.messageComposeDelegate = self;
-    [messageController setBody:message];
-    
-    // Present message view controller on screen
-    [self presentViewController:messageController animated:YES completion:nil];
-    
-    
-}
+
     
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result

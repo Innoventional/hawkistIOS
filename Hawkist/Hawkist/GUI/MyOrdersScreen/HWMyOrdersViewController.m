@@ -294,7 +294,7 @@
    else if ([self.hasIssueAlert isEqual:alertView])
    {
        
-       UIActionSheet *aSheet = [[UIActionSheet alloc] initWithTitle:@"Please, select issue"
+       UIActionSheet *aSheet = [[UIActionSheet alloc] initWithTitle:@"Why do you want to report this item?"
                                                           delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                 destructiveButtonTitle:nil
