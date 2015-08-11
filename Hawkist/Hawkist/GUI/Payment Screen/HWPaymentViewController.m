@@ -429,7 +429,7 @@
     
                                 } failureBlock:^(NSError *error) {
                                     
-                                    NSLog(@"FailureBlock");
+                                    [self showAlertWithTitle:error.domain Message:error.localizedDescription];
     
                                     
                                 }];
