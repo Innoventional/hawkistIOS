@@ -176,7 +176,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nY-34-Nt6">
                                     <rect key="frame" x="233" y="343" width="5" height="68"/>
                                 </view>
-                                <imageView tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favLike" translatesAutoresizingMaskIntoConstraints="NO" id="5Nd-Tt-GCU" userLabel="smallImage4">
+                                <imageView tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fav" translatesAutoresizingMaskIntoConstraints="NO" id="5Nd-Tt-GCU" userLabel="smallImage4">
                                     <rect key="frame" x="238" y="343" width="68" height="68"/>
                                     <gestureRecognizers/>
                                     <constraints>
@@ -1002,7 +1002,7 @@
         <image name="NoAvatar" width="500" height="500"/>
         <image name="askbutton" width="47" height="30"/>
         <image name="buybutton" width="290" height="40"/>
-        <image name="favLike" width="65" height="65"/>
+        <image name="fav" width="65" height="65"/>
         <image name="noPhoto" width="689" height="460"/>
         <image name="skidka" width="55" height="31"/>
         <image name="smallButton" width="27" height="20"/>
