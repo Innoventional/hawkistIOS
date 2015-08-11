@@ -15,6 +15,8 @@
 @property (nonatomic,strong) CardIOPaymentViewController* cardIO;
 @property (nonatomic,strong) NSArray* cards;
 @property (nonatomic,strong) UIView* placeHolder;
+
+@property (nonatomic, strong) NSString* removeCardId;
 @end
 
 @implementation ManageBankViewController
@@ -119,16 +121,28 @@
 
 - (void)removeCard:(NSString *)cardId
 {
-    [self showHud];
-    [[NetworkManager shared]removeBankCard:cardId successBlock:^{
+    self.removeCardId = cardId;
+    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Are you sure?" message:@"Please confirm that you wish to delete this card." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [alert show];
+    
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex!=0)
+    { [self showHud];
+    [[NetworkManager shared]removeBankCard:self.removeCardId successBlock:^{
         [self hideHud];
         [self reload];
         
     } failureBlock:^(NSError *error) {
-
+        
         [self hideHud];
-         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
+    }
+
 }
 
 
@@ -136,8 +150,6 @@
 {
     AddCardViewController* vc = [[AddCardViewController alloc]initWithCard:card];
 
-    
-    
      [self.navigationController pushViewController:vc animated:NO];
 
 }

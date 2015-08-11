@@ -330,6 +330,7 @@
     [_networkManager registerUserWithPhoneNumber:_txtNumber.text orFacebookToken:nil successBlock:^(HWUser *user) {
         [self hideHud];
         [_codeDialog setHidden:NO];
+        _txtCode.text = @"";
         [_numberDialog setHidden:YES];
     } failureBlock:^(NSError *error) {
         [self hideHud];

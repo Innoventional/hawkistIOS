@@ -146,6 +146,9 @@
     self.cvv.title.text = @"CVV";
     self.cvv.isCVV = YES;
     self.cvv.inputField.secureTextEntry = YES;
+    
+    
+    
     self.cvv.inputField.keyboardType = UIKeyboardTypeNumberPad;
     
     self.cardNumber.inputField.keyboardType = UIKeyboardTypeNumberPad;
@@ -205,6 +208,9 @@
 {
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"M - MMMM YYY"];
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [formatter setLocale:usLocale];
+    
     self.dateField.inputField.text = [NSString stringWithFormat:@"%@",[formatter stringFromDate:self.datePicker.date]];
     [formatter setDateFormat:@"M"];
     self.selectedMonth = [[formatter stringFromDate:self.datePicker.date] integerValue];
@@ -383,6 +389,7 @@
     
     }
     [cardIOView removeFromSuperview];
+    self.saveButton.hidden = NO;
 }
 
 

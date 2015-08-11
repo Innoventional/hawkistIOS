@@ -193,7 +193,7 @@
     UILabel* descriptionLabel = [[UILabel alloc] init];
     
     descriptionLabel.backgroundColor = [UIColor clearColor];
-    descriptionLabel.font = [UIFont fontWithName:@"OpenSans" size:10.0f];
+    descriptionLabel.font = [UIFont fontWithName:@"OpenSans" size:12.0f];
     descriptionLabel.textColor = [UIColor color256RGBWithRed: 100 green: 100 blue: 100];
     descriptionLabel.numberOfLines = 0;
     descriptionLabel.text = text;

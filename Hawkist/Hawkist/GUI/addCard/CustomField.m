@@ -54,6 +54,7 @@
         
         if (newString.length > 3)
             return NO;
+
     }
 
     return YES;
