@@ -76,6 +76,8 @@
     self.navigationView.delegate = self;
     self.navigationView.title.text = @"My Orders";
     
+    [self.textField setValue:[UIColor colorWithRed:189.0/255.0 green:215.0/255.0 blue:211.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
+    
     
 }
 

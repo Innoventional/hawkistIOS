@@ -420,7 +420,7 @@
                                   [[[UIAlertView alloc]initWithTitle:@"Purchase Completed"
                                                              message:desc
                                                             delegate:nil
-                                                   cancelButtonTitle:@"Ok!"
+                                                   cancelButtonTitle:@"OK"
                                                    otherButtonTitles: nil ]show];
                                   
                                   HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
