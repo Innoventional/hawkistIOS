@@ -238,8 +238,7 @@
                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                       [self hideHud];
                                                   });
-                                                  [self showAlertWithTitle:[error.userInfo objectForKey:@"NSLocalizedDescription"] Message:[error.userInfo objectForKey:@"com.stripe.lib:ErrorMessageKey"]
-];
+                                                  [self stripeErrorHandler:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                               }
                                               else
                                               {
@@ -300,6 +299,48 @@
     }
 
 }
+
+
+
+- (void) stripeErrorHandler:(NSString*)message
+{
+    
+    if ([message isEqualToString:@"Your card's number is invalid"]){
+        [self showAlertWithTitle:@"Invalid Card Number" Message:@"The card number is not a valid card number. Please try again."];
+        return;}
+    
+    if ([message isEqualToString:@"Your card's expiration month is invalid"]){
+        [self showAlertWithTitle:@"Card Expired" Message:@"This card has expired. Please try another card."];
+        return;}
+    if ([message isEqualToString:@"Your card's expiration year is invalid"]){
+            [self showAlertWithTitle:@"Card Expired" Message:@"This card appears to be expired. Please try another card."];
+        return;}
+    if ([message isEqualToString:@"Your card's security code is invalid"]){
+        [self showAlertWithTitle:@"Security Code Invalid" Message:@"The security code for this card is invalid. Please try again."];
+        return;}
+    if ([message isEqualToString:@"Your card number is incorrect."]){
+        [self showAlertWithTitle:@"Card Number Incorrect" Message:@"The card number is incorrect. Please try again."];
+        return;}
+    if ([message isEqualToString:@"Your card has expired."]){
+        [self showAlertWithTitle:@"Card Expired." Message:@"This card has expired. Please try another card."];
+        return;}
+    if ([message isEqualToString:@"Your card's security code is incorrect."]){
+        [self showAlertWithTitle:@"Security Code Incorrect" Message:@"The security code for this card is incorrect. Please check the security code."];
+        return;}
+    if ([message isEqualToString:@"Your card's zip code failed validation."]){
+        [self showAlertWithTitle:@"Post Code Failed" Message:@"Post code validation has failed for this card. Please check the post code."];
+        return;}
+    if ([message isEqualToString:@"Your card was declined."]){
+        [self showAlertWithTitle:@"Card Declined." Message:@"The card was declined. Please try another payment method."];
+        return;}
+    if ([message isEqualToString:@"An error occurred while processing the card."]){
+        [self showAlertWithTitle:@"Payment Error" Message:@"An error occurred while processing this card. Please try again."];
+        return;}
+    
+    [self showAlertWithTitle:@"Payment Error" Message:@"An error occurred while processing this card. Please try again."];
+    
+}
+
 
 - (void) adjustKeyboardFrame: (NSNotification*) notification
 {
