@@ -75,6 +75,7 @@
                 <outlet property="sellerAvatar" destination="OjR-qP-LPr" id="gno-vx-f6f"/>
                 <outlet property="sellerName" destination="WIr-Nv-oTn" id="rnz-za-6wk"/>
                 <outlet property="sellerPrice" destination="c2g-Gx-pUg" id="CXu-Bu-6uO"/>
+                <outlet property="skidkaBackground" destination="Y3U-AV-1AS" id="GFK-kl-1vq"/>
                 <outlet property="smallImage1" destination="YR3-wU-mwa" id="1FP-Zf-aju"/>
                 <outlet property="smallImage2" destination="Lhz-kN-U05" id="qaz-5C-teZ"/>
                 <outlet property="smallImage3" destination="nSJ-Wd-IBa" id="rsF-ZF-xqz"/>

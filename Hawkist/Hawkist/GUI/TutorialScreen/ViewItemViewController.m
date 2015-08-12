@@ -48,6 +48,7 @@
 @property (nonatomic, strong) SLComposeViewController *mySLComposerSheet;
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *skidkaBackground;
 
 @end
 
@@ -257,10 +258,12 @@
     self.delivery.text = [NSString stringWithFormat:@"£ %@", self.item.shipping_price];
     }
     
-    if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
-        self.discount.text = @"-1%";
+    if ([self.item.discount intValue] < 25) {
+        self.discount.text = @"";
+        self.skidkaBackground.hidden = YES;
     } else {
         self.discount.text = [NSString stringWithFormat:@"-%@%%",self.item.discount];
+        self.skidkaBackground.hidden = NO;
     }
     [self.imagesArray removeAllObjects];
     

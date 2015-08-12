@@ -231,6 +231,7 @@
                 <outlet property="mytrash" destination="iYj-47-K3n" id="bf3-zu-R7G"/>
                 <outlet property="oldPrice" destination="lSV-id-3OE" id="w1W-EJ-D5e"/>
                 <outlet property="platform" destination="eUQ-4M-ZK6" id="aKP-Tj-GlO"/>
+                <outlet property="skidkaBackground" destination="sEe-Qj-DCZ" id="ea4-SM-vPa"/>
                 <outlet property="title" destination="97z-YM-TJw" id="IIw-VW-byJ"/>
             </connections>
             <point key="canvasLocation" x="80.5" y="645.5"/>
