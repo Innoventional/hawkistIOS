@@ -7,6 +7,7 @@
 //
 
 #import "TagCell.h"
+#import "UIColor+Extensions.h"
 
 @implementation TagCell
 
@@ -20,10 +21,7 @@
         
         CGSize myStringSize = [self getSize:text];
         
-        if ((myStringSize.width*1.5)<50)
-            sub.frame = CGRectMake(0, 0, 50, 35);
-        else
-        sub.frame = CGRectMake(0, 0, myStringSize.width*1.5, 35);
+        sub.frame = CGRectMake(0, 0, myStringSize.width+30, 30);
         
         self.label.text = text;
         
@@ -49,7 +47,10 @@
 
 - (IBAction)click:(id)sender {
     
-    self.image.image = [UIImage imageNamed:@"tag6"];
+    self.start.image = [UIImage imageNamed:@"start_clicked"];
+    self.end.image = [UIImage imageNamed:@"end_clicked"];
+    
+    [self.centerView setBackgroundColor:[UIColor color256RGBWithRed:55 green:185 blue:165]];
     
     self.label.textColor = [UIColor whiteColor];
     

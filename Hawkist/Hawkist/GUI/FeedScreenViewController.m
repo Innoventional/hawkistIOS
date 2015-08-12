@@ -70,8 +70,9 @@
     
     
     
-    [self refresh];
+    
 }
+
 
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -161,12 +162,15 @@
         {
             __weak typeof(self) weakSelf = self;
             [self.addTags addTagsToView:tags successBlock:^{
-
+                        if (weakSelf.items.count==0)
+                [weakSelf.collectionView setContentOffset:CGPointMake(0, weakSelf.collectionView.contentSize.height-500) animated:YES];
+                
                 [[NetworkManager shared] getItemsWithPage: 1 searchString: weakSelf.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
                     [weakSelf.items removeAllObjects];
                     [weakSelf.items addObjectsFromArray: arrayWithItems];
                     [weakSelf.collectionView reloadData];
                     [weakSelf.refreshControl endRefreshing];
+                    if (weakSelf.items.count>0)
                     [weakSelf.collectionView setContentOffset:CGPointMake(0, 0) animated:NO];
                     
                     
