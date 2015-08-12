@@ -32,6 +32,7 @@
 
 @property (nonatomic, assign)  NSInteger countLike;
 
+@property (weak, nonatomic) IBOutlet UIImageView *skidkaBackground;
 
 @end
 
@@ -89,13 +90,15 @@
     _item = item;
     [self setupLikeStar];
     
-    if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
-        self.discount.text = @"-1%";
+    if ([self.item.discount intValue] <25 ) {
+        self.discount.text = @"";
+        self.skidkaBackground.hidden = YES;
     }
     else
     
     {
         self.discount.text = [NSString stringWithFormat:@"-%@%%",self.item.discount];
+        self.skidkaBackground.hidden = NO;
     }
     
     HWTag* itemPlatform = [HWTag getPlatformById:self.item.platform from:[AppEngine shared].tags];

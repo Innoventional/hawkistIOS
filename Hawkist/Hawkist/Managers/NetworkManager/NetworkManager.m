@@ -1440,14 +1440,23 @@ NSString *URLString = @"user/logout";
 {
     
 
-    NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *decodevalue = [[NSString alloc] initWithData:data encoding:NSNonLossyASCIIStringEncoding];
+//    NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
+//    NSString *decodevalue = [[NSString alloc] initWithData:data encoding:NSNonLossyASCIIStringEncoding];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *URLString = [NSString stringWithFormat:@"listings/comments_people"];
+   
+    if(text && text.length > 0)
+    {
+        [params setObject: text forKey: @"q"];
+    }
+ 
+#warning please see me
     
 
-    NSString *URLString = [NSString stringWithFormat:@"listings/comments_people?q=%@",decodevalue];
     
     [self.networkDecorator GET:URLString
-                    parameters:nil
+                    parameters:params
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         
                            if([responseObject[@"status"] integerValue] != 0)
