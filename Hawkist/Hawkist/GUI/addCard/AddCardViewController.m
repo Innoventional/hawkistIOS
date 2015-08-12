@@ -63,6 +63,8 @@
     
     self.cameraInput.delegate = self;
     
+    self.cameraInput.hideCardIOLogo = YES;
+    
     if (self.isEdit) {
         NSArray  *arrayOfNames = [self.card.name componentsSeparatedByString:@" "];
         
