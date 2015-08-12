@@ -12,7 +12,7 @@
 #import "HWBaseViewController.h"
 #import "AddTagsView.h"
 
-@interface FeedScreenViewController : HWBaseViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate,AddTags>
+@interface FeedScreenViewController : HWBaseViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITextViewDelegate,AddTags, UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) NSMutableArray *items;

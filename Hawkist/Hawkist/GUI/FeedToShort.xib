@@ -7,17 +7,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YAx-Os-nHw">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="668"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tagsBG2" translatesAutoresizingMaskIntoConstraints="NO" id="wR3-O4-oEX">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="668"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG3" translatesAutoresizingMaskIntoConstraints="NO" id="wR3-O4-oEX">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lva-Yy-fqi" customClass="AddTagsView">
-                    <rect key="frame" x="35" y="388" width="250" height="280"/>
+                    <rect key="frame" x="35" y="750" width="250" height="250"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="280" id="Nn4-R6-M9X"/>
+                        <constraint firstAttribute="height" constant="250" id="Nn4-R6-M9X"/>
                     </constraints>
                 </view>
             </subviews>
@@ -34,6 +34,6 @@
         </collectionReusableView>
     </objects>
     <resources>
-        <image name="tagsBG2" width="320" height="668"/>
+        <image name="BG3" width="320" height="1000"/>
     </resources>
 </document>
