@@ -265,6 +265,7 @@
                 <outlet property="oldPrice" destination="vtR-TC-12b" id="d3I-Tr-w3p"/>
                 <outlet property="platform" destination="52m-HH-bq6" id="mUU-Aa-KsP"/>
                 <outlet property="receivedButton" destination="9Pb-Z4-c3l" id="gPK-ir-JWz"/>
+                <outlet property="skidkaBackground" destination="d6q-Cw-cAY" id="qBI-t5-1Vg"/>
                 <outlet property="title" destination="zxe-IV-yox" id="NAr-i2-gdf"/>
             </connections>
             <point key="canvasLocation" x="286.5" y="320"/>

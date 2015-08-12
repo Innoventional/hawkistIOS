@@ -75,6 +75,7 @@
                 <outlet property="sellerAvatar" destination="OjR-qP-LPr" id="gno-vx-f6f"/>
                 <outlet property="sellerName" destination="WIr-Nv-oTn" id="rnz-za-6wk"/>
                 <outlet property="sellerPrice" destination="c2g-Gx-pUg" id="CXu-Bu-6uO"/>
+                <outlet property="skidkaBackground" destination="Y3U-AV-1AS" id="9WT-xb-j0w"/>
                 <outlet property="smallImage1" destination="YR3-wU-mwa" id="1FP-Zf-aju"/>
                 <outlet property="smallImage2" destination="Lhz-kN-U05" id="qaz-5C-teZ"/>
                 <outlet property="smallImage3" destination="nSJ-Wd-IBa" id="rsF-ZF-xqz"/>
@@ -200,7 +201,7 @@
                                         <constraint firstAttribute="width" constant="53" id="tRv-cx-I5X"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7e-2t-3KG">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7e-2t-3KG">
                                     <rect key="frame" x="14" y="85" width="47" height="26"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="26" id="pN3-bv-NUO"/>
