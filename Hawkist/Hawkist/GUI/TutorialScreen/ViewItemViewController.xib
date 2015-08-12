@@ -75,7 +75,6 @@
                 <outlet property="sellerAvatar" destination="OjR-qP-LPr" id="gno-vx-f6f"/>
                 <outlet property="sellerName" destination="WIr-Nv-oTn" id="rnz-za-6wk"/>
                 <outlet property="sellerPrice" destination="c2g-Gx-pUg" id="CXu-Bu-6uO"/>
-                <outlet property="skidkaBackground" destination="Y3U-AV-1AS" id="GFK-kl-1vq"/>
                 <outlet property="smallImage1" destination="YR3-wU-mwa" id="1FP-Zf-aju"/>
                 <outlet property="smallImage2" destination="Lhz-kN-U05" id="qaz-5C-teZ"/>
                 <outlet property="smallImage3" destination="nSJ-Wd-IBa" id="rsF-ZF-xqz"/>
@@ -611,7 +610,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5T-eQ-yef" userLabel="itemdetails">
                             <rect key="frame" x="0.0" y="637" width="320" height="181"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Item Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4K-ob-xvg">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Item Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4K-ob-xvg">
                                     <rect key="frame" x="12" y="8" width="75" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="75" id="55r-re-Vy4"/>
@@ -620,7 +619,7 @@
                                     <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Added" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npo-PE-hzc">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Added" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npo-PE-hzc">
                                     <rect key="frame" x="12" y="31" width="67" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="67" id="b6U-tg-0EW"/>
@@ -630,7 +629,7 @@
                                     <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zw4-MU-xCf">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zw4-MU-xCf">
                                     <rect key="frame" x="12" y="65" width="67" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="16" id="C90-FA-r61"/>
@@ -684,7 +683,7 @@
                                         <constraint firstAttribute="width" constant="26" id="9Aq-22-MSC"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Platform" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxt-cT-xAm">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Platform" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxt-cT-xAm">
                                     <rect key="frame" x="12" y="48" width="67" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="16" id="AH4-xb-Utq"/>

@@ -239,12 +239,15 @@
 {
 
     UITextView *textView = [[UITextView alloc]init];
+    
+    
     textView.text = text;
     
     textView.font =  [UIFont fontWithName:@"OpenSans" size:15.f];
     CGFloat width = [UIScreen mainScreen].bounds.size.width - 54;
     CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
-    return size.height + 28;
+    return size.height + 18
+    ;
     
     
 }
