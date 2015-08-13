@@ -760,7 +760,7 @@
         if (((CustomButton*)sender).notApplicable)
         {
             
-            [self showAlertWithTitle:@"Colour Not Applicable" Message:@"The Category ‘Games’ does not have a colour. Please select Not Applicable."];
+            [self showAlertWithTitle:@"Colour Not Applicable" Message:[NSString stringWithFormat:@"The Subcategory %@ does not have a colour. Please select Not Applicable.", self.category.Text.text]];
             return;
         }
 
