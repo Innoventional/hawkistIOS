@@ -49,6 +49,7 @@
     
     self.start.image = [UIImage imageNamed:@"start_clicked"];
     self.end.image = [UIImage imageNamed:@"end_clicked"];
+    self.buttomLine.hidden = YES;
     
     [self.centerView setBackgroundColor:[UIColor color256RGBWithRed:55 green:185 blue:165]];
     

@@ -26,6 +26,7 @@
 
 - (IBAction)click:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIView *buttomLine;
 
 @property (strong, nonatomic) IBOutlet UIImageView *start;
 @property (strong, nonatomic) IBOutlet UIImageView *end;

@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TagCell">
             <connections>
+                <outlet property="buttomLine" destination="roz-28-Mvg" id="cQF-8f-iz9"/>
                 <outlet property="centerView" destination="5EJ-eI-YEs" id="WKo-BW-Rv2"/>
                 <outlet property="end" destination="WUg-Qd-rac" id="gg7-pr-xci"/>
                 <outlet property="label" destination="93m-eK-uie" id="WEk-D2-RzF"/>
@@ -55,11 +56,21 @@
                             <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roz-28-Mvg">
+                            <rect key="frame" x="0.0" y="34" width="195" height="1"/>
+                            <color key="backgroundColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="zhq-Bg-Pfd"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="93m-eK-uie" secondAttribute="centerY" id="5ce-9F-fRL"/>
+                        <constraint firstItem="roz-28-Mvg" firstAttribute="leading" secondItem="5EJ-eI-YEs" secondAttribute="leading" id="Bkk-fG-J8j"/>
                         <constraint firstAttribute="height" constant="60" id="PcM-Wz-egt"/>
+                        <constraint firstAttribute="trailing" secondItem="roz-28-Mvg" secondAttribute="trailing" id="VCe-FJ-evg"/>
+                        <constraint firstAttribute="bottom" secondItem="roz-28-Mvg" secondAttribute="bottom" id="xOb-AO-f6a"/>
                         <constraint firstAttribute="centerX" secondItem="93m-eK-uie" secondAttribute="centerX" id="xrX-AY-C9k"/>
                     </constraints>
                     <variation key="default">
