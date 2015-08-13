@@ -316,66 +316,128 @@
 
 - (BOOL) validation
 {
-    NSString* text = @"";
+    NSString* action;
+    
+    if (self.isEdit)
+    {
+        action = @"update";
+    }
+    else
+    {
+        action = @"add";
+    }
+    
+    NSMutableArray* fields = [NSMutableArray array];
     
     if ([self.firstName.inputField.text isEqualToString:@""])
     {
-        text = [text stringByAppendingString:@"First Name, "];
+        [fields addObject:@"First Name"];
     }
     
     if ([self.lastName.inputField.text isEqualToString:@""])
     {
-        text = [text stringByAppendingString:@"Last Name, "];
+        [fields addObject:@"Last Name"];
     }
     
     if ([self.cardNumber.inputField.text isEqualToString:@""])
     {
-        text = [text stringByAppendingString:@"Card Number, "];
+        [fields addObject:@"Card Number"];
     }
-    
     
     if ([self.cvv.inputField.text isEqualToString:@""])
     {
-        text = [text stringByAppendingString:@"CVV, "];
+        [fields addObject:@"CVV"];
     }
     
     if ([self.dateField.inputField.text isEqualToString:@""])
     {
-        text = [text stringByAppendingString:@"Expiration Date, "];
+        [fields addObject:@"Expiration Date"];
     }
     
     
     if ([self.addressFirst.inputField.text isEqualToString:@""])
     {
-        text = [text stringByAppendingString:@"Address line 1, "];
+        [fields addObject:@"Address line 1"];
     }
     
     if ([self.city.inputField.text isEqualToString:@""])
     {
-        text = [text stringByAppendingString:@"City, "];
+        [fields addObject:@"City"];
     }
     
     if ([self.postCode.inputField.text isEqualToString:@""])
     {
-        text = [text stringByAppendingString:@"Post Code, "];
+        [fields addObject:@"Post Code"];
     }
-    
-    
-    if ([text isEqualToString:@""])
-    {
+
+    if (fields.count == 0)
         return YES;
-    }
     
-    else
+    if (fields.count == 1)
     {
-    NSString* titleMessage = [[text substringToIndex:text.length-2] stringByAppendingString:@" missing"];
-        
-    NSString* descMessage = [[@"You must input an " stringByAppendingString:[text substringToIndex:text.length-2]] stringByAppendingString:@" in order to create/update bank card."];
+        NSString* titleMessage = [[fields objectAtIndex:0] stringByAppendingString:@" Missing"];
     
+        NSString* descMessage = [NSString stringWithFormat:@"You must input the %@ in order to %@ bank card.",[fields objectAtIndex:0],action];
+        
+        [self showAlertWithTitle:titleMessage  Message:descMessage];
+            return NO;
+}
+
+    if (fields.count == 2)
+    {
+        
+        NSString* titleMessage = [NSString stringWithFormat:@"%@ & %@ Missing",[fields objectAtIndex:0],[fields objectAtIndex:1]];
+        
+        NSString* descMessage = [NSString stringWithFormat:@"You must select the %@ and %@ in order to %@ a new bank card.",[fields objectAtIndex:0],[fields objectAtIndex:1],action];
+        
         [self showAlertWithTitle:titleMessage  Message:descMessage];
         return NO;
     }
-
+    else
+    {
+//    TItle: (field_name), (field_name), (field_name), (field_name) & (field_name) Missing
+//    Content: You must select the (field_name), (field_name), (field_name), (field_name) and (field_name)  in order to add a new bank card.
+        
+        NSString* titleMessage = @"";
+        
+        for (int i=0;i<fields.count;i++)
+        {
+            titleMessage = [titleMessage stringByAppendingString:[fields objectAtIndex:i]];
+            if (i < fields.count - 2)
+            {
+                titleMessage = [titleMessage stringByAppendingString:@", "];
+            }
+            if (i == fields.count -2)
+            {
+                titleMessage = [titleMessage stringByAppendingString:@" & "];
+            }
+        }
+        
+        titleMessage = [NSString stringWithFormat:@"%@ Missing",titleMessage];
+        
+        
+        
+        
+        NSString* descMessage = @"";
+        
+        for (int i=0;i<fields.count;i++)
+        {
+            descMessage = [descMessage stringByAppendingString:[fields objectAtIndex:i]];
+            if (i < fields.count - 2)
+            {
+                descMessage = [descMessage stringByAppendingString:@", "];
+            }
+            if (i == fields.count -2)
+            {
+                descMessage = [descMessage stringByAppendingString:@" and "];
+            }
+        }
+        
+        descMessage = [NSString stringWithFormat:@"You must select the %@ in order to %@ a new bank card.",descMessage,action];
+        
+        [self showAlertWithTitle:titleMessage  Message:descMessage];
+        return NO;
+    }
 
 }
 
