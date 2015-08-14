@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="D4O-Fq-VyG" customClass="HWPaymentNewCardCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acdet_checkempty" translatesAutoresizingMaskIntoConstraints="NO" id="URJ-4g-uRu">
+                        <rect key="frame" x="288" y="8" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="OJA-s1-mQr"/>
+                            <constraint firstAttribute="width" constant="24" id="cDO-Gs-adk"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ ADD NEW BANK CARD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6e-aY-ciH">
+                        <rect key="frame" x="62" y="57" width="197" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="URJ-4g-uRu" secondAttribute="trailing" constant="8" id="AZ4-vM-cKr"/>
+                <constraint firstAttribute="centerX" secondItem="Z6e-aY-ciH" secondAttribute="centerX" id="CJm-yL-4rK"/>
+                <constraint firstAttribute="centerY" secondItem="Z6e-aY-ciH" secondAttribute="centerY" id="ehC-9m-jh4"/>
+                <constraint firstItem="URJ-4g-uRu" firstAttribute="top" secondItem="D4O-Fq-VyG" secondAttribute="top" constant="8" id="jeW-Ju-FhQ"/>
+            </constraints>
+            <size key="customSize" width="320" height="135"/>
+            <connections>
+                <outlet property="activeImage" destination="URJ-4g-uRu" id="580-Vt-8NM"/>
+            </connections>
+            <point key="canvasLocation" x="312" y="332.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="acdet_checkempty" width="20" height="20"/>
+    </resources>
+</document>

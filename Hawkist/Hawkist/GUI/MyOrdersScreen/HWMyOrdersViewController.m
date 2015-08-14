@@ -314,21 +314,32 @@
    else if ([self.hasIssueAlert isEqual:alertView])
    {
        
-       UIActionSheet *aSheet = [[UIActionSheet alloc] initWithTitle:@"Why do you want to report this item?"
-                                                          delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                                destructiveButtonTitle:nil
-                                    otherButtonTitles:@"Item has not arrived",
-                                                      @"Item is not as described",
-                                                      @"Item is broken or not usable",nil];
-       
-       [aSheet showInView:self.view];
-       
+       switch (buttonIndex) {
+           case 0:
+               
+               break;
+           case 1:
+                {
+               
+               UIActionSheet *aSheet = [[UIActionSheet alloc] initWithTitle:@"Why do you want to report this item?"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"Cancel"
+                                                     destructiveButtonTitle:nil
+                                                          otherButtonTitles:@"Item has not arrived",
+                                        @"Item is not as described",
+                                        @"Item is broken or not usable",nil];
+               
+               [aSheet showInView:self.view];
+
+                }
+           default:
+               break;
+              
        
        
       
+       }
    }
-    
     
 }
 

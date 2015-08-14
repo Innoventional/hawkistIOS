@@ -22,9 +22,25 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSString* searchString;
 @property (nonatomic, strong) AddTagsView* addTags;
+
+@property (nonatomic, strong) NSString *hashTag;
 @end
 
 @implementation FeedScreenViewController
+
+-(instancetype) initWithTag:(NSString*)tag{
+    
+    self = [self init];
+    
+    if(self){
+        
+        self.hashTag = tag;
+        self.searchString = tag;
+        [self refresh];
+    }
+    return self;
+}
+
 
 - (instancetype)init
 {
@@ -52,6 +68,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    [self.searchField setText:self.hashTag];
+    
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.refreshControl setTintColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];

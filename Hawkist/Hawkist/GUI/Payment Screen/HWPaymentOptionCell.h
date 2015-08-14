@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "HWCard.h"
+#import "HWPaymentBaseCell.h"
 
-@interface HWPaymentOptionCell : UICollectionViewCell
+@interface HWPaymentOptionCell : HWPaymentBaseCell
 
-@property (nonatomic, assign) BOOL isSelected;
+//@property (nonatomic, assign) BOOL isSelected;
 
 - (void) setCellWithCard:(HWCard*)card;
 

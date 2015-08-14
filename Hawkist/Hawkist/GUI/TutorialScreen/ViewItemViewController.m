@@ -26,9 +26,12 @@
 #import <Accounts/Accounts.h>
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import "TextViewWithDetectedWord.h"
+#import "NSMutableAttributedString+PaintText.h"
+#import "FeedScreenViewController.h"
 
 
-@interface ViewItemViewController () <MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,MyItemCellDelegate>
+@interface ViewItemViewController () <MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,MyItemCellDelegate, TextViewWithDetectedWordDelegate>
 
 @property (nonatomic, strong) HWItem* item;
 @property (nonatomic, strong) NSMutableArray* imagesArray;
@@ -49,7 +52,9 @@
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *skidkaBackground;
+@property (weak, nonatomic) IBOutlet TextViewWithDetectedWord *descriptionTextView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
 @end
 
 
@@ -135,7 +140,7 @@
     
     [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
 
-#pragma mark implementation model user and item
+#pragma mark - implementation model user and item
     
       
     self.sellerAvatar.layer.cornerRadius = self.sellerAvatar.frame.size.width /2;
@@ -145,7 +150,7 @@
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans" size:14.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
     
   
-#pragma mark ending
+#pragma mark - ending
     
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
@@ -207,6 +212,8 @@
 #pragma mark - update item
 - (void) updateItem
 {
+    
+    [self setupDescription];
     self.navigationView.title.text = self.item.title;
     self.reviews.text = [NSString stringWithFormat:@"%@ (%@ reviews)", self.item.user.rating,self.item.user.review];
     self.starRatingControl.rating = [self.item.user.rating integerValue];
@@ -227,7 +234,7 @@
     self.sellerPrice.text = self.item.selling_price;
     self.oldPrice.text = self.item.retail_price;
 
-    [self setupDescription];
+  //  [self setupDescription];
     
     self.added.text = [self.item stringItemCreationDate];
     
@@ -296,29 +303,113 @@
          self.buyThisItem.enabled = YES;
     }
     
+
     
+   
 }
 
 - (void) setupDescription
 {
+    NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc] initWithAttributedString:self.descriptionTextView.attributedText];
+    
+    
+    
+    
+//    [atrStr beginEditing];
+//    
+//    UIFont *allFont= [UIFont fontWithName:@"OpenSans" size:15];
+//    UIColor *allColor = [UIColor colorWithRed:1. green:167./255. blue:167./255. alpha:1];
+//    
+//    NSDictionary *allAttrib = @{ NSForegroundColorAttributeName : allColor, NSFontAttributeName : allFont  };
+//    
+//    [atrStr addAttributes:allAttrib
+//                    range:NSMakeRange(0, atrStr.length)];
+//    
+//    [atrStr endEditing];
+//    
+//    self.descriptionTextView.attributedText = atrStr;
+//    
+    
+    
+    
+    
     NSString *str = [NSString stringWithFormat:@"%@\n%@", self.item.title, self.item.item_description];
     NSRange rangeTitle = [str rangeOfString:self.item.title];
-    NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc] initWithString: str ];
+    atrStr = [[NSMutableAttributedString alloc] initWithString: str ];
     
+    
+
     [atrStr beginEditing];
+    
+    UIFont *allFont= [UIFont fontWithName:@"OpenSans" size:12];
+    UIColor *allColor = [UIColor colorWithRed:167./255. green:167./255. blue:167./255. alpha:1];
+    NSDictionary *allAttrib = @{ NSForegroundColorAttributeName : allColor, NSFontAttributeName : allFont  };
+    [atrStr addAttributes:allAttrib
+                    range:NSMakeRange(0, atrStr.length)];
+    
     
     UIColor *color = [UIColor colorWithRed:94./255. green:94./255. blue:94./255. alpha:1];
     UIFont *font = [UIFont fontWithName:@"OpenSans-Semibold" size:15];
     NSDictionary *attrs = @{ NSForegroundColorAttributeName : color, NSFontAttributeName : font  };
-    [atrStr addAttributes:attrs
-                        range:rangeTitle];
-    
+    [atrStr addAttributes:attrs range:rangeTitle];
+   
     [atrStr endEditing];
-
-    self.descriptionOfItem.attributedText = atrStr;
-
+    
+    
+    self.descriptionTextView.attributedText = atrStr;
+    self.descriptionTextView.delegateForDetectedWord = self;
+    
+    
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@" \n"];
+    NSArray *array = [self.descriptionTextView.text componentsSeparatedByCharactersInSet:set];
+    
+    atrStr = [[NSMutableAttributedString alloc]initWithAttributedString:self.descriptionTextView.attributedText];
+    
+    for(NSString *str in array)
+    {
+        if([str isEqualToString:@""]) continue;
+        
+        if([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"#"]){
+            
+            [atrStr paintOverWordWithString:str
+                                   withText:self.descriptionTextView.text
+                                  withColor:nil];
+            
+        }
+        
+    }
+    
+    self.descriptionTextView.attributedText = atrStr;
+    
+    
+    
+    CGRect rect = self.descriptionTextView.frame;
+    CGSize size =   [self.descriptionTextView sizeThatFits:CGSizeMake(self.descriptionTextView.frame.size.width, CGFLOAT_MAX)];
+    
+    size.height +=5;
+    rect.size = size;
+    self.descriptionTextView.frame = rect;
+    self.height.constant = rect.size.height;
+    
+    
     
 }
+
+
+
+- (void) stringWithTapItem:(NSString*)text{
+    
+    if(!text || [text isEqual:@""]) return;
+    
+    FeedScreenViewController *vc = [[FeedScreenViewController alloc]initWithTag:text];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+
+
+
+
 - (void) avatarInit
 {
 

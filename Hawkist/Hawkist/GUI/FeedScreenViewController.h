@@ -20,4 +20,8 @@
 @property (strong, nonatomic) IBOutlet UIView *searchView;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
 
+
+-(instancetype) initWithTag:(NSString*)tag;
+
+
 @end

@@ -12,6 +12,8 @@
 #import "TextViewWithDetectedWord.h"
 #import "HWMention.h"
 
+#import "NSMutableAttributedString+PaintText.h"
+
 
 @interface HWCommentCell () <TextViewWithDetectedWordDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
@@ -137,12 +139,19 @@
         
         if([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"@"])
         {
-            [self paintOverWordWithString:str withRange:range withAttributStr:atrbString];
+            
+            [atrbString paintOverWordWithString:str
+                                       withText:self.textView.text
+                                      withColor:nil];
         }
         
         if([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"#"])
         {
-            [self paintOverWordWithString:str withRange:range withAttributStr:atrbString];
+        
+            [atrbString paintOverWordWithString:str
+                                       withText:self.textView.text
+                                      withColor:nil];
+            
         }
     }
     
@@ -153,7 +162,7 @@
 
 }
 
--(void)paintOverWordWithString:(NSString*)str withRange:(NSRange)range withAttributStr:(NSMutableAttributedString*) atrbString
+-(void)paintOverWordWithStrin1g:(NSString*)str withRange:(NSRange)range withAttributStr:(NSMutableAttributedString*) atrbString
 {
     
     range = [self.textView.text rangeOfString:str];
@@ -185,7 +194,7 @@
 }
 
 #pragma mark -
-#pragma mark HWCommentCelxlDelegate
+#pragma mark HWCommentCellDelegate
 
 
 - (void) stringWithTapItem:(NSString*)text

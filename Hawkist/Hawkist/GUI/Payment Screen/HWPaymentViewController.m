@@ -16,6 +16,12 @@
 #import "NetworkManager.h"
 #import "AddCardViewController.h"
 #import "HWMyOrdersViewController.h"
+#import "HWPaymentBalanceCell.h"
+#import "HWPaymentNewCardCell.h"
+#import "HWAddNewAddressCell.h"
+#import "HWAddressCollectionOnlyCell.h"
+
+
 
 @interface HWPaymentViewController () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, NavigationViewDelegate, HWAddCardAndAdressCellDelegat>
  
@@ -62,8 +68,19 @@
 #define cellWithCollectionViewIdentifier @"HWPaymentCell"
 #define cellForAddDataIdentifier @"HWAddCardAndAdressCell"
 
-#define paymentOptionCell @"paymentOptionCell"
+
+
+#define addNewAddressCell @"HWAddNewAddressCell"
 #define addressOptionCell @"addressOptionCell"
+#define addressCollectionCell @"collectiomOnly"
+
+
+#define paymentOptionCell @"paymentOptionCell"
+#define paymentBalanceCell @"paymentCell"
+#define paymentNewCell @"HWPaymentNewCardCell"
+
+
+#pragma mark - UIViewController
 
 - (instancetype)initWithItem:(HWItem*)item
 {
@@ -89,7 +106,7 @@
     if (self)
     {
         self.networkManager = [NetworkManager shared];
-        //[self setupUserData];
+        
     }
   
     
@@ -101,6 +118,9 @@
         [self.networkManager getAllBankCards:^(NSArray *cards) {
             
             self.paymentOptionArray = cards;
+#warning delete string down
+            self.paymentOptionArray = cards;
+            
             [self.tableView reloadData];
             
         } failureBlock:^(NSError *error) {
@@ -140,9 +160,9 @@
     
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void) viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     [self setupUserData];
     
 }
@@ -171,6 +191,8 @@
     _paymentCollectionView = paymentCollectionView;
     
     [_paymentCollectionView registerNib:[UINib nibWithNibName:@"HWPaymentOptionCell" bundle:nil] forCellWithReuseIdentifier:paymentOptionCell];
+    [_paymentCollectionView registerNib:[UINib nibWithNibName:@"HWPaymentBalanceCell" bundle:nil] forCellWithReuseIdentifier:paymentBalanceCell];
+    [_paymentCollectionView registerNib:[UINib nibWithNibName:@"HWPaymentNewCardCell" bundle:nil] forCellWithReuseIdentifier:paymentNewCell];
     
 //    self.checkForBuy +=1;
     self.buyButton.enabled = YES;// (self.checkForBuy == 2);
@@ -181,6 +203,8 @@
     _addressCollectionView = addressCollectionView;
     
     [_addressCollectionView registerNib:[UINib nibWithNibName:@"HWAddressOptionCell" bundle:nil] forCellWithReuseIdentifier:addressOptionCell];
+    [_addressCollectionView registerNib:[UINib nibWithNibName:@"HWAddNewAddressCell" bundle:nil] forCellWithReuseIdentifier:addNewAddressCell];
+    [_addressCollectionView registerNib:[UINib nibWithNibName:@" " bundle:nil] forCellWithReuseIdentifier:addressCollectionCell ];
     
 //    self.checkForBuy +=1;
     self.buyButton.enabled = YES;// (self.checkForBuy == 2);
@@ -335,11 +359,11 @@
 {
     if([collectionView isEqual:self.paymentCollectionView])
     {
-        return [self.paymentOptionArray count];
+        return [self.paymentOptionArray count] + 2;// + balance + addNewCard
         
     } else if([collectionView isEqual:self.addressCollectionView])
     {
-        return [self.addressOptionArray count];
+        return [self.addressOptionArray count] + 2 ; // +collectionOnly + addNewAddress
         
     } else {
         
@@ -354,6 +378,25 @@
     
     if([collectionView isEqual:self.paymentCollectionView])
     {
+        if(indexPath.row == [self.paymentOptionArray count]){  // balance cell
+            
+            HWPaymentBalanceCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:paymentBalanceCell forIndexPath:indexPath];
+            cell.isSelected = (indexPath.row == self.paymentSelectRow);
+            
+            return cell;
+        }
+        
+        if(indexPath.row == [self.paymentOptionArray count] +1 ){ // add new card
+         
+            HWPaymentNewCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:paymentNewCell forIndexPath:indexPath];
+            cell.isSelected = (indexPath.row == self.paymentSelectRow);
+            
+            return cell;
+            
+        }
+        
+        // init card
+        
         HWPaymentOptionCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:paymentOptionCell forIndexPath:indexPath];
         
         [cell setCellWithCard:[self.paymentOptionArray objectAtIndex:indexPath.row]];
@@ -367,6 +410,21 @@
     else  if([collectionView isEqual:self.addressCollectionView])
     
     {
+        if(self.addressOptionArray.count == indexPath.row){
+            
+            HWAddressCollectionOnlyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addressCollectionCell forIndexPath:indexPath];
+            
+            return cell;
+        }
+        
+        if((self.addressOptionArray.count +1) == indexPath.row){
+            
+            HWAddNewAddressCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addNewAddressCell forIndexPath:indexPath];
+            
+            return cell;
+            
+        }
+        
         HWAddressOptionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addressOptionCell forIndexPath:indexPath];
         
         cell.isSelected = (indexPath.row == self.addressSelectRow);
@@ -387,14 +445,32 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
     if([collectionView isEqual:self.paymentCollectionView])
     {
         self.paymentSelectRow = indexPath.row;
         
+        if((self.paymentOptionArray.count + 1) == indexPath.row){
+            
+            AddCardViewController *vc = [[AddCardViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+            [collectionView reloadData];
+ 
+            return;
+            
+        }
+        
     } else if([collectionView isEqual:self.addressCollectionView])
     {
         self.addressSelectRow = indexPath.row;
+        
+        if((self.addressOptionArray.count + 1) == indexPath.row){
+            
+            NSLog(@"addNewAddress");
+            [collectionView reloadData];
+            
+            return;
+        }
+
     }
 
     [collectionView reloadData];
@@ -405,7 +481,13 @@
 
 - (IBAction)pressBuyNowButton:(UIButton *)sender
 {
+    if(self.paymentSelectRow > self.paymentOptionArray.count - 1)
+    {
     
+        NSLog(@"%lu", (unsigned long)self.paymentSelectRow);
+        
+        return;
+    }
     NSString *desc =
     [NSString stringWithFormat:@"You have purchased \"%@\" for £%@. Please confirm when you have received the item.",self.item.title, self.item.selling_price];
     

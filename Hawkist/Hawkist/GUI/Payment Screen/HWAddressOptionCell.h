@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HWPaymentBaseCell.h"
 
-@interface HWAddressOptionCell : UICollectionViewCell
-@property (nonatomic, assign) BOOL isSelected;
-
+@interface HWAddressOptionCell : HWPaymentBaseCell
+ 
 -(void) setCellWithAddress:(id) address;
 
 @end
