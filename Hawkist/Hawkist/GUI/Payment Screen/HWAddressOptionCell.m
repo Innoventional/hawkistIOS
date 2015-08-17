@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *adress_line2;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postCodeLable;
-@property (weak, nonatomic) IBOutlet UIImageView *activeImage;
+//@property (weak, nonatomic) IBOutlet UIImageView *activeImage;
 
 @end
 

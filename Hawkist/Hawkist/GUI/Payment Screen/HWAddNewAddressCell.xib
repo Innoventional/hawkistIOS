@@ -7,36 +7,40 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="R1W-Un-gAb" customClass="HWAddNewAddressCell">
-            <rect key="frame" x="0.0" y="0.0" width="308" height="135"/>
+            <rect key="frame" x="0.0" y="0.0" width="276" height="135"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="308" height="135"/>
+                <rect key="frame" x="0.0" y="0.0" width="276" height="135"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acdet_check" translatesAutoresizingMaskIntoConstraints="NO" id="kp4-Zt-jwW">
-                        <rect key="frame" x="276" y="8" width="24" height="24"/>
+                        <rect key="frame" x="244" y="8" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="24" id="8Bl-kq-Scr"/>
                             <constraint firstAttribute="height" constant="24" id="Xql-8n-bOI"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ ADD NEW SHIPPING ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adD-Si-fqQ">
-                        <rect key="frame" x="23" y="57" width="263" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="21" y="59" width="234" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="adD-Si-fqQ" secondAttribute="centerX" id="8cp-6a-eKL"/>
                 <constraint firstAttribute="trailing" secondItem="kp4-Zt-jwW" secondAttribute="trailing" constant="8" id="ENn-Kv-W2m"/>
                 <constraint firstItem="kp4-Zt-jwW" firstAttribute="top" secondItem="R1W-Un-gAb" secondAttribute="top" constant="8" id="ZFE-hj-0Yd"/>
                 <constraint firstAttribute="centerY" secondItem="adD-Si-fqQ" secondAttribute="centerY" id="mz8-5C-kAI"/>
             </constraints>
-            <size key="customSize" width="308" height="135"/>
-            <point key="canvasLocation" x="325" y="344.5"/>
+            <size key="customSize" width="276" height="135"/>
+            <connections>
+                <outlet property="activeImage" destination="kp4-Zt-jwW" id="qnc-kR-v8B"/>
+            </connections>
+            <point key="canvasLocation" x="309" y="344.5"/>
         </collectionViewCell>
     </objects>
     <resources>

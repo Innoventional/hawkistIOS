@@ -34,6 +34,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Rcu-qt-Lix" firstAttribute="top" secondItem="OpK-xj-3GU" secondAttribute="top" constant="8" id="7G8-Bx-4JJ"/>
                 <constraint firstAttribute="trailing" secondItem="Rcu-qt-Lix" secondAttribute="trailing" constant="8" id="8g7-j8-C6M"/>
@@ -41,7 +42,10 @@
                 <constraint firstAttribute="centerY" secondItem="dnE-cV-94K" secondAttribute="centerY" id="y3e-M2-jyr"/>
             </constraints>
             <size key="customSize" width="279" height="135"/>
-            <point key="canvasLocation" x="346.5" y="324.5"/>
+            <connections>
+                <outlet property="activeImage" destination="Rcu-qt-Lix" id="KJP-eB-Jbg"/>
+            </connections>
+            <point key="canvasLocation" x="368.5" y="469.5"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -12,7 +12,8 @@
 #import "ViewItemViewController.h"
 #import "HWCommentViewController.h"
 
-@interface MyItemsViewController ()
+
+@interface MyItemsViewController ()<UICollectionViewDataSource>
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;

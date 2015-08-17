@@ -72,7 +72,7 @@
 
 #define addNewAddressCell @"HWAddNewAddressCell"
 #define addressOptionCell @"addressOptionCell"
-#define addressCollectionCell @"collectiomOnly"
+#define addressCollectionOnlyCell @"collectiomOnly"
 
 
 #define paymentOptionCell @"paymentOptionCell"
@@ -119,7 +119,7 @@
             
             self.paymentOptionArray = cards;
 #warning delete string down
-            self.paymentOptionArray = cards;
+            self.addressOptionArray = @[@1];
             
             [self.tableView reloadData];
             
@@ -204,7 +204,7 @@
     
     [_addressCollectionView registerNib:[UINib nibWithNibName:@"HWAddressOptionCell" bundle:nil] forCellWithReuseIdentifier:addressOptionCell];
     [_addressCollectionView registerNib:[UINib nibWithNibName:@"HWAddNewAddressCell" bundle:nil] forCellWithReuseIdentifier:addNewAddressCell];
-    [_addressCollectionView registerNib:[UINib nibWithNibName:@" " bundle:nil] forCellWithReuseIdentifier:addressCollectionCell ];
+    [_addressCollectionView registerNib:[UINib nibWithNibName:@"HWAddressCollectionOnlyCell" bundle:nil] forCellWithReuseIdentifier:addressCollectionOnlyCell ];
     
 //    self.checkForBuy +=1;
     self.buyButton.enabled = YES;// (self.checkForBuy == 2);
@@ -214,16 +214,23 @@
 #pragma mark -
 #pragma mark UITableViewDataSource
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
 }
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HWAddCardAndAdressCell *addDataCell = [tableView dequeueReusableCellWithIdentifier:cellForAddDataIdentifier];
     
     addDataCell.delegate = self;
-    
+    //проверяем, есть ли карточка или адрес и создаём соотвтетствующую ячейку
     if(indexPath.section == 0 && !self.paymentOptionArray.count)
     {
         [addDataCell setCellWithData:[self.dataModelArray objectAtIndex:indexPath.section]];
@@ -235,6 +242,8 @@
         return addDataCell;
     }
     
+    
+    // если есть адрес или карточка то создаёв ячейку с collectionView
     
     HWPaymentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellWithCollectionViewIdentifier];
     
@@ -254,11 +263,6 @@
     return cell;
 
 
-}
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
 }
 
 
@@ -412,7 +416,8 @@
     {
         if(self.addressOptionArray.count == indexPath.row){
             
-            HWAddressCollectionOnlyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addressCollectionCell forIndexPath:indexPath];
+            HWAddressCollectionOnlyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addressCollectionOnlyCell forIndexPath:indexPath];
+             cell.isSelected = (indexPath.row == self.addressSelectRow);
             
             return cell;
         }
@@ -420,7 +425,7 @@
         if((self.addressOptionArray.count +1) == indexPath.row){
             
             HWAddNewAddressCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addNewAddressCell forIndexPath:indexPath];
-            
+             cell.isSelected = (indexPath.row == self.addressSelectRow);
             return cell;
             
         }
