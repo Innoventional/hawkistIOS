@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWFeedBackViewController">
+            <connections>
+                <outlet property="navigationView" destination="WLA-4p-Ue1" id="LKk-f6-WRK"/>
+                <outlet property="segmentView" destination="Xoo-fm-Uyg" id="vcD-xJ-Rni"/>
+                <outlet property="tableView" destination="D2Q-4u-Qv6" id="zFH-Zu-QCB"/>
+                <outlet property="view" destination="kEE-W1-ZWP" id="FSI-jc-LyI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="kEE-W1-ZWP">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLA-4p-Ue1" customClass="NavigationVIew">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                    <color key="backgroundColor" red="0.1803921568627451" green="0.67843137254901964" blue="0.58039215686274515" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="s0I-oV-xPW"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xoo-fm-Uyg" customClass="HWFeedBackSegmentView">
+                    <rect key="frame" x="0.0" y="65" width="320" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXh-NI-fh3" customClass="HWFedbackSegmentButton">
+                            <rect key="frame" x="0.0" y="0.0" width="106" height="60"/>
+                            <color key="backgroundColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="106" id="zcM-Nq-LR9"/>
+                            </constraints>
+                            <state key="normal" title="Positive">
+                                <color key="titleColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="zcM-Nq-LR9"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="pressPositiveButtonAction:" destination="Xoo-fm-Uyg" eventType="touchUpInside" id="xpd-29-Hwy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzX-Cp-DUT" customClass="HWFedbackSegmentButton">
+                            <rect key="frame" x="107" y="0.0" width="106" height="60"/>
+                            <color key="backgroundColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Neutral">
+                                <color key="titleColor" red="0.55173814296722412" green="0.55995506048202515" blue="0.58159518241882324" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pressNeutralButtonAction:" destination="Xoo-fm-Uyg" eventType="touchUpInside" id="qC6-qk-Pgs"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXP-2k-e0x" customClass="HWFedbackSegmentButton">
+                            <rect key="frame" x="214" y="0.0" width="106" height="60"/>
+                            <color key="backgroundColor" red="0.94509803921568625" green="0.93333333333333335" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Negative">
+                                <color key="titleColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pressNegativeButtonAction:" destination="Xoo-fm-Uyg" eventType="touchUpInside" id="QRJ-Rb-jha"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="zzX-Cp-DUT" firstAttribute="width" secondItem="yXP-2k-e0x" secondAttribute="width" id="01q-ye-dgw"/>
+                        <constraint firstAttribute="bottom" secondItem="bXh-NI-fh3" secondAttribute="bottom" id="BKs-x2-hdW"/>
+                        <constraint firstItem="yXP-2k-e0x" firstAttribute="top" secondItem="Xoo-fm-Uyg" secondAttribute="top" id="Bbq-ad-Mlv"/>
+                        <constraint firstItem="zzX-Cp-DUT" firstAttribute="leading" secondItem="bXh-NI-fh3" secondAttribute="trailing" constant="1" id="Jx0-iX-125"/>
+                        <constraint firstItem="zzX-Cp-DUT" firstAttribute="top" secondItem="Xoo-fm-Uyg" secondAttribute="top" id="L0X-KO-QA6"/>
+                        <constraint firstAttribute="bottom" secondItem="yXP-2k-e0x" secondAttribute="bottom" id="MPk-ET-RSm"/>
+                        <constraint firstItem="bXh-NI-fh3" firstAttribute="leading" secondItem="Xoo-fm-Uyg" secondAttribute="leading" id="QBf-Fb-pU8"/>
+                        <constraint firstItem="yXP-2k-e0x" firstAttribute="leading" secondItem="zzX-Cp-DUT" secondAttribute="trailing" constant="1" id="QoY-FV-eC1"/>
+                        <constraint firstAttribute="height" constant="60" id="Sam-Ix-GtQ"/>
+                        <constraint firstAttribute="bottom" secondItem="zzX-Cp-DUT" secondAttribute="bottom" id="fiz-31-iis"/>
+                        <constraint firstAttribute="trailing" secondItem="yXP-2k-e0x" secondAttribute="trailing" id="ioe-Gu-5yB"/>
+                        <constraint firstItem="bXh-NI-fh3" firstAttribute="width" secondItem="zzX-Cp-DUT" secondAttribute="width" id="kdn-sD-SJ7"/>
+                        <constraint firstItem="bXh-NI-fh3" firstAttribute="top" secondItem="Xoo-fm-Uyg" secondAttribute="top" id="pDU-aT-HuD"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="negativeButton" destination="yXP-2k-e0x" id="3RJ-jl-1KM"/>
+                        <outlet property="neutralButton" destination="zzX-Cp-DUT" id="8aP-LD-apu"/>
+                        <outlet property="positiveButton" destination="bXh-NI-fh3" id="WgW-HA-9n7"/>
+                        <outletCollection property="buttonSegmentCollection" destination="bXh-NI-fh3" id="pel-ju-lLQ"/>
+                        <outletCollection property="buttonSegmentCollection" destination="yXP-2k-e0x" id="6wz-A0-t5E"/>
+                        <outletCollection property="buttonSegmentCollection" destination="zzX-Cp-DUT" id="Rod-4O-9LI"/>
+                    </connections>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="D2Q-4u-Qv6">
+                    <rect key="frame" x="0.0" y="125" width="320" height="443"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ayf-TU-iXM"/>
+                        <outlet property="delegate" destination="-1" id="rDf-LZ-E0D"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Xoo-fm-Uyg" firstAttribute="top" secondItem="WLA-4p-Ue1" secondAttribute="bottom" id="7dX-GV-mbN"/>
+                <constraint firstAttribute="bottom" secondItem="D2Q-4u-Qv6" secondAttribute="bottom" id="APM-tO-AHk"/>
+                <constraint firstItem="WLA-4p-Ue1" firstAttribute="leading" secondItem="kEE-W1-ZWP" secondAttribute="leading" id="AYL-cS-VRS"/>
+                <constraint firstItem="WLA-4p-Ue1" firstAttribute="top" secondItem="kEE-W1-ZWP" secondAttribute="top" id="Xhn-MS-K64"/>
+                <constraint firstAttribute="trailing" secondItem="D2Q-4u-Qv6" secondAttribute="trailing" id="b7y-hp-fXa"/>
+                <constraint firstItem="D2Q-4u-Qv6" firstAttribute="top" secondItem="Xoo-fm-Uyg" secondAttribute="bottom" id="c8r-fH-kfi"/>
+                <constraint firstItem="D2Q-4u-Qv6" firstAttribute="leading" secondItem="kEE-W1-ZWP" secondAttribute="leading" id="dsw-VU-GHc"/>
+                <constraint firstItem="Xoo-fm-Uyg" firstAttribute="leading" secondItem="kEE-W1-ZWP" secondAttribute="leading" id="fSa-h9-Xxw"/>
+                <constraint firstAttribute="trailing" secondItem="Xoo-fm-Uyg" secondAttribute="trailing" id="xnt-PQ-a2j"/>
+                <constraint firstAttribute="trailing" secondItem="WLA-4p-Ue1" secondAttribute="trailing" id="zdM-Mo-vwO"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="331" y="374"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="83" id="mE5-hR-Por" customClass="HWFeadbackCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mE5-hR-Por" id="45T-i4-Ehl">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W0R-Xr-il7">
+                        <rect key="frame" x="8" y="8" width="46" height="46"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.1765265214" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="Caj-aK-Svm"/>
+                            <constraint firstAttribute="height" constant="46" id="x0e-pU-j9k"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="23"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bff-wp-Ton">
+                        <rect key="frame" x="66" y="12" width="246" height="34"/>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_time" translatesAutoresizingMaskIntoConstraints="NO" id="9vp-CX-W9g">
+                        <rect key="frame" x="66" y="57" width="9" height="9"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="9" id="NDD-lW-tJI"/>
+                            <constraint firstAttribute="height" constant="9" id="Q56-lm-PLu"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9m-vt-bAR">
+                        <rect key="frame" x="83" y="54" width="26" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="cn4-V5-bhi">
+                        <rect key="frame" x="0.0" y="81" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="sOF-Et-9VT"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="W0R-Xr-il7" firstAttribute="leading" secondItem="45T-i4-Ehl" secondAttribute="leadingMargin" id="Ebn-ps-D9G"/>
+                    <constraint firstItem="9vp-CX-W9g" firstAttribute="leading" secondItem="W0R-Xr-il7" secondAttribute="trailing" constant="12" id="L2A-dV-DMZ"/>
+                    <constraint firstItem="cn4-V5-bhi" firstAttribute="leading" secondItem="45T-i4-Ehl" secondAttribute="leading" id="Ufp-cY-mIT"/>
+                    <constraint firstItem="B9m-vt-bAR" firstAttribute="leading" secondItem="9vp-CX-W9g" secondAttribute="trailing" constant="8" id="fGW-9g-rcf"/>
+                    <constraint firstItem="W0R-Xr-il7" firstAttribute="top" secondItem="45T-i4-Ehl" secondAttribute="topMargin" id="hBK-GT-Nqi"/>
+                    <constraint firstAttribute="trailing" secondItem="cn4-V5-bhi" secondAttribute="trailing" id="kFj-I5-38s"/>
+                    <constraint firstItem="Bff-wp-Ton" firstAttribute="top" secondItem="45T-i4-Ehl" secondAttribute="top" constant="12" id="kNw-Eh-dEx"/>
+                    <constraint firstAttribute="trailing" secondItem="Bff-wp-Ton" secondAttribute="trailing" constant="8" id="kaX-Rg-0UV"/>
+                    <constraint firstItem="B9m-vt-bAR" firstAttribute="top" secondItem="Bff-wp-Ton" secondAttribute="bottom" constant="8" id="ldt-c4-ezW"/>
+                    <constraint firstItem="Bff-wp-Ton" firstAttribute="leading" secondItem="W0R-Xr-il7" secondAttribute="trailing" constant="12" id="opL-W5-j28"/>
+                    <constraint firstItem="9vp-CX-W9g" firstAttribute="top" secondItem="Bff-wp-Ton" secondAttribute="bottom" constant="11" id="pTg-7D-Q1n"/>
+                    <constraint firstAttribute="bottom" secondItem="Bff-wp-Ton" secondAttribute="bottom" constant="36" id="s9A-L7-dHh"/>
+                    <constraint firstAttribute="bottom" secondItem="cn4-V5-bhi" secondAttribute="bottom" id="yu0-jP-cO7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatar" destination="W0R-Xr-il7" id="DA3-K1-ddA"/>
+                <outlet property="messageText" destination="Bff-wp-Ton" id="fjL-CI-SIl"/>
+                <outlet property="timeLabel" destination="B9m-vt-bAR" id="d1d-9d-H8N"/>
+            </connections>
+            <point key="canvasLocation" x="445" y="326.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="comment_time" width="8" height="8"/>
+        <image name="line" width="1" height="1"/>
+    </resources>
+</document>

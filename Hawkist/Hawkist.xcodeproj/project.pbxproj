@@ -124,6 +124,14 @@
 		CE1546421B7DF4A60082ACF4 /* HWAddressCollectionOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1546411B7DF4A60082ACF4 /* HWAddressCollectionOnlyCell.xib */; };
 		CE1546451B7DF6B60082ACF4 /* HWAddNewAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546441B7DF6B60082ACF4 /* HWAddNewAddressCell.m */; };
 		CE1546471B7DF6DE0082ACF4 /* HWAddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1546461B7DF6DE0082ACF4 /* HWAddNewAddressCell.xib */; };
+		CE1546851B81F4720082ACF4 /* HWFeedBackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1546841B81F4720082ACF4 /* HWFeedBackView.xib */; };
+		CE1546881B81F4E80082ACF4 /* HWFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546871B81F4E80082ACF4 /* HWFeedBackViewController.m */; };
+		CE15468C1B82016B0082ACF4 /* HWFeedBackSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE15468B1B82016B0082ACF4 /* HWFeedBackSegmentView.m */; };
+		CE1546911B832D2D0082ACF4 /* HWFedbackSegmentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546901B832D2C0082ACF4 /* HWFedbackSegmentButton.m */; };
+		CE1546941B833A120082ACF4 /* HWFeadbackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546931B833A120082ACF4 /* HWFeadbackCell.m */; };
+		CE1546961B833A370082ACF4 /* HWFeadbackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1546951B833A370082ACF4 /* HWFeadbackCell.xib */; };
+		CE1546991B835C500082ACF4 /* HWLeaveFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546981B835C500082ACF4 /* HWLeaveFeedbackViewController.m */; };
+		CE15469B1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE15469A1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib */; };
 		CE2579F01B73427500A0DEE9 /* cardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579EE1B7339A800A0DEE9 /* cardView.xib */; };
 		CE2579F41B73A93800A0DEE9 /* HWMyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */; };
 		CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579F81B73AA1900A0DEE9 /* HWitemForOrdersCell.xib */; };
@@ -373,6 +381,19 @@
 		CE1546431B7DF6B60082ACF4 /* HWAddNewAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddNewAddressCell.h; path = "Payment Screen/HWAddNewAddressCell.h"; sourceTree = "<group>"; };
 		CE1546441B7DF6B60082ACF4 /* HWAddNewAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddNewAddressCell.m; path = "Payment Screen/HWAddNewAddressCell.m"; sourceTree = "<group>"; };
 		CE1546461B7DF6DE0082ACF4 /* HWAddNewAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWAddNewAddressCell.xib; path = "Payment Screen/HWAddNewAddressCell.xib"; sourceTree = "<group>"; };
+		CE1546841B81F4720082ACF4 /* HWFeedBackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFeedBackView.xib; path = FeedBack/FeedBackScreen/HWFeedBackView.xib; sourceTree = "<group>"; };
+		CE1546861B81F4E80082ACF4 /* HWFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFeedBackViewController.h; path = FeedBack/FeedBackScreen/HWFeedBackViewController.h; sourceTree = "<group>"; };
+		CE1546871B81F4E80082ACF4 /* HWFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFeedBackViewController.m; path = FeedBack/FeedBackScreen/HWFeedBackViewController.m; sourceTree = "<group>"; };
+		CE15468A1B82016B0082ACF4 /* HWFeedBackSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFeedBackSegmentView.h; path = FeedBack/feedBackSegment/HWFeedBackSegmentView.h; sourceTree = "<group>"; };
+		CE15468B1B82016B0082ACF4 /* HWFeedBackSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFeedBackSegmentView.m; path = FeedBack/feedBackSegment/HWFeedBackSegmentView.m; sourceTree = "<group>"; };
+		CE15468F1B832D2C0082ACF4 /* HWFedbackSegmentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFedbackSegmentButton.h; path = FeedBack/feedBackSegment/HWFedbackSegmentButton.h; sourceTree = "<group>"; };
+		CE1546901B832D2C0082ACF4 /* HWFedbackSegmentButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFedbackSegmentButton.m; path = FeedBack/feedBackSegment/HWFedbackSegmentButton.m; sourceTree = "<group>"; };
+		CE1546921B833A120082ACF4 /* HWFeadbackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFeadbackCell.h; path = FeedBack/FeedBackScreen/HWFeadbackCell.h; sourceTree = "<group>"; };
+		CE1546931B833A120082ACF4 /* HWFeadbackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFeadbackCell.m; path = FeedBack/FeedBackScreen/HWFeadbackCell.m; sourceTree = "<group>"; };
+		CE1546951B833A370082ACF4 /* HWFeadbackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFeadbackCell.xib; path = FeedBack/FeedBackScreen/HWFeadbackCell.xib; sourceTree = "<group>"; };
+		CE1546971B835C500082ACF4 /* HWLeaveFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWLeaveFeedbackViewController.h; path = FeedBack/LeaveFeedBackScreen/HWLeaveFeedbackViewController.h; sourceTree = "<group>"; };
+		CE1546981B835C500082ACF4 /* HWLeaveFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWLeaveFeedbackViewController.m; path = FeedBack/LeaveFeedBackScreen/HWLeaveFeedbackViewController.m; sourceTree = "<group>"; };
+		CE15469A1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWLeaveFeedbackView.xib; path = FeedBack/LeaveFeedBackScreen/HWLeaveFeedbackView.xib; sourceTree = "<group>"; };
 		CE2579EE1B7339A800A0DEE9 /* cardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = cardView.xib; path = manageBank/cardView.xib; sourceTree = "<group>"; };
 		CE2579F21B73A93800A0DEE9 /* HWMyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMyOrdersViewController.h; path = MyOrdersScreen/HWMyOrdersViewController.h; sourceTree = "<group>"; };
 		CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWMyOrdersViewController.m; path = MyOrdersScreen/HWMyOrdersViewController.m; sourceTree = "<group>"; };
@@ -874,6 +895,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				CE1546811B81F3070082ACF4 /* FeedBack */,
 				3A69015F1B784CFE00B618B8 /* AddAdress */,
 				CE2579F11B73A74D00A0DEE9 /* My Orders Screen */,
 				3A69014F1B72DE9000B618B8 /* Personalisation */,
@@ -1001,6 +1023,50 @@
 				C35CB5421B6F5D5E00956150 /* StripeManager.m */,
 			);
 			path = StripeManager;
+			sourceTree = "<group>";
+		};
+		CE1546811B81F3070082ACF4 /* FeedBack */ = {
+			isa = PBXGroup;
+			children = (
+				CE1546891B8200BE0082ACF4 /* FeedBackSegment */,
+				CE1546831B81F40A0082ACF4 /* LeaveFeedBackScreen */,
+				CE1546821B81F3EA0082ACF4 /* FeedBackScreen */,
+			);
+			name = FeedBack;
+			sourceTree = "<group>";
+		};
+		CE1546821B81F3EA0082ACF4 /* FeedBackScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CE1546861B81F4E80082ACF4 /* HWFeedBackViewController.h */,
+				CE1546871B81F4E80082ACF4 /* HWFeedBackViewController.m */,
+				CE1546841B81F4720082ACF4 /* HWFeedBackView.xib */,
+				CE1546921B833A120082ACF4 /* HWFeadbackCell.h */,
+				CE1546931B833A120082ACF4 /* HWFeadbackCell.m */,
+				CE1546951B833A370082ACF4 /* HWFeadbackCell.xib */,
+			);
+			name = FeedBackScreen;
+			sourceTree = "<group>";
+		};
+		CE1546831B81F40A0082ACF4 /* LeaveFeedBackScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CE1546971B835C500082ACF4 /* HWLeaveFeedbackViewController.h */,
+				CE1546981B835C500082ACF4 /* HWLeaveFeedbackViewController.m */,
+				CE15469A1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib */,
+			);
+			name = LeaveFeedBackScreen;
+			sourceTree = "<group>";
+		};
+		CE1546891B8200BE0082ACF4 /* FeedBackSegment */ = {
+			isa = PBXGroup;
+			children = (
+				CE15468A1B82016B0082ACF4 /* HWFeedBackSegmentView.h */,
+				CE15468B1B82016B0082ACF4 /* HWFeedBackSegmentView.m */,
+				CE15468F1B832D2C0082ACF4 /* HWFedbackSegmentButton.h */,
+				CE1546901B832D2C0082ACF4 /* HWFedbackSegmentButton.m */,
+			);
+			name = FeedBackSegment;
 			sourceTree = "<group>";
 		};
 		CE2579F11B73A74D00A0DEE9 /* My Orders Screen */ = {
@@ -1268,6 +1334,7 @@
 				3A6901631B78E6BA00B618B8 /* FeedToShort.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */,
+				CE1546851B81F4720082ACF4 /* HWFeedBackView.xib in Resources */,
 				CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
 				3A2AE3CA1B6111A000806D59 /* AddTagsView.xib in Resources */,
@@ -1280,6 +1347,7 @@
 				7CE0E8E01B4307F0003B8B3A /* FeedScreenCollectionViewCell.xib in Resources */,
 				3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */,
 				3AF831F61B6F6CB600CC750D /* CustomField.xib in Resources */,
+				CE15469B1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib in Resources */,
 				CE954C6A1B75E3E80063A719 /* HWAboutUserView.xib in Resources */,
 				CE1546421B7DF4A60082ACF4 /* HWAddressCollectionOnlyCell.xib in Resources */,
 				CE70EDCF1B6BC5CE005664FA /* HWMyAccountVIew.xib in Resources */,
@@ -1294,6 +1362,7 @@
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				3A69015E1B783A3100B618B8 /* default.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
+				CE1546961B833A370082ACF4 /* HWFeadbackCell.xib in Resources */,
 				CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */,
 				3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */,
 				CE70EDCC1B6B728E005664FA /* HWMentionUserCell.xib in Resources */,
@@ -1432,10 +1501,13 @@
 				3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				CEBAAF9F1B6CE9DF00AFE4C6 /* HWSingOutCell.m in Sources */,
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
+				CE1546941B833A120082ACF4 /* HWFeadbackCell.m in Sources */,
+				CE1546881B81F4E80082ACF4 /* HWFeedBackViewController.m in Sources */,
 				CE5909531B5F9FF400DAA7FF /* SZTextView.m in Sources */,
 				CE954C6D1B77D9620063A719 /* UIImageView+Extensions.m in Sources */,
 				3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */,
 				CEBAAFC11B70E67B00AFE4C6 /* HWAddDataModel.m in Sources */,
+				CE1546911B832D2D0082ACF4 /* HWFedbackSegmentButton.m in Sources */,
 				C35A4C8D1B31A408002E1F26 /* AppEngine.m in Sources */,
 				CE1546301B7CAA650082ACF4 /* NSMutableAttributedString+PaintText.m in Sources */,
 				3AF832081B70E4EB00CC750D /* HWCard.m in Sources */,
@@ -1446,6 +1518,7 @@
 				C35CB4A61B4D3A2E00956150 /* AWSS3Manager.m in Sources */,
 				C35A4C681B3035D2002E1F26 /* UIImage+Extensions.m in Sources */,
 				CE1546451B7DF6B60082ACF4 /* HWAddNewAddressCell.m in Sources */,
+				CE15468C1B82016B0082ACF4 /* HWFeedBackSegmentView.m in Sources */,
 				C35CB5431B6F5D5E00956150 /* StripeManager.m in Sources */,
 				3A45ABEB1B6BBCAB00FD56D6 /* ManageBankViewController.m in Sources */,
 				3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */,
@@ -1460,6 +1533,7 @@
 				3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */,
 				3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */,
 				3A968E311B4C1188005AA347 /* HWTag.m in Sources */,
+				CE1546991B835C500082ACF4 /* HWLeaveFeedbackViewController.m in Sources */,
 				7CF0F9821B455DB30041F58F /* ViewItemViewController.m in Sources */,
 				3AF832431B723AAF00CC750D /* SettingsViewController.m in Sources */,
 				C35A4C1A1B2F2DF7002E1F26 /* main.m in Sources */,

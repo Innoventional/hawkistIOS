@@ -15,7 +15,11 @@
 #import "ManageBankViewController.h"
 #import "SettingsViewController.h"
 
-#import "HWMyOrdersViewController.h"
+
+
+#import "HWLeaveFeedbackViewController.h"
+#import "HWFeedBackViewController.h"
+
 
 
 @interface HWTapBarViewController () <HWTapBarViewDelegate>
@@ -95,16 +99,16 @@
         }
         case 3:
         {
-//            HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
+            HWFeedBackViewController * vc = [[HWFeedBackViewController alloc] init];
+          //  [self.navigationController pushViewController:vc animated:YES];
             
             break;
         }
         case 4:
         {
-//            ManageBankViewController* bankVC = [[ManageBankViewController alloc]init];
-//            [self.navigationController pushViewController:bankVC animated:NO];
-//          
+            HWLeaveFeedbackViewController *vc = [[HWLeaveFeedbackViewController alloc] init];
+            //[self.navigationController pushViewController:vc animated:YES];
+            
             
             break;
         }

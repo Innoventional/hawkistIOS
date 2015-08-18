@@ -119,7 +119,7 @@
             
             self.paymentOptionArray = cards;
 #warning delete string down
-            self.addressOptionArray = @[@1];
+            //self.addressOptionArray = @[@1];
             
             [self.tableView reloadData];
             
@@ -390,7 +390,7 @@
             return cell;
         }
         
-        if(indexPath.row == [self.paymentOptionArray count] +1 ){ // add new card
+        if(indexPath.row == [self.paymentOptionArray count] +2  ){ // add new card
          
             HWPaymentNewCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:paymentNewCell forIndexPath:indexPath];
             cell.isSelected = (indexPath.row == self.paymentSelectRow);
