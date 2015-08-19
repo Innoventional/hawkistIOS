@@ -19,6 +19,7 @@
 
 #import "HWLeaveFeedbackViewController.h"
 #import "HWFeedBackViewController.h"
+#import "HWMyBalanceViewController.h"
 
 
 
@@ -99,8 +100,8 @@
         }
         case 3:
         {
-            HWFeedBackViewController * vc = [[HWFeedBackViewController alloc] init];
-           // [self.navigationController pushViewController:vc animated:YES];
+            HWFeedBackViewController * vc = [[HWMyBalanceViewController alloc] init];
+             [self.navigationController pushViewController:vc animated:YES];
             
             break;
         }

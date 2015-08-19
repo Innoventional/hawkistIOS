@@ -93,16 +93,16 @@
                         <rect key="frame" x="0.0" y="149" width="145" height="78"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videokarta" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97z-YM-TJw">
-                                <rect key="frame" x="8" y="4" width="129" height="13"/>
+                                <rect key="frame" x="8" y="2" width="129" height="17"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="13" id="vB1-S1-gOF"/>
+                                    <constraint firstAttribute="height" constant="17" id="vB1-S1-gOF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
                                 <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£ 22" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mj7-og-7gY">
-                                <rect key="frame" x="9" y="22" width="24" height="12"/>
+                                <rect key="frame" x="9" y="23" width="24" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="4sr-ca-cvS"/>
                                 </constraints>
@@ -111,13 +111,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="( £ 25 )" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSV-id-3OE">
-                                <rect key="frame" x="40" y="22" width="32" height="14"/>
+                                <rect key="frame" x="40" y="23" width="32" height="14"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
                                 <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUQ-4M-ZK6">
-                                <rect key="frame" x="9" y="37" width="15" height="14"/>
+                                <rect key="frame" x="9" y="38" width="15" height="14"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <color key="textColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -188,16 +188,16 @@
                             <constraint firstItem="Mj7-og-7gY" firstAttribute="leading" secondItem="ccF-pK-s0j" secondAttribute="leading" constant="9" id="NML-Y5-jeX"/>
                             <constraint firstAttribute="bottom" secondItem="9sK-Ie-nzr" secondAttribute="bottom" constant="-3" id="PO1-cd-wQ6"/>
                             <constraint firstItem="lSV-id-3OE" firstAttribute="leading" secondItem="Mj7-og-7gY" secondAttribute="trailing" constant="7" id="UkE-wy-Kea"/>
-                            <constraint firstItem="lSV-id-3OE" firstAttribute="top" secondItem="97z-YM-TJw" secondAttribute="bottom" constant="5" id="XEK-NG-ph4"/>
-                            <constraint firstItem="97z-YM-TJw" firstAttribute="top" secondItem="ccF-pK-s0j" secondAttribute="top" constant="4" id="ZvJ-u7-nBt"/>
+                            <constraint firstItem="lSV-id-3OE" firstAttribute="top" secondItem="97z-YM-TJw" secondAttribute="bottom" constant="4" id="XEK-NG-ph4"/>
+                            <constraint firstItem="97z-YM-TJw" firstAttribute="top" secondItem="ccF-pK-s0j" secondAttribute="top" constant="2" id="ZvJ-u7-nBt"/>
                             <constraint firstItem="ha9-wj-8t3" firstAttribute="leading" secondItem="YzE-P2-NKs" secondAttribute="trailing" constant="-1" id="b0f-Uv-kK4"/>
                             <constraint firstItem="eUQ-4M-ZK6" firstAttribute="leading" secondItem="ccF-pK-s0j" secondAttribute="leading" constant="9" id="c9u-pt-gth"/>
-                            <constraint firstItem="ha9-wj-8t3" firstAttribute="top" secondItem="97z-YM-TJw" secondAttribute="bottom" constant="39" id="cZC-hw-JNa"/>
-                            <constraint firstItem="YzE-P2-NKs" firstAttribute="top" secondItem="97z-YM-TJw" secondAttribute="bottom" constant="40" id="gUl-je-zVI"/>
+                            <constraint firstItem="ha9-wj-8t3" firstAttribute="top" secondItem="97z-YM-TJw" secondAttribute="bottom" constant="37" id="cZC-hw-JNa"/>
+                            <constraint firstItem="YzE-P2-NKs" firstAttribute="top" secondItem="97z-YM-TJw" secondAttribute="bottom" constant="38" id="gUl-je-zVI"/>
                             <constraint firstAttribute="bottom" secondItem="967-bP-B25" secondAttribute="bottom" constant="5" id="han-Mc-qC0"/>
                             <constraint firstItem="967-bP-B25" firstAttribute="leading" secondItem="M4h-6a-gQ0" secondAttribute="trailing" constant="1" id="lLP-cH-Dbp"/>
                             <constraint firstAttribute="bottom" secondItem="M4h-6a-gQ0" secondAttribute="bottom" constant="5" id="maC-ub-Sm2"/>
-                            <constraint firstItem="Mj7-og-7gY" firstAttribute="top" secondItem="ccF-pK-s0j" secondAttribute="top" constant="22" id="n2M-TZ-ISx"/>
+                            <constraint firstItem="Mj7-og-7gY" firstAttribute="top" secondItem="ccF-pK-s0j" secondAttribute="top" constant="23" id="n2M-TZ-ISx"/>
                             <constraint firstAttribute="height" constant="78" id="rAT-rw-Fh2"/>
                             <constraint firstItem="M4h-6a-gQ0" firstAttribute="leading" secondItem="ccF-pK-s0j" secondAttribute="leading" constant="11" id="ybs-dA-dke"/>
                             <constraint firstAttribute="trailing" secondItem="YzE-P2-NKs" secondAttribute="trailing" constant="25" id="z2c-2z-5Oz"/>

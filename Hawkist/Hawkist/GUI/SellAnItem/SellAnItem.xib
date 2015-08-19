@@ -805,7 +805,7 @@
                     <exclude reference="gjM-S5-XAd"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="355" y="234"/>
+            <point key="canvasLocation" x="473" y="58"/>
         </view>
         <tapGestureRecognizer id="no3-u5-pAy">
             <connections>

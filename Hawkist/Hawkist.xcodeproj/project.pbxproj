@@ -132,6 +132,8 @@
 		CE1546961B833A370082ACF4 /* HWFeadbackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1546951B833A370082ACF4 /* HWFeadbackCell.xib */; };
 		CE1546991B835C500082ACF4 /* HWLeaveFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546981B835C500082ACF4 /* HWLeaveFeedbackViewController.m */; };
 		CE15469B1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE15469A1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib */; };
+		CE15469E1B84AC0A0082ACF4 /* HWMyBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE15469D1B84AC090082ACF4 /* HWMyBalanceView.xib */; };
+		CE1546A11B84B50D0082ACF4 /* HWMyBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546A01B84B50D0082ACF4 /* HWMyBalanceViewController.m */; };
 		CE2579F01B73427500A0DEE9 /* cardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579EE1B7339A800A0DEE9 /* cardView.xib */; };
 		CE2579F41B73A93800A0DEE9 /* HWMyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */; };
 		CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579F81B73AA1900A0DEE9 /* HWitemForOrdersCell.xib */; };
@@ -394,6 +396,9 @@
 		CE1546971B835C500082ACF4 /* HWLeaveFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWLeaveFeedbackViewController.h; path = FeedBack/LeaveFeedBackScreen/HWLeaveFeedbackViewController.h; sourceTree = "<group>"; };
 		CE1546981B835C500082ACF4 /* HWLeaveFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWLeaveFeedbackViewController.m; path = FeedBack/LeaveFeedBackScreen/HWLeaveFeedbackViewController.m; sourceTree = "<group>"; };
 		CE15469A1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWLeaveFeedbackView.xib; path = FeedBack/LeaveFeedBackScreen/HWLeaveFeedbackView.xib; sourceTree = "<group>"; };
+		CE15469D1B84AC090082ACF4 /* HWMyBalanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWMyBalanceView.xib; path = "My balance screen/HWMyBalanceView.xib"; sourceTree = "<group>"; };
+		CE15469F1B84B50D0082ACF4 /* HWMyBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMyBalanceViewController.h; path = "My balance screen/HWMyBalanceViewController.h"; sourceTree = "<group>"; };
+		CE1546A01B84B50D0082ACF4 /* HWMyBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWMyBalanceViewController.m; path = "My balance screen/HWMyBalanceViewController.m"; sourceTree = "<group>"; };
 		CE2579EE1B7339A800A0DEE9 /* cardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = cardView.xib; path = manageBank/cardView.xib; sourceTree = "<group>"; };
 		CE2579F21B73A93800A0DEE9 /* HWMyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMyOrdersViewController.h; path = MyOrdersScreen/HWMyOrdersViewController.h; sourceTree = "<group>"; };
 		CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWMyOrdersViewController.m; path = MyOrdersScreen/HWMyOrdersViewController.m; sourceTree = "<group>"; };
@@ -1073,6 +1078,9 @@
 		CE15469C1B847F1D0082ACF4 /* My balance screen */ = {
 			isa = PBXGroup;
 			children = (
+				CE15469F1B84B50D0082ACF4 /* HWMyBalanceViewController.h */,
+				CE1546A01B84B50D0082ACF4 /* HWMyBalanceViewController.m */,
+				CE15469D1B84AC090082ACF4 /* HWMyBalanceView.xib */,
 			);
 			name = "My balance screen";
 			sourceTree = "<group>";
@@ -1397,6 +1405,7 @@
 				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
 				3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */,
 				3AF832401B7190FB00CC750D /* SettingView.xib in Resources */,
+				CE15469E1B84AC0A0082ACF4 /* HWMyBalanceView.xib in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
 				7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */,
 			);
@@ -1465,6 +1474,7 @@
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
 				3AF832021B6F7F4400CC750D /* AddCardViewController.m in Sources */,
 				CE70EDCA1B6B723D005664FA /* HWMentionUserCell.m in Sources */,
+				CE1546A11B84B50D0082ACF4 /* HWMyBalanceViewController.m in Sources */,
 				3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */,
 				CE70EDD51B6BD51D005664FA /* HWAccountMenuCell.m in Sources */,
 				CE954C701B78EBEB0063A719 /* HWOrderButton.m in Sources */,
