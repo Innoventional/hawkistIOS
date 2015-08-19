@@ -134,6 +134,7 @@
 		CE15469B1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE15469A1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib */; };
 		CE15469E1B84AC0A0082ACF4 /* HWMyBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE15469D1B84AC090082ACF4 /* HWMyBalanceView.xib */; };
 		CE1546A11B84B50D0082ACF4 /* HWMyBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546A01B84B50D0082ACF4 /* HWMyBalanceViewController.m */; };
+		CE1546A41B84D75F0082ACF4 /* HWFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546A31B84D75F0082ACF4 /* HWFeedback.m */; };
 		CE2579F01B73427500A0DEE9 /* cardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579EE1B7339A800A0DEE9 /* cardView.xib */; };
 		CE2579F41B73A93800A0DEE9 /* HWMyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */; };
 		CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579F81B73AA1900A0DEE9 /* HWitemForOrdersCell.xib */; };
@@ -399,6 +400,8 @@
 		CE15469D1B84AC090082ACF4 /* HWMyBalanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWMyBalanceView.xib; path = "My balance screen/HWMyBalanceView.xib"; sourceTree = "<group>"; };
 		CE15469F1B84B50D0082ACF4 /* HWMyBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMyBalanceViewController.h; path = "My balance screen/HWMyBalanceViewController.h"; sourceTree = "<group>"; };
 		CE1546A01B84B50D0082ACF4 /* HWMyBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWMyBalanceViewController.m; path = "My balance screen/HWMyBalanceViewController.m"; sourceTree = "<group>"; };
+		CE1546A21B84D75F0082ACF4 /* HWFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWFeedback.h; sourceTree = "<group>"; };
+		CE1546A31B84D75F0082ACF4 /* HWFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWFeedback.m; sourceTree = "<group>"; };
 		CE2579EE1B7339A800A0DEE9 /* cardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = cardView.xib; path = manageBank/cardView.xib; sourceTree = "<group>"; };
 		CE2579F21B73A93800A0DEE9 /* HWMyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMyOrdersViewController.h; path = MyOrdersScreen/HWMyOrdersViewController.h; sourceTree = "<group>"; };
 		CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWMyOrdersViewController.m; path = MyOrdersScreen/HWMyOrdersViewController.m; sourceTree = "<group>"; };
@@ -893,6 +896,8 @@
 				CE70EDC61B6A7053005664FA /* HWMention.m */,
 				CE954C621B750C800063A719 /* HWOrderItem.h */,
 				CE954C631B750C800063A719 /* HWOrderItem.m */,
+				CE1546A21B84D75F0082ACF4 /* HWFeedback.h */,
+				CE1546A31B84D75F0082ACF4 /* HWFeedback.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1509,6 +1514,7 @@
 				CE59095F1B5FE54400DAA7FF /* NSDate+NVTimeAgo.m in Sources */,
 				CEBAAFAD1B6DF57F00AFE4C6 /* HWAddressOptionCell.m in Sources */,
 				CE5909461B5ABBD700DAA7FF /* HWFollowUser.m in Sources */,
+				CE1546A41B84D75F0082ACF4 /* HWFeedback.m in Sources */,
 				CE2579FC1B73AB0100A0DEE9 /* HWitemForOrdersCell.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				3AF831FC1B6F6E7D00CC750D /* CustomField.m in Sources */,

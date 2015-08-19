@@ -3,6 +3,15 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+        <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWMyBalanceViewController">
             <connections>
@@ -21,15 +30,63 @@
                         <constraint firstAttribute="height" constant="65" id="UKr-FC-RLa"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8a-gJ-Hfc">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8a-gJ-Hfc">
                     <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rk2-Qk-fA8">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="146"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rk2-Qk-fA8">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="     BALANCE DETAILS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozj-fL-eKH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
+                                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="7da-FR-Sb9"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                                    <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="m4H-34-OlP">
+                                    <rect key="frame" x="19" y="80" width="282" height="1"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your Current Balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJo-Yw-vGv">
+                                    <rect key="frame" x="19" y="48" width="189" height="21"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                    <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pending Sales" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxK-gQ-nfD">
+                                    <rect key="frame" x="19" y="92" width="142" height="21"/>
+                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                    <color key="textColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.31357935860000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="ozj-fL-eKH" firstAttribute="top" secondItem="rk2-Qk-fA8" secondAttribute="top" id="F6T-q6-XH1"/>
+                                <constraint firstAttribute="trailing" secondItem="ozj-fL-eKH" secondAttribute="trailing" id="LK4-rN-Nwb"/>
+                                <constraint firstAttribute="bottom" secondItem="NxK-gQ-nfD" secondAttribute="bottom" constant="11" id="N16-Tt-f5O"/>
+                                <constraint firstItem="NxK-gQ-nfD" firstAttribute="leading" secondItem="rk2-Qk-fA8" secondAttribute="leading" constant="19" id="XTk-tq-D2a"/>
+                                <constraint firstItem="ozj-fL-eKH" firstAttribute="leading" secondItem="rk2-Qk-fA8" secondAttribute="leading" id="YrM-ci-lmH"/>
+                                <constraint firstItem="TJo-Yw-vGv" firstAttribute="leading" secondItem="rk2-Qk-fA8" secondAttribute="leading" constant="19" id="dG8-Wo-dKY"/>
+                                <constraint firstItem="TJo-Yw-vGv" firstAttribute="top" secondItem="ozj-fL-eKH" secondAttribute="bottom" constant="12" id="dbJ-hG-1pd"/>
+                                <constraint firstItem="m4H-34-OlP" firstAttribute="top" secondItem="TJo-Yw-vGv" secondAttribute="bottom" constant="11" id="ejK-7X-d54"/>
+                                <constraint firstItem="m4H-34-OlP" firstAttribute="top" secondItem="ozj-fL-eKH" secondAttribute="bottom" constant="44" id="gP4-ie-Dml"/>
+                                <constraint firstAttribute="trailing" secondItem="m4H-34-OlP" secondAttribute="trailing" constant="19" id="grf-MQ-D8o"/>
+                                <constraint firstItem="m4H-34-OlP" firstAttribute="leading" secondItem="rk2-Qk-fA8" secondAttribute="leading" constant="19" id="hal-yZ-9Cw"/>
+                                <constraint firstAttribute="bottom" secondItem="m4H-34-OlP" secondAttribute="bottom" constant="43" id="lp7-fp-oFg"/>
+                                <constraint firstAttribute="height" constant="124" id="vXv-0x-1EP"/>
+                                <constraint firstItem="NxK-gQ-nfD" firstAttribute="top" secondItem="m4H-34-OlP" secondAttribute="bottom" constant="11" id="vyN-Ob-pWq"/>
+                            </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="0.1765265214" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="rk2-Qk-fA8" firstAttribute="leading" secondItem="P8a-gJ-Hfc" secondAttribute="leading" id="DCl-ly-VZv"/>
+                        <constraint firstItem="rk2-Qk-fA8" firstAttribute="top" secondItem="P8a-gJ-Hfc" secondAttribute="top" id="ejU-pa-U4X"/>
+                        <constraint firstAttribute="width" secondItem="rk2-Qk-fA8" secondAttribute="width" id="hgk-5Z-OKH"/>
+                    </constraints>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,4 +103,7 @@
             <point key="canvasLocation" x="226" y="372"/>
         </view>
     </objects>
+    <resources>
+        <image name="line" width="1" height="1"/>
+    </resources>
 </document>

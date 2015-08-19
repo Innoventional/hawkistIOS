@@ -1,4 +1,4 @@
-//
+ //
 //  HWLeaveFeedbackViewController.m
 //  Hawkist
 //
@@ -10,6 +10,7 @@
 #import "HWFedbackSegmentButton.h"
 #import "SZTextView.h"
 #import "NavigationVIew.h"
+#import "NetworkManager.h"
 
 @interface HWLeaveFeedbackViewController () <NavigationViewDelegate>
 
@@ -26,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *indicatorFeedback;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightKey;
+
+@property (nonatomic, assign) HWFeedbackType *typeFeedback;
 
 @end
 
@@ -90,7 +93,7 @@
     CGRect keyFrame = [self.view convertRect:keyEndFrame toView:nil];
  
     self.heightKey.constant = keyFrame.size.height;
-    
+   
 }
 
 - (void)keyboardWillBeHidden:(NSNotification *)aNotification
@@ -108,6 +111,7 @@
     self.navigationView.delegate = self;
     self.positiveButton.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
     self.textView.placeholder = @"Positive!";
+     self.typeFeedback = HWFeedbackPositive;
     
     [self.textView becomeFirstResponder];
     
@@ -128,6 +132,7 @@
     sender.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
     self.textView.placeholder = @"Positive!";
+    self.typeFeedback = HWFeedbackPositive;
 }
 
 - (IBAction)neutralButAction:(HWFedbackSegmentButton *)sender {
@@ -136,6 +141,7 @@
     sender.selectedImage.backgroundColor = [UIColor yellowColor];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
     self.textView.placeholder = @"Neutral!";
+    self.typeFeedback = HWFeedbackNeutral;
 }
 
 - (IBAction)negativeButAction:(HWFedbackSegmentButton *)sender {
@@ -144,13 +150,32 @@
     sender.selectedImage.backgroundColor = [UIColor redColor];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
     self.textView.placeholder = @"Negative!";
+    
+    self.typeFeedback = HWFeedbackNegative;
 }
 
 #pragma mark - input message action
 
 - (IBAction)pressSendAction:(UIButton *)sender {
     
-    self.textView.text = @"";
+   
+    
+    [[NetworkManager shared] addNewFeedbackWithUserId:@"77"
+                                          withOrderId:@"57"
+                                             withText:self.textView.text
+                                     withFeedbackType:self.typeFeedback
+                                         successBlock:^{
+    
+                                             NSLog(@"success");
+                                             
+                                         } failureBlock:^(NSError *error) {
+    
+                                             [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                         }];
+    
+     self.textView.text = @"";
+    
+    
 }
 
 

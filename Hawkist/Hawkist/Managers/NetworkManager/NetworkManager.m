@@ -16,6 +16,7 @@
 #import "HWCard.h"
 #import "HWOrderItem.h"
 
+
 @interface NetworkManager ()
 
 @property (strong, nonatomic) NetworkDecorator *networkDecorator;
@@ -1871,5 +1872,104 @@ NSString *URLString = @"user/logout";
 }
 
 
-@end
+#pragma mark - Feedback
 
+- (void) addNewFeedbackWithUserId:(NSString*) user_id
+                      withOrderId:(NSString*) order_id
+                         withText:(NSString*) text
+                 withFeedbackType:(NSInteger) typeFeedback
+                     successBlock:(void(^)(void)) successBlock
+                     failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    
+    NSString *URLString = [NSString stringWithFormat:@"user/feedbacks/%@",user_id];
+    
+    NSDictionary *params = @{
+                             
+                             @"order_id": @"57",
+                              @"text": @"FFFFFF",
+                             @"type" : @"1"
+                             }
+    
+    [ [self.networkDecorator POST: @"user/feedbacks/77"
+                    parameters: params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           successBlock();
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                           
+                       }] ];
+    
+}
+
+- (void) getAllFeedbackWithUserId:(NSString*) user_id
+                     successBlock:(void(^)(NSArray *positive, NSArray *neutrall, NSArray *negative)) successBlock
+                     failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSString *URLString = [NSString stringWithFormat:@"user/feedbacks/%@",user_id];
+    
+    [self.networkDecorator GET:URLString
+                   parameters:nil
+                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          
+                          if([responseObject[@"status"] integerValue] != 0)
+                          {
+                              NSError *responseError = [self errorWithResponseObject:responseObject];
+                              failureBlock(responseError);
+                              return;
+                          }
+                          
+    
+                          NSDictionary *feedbacksDict = responseObject[@"feedbacks"];
+                          
+                          NSArray *posAr = feedbacksDict[@"positive"];
+                          NSArray *neutAr = feedbacksDict[@"neutral"];
+                          NSArray *negAr = feedbacksDict[@"negative"];
+                          
+                          successBlock(posAr,neutAr,negAr);
+                          
+                        
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    
+                        NSError *serverError = [self serverErrorWithError:error];
+                        failureBlock(serverError);
+                    }];
+    
+}
+
+
+
+
+- (NSArray*) parsingFeedbackWithArray:(NSArray*) fbArray {
+    
+    NSMutableArray *returnArray = [NSMutableArray array];
+    
+    for (NSDictionary * dict in fbArray) {
+        
+        HWFeedback * feed = [HWFeedback new];
+        feed.id = dict[@"id"];
+        feed.text = dict[@"text"];
+        feed.timeCreate = dict[@"created_at"];
+        NSDictionary *user = dict[@"user"];
+        
+        feed.user_id = user[@"id"];
+        feed.username = user[@"username"];
+        feed.avatar = user[@"avatar"];
+    }
+    
+    return returnArray;
+}
+
+@end

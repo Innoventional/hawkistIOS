@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "HWTag.h"
 #import "HWCard.h"
+#import "HWFeedback.h"
+
 
 @interface NetworkManager : NSObject
 
@@ -254,6 +256,21 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
 -(void) searchInOrdersWithString:(NSString*)searchText
                     successBlock:(void(^)(NSArray *array)) successBlock
                     failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
+#pragma mark - feedback
+
+- (void) addNewFeedbackWithUserId:(NSString*) user_id
+                      withOrderId:(NSString*) order_id
+                         withText:(NSString*) text
+                 withFeedbackType:(NSInteger) typeFeedback
+                     successBlock:(void(^)(void)) successBlock
+                     failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
+- (void) getAllFeedbackWithUserId:(NSString*) user_id
+                     successBlock:(void(^)(NSArray *positive, NSArray *neutrall, NSArray *negative)) successBlock
+                     failureBlock:(void(^)(NSError *error)) failureBlock;
 
 
 @end
