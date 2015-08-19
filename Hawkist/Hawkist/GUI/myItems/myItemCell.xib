@@ -31,7 +31,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8pa-IT-Odb">
                         <rect key="frame" x="0.0" y="0.0" width="145" height="151"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hYM-vX-ds8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hYM-vX-ds8">
                                 <rect key="frame" x="0.0" y="0.0" width="145" height="151"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skidka" translatesAutoresizingMaskIntoConstraints="NO" id="sEe-Qj-DCZ">
@@ -85,7 +85,7 @@
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="4"/>
+                                <integer key="value" value="0"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -217,6 +217,11 @@
                 <constraint firstItem="ccF-pK-s0j" firstAttribute="leading" secondItem="e6Q-Ie-sgH" secondAttribute="leading" id="nfQ-b8-qwC"/>
             </constraints>
             <size key="customSize" width="145" height="227"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="4"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="commentButton" destination="eu1-fB-cSC" id="UK1-kY-l4f"/>
                 <outlet property="commentView" destination="M4h-6a-gQ0" id="gni-J0-el2"/>

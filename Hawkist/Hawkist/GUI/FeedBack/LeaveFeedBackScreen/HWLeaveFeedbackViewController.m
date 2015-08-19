@@ -107,7 +107,7 @@
     [self selectedButton:self.positiveButton];
     self.navigationView.delegate = self;
     self.positiveButton.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
-    self.textView.placeholder = @"Positive! Write a feedback...";
+    self.textView.placeholder = @"Positive!";
     
     [self.textView becomeFirstResponder];
     
@@ -127,7 +127,7 @@
     [self selectedButton:sender];
     sender.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
-    self.textView.placeholder = @"Positive! Write a feedback...";
+    self.textView.placeholder = @"Positive!";
 }
 
 - (IBAction)neutralButAction:(HWFedbackSegmentButton *)sender {
@@ -135,7 +135,7 @@
     [self selectedButton:sender];
     sender.selectedImage.backgroundColor = [UIColor yellowColor];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
-    self.textView.placeholder = @"Neutral! Write a feedback...";
+    self.textView.placeholder = @"Neutral!";
 }
 
 - (IBAction)negativeButAction:(HWFedbackSegmentButton *)sender {
@@ -143,7 +143,7 @@
     [self selectedButton:sender];
     sender.selectedImage.backgroundColor = [UIColor redColor];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
-    self.textView.placeholder = @"Negative! Write a feedback...";
+    self.textView.placeholder = @"Negative!";
 }
 
 #pragma mark - input message action

@@ -34,7 +34,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bff-wp-Ton">
                         <rect key="frame" x="66" y="12" width="246" height="34"/>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_time" translatesAutoresizingMaskIntoConstraints="NO" id="9vp-CX-W9g">
@@ -45,9 +45,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9m-vt-bAR">
-                        <rect key="frame" x="83" y="54" width="26" height="12"/>
+                        <rect key="frame" x="80" y="54" width="26" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="cn4-V5-bhi">
@@ -62,7 +62,7 @@
                     <constraint firstItem="W0R-Xr-il7" firstAttribute="leading" secondItem="45T-i4-Ehl" secondAttribute="leadingMargin" id="Ebn-ps-D9G"/>
                     <constraint firstItem="9vp-CX-W9g" firstAttribute="leading" secondItem="W0R-Xr-il7" secondAttribute="trailing" constant="12" id="L2A-dV-DMZ"/>
                     <constraint firstItem="cn4-V5-bhi" firstAttribute="leading" secondItem="45T-i4-Ehl" secondAttribute="leading" id="Ufp-cY-mIT"/>
-                    <constraint firstItem="B9m-vt-bAR" firstAttribute="leading" secondItem="9vp-CX-W9g" secondAttribute="trailing" constant="8" id="fGW-9g-rcf"/>
+                    <constraint firstItem="B9m-vt-bAR" firstAttribute="leading" secondItem="9vp-CX-W9g" secondAttribute="trailing" constant="5" id="fGW-9g-rcf"/>
                     <constraint firstItem="W0R-Xr-il7" firstAttribute="top" secondItem="45T-i4-Ehl" secondAttribute="topMargin" id="hBK-GT-Nqi"/>
                     <constraint firstAttribute="trailing" secondItem="cn4-V5-bhi" secondAttribute="trailing" id="kFj-I5-38s"/>
                     <constraint firstItem="Bff-wp-Ton" firstAttribute="top" secondItem="45T-i4-Ehl" secondAttribute="top" constant="12" id="kNw-Eh-dEx"/>

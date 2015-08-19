@@ -649,9 +649,9 @@
 			children = (
 				3A968E1D1B4A8483005AA347 /* ChoiceFromButton */,
 				3A968E141B468EBB005AA347 /* TPKeyboardAvoidingScrollView.h */,
+				3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */,
 				3A968E171B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
 				3A968E181B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
-				3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */,
 				3ACC6BEC1B44A7350076004F /* MoneyField */,
 				3ACC6BE61B4408210076004F /* CustomButton */,
 				3ACC6B931B43A1C40076004F /* SellAnItemViewController.h */,
@@ -895,6 +895,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				CE15469C1B847F1D0082ACF4 /* My balance screen */,
 				CE1546811B81F3070082ACF4 /* FeedBack */,
 				3A69015F1B784CFE00B618B8 /* AddAdress */,
 				CE2579F11B73A74D00A0DEE9 /* My Orders Screen */,
@@ -1067,6 +1068,13 @@
 				CE1546901B832D2C0082ACF4 /* HWFedbackSegmentButton.m */,
 			);
 			name = FeedBackSegment;
+			sourceTree = "<group>";
+		};
+		CE15469C1B847F1D0082ACF4 /* My balance screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "My balance screen";
 			sourceTree = "<group>";
 		};
 		CE2579F11B73A74D00A0DEE9 /* My Orders Screen */ = {
