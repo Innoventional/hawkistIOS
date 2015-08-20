@@ -75,8 +75,8 @@
         [tempArrayForTags addObject:cell];
 //        [self addSubview:cell];
         
-    }
     
+    }
     
     
     for (NSInteger i=0;i<tempArrayForTags.count;i++) {
