@@ -83,7 +83,9 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"FeedToShort" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
     
-     
+    
+
+    
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
     self.searchView.backgroundColor = [UIColor color256RGBWithRed: 55  green: 184 blue: 164];
@@ -92,8 +94,9 @@
     
     
     
-    [self refresh];
+    
 }
+
 
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -156,7 +159,8 @@
         self.addTags = (AddTagsView*)[[theView subviews]lastObject];
         self.addTags.delegate = self;
     }
-    
+
+
     return theView;
 }
 
@@ -183,12 +187,16 @@
         {
             __weak typeof(self) weakSelf = self;
             [self.addTags addTagsToView:tags successBlock:^{
-
+                
+                
                 [[NetworkManager shared] getItemsWithPage: 1 searchString: weakSelf.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
                     [weakSelf.items removeAllObjects];
                     [weakSelf.items addObjectsFromArray: arrayWithItems];
+
                     [weakSelf.collectionView reloadData];
                     [weakSelf.refreshControl endRefreshing];
+
+                    if (weakSelf.items.count>0)
                     [weakSelf.collectionView setContentOffset:CGPointMake(0, 0) animated:NO];
                     
                     
@@ -211,9 +219,13 @@
     }];
     
     
+    
+    
    
     
 }
+
+
 
 - (void)clickToPersonalisation
 {

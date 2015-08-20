@@ -25,8 +25,12 @@
 
 
 - (IBAction)click:(id)sender;
-@property (weak, nonatomic) IBOutlet UIImageView *image;
 
+@property (strong, nonatomic) IBOutlet UIView *buttomLine;
+
+@property (strong, nonatomic) IBOutlet UIImageView *start;
+@property (strong, nonatomic) IBOutlet UIImageView *end;
+@property (strong, nonatomic) IBOutlet UIView *centerView;
 
 @property (strong,nonatomic) NSString* tagId;
 - (void) setPostion:(CGPoint)position;
