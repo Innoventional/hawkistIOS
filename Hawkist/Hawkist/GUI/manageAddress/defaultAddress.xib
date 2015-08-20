@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="qzH-pf-vtA">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manageAd" translatesAutoresizingMaskIntoConstraints="NO" id="wO2-0V-8id">
+                    <rect key="frame" x="147" y="159" width="26" height="26"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Addresses Added!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUQ-bP-4vT">
+                    <rect key="frame" x="70" y="205" width="180" height="25"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                    <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just tap the button below if you want to add a new address." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBB-lN-elA">
+                    <rect key="frame" x="50" y="250" width="220" height="39"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                    <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="zBB-lN-elA" firstAttribute="top" secondItem="GUQ-bP-4vT" secondAttribute="bottom" constant="20" id="Gie-OC-8dS"/>
+                <constraint firstAttribute="centerX" secondItem="zBB-lN-elA" secondAttribute="centerX" id="Kil-s8-nC0"/>
+                <constraint firstItem="zBB-lN-elA" firstAttribute="leading" secondItem="qzH-pf-vtA" secondAttribute="leading" constant="50" id="Kqx-bf-M1H"/>
+                <constraint firstAttribute="trailing" secondItem="zBB-lN-elA" secondAttribute="trailing" constant="50" id="MHl-fH-MAX"/>
+                <constraint firstItem="GUQ-bP-4vT" firstAttribute="centerX" secondItem="wO2-0V-8id" secondAttribute="centerX" id="Oy8-T3-wgx"/>
+                <constraint firstAttribute="centerX" secondItem="GUQ-bP-4vT" secondAttribute="centerX" id="Xu1-uL-WYz"/>
+                <constraint firstAttribute="centerX" secondItem="wO2-0V-8id" secondAttribute="centerX" id="eYa-kN-Q0d"/>
+                <constraint firstAttribute="centerY" secondItem="wO2-0V-8id" secondAttribute="centerY" constant="68" id="hF0-Dq-0yI"/>
+                <constraint firstItem="GUQ-bP-4vT" firstAttribute="top" secondItem="wO2-0V-8id" secondAttribute="bottom" constant="20" id="m1K-Bi-fFK"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="333" y="284"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="manageAd" width="26" height="26"/>
+    </resources>
+</document>

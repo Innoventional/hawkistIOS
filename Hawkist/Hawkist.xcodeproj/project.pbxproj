@@ -40,6 +40,13 @@
 		3A968E311B4C1188005AA347 /* HWTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E301B4C1188005AA347 /* HWTag.m */; };
 		3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A98D61D1B593F5D00D55FF9 /* BuyThisItem.xib */; };
 		3A98D6211B595A2300D55FF9 /* BuyThisItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98D6201B595A2300D55FF9 /* BuyThisItemViewController.m */; };
+		3AA5CBED1B8495D9006093D0 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBEC1B8495D9006093D0 /* AddAddressViewController.m */; };
+		3AA5CBF01B84B393006093D0 /* HWAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBEF1B84B393006093D0 /* HWAddress.m */; };
+		3AA5CBF31B84BBE1006093D0 /* ManageAddress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA5CBF21B84BBE1006093D0 /* ManageAddress.xib */; };
+		3AA5CBF61B84BD19006093D0 /* ManageAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBF51B84BD19006093D0 /* ManageAddressViewController.m */; };
+		3AA5CBF81B84C660006093D0 /* addressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA5CBF71B84C660006093D0 /* addressView.xib */; };
+		3AA5CBFB1B84CA2E006093D0 /* AddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBFA1B84CA2E006093D0 /* AddressView.m */; };
+		3AA5CBFE1B84DB14006093D0 /* defaultAddress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA5CBFD1B84DB14006093D0 /* defaultAddress.xib */; };
 		3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6B8D1B43A0B90076004F /* Navigation.xib */; };
 		3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B901B43A0D90076004F /* NavigationVIew.m */; };
 		3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B941B43A1C40076004F /* SellAnItemViewController.m */; };
@@ -245,6 +252,17 @@
 		3A98D61D1B593F5D00D55FF9 /* BuyThisItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuyThisItem.xib; path = BuyThisItem/BuyThisItem.xib; sourceTree = "<group>"; };
 		3A98D61F1B595A2300D55FF9 /* BuyThisItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyThisItemViewController.h; path = BuyThisItem/BuyThisItemViewController.h; sourceTree = "<group>"; };
 		3A98D6201B595A2300D55FF9 /* BuyThisItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyThisItemViewController.m; path = BuyThisItem/BuyThisItemViewController.m; sourceTree = "<group>"; };
+		3AA5CBEB1B8495D9006093D0 /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddAddressViewController.h; path = AddAdress/AddAddressViewController.h; sourceTree = "<group>"; };
+		3AA5CBEC1B8495D9006093D0 /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAddressViewController.m; path = AddAdress/AddAddressViewController.m; sourceTree = "<group>"; };
+		3AA5CBEE1B84B393006093D0 /* HWAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWAddress.h; sourceTree = "<group>"; };
+		3AA5CBEF1B84B393006093D0 /* HWAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWAddress.m; sourceTree = "<group>"; };
+		3AA5CBF21B84BBE1006093D0 /* ManageAddress.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManageAddress.xib; path = manageAddress/ManageAddress.xib; sourceTree = "<group>"; };
+		3AA5CBF41B84BD19006093D0 /* ManageAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManageAddressViewController.h; path = manageAddress/ManageAddressViewController.h; sourceTree = "<group>"; };
+		3AA5CBF51B84BD19006093D0 /* ManageAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManageAddressViewController.m; path = manageAddress/ManageAddressViewController.m; sourceTree = "<group>"; };
+		3AA5CBF71B84C660006093D0 /* addressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = addressView.xib; path = manageAddress/addressView.xib; sourceTree = "<group>"; };
+		3AA5CBF91B84CA2E006093D0 /* AddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressView.h; path = manageAddress/AddressView.h; sourceTree = "<group>"; };
+		3AA5CBFA1B84CA2E006093D0 /* AddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressView.m; path = manageAddress/AddressView.m; sourceTree = "<group>"; };
+		3AA5CBFD1B84DB14006093D0 /* defaultAddress.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = defaultAddress.xib; path = manageAddress/defaultAddress.xib; sourceTree = "<group>"; };
 		3ACC6B8D1B43A0B90076004F /* Navigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Navigation.xib; path = NavigationView/Navigation.xib; sourceTree = "<group>"; };
 		3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationVIew.h; path = NavigationView/NavigationVIew.h; sourceTree = "<group>"; };
 		3ACC6B901B43A0D90076004F /* NavigationVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationVIew.m; path = NavigationView/NavigationVIew.m; sourceTree = "<group>"; };
@@ -590,6 +608,8 @@
 			isa = PBXGroup;
 			children = (
 				3A6901601B784D1F00B618B8 /* AddAddressView.xib */,
+				3AA5CBEB1B8495D9006093D0 /* AddAddressViewController.h */,
+				3AA5CBEC1B8495D9006093D0 /* AddAddressViewController.m */,
 			);
 			name = AddAdress;
 			sourceTree = "<group>";
@@ -640,6 +660,28 @@
 				3A98D6201B595A2300D55FF9 /* BuyThisItemViewController.m */,
 			);
 			name = BuyThisItem;
+			sourceTree = "<group>";
+		};
+		3AA5CBF11B84BBAE006093D0 /* Manage Address */ = {
+			isa = PBXGroup;
+			children = (
+				3AA5CBFC1B84DAFB006093D0 /* placeHolder */,
+				3AA5CBF71B84C660006093D0 /* addressView.xib */,
+				3AA5CBF21B84BBE1006093D0 /* ManageAddress.xib */,
+				3AA5CBF41B84BD19006093D0 /* ManageAddressViewController.h */,
+				3AA5CBF51B84BD19006093D0 /* ManageAddressViewController.m */,
+				3AA5CBF91B84CA2E006093D0 /* AddressView.h */,
+				3AA5CBFA1B84CA2E006093D0 /* AddressView.m */,
+			);
+			name = "Manage Address";
+			sourceTree = "<group>";
+		};
+		3AA5CBFC1B84DAFB006093D0 /* placeHolder */ = {
+			isa = PBXGroup;
+			children = (
+				3AA5CBFD1B84DB14006093D0 /* defaultAddress.xib */,
+			);
+			name = placeHolder;
 			sourceTree = "<group>";
 		};
 		3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
@@ -878,6 +920,8 @@
 				C35A4C6B1B3036D0002E1F26 /* HWUser.m */,
 				C35CB49D1B4BE91B00956150 /* HWItem.h */,
 				C35CB49E1B4BE91B00956150 /* HWItem.m */,
+				3AA5CBEE1B84B393006093D0 /* HWAddress.h */,
+				3AA5CBEF1B84B393006093D0 /* HWAddress.m */,
 				3AF37F991B57A8DD00E784DB /* HWTag+Extensions.h */,
 				3AF37F9A1B57A8DD00E784DB /* HWTag+Extensions.m */,
 				3A968E2F1B4C1188005AA347 /* HWTag.h */,
@@ -905,7 +949,11 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+
 				CE15469C1B847F1D0082ACF4 /* My balance screen */,
+
+				3AA5CBF11B84BBAE006093D0 /* Manage Address */,
+
 				CE1546811B81F3070082ACF4 /* FeedBack */,
 				3A69015F1B784CFE00B618B8 /* AddAdress */,
 				CE2579F11B73A74D00A0DEE9 /* My Orders Screen */,
@@ -1355,6 +1403,7 @@
 				3A6901631B78E6BA00B618B8 /* FeedToShort.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */,
+				3AA5CBFE1B84DB14006093D0 /* defaultAddress.xib in Resources */,
 				CE1546851B81F4720082ACF4 /* HWFeedBackView.xib in Resources */,
 				CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
@@ -1362,6 +1411,7 @@
 				CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */,
 				3A968E241B4A98B4005AA347 /* ChoiceTable.xib in Resources */,
 				7CE778C91B3D51E600856A36 /* Icon-60@2x.png in Resources */,
+				3AA5CBF31B84BBE1006093D0 /* ManageAddress.xib in Resources */,
 				3AF831F41B6F64B900CC750D /* AddCardView.xib in Resources */,
 				3ACC6BEE1B44A75E0076004F /* money.xib in Resources */,
 				7C9E7B011B4FCD58001DF8BE /* open-sans.extrabold.ttf in Resources */,
@@ -1383,6 +1433,7 @@
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				3A69015E1B783A3100B618B8 /* default.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
+				3AA5CBF81B84C660006093D0 /* addressView.xib in Resources */,
 				CE1546961B833A370082ACF4 /* HWFeadbackCell.xib in Resources */,
 				CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */,
 				3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */,
@@ -1514,7 +1565,11 @@
 				CE59095F1B5FE54400DAA7FF /* NSDate+NVTimeAgo.m in Sources */,
 				CEBAAFAD1B6DF57F00AFE4C6 /* HWAddressOptionCell.m in Sources */,
 				CE5909461B5ABBD700DAA7FF /* HWFollowUser.m in Sources */,
+
 				CE1546A41B84D75F0082ACF4 /* HWFeedback.m in Sources */,
+
+				3AA5CBF61B84BD19006093D0 /* ManageAddressViewController.m in Sources */,
+
 				CE2579FC1B73AB0100A0DEE9 /* HWitemForOrdersCell.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				3AF831FC1B6F6E7D00CC750D /* CustomField.m in Sources */,
@@ -1524,11 +1579,14 @@
 				CE70EDD21B6BC62F005664FA /* HWMyAccountViewController.m in Sources */,
 				3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				CEBAAF9F1B6CE9DF00AFE4C6 /* HWSingOutCell.m in Sources */,
+				3AA5CBF01B84B393006093D0 /* HWAddress.m in Sources */,
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
 				CE1546941B833A120082ACF4 /* HWFeadbackCell.m in Sources */,
+				3AA5CBFB1B84CA2E006093D0 /* AddressView.m in Sources */,
 				CE1546881B81F4E80082ACF4 /* HWFeedBackViewController.m in Sources */,
 				CE5909531B5F9FF400DAA7FF /* SZTextView.m in Sources */,
 				CE954C6D1B77D9620063A719 /* UIImageView+Extensions.m in Sources */,
+				3AA5CBED1B8495D9006093D0 /* AddAddressViewController.m in Sources */,
 				3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */,
 				CEBAAFC11B70E67B00AFE4C6 /* HWAddDataModel.m in Sources */,
 				CE1546911B832D2D0082ACF4 /* HWFedbackSegmentButton.m in Sources */,

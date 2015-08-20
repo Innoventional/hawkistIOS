@@ -10,6 +10,7 @@
 #import "HWTag.h"
 #import "HWCard.h"
 #import "HWFeedback.h"
+#import "HWAddress.h"
 
 
 @interface NetworkManager : NSObject
@@ -258,6 +259,7 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
                     failureBlock:(void(^)(NSError *error)) failureBlock;
 
 
+
 #pragma mark - feedback
 
 - (void) addNewFeedbackWithUserId:(NSString*) user_id
@@ -272,5 +274,29 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
                      successBlock:(void(^)(NSArray *positive, NSArray *neutrall, NSArray *negative)) successBlock
                      failureBlock:(void(^)(NSError *error)) failureBlock;
 
+
+#pragma mark -
+#pragma mark Address
+
+- (void) addNewAddress:(HWAddress*) address
+          successBlock:(void(^)(void)) successBlock
+          failureBlock: (void (^)(NSError* error)) failureBlock;
+
+
+- (void) getAddresses:(void(^)(NSArray *addresses))successBlock
+         failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
+- (void) removeAddress:(NSString*)addressId
+          successBlock:(void(^)(void)) successBlock
+          failureBlock: (void (^)(NSError* error)) failureBlock;
+
+- (void) updateAddress:(HWAddress*)address
+          successBlock:(void(^)(void)) successBlock
+          failureBlock: (void (^)(NSError* error)) failureBlock;
+
+
+- (void) getRecentlyAddress:(void(^)(HWAddress *address))successBlock
+               failureBlock:(void(^)(NSError *error)) failureBlock;
 
 @end

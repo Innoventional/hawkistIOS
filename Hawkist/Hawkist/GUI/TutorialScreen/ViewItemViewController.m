@@ -44,6 +44,7 @@
 @property (nonatomic, assign) BOOL isLikeItem;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
+@property (strong, nonatomic) IBOutlet UIButton *askOutlet;
 @property (nonatomic, strong) UIActionSheet* editActionSheet;
 @property (nonatomic, strong) UIActionSheet *sendToFrandActionSheet;
 
@@ -55,6 +56,7 @@
 @property (weak, nonatomic) IBOutlet TextViewWithDetectedWord *descriptionTextView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
+
 @end
 
 
@@ -303,7 +305,14 @@
          self.buyThisItem.enabled = YES;
     }
     
-
+    if ([self.item.status isEqualToString:@"2"])
+{
+    [self.buyThisItem setTitle:@"SOLD" forState:UIControlStateNormal];
+    [self.buyThisItem setBackgroundImage:nil forState:UIControlStateNormal];
+    [self.buyThisItem setBackgroundColor:[UIColor color256RGBWithRed:239 green:83 blue:80]];
+    self.buyThisItem.enabled = YES;
+    self.askOutlet.enabled = NO;
+}
     
    
 }
@@ -646,6 +655,11 @@
 
 - (IBAction)buyButton:(id)sender {
 
+    if ([self.item.status isEqualToString:@"2"])
+    {
+        
+    }
+    else
     [self.navigationController pushViewController: [[BuyThisItemViewController alloc] initWithItem:self.item]  animated: YES];
 }
 

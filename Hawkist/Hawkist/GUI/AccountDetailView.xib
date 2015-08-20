@@ -50,8 +50,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                             <gestureRecognizers/>
                                         </imageView>
-                                        <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="acdet_circle" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-P3-l3e">
-                                            <rect key="frame" x="178" y="50" width="245" height="240"/>
+                                        <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acdet_circle" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-P3-l3e">
+                                            <rect key="frame" x="178" y="49" width="245" height="241"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
                                             <constraints>
@@ -148,7 +148,7 @@
                                     </connections>
                                 </textField>
                                 <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07L-CX-bBL" userLabel="About ME">
-                                    <rect key="frame" x="0.0" y="398" width="600" height="150"/>
+                                    <rect key="frame" x="0.0" y="398" width="600" height="160"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABOUT ME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXL-EF-4EV">
@@ -159,7 +159,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="txr-YX-ng7" userLabel="About me Text" customClass="UIPlaceholderTextView">
-                                    <rect key="frame" x="20" y="445" width="560" height="88"/>
+                                    <rect key="frame" x="20" y="445" width="560" height="98"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -169,24 +169,10 @@
                                     </connections>
                                 </textView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zh1-de-97G" userLabel="CheckBoxes">
-                                    <rect key="frame" x="0.0" y="548" width="600" height="100"/>
+                                    <rect key="frame" x="0.0" y="558" width="600" height="90"/>
                                     <subviews>
-                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zca-EA-cjv">
-                                            <rect key="frame" x="20" y="20" width="20" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="20" id="559-Kb-qFY"/>
-                                                <constraint firstAttribute="height" constant="20" id="ZYs-ue-v2N"/>
-                                            </constraints>
-                                            <state key="normal" backgroundImage="acdet_checkempty">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="selected" image="acdet_check"/>
-                                            <connections>
-                                                <action selector="checkBox:" destination="-1" eventType="touchUpInside" id="wPe-Sn-uWI"/>
-                                            </connections>
-                                        </button>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAR-da-ZsL">
-                                            <rect key="frame" x="20" y="65" width="20" height="20"/>
+                                            <rect key="frame" x="20" y="55" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="4cG-hk-9HU"/>
                                                 <constraint firstAttribute="height" constant="20" id="Ia0-zl-33a"/>
@@ -198,7 +184,7 @@
                                             <state key="normal" backgroundImage="acdet_checkempty">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
-                                            <state key="selected" image="acdet_check"/>
+                                            <state key="selected" backgroundImage="acdet_check"/>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="4cG-hk-9HU"/>
@@ -211,14 +197,14 @@
                                                 <action selector="checkBox:" destination="-1" eventType="touchUpInside" id="0h2-ln-Wbc"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm at least 16 years old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDM-i2-4e3">
-                                            <rect key="frame" x="60" y="65" width="153" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I'm at least 16 years old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDM-i2-4e3">
+                                            <rect key="frame" x="60" y="55" width="153" height="20"/>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SvW-AZ-reo">
-                                            <rect key="frame" x="55" y="12" width="525" height="45"/>
+                                            <rect key="frame" x="55" y="0.0" width="525" height="58"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <attributedString key="attributedText"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
@@ -227,22 +213,43 @@
                                                 <outlet property="delegate" destination="-1" id="eqS-KS-2kp"/>
                                             </connections>
                                         </textView>
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zca-EA-cjv">
+                                            <rect key="frame" x="20" y="10" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="559-Kb-qFY"/>
+                                                <constraint firstAttribute="height" constant="20" id="ZYs-ue-v2N"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="acdet_checkempty">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" backgroundImage="acdet_check"/>
+                                            <connections>
+                                                <action selector="checkBox:" destination="-1" eventType="touchUpInside" id="wPe-Sn-uWI"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="SvW-AZ-reo" secondAttribute="trailing" constant="20" id="0Fr-GH-rMR"/>
                                         <constraint firstAttribute="bottom" secondItem="pAR-da-ZsL" secondAttribute="bottom" constant="15" id="32G-6d-UkC"/>
-                                        <constraint firstItem="Zca-EA-cjv" firstAttribute="top" secondItem="zh1-de-97G" secondAttribute="top" constant="20" id="5ew-I7-WHc"/>
+                                        <constraint firstAttribute="trailing" secondItem="SvW-AZ-reo" secondAttribute="trailing" constant="20" id="4TR-Yi-cRB"/>
                                         <constraint firstItem="SvW-AZ-reo" firstAttribute="leading" secondItem="Zca-EA-cjv" secondAttribute="trailing" constant="15" id="5v5-wM-fye"/>
                                         <constraint firstItem="ZDM-i2-4e3" firstAttribute="leading" secondItem="pAR-da-ZsL" secondAttribute="trailing" constant="20" id="876-6X-mOL"/>
-                                        <constraint firstItem="ZDM-i2-4e3" firstAttribute="top" secondItem="SvW-AZ-reo" secondAttribute="bottom" constant="8" symbolic="YES" id="C8D-O6-chk"/>
+                                        <constraint firstItem="ZDM-i2-4e3" firstAttribute="top" secondItem="SvW-AZ-reo" secondAttribute="bottom" constant="-3" id="C8D-O6-chk"/>
+                                        <constraint firstItem="Zca-EA-cjv" firstAttribute="top" secondItem="zh1-de-97G" secondAttribute="top" constant="10" id="E1X-qW-25b"/>
                                         <constraint firstItem="pAR-da-ZsL" firstAttribute="leading" secondItem="Zca-EA-cjv" secondAttribute="leading" id="KW6-pH-Jfv"/>
                                         <constraint firstItem="pAR-da-ZsL" firstAttribute="trailing" secondItem="Zca-EA-cjv" secondAttribute="trailing" id="PxC-5s-VIi"/>
-                                        <constraint firstItem="SvW-AZ-reo" firstAttribute="top" secondItem="zh1-de-97G" secondAttribute="top" constant="12" id="YN7-fe-dg5"/>
+                                        <constraint firstItem="SvW-AZ-reo" firstAttribute="top" secondItem="zh1-de-97G" secondAttribute="top" id="YN7-fe-dg5"/>
+                                        <constraint firstItem="SvW-AZ-reo" firstAttribute="top" secondItem="Zca-EA-cjv" secondAttribute="top" id="YdJ-ep-3wL"/>
                                         <constraint firstItem="pAR-da-ZsL" firstAttribute="top" secondItem="Zca-EA-cjv" secondAttribute="bottom" constant="25" id="bu1-26-eVw"/>
                                         <constraint firstItem="Zca-EA-cjv" firstAttribute="leading" secondItem="zh1-de-97G" secondAttribute="leading" constant="20" id="hVB-lI-1iR"/>
                                         <constraint firstItem="ZDM-i2-4e3" firstAttribute="top" secondItem="pAR-da-ZsL" secondAttribute="top" id="imu-lo-VC2"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="YdJ-ep-3wL"/>
+                                            <exclude reference="KW6-pH-Jfv"/>
+                                        </mask>
+                                    </variation>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6Y-gE-673">
                                     <rect key="frame" x="0.0" y="648" width="600" height="66"/>
@@ -335,7 +342,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3w-ey-6RY">
-                            <rect key="frame" x="0.0" y="548" width="600" height="1"/>
+                            <rect key="frame" x="0.0" y="557" width="600" height="1"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="U6H-8q-08p"/>
@@ -350,6 +357,7 @@
                         <constraint firstItem="D6Q-MV-EIq" firstAttribute="leading" secondItem="TIu-qI-Dsw" secondAttribute="leading" id="9hy-59-2bN"/>
                         <constraint firstItem="Y3w-ey-6RY" firstAttribute="top" secondItem="FQN-fw-SqB" secondAttribute="top" constant="548" id="L8p-bV-xGR"/>
                         <constraint firstItem="TIu-qI-Dsw" firstAttribute="trailing" secondItem="xZc-mf-UoP" secondAttribute="trailing" id="MBH-Ig-wzM"/>
+                        <constraint firstItem="Y3w-ey-6RY" firstAttribute="bottom" secondItem="07L-CX-bBL" secondAttribute="bottom" id="MFo-Ee-we5"/>
                         <constraint firstItem="D6Q-MV-EIq" firstAttribute="top" secondItem="TIu-qI-Dsw" secondAttribute="bottom" constant="49" id="O9h-Ok-Fv0"/>
                         <constraint firstItem="H88-yT-UGx" firstAttribute="top" secondItem="FQN-fw-SqB" secondAttribute="top" id="R3v-Jg-6Gb"/>
                         <constraint firstItem="Y3w-ey-6RY" firstAttribute="trailing" secondItem="D6Q-MV-EIq" secondAttribute="trailing" id="cFs-iw-jjD"/>
@@ -365,6 +373,7 @@
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="pJh-hx-Srd"/>
+                            <exclude reference="L8p-bV-xGR"/>
                         </mask>
                     </variation>
                 </scrollView>
