@@ -128,7 +128,7 @@
                     self.userInteractionEnabled = YES;
     
 
-    if (self.item.sold)
+    if ([self.item.status isEqualToString:@"2"])
     {
         [self setupSold];
     }
@@ -155,7 +155,7 @@
     soldLabel.font = [UIFont fontWithName:@"OpenSans" size:40];
     soldLabel.transform = CGAffineTransformMakeRotation(-M_PI/4);
     [self.visualEffectView addSubview:soldLabel];
-    self.userInteractionEnabled = NO;
+    self.userInteractionEnabled = YES;
     
     
 
