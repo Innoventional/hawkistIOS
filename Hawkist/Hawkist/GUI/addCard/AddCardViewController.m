@@ -140,8 +140,8 @@
     [self.datePicker selectToday];
 
     self.navigation.title.text = @"Add New Card";
-    self.firstName.title.text = @"YOUR NAME";
-    self.lastName.title.text=@"";
+    self.firstName.title.text = @"FIRST NAME";
+    self.lastName.title.text=@"LAST NAME";
     self.cardNumber.title.text = @"CARD NUMBER";
     self.cvv.title.text = @"CVV";
     self.cvv.isCVV = YES;
@@ -153,7 +153,7 @@
     
     self.cardNumber.inputField.keyboardType = UIKeyboardTypeNumberPad;
     self.cardNumber.isCardNumber = YES;
-    self.postCode.inputField.keyboardType = UIKeyboardTypeNumberPad;
+
     
     self.dateField.title.text = @"EXPIRATION DATE";
     self.dateField.forward.hidden = NO;

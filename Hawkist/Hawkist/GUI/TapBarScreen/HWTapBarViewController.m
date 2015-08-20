@@ -11,7 +11,7 @@
 #import "FeedScreenViewController.h"
 #import "WantToSellViewController.h"
 #import "HWMyAccountViewController.h"
-
+#import "AccountDetailViewController.h"
 #import "ManageBankViewController.h"
 #import "SettingsViewController.h"
 
@@ -99,18 +99,24 @@
         }
         case 3:
         {
-            HWFeedBackViewController * vc = [[HWFeedBackViewController alloc] init];
+            FeedScreenViewController *vc = [[FeedScreenViewController alloc]initWithTag:@"asd"];
+            [self.navigationController pushViewController:vc animated:NO];
+            
+            
+           // HWFeedBackViewController * vc = [[HWFeedBackViewController alloc] init];
           //  [self.navigationController pushViewController:vc animated:YES];
             
             break;
         }
         case 4:
         {
-            HWLeaveFeedbackViewController *vc = [[HWLeaveFeedbackViewController alloc] init];
+            //HWLeaveFeedbackViewController *vc = [[HWLeaveFeedbackViewController alloc] init];
             //[self.navigationController pushViewController:vc animated:YES];
-            
-            
+            {
+            AccountDetailViewController *vc = [[AccountDetailViewController alloc]initWithUser:[AppEngine shared].user.id];
+                        [self.navigationController pushViewController:vc animated:YES];
             break;
+            }
         }
             
         case 5:

@@ -19,7 +19,7 @@
 {
     if (self = [super initWithFrame:frame])
     {
-    
+        [self initDefault];
     }
     return self;
 }
@@ -28,20 +28,27 @@
 {
     if (self = [super initWithCoder:aDecoder])
     {
-        UIView* subView = [[[NSBundle mainBundle]loadNibNamed:@"Navigation" owner:self options:nil]firstObject];
-        
-        subView.frame = self.bounds;
-        
-        [self addSubview:subView];
-        
-        UIEdgeInsets inset = self.leftButtonOutlet.imageEdgeInsets;
-        
-        inset.top+=2;
-        
-        self.leftButtonOutlet.imageEdgeInsets = inset;
+        [self initDefault];
     }
     return self;
 }
+
+- (void)initDefault
+{
+    UIView* subView = [[[NSBundle mainBundle]loadNibNamed:@"Navigation" owner:self options:nil]firstObject];
+    
+    subView.frame = self.bounds;
+    
+    [self addSubview:subView];
+    
+    UIEdgeInsets inset = self.leftButtonOutlet.imageEdgeInsets;
+    
+    inset.top+=2;
+    
+    self.leftButtonOutlet.imageEdgeInsets = inset;
+
+}
+
 - (IBAction)leftButtonAction:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector: @selector(leftButtonClick)])
         [_delegate leftButtonClick];

@@ -14,9 +14,9 @@
 #import "myItemCell.h"
 #import "HWCommentViewController.h"
 #import "PersonalisationViewController.h"
+#import "NavigationVIew.h"
 
-
-@interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate, MyItemCellDelegate>
+@interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate, MyItemCellDelegate,NavigationViewDelegate>
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -24,6 +24,11 @@
 @property (nonatomic, strong) AddTagsView* addTags;
 
 @property (nonatomic, strong) NSString *hashTag;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *verticalSpace;
+
+@property (nonatomic, assign) BOOL initedWithTag;
+
 @end
 
 @implementation FeedScreenViewController
@@ -33,7 +38,8 @@
     self = [self init];
     
     if(self){
-        
+     
+        self.initedWithTag = YES;
         self.hashTag = tag;
         self.searchString = tag;
         [self refresh];
@@ -47,10 +53,27 @@
     self = [super initWithNibName: @"FeedScreenViewController" bundle: nil];
     if(self)
     {
+        self.initedWithTag = NO;
         self.items = [[NSMutableArray alloc]init];
         self.searchString = @"";
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.initedWithTag){
+    self.verticalSpace.constant = 60;
+    NavigationVIew *navigation = [[NavigationVIew alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 60)];
+    [self.view addSubview:navigation];
+    navigation.title.text = @"Feeds by Tag";
+    navigation.delegate = self;
+    }
+}
+
+-(void)leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -12,7 +12,7 @@
 #import "NavigationVIew.h"
 #import "HWSingOutCell.h"
 #import "NetworkManager.h"
-
+#import "ManageAddressViewController.h"
 #import "ManageBankViewController.h"
 
 
@@ -218,10 +218,13 @@
             break;
             }
         case 1:
-            
+        {
             NSLog(@"Manage Addresses");
-            break;
             
+            ManageAddressViewController *vc = [[ManageAddressViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
         default:
             break;
     }

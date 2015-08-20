@@ -15,6 +15,7 @@
                 <outlet property="collectionView" destination="Ztd-kb-9US" id="Nfk-FN-iYK"/>
                 <outlet property="searchField" destination="fxe-IB-pPP" id="VSc-JY-jJj"/>
                 <outlet property="searchView" destination="wbD-0x-nei" id="SKY-G6-CsP"/>
+                <outlet property="verticalSpace" destination="CuA-qR-zzQ" id="DCf-aq-h8x"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -92,13 +93,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="wbD-0x-nei" firstAttribute="bottom" secondItem="Ztd-kb-9US" secondAttribute="top" id="0Vl-qI-ets"/>
                 <constraint firstAttribute="trailing" secondItem="wbD-0x-nei" secondAttribute="trailing" id="7iB-0G-vpv"/>
                 <constraint firstItem="wbD-0x-nei" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CuA-qR-zzQ"/>
                 <constraint firstItem="wbD-0x-nei" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="V5b-aI-TuI"/>
-                <constraint firstItem="wbD-0x-nei" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XUq-EM-JlC"/>
                 <constraint firstAttribute="trailing" secondItem="Ztd-kb-9US" secondAttribute="trailing" id="Ynw-UT-JbQ"/>
                 <constraint firstItem="wbD-0x-nei" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="spr-ZO-I4H"/>
-                <constraint firstItem="Ztd-kb-9US" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="tNV-h1-49d"/>
                 <constraint firstItem="Ztd-kb-9US" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uUq-A2-asb"/>
                 <constraint firstAttribute="bottom" secondItem="Ztd-kb-9US" secondAttribute="bottom" id="xZN-hJ-ZWN"/>
             </constraints>

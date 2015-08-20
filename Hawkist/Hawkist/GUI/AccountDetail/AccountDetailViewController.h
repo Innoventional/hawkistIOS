@@ -11,6 +11,8 @@
 #import "UIPlaceholderTextView.h"
 
 @interface AccountDetailViewController : HWBaseViewController <UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextViewDelegate>
+- (instancetype) initWithUser:(NSString*)userId;
+
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 - (IBAction)btnBack:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *imgAvatar2;

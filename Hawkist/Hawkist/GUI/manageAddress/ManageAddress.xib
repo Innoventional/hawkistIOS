@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+        <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ManageAddressViewController">
+            <connections>
+                <outlet property="contentHeight" destination="B5N-kB-EZc" id="ebK-yX-o98"/>
+                <outlet property="contentView" destination="r75-wq-IJh" id="sx0-8n-KJL"/>
+                <outlet property="navigation" destination="mWY-YY-IP4" id="S5P-6e-ZkE"/>
+                <outlet property="view" destination="iN0-l3-epB" id="ddp-al-vDU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="732"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWY-YY-IP4" customClass="NavigationVIew">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="tBp-fr-6cg"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXw-b6-jxz">
+                    <rect key="frame" x="0.0" y="65" width="375" height="30"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAO-qe-Plo">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                            <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="HNC-Co-5fL"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIST OF DELIVERY ADDRESSES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSG-sc-IJB">
+                            <rect key="frame" x="13" y="8" width="153" height="15"/>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="fAO-qe-Plo" firstAttribute="leading" secondItem="xXw-b6-jxz" secondAttribute="leading" id="684-jT-RqR"/>
+                        <constraint firstItem="iSG-sc-IJB" firstAttribute="leading" secondItem="xXw-b6-jxz" secondAttribute="leading" constant="13" id="9TB-wf-WwA"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="A7G-vy-96u"/>
+                        <constraint firstAttribute="centerY" secondItem="iSG-sc-IJB" secondAttribute="centerY" id="Bbj-I0-j2p"/>
+                        <constraint firstAttribute="trailing" secondItem="fAO-qe-Plo" secondAttribute="trailing" id="Dev-dQ-ngf"/>
+                        <constraint firstItem="fAO-qe-Plo" firstAttribute="top" secondItem="xXw-b6-jxz" secondAttribute="top" id="H1e-8s-ppG"/>
+                        <constraint firstAttribute="height" constant="30" id="XWk-OE-sZD"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="A7G-vy-96u"/>
+                        </mask>
+                    </variation>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vfl-vK-QUH">
+                    <rect key="frame" x="0.0" y="95" width="375" height="637"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r75-wq-IJh">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="400" id="B5N-kB-EZc"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="r75-wq-IJh" secondAttribute="trailing" id="AsR-1t-HO6"/>
+                        <constraint firstAttribute="width" secondItem="r75-wq-IJh" secondAttribute="width" id="Iz5-tj-wGV"/>
+                        <constraint firstItem="r75-wq-IJh" firstAttribute="leading" secondItem="Vfl-vK-QUH" secondAttribute="leading" id="b6c-12-edf"/>
+                        <constraint firstItem="r75-wq-IJh" firstAttribute="top" secondItem="Vfl-vK-QUH" secondAttribute="top" id="bnz-lo-qcF"/>
+                        <constraint firstAttribute="bottom" secondItem="r75-wq-IJh" secondAttribute="bottom" id="lbU-zn-Fqn"/>
+                    </constraints>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARl-E4-FD9">
+                    <rect key="frame" x="0.0" y="667" width="375" height="65"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="65" id="5oG-c9-7nT"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="WJA-75-OQG"/>
+                        <constraint firstAttribute="height" constant="65" id="cjU-c2-V7Y"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
+                    <state key="normal" title="ADD NEW ADDRESS" backgroundImage="acdet_but">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="addNewAddress:" destination="-1" eventType="touchUpInside" id="Arf-qR-wz0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Vfl-vK-QUH" firstAttribute="top" secondItem="xXw-b6-jxz" secondAttribute="bottom" id="5bT-1l-Dav"/>
+                <constraint firstItem="xXw-b6-jxz" firstAttribute="top" secondItem="mWY-YY-IP4" secondAttribute="bottom" id="9Op-7J-JYg"/>
+                <constraint firstAttribute="bottom" secondItem="Vfl-vK-QUH" secondAttribute="bottom" id="LOm-Ca-l94"/>
+                <constraint firstAttribute="trailing" secondItem="Vfl-vK-QUH" secondAttribute="trailing" id="MBx-il-GQ6"/>
+                <constraint firstAttribute="trailing" secondItem="ARl-E4-FD9" secondAttribute="trailing" id="O8v-ph-jvN"/>
+                <constraint firstItem="xXw-b6-jxz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Sp4-Wf-ROT"/>
+                <constraint firstAttribute="trailing" secondItem="xXw-b6-jxz" secondAttribute="trailing" id="VPV-xr-ysw"/>
+                <constraint firstItem="mWY-YY-IP4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eai-B3-Evw"/>
+                <constraint firstAttribute="bottom" secondItem="ARl-E4-FD9" secondAttribute="bottom" id="ehg-L7-6GA"/>
+                <constraint firstItem="mWY-YY-IP4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lrw-4P-FCU"/>
+                <constraint firstAttribute="trailing" secondItem="mWY-YY-IP4" secondAttribute="trailing" id="pkf-8h-qEu"/>
+                <constraint firstItem="ARl-E4-FD9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qt2-3V-nee"/>
+                <constraint firstItem="Vfl-vK-QUH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zcg-d8-j1I"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="359.5" y="316"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="acdet_but" width="320" height="60"/>
+    </resources>
+</document>

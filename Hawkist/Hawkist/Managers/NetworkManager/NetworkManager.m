@@ -1871,5 +1871,191 @@ NSString *URLString = @"user/logout";
 }
 
 
+#pragma mark -
+#pragma mark Address
+
+- (void) addNewAddress:(HWAddress*) address
+           successBlock:(void(^)(void)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    
+    NSDictionary* params = [address toDictionary];
+    
+    [self.networkDecorator POST:@"user/addresses"
+                     parameters:params
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
+                                
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
+                            
+                        }];
+    
+    
+}
+
+
+- (void) getAddresses:(void(^)(NSArray *addresses))successBlock
+            failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    [self.networkDecorator GET:@"user/addresses"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           NSError* error;
+                           NSMutableArray* addresses = [NSMutableArray array];
+                           for (NSDictionary* address in responseObject[@"addresses"])
+                           {
+                               HWAddress* newAddress = [[HWAddress alloc]initWithDictionary: address error: &error];
+                               [addresses addObject:newAddress];
+                           }
+                           //
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(addresses);
+                           
+                           
+                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                       }];
+    
+}
+
+
+- (void) removeAddress:(NSString*)addressId
+           successBlock:(void(^)(void)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    NSDictionary *parameter = @{@"address_id":addressId};
+    
+    [self.networkDecorator DELETE:@"user/addresses"
+                       parameters:parameter
+                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              
+                              if([responseObject[@"status"] integerValue] != 0)
+                              {
+                                  NSError *responseError = [self errorWithResponseObject:responseObject];
+                                  
+                                  failureBlock(responseError);
+                                  
+                                  return;
+                              }
+                              
+                              successBlock();
+                              
+                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              
+                              NSError *serverError = [self serverErrorWithError:error];
+                              
+                              failureBlock(serverError);
+                              
+                          }];
+    
+    
+}
+
+- (void) updateAddress:(HWAddress*)address
+           successBlock:(void(^)(void)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    NSDictionary *parameter = [address toDictionary];
+    
+    [self.networkDecorator POST:@"user/addresses"
+                    parameters:parameter
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           successBlock();
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+    
+    
+}
+
+- (void) getRecentlyAddress:(void(^)(HWAddress *address))successBlock
+               failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    [self.networkDecorator PUT:@"user/addresses"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           NSError* error;
+                           
+                           HWAddress* address = [[HWAddress alloc] initWithDictionary: responseObject[@"addresses"] error: &error];
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(address);
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                           
+                       }];
+
+}
+
+
 @end
 

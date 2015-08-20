@@ -35,23 +35,18 @@
 
 - (void) viewDidLoad
 {
-   
     self.navigation.delegate = self;
     self.navigation.title.text = @"My Bank Cards";
-     self.contentHeight.constant = self.view.height - 95;
-}
-
-
-- (void) viewWillAppear:(BOOL)animated
-{
+    self.contentHeight.constant = self.view.height - 95;
+    
     self.placeHolder =  [[[NSBundle mainBundle]loadNibNamed:@"default" owner:self options:nil]firstObject];
     
     self.placeHolder.frame = CGRectMake(0, self.navigation.height, self.view.width, self.view.height - 130);
     
     [self.view addSubview:self.placeHolder];
-
- 
 }
+
+
 
 - (void) reload
 {

@@ -16,15 +16,18 @@
 #import "UIColor+Extensions.h"
 #import "FeedScreenViewController.h"
 
+#import "HWTapBarViewController.h"
+
 
 @interface AccountDetailViewController ()
 @property (nonatomic,strong) UIView* accountDetailView;
-@property (nonatomic, assign) BOOL* isContinueEnable;
+@property (nonatomic, assign) BOOL isContinueEnable;
 
 @property (nonatomic, strong) UIImage* avatar;
 @property (nonatomic,strong) NetworkManager* netManager;
 @property (nonatomic,assign) BOOL isPhotoSet;
 @property (nonatomic, assign) BOOL isPlaceholderHidden;
+@property (nonatomic, strong) NSString* userId;
 
 @end
 
@@ -40,9 +43,14 @@
     return self;
 }
 
-
-
-
+- (instancetype) initWithUser:(NSString*)userId
+{
+    self = [self init];
+    if (self) {
+        self.userId = userId;
+    }
+    return self;
+}
 
 
 - (void)viewDidLoad {
@@ -75,11 +83,11 @@
     NSRange range = NSMakeRange(9, 12);
     
     
-    [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor redColor] range:range];
+    //[attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor redColor] range:range];
     [attributedString addAttribute: NSLinkAttributeName value: @"http://www.hawkist.com/privacy-policy" range: range];
     
     range = NSMakeRange(25, 15);
-    [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor color256RGBWithRed: 63 green: 147 blue: 126] range:range];
+   // [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor color256RGBWithRed: 63 green: 147 blue: 126] range:range];
     [attributedString addAttribute: NSLinkAttributeName value: @"http://www.hawkist.com/terms-conditions" range: range];
     
 //    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
@@ -91,7 +99,6 @@
                                      NSUnderlineStyleAttributeName: @(NSUnderlineStyleNone)
                                      };
     [_txtURLS setLinkTextAttributes: linkAttributes];
-    
     
     _btnContinue.enabled = false;
   
@@ -105,7 +112,7 @@
    // if(self.isLogeedWithFacebook)
      //   self.txtUserName.enabled = NO;
     
-    [_netManager getUserProfileWithUserID: nil
+    [_netManager getUserProfileWithUserID: self.userId
                               successBlock:^(HWUser *user) {
         if ([user.avatar isEqualToString:@""])
         {
@@ -135,6 +142,24 @@
     } failureBlock:^(NSError *error) {
         [self showAlert:error];
     }];
+    
+    
+    if (self.userId)
+        
+    {
+        self.checkbox1.selected = YES;
+        self.checkBox2.selected = YES;
+        self.checkbox1.enabled = NO;
+        self.checkBox2.enabled = NO;
+        
+        [self.checkbox1 setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+        [self.checkBox2 setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+        
+        [self.btnContinue setTitle:@"SAVE" forState:UIControlStateNormal];
+        self.btnContinue.enabled = YES;
+        
+        
+    }
 }
 
 
@@ -289,7 +314,7 @@
     [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:aboutString photo:_imgAvatar2.image successBlock:^(HWUser *user) {
         
         [self hideHud];
-        [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
+        [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
     } failureBlock:^(NSError *error) {
         [self hideHud];
         [self showAlert:error];
@@ -299,7 +324,7 @@
     {
         [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:aboutString photo:nil successBlock:^(HWUser *user) {
             [self hideHud];
-            [self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
+            [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
         } failureBlock:^(NSError *error) {
             [self hideHud];
             //[self showAlert:error];
