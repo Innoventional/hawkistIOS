@@ -308,6 +308,19 @@
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="snj-nM-5OM">
                             <rect key="frame" x="150" y="104" width="20" height="20"/>
                         </activityIndicatorView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2E7-kc-EDe">
+                            <rect key="frame" x="8" y="70" width="177" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="ETd-Zs-dif"/>
+                                <constraint firstAttribute="width" constant="177" id="OEr-ov-wsT"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="feedbackAction:" destination="-1" eventType="touchUpInside" id="wDL-pA-oqh"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="cKS-2q-p8e" firstAttribute="leading" secondItem="MjG-p9-bUj" secondAttribute="leading" constant="15" id="11c-7Y-jGk"/>
@@ -328,6 +341,7 @@
                         <constraint firstItem="Sn9-ws-CVh" firstAttribute="centerY" secondItem="wZU-eP-qWE" secondAttribute="centerY" constant="-0.5" id="Dbk-bY-xeg"/>
                         <constraint firstItem="yq7-6P-Cdd" firstAttribute="leading" secondItem="XCs-VE-xj6" secondAttribute="trailing" constant="-7" id="Dct-WR-CFu"/>
                         <constraint firstItem="bG6-zT-ZHN" firstAttribute="leading" secondItem="eYe-lJ-r6J" secondAttribute="leading" id="FDB-ag-pK1"/>
+                        <constraint firstItem="2E7-kc-EDe" firstAttribute="leading" secondItem="eYe-lJ-r6J" secondAttribute="leading" constant="8" id="FFN-Ho-RbW"/>
                         <constraint firstItem="yq7-6P-Cdd" firstAttribute="baseline" secondItem="XCs-VE-xj6" secondAttribute="firstBaseline" constant="-1" id="FaQ-sn-dbe"/>
                         <constraint firstItem="bG6-zT-ZHN" firstAttribute="top" secondItem="2U4-iU-E4C" secondAttribute="bottom" constant="-1" id="HKy-sS-r1L"/>
                         <constraint firstItem="bG6-zT-ZHN" firstAttribute="leading" secondItem="2U4-iU-E4C" secondAttribute="leading" id="JEF-kZ-AQm"/>
@@ -345,6 +359,7 @@
                         <constraint firstItem="cKS-2q-p8e" firstAttribute="top" secondItem="MjG-p9-bUj" secondAttribute="bottom" constant="10" id="RgN-jb-K8h"/>
                         <constraint firstItem="Y21-PE-MNa" firstAttribute="leading" secondItem="eYe-lJ-r6J" secondAttribute="leading" id="TWd-Lt-ObQ"/>
                         <constraint firstItem="Ni4-69-4ed" firstAttribute="bottom" secondItem="EEI-92-JdM" secondAttribute="bottom" constant="-2" id="TaH-rP-SOk"/>
+                        <constraint firstItem="2E7-kc-EDe" firstAttribute="top" secondItem="eYe-lJ-r6J" secondAttribute="top" constant="70" id="Tn8-cr-q73"/>
                         <constraint firstItem="bG6-zT-ZHN" firstAttribute="top" secondItem="dsm-t9-EQu" secondAttribute="bottom" constant="30" id="Vav-DQ-KZ0"/>
                         <constraint firstAttribute="trailing" secondItem="snj-nM-5OM" secondAttribute="trailing" constant="150" id="VgK-Md-LiW"/>
                         <constraint firstItem="Y21-PE-MNa" firstAttribute="top" secondItem="eYe-lJ-r6J" secondAttribute="top" id="WSG-IO-6bT"/>

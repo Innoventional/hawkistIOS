@@ -22,6 +22,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWPaymentViewController">
             <connections>
                 <outlet property="buyButton" destination="Sp5-am-RUI" id="49H-XC-I9T"/>
+                <outlet property="indicator" destination="fbm-If-TxM" id="i9L-ty-i8n"/>
                 <outlet property="itemPriceLable" destination="dMp-ec-9w6" id="9C0-Fr-RIx"/>
                 <outlet property="navigationView" destination="KXq-Je-hHF" id="g3o-bn-Ttp"/>
                 <outlet property="shippingLable" destination="hEu-Rg-4tI" id="eOX-0P-Yw9"/>
@@ -140,11 +141,16 @@
                             <rect key="frame" x="0.0" y="110" width="375" height="422"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fbm-If-TxM">
+                            <rect key="frame" x="177" y="291" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="SAf-Wp-fvv" secondAttribute="trailing" id="6sj-Gc-iW7"/>
+                        <constraint firstAttribute="centerX" secondItem="fbm-If-TxM" secondAttribute="centerX" constant="0.5" id="FAW-hU-IZZ"/>
                         <constraint firstItem="SAf-Wp-fvv" firstAttribute="leading" secondItem="H6Q-B0-q1g" secondAttribute="leading" id="FiQ-Mu-t5r"/>
+                        <constraint firstAttribute="centerY" secondItem="fbm-If-TxM" secondAttribute="centerY" id="GBi-EY-ZQk"/>
                         <constraint firstAttribute="trailing" secondItem="Sp5-am-RUI" secondAttribute="trailing" id="PRn-E9-GkK"/>
                         <constraint firstItem="Sp5-am-RUI" firstAttribute="top" secondItem="J9x-Sf-xD5" secondAttribute="bottom" id="Qpl-Bo-HZw"/>
                         <constraint firstItem="J9x-Sf-xD5" firstAttribute="leading" secondItem="H6Q-B0-q1g" secondAttribute="leading" id="RfC-q0-7tK"/>

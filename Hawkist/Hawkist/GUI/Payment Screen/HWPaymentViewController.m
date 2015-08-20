@@ -23,6 +23,7 @@
 
 
 
+
 @interface HWPaymentViewController () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, NavigationViewDelegate, HWAddCardAndAdressCellDelegat>
  
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -59,6 +60,7 @@
 
 @property (nonatomic, assign) NSInteger checkForBuy;
 
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicator;
 
 
 @end
@@ -134,6 +136,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.indicator stopAnimating];
     
     // common setup
     
@@ -390,7 +394,7 @@
             return cell;
         }
         
-        if(indexPath.row == [self.paymentOptionArray count] +2  ){ // add new card
+        if(indexPath.row == [self.paymentOptionArray count] +1  ){ // add new card
          
             HWPaymentNewCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:paymentNewCell forIndexPath:indexPath];
             cell.isSelected = (indexPath.row == self.paymentSelectRow);
@@ -486,9 +490,13 @@
 
 - (IBAction)pressBuyNowButton:(UIButton *)sender
 {
+    sender.enabled = NO;
+    [self.indicator startAnimating];
+    
     if(self.paymentSelectRow > self.paymentOptionArray.count - 1)
     {
     
+        
         NSLog(@"%lu", (unsigned long)self.paymentSelectRow);
         
         return;
@@ -510,6 +518,8 @@
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles: nil ]show];
                                   
+                                   [self.indicator stopAnimating];
+                                  
                                   HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
                                   [self.navigationController pushViewController:vc animated:YES];
                                     
@@ -517,7 +527,8 @@
                                 } failureBlock:^(NSError *error) {
                                     
                                     [self showAlertWithTitle:error.domain Message:error.localizedDescription];
-    
+                                    [self.indicator stopAnimating];
+
                                     
                                 }];
 
@@ -542,6 +553,7 @@
 
 -(void) pressAddButton:(UIButton*)sender
 {
+    
     if ([sender.titleLabel.text isEqualToString:@"ADD DEBIT OR CREDIT CARD"])
     {
         AddCardViewController *vc = [[AddCardViewController alloc] init];

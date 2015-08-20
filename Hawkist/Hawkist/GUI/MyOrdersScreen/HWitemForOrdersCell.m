@@ -9,6 +9,7 @@
 #import "HWitemForOrdersCell.h"
 #import "HWOrderItem.h"
 #import "HWOrderButton.h"
+#import "HWLeaveFeedbackViewController.h"
 
 
 
@@ -16,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet HWOrderButton *receivedButton;
 @property (weak, nonatomic) IBOutlet HWOrderButton *hasIssueButton;
+@property (nonatomic, weak) IBOutlet UIButton *feedbackButton;
 
 @property (nonatomic, strong) HWOrderItem *orderItem;
 
@@ -50,6 +52,14 @@
 
 - (void) setCellWithOrderItem:(HWOrderItem*) orderItems;
 {
+    if([orderItems.available_feedback integerValue]) {
+        
+        self.feedbackButton.hidden = NO;
+    } else {
+        
+        self.feedbackButton.hidden = YES;
+    }
+    
     self.orderItem = orderItems;
     self.item = orderItems.item;
     
@@ -114,5 +124,15 @@
     
 }
 
+- (IBAction)feedbackAction:(id)sender {
+ 
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(feedbackAction:witgUserID:withOrderId:)]) {
+        
+        [self.orderCellDelegate feedbackAction:sender witgUserID:self.item.user_id withOrderId:self.orderItem.id];
+    }
+ 
+
+}
 
 @end

@@ -13,6 +13,8 @@
 
 @interface HWitemForOrdersCell : myItemCell
 
+
+
 @property (nonatomic, weak) id <HWitemForOrdersCellDelegate> orderCellDelegate;
 
 
@@ -25,5 +27,6 @@
 
 - (void) receivedAction:(UIButton*)sender withItem:(HWOrderItem*)item;
 - (void) hasIssueAction:(UIButton*)sender withItem:(HWOrderItem*)item;
+- (void) feedbackAction:(UIButton*)sender witgUserID:(NSString*)userId withOrderId:(NSString*)orderId;
 
 @end

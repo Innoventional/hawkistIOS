@@ -11,6 +11,8 @@
 #import "SZTextView.h"
 #import "NavigationVIew.h"
 #import "NetworkManager.h"
+#import "HWFeedBackViewController.h"
+
 
 @interface HWLeaveFeedbackViewController () <NavigationViewDelegate>
 
@@ -28,18 +30,24 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightKey;
 
-@property (nonatomic, assign) HWFeedbackType *typeFeedback;
+@property (nonatomic, assign) HWFeedbackType typeFeedback;
+
+
+@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *orderId;
+
 
 @end
 
 @implementation HWLeaveFeedbackViewController
 
-- (instancetype) initWithUserID:(NSString *)userID
+- (instancetype) initWithUserID:(NSString *)userID withOrderId:(NSString*) orderId
 {
     self = [super initWithNibName: @"HWLeaveFeedbackView" bundle: nil];
     if(self)
     {
-        
+        self.userId = userID;
+        self.orderId = orderId;
     }
     
     return self;
@@ -47,7 +55,7 @@
 
 - (instancetype) init {
     
-    self = [self initWithUserID:nil];
+    self = [self initWithUserID:nil withOrderId:nil];
     if (self) {
         
         
@@ -158,18 +166,19 @@
 
 - (IBAction)pressSendAction:(UIButton *)sender {
     
-   
-    
-    [[NetworkManager shared] addNewFeedbackWithUserId:@"77"
-                                          withOrderId:@"57"
+    sender.enabled = NO;
+    [[NetworkManager shared] addNewFeedbackWithUserId:self.userId
+                                          withOrderId:self.orderId
                                              withText:self.textView.text
                                      withFeedbackType:self.typeFeedback
                                          successBlock:^{
     
-                                             NSLog(@"success");
+                                             HWFeedBackViewController *vc = [[HWFeedBackViewController alloc] initWithUserID:self.userId];
+                                             [self.navigationController pushViewController:vc animated:YES];
                                              
                                          } failureBlock:^(NSError *error) {
-    
+                                            
+                                             sender.enabled = YES;
                                              [self showAlertWithTitle:error.domain Message:error.localizedDescription];
                                          }];
     

@@ -222,12 +222,26 @@
                                     <action selector="receivedAction:" destination="fKj-af-pKl" eventType="touchUpInside" id="YXJ-dx-qHJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9m0-99-kdd">
+                                <rect key="frame" x="0.0" y="1" width="145" height="46"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Feedback">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="feedbackAction:" destination="fKj-af-pKl" eventType="touchUpInside" id="3nJ-kj-LkB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="9m0-99-kdd" secondAttribute="bottom" id="5Za-mz-055"/>
                             <constraint firstItem="9Pb-Z4-c3l" firstAttribute="width" secondItem="LbY-EO-bHt" secondAttribute="width" id="Dqp-Af-0tt"/>
+                            <constraint firstItem="9m0-99-kdd" firstAttribute="top" secondItem="hx1-oK-7RZ" secondAttribute="top" constant="1" id="Hmx-Lt-ztz"/>
                             <constraint firstAttribute="bottom" secondItem="LbY-EO-bHt" secondAttribute="bottom" id="Iom-Tn-Qr4"/>
                             <constraint firstAttribute="height" constant="47" id="Oxj-xt-ARv"/>
+                            <constraint firstAttribute="trailing" secondItem="9m0-99-kdd" secondAttribute="trailing" id="mBP-s1-cWb"/>
+                            <constraint firstItem="9m0-99-kdd" firstAttribute="leading" secondItem="hx1-oK-7RZ" secondAttribute="leading" id="pJl-39-eau"/>
                             <constraint firstItem="LbY-EO-bHt" firstAttribute="leading" secondItem="9Pb-Z4-c3l" secondAttribute="trailing" constant="1" id="r3j-wa-Xqf"/>
                             <constraint firstAttribute="bottom" secondItem="9Pb-Z4-c3l" secondAttribute="bottom" id="tva-P7-fNl"/>
                             <constraint firstAttribute="trailing" secondItem="LbY-EO-bHt" secondAttribute="trailing" id="wKZ-2k-sBZ"/>
@@ -257,6 +271,7 @@
                 <outlet property="commentsCount" destination="epT-SB-h96" id="Sdl-2L-IId"/>
                 <outlet property="currentPrice" destination="KQF-xB-ouF" id="B8v-bo-vT8"/>
                 <outlet property="discount" destination="QTg-ze-dNM" id="kFP-LW-pVs"/>
+                <outlet property="feedbackButton" destination="9m0-99-kdd" id="mk1-qx-sIy"/>
                 <outlet property="hasIssueButton" destination="LbY-EO-bHt" id="0mN-yf-H0d"/>
                 <outlet property="itemImage" destination="a9Y-G8-9gR" id="aoq-mr-dEr"/>
                 <outlet property="likeButton" destination="WdE-bM-vYf" id="gap-7t-tTy"/>

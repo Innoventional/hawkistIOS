@@ -24,6 +24,7 @@
 #import "HWCommentViewController.h"
 #import "HWAboutUserViewController.h"
 #import "UIImageView+Extensions.h"
+#import "HWFeedBackViewController.h"
 
 
 
@@ -383,6 +384,11 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 #pragma mark -
 #pragma mark Actions
 
+- (IBAction)feedbackAction:(id)sender {
+    
+    HWFeedBackViewController *vc = [[HWFeedBackViewController alloc] initWithUserID:self.userId];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (IBAction)aboutAction:(UIButton *)sender
 {

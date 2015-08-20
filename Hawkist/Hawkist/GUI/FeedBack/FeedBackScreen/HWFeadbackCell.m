@@ -7,10 +7,13 @@
 //
 
 #import "HWFeadbackCell.h"
+#import "HWFeedback.h"
+#import "NSDate+NVTimeAgo.h"
 
 @interface HWFeadbackCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (nonatomic, strong) NSString *userId;
 
 
 
@@ -29,7 +32,35 @@
 }
 
 
+- (void) setCellWithFeedback:(HWFeedback*) feedback {
+    
+    self.userId = feedback.user_id;
+    NSString *str = [NSString stringWithFormat:@"%@ %@", feedback.username, feedback.text];
+    NSMutableAttributedString *atrStr = [[NSMutableAttributedString alloc] initWithString:str];
+    
+    
+    
+    NSRange rangeName = [str rangeOfString:feedback.username];
+    
+    [atrStr beginEditing];
+    
+    UIFont *allFont= [UIFont fontWithName:@"OpenSans-Semibold" size:15];
+    UIColor *allColor = [UIColor colorWithRed:94./255. green:94./255. blue:94./255. alpha:1];
+    NSDictionary *allAttrib = @{ NSForegroundColorAttributeName : allColor, NSFontAttributeName : allFont  };
+ 
+     [atrStr addAttributes:allAttrib
+                         range:rangeName];
+    [atrStr endEditing];
 
+    self.messageText.attributedText = atrStr;
+    
+    
+    [self.avatar setImageWithURL:[NSURL URLWithString: feedback.avatar] placeholderImage:[UIImage imageNamed:@"noPhoto"]];
+    NSDate *time = [NSDate dateFromServerFormatString:feedback.timeCreate];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MMMM dd hh':'mm a"];
+    self.timeLabel.text =  [dateFormatter stringFromDate:time];
+}
 
 
 + (CGFloat) heightWith:(NSString*)text
@@ -51,5 +82,12 @@
 }
 
 
+- (IBAction) transitionAction:(id) sender {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(transitionToProfileWithUserId:)]) {
+        
+        [self.delegate transitionToProfileWithUserId:self.userId];
+    }
+}
 
 @end

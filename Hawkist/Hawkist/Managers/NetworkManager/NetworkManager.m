@@ -1788,6 +1788,7 @@ NSString *URLString = @"user/logout";
         orderItem.item = [[HWItem alloc]initWithDictionary:listingDict
                                                      error:&error];
         orderItem.id = dict[@"id"];
+        orderItem.available_feedback = dict[@"available_feedback"];
         NSNumber *numb = dict[@"status"];
         orderItem.status = [numb intValue];
         [array addObject:orderItem];
@@ -1886,13 +1887,13 @@ NSString *URLString = @"user/logout";
     
     NSDictionary *params = @{
                              
-                             @"order_id": @"57",
-                              @"text": @"FFFFFF",
-                             @"type" : @"1"
-                             }
+                             @"order_id": order_id,
+                             @"text"    : text,
+                             @"type"    : @(typeFeedback)
+                             };
     
-    [ [self.networkDecorator POST: @"user/feedbacks/77"
-                    parameters: params
+    [self.networkDecorator POST: URLString
+                     parameters: params
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            
                            if([responseObject[@"status"] integerValue] != 0)
@@ -1910,7 +1911,7 @@ NSString *URLString = @"user/logout";
                            NSError *serverError = [self serverErrorWithError:error];
                            failureBlock(serverError);
                            
-                       }] ];
+                       }];
     
 }
 
@@ -1933,11 +1934,10 @@ NSString *URLString = @"user/logout";
                           
     
                           NSDictionary *feedbacksDict = responseObject[@"feedbacks"];
-                          
-                          NSArray *posAr = feedbacksDict[@"positive"];
-                          NSArray *neutAr = feedbacksDict[@"neutral"];
-                          NSArray *negAr = feedbacksDict[@"negative"];
-                          
+                
+                          NSArray *posAr = [self parsingFeedbackWithArray:feedbacksDict[@"positive"]];
+                          NSArray *neutAr = [self parsingFeedbackWithArray:feedbacksDict[@"neutral"]];
+                          NSArray *negAr = [self parsingFeedbackWithArray:feedbacksDict[@"negative"]];
                           successBlock(posAr,neutAr,negAr);
                           
                         
@@ -1967,6 +1967,8 @@ NSString *URLString = @"user/logout";
         feed.user_id = user[@"id"];
         feed.username = user[@"username"];
         feed.avatar = user[@"avatar"];
+        
+        [returnArray addObject:feed];
     }
     
     return returnArray;

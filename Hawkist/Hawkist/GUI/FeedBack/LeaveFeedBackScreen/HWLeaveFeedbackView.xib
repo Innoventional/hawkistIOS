@@ -43,9 +43,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17A-8n-8W8">
                     <rect key="frame" x="0.0" y="65" width="320" height="95"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NYo-dZ-TZu">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gcircle" translatesAutoresizingMaskIntoConstraints="NO" id="NYo-dZ-TZu">
                             <rect key="frame" x="15" y="8" width="46" height="46"/>
-                            <color key="backgroundColor" red="0.18039215689999999" green="0.67843137249999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="46" id="02J-LP-Drb"/>
                                 <constraint firstAttribute="width" constant="46" id="3K2-km-lHI"/>
@@ -202,6 +202,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Gcircle" width="33" height="32"/>
         <image name="askbutton" width="47" height="30"/>
     </resources>
 </document>

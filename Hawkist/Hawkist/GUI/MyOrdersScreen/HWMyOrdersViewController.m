@@ -12,16 +12,19 @@
 #import "NetworkManager.h"
 #import "HWOrderItem.h"
 #import "HWCommentViewController.h"
+#import "HWLeaveFeedbackViewController.h"
+#import "HWPaymentViewController.h"
 
 
 @interface HWMyOrdersViewController () <HWitemForOrdersCellDelegate, NavigationViewDelegate,UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NetworkManager *networkManager;
-
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
+
+
+@property (nonatomic, strong) NetworkManager *networkManager;
 
 @property (nonatomic, strong) NSArray *itemsArray;
 
@@ -33,6 +36,7 @@
 
 @implementation HWMyOrdersViewController
 
+#pragma mark - UIViewController
 
 - (instancetype) init
 {
@@ -53,20 +57,25 @@
 -(void)setupOrderArray
 {
 
-[[NetworkManager shared] getAllOrderItemWithSuccessBlock:^(NSArray *array) {
+    [[NetworkManager shared] getAllOrderItemWithSuccessBlock:^(NSArray *array) {
+        
+        self.itemsArray = array;
+        
+        [self.collectionView reloadData];
+        
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+        
+        
+    }];
     
-    self.itemsArray = array;
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
     [self.collectionView reloadData];
-    
-    
-    
-} failureBlock:^(NSError *error) {
-    
-    [self showAlertWithTitle:error.domain Message:error.localizedDescription];
-    
-    
-}];
-    
 }
 
 - (void)viewDidLoad {
@@ -122,8 +131,6 @@
     
     ViewItemViewController *vc = [[ViewItemViewController alloc]initWithItem:item.item];
     
-    
-    
     [self.navigationController pushViewController:vc animated:YES];
     
     
@@ -154,6 +161,14 @@
 
 #pragma mark - 
 #pragma mark HWitemForOrdersCellDelegate
+
+
+- (void) feedbackAction:(UIButton*)sender witgUserID:(NSString*)userId withOrderId:(NSString*)orderId {
+    
+    HWLeaveFeedbackViewController *vc = [[HWLeaveFeedbackViewController alloc] initWithUserID:userId withOrderId:orderId];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 
 
 
@@ -228,8 +243,8 @@
     HWCommentViewController *vc = [[HWCommentViewController alloc] initWithItem:item];
     [self.navigationController pushViewController:vc animated:YES];
     
-    
 }
+
 - (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item
 {
     
@@ -245,7 +260,8 @@
 
 -(void)reloadIndexPath:(NSIndexPath*)indexPath
 {
-    [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    [self setupOrderArray];
+    //[self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
 
 #pragma mark -
@@ -254,7 +270,23 @@
 
 -(void) leftButtonClick
 {
-    [self.navigationController popViewControllerAnimated:YES];
+        NSArray *ar = self.navigationController.viewControllers;
+    
+    id vc = [ar objectAtIndex:ar.count-2];
+    
+    NSLog(@"%@",vc);
+    
+    if( [ vc isKindOfClass:[HWPaymentViewController class]]) {
+        
+        [self.navigationController popToViewController:[ar objectAtIndex:1] animated:YES];
+        
+    } else {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    
+
     
 }
 
@@ -298,6 +330,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    
    if([self.receivedAlert isEqual:alertView])
    {
        switch (buttonIndex) {

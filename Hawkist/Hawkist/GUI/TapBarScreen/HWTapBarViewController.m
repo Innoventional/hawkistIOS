@@ -100,7 +100,7 @@
         }
         case 3:
         {
-            HWFeedBackViewController * vc = [[HWMyBalanceViewController alloc] init];
+            HWFeedBackViewController * vc = [[HWFeedBackViewController alloc] initWithUserID:@"77"];
              [self.navigationController pushViewController:vc animated:YES];
             
             break;

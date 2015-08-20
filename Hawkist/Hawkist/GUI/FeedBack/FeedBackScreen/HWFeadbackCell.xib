@@ -18,7 +18,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mE5-hR-Por" id="45T-i4-Ehl">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W0R-Xr-il7">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W0R-Xr-il7">
                         <rect key="frame" x="8" y="8" width="46" height="46"/>
                         <color key="backgroundColor" red="1" green="1" blue="0.1765265214" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -57,11 +57,26 @@
                             <constraint firstAttribute="height" constant="1" id="sOF-Et-9VT"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osu-Ff-19f">
+                        <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="54" id="doL-gf-Pwu"/>
+                            <constraint firstAttribute="height" constant="54" id="dwl-5t-ubV"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="transitionAction:" destination="mE5-hR-Por" eventType="touchUpInside" id="fsJ-8f-yaI"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="W0R-Xr-il7" firstAttribute="leading" secondItem="45T-i4-Ehl" secondAttribute="leadingMargin" id="Ebn-ps-D9G"/>
                     <constraint firstItem="9vp-CX-W9g" firstAttribute="leading" secondItem="W0R-Xr-il7" secondAttribute="trailing" constant="12" id="L2A-dV-DMZ"/>
                     <constraint firstItem="cn4-V5-bhi" firstAttribute="leading" secondItem="45T-i4-Ehl" secondAttribute="leading" id="Ufp-cY-mIT"/>
+                    <constraint firstItem="osu-Ff-19f" firstAttribute="top" secondItem="45T-i4-Ehl" secondAttribute="top" id="bGA-1r-sGN"/>
+                    <constraint firstItem="osu-Ff-19f" firstAttribute="leading" secondItem="45T-i4-Ehl" secondAttribute="leading" id="eqH-Yc-3Gf"/>
                     <constraint firstItem="B9m-vt-bAR" firstAttribute="leading" secondItem="9vp-CX-W9g" secondAttribute="trailing" constant="5" id="fGW-9g-rcf"/>
                     <constraint firstItem="W0R-Xr-il7" firstAttribute="top" secondItem="45T-i4-Ehl" secondAttribute="topMargin" id="hBK-GT-Nqi"/>
                     <constraint firstAttribute="trailing" secondItem="cn4-V5-bhi" secondAttribute="trailing" id="kFj-I5-38s"/>

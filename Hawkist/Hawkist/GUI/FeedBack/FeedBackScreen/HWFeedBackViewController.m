@@ -10,9 +10,10 @@
 #import "NavigationVIew.h"
 #import "HWFeedBackSegmentView.h"
 #import "HWFeadbackCell.h"
+#import "NetworkManager.h"
+#import "HWProfileViewController.h"
 
-
-@interface HWFeedBackViewController () <NavigationViewDelegate, HWFeedBackSegmentViewDelegate>
+@interface HWFeedBackViewController () <NavigationViewDelegate, HWFeedBackSegmentViewDelegate, HWFeadbackCellDelegate>
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
 
 @property (weak, nonatomic) IBOutlet HWFeedBackSegmentView *segmentView;
@@ -37,7 +38,28 @@
     self = [super initWithNibName: @"HWFeedBackView" bundle: nil];
     if(self)
     {
-               
+       [[NetworkManager shared] getAllFeedbackWithUserId:userID
+                                            successBlock:^(NSArray *positive, NSArray *neutrall, NSArray *negative) {
+                                                
+                                                self.positiveArray = positive;
+                                                self.neutralArray = neutrall;
+                                                self.negativeArray = negative;
+                                                self.selectedArray = self.positiveArray;
+                                                
+                                                
+                                                self.segmentView.positiveButton.count.text = [NSString stringWithFormat:@"%lu", (unsigned long)positive.count];
+                                                self.segmentView.negativeButton.count.text = [NSString stringWithFormat:@"%lu", (unsigned long)negative.count];
+                                                self.segmentView.neutralButton.count.text = [NSString stringWithFormat:@"%lu", (unsigned long)neutrall.count];
+                                                
+                                                [self.tableView reloadData];
+        
+                                                
+                                          } failureBlock:^(NSError *error) {
+        
+                                              
+                                          }];
+        
+        
     }
     
     return self;
@@ -80,7 +102,22 @@
 
 -(void) leftButtonClick {
     
+    NSArray *ar = self.navigationController.viewControllers;
+    
+    id vc = [ar objectAtIndex:ar.count-2];
+    
+     NSLog(@"%@",vc);
+    
+    if( [ vc isKindOfClass:[HWProfileViewController class]]) {
+   
     [self.navigationController popViewControllerAnimated:YES];
+    
+    } else {
+        
+        [self.navigationController popToViewController:[ar objectAtIndex:1] animated:YES];
+    }
+    
+    
 }
 
 -(void) rightButtonClick {
@@ -93,7 +130,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 16;
+    return [self.selectedArray count];
 }
 
 
@@ -102,18 +139,14 @@
     
     HWFeadbackCell * cell = [tableView dequeueReusableCellWithIdentifier:feedbackCell forIndexPath:indexPath];
     
-    cell.messageText.text = @" asdasdasdasdasd ыфва фыв афы ";
+    HWFeedback *fb = [self.selectedArray objectAtIndex:indexPath.row];
     
+    [cell setCellWithFeedback:fb];
+    cell.delegate = self;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    HWFeadbackCell *cel = (id) cell;
-    CGFloat f = [UIScreen mainScreen].bounds.size.width;
-    
-    NSLog(@"%f", f - cel.messageText.bounds.size.width );
-}
+
 
 #pragma mark - UITableViewDelegate
 
@@ -146,6 +179,13 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - HWFeadbackCellDelegate
+
+- (void) transitionToProfileWithUserId:(NSString*)userId {
+    
+    HWProfileViewController *vc = [[HWProfileViewController alloc] initWithUserID:userId];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 @end

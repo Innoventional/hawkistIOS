@@ -10,4 +10,6 @@
 
 @interface HWLeaveFeedbackViewController : HWBaseViewController
 
+- (instancetype) initWithUserID:(NSString *)userID withOrderId:(NSString*) orderId;
+
 @end
