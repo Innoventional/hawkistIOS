@@ -7,8 +7,13 @@
 //
 
 #import "HWMyBalanceViewController.h"
+#import "TPKeyboardAvoidingScrollView.h"
 
 @interface HWMyBalanceViewController ()
+
+@property (nonatomic, weak) IBOutlet TPKeyboardAvoidingScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UIView *contentView;
+
 
 @end
 
@@ -33,8 +38,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //self.z.constant = 2000;
+    
+    
+    
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+    CGSize s = self.contentView.bounds.size;
+    
+//    s.width = 375;
+//    self.contentView.bounds = CGRectMake(0, 0, s.width, s.height);
+//    [self.scrollView setContentSize:s];
+//    //[self.scrollView layoutIfNeeded];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

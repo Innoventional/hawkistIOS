@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "HWPaymentBaseCell.h"
+#import "HWAddress.h"
 
 @interface HWAddressOptionCell : HWPaymentBaseCell
  
--(void) setCellWithAddress:(id) address;
+-(void) setCellWithAddress:(HWAddress*) address;
 
 @end

@@ -45,7 +45,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9m-vt-bAR">
-                        <rect key="frame" x="80" y="54" width="26" height="12"/>
+                        <rect key="frame" x="79" y="55" width="26" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -77,12 +77,12 @@
                     <constraint firstItem="cn4-V5-bhi" firstAttribute="leading" secondItem="45T-i4-Ehl" secondAttribute="leading" id="Ufp-cY-mIT"/>
                     <constraint firstItem="osu-Ff-19f" firstAttribute="top" secondItem="45T-i4-Ehl" secondAttribute="top" id="bGA-1r-sGN"/>
                     <constraint firstItem="osu-Ff-19f" firstAttribute="leading" secondItem="45T-i4-Ehl" secondAttribute="leading" id="eqH-Yc-3Gf"/>
-                    <constraint firstItem="B9m-vt-bAR" firstAttribute="leading" secondItem="9vp-CX-W9g" secondAttribute="trailing" constant="5" id="fGW-9g-rcf"/>
+                    <constraint firstItem="B9m-vt-bAR" firstAttribute="leading" secondItem="9vp-CX-W9g" secondAttribute="trailing" constant="4" id="fGW-9g-rcf"/>
                     <constraint firstItem="W0R-Xr-il7" firstAttribute="top" secondItem="45T-i4-Ehl" secondAttribute="topMargin" id="hBK-GT-Nqi"/>
                     <constraint firstAttribute="trailing" secondItem="cn4-V5-bhi" secondAttribute="trailing" id="kFj-I5-38s"/>
                     <constraint firstItem="Bff-wp-Ton" firstAttribute="top" secondItem="45T-i4-Ehl" secondAttribute="top" constant="12" id="kNw-Eh-dEx"/>
                     <constraint firstAttribute="trailing" secondItem="Bff-wp-Ton" secondAttribute="trailing" constant="8" id="kaX-Rg-0UV"/>
-                    <constraint firstItem="B9m-vt-bAR" firstAttribute="top" secondItem="Bff-wp-Ton" secondAttribute="bottom" constant="8" id="ldt-c4-ezW"/>
+                    <constraint firstItem="B9m-vt-bAR" firstAttribute="top" secondItem="Bff-wp-Ton" secondAttribute="bottom" constant="9" id="ldt-c4-ezW"/>
                     <constraint firstItem="Bff-wp-Ton" firstAttribute="leading" secondItem="W0R-Xr-il7" secondAttribute="trailing" constant="12" id="opL-W5-j28"/>
                     <constraint firstItem="9vp-CX-W9g" firstAttribute="top" secondItem="Bff-wp-Ton" secondAttribute="bottom" constant="11" id="pTg-7D-Q1n"/>
                     <constraint firstAttribute="bottom" secondItem="Bff-wp-Ton" secondAttribute="bottom" constant="36" id="s9A-L7-dHh"/>

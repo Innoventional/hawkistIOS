@@ -20,6 +20,7 @@
 #import "HWPaymentNewCardCell.h"
 #import "HWAddNewAddressCell.h"
 #import "HWAddressCollectionOnlyCell.h"
+#import "AddAddressViewController.h"
 
 
 
@@ -117,21 +118,43 @@
 
 - (void) setupUserData
 {
-        [self.networkManager getAllBankCards:^(NSArray *cards) {
-            
-            self.paymentOptionArray = cards;
-#warning delete string down
-            //self.addressOptionArray = @[@1];
-            
-            [self.tableView reloadData];
-            
-        } failureBlock:^(NSError *error) {
-            
-            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        }];
+    
+    [self setupAddressArrayData];
 }
 
 
+- (void) setupAddressArrayData {
+    
+    [self.networkManager getAddresses:^(NSArray *addresses) {
+        
+        self.addressOptionArray = addresses;
+        [self setupPaymentArrayData];
+        
+        
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    }];
+
+    
+}
+
+
+- (void) setupPaymentArrayData {
+    
+    [self.networkManager getAllBankCards:^(NSArray *cards) {
+        
+        self.paymentOptionArray = cards;
+        [self.tableView reloadData];
+        [self.paymentCollectionView reloadData];
+        [self.addressCollectionView reloadData];
+        
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    }];
+    
+}
 
 
 - (void)viewDidLoad {
@@ -164,9 +187,9 @@
     
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void) viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     [self setupUserData];
     
 }
@@ -386,7 +409,9 @@
     
     if([collectionView isEqual:self.paymentCollectionView])
     {
-        if(indexPath.row == [self.paymentOptionArray count]){  // balance cell
+        // balance cell
+        
+        if(indexPath.row == [self.paymentOptionArray count]){
             
             HWPaymentBalanceCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:paymentBalanceCell forIndexPath:indexPath];
             cell.isSelected = (indexPath.row == self.paymentSelectRow);
@@ -394,7 +419,8 @@
             return cell;
         }
         
-        if(indexPath.row == [self.paymentOptionArray count] +1  ){ // add new card
+        // add new card
+        if(indexPath.row == [self.paymentOptionArray count] +1  ){
          
             HWPaymentNewCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:paymentNewCell forIndexPath:indexPath];
             cell.isSelected = (indexPath.row == self.paymentSelectRow);
@@ -418,6 +444,8 @@
     else  if([collectionView isEqual:self.addressCollectionView])
     
     {
+        // collection only cell
+        
         if(self.addressOptionArray.count == indexPath.row){
             
             HWAddressCollectionOnlyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addressCollectionOnlyCell forIndexPath:indexPath];
@@ -425,6 +453,8 @@
             
             return cell;
         }
+        
+        // new address cell
         
         if((self.addressOptionArray.count +1) == indexPath.row){
             
@@ -437,6 +467,7 @@
         HWAddressOptionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addressOptionCell forIndexPath:indexPath];
         
         cell.isSelected = (indexPath.row == self.addressSelectRow);
+        [cell setCellWithAddress: [self.addressOptionArray objectAtIndex:indexPath.row]];
         
         return cell;
         
@@ -458,23 +489,33 @@
     {
         self.paymentSelectRow = indexPath.row;
         
+        //press add card
+        
         if((self.paymentOptionArray.count + 1) == indexPath.row){
             
             AddCardViewController *vc = [[AddCardViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
+            
+            self.paymentSelectRow = 0;
             [collectionView reloadData];
  
             return;
             
         }
         
-    } else if([collectionView isEqual:self.addressCollectionView])
+    }
+    else if([collectionView isEqual:self.addressCollectionView])
     {
         self.addressSelectRow = indexPath.row;
+      
+        // press add address
         
         if((self.addressOptionArray.count + 1) == indexPath.row){
             
-            NSLog(@"addNewAddress");
+            AddAddressViewController *vc = [[AddAddressViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            self.addressSelectRow = 0;
             [collectionView reloadData];
             
             return;

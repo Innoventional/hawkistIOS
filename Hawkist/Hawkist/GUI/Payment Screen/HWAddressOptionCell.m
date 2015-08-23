@@ -13,46 +13,38 @@
 @property (weak, nonatomic) IBOutlet UILabel *adress_line2;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postCodeLable;
-//@property (weak, nonatomic) IBOutlet UIImageView *activeImage;
+
 
 @end
 
 @implementation HWAddressOptionCell
 
-//- (instancetype) awakeAfterUsingCoder:(NSCoder *)aDecoder
-//{
-//    self = [super awakeAfterUsingCoder:aDecoder];
-//    if (self)
-//    {
-//        self.layer.cornerRadius = 6;
-//        self.layer.borderColor = [UIColor colorWithRed:55./255. green:185./255. blue:165./255. alpha:1].CGColor;
-//        self.activeImage.image = [UIImage imageNamed:@"acdet_checkempty"];
-//    }
-//    return self;
-//}
 
-
--(void) setCellWithAddress:(id) address
+-(void) setCellWithAddress:(HWAddress *) address
 {
+    self.cityLabel.text = address.city;
+    self.postCodeLable.text = address.postcode;
+    self.address_line1.text = address.address_line1;
+    if (address.address_line2) {
+        
+        self.adress_line2.text = address.address_line2;
+    } else {
+        
+        self.adress_line2.text = @"";
+    }
+    
+    
     
 }
 
-//- (void)setIsSelected:(BOOL)isSelected
-//{
-//    _isSelected = isSelected;
-//    
-//    if(isSelected)
-//    {
-//        
-//        self.layer.borderWidth = 3;
-//        self.activeImage.image = [UIImage imageNamed:@"acdet_check"];
-//    }
-//    else
-//    {
-//        self.activeImage.image = [UIImage imageNamed:@"acdet_checkempty"];
-//        self.layer.borderWidth = 0;
-//    }
-//}
-
-
 @end
+
+/*
+
+@property (strong, nonatomic)NSString<Optional>* id;
+@property (strong, nonatomic)NSString* address_line1;
+@property (strong, nonatomic)NSString<Optional>* address_line2;
+@property (strong, nonatomic)NSString* city;
+@property (strong, nonatomic)NSString* postcode;
+
+*/
