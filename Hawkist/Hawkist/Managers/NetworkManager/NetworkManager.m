@@ -15,6 +15,10 @@
 #import "HWMention.h"
 #import "HWCard.h"
 #import "HWOrderItem.h"
+#import "HWBankUserInfo.h"
+#import "HWBankAccountInfo.h"
+#import "HWBankAccountAddress.h"
+
 
 
 @interface NetworkManager ()
@@ -1542,7 +1546,7 @@ NSString *URLString = @"user/logout";
 
 
 
-- (void) getAllBankCards:(void(^)(NSArray *cards))successBlock
+- (void) getAllBankCards:(void(^)(NSArray *cards, NSString *balance))successBlock
                            failureBlock:(void(^)(NSError *error)) failureBlock
 {
     
@@ -1572,8 +1576,8 @@ NSString *URLString = @"user/logout";
                                failureBlock(error);
                                return;
                            }
-                           
-                           successBlock(cards);
+                           NSString *balance = responseObject[@"balance"];
+                           successBlock(cards, balance);
                            
                            
                        }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -2139,8 +2143,6 @@ NSString *URLString = @"user/logout";
 }
 
 
-
-
 - (NSArray*) parsingFeedbackWithArray:(NSArray*) fbArray {
     
     NSMutableArray *returnArray = [NSMutableArray array];
@@ -2162,5 +2164,222 @@ NSString *URLString = @"user/logout";
     
     return returnArray;
 }
+
+
+#pragma mark - User Balance
+
+-(void) getUserBalanceWithSuccessBlock:(void(^)(NSString *available, NSString *pending)) successBlock
+                          failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    [self.networkDecorator GET:@"user/banking/wallet"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           NSDictionary *balance = responseObject[@"balance"];
+                           NSString *available = balance[@"available"];
+                           NSString *pending = balance[@"pending"];
+                           
+                           successBlock(available, pending);
+                         
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        
+                        NSError *serverError = [self serverErrorWithError:error];
+                        failureBlock(serverError);
+                        
+                    }];
+    
+}
+
+-(void) getBankUserInfoWithSuccessBlock:(void(^)(HWBankUserInfo *userInfo)) successBlock
+                           failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+ [self.networkDecorator GET:@"user/banking/user_info"
+                 parameters:nil
+                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        
+                        if([responseObject[@"status"] integerValue] != 0)
+                        {
+                            NSError *responseError = [self errorWithResponseObject:responseObject];
+                            failureBlock(responseError);
+                            return;
+                        }
+                        
+                        NSError *error;
+                        
+                        HWBankUserInfo *userInfo = [[HWBankUserInfo alloc]initWithDictionary:responseObject[@"user_info"] error:&error];
+                        if(error) {
+                            failureBlock(error);
+                        }
+                        
+                        successBlock(userInfo);
+                        
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        
+                        NSError *serverError = [self serverErrorWithError:error];
+                        failureBlock(serverError);
+
+                    }];
+}
+
+- (void) updateBankUserInfo:(HWBankUserInfo *)userInfo
+               successBlock:(void(^)())successblock
+               failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSDictionary *params = @{
+                             @"first_name": userInfo.first_name,
+                             @"last_name": userInfo.last_name,
+                             @"birth_date": userInfo.birth_date,
+                             @"birth_month": userInfo.birth_month,
+                             @"birth_year": userInfo.birth_year
+                             
+                             };
+    
+    [self.networkDecorator PUT:@"user/banking/user_info"
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           successblock();
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                       }];
+}
+
+- (void) getBankAccountInfoWithSuccessBlock:(void(^)(HWBankAccountInfo *accInfo)) successBlock
+                               failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    
+    [self.networkDecorator GET:@"user/banking/account"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           HWBankAccountInfo *bankInfo = responseObject[@"account"];
+                           
+                           successBlock(bankInfo);
+                           
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                       }];
+}
+
+
+- (void) updateBankAccountInfo:(HWBankAccountInfo *) accInfo
+                  successBlock:(void(^)()) successBlock
+                  failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    
+    NSDictionary *params = @{
+                             @"holder_first_name": accInfo.holder_first_name,
+                             @"holder_last_name": accInfo.holder_last_name,
+                             @"number": accInfo.number,
+                             @"sort_code": accInfo.sort_code
+                             };
+    
+    [self.networkDecorator PUT:@"user/banking/account"
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           successBlock();
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                       }];
+}
+
+- (void) getBankAccountAddressWithSuccessBlock:(void(^)(HWBankAccountAddress *bankaddress)) successBlock
+                                  failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    [self.networkDecorator GET:@"user/banking/address"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           HWBankAccountAddress * accAddress = responseObject[@"address"];
+                           
+                           successBlock(accAddress);
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                       }];
+}
+
+- (void) updateBankAccountAddress:(HWBankAccountAddress*)accAddress
+                     successBlock:(void(^)()) successBlock
+                     failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSDictionary *params = @{
+                             @"address_line1": accAddress.address_line1,
+                             @"address_line2": accAddress.address_line2,
+                             @"city": accAddress.city,
+                             @"post_code": accAddress.post_code
+                             };
+    
+    [self.networkDecorator PUT:@"user/banking/address"
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           successBlock();
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                           
+                       }];
+}
+
 
 @end

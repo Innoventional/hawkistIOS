@@ -57,6 +57,8 @@
 @property (nonatomic, assign) CGFloat shipping;
 @property (nonatomic, assign) CGFloat total;
 
+@property (nonatomic, strong) NSString *balance;
+
 @property (nonatomic, strong) HWItem *item;
 
 @property (nonatomic, assign) NSInteger checkForBuy;
@@ -142,8 +144,9 @@
 
 - (void) setupPaymentArrayData {
     
-    [self.networkManager getAllBankCards:^(NSArray *cards) {
+    [self.networkManager getAllBankCards:^(NSArray *cards, NSString *balance) {
         
+        self.balance = balance;
         self.paymentOptionArray = cards;
         [self.tableView reloadData];
         [self.paymentCollectionView reloadData];
@@ -414,6 +417,7 @@
         if(indexPath.row == [self.paymentOptionArray count]){
             
             HWPaymentBalanceCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:paymentBalanceCell forIndexPath:indexPath];
+            [cell setCellWithBalance:self.balance];
             cell.isSelected = (indexPath.row == self.paymentSelectRow);
             
             return cell;

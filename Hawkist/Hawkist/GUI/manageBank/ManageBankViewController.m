@@ -59,7 +59,7 @@
     
     [self showHud];
     
-    [[NetworkManager shared]getAllBankCards:^(NSArray *cards) {
+    [[NetworkManager shared]getAllBankCards:^(NSArray *cards, NSString *balance) {
         
         self.cards = [NSArray arrayWithArray:cards];
         float cardWidth = self.view.width - 30;

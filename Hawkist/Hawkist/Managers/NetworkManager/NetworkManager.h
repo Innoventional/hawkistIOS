@@ -13,6 +13,10 @@
 #import "HWAddress.h"
 
 
+@class HWBankAccountAddress;
+@class HWBankUserInfo;
+@class HWBankAccountInfo;
+
 @interface NetworkManager : NSObject
 
 + (instancetype) shared;
@@ -217,7 +221,7 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
            successBlock:(void(^)(void)) successBlock
            failureBlock: (void (^)(NSError* error)) failureBlock;
 
-- (void) getAllBankCards:(void(^)(NSArray *cards))successBlock
+- (void) getAllBankCards:(void(^)(NSArray *cards, NSString *balance))successBlock
             failureBlock:(void(^)(NSError *error)) failureBlock;
 
 - (void) removeBankCard:(NSString*)cardId
@@ -298,5 +302,35 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
 
 - (void) getRecentlyAddress:(void(^)(HWAddress *address))successBlock
                failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
+
+#pragma mark - User Balance
+
+-(void) getUserBalanceWithSuccessBlock:(void(^)(NSString *available, NSString *pending)) successBlock
+                          failureBlock:(void(^)(NSError *error)) failureBlock;
+
+-(void) getBankUserInfoWithSuccessBlock:(void(^)(HWBankUserInfo *userInfo)) successBlock
+                           failureBlock:(void(^)(NSError *error)) failureBlock;
+
+- (void) updateBankUserInfo:(HWBankUserInfo *)userInfo
+               successBlock:(void(^)())successblock
+               failureBlock:(void(^)(NSError *error)) failureBlock;
+
+- (void) getBankAccountInfoWithSuccessBlock:(void(^)(HWBankAccountInfo *accInfo)) successBlock
+                               failureBlock:(void(^)(NSError *error)) failureBlock;
+
+- (void) updateBankAccountInfo:(HWBankAccountInfo *) accInfo
+                  successBlock:(void(^)()) successBlock
+                  failureBlock:(void(^)(NSError *error)) failureBlock;
+
+- (void) getBankAccountAddressWithSuccessBlock:(void(^)(HWBankAccountAddress *bankaddress)) successBlock
+                                  failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
+- (void) updateBankAccountAddress:(HWBankAccountAddress*)accAddress
+                     successBlock:(void(^)()) successBlock
+                     failureBlock:(void(^)(NSError *error)) failureBlock;
+
 
 @end

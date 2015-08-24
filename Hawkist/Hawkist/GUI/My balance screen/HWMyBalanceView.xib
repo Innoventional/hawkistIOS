@@ -31,6 +31,7 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
         </mutableArray>
         <mutableArray key="OpenSansRegular.ttf">
             <string>OpenSans</string>
@@ -51,9 +52,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWMyBalanceViewController">
             <connections>
+                <outlet property="balanceView" destination="aYy-rO-rC4" id="Iyj-9J-jKb"/>
+                <outlet property="bankAccAddressView" destination="niD-H9-11S" id="8IS-UE-unW"/>
+                <outlet property="bankAccountView" destination="eFZ-Y1-9sm" id="oTw-bv-fNn"/>
+                <outlet property="contentConstreint" destination="taA-Bg-gwe" id="jPl-fv-wZZ"/>
                 <outlet property="contentView" destination="UWX-gn-NOJ" id="1kU-IW-wyC"/>
+                <outlet property="navView" destination="0cf-3N-GN7" id="1uk-7b-hHt"/>
                 <outlet property="scrollView" destination="b7D-Yq-zty" id="ika-ao-Ebq"/>
                 <outlet property="view" destination="kne-yE-TGY" id="ai4-hj-opL"/>
+                <outlet property="warningMessageConstraint" destination="5ll-RY-Rh3" id="ebm-Zw-OeK"/>
+                <outlet property="withwardButtonConstraint" destination="WEQ-PQ-hlw" id="NaS-Sp-zfC"/>
+                <outlet property="yourDetailsView" destination="VKz-CF-Ifp" id="tv4-X2-ior"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -72,9 +81,9 @@
                     <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                     <subviews>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWX-gn-NOJ" userLabel="contentView">
-                            <rect key="frame" x="0.0" y="-966" width="320" height="1377"/>
+                            <rect key="frame" x="0.0" y="-516" width="320" height="1379"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-rO-rC4" userLabel="Balance view">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-rO-rC4" userLabel="Balance view" customClass="HWMyBalanceCurrentBalanceView">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="93G-hN-ISd">
@@ -145,6 +154,10 @@
                                         <constraint firstAttribute="trailing" secondItem="o49-sL-DkT" secondAttribute="trailing" constant="16" id="sta-jf-sK2"/>
                                         <constraint firstAttribute="trailing" secondItem="edf-En-8dK" secondAttribute="trailing" constant="16" id="tPA-ub-AUy"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="currentBalance" destination="iO5-uD-cMX" id="Kzd-fW-MSx"/>
+                                        <outlet property="pendingSales" destination="edf-En-8dK" id="BT8-Cw-kDd"/>
+                                    </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7H-XI-7K6" userLabel="warning message view">
                                     <rect key="frame" x="0.0" y="125" width="320" height="124"/>
@@ -208,6 +221,9 @@
                                                     <integer key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="withDrawMyBalanceAction:" destination="-1" eventType="touchUpInside" id="TZ4-RF-L2O"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -219,7 +235,7 @@
                                         <constraint firstItem="ZRt-0g-gRo" firstAttribute="leading" secondItem="idj-NR-nWV" secondAttribute="leading" constant="16" id="qXi-Rj-gxZ"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKz-CF-Ifp" userLabel="your details">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKz-CF-Ifp" userLabel="your details" customClass="HWMyBalanceYourDetailsView">
                                     <rect key="frame" x="0.0" y="329" width="320" height="263"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTJ-V9-XJn">
@@ -306,6 +322,9 @@
                                                     <integer key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="saveEditAction:" destination="VKz-CF-Ifp" eventType="touchUpInside" id="LsC-qd-vmy"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -348,8 +367,14 @@
                                         <constraint firstItem="KBq-1e-JXb" firstAttribute="leading" secondItem="VKz-CF-Ifp" secondAttribute="leading" constant="16" id="xkn-kb-Ufw"/>
                                         <constraint firstItem="pTJ-V9-XJn" firstAttribute="leading" secondItem="VKz-CF-Ifp" secondAttribute="leading" id="zlG-Cl-uyY"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="birthday" destination="NMf-BD-2tj" id="O3K-wc-C7o"/>
+                                        <outlet property="firstName" destination="b6H-Q7-9UN" id="eeD-5o-tbA"/>
+                                        <outlet property="lastName" destination="6yq-VP-D6Z" id="8dR-ig-gaR"/>
+                                        <outlet property="saveEditButton" destination="KBq-1e-JXb" id="FDe-v6-Knl"/>
+                                    </connections>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFZ-Y1-9sm" userLabel="bankAccountView">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFZ-Y1-9sm" userLabel="bankAccountView" customClass="HWBankAccountView">
                                     <rect key="frame" x="0.0" y="592" width="320" height="291"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOB-eg-ZOS">
@@ -368,6 +393,9 @@
                                                         <color key="titleColor" red="0.2156862745" green="0.72549019609999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="whyWeNeedThisAction:" destination="eFZ-Y1-9sm" eventType="touchUpInside" id="jHU-c3-CcL"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -456,6 +484,9 @@
                                                     <integer key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="saveEditBankAccAction:" destination="eFZ-Y1-9sm" eventType="touchUpInside" id="bUQ-e9-c1E"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -505,8 +536,16 @@
                                         <constraint firstAttribute="centerX" secondItem="u9z-m4-Jnw" secondAttribute="centerX" constant="-0.5" id="x5W-Mg-noR"/>
                                         <constraint firstItem="PcD-Lm-uhB" firstAttribute="leading" secondItem="eFZ-Y1-9sm" secondAttribute="leading" constant="16" id="xiX-A3-7Gn"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="accountNumber" destination="PcD-Lm-uhB" id="jbc-xO-Tcz"/>
+                                        <outlet property="firstName" destination="76K-1a-vrA" id="10S-Gy-SA9"/>
+                                        <outlet property="lastName" destination="9F7-mp-Axh" id="OuT-Rw-sGv"/>
+                                        <outlet property="saveEditBankAccButton" destination="rSX-Fw-sVZ" id="0rW-gt-xZP"/>
+                                        <outlet property="sortCode" destination="5xL-nH-sri" id="zIQ-Id-r8W"/>
+                                        <outlet property="whyWeNeedThisButton" destination="sVl-Bw-aAJ" id="Nr5-I2-9cB"/>
+                                    </connections>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niD-H9-11S">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niD-H9-11S" customClass="HWMyBalanceBankAccAddressView">
                                     <rect key="frame" x="0.0" y="883" width="320" height="420"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRc-VD-Lnu">
@@ -536,6 +575,9 @@
                                             <state key="normal" backgroundImage="acdet_check">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="sameAsBillingAction:" destination="niD-H9-11S" eventType="touchUpInside" id="9Y0-17-7MA"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Same as Billing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFb-vR-Lbl">
                                             <rect key="frame" x="61" y="54" width="98" height="20"/>
@@ -628,9 +670,12 @@
                                                     <integer key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="saveEditBankAccountAddressAction:" destination="niD-H9-11S" eventType="touchUpInside" id="tEr-jQ-ZEi"/>
+                                            </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="fFb-vR-Lbl" firstAttribute="top" secondItem="fRc-VD-Lnu" secondAttribute="bottom" constant="17" id="0Zr-nm-Bk9"/>
                                         <constraint firstItem="g5F-1c-G5Q" firstAttribute="centerX" secondItem="Ip2-U1-3Uf" secondAttribute="centerX" id="1L0-8O-l0s"/>
@@ -686,12 +731,29 @@
                                         <constraint firstAttribute="trailing" secondItem="QWe-ar-wqm" secondAttribute="trailing" constant="16" id="zaD-Ar-sly"/>
                                         <constraint firstItem="Vha-Yq-eTl" firstAttribute="trailing" secondItem="coC-B6-Y5i" secondAttribute="trailing" id="zkN-tx-1ye"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="addressLine1" destination="QWe-ar-wqm" id="EKs-VA-jIp"/>
+                                        <outlet property="addressLine2" destination="VM9-WW-aIF" id="hPC-gy-daG"/>
+                                        <outlet property="city" destination="coC-B6-Y5i" id="dMa-Qz-Jrm"/>
+                                        <outlet property="postCode" destination="g5F-1c-G5Q" id="hAl-Vw-bPx"/>
+                                        <outlet property="sameAsBillingButton" destination="f54-fb-eDL" id="c6U-Ip-mgD"/>
+                                        <outlet property="saveEditAccountAddressButton" destination="wLr-8D-JjW" id="ZxR-i7-ozm"/>
+                                    </connections>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4f-Zg-YfI">
-                                    <rect key="frame" x="0.0" y="1305" width="320" height="72"/>
-                                    <state key="normal" title="Button">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Enu-tL-ofU">
+                                    <rect key="frame" x="0.0" y="1303" width="320" height="76"/>
+                                    <color key="backgroundColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="76" id="OfM-5e-sQQ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                    <state key="normal" title="CHECK MY BALANCE">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="checkMyBalanceAction:" destination="-1" eventType="touchUpInside" id="EUd-1B-Dd9"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="0.47486636510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -706,6 +768,7 @@
                                 <constraint firstItem="t7H-XI-7K6" firstAttribute="leading" secondItem="UWX-gn-NOJ" secondAttribute="leading" id="EO1-fm-ecu"/>
                                 <constraint firstItem="eFZ-Y1-9sm" firstAttribute="top" secondItem="VKz-CF-Ifp" secondAttribute="bottom" id="FLA-DP-8Tm"/>
                                 <constraint firstItem="aYy-rO-rC4" firstAttribute="leading" secondItem="UWX-gn-NOJ" secondAttribute="leading" id="Gq6-wh-LmE"/>
+                                <constraint firstItem="Enu-tL-ofU" firstAttribute="leading" secondItem="UWX-gn-NOJ" secondAttribute="leading" id="Rgk-Fl-PY3"/>
                                 <constraint firstAttribute="trailing" secondItem="idj-NR-nWV" secondAttribute="trailing" id="ccq-hR-CmA"/>
                                 <constraint firstItem="idj-NR-nWV" firstAttribute="leading" secondItem="UWX-gn-NOJ" secondAttribute="leading" id="drH-uI-v8T"/>
                                 <constraint firstItem="idj-NR-nWV" firstAttribute="top" secondItem="t7H-XI-7K6" secondAttribute="bottom" id="emb-KI-Sv2"/>
@@ -715,7 +778,9 @@
                                 <constraint firstItem="t7H-XI-7K6" firstAttribute="top" secondItem="aYy-rO-rC4" secondAttribute="bottom" id="h82-8B-h7X"/>
                                 <constraint firstItem="VKz-CF-Ifp" firstAttribute="top" secondItem="idj-NR-nWV" secondAttribute="bottom" id="i2X-gY-RL2"/>
                                 <constraint firstAttribute="trailing" secondItem="t7H-XI-7K6" secondAttribute="trailing" id="mfh-Jn-fnX"/>
-                                <constraint firstAttribute="height" constant="1309" id="taA-Bg-gwe"/>
+                                <constraint firstItem="Enu-tL-ofU" firstAttribute="top" secondItem="niD-H9-11S" secondAttribute="bottom" id="mnT-78-dzD"/>
+                                <constraint firstAttribute="trailing" secondItem="Enu-tL-ofU" secondAttribute="trailing" id="mrr-ST-at0"/>
+                                <constraint firstAttribute="height" constant="1379" id="taA-Bg-gwe"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -724,7 +789,7 @@
                         <constraint firstAttribute="centerX" secondItem="UWX-gn-NOJ" secondAttribute="centerX" id="QLZ-tu-Z14"/>
                         <constraint firstItem="UWX-gn-NOJ" firstAttribute="top" secondItem="b7D-Yq-zty" secondAttribute="top" id="Rbs-Dv-R7s"/>
                         <constraint firstItem="UWX-gn-NOJ" firstAttribute="leading" secondItem="b7D-Yq-zty" secondAttribute="leading" id="all-fg-RHC"/>
-                        <constraint firstAttribute="centerY" secondItem="UWX-gn-NOJ" secondAttribute="centerY" constant="-403" id="eoV-Nj-93z"/>
+                        <constraint firstAttribute="centerY" secondItem="UWX-gn-NOJ" secondAttribute="centerY" constant="438" id="eoV-Nj-93z"/>
                         <constraint firstAttribute="trailing" secondItem="UWX-gn-NOJ" secondAttribute="trailing" id="rZl-I6-yfC"/>
                     </constraints>
                 </scrollView>
@@ -741,7 +806,7 @@
                 <constraint firstAttribute="centerY" secondItem="b7D-Yq-zty" secondAttribute="centerY" constant="-32.5" id="z8Z-dJ-9II"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="203" y="235"/>
+            <point key="canvasLocation" x="62" y="61"/>
         </view>
     </objects>
     <resources>
