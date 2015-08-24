@@ -1870,6 +1870,43 @@ NSString *URLString = @"user/logout";
                        }];
 }
 
+#pragma mark -
+#pragma mark HolidayMode
+
+- (void) updateHolidayMode:(BOOL) enabled
+              successBlock:(void(^)(void)) successBlock
+              failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    NSDictionary *parametrs;
+    if (enabled){
+    parametrs = @{@"notify_about_favorite": @"1"};
+    }
+    else
+    {
+    parametrs = @{@"notify_about_favorite": @"0"};
+    }
+    
+    [self.networkDecorator PUT:@"user/notify_about_favorite"
+
+                    parameters:parametrs success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        if([responseObject[@"status"] integerValue] != 0)
+                        {
+                            NSError *responseError = [self errorWithResponseObject:responseObject];
+                            failureBlock(responseError);
+                            return;
+                        }
+                        
+                        successBlock();
+                        
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        
+                        NSError *serverError = [self serverErrorWithError:error];
+                        failureBlock(serverError);
+                        
+                }];
+    
+}
+
 
 #pragma mark -
 #pragma mark Address

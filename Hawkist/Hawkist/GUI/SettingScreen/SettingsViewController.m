@@ -13,6 +13,8 @@
 #import "PersonalisationViewController.h"
 #import "HWMyOrdersViewController.h"
 #import "HWProfileViewController.h"
+#import "myFavouritesViewController.h"
+#import "HolidayModeViewController.h"
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -225,10 +227,13 @@
 {
     switch (row) {
         case 0:
-            
+        {
             NSLog(@"My Fav");
-            break;
+            myFavouritesViewController *vc = [[myFavouritesViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:NO];
             
+            break;
+        }
         case 1:
             
             NSLog(@"My Balance");
@@ -258,10 +263,12 @@
     
     switch (row) {
         case 0:
-            
+        {
+            HolidayModeViewController *vc = [[HolidayModeViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
             NSLog(@"Holiday Mode");
             break;
-            
+        }
         default:
             break;
     }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="do6-3o-XQn">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myfavorites" translatesAutoresizingMaskIntoConstraints="NO" id="FRu-Zz-YXl">
+                    <rect key="frame" x="142" y="154" width="37" height="37"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Favourited Items Yet!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vE-T8-a5n">
+                    <rect key="frame" x="57" y="211" width="206" height="25"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                    <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View listings and press" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTM-o8-zXb">
+                    <rect key="frame" x="87" y="256" width="147" height="20"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                    <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bstar" translatesAutoresizingMaskIntoConstraints="NO" id="pW0-4w-j19">
+                    <rect key="frame" x="243" y="256" width="20" height="20"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to favourite an item." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKU-G0-Bpb">
+                    <rect key="frame" x="94" y="278" width="133" height="20"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                    <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="8vE-T8-a5n" firstAttribute="top" secondItem="FRu-Zz-YXl" secondAttribute="bottom" constant="20" id="0ze-LA-mWs"/>
+                <constraint firstAttribute="centerX" secondItem="8vE-T8-a5n" secondAttribute="centerX" id="1gI-7i-uLq"/>
+                <constraint firstAttribute="centerX" secondItem="HKU-G0-Bpb" secondAttribute="centerX" id="ATL-GQ-kmT"/>
+                <constraint firstAttribute="centerX" secondItem="uTM-o8-zXb" secondAttribute="centerX" id="Cb7-kV-dLs"/>
+                <constraint firstAttribute="centerX" secondItem="FRu-Zz-YXl" secondAttribute="centerX" id="Kba-xz-yTG"/>
+                <constraint firstAttribute="centerY" secondItem="FRu-Zz-YXl" secondAttribute="centerY" constant="68" id="P5H-v7-wrm"/>
+                <constraint firstItem="HKU-G0-Bpb" firstAttribute="top" secondItem="uTM-o8-zXb" secondAttribute="bottom" constant="2" id="Qit-Ca-ijd"/>
+                <constraint firstItem="8vE-T8-a5n" firstAttribute="centerX" secondItem="FRu-Zz-YXl" secondAttribute="centerX" id="SOh-W9-L7h"/>
+                <constraint firstItem="pW0-4w-j19" firstAttribute="top" secondItem="8vE-T8-a5n" secondAttribute="bottom" constant="20" id="gpB-5W-42P"/>
+                <constraint firstItem="uTM-o8-zXb" firstAttribute="top" secondItem="8vE-T8-a5n" secondAttribute="bottom" constant="20" id="kdh-iv-wpH"/>
+                <constraint firstItem="pW0-4w-j19" firstAttribute="leading" secondItem="uTM-o8-zXb" secondAttribute="trailing" constant="9" id="o5s-sf-eEP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="333" y="284"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Bstar" width="20" height="20"/>
+        <image name="myfavorites" width="37" height="37"/>
+    </resources>
+</document>

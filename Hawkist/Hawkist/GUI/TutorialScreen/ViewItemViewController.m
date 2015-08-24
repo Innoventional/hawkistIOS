@@ -314,6 +314,17 @@
     self.askOutlet.enabled = NO;
 }
     
+    if ([self.item.status isEqualToString:@"1"])
+    {
+        
+        if ([self.item.user_id integerValue] != [[AppEngine shared].user.id integerValue])
+        {
+        if (self.item.user_who_reserve_id != [AppEngine shared].user.id)
+        {
+            [self showAlertWithTitle:@"Item Not Available" Message:@"Unfortunately this item has been purchased by another user already. Please find an alternative listing."];
+        }
+        }
+    }
    
 }
 

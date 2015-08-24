@@ -16,7 +16,7 @@
 #import "SettingsViewController.h"
 
 
-
+#import "HolidayModeViewController.h"
 #import "HWLeaveFeedbackViewController.h"
 #import "HWFeedBackViewController.h"
 
@@ -99,7 +99,7 @@
         }
         case 3:
         {
-            FeedScreenViewController *vc = [[FeedScreenViewController alloc]initWithTag:@"asd"];
+            HolidayModeViewController *vc = [[HolidayModeViewController alloc]init];
             [self.navigationController pushViewController:vc animated:NO];
             
             

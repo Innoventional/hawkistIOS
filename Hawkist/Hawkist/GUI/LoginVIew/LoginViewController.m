@@ -122,8 +122,6 @@
     NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"ENTER PIN" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
     self.txtPin.attributedPlaceholder = str2;
     
-    _txtMobileNum.text = _engine.number;
-    _txtPin.text = _engine.pin;
 
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleDefault;
@@ -152,6 +150,13 @@
     _txtMobileNum.inputAccessoryView = numberToolbar;
     _txtPin.inputAccessoryView = numberToolbar;
 
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    _txtMobileNum.text = _engine.number;
+    _txtPin.text = _engine.pin;
 }
 
 
@@ -357,7 +362,10 @@
         
         [self logged:user isLoggedWithFacebook:NO];
         _engine.number = user.phone;
-                _engine.pin = _txtCode.text;
+        _engine.pin = _txtCode.text;
+        
+        
+        
         [self hideHud];
     } failureBlock:^(NSError *error) {
        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
@@ -377,7 +385,7 @@
 {
     [_networkManager getListOfTags:^(NSMutableArray *tags) {
         
-         _engine.user = user;
+        _engine.user = user;
         _engine.tags = tags;
        
         if (user.first_login)
