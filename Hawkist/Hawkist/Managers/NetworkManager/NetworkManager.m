@@ -18,6 +18,7 @@
 #import "HWBankUserInfo.h"
 #import "HWBankAccountInfo.h"
 #import "HWBankAccountAddress.h"
+#import "HWNotification.h"
 
 
 
@@ -1944,7 +1945,6 @@ NSString *URLString = @"user/logout";
 
 }
 
-
 #pragma mark -
 #pragma mark Address
 
@@ -2131,6 +2131,81 @@ NSString *URLString = @"user/logout";
 }
 
 
+#pragma mark -
+#pragma mark Notification
+
+- (void) getNotifications:(void(^)(NSArray *notifications))successBlock
+             failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    [self.networkDecorator GET:@"user/notifications"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           NSError* error;
+                           NSMutableArray* notifications = [NSMutableArray array];
+                           for (NSDictionary* notification in responseObject[@"notifications"])
+                           {
+                               HWNotification* newNotification = [[HWNotification alloc]initWithDictionary: notification error: &error];
+                               [notifications addObject:newNotification];
+                           }
+                           //
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(notifications);
+                           
+                           
+                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                       }];
+    
+}
+
+- (void) getNotificationsCount:(void(^)(NSInteger count))successBlock
+                  failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    [self.networkDecorator GET:@"user/new_notifications"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           successBlock([responseObject[@"count"] integerValue]);
+                           
+                           
+                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                       }];
+    
+    
+}
 
 
 #pragma mark - Feedback

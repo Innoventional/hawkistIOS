@@ -109,24 +109,17 @@
         }
         case 3:
         {
- 
- 
- 
-            
-            [self.contentView addContentView: self.notificationVC.view];
-            
+            HWMyBalanceViewController *vc = [[HWMyBalanceViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         case 4:
         {
- 
-            HWMyBalanceViewController *vc = [[HWMyBalanceViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
             
-            
- 
+            [self.contentView addContentView: self.supportVC.view];
+                
             break;
-             
+            
         }
             
         case 5:

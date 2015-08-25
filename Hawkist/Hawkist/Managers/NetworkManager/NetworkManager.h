@@ -313,7 +313,14 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
 - (void) getRecentlyAddress:(void(^)(HWAddress *address))successBlock
                failureBlock:(void(^)(NSError *error)) failureBlock;
 
+#pragma mark -
+#pragma mark Notification
 
+- (void) getNotifications:(void(^)(NSArray *notifications))successBlock
+             failureBlock:(void(^)(NSError *error)) failureBlock;
+
+- (void) getNotificationsCount:(void(^)(NSInteger count))successBlock
+                  failureBlock:(void(^)(NSError *error)) failureBlock;
 
 #pragma mark - User Balance
 
