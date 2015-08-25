@@ -293,7 +293,7 @@
     
     
     
-    if ([[AppEngine shared].user.id isEqualToString:self.item.user_id] || [self.item.status isEqualToString:@"1"])
+    if ([[AppEngine shared].user.id isEqualToString:self.item.user_id])
     {
         self.buyThisItem.enabled = NO;
         
@@ -313,6 +313,8 @@
     self.buyThisItem.enabled = YES;
     self.askOutlet.enabled = NO;
 }
+    
+
     
    
 }
@@ -655,9 +657,21 @@
 
 - (IBAction)buyButton:(id)sender {
 
-    if ([self.item.status isEqualToString:@"2"])
+    if ([self.item.status isEqualToString:@"1"])
     {
-        
+        if ([self.item.user_id integerValue] != [[AppEngine shared].user.id integerValue])
+        {
+            if (![self.item.user_who_reserve_id isEqualToString:[AppEngine shared].user.id])
+            {
+                [self showAlertWithTitle:@"Item Not Available" Message:@"Unfortunately this item has been purchased by another user already. Please find an alternative listing."];
+            }
+            else
+            {
+            [self.navigationController pushViewController: [[BuyThisItemViewController alloc] initWithItem:self.item]  animated: YES];
+            }
+
+        }
+
     }
     else
     [self.navigationController pushViewController: [[BuyThisItemViewController alloc] initWithItem:self.item]  animated: YES];

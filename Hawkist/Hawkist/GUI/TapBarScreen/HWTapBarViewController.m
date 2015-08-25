@@ -14,9 +14,10 @@
 #import "AccountDetailViewController.h"
 #import "ManageBankViewController.h"
 #import "SettingsViewController.h"
+#import "SupportScreenViewController.h"
+#import "NotificationScreenViewController.h"
 
-
-
+#import "HolidayModeViewController.h"
 #import "HWLeaveFeedbackViewController.h"
 #import "HWFeedBackViewController.h"
 #import "HWMyBalanceViewController.h"
@@ -32,8 +33,8 @@
 @property (nonatomic, strong) FeedScreenViewController* feedVC;
 @property (nonatomic, strong) WantToSellViewController* sellVC;
 @property (nonatomic, strong) SettingsViewController* settingVC;
-
-
+@property (nonatomic, strong) SupportScreenViewController* supportVC;
+@property (nonatomic, strong) NotificationScreenViewController* notificationVC;
 @property (nonatomic,strong) ManageBankViewController* bankVC;
 @end
 
@@ -57,7 +58,15 @@
     self.settingVC = [[SettingsViewController alloc]init];
     [self addChildViewController:self.settingVC];
     
+    self.supportVC = [[SupportScreenViewController alloc]init];
+    [self addChildViewController:self.supportVC];
+    
+    self.notificationVC = [[NotificationScreenViewController alloc]init];
+    [self addChildViewController:self.notificationVC];
+    
     self.currentSelectedItem = 1;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,6 +112,8 @@
  
  
  
+            
+            [self.contentView addContentView: self.notificationVC.view];
             
             break;
         }

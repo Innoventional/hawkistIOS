@@ -44,6 +44,7 @@
     self.placeHolder.frame = CGRectMake(0, self.navigation.height, self.view.width, self.view.height - 130);
     
     [self.view addSubview:self.placeHolder];
+        self.placeHolder.hidden = YES;
 }
 
 

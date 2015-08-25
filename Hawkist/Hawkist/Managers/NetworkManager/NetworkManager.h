@@ -280,6 +280,16 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
 
 
 #pragma mark -
+#pragma mark HolidayMode
+
+- (void) updateHolidayMode:(BOOL) enabled
+              successBlock:(void(^)(void)) successBlock
+              failureBlock: (void (^)(NSError* error)) failureBlock;
+
+- (void) getHolidayMode:(void(^)(BOOL *enabled))successBlock
+           failureBlock:(void(^)(NSError *error)) failureBlock;
+
+#pragma mark -
 #pragma mark Address
 
 - (void) addNewAddress:(HWAddress*) address

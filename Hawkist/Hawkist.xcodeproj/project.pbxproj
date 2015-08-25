@@ -30,6 +30,14 @@
 		3A8366791B30668E00208FC5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366761B30668E00208FC5 /* LoginViewController.m */; };
 		3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366801B31A85900208FC5 /* AccountDetailView.xib */; };
 		3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */; };
+		3A8F7DB41B8BCC6A000940CF /* defaultFavourites.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F7DB31B8BCC6A000940CF /* defaultFavourites.xib */; };
+		3A8F7DB71B8BD806000940CF /* supportScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F7DB61B8BD806000940CF /* supportScreen.xib */; };
+		3A8F7DBA1B8BD85A000940CF /* SupportScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F7DB91B8BD85A000940CF /* SupportScreenViewController.m */; };
+		3A8F7DBD1B8C8280000940CF /* NotificationScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F7DBC1B8C8280000940CF /* NotificationScreen.xib */; };
+		3A8F7DC01B8C8302000940CF /* NotificationScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F7DBF1B8C8302000940CF /* NotificationScreenViewController.m */; };
+		3A8F7DC21B8C88E9000940CF /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F7DC11B8C88E9000940CF /* NotificationCell.xib */; };
+		3A8F7DC51B8C8E14000940CF /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F7DC41B8C8E14000940CF /* NotificationCell.m */; };
+		3A8F7DC81B8C982F000940CF /* HWNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F7DC71B8C982F000940CF /* HWNotification.m */; };
 		3A968E161B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */; };
 		3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E181B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		3A968E221B4A8542005AA347 /* ChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E211B4A8542005AA347 /* ChoiceTableViewController.m */; };
@@ -47,6 +55,10 @@
 		3AA5CBF81B84C660006093D0 /* addressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA5CBF71B84C660006093D0 /* addressView.xib */; };
 		3AA5CBFB1B84CA2E006093D0 /* AddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBFA1B84CA2E006093D0 /* AddressView.m */; };
 		3AA5CBFE1B84DB14006093D0 /* defaultAddress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA5CBFD1B84DB14006093D0 /* defaultAddress.xib */; };
+		3AA5CC011B862AC6006093D0 /* holidayMode.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA5CC001B862AC6006093D0 /* holidayMode.xib */; };
+		3AA5CC041B8755FF006093D0 /* HolidayModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CC031B8755FF006093D0 /* HolidayModeViewController.m */; };
+		3AA5CC071B8764FC006093D0 /* myFavourites.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA5CC061B8764FC006093D0 /* myFavourites.xib */; };
+		3AA5CC0A1B8859BE006093D0 /* myFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CC091B8859BE006093D0 /* myFavouritesViewController.m */; };
 		3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6B8D1B43A0B90076004F /* Navigation.xib */; };
 		3ACC6B911B43A0D90076004F /* NavigationVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B901B43A0D90076004F /* NavigationVIew.m */; };
 		3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6B941B43A1C40076004F /* SellAnItemViewController.m */; };
@@ -243,6 +255,18 @@
 		3A8366801B31A85900208FC5 /* AccountDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetailView.xib; sourceTree = "<group>"; };
 		3A8366821B31AAAD00208FC5 /* AccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountDetailViewController.h; path = AccountDetail/AccountDetailViewController.h; sourceTree = "<group>"; };
 		3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountDetailViewController.m; path = AccountDetail/AccountDetailViewController.m; sourceTree = "<group>"; };
+		3A8F7DB31B8BCC6A000940CF /* defaultFavourites.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = defaultFavourites.xib; path = myFavorites/defaultFavourites.xib; sourceTree = "<group>"; };
+		3A8F7DB61B8BD806000940CF /* supportScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = supportScreen.xib; path = SupportScreen/supportScreen.xib; sourceTree = "<group>"; };
+		3A8F7DB81B8BD85A000940CF /* SupportScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SupportScreenViewController.h; path = SupportScreen/SupportScreenViewController.h; sourceTree = "<group>"; };
+		3A8F7DB91B8BD85A000940CF /* SupportScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SupportScreenViewController.m; path = SupportScreen/SupportScreenViewController.m; sourceTree = "<group>"; };
+		3A8F7DBC1B8C8280000940CF /* NotificationScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationScreen.xib; path = NotificationScreen/NotificationScreen.xib; sourceTree = "<group>"; };
+		3A8F7DBE1B8C8302000940CF /* NotificationScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationScreenViewController.h; path = NotificationScreen/NotificationScreenViewController.h; sourceTree = "<group>"; };
+		3A8F7DBF1B8C8302000940CF /* NotificationScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationScreenViewController.m; path = NotificationScreen/NotificationScreenViewController.m; sourceTree = "<group>"; };
+		3A8F7DC11B8C88E9000940CF /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationCell.xib; path = NotificationScreen/NotificationCell.xib; sourceTree = "<group>"; };
+		3A8F7DC31B8C8E14000940CF /* NotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationCell.h; path = NotificationScreen/NotificationCell.h; sourceTree = "<group>"; };
+		3A8F7DC41B8C8E14000940CF /* NotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationCell.m; path = NotificationScreen/NotificationCell.m; sourceTree = "<group>"; };
+		3A8F7DC61B8C982F000940CF /* HWNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWNotification.h; sourceTree = "<group>"; };
+		3A8F7DC71B8C982F000940CF /* HWNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWNotification.m; sourceTree = "<group>"; };
 		3A968E141B468EBB005AA347 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		3A968E171B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
@@ -270,6 +294,12 @@
 		3AA5CBF91B84CA2E006093D0 /* AddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressView.h; path = manageAddress/AddressView.h; sourceTree = "<group>"; };
 		3AA5CBFA1B84CA2E006093D0 /* AddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressView.m; path = manageAddress/AddressView.m; sourceTree = "<group>"; };
 		3AA5CBFD1B84DB14006093D0 /* defaultAddress.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = defaultAddress.xib; path = manageAddress/defaultAddress.xib; sourceTree = "<group>"; };
+		3AA5CC001B862AC6006093D0 /* holidayMode.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = holidayMode.xib; path = HolidayMode/holidayMode.xib; sourceTree = "<group>"; };
+		3AA5CC021B8755FF006093D0 /* HolidayModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HolidayModeViewController.h; path = HolidayMode/HolidayModeViewController.h; sourceTree = "<group>"; };
+		3AA5CC031B8755FF006093D0 /* HolidayModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HolidayModeViewController.m; path = HolidayMode/HolidayModeViewController.m; sourceTree = "<group>"; };
+		3AA5CC061B8764FC006093D0 /* myFavourites.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = myFavourites.xib; path = myFavorites/myFavourites.xib; sourceTree = "<group>"; };
+		3AA5CC081B8859BE006093D0 /* myFavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myFavouritesViewController.h; path = myFavorites/myFavouritesViewController.h; sourceTree = "<group>"; };
+		3AA5CC091B8859BE006093D0 /* myFavouritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myFavouritesViewController.m; path = myFavorites/myFavouritesViewController.m; sourceTree = "<group>"; };
 		3ACC6B8D1B43A0B90076004F /* Navigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Navigation.xib; path = NavigationView/Navigation.xib; sourceTree = "<group>"; };
 		3ACC6B8F1B43A0D90076004F /* NavigationVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationVIew.h; path = NavigationView/NavigationVIew.h; sourceTree = "<group>"; };
 		3ACC6B901B43A0D90076004F /* NavigationVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationVIew.m; path = NavigationView/NavigationVIew.m; sourceTree = "<group>"; };
@@ -660,6 +690,37 @@
 			name = AccountDetails;
 			sourceTree = "<group>";
 		};
+		3A8F7DB21B8BCC45000940CF /* placeHolder */ = {
+			isa = PBXGroup;
+			children = (
+				3A8F7DB31B8BCC6A000940CF /* defaultFavourites.xib */,
+			);
+			name = placeHolder;
+			sourceTree = "<group>";
+		};
+		3A8F7DB51B8BD7AA000940CF /* SupportScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3A8F7DB61B8BD806000940CF /* supportScreen.xib */,
+				3A8F7DB81B8BD85A000940CF /* SupportScreenViewController.h */,
+				3A8F7DB91B8BD85A000940CF /* SupportScreenViewController.m */,
+			);
+			name = SupportScreen;
+			sourceTree = "<group>";
+		};
+		3A8F7DBB1B8C8248000940CF /* NotificationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3A8F7DBC1B8C8280000940CF /* NotificationScreen.xib */,
+				3A8F7DBE1B8C8302000940CF /* NotificationScreenViewController.h */,
+				3A8F7DBF1B8C8302000940CF /* NotificationScreenViewController.m */,
+				3A8F7DC11B8C88E9000940CF /* NotificationCell.xib */,
+				3A8F7DC31B8C8E14000940CF /* NotificationCell.h */,
+				3A8F7DC41B8C8E14000940CF /* NotificationCell.m */,
+			);
+			name = NotificationScreen;
+			sourceTree = "<group>";
+		};
 		3A968E1D1B4A8483005AA347 /* ChoiceFromButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,6 +764,27 @@
 				3AA5CBFD1B84DB14006093D0 /* defaultAddress.xib */,
 			);
 			name = placeHolder;
+			sourceTree = "<group>";
+		};
+		3AA5CBFF1B862AA4006093D0 /* HolidayMode */ = {
+			isa = PBXGroup;
+			children = (
+				3AA5CC001B862AC6006093D0 /* holidayMode.xib */,
+				3AA5CC021B8755FF006093D0 /* HolidayModeViewController.h */,
+				3AA5CC031B8755FF006093D0 /* HolidayModeViewController.m */,
+			);
+			name = HolidayMode;
+			sourceTree = "<group>";
+		};
+		3AA5CC051B8764C1006093D0 /* MyFavoritesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3A8F7DB21B8BCC45000940CF /* placeHolder */,
+				3AA5CC061B8764FC006093D0 /* myFavourites.xib */,
+				3AA5CC081B8859BE006093D0 /* myFavouritesViewController.h */,
+				3AA5CC091B8859BE006093D0 /* myFavouritesViewController.m */,
+			);
+			name = MyFavoritesScreen;
 			sourceTree = "<group>";
 		};
 		3ACC6B8C1B43A0AA0076004F /* NavigationView */ = {
@@ -1427,6 +1509,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8F7DC21B8C88E9000940CF /* NotificationCell.xib in Resources */,
 				CE2579F01B73427500A0DEE9 /* cardView.xib in Resources */,
 				CE5909581B5FA94B00DAA7FF /* HWCommentCell.xib in Resources */,
 				7CE0E8E21B4307F0003B8B3A /* FeedScreenViewController.xib in Resources */,
@@ -1465,6 +1548,7 @@
 				3A61FBCE1B383B6A0004A24B /* CodeAlertView.xib in Resources */,
 				3A69015E1B783A3100B618B8 /* default.xib in Resources */,
 				7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */,
+				3A8F7DB41B8BCC6A000940CF /* defaultFavourites.xib in Resources */,
 				3AA5CBF81B84C660006093D0 /* addressView.xib in Resources */,
 				CE1546961B833A370082ACF4 /* HWFeadbackCell.xib in Resources */,
 				CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */,
@@ -1477,19 +1561,23 @@
 				3A0BAF6C1B53FAA6004DFF86 /* myItemCell.xib in Resources */,
 				CE1546351B7CD0970082ACF4 /* HWPaymentBalanceCell.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
+				3AA5CC011B862AC6006093D0 /* holidayMode.xib in Resources */,
 				7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */,
 				7CF22CA41B4FCE18002CF7ED /* open-sans.bold.ttf in Resources */,
 				3AF8320F1B70E73100CC750D /* ManageBankView.xib in Resources */,
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
+				3AA5CC071B8764FC006093D0 /* myFavourites.xib in Resources */,
 				7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */,
 				CEBAAFA11B6CE9FD00AFE4C6 /* HWSingOutCell.xib in Resources */,
 				3A6901611B784D1F00B618B8 /* AddAddressView.xib in Resources */,
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				3A6901511B72DEBF00B618B8 /* PersonalisationView.xib in Resources */,
+				3A8F7DB71B8BD806000940CF /* supportScreen.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
 				CE2579FE1B73AFD000A0DEE9 /* HWMyOrdersView.xib in Resources */,
 				CEBAAFB61B6E116200AFE4C6 /* HWPaymentCell.xib in Resources */,
+				3A8F7DBD1B8C8280000940CF /* NotificationScreen.xib in Resources */,
 				3A968E281B4AD819005AA347 /* ChoiceCell.xib in Resources */,
 				3ACC6B8E1B43A0B90076004F /* Navigation.xib in Resources */,
 				3AF832401B7190FB00CC750D /* SettingView.xib in Resources */,
@@ -1556,9 +1644,11 @@
 				CE39C88C1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.m in Sources */,
 				C35A4C6C1B3036D0002E1F26 /* HWUser.m in Sources */,
 				CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */,
+				3A8F7DC81B8C982F000940CF /* HWNotification.m in Sources */,
 				C35A4C671B3035D2002E1F26 /* UIColor+Extensions.m in Sources */,
 				3A0BAF6F1B551BA6004DFF86 /* myItemCell.m in Sources */,
 				CE954C641B750C800063A719 /* HWOrderItem.m in Sources */,
+				3A8F7DBA1B8BD85A000940CF /* SupportScreenViewController.m in Sources */,
 				C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */,
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
 				3AF832021B6F7F4400CC750D /* AddCardViewController.m in Sources */,
@@ -1598,11 +1688,14 @@
 				3A6901571B72EDFF00B618B8 /* CDatePickerViewEx.m in Sources */,
 				CEAF10661B8AFBF100E5029E /* HWMyBalanceBankAccAddressView.m in Sources */,
 				CE59095F1B5FE54400DAA7FF /* NSDate+NVTimeAgo.m in Sources */,
+				3A8F7DC01B8C8302000940CF /* NotificationScreenViewController.m in Sources */,
+				3A8F7DC51B8C8E14000940CF /* NotificationCell.m in Sources */,
 				CEBAAFAD1B6DF57F00AFE4C6 /* HWAddressOptionCell.m in Sources */,
 				CE5909461B5ABBD700DAA7FF /* HWFollowUser.m in Sources */,
 				CE1546A41B84D75F0082ACF4 /* HWFeedback.m in Sources */,
 				3AA5CBF61B84BD19006093D0 /* ManageAddressViewController.m in Sources */,
 				CE2579FC1B73AB0100A0DEE9 /* HWitemForOrdersCell.m in Sources */,
+				3AA5CC0A1B8859BE006093D0 /* myFavouritesViewController.m in Sources */,
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				3AF831FC1B6F6E7D00CC750D /* CustomField.m in Sources */,
 				C35CB4B31B4EA7E200956150 /* HWTapBarView.m in Sources */,
@@ -1639,6 +1732,7 @@
 				C35CB5431B6F5D5E00956150 /* StripeManager.m in Sources */,
 				3A45ABEB1B6BBCAB00FD56D6 /* ManageBankViewController.m in Sources */,
 				3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */,
+				3AA5CC041B8755FF006093D0 /* HolidayModeViewController.m in Sources */,
 				CEBAAFBC1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m in Sources */,
 				3A968E2B1B4AD92B005AA347 /* ChoiceCellView.m in Sources */,
 				CE2579F41B73A93800A0DEE9 /* HWMyOrdersViewController.m in Sources */,

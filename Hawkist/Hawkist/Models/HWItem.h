@@ -60,6 +60,8 @@
 @property (nonatomic, strong) NSString<Optional>* views;
 @property (nonatomic, strong) NSString<Optional>* status;
 
+@property (nonatomic, strong) NSString<Optional>* user_who_reserve_id;
+@property (nonatomic, strong) NSString<Optional>* reserved_by_user;
 
 
 @end

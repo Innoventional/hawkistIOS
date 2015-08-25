@@ -1876,6 +1876,73 @@ NSString *URLString = @"user/logout";
                        }];
 }
 
+#pragma mark -
+#pragma mark HolidayMode
+
+- (void) updateHolidayMode:(BOOL) enabled
+              successBlock:(void(^)(void)) successBlock
+              failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    NSDictionary *parametrs;
+    if (enabled){
+    parametrs = @{@"holiday_mode": @"1"};
+    }
+    else
+    {
+    parametrs = @{@"holiday_mode": @""};
+    }
+    
+    [self.networkDecorator PUT:@"user/holiday_mode"
+
+                    parameters:parametrs success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        if([responseObject[@"status"] integerValue] != 0)
+                        {
+                            NSError *responseError = [self errorWithResponseObject:responseObject];
+                            failureBlock(responseError);
+                            return;
+                        }
+                        
+                        successBlock();
+                        
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        
+                        NSError *serverError = [self serverErrorWithError:error];
+                        failureBlock(serverError);
+                        
+                }];
+    
+}
+
+- (void) getHolidayMode:(void(^)(BOOL *enabled))successBlock
+           failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    [self.networkDecorator GET:@"user/holiday_mode"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+
+                           successBlock([responseObject[@"holiday_mode"] boolValue]);
+                           
+                           
+                       }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+
+
+}
 
 
 #pragma mark -
