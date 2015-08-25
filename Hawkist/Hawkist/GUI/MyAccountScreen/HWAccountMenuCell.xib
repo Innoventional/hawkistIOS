@@ -18,8 +18,11 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ldb-pc-eIa" id="Jem-dm-lJc">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd0-Ae-ATX">
-                        <rect key="frame" x="61" y="16" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments and Suggestions are welcome" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd0-Ae-ATX">
+                        <rect key="frame" x="61" y="7" width="217" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="dN1-H5-hbg"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                         <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -54,8 +57,9 @@
                     <constraint firstItem="sd0-Ae-ATX" firstAttribute="leading" secondItem="TYt-ck-Rwg" secondAttribute="trailing" constant="18" id="FJZ-mt-ZSO"/>
                     <constraint firstItem="WOt-As-189" firstAttribute="leading" secondItem="Jem-dm-lJc" secondAttribute="leading" id="FQB-XI-r26"/>
                     <constraint firstItem="Yvc-M3-lCq" firstAttribute="trailing" secondItem="Jem-dm-lJc" secondAttribute="trailingMargin" constant="-11" id="FRB-yf-SPy"/>
-                    <constraint firstItem="sd0-Ae-ATX" firstAttribute="top" secondItem="Jem-dm-lJc" secondAttribute="topMargin" constant="8" id="FxO-ht-ay5"/>
                     <constraint firstAttribute="bottom" secondItem="WOt-As-189" secondAttribute="bottom" id="G8q-8q-91L"/>
+                    <constraint firstItem="Yvc-M3-lCq" firstAttribute="leading" secondItem="sd0-Ae-ATX" secondAttribute="trailing" constant="10" id="R8X-9v-EBb"/>
+                    <constraint firstItem="TYt-ck-Rwg" firstAttribute="centerY" secondItem="sd0-Ae-ATX" secondAttribute="centerY" id="VOi-wN-WbL"/>
                     <constraint firstItem="Yvc-M3-lCq" firstAttribute="top" secondItem="Jem-dm-lJc" secondAttribute="topMargin" constant="8" id="jj6-iq-uHB"/>
                     <constraint firstItem="WOt-As-189" firstAttribute="top" secondItem="TYt-ck-Rwg" secondAttribute="bottom" constant="10" id="oTZ-YC-zjg"/>
                 </constraints>

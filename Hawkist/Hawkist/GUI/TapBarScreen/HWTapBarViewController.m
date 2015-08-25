@@ -14,7 +14,7 @@
 #import "AccountDetailViewController.h"
 #import "ManageBankViewController.h"
 #import "SettingsViewController.h"
-
+#import "SupportScreenViewController.h"
 
 #import "HolidayModeViewController.h"
 #import "HWLeaveFeedbackViewController.h"
@@ -31,7 +31,7 @@
 @property (nonatomic, strong) FeedScreenViewController* feedVC;
 @property (nonatomic, strong) WantToSellViewController* sellVC;
 @property (nonatomic, strong) SettingsViewController* settingVC;
-
+@property (nonatomic, strong) SupportScreenViewController* supportVC;
 
 @property (nonatomic,strong) ManageBankViewController* bankVC;
 @end
@@ -56,7 +56,12 @@
     self.settingVC = [[SettingsViewController alloc]init];
     [self addChildViewController:self.settingVC];
     
+    self.supportVC = [[SupportScreenViewController alloc]init];
+    [self addChildViewController:self.supportVC];
+    
     self.currentSelectedItem = 1;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,8 +104,10 @@
         }
         case 3:
         {
-            HolidayModeViewController *vc = [[HolidayModeViewController alloc]init];
-            [self.navigationController pushViewController:vc animated:NO];
+            //HolidayModeViewController *vc = [[HolidayModeViewController alloc]init];
+            
+           // SupportScreenViewController *vc = [[SupportScreenViewController alloc]init];
+           // [self.navigationController pushViewController:vc animated:NO];
             
             
            // HWFeedBackViewController * vc = [[HWFeedBackViewController alloc] init];
@@ -110,13 +117,11 @@
         }
         case 4:
         {
-            //HWLeaveFeedbackViewController *vc = [[HWLeaveFeedbackViewController alloc] init];
-            //[self.navigationController pushViewController:vc animated:YES];
-            {
-            AccountDetailViewController *vc = [[AccountDetailViewController alloc]initWithUser:[AppEngine shared].user.id];
-                        [self.navigationController pushViewController:vc animated:YES];
+            
+            [self.contentView addContentView: self.supportVC.view];
+                
             break;
-            }
+            
         }
             
         case 5:

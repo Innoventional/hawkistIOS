@@ -31,6 +31,8 @@
 		3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8366801B31A85900208FC5 /* AccountDetailView.xib */; };
 		3A8366841B31AAAD00208FC5 /* AccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */; };
 		3A8F7DB41B8BCC6A000940CF /* defaultFavourites.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F7DB31B8BCC6A000940CF /* defaultFavourites.xib */; };
+		3A8F7DB71B8BD806000940CF /* supportScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F7DB61B8BD806000940CF /* supportScreen.xib */; };
+		3A8F7DBA1B8BD85A000940CF /* SupportScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F7DB91B8BD85A000940CF /* SupportScreenViewController.m */; };
 		3A968E161B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */; };
 		3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E181B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		3A968E221B4A8542005AA347 /* ChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E211B4A8542005AA347 /* ChoiceTableViewController.m */; };
@@ -239,6 +241,9 @@
 		3A8366821B31AAAD00208FC5 /* AccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountDetailViewController.h; path = AccountDetail/AccountDetailViewController.h; sourceTree = "<group>"; };
 		3A8366831B31AAAD00208FC5 /* AccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountDetailViewController.m; path = AccountDetail/AccountDetailViewController.m; sourceTree = "<group>"; };
 		3A8F7DB31B8BCC6A000940CF /* defaultFavourites.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = defaultFavourites.xib; path = myFavorites/defaultFavourites.xib; sourceTree = "<group>"; };
+		3A8F7DB61B8BD806000940CF /* supportScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = supportScreen.xib; path = SupportScreen/supportScreen.xib; sourceTree = "<group>"; };
+		3A8F7DB81B8BD85A000940CF /* SupportScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SupportScreenViewController.h; path = SupportScreen/SupportScreenViewController.h; sourceTree = "<group>"; };
+		3A8F7DB91B8BD85A000940CF /* SupportScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SupportScreenViewController.m; path = SupportScreen/SupportScreenViewController.m; sourceTree = "<group>"; };
 		3A968E141B468EBB005AA347 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		3A968E171B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
@@ -651,6 +656,16 @@
 			name = placeHolder;
 			sourceTree = "<group>";
 		};
+		3A8F7DB51B8BD7AA000940CF /* SupportScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3A8F7DB61B8BD806000940CF /* supportScreen.xib */,
+				3A8F7DB81B8BD85A000940CF /* SupportScreenViewController.h */,
+				3A8F7DB91B8BD85A000940CF /* SupportScreenViewController.m */,
+			);
+			name = SupportScreen;
+			sourceTree = "<group>";
+		};
 		3A968E1D1B4A8483005AA347 /* ChoiceFromButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,6 +995,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				3A8F7DB51B8BD7AA000940CF /* SupportScreen */,
 				3AA5CC051B8764C1006093D0 /* MyFavoritesScreen */,
 				3AA5CBFF1B862AA4006093D0 /* HolidayMode */,
 				3AA5CBF11B84BBAE006093D0 /* Manage Address */,
@@ -1477,6 +1493,7 @@
 				3A968E261B4AC43A005AA347 /* WantToSell.xib in Resources */,
 				7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */,
 				3A6901511B72DEBF00B618B8 /* PersonalisationView.xib in Resources */,
+				3A8F7DB71B8BD806000940CF /* supportScreen.xib in Resources */,
 				7CE102BA1B39BF8000F0F747 /* OpenSans-Italic.ttf in Resources */,
 				CE2579FE1B73AFD000A0DEE9 /* HWMyOrdersView.xib in Resources */,
 				CEBAAFB61B6E116200AFE4C6 /* HWPaymentCell.xib in Resources */,
@@ -1547,6 +1564,7 @@
 				C35A4C671B3035D2002E1F26 /* UIColor+Extensions.m in Sources */,
 				3A0BAF6F1B551BA6004DFF86 /* myItemCell.m in Sources */,
 				CE954C641B750C800063A719 /* HWOrderItem.m in Sources */,
+				3A8F7DBA1B8BD85A000940CF /* SupportScreenViewController.m in Sources */,
 				C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */,
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
 				3AF832021B6F7F4400CC750D /* AddCardViewController.m in Sources */,
