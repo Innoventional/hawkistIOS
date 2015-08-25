@@ -17,10 +17,17 @@
 @property (nonatomic, weak) IBOutlet UITextField *lastName;
 @property (nonatomic, weak) IBOutlet UITextField *birthday;
 @property (nonatomic, weak) IBOutlet UIButton *saveEditButton;
+@property (nonatomic, strong) NSDate *date;
 
 @property (nonatomic, weak) id<HWMyBalanceYourDetailsViewDelegate> delegate;
 
+@property (nonatomic, assign) BOOL isEdit;
+
 - (void) setUserDetailsWith:(HWBankUserInfo*)userInfo;
+- (HWBankUserInfo*)getUserDetails;
+
+
+-(BOOL)isFullAllTextFieldWithYourDetails:(HWBankUserInfo*) userInfo;
 
 @end
 

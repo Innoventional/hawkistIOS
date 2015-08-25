@@ -124,6 +124,7 @@
                                                object:nil];
     
     
+    
     self.navigation.delegate = self;
     self.datePicker = [[CDatePickerViewEx alloc]init];//WithFrame:CGRectMake(0, 0, 200, 50)];
     

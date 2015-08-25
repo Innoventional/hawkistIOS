@@ -55,6 +55,8 @@
                 <outlet property="balanceView" destination="aYy-rO-rC4" id="Iyj-9J-jKb"/>
                 <outlet property="bankAccAddressView" destination="niD-H9-11S" id="8IS-UE-unW"/>
                 <outlet property="bankAccountView" destination="eFZ-Y1-9sm" id="oTw-bv-fNn"/>
+                <outlet property="checkMyBalanceButton" destination="Enu-tL-ofU" id="Mx4-7x-dfA"/>
+                <outlet property="checkMyButtonConstraint" destination="OfM-5e-sQQ" id="LXW-9i-HU2"/>
                 <outlet property="contentConstreint" destination="taA-Bg-gwe" id="jPl-fv-wZZ"/>
                 <outlet property="contentView" destination="UWX-gn-NOJ" id="1kU-IW-wyC"/>
                 <outlet property="navView" destination="0cf-3N-GN7" id="1uk-7b-hHt"/>
@@ -81,7 +83,7 @@
                     <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                     <subviews>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWX-gn-NOJ" userLabel="contentView">
-                            <rect key="frame" x="0.0" y="-516" width="320" height="1379"/>
+                            <rect key="frame" x="0.0" y="-333" width="320" height="1379"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-rO-rC4" userLabel="Balance view" customClass="HWMyBalanceCurrentBalanceView">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
@@ -454,13 +456,13 @@
                                             <rect key="frame" x="16" y="178" width="132" height="21"/>
                                             <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xL-nH-sri">
                                             <rect key="frame" x="166" y="178" width="132" height="21"/>
                                             <color key="textColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="zOU-fX-Sjp">
                                             <rect key="frame" x="16" y="207" width="132" height="1"/>
@@ -470,11 +472,12 @@
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSX-Fw-sVZ">
                                             <rect key="frame" x="16" y="231" width="288" height="40"/>
-                                            <color key="backgroundColor" red="0.2156862745" green="0.72549019609999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="OU3-dP-HZR"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                            <color key="tintColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
                                             <state key="normal" title="SAVE BANK ACCOUNT">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -646,7 +649,7 @@
                                             <rect key="frame" x="172" y="322" width="132" height="20"/>
                                             <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="Vha-Yq-eTl">
                                             <rect key="frame" x="16" y="350" width="132" height="1"/>

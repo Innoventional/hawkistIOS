@@ -24,8 +24,12 @@
 @property (nonatomic, weak) IBOutlet UIButton *sameAsBillingButton;
 @property (nonatomic, assign) BOOL sameAsBilling;
 
-- (void) setBankAccountAddress:(HWBankAccountAddress*)bankAccAddress;
+@property (nonatomic, assign) BOOL isEdit;
 
+- (void) setBankAccountAddress:(HWBankAccountAddress*)bankAccAddress;
+- (HWBankAccountAddress*) getBankAccountAddress;
+
+-(BOOL)isFullAllTextFieldWithYourDetails:(HWBankAccountAddress*) accAddress;
 @end
 
 

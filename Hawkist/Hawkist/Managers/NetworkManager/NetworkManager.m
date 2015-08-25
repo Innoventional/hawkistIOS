@@ -2232,6 +2232,7 @@ NSString *URLString = @"user/logout";
                successBlock:(void(^)())successblock
                failureBlock:(void(^)(NSError *error)) failureBlock {
     
+    
     NSDictionary *params = @{
                              @"first_name": userInfo.first_name,
                              @"last_name": userInfo.last_name,
@@ -2275,11 +2276,15 @@ NSString *URLString = @"user/logout";
                                failureBlock(responseError);
                                return;
                            }
+                           NSError *error;
                            
-                           HWBankAccountInfo *bankInfo = responseObject[@"account"];
+                           HWBankAccountInfo *bankInfo = [[HWBankAccountInfo alloc] initWithDictionary:responseObject[@"account"] error:&error] ;
                            
+                           if (error) {
+                               
+                               failureBlock(error);
+                           }
                            successBlock(bankInfo);
-                           
                            
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -2296,8 +2301,8 @@ NSString *URLString = @"user/logout";
     
     
     NSDictionary *params = @{
-                             @"holder_first_name": accInfo.holder_first_name,
-                             @"holder_last_name": accInfo.holder_last_name,
+                             @"holder_first_name": accInfo.first_name,
+                             @"holder_last_name": accInfo.last_name,
                              @"number": accInfo.number,
                              @"sort_code": accInfo.sort_code
                              };
@@ -2336,8 +2341,14 @@ NSString *URLString = @"user/logout";
                                failureBlock(responseError);
                                return;
                            }
+                           NSError *error;
                            
-                           HWBankAccountAddress * accAddress = responseObject[@"address"];
+                           HWBankAccountAddress * accAddress = [[HWBankAccountAddress alloc] initWithDictionary:responseObject[@"address"] error:&error];
+                           
+                           if (error) {
+                               
+                               failureBlock(error);
+                           }
                            
                            successBlock(accAddress);
                            

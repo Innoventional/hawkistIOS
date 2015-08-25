@@ -12,4 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *currentBalance;
 @property (nonatomic, weak) IBOutlet UILabel *pendingSales;
+
+
+
 @end

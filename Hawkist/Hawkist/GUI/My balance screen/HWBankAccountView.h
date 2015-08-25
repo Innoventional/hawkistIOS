@@ -23,7 +23,12 @@
 
 @property (nonatomic, weak) id <HWBankAccountViewDelegate> delegate;
 
+@property (nonatomic, assign) BOOL isEdit;
+
 - (void) setBankAccount:(HWBankAccountInfo*)bankAccount;
+- (HWBankAccountInfo*) getBankAccount;
+
+-(BOOL)isFullAllTextFieldWithBankAcc:(HWBankAccountInfo*)bankAcc;
 
 @end
 

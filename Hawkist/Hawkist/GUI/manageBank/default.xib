@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EEE0E285-FC1C-4AD1-A3A9-9045C502B65D" translatesAutoresizingMaskIntoConstraints="NO" id="VwE-k7-jpA">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6086A343-4507-4F39-9463-0ED94405F44F" translatesAutoresizingMaskIntoConstraints="NO" id="VwE-k7-jpA">
                     <rect key="frame" x="142" y="157" width="36" height="31"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Bank Cards Added!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvM-Jx-c5w">
@@ -49,7 +49,7 @@
         </view>
     </objects>
     <resources>
-        <image name="EEE0E285-FC1C-4AD1-A3A9-9045C502B65D" width="36" height="31">
+        <image name="6086A343-4507-4F39-9463-0ED94405F44F" width="36" height="31">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

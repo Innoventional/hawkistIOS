@@ -10,8 +10,8 @@
 
 @interface HWBankAccountInfo : JSONModel
 
-@property (strong, nonatomic)NSString<Optional>* holder_first_name;
-@property (strong, nonatomic)NSString<Optional>* holder_last_name;
+@property (strong, nonatomic)NSString<Optional>* first_name;
+@property (strong, nonatomic)NSString<Optional>* last_name;
 @property (strong, nonatomic)NSString<Optional>* number;
 @property (strong, nonatomic)NSString<Optional>* sort_code;
 
