@@ -179,31 +179,38 @@
 - (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item
 {
     
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+//    
+//
+//    self.selectedId = item.id;
+//    [alert show];
+
     
-
-    self.selectedId = item.id;
-    [alert show];
-
+    [[NetworkManager shared] likeDislikeWhithItemId:item.id
+                                       successBlock:^{
+                                           
+                                       } failureBlock:^(NSError *error) {
+                                           
+                                       }];
 }
 
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        
-        [[NetworkManager shared] likeDislikeWhithItemId:self.selectedId
-                                           successBlock:^{
-
-                                           } failureBlock:^(NSError *error) {
-                                               
-                                           }];
-        
-    }
-
-    [self refresh];
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (buttonIndex == 1)
+//    {
+//        
+//        [[NetworkManager shared] likeDislikeWhithItemId:self.selectedId
+//                                           successBlock:^{
+//
+//                                           } failureBlock:^(NSError *error) {
+//                                               
+//                                           }];
+//        
+//    }
+//
+//    [self refresh];
+//}
 
 - (void) leftButtonClick
 {

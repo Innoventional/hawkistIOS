@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Semibold.ttf">
@@ -62,7 +63,7 @@
                     </connections>
                 </imageView>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardTrash" translatesAutoresizingMaskIntoConstraints="NO" id="A84-Jz-QVJ">
-                    <rect key="frame" x="230" y="69" width="40" height="40"/>
+                    <rect key="frame" x="230" y="71" width="40" height="40"/>
                     <gestureRecognizers/>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="zcz-NG-Cde" appends="YES" id="AmG-XA-SKM"/>
@@ -111,12 +112,12 @@
                 <constraint firstItem="Fqn-pc-ZBo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="11" id="2UO-vc-RcD"/>
                 <constraint firstItem="qcV-wX-5PR" firstAttribute="leading" secondItem="xt4-TG-XLN" secondAttribute="trailing" constant="13" id="4fg-cL-lmh"/>
                 <constraint firstItem="6nb-FH-NJw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="53B-pb-dWE"/>
-                <constraint firstItem="lzv-vV-Yls" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="6Lb-Bc-Ww8"/>
                 <constraint firstItem="A84-Jz-QVJ" firstAttribute="top" secondItem="xt4-TG-XLN" secondAttribute="top" id="7X7-8f-iYQ"/>
                 <constraint firstItem="4tf-Nv-J1g" firstAttribute="centerY" secondItem="GxR-ry-WL0" secondAttribute="centerY" id="7zu-6f-Xw0"/>
                 <constraint firstItem="ccL-bU-X3x" firstAttribute="top" secondItem="6nb-FH-NJw" secondAttribute="bottom" constant="5" id="ARr-Tf-Aqa"/>
                 <constraint firstItem="4tf-Nv-J1g" firstAttribute="leading" secondItem="xt4-TG-XLN" secondAttribute="leading" id="Asa-ti-aBI"/>
                 <constraint firstItem="5vw-53-rN2" firstAttribute="top" secondItem="xt4-TG-XLN" secondAttribute="bottom" constant="10" id="CQQ-sz-bmY"/>
+                <constraint firstAttribute="centerY" secondItem="A84-Jz-QVJ" secondAttribute="top" constant="-7" id="GBx-YJ-xJC"/>
                 <constraint firstItem="fq7-Th-t3A" firstAttribute="centerY" secondItem="4tf-Nv-J1g" secondAttribute="centerY" id="MFB-kb-IoT"/>
                 <constraint firstItem="A84-Jz-QVJ" firstAttribute="leading" secondItem="YYP-ma-Za0" secondAttribute="trailing" constant="19" id="Obl-MI-jw3"/>
                 <constraint firstItem="YYP-ma-Za0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QfJ-Wq-CVU"/>
@@ -132,6 +133,7 @@
                 <constraint firstItem="fq7-Th-t3A" firstAttribute="leading" secondItem="GxR-ry-WL0" secondAttribute="trailing" constant="6" id="gLQ-46-7gE"/>
                 <constraint firstItem="qcV-wX-5PR" firstAttribute="leading" secondItem="YYP-ma-Za0" secondAttribute="trailing" constant="56" id="hXf-w5-VTV"/>
                 <constraint firstItem="GxR-ry-WL0" firstAttribute="centerY" secondItem="4tf-Nv-J1g" secondAttribute="centerY" id="kup-Nv-K9o"/>
+                <constraint firstAttribute="centerY" secondItem="lzv-vV-Yls" secondAttribute="bottom" constant="7" id="lwf-Xg-erd"/>
                 <constraint firstItem="4tf-Nv-J1g" firstAttribute="top" secondItem="5vw-53-rN2" secondAttribute="bottom" constant="3" id="mMu-Dg-VZo"/>
                 <constraint firstItem="ccL-bU-X3x" firstAttribute="leading" secondItem="Fqn-pc-ZBo" secondAttribute="leading" id="p2J-Ib-qXs"/>
                 <constraint firstItem="A84-Jz-QVJ" firstAttribute="trailing" secondItem="lzv-vV-Yls" secondAttribute="trailing" id="pQQ-T6-3gH"/>
@@ -144,6 +146,7 @@
                     <exclude reference="VwR-JU-0Bg"/>
                     <exclude reference="kup-Nv-K9o"/>
                     <exclude reference="hXf-w5-VTV"/>
+                    <exclude reference="7X7-8f-iYQ"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="336.5" y="594.5"/>

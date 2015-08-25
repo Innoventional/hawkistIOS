@@ -45,6 +45,7 @@
     
     
     [self.view addSubview:self.placeHolder];
+    self.placeHolder.hidden = YES;
     
     }
 

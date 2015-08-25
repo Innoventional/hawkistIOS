@@ -23,6 +23,19 @@
     [super viewDidLoad];
     self.navigation.delegate = self;
     self.navigation.title.text = @"Holiday Mode";
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[NetworkManager shared]getHolidayMode:^(BOOL *enabled) {
+        
+        self.switchOutlet.on = enabled;
+    } failureBlock:^(NSError *error) {
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        
+    }];
 }
 
 - (instancetype)init

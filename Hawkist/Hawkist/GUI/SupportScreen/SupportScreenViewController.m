@@ -46,19 +46,19 @@
 - (void) setupMenuArray
 {
     self.sectionFirst = @[
-                          [[HWAccountMenuDataModel alloc]initWithImageName:@"1" withTitle:@"FAQs & Support"],
-                          [[HWAccountMenuDataModel alloc]initWithImageName:@"3" withTitle:@"Managing My Account"],
-                          [[HWAccountMenuDataModel alloc]initWithImageName:@"4" withTitle:@"Buying & Selling"],
-                          [[HWAccountMenuDataModel alloc]initWithImageName:@"5" withTitle:@"More About Hawkist"]
+                          [[HWAccountMenuDataModel alloc]initWithImageName:@"faq" withTitle:@"FAQs & Support"],
+                          [[HWAccountMenuDataModel alloc]initWithImageName:@"maccount" withTitle:@"Managing My Account"],
+                          [[HWAccountMenuDataModel alloc]initWithImageName:@"buysell" withTitle:@"Buying & Selling"],
+                          [[HWAccountMenuDataModel alloc]initWithImageName:@"moreabout" withTitle:@"More About Hawkist"]
 ];
     
     self.sectionSecond = @[
-                           [[HWAccountMenuDataModel alloc]initWithImageName:@"2" withTitle:@"Comments and Suggestions are welcome"]];
+                           [[HWAccountMenuDataModel alloc]initWithImageName:@"comment" withTitle:@"Comments and Suggestions are welcome"]];
     
     self.sectionThird = @[
-                          [[HWAccountMenuDataModel alloc]initWithImageName:@"6" withTitle:@"Refund Policy"],
-                          [[HWAccountMenuDataModel alloc]initWithImageName:@"6" withTitle:@"Privacy Policy"],
-                          [[HWAccountMenuDataModel alloc]initWithImageName:@"6" withTitle:@"Terms and Conditions"],
+                          [[HWAccountMenuDataModel alloc]initWithImageName:@"refund" withTitle:@"Refund Policy"],
+                          [[HWAccountMenuDataModel alloc]initWithImageName:@"privacy" withTitle:@"Privacy Policy"],
+                          [[HWAccountMenuDataModel alloc]initWithImageName:@"terms" withTitle:@"Terms and Conditions"],
                           ];
     
     self.nameForGroupArray = @[@"STICKY POSTS", @"CONTACT HAWKIST SUPPORT", @"OUR POLICIES"];
