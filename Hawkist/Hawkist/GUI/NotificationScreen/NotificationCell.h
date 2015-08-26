@@ -14,10 +14,11 @@
 @interface NotificationCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *avatar;
-@property (strong, nonatomic) IBOutlet TextViewWithDetectedWord *textView;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
 @property (strong, nonatomic) IBOutlet UILabel *time;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textHeight;
 + (CGFloat) heightWith:(NSString*)text;
 - (void) setCellWithNotification:(HWNotification*)notification;
 

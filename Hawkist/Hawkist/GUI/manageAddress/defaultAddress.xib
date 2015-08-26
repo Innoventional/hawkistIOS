@@ -16,17 +16,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manageAd" translatesAutoresizingMaskIntoConstraints="NO" id="wO2-0V-8id">
-                    <rect key="frame" x="147" y="159" width="26" height="26"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noAddress" translatesAutoresizingMaskIntoConstraints="NO" id="wO2-0V-8id">
+                    <rect key="frame" x="146" y="154" width="29" height="37"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Addresses Added!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUQ-bP-4vT">
-                    <rect key="frame" x="70" y="205" width="180" height="25"/>
+                    <rect key="frame" x="70" y="211" width="180" height="25"/>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                     <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just tap the button below if you want to add a new address." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBB-lN-elA">
-                    <rect key="frame" x="50" y="250" width="220" height="39"/>
+                    <rect key="frame" x="50" y="256" width="220" height="39"/>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                     <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -49,6 +49,6 @@
         </view>
     </objects>
     <resources>
-        <image name="manageAd" width="26" height="26"/>
+        <image name="noAddress" width="29" height="37"/>
     </resources>
 </document>

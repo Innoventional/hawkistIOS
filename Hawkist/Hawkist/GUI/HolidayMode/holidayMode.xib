@@ -77,13 +77,13 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll hide your items while you're away (this may take a few minutes)." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alU-uf-8hz">
-                            <rect key="frame" x="45" y="23" width="231" height="33"/>
+                            <rect key="frame" x="45" y="16" width="231" height="43"/>
                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qif-af-bJO">
-                            <rect key="frame" x="310" y="22" width="51" height="30"/>
+                            <rect key="frame" x="310" y="23" width="51" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="49" id="1TV-j9-iGS"/>
                                 <constraint firstAttribute="height" constant="30" id="lKz-Qn-ajb"/>
@@ -105,16 +105,16 @@
                         <constraint firstAttribute="bottom" secondItem="d1w-1V-gfz" secondAttribute="bottom" id="2Hf-Lv-vwd"/>
                         <constraint firstItem="alU-uf-8hz" firstAttribute="leading" secondItem="KG6-Bl-p3L" secondAttribute="leading" constant="45" id="86h-nv-kry"/>
                         <constraint firstItem="alU-uf-8hz" firstAttribute="leading" secondItem="RNm-ie-UPs" secondAttribute="trailing" constant="10" id="CKO-7b-TFM"/>
-                        <constraint firstAttribute="height" constant="75" id="CYm-vq-4Vl"/>
-                        <constraint firstItem="RNm-ie-UPs" firstAttribute="top" secondItem="KG6-Bl-p3L" secondAttribute="top" constant="25" id="ETj-Wr-YyG"/>
-                        <constraint firstItem="Qif-af-bJO" firstAttribute="top" secondItem="KG6-Bl-p3L" secondAttribute="top" constant="22" id="H9z-Tw-sO7"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="CYm-vq-4Vl"/>
+                        <constraint firstItem="Qif-af-bJO" firstAttribute="centerY" secondItem="alU-uf-8hz" secondAttribute="centerY" id="ETA-wG-3eq"/>
+                        <constraint firstItem="d1w-1V-gfz" firstAttribute="top" secondItem="alU-uf-8hz" secondAttribute="bottom" constant="15" id="Ey4-GT-HL4"/>
                         <constraint firstAttribute="trailing" secondItem="Qif-af-bJO" secondAttribute="trailing" constant="16" id="HH8-IB-W7R"/>
+                        <constraint firstItem="alU-uf-8hz" firstAttribute="centerY" secondItem="RNm-ie-UPs" secondAttribute="centerY" id="NfX-Ac-bfK"/>
                         <constraint firstItem="d1w-1V-gfz" firstAttribute="leading" secondItem="KG6-Bl-p3L" secondAttribute="leading" id="Oaa-K1-Uh5"/>
+                        <constraint firstAttribute="centerY" secondItem="alU-uf-8hz" secondAttribute="centerY" id="aAG-EP-HsF"/>
                         <constraint firstItem="Qif-af-bJO" firstAttribute="leading" secondItem="alU-uf-8hz" secondAttribute="trailing" constant="34" id="d5r-SK-hkw"/>
                         <constraint firstItem="RNm-ie-UPs" firstAttribute="leading" secondItem="KG6-Bl-p3L" secondAttribute="leading" constant="10" id="dgQ-a1-9Vc"/>
-                        <constraint firstItem="d1w-1V-gfz" firstAttribute="top" secondItem="RNm-ie-UPs" secondAttribute="bottom" constant="23" id="l9H-A8-pR9"/>
                         <constraint firstAttribute="trailing" secondItem="d1w-1V-gfz" secondAttribute="trailing" id="n2m-Hd-rJf"/>
-                        <constraint firstItem="alU-uf-8hz" firstAttribute="top" secondItem="KG6-Bl-p3L" secondAttribute="top" constant="23" id="vd4-Cb-j2G"/>
                     </constraints>
                 </view>
             </subviews>

@@ -2153,9 +2153,11 @@ NSString *URLString = @"user/logout";
                            
                            NSError* error;
                            NSMutableArray* notifications = [NSMutableArray array];
+                           
                            for (NSDictionary* notification in responseObject[@"notifications"])
                            {
                                HWNotification* newNotification = [[HWNotification alloc]initWithDictionary: notification error: &error];
+                               
                                [notifications addObject:newNotification];
                            }
                            //

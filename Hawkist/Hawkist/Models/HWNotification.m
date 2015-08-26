@@ -9,5 +9,20 @@
 #import "HWNotification.h"
 
 @implementation HWNotification
-
 @end
+
+
+@implementation User
+@end
+
+
+@implementation Listing
+@end
+
+@implementation Comment
+@end
+
+@implementation Order
+@end
+
+

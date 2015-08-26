@@ -65,6 +65,7 @@
       [self.textView layoutIfNeeded];
     
     CGSize size = [_textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
+    
     [_textView sizeToFit];
     
     self.textView.bounds = CGRectMake(0, 0, size.width, size.height);
