@@ -15,6 +15,7 @@
 #import "HWProfileViewController.h"
 #import "myFavouritesViewController.h"
 #import "HolidayModeViewController.h"
+#import "HWMyBalanceViewController.h"
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -235,10 +236,13 @@
             break;
         }
         case 1:
+        {
+            HWMyBalanceViewController *vc = [[HWMyBalanceViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
             
             NSLog(@"My Balance");
             break;
-        
+        }
         case 2:
         {
             HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];

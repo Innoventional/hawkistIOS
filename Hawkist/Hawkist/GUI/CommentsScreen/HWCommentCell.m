@@ -137,22 +137,25 @@
     {
         if([str isEqualToString:@""]) continue;
         
+        NSString *mention = [self cleareMentionsWithText:str];
+        
         if([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"@"])
         {
             
-            [atrbString paintOverWordWithString:str
-                                       withText:self.textView.text
-                                      withColor:nil];
-        }
-        
-        if([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"#"])
-        {
-        
-            [atrbString paintOverWordWithString:str
-                                       withText:self.textView.text
-                                      withColor:nil];
             
+            [atrbString paintOverWordWithString:mention
+                                       withText:self.textView.text
+                                      withColor:nil];
         }
+        
+//        if([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"#"])
+//        {
+//        
+//            [atrbString paintOverWordWithString:mention
+//                                       withText:self.textView.text
+//                                      withColor:nil];
+//            
+//        }
     }
     
  self.textView.attributedText = atrbString;
@@ -160,20 +163,6 @@
   
     
 
-}
-
--(void)paintOverWordWithStrin1g:(NSString*)str withRange:(NSRange)range withAttributStr:(NSMutableAttributedString*) atrbString
-{
-    
-    range = [self.textView.text rangeOfString:str];
-    
-    [atrbString beginEditing];
-    [atrbString addAttribute:NSForegroundColorAttributeName
-                       value:[UIColor colorWithRed:57./255. green:178./255. blue:154./255. alpha:1]
-                       range:range];
-    [atrbString endEditing];
-
-    
 }
 
 
@@ -216,12 +205,15 @@
 - (void) stringWithTapWord:(NSString*)text
 {
     
+    NSString *ment = [self cleareMentionsWithText:text];
+    
+    
     for(NSDictionary *dict in self.mentionsArray)
     {
         HWMention *mention = [[HWMention alloc] initWithDictionary:dict error:nil];
         
         NSString *userName = [NSString stringWithFormat:@"@%@",mention.username];
-        if ([userName isEqualToString:text])
+        if ([userName isEqualToString:ment])
         {
             if (self.delegate && [self.delegate respondsToSelector:@selector(transitionToProfileWithUserId:)]) {
                 
@@ -237,12 +229,43 @@
     if(self.delegate && [self.delegate respondsToSelector:@selector(stringWithTapWord:)])
     {
         
-        [self.delegate stringWithTapWord:text];
+        [self.delegate stringWithTapWord:ment];
     }
     
     
 }
 
+
+-(NSString*) cleareMentionsWithText:(NSString *)text {
+    
+    NSString *new;
+    NSString *ment  = text;
+    int i = 1;
+    do {
+        
+        NSRange range = NSMakeRange([text length]-i, 1);
+        
+        new = [text substringWithRange:range] ;
+        
+        if(![self isLetter:new]){
+            ment = [text substringToIndex:[text length]-i];
+        }
+        i ++;
+        NSLog(@"%@ -- %@", new, ment);
+        
+    } while (![self isLetter:new]);
+    
+    return ment;
+}
+
+
+-(BOOL)isLetter:(NSString*)aString {
+    
+    NSString *setCharect = @"!./?*:;,<>";
+    
+    return (![setCharect containsString:aString]);
+    
+}
 
 + (CGFloat) heightWith:(NSString*)text
 {

@@ -51,6 +51,11 @@
 
 @property (nonatomic, assign) CGFloat heightWithward;
 
+@property (nonatomic, strong) UIAlertView *addAlert;
+@property (nonatomic, strong) UIAlertView *erraceData;
+
+@property (nonatomic, assign) BOOL isFirstSee;
+
  
 
 @end
@@ -89,7 +94,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    self.isFirstSee = YES;
     
     self.heightWithward = self.withwardButtonConstraint.constant;
     self.withwardButtonConstraint.constant = 0;
@@ -101,10 +106,28 @@
     self.bankAccountView.delegate = self;
     self.navView.delegate = self;
     
+    self.navView.title.text = @"My Balance";
+    
     [self setBalance];
     [self setYourDetailsForVerify:YES];
     [self setupDatePickerForB_Day];
+    [self setupAlertView];
     
+}
+
+- (void) setupAlertView {
+    
+    self.addAlert = [[UIAlertView alloc]initWithTitle:@"Import Billing Address"
+                                              message:@"Set your Shipping Address the Billing Address of the most recently registered bank card?"
+                                             delegate:self
+                                    cancelButtonTitle:@"Cancel"
+                                    otherButtonTitles:@"Ok", nil];
+    
+    self.erraceData = [[UIAlertView alloc]initWithTitle:@"Clear Data"
+                                                message:@"Do you want clear data?"
+                                               delegate:self
+                                      cancelButtonTitle:@"Yes"
+                                      otherButtonTitles:@"No", nil];
 }
 
 - (void) setupDatePickerForB_Day {
@@ -199,6 +222,8 @@
 
 - (IBAction)checkMyBalanceAction:(id)sender {
     
+    
+     [self setYourDetailsForVerify:YES];
     NSLog(@"checkMyBalanceAction");
 }
 
@@ -256,6 +281,7 @@
 
 - (void) sameAsBillingWithButton:(UIButton*) sender {
     
+    [self.addAlert show];
      NSLog(@"sameAsBillingWithButton");
 }
 
@@ -286,8 +312,8 @@
     
 [self.networkManager getUserBalanceWithSuccessBlock:^(NSString *available, NSString *pending) {
     
-    self.balanceView.pendingSales.text = pending;
-    self.balanceView.currentBalance.text = available;
+    self.balanceView.pendingSales.text = [NSString stringWithFormat:@"£%@",pending];
+    self.balanceView.currentBalance.text = [NSString stringWithFormat:@"£%@",available];
     
                                      } failureBlock:^(NSError *error) {
     
@@ -380,9 +406,19 @@
             if(!(self.yourDetailsView.isEdit && self.bankAccountView.isEdit && self.bankAccAddressView.isEdit)) {
                 
                 [self hideCheckMyBalance];
+                
+            } else if (!self.isFirstSee){
+             
+                [[[UIAlertView alloc] initWithTitle:@"Oh no!"
+                                           message:@"Please complete all required fields!"
+                                          delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                  otherButtonTitles: nil] show];
             }
             
         }
+        
+        self.isFirstSee = NO;
         
     } failureBlock:^(NSError *error) {
         
@@ -416,6 +452,41 @@
     
     self.withwardButtonConstraint.constant = self.heightWithward;
     self.contentConstreint.constant += self.heightWithward;
+    
+}
+
+#pragma mark - UIAlertViewDelegate
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if (alertView == self.addAlert)
+    {
+        if (buttonIndex == 1)
+        {
+            [[NetworkManager shared]getRecentlyAddress:^(HWAddress *address) {
+                
+                HWBankAccountAddress *ad = [[HWBankAccountAddress alloc] init];
+                ad.address_line1 = address.address_line1;
+                ad.address_line2 = address.address_line2;
+                ad.city = address.city;
+                ad.post_code = address.postcode;
+                
+                [self.bankAccAddressView setBankAccountAddress:ad];
+                self.bankAccAddressView.isEdit = NO;
+                [self.bankAccAddressView.sameAsBillingButton setBackgroundImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+                
+                
+            } failureBlock:^(NSError *error) {
+                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                
+            }];
+        }
+    }
+    
+    if (alertView == self.erraceData)
+    {
+    }
     
 }
 

@@ -30,6 +30,7 @@
         
         [self.saveEditAccountAddressButton setTitle:@"SAVE BANK ACCOUNT ADDRESS" forState:UIControlStateNormal];
         [self.saveEditAccountAddressButton setBackgroundColor:[UIColor color256RGBWithRed:48 green:173 blue:148]];
+        [self.sameAsBillingButton setBackgroundImage:[UIImage imageNamed:@"acdet_checkempty"] forState:UIControlStateNormal];
     } else {
         
         [self.saveEditAccountAddressButton setTitle:@"EDIT BANK ACCOUNT ADDRESS" forState:UIControlStateNormal];
@@ -46,6 +47,7 @@
     self.addressLine2.enabled = isEditMode;
     self.city.enabled = isEditMode;
     self.postCode.enabled = isEditMode;
+    self.sameAsBillingButton.enabled = isEditMode;
     
 }
 

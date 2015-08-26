@@ -86,6 +86,8 @@
 - (void) setCellWithFollowUser:(HWFollowUser*) user
 {
     
+    NSLog(@"%@", user.avatar);
+    
      [self.avatarImageView setImageWithURL:[NSURL URLWithString: user.avatar] placeholderImage:[UIImage imageNamed:@"noPhoto"]];
     
      self.userNameLabel.text = user.username;

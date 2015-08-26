@@ -109,8 +109,7 @@
         }
         case 3:
         {
-            HWMyBalanceViewController *vc = [[HWMyBalanceViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+            
             break;
         }
         case 4:

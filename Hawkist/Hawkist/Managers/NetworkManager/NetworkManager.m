@@ -1661,21 +1661,48 @@ NSString *URLString = @"user/logout";
 #pragma mark Buy item
 
 -(void) buyItemWithCardId:(NSString*)cardId
+        withPayWithWallet:(NSString*)wallet
                withItemId:(NSString*)itemId
+        withCollectioOnly:(NSString*)collOnly
+              withAddressID:(NSString*)addressId
              successBlock:(void(^)(void))successBlock
              failureBlock:(void(^)(NSError *error)) failureBlock
 {
     
     NSString *URLString = [NSString stringWithFormat:@"user/orders"];
   
-    NSDictionary *parameters =  @{
-                                  @"stripe_card_id":cardId,
-                                  @"listing_id":itemId
-                                  
-                                  };
+ 
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    
+    if(cardId) {
+        
+        [params setObject:cardId  forKey:@"stripe_card_id"];
+    }
+    if(wallet) {
+        
+        [params setObject:wallet forKey:@"pay_with_wallet"];
+    }
+   
+    if(itemId) {
+        
+        [params setObject:itemId  forKey:@"listing_id"];
+    }
+    
+    if(collOnly) {
+        
+        [params setObject:collOnly  forKey:@"collection"];
+    }
+    
+    if(addressId) {
+        
+        [params setObject:addressId  forKey:@"address_id"];
+    }
+ 
     
     [self.networkDecorator POST:URLString
-                     parameters:parameters
+                     parameters:params
                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             
                             if([responseObject[@"status"] integerValue] != 0)

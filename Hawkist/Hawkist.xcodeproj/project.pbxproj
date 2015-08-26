@@ -1050,10 +1050,9 @@
 				CEAF106A1B8B3CE100E5029E /* HWBankAccountInfo.h */,
 				CEAF106B1B8B3CE100E5029E /* HWBankAccountInfo.m */,
 				CEAF106D1B8B4CD300E5029E /* HWBankAccountAddress.h */,
-                CEAF106E1B8B4CD300E5029E /* HWBankAccountAddress.m */,
-                3A8F7DC61B8C982F000940CF /* HWNotification.h */,
-                3A8F7DC71B8C982F000940CF /* HWNotification.m */,
-
+				CEAF106E1B8B4CD300E5029E /* HWBankAccountAddress.m */,
+				3A8F7DC61B8C982F000940CF /* HWNotification.h */,
+				3A8F7DC71B8C982F000940CF /* HWNotification.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1061,10 +1060,10 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-                3A8F7DBB1B8C8248000940CF /* NotificationScreen */,
-                3A8F7DB51B8BD7AA000940CF /* SupportScreen */,
-                3AA5CC051B8764C1006093D0 /* MyFavoritesScreen */,
-                3AA5CBFF1B862AA4006093D0 /* HolidayMode */,
+				3A8F7DBB1B8C8248000940CF /* NotificationScreen */,
+				3A8F7DB51B8BD7AA000940CF /* SupportScreen */,
+				3AA5CC051B8764C1006093D0 /* MyFavoritesScreen */,
+				3AA5CBFF1B862AA4006093D0 /* HolidayMode */,
 				CE15469C1B847F1D0082ACF4 /* My balance screen */,
 				3AA5CBF11B84BBAE006093D0 /* Manage Address */,
 				CE1546811B81F3070082ACF4 /* FeedBack */,

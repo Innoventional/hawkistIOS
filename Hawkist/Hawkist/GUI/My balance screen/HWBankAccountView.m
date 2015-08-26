@@ -62,7 +62,8 @@
     bankAcc.first_name = self.firstName.text;
     bankAcc.last_name = self.lastName.text;
     bankAcc.number = self.accountNumber.text;
-    bankAcc.sort_code = self.sortCode.text;
+    bankAcc.sort_code = self.sortCode.text ;
+    
     
     return bankAcc;
 }

@@ -296,7 +296,7 @@
 }
 
 
-#pragma mark -
+#pragma mark -https://omicron.atlassian.net/secure/attachment/10886/sms_sharing.PNG
 #pragma mark UITableViewDelegate
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -315,9 +315,16 @@
     headerView.backgroundColor = [UIColor colorWithRed:240./255. green:240./255. blue:240./255. alpha:1];
     [headerView addSubview:myLabel];
     
+    if(section == 1) {
+        
+        UIImageView *iV = [[UIImageView alloc]initWithFrame:CGRectMake(0, -1, frame.size.width, 1)];
+        iV.image = [UIImage imageNamed:@"line"];
+        [headerView addSubview:iV];
+    }
+    
     return headerView;
 }
-
+// how would the user ever find the item in this way? Perhaps send message to short code in order to get download link
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return NO;
@@ -397,7 +404,9 @@
         
     } else if([collectionView isEqual:self.addressCollectionView])
     {
-        return [self.addressOptionArray count] + 2 ; // +collectionOnly + addNewAddress
+        NSInteger count = self.item.collection_only ? 2 : 1;
+        
+        return [self.addressOptionArray count] + count ; // +collectionOnly + addNewAddress
         
     } else {
         
@@ -450,23 +459,37 @@
     {
         // collection only cell
         
-        if(self.addressOptionArray.count == indexPath.row){
+        if(self.item.collection_only) {
+        
+                if(self.addressOptionArray.count == indexPath.row){
+                    
+                    HWAddressCollectionOnlyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addressCollectionOnlyCell forIndexPath:indexPath];
+                     cell.isSelected = (indexPath.row == self.addressSelectRow);
+                    
+                    return cell;
+                }
+                
+                // new address cell
+                
+                if((self.addressOptionArray.count +1) == indexPath.row){
+                    
+                    HWAddNewAddressCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addNewAddressCell forIndexPath:indexPath];
+                     cell.isSelected = (indexPath.row == self.addressSelectRow);
+                    return cell;
+                    
+                }
+        } else {
             
-            HWAddressCollectionOnlyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addressCollectionOnlyCell forIndexPath:indexPath];
-             cell.isSelected = (indexPath.row == self.addressSelectRow);
+            if(self.addressOptionArray.count == indexPath.row){
+                
+                HWAddNewAddressCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addNewAddressCell forIndexPath:indexPath];
+                cell.isSelected = (indexPath.row == self.addressSelectRow);
+                return cell;
+                
+            }
             
-            return cell;
         }
         
-        // new address cell
-        
-        if((self.addressOptionArray.count +1) == indexPath.row){
-            
-            HWAddNewAddressCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addNewAddressCell forIndexPath:indexPath];
-             cell.isSelected = (indexPath.row == self.addressSelectRow);
-            return cell;
-            
-        }
         
         HWAddressOptionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:addressOptionCell forIndexPath:indexPath];
         
@@ -514,6 +537,22 @@
       
         // press add address
         
+        if (!self.item.collection_only) {
+            
+            if((self.addressOptionArray.count ) == indexPath.row){
+                
+                AddAddressViewController *vc = [[AddAddressViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+                
+                self.addressSelectRow = 0;
+                [collectionView reloadData];
+                
+                return;
+            }
+            
+            
+        }
+        
         if((self.addressOptionArray.count + 1) == indexPath.row){
             
             AddAddressViewController *vc = [[AddAddressViewController alloc] init];
@@ -535,47 +574,123 @@
 
 - (IBAction)pressBuyNowButton:(UIButton *)sender
 {
+    
+    if(!(self.addressOptionArray.count && self.paymentOptionArray.count)) {
+        
+        [[[UIAlertView alloc] initWithTitle:@""
+                                    message:@"Please add the address or card"
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles: nil]show];
+        return;
+    }
+    
+    NSString *desc =
+    [NSString stringWithFormat:@"You have purchased \"%@\" for £%@. Please confirm when you have received the item.",self.item.title, self.item.selling_price];
+   
+    NSString *cardId  = nil;
+    NSString *itemId  = self.item.id;
+    NSString *collectioOnly  = nil;
+    NSString *addressID  = nil;
+    NSString *wallet  = nil;
+
+    
     sender.enabled = NO;
     [self.indicator startAnimating];
     
-    if(self.paymentSelectRow > self.paymentOptionArray.count - 1)
+    if(self.paymentSelectRow == self.paymentOptionArray.count)
     {
-    
         
-        NSLog(@"%lu", (unsigned long)self.paymentSelectRow);
+      wallet = @"Yes";
+    } else{
         
-        return;
+        HWCard *card = [self.paymentOptionArray objectAtIndex:self.paymentSelectRow];
+        cardId = card.id;
     }
-    NSString *desc =
-    [NSString stringWithFormat:@"You have purchased \"%@\" for £%@. Please confirm when you have received the item.",self.item.title, self.item.selling_price];
+    
+    //if(self.item.collection_only) {
+        
+        if(self.addressSelectRow == self.addressOptionArray.count)
+        {
+            
+            collectioOnly = @"Yes";
+        } else{
+            
+            HWAddress *address = [self.addressOptionArray objectAtIndex:self.addressSelectRow];
+            addressID = address.id;
+        }
+   // } else {
+        
+        
+   // }
     
     
-    HWCard *card = [self.paymentOptionArray objectAtIndex:self.paymentSelectRow];
     
-    [self.networkManager buyItemWithCardId:card.id
-                                withItemId:self.item.id
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    [self.networkManager buyItemWithCardId: cardId
+                         withPayWithWallet: wallet
+                                withItemId: itemId
+                         withCollectioOnly: collectioOnly
+                             withAddressID: addressID
                               successBlock:^{
                                   
-                                 
                                   [[[UIAlertView alloc]initWithTitle:@"Purchase Completed"
                                                              message:desc
                                                             delegate:nil
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles: nil ]show];
                                   
-                                   [self.indicator stopAnimating];
+                                  [self.indicator stopAnimating];
                                   
                                   HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
                                   [self.navigationController pushViewController:vc animated:YES];
-                                    
-    
-                                } failureBlock:^(NSError *error) {
-                                    
-                                    [self showAlertWithTitle:error.domain Message:error.localizedDescription];
-                                    [self.indicator stopAnimating];
+                                  
 
-                                    
-                                }];
+                                  
+                              } failureBlock:^(NSError *error) {
+                                  
+                                  [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                  [self.indicator stopAnimating];
+                                  sender.enabled = YES;
+
+                              }];
+    
+    
+    
+//    [self.networkManager buyItemWithCardId:card.id
+//                                withItemId:self.item.id
+//                              successBlock:^{
+//                                  
+//                                 
+//                                  [[[UIAlertView alloc]initWithTitle:@"Purchase Completed"
+//                                                             message:desc
+//                                                            delegate:nil
+//                                                   cancelButtonTitle:@"OK"
+//                                                   otherButtonTitles: nil ]show];
+//                                  
+//                                   [self.indicator stopAnimating];
+//                                  
+//                                  HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
+//                                  [self.navigationController pushViewController:vc animated:YES];
+//                                    
+//    
+//                                } failureBlock:^(NSError *error) {
+//                                    
+//                                    [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+//                                    [self.indicator stopAnimating];
+//                                    sender.enabled = YES;
+//
+//                                    
+//                                }];
 
 }
 
@@ -606,7 +721,8 @@
     }
     else
     {
-        
+        AddAddressViewController *vc = [[AddAddressViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
