@@ -50,22 +50,34 @@
 
 - (HWBankUserInfo*)getUserDetails {
     
+    
+    
+    
     HWBankUserInfo *userDet = [[HWBankUserInfo alloc] init];
     
     userDet.first_name = self.firstName.text ? self.firstName.text : @"";
     userDet.last_name = self.lastName.text ? self.lastName.text : @"";
     
     if (self.birthday.text && ![self.birthday.text isEqualToString:@""]) {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+        
+        
+        
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+//    
+//    [formatter setDateFormat:@"MM"];
+//    
+//    userDet.birth_month = [formatter stringFromDate:self.date];
+//    [formatter setDateFormat:@"dd"];
+//    userDet.birth_date = [formatter stringFromDate:self.date];
+//    [formatter setDateFormat:@"yyyy"];
+//    userDet.birth_year = [formatter stringFromDate:self.date];
+ 
     
-    [formatter setDateFormat:@"MM"];
+        userDet.birth_date = [self.birthday.text substringWithRange:NSMakeRange(0, 2)];
+        userDet.birth_month = [self.birthday.text substringWithRange:NSMakeRange(3, 2)];
+        userDet.birth_year = [self.birthday.text substringWithRange:NSMakeRange(6, 4)];
     
-    userDet.birth_month = [formatter stringFromDate:self.date];
-    [formatter setDateFormat:@"dd"];
-    userDet.birth_date = [formatter stringFromDate:self.date];
-    [formatter setDateFormat:@"yyyy"];
-    userDet.birth_year = [formatter stringFromDate:self.date];
     } else {
         
         userDet.birth_month = @"";

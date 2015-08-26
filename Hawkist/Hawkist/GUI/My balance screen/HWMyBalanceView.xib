@@ -83,7 +83,7 @@
                     <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                     <subviews>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWX-gn-NOJ" userLabel="contentView">
-                            <rect key="frame" x="0.0" y="-333" width="320" height="1379"/>
+                            <rect key="frame" x="8" y="-864" width="320" height="1379"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-rO-rC4" userLabel="Balance view" customClass="HWMyBalanceCurrentBalanceView">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
@@ -649,7 +649,7 @@
                                             <rect key="frame" x="172" y="322" width="132" height="20"/>
                                             <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                                         </textField>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="Vha-Yq-eTl">
                                             <rect key="frame" x="16" y="350" width="132" height="1"/>
