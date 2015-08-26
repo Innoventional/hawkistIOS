@@ -100,9 +100,72 @@
                 text = [NSString stringWithFormat:@"Your item %@ has been sold to %@",notification.listing.title,notification.user.username];
                 break;
             }
+                
+            case 2:
+            {
+                text = [NSString stringWithFormat:@"Has %@ arrived yet? Let us know so we can pay the seller %@",notification.listing.title,notification.user.username];
+               
+                break;
+            }
+            case 3:
+                
+            {
+                text = [NSString stringWithFormat:@"%@ has left feedback about %@",notification.user.username,notification.listing.title];
+                break;
+            }
+            case 4:
+            {
+                text = [NSString stringWithFormat:@"%@ has declined the price you offered for %@. Click this notification to offer a new price.",notification.user.username,notification.listing.title];
+                break;
+            }
+            case 5:
+            {
+                text = [NSString stringWithFormat:@"%@ has requested feedback on your purchase %@",notification.user.username,notification.listing.title];
+                break;
+            }
+            case 6:
+            {
+                text = [NSString stringWithFormat:@"%@ has favourited your item %@",notification.user.username,notification.listing.title];
+                break;
+            }
+            case 7:
+            {
+                
+                text = [NSString stringWithFormat:@"%@ on your favourites list has been sold.",notification.listing.title];
+                break;
+            }
             case 8:
             {
                 text = [NSString stringWithFormat:@"%@ is now following you.",notification.user.username];
+                break;
+            }
+                
+            case 9:
+            {
+                text = [NSString stringWithFormat:@"%@ has created a new listing %@",notification.user.username,notification.listing.title];
+                break;
+            }
+                
+            case 10:
+            {
+                text = [NSString stringWithFormat:@"%@ has mentioned your in a comment.",notification.user.username];
+                break;
+            }
+            
+
+            case 11:
+            {
+                text = [NSString stringWithFormat:@"%@ has offered £%@ for %@",notification.user.username,            notification.comment.offered_price,notification.listing.title];
+                break;
+            }
+            case 12:
+            {
+                text = [NSString stringWithFormat:@"%@ has accepted the price you offered for %@. Click this notification to buy the item.",notification.user.username,notification.listing.title];
+                break;
+            }
+            case 13:
+            {
+                text = [NSString stringWithFormat:@"%@ has declined the price you offered for %@. Click this notification to offer a new price.",notification.user.username,notification.listing.title];
                 break;
             }
             default:

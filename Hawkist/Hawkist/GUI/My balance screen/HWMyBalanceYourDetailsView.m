@@ -52,10 +52,10 @@
     
     HWBankUserInfo *userDet = [[HWBankUserInfo alloc] init];
     
-    userDet.first_name = self.firstName.text;
-    userDet.last_name = self.lastName.text;
+    userDet.first_name = self.firstName.text ? self.firstName.text : @"";
+    userDet.last_name = self.lastName.text ? self.lastName.text : @"";
     
-    if (self.date) {
+    if (self.birthday.text && ![self.birthday.text isEqualToString:@""]) {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
     
@@ -66,6 +66,11 @@
     userDet.birth_date = [formatter stringFromDate:self.date];
     [formatter setDateFormat:@"yyyy"];
     userDet.birth_year = [formatter stringFromDate:self.date];
+    } else {
+        
+        userDet.birth_month = @"";
+        userDet.birth_date = @"";
+        userDet.birth_year = @"";
     }
     
     return userDet;

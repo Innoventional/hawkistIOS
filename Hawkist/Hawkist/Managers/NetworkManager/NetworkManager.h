@@ -236,7 +236,10 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
 #pragma mark BuyItem
 
 -(void) buyItemWithCardId:(NSString*)cardId
+        withPayWithWallet:(NSString*)wallet
                withItemId:(NSString*)itemId
+        withCollectioOnly:(NSString*)collOnly
+            withAddressID:(NSString*)addressId
              successBlock:(void(^)(void))successBlock
              failureBlock:(void(^)(NSError *error)) failureBlock;
 

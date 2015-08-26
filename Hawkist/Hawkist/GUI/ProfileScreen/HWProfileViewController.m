@@ -38,7 +38,6 @@
 @property (weak, nonatomic) IBOutlet StarRatingControl *starRatingView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 
-
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *salesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -139,9 +138,11 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 
 
-- (void) viewWillAppear:(BOOL)animated
+- (void) viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
+    
+     self.isInternetConnectionAlertShowed = NO;
     if(!self.lastPressSegmentButton){
         
         [self segmentButtonAction:self.itemsButton];
@@ -288,12 +289,12 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     [self setWishlistArrayWithUsetId:userId];
     
 }
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    self.isInternetConnectionAlertShowed = NO;
-}
+//- (void) viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    
+//    self.isInternetConnectionAlertShowed = NO;
+//}
 
 // items
 - (void) setItemsArrayWithUserId:(NSString*)userId
@@ -379,8 +380,6 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 }
 
 
-
-
 #pragma mark -
 #pragma mark Actions
 
@@ -401,9 +400,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     if ([sender.titleLabel.text isEqualToString:@"  FOLLOW  "])
     {
-//        [sender setTitle:@" UNFOLLOW " forState:UIControlStateNormal];
-//        sender.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
-        
+
         [ self.networkManager followWithUserId:self.user.id successBlock:^{
         
             
@@ -576,6 +573,13 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if([[self.selectedSegmentArray objectAtIndex:indexPath.row] isKindOfClass:[HWItem class]]) {
+        
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ddd"];
+        return cell;
+        
+    }
+    
     HWFollowInProfileCell* cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
       cell.delegate = self;
     
@@ -603,6 +607,11 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if([[self.selectedSegmentArray objectAtIndex:indexPath.row] isKindOfClass:[HWItem class]]) {
+        
+        
+        return ;
+    }
     
     HWFollowInProfileCell *cell1 = (id)cell;
     
