@@ -881,7 +881,7 @@
        // [mailCont setSubject:@"Your email"];
         
         NSString *messageText = [NSString stringWithFormat:
-                                 @"Hey, I found this <b>%@</b> for sale on <a href=\"http://www.Hawkist.com\">Hawkist.com</a>. Thought you might be interested as it’s only £%@",self.item.title, self.item.selling_price];
+                                 @"Hey, I found this <b>%@</b> for sale on <a href=\"http://www.Hawkist.com\">Hawkist.com</a>. Thought you might be interested as it’s only £%@.",self.item.title, self.item.selling_price];
         
         [mailCont setMessageBody:messageText isHTML:YES];
         
