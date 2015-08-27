@@ -143,7 +143,7 @@
     blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     
     self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    self.visualEffectView.frame = self.bounds;
+    self.visualEffectView.frame = self.itemImage.bounds;
     self.visualEffectView.alpha = 0.7;
     
     [self addSubview:self.visualEffectView];

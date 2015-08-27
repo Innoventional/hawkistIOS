@@ -10,12 +10,19 @@
 #import "UIImageView+AFNetworking.h"
 #import "NSDate+NVTimeAgo.h"
 
+@interface NotificationCell()
 
+@property (nonatomic,strong) UITapGestureRecognizer *recognizer;
+@property (nonatomic, strong) HWNotification* notification;
+
+@end
 @implementation NotificationCell
 
 
 - (void) setCellWithNotification:(HWNotification*)notification andText:(NSMutableAttributedString*)text
 {
+    
+    self.notification = notification;
     
     self.avatar.image = nil;
     self.itemImage.image = nil;
@@ -26,10 +33,78 @@
     [self initDefault:notification];
     
     self.textView.attributedText = text;
+    
+    self.recognizer = [[UITapGestureRecognizer alloc]
+                       initWithTarget:self action:@selector(tap:)];
+    
+    [self.recognizer setCancelsTouchesInView:NO];
+    
+    [self.textView addGestureRecognizer:self.recognizer];
+    
     self.textHeight.constant = [NotificationCell heightWithAttributedString:text];
     
 }
 
+
+- (void) tap:(UITapGestureRecognizer *)recognizer
+{
+    UITextView *textView = (UITextView *)recognizer.view;
+    
+    // Location of the tap in text-container coordinates
+    
+    NSLayoutManager *layoutManager = textView.layoutManager;
+    CGPoint location = [recognizer locationInView:textView];
+    location.x -= textView.textContainerInset.left;
+    location.y -= textView.textContainerInset.top;
+    
+    // Find the character that's been tapped on
+    
+    NSUInteger characterIndex;
+    characterIndex = [layoutManager characterIndexForPoint:location
+                                           inTextContainer:textView.textContainer
+                  fractionOfDistanceBetweenInsertionPoints:NULL];
+    
+    if (characterIndex < textView.textStorage.length) {
+        
+        NSRange range;
+        NSString *value = [textView.attributedText attribute:@"Tag" atIndex:characterIndex effectiveRange:&range];
+        
+        // Handle as required...
+        
+        NSLog(@"%@, %d, %d", value, range.location, range.length);
+        
+        
+        switch ([value integerValue]) {
+            case 1:
+            {
+                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedUser:)])
+                    [self.notificationCellDelegate selectedUser:self.notification.user.id];
+                break;
+            }
+            case 2:
+            {
+                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedItem:)])
+                    [self.notificationCellDelegate selectedItem:self.notification.listing.id];
+                break;
+            }
+            case 3:
+            {
+                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedComment:)])
+                    [self.notificationCellDelegate selectedComment:self.notification.listing.id];
+                break;
+            }
+            default:
+            {
+                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedText:)])
+                    [self.notificationCellDelegate selectedText:self.notification];
+
+            }
+                break;
+        }
+        
+    }
+
+}
 
 - (void) initDefault:(HWNotification*)notification
 {
@@ -63,10 +138,13 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 - (IBAction)avatarSelect:(id)sender {
-    
+    if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedUser:)])
+        [self.notificationCellDelegate selectedUser:self.notification.user.id];
     NSLog(@"ava");
 }
 - (IBAction)itemIconSelect:(id)sender {
+    if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedItem:)])
+        [self.notificationCellDelegate selectedItem:self.notification.listing.id];
     NSLog(@"item");
 }
 

@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aqq-Dk-cU4">
-                        <rect key="frame" x="72" y="40" width="44" height="15"/>
+                        <rect key="frame" x="72" y="39" width="44" height="15"/>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
                         <color key="textColor" red="0.66666666669999997" green="0.69411764710000001" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -104,7 +104,7 @@
                     <constraint firstItem="Yld-VN-tr7" firstAttribute="top" secondItem="2pv-XW-7Rq" secondAttribute="top" id="F5p-jd-0Yj"/>
                     <constraint firstItem="ez0-EN-Cgr" firstAttribute="leading" secondItem="Ewb-n6-DA6" secondAttribute="trailing" constant="11" id="II7-hQ-y5D"/>
                     <constraint firstItem="Ewb-n6-DA6" firstAttribute="leading" secondItem="2pv-XW-7Rq" secondAttribute="leading" constant="15" id="Ke3-rj-ye1"/>
-                    <constraint firstItem="Aqq-Dk-cU4" firstAttribute="top" secondItem="ez0-EN-Cgr" secondAttribute="bottom" constant="1" id="Q42-M8-Fkn"/>
+                    <constraint firstItem="Aqq-Dk-cU4" firstAttribute="top" secondItem="ez0-EN-Cgr" secondAttribute="bottom" id="Q42-M8-Fkn"/>
                     <constraint firstAttribute="trailing" secondItem="Yld-VN-tr7" secondAttribute="trailing" id="UIs-8h-PmC"/>
                     <constraint firstItem="zXe-Zn-fC5" firstAttribute="top" secondItem="2pv-XW-7Rq" secondAttribute="top" constant="15" id="UZL-av-PeJ"/>
                     <constraint firstItem="iuu-hM-Kxl" firstAttribute="top" secondItem="2pv-XW-7Rq" secondAttribute="top" id="Xcd-DT-BeI"/>

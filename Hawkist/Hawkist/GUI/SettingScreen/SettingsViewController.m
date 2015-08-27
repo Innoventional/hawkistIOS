@@ -314,8 +314,8 @@
     UILabel *myLabel = [[UILabel alloc] init];
     myLabel.frame = CGRectMake(20, 8, frame.size.width, 20);
     
-    myLabel.font = [UIFont fontWithName:@"OpenSans-Bold" size:12];
-    myLabel.textColor = [UIColor colorWithRed:110./255. green:110./255. blue:110./255. alpha:1];
+    myLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:10];
+    myLabel.textColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
     
     

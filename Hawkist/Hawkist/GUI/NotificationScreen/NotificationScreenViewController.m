@@ -8,8 +8,17 @@
 
 #import "NotificationScreenViewController.h"
 #import "NotificationCell.h"
+#import "ViewItemViewController.h"
+#import "NetworkManager.h"
+#import "HWProfileViewController.h"
+#import "HWMyOrdersViewController.h"
+#import "HWCommentViewController.h"
+#import "HWFeedBackViewController.h"
+#import "HWMyBalanceViewController.h"
+#import "HWLeaveFeedbackViewController.h"
+#import "BuyThisItemViewController.h"
 
-@interface NotificationScreenViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface NotificationScreenViewController () <UITableViewDelegate,UITableViewDataSource,NotificationCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *messages;
 
@@ -77,7 +86,7 @@
     
     cell.clipsToBounds = YES;
 
-
+    cell.notificationCellDelegate = self;
     [cell layoutIfNeeded];
     
     
@@ -125,7 +134,7 @@
     
     NSRange rangeName = [text rangeOfString:listingName];
     
-    NSDictionary *attrs = @{ NSForegroundColorAttributeName : colorUserName, NSFontAttributeName : fontUserName  };
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : colorUserName, NSFontAttributeName : fontUserName,  @"Tag" : @(2)   };
     [attrbStr addAttributes:attrs
                       range:rangeName];
     return attrbStr;
@@ -154,7 +163,7 @@
     NSRange rangeComment = (NSRange){range.location -1,range.length+2};
 
     
-    NSDictionary *attrs = @{ NSForegroundColorAttributeName : commentColor, NSFontAttributeName : commentFont  };
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : commentColor, NSFontAttributeName : commentFont , @"Tag" : @(3)  };
     [attrbStr addAttributes:attrs
                       range:rangeComment];
     return attrbStr;
@@ -213,7 +222,7 @@
         case 7:
         {
             
-            text = [NSString stringWithFormat:@"%@ on your favourites list has been sold.",notification.listing.title];
+            text = [NSString stringWithFormat:@"The item %@ on your favourites list has been sold.",notification.listing.title];
             break;
         }
         case 8:
@@ -271,6 +280,120 @@
     }
     
 }
+
+
+- (void) selectedUser:(NSString*)userId
+{
+    HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUserID:userId];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (void) selectedItem:(NSString*)itemId
+{
+    [[NetworkManager shared] getItemById:itemId
+                            successBlock:^(HWItem *item) {
+                                ViewItemViewController *vc = [[ViewItemViewController alloc]initWithItem:item];
+                                
+                                [self.navigationController pushViewController:vc animated:YES];
+                                
+                            } failureBlock:^(NSError *error) {
+                                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                            }];
+    
+}
+- (void) selectedComment:(NSString*)itemId
+{
+    
+    [[NetworkManager shared] getItemById:itemId
+                            successBlock:^(HWItem *item) {
+                                HWCommentViewController* vc = [[HWCommentViewController alloc]initWithItem:item];
+                                
+                                [self.navigationController pushViewController:vc animated:YES];
+                                
+                            } failureBlock:^(NSError *error) {
+                                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                            }];
+    }
+- (void) selectedText:(HWNotification *)notification
+{
+    switch ([notification.type integerValue]) {
+        case 11: case 10: case 0:
+            {
+                [[NetworkManager shared] getItemById:notification.listing.id
+                                        successBlock:^(HWItem *item) {
+                                            HWCommentViewController* vc = [[HWCommentViewController alloc]initWithItem:item];
+                                            
+                                            [self.navigationController pushViewController:vc animated:YES];
+                                            
+                                        } failureBlock:^(NSError *error) {
+                                            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                        }];
+                break;
+            }
+        case 1: case 7: case 9:
+        {
+            [[NetworkManager shared] getItemById:notification.listing.id
+                                    successBlock:^(HWItem *item) {
+                                        ViewItemViewController *vc = [[ViewItemViewController alloc]initWithItem:item];
+                                        
+                                        [self.navigationController pushViewController:vc animated:YES];
+                                        
+                                    } failureBlock:^(NSError *error) {
+                                        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                    }];
+                        break;
+        }
+        case 2:
+        {
+            HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+                    break;
+        }
+            
+        case 3:
+        {
+            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:notification.user.id];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        
+        case 4:
+        {
+            HWMyBalanceViewController  *vc = [[HWMyBalanceViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case 5:
+        {
+            HWLeaveFeedbackViewController *vc = [[HWLeaveFeedbackViewController alloc]initWithUserID:notification.user.id withOrderId:notification.order.id];
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case 6: case 8:
+        {
+            HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUserID:notification.user.id];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case 12:case 13:
+        {
+            [[NetworkManager shared] getItemById:notification.listing.id
+                                    successBlock:^(HWItem *item) {
+                                        BuyThisItemViewController *vc = [[BuyThisItemViewController alloc]initWithItem:item];
+                                        
+                                        [self.navigationController pushViewController:vc animated:YES];
+                                        
+                                    } failureBlock:^(NSError *error) {
+                                        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                    }];
+            break;
+
+        }
+        default:
+            break;
+    }
+}
+
 
 
 @end
