@@ -24,5 +24,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak,nonatomic) id<MoneyFieldDelegate> delegate;
-
+@property (nonatomic, assign) BOOL isNoLimited;
 @end

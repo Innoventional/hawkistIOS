@@ -128,10 +128,10 @@
                     self.userInteractionEnabled = YES;
     
 
-//    if ([self.item.status isEqualToString:@"2"])
-//    {
-//        [self setupSold];
-//    }
+    if ([self.item.status isEqualToString:@"2"])
+    {
+        [self setupSold];
+    }
    
     
 }
@@ -156,6 +156,8 @@
     soldLabel.transform = CGAffineTransformMakeRotation(-M_PI/4);
     [self.visualEffectView addSubview:soldLabel];
     self.userInteractionEnabled = YES;
+    
+    self.mytrash.hidden = YES;
     
     
 

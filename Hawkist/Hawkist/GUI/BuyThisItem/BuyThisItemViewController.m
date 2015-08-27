@@ -12,6 +12,7 @@
 
 
 @interface BuyThisItemViewController ()
+@property (strong, nonatomic) IBOutlet UIImageView *skidka;
 @property (nonatomic,strong) HWItem* item;
 @end
 
@@ -66,13 +67,21 @@
     self.oldPrice.text = self.item.retail_price;
     
     self.discount.text = self.item.discount;
+    
     if (self.item.discount == nil || [self.item.discount isEqualToString: @"0"]) {
         self.discount.text = @"1%";
     } else {
         self.discount.text = [NSString stringWithFormat:@"%@%%",self.item.discount];
     }
 
+    
     self.discount.text = [NSString stringWithFormat:@"-%@",self.discount.text];
+    
+    if ([self.item.discount floatValue] < 25)
+    {
+        self.discount.text = @"";
+        self.skidka.hidden = YES;
+    }
     
     [self.bigImage setImageWithURL: [NSURL URLWithString: [self.item.photos firstObject]] placeholderImage: nil];
     

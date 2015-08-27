@@ -71,7 +71,9 @@
     if ([arrayOfString count] == 1 )
         textField.text=[textField.text stringByAppendingString:@".00"];
     
-    if ([textField.text doubleValue] > 5000)
+
+    
+    if ([textField.text doubleValue] > 5000 && !self.isNoLimited)
     {
         if (self.delegate && [self.delegate respondsToSelector: @selector(moneyFieldPriceToHight:)])
             [self.delegate moneyFieldPriceToHight:self];
@@ -87,6 +89,7 @@
         textField.text = result;
         if (self.delegate && [self.delegate respondsToSelector: @selector(moneyField:modifyTo:)])
         [self.delegate moneyField:self modifyTo:result];
+    
     
     
     }

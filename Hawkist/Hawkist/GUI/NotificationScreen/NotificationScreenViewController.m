@@ -90,10 +90,11 @@
     
     NSMutableAttributedString *attrbText = [self attributedStringFromText:text];
     
+    if (notification.user.username)
     attrbText = [self modifyUserName:notification.user.username fromText:text andAttributedString:attrbText];
     
     if (notification.listing.title)
-        attrbText = [self modifyUserName:notification.listing.title fromText:text andAttributedString:attrbText];
+        attrbText = [self modifyListingName:notification.listing.title fromText:text andAttributedString:attrbText];
     
     if ([notification.type integerValue] == 0)
         attrbText = [self modifyCommet:notification.comment.text fromText:text andAttributedString:attrbText];
@@ -110,9 +111,23 @@
 
     NSRange rangeName = [text rangeOfString:userName];
 
-    NSDictionary *attrs = @{ NSForegroundColorAttributeName : colorUserName, NSFontAttributeName : fontUserName  };
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : colorUserName, NSFontAttributeName : fontUserName ,  @"Tag" : @(1) };
     [attrbStr addAttributes:attrs
                         range:rangeName];
+    return attrbStr;
+}
+
+- (NSMutableAttributedString*) modifyListingName:(NSString*)listingName fromText:(NSString*)text andAttributedString:(NSMutableAttributedString*) attrStr
+{
+    NSMutableAttributedString* attrbStr = [[NSMutableAttributedString alloc]initWithAttributedString:attrStr];
+    UIColor *colorUserName = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
+    UIFont *fontUserName = [UIFont fontWithName:@"OpenSans-Semibold" size:15];
+    
+    NSRange rangeName = [text rangeOfString:listingName];
+    
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : colorUserName, NSFontAttributeName : fontUserName  };
+    [attrbStr addAttributes:attrs
+                      range:rangeName];
     return attrbStr;
 }
 
@@ -175,8 +190,14 @@
             break;
         }
         case 4:
-        {
-            text = [NSString stringWithFormat:@"%@ has declined the price you offered for %@. Click this notification to offer a new price.",notification.user.username,notification.listing.title];
+        {//We have released (selling price - seller price) into your Hawkist account for (listing Title).
+            
+            float price = ([notification.listing.selling_price floatValue]*0.875) + [notification.listing.shipping_price floatValue];
+            
+            NSString* result = [NSString stringWithFormat:@"£%0.2f",price];
+            
+            
+            text = [NSString stringWithFormat:@"We have released %@ into your Hawkist account for %@",result,notification.listing.title];
             break;
         }
         case 5:

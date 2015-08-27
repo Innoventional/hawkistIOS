@@ -194,6 +194,7 @@
         {
             priceForShipping.textField.text =  currentItem.shipping_price;
             checkBox1.selected = YES;
+            checkBox1.enabled = YES;
             priceForShipping.textField.enabled = YES;
             priceForShipping.textField.textColor = self.textColor;
              priceForShipping.label.textColor = self.textColor;
@@ -325,6 +326,7 @@
      priceForShipping.textField.enabled = NO;
     
     priceForShipping.textField.text = @"0.00";
+    priceForShipping.isNoLimited = YES;
      priceForShipping.delegate = self;
     
      checkBox2.selected = YES;
@@ -337,6 +339,8 @@
     category.isEnabled = NO;
     condition.isEnabled = NO;
     color.isEnabled = NO;
+    
+    
     
 //     category.userInteractionEnabled = NO;
 //         color.userInteractionEnabled = NO;

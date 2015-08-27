@@ -10,8 +10,6 @@
 #import "UIImageView+AFNetworking.h"
 #import "NSDate+NVTimeAgo.h"
 
-@interface NotificationCell() <TextViewWithDetectedWordDelegate>
-@end
 
 @implementation NotificationCell
 
@@ -35,6 +33,7 @@
 
 - (void) initDefault:(HWNotification*)notification
 {
+    if (notification.user.avatar)
     [self.avatar setImageWithURL:[[NSURL alloc]initWithString:notification.user.avatar]
                 placeholderImage:[UIImage imageNamed:@"NoAvatar"]];
     if (notification.listing.photo){
@@ -45,6 +44,7 @@
     else
     {
         self.itemImage.hidden = YES;
+        self.rightButton.enabled = NO;
     }
     
     self.avatar.layer.cornerRadius = self.avatar.frame.size.width /2;
@@ -61,6 +61,13 @@
     self.itemImage.layer.masksToBounds = YES;
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+- (IBAction)avatarSelect:(id)sender {
+    
+    NSLog(@"ava");
+}
+- (IBAction)itemIconSelect:(id)sender {
+    NSLog(@"item");
 }
 
 //+ (CGFloat) heightWith:(NSString*)text

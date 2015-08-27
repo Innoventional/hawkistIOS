@@ -310,8 +310,11 @@
     [self.buyThisItem setTitle:@"SOLD" forState:UIControlStateNormal];
     [self.buyThisItem setBackgroundImage:nil forState:UIControlStateNormal];
     [self.buyThisItem setBackgroundColor:[UIColor color256RGBWithRed:239 green:83 blue:80]];
+    
+    self.buyThisItem.layer.cornerRadius = 5;
     self.buyThisItem.enabled = YES;
     self.askOutlet.enabled = NO;
+    self.navigationView.rightButtonOutlet.hidden = YES;
 }
     
 
@@ -657,6 +660,11 @@
 
 - (IBAction)buyButton:(id)sender {
 
+    if ([self.item.status isEqualToString:@"2"])
+    {
+        return;
+    }
+    
     if ([self.item.status isEqualToString:@"1"])
     {
         if ([self.item.user_id integerValue] != [[AppEngine shared].user.id integerValue])

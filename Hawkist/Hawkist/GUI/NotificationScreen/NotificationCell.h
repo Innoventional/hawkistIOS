@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SWTableViewCell.h"
-#import "TextViewWithDetectedWord.h"
 #import "HWNotification.h"
 
 @interface NotificationCell : UITableViewCell
@@ -18,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *itemImage;
 @property (strong, nonatomic) IBOutlet UILabel *time;
 
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *textHeight;
 //+ (CGFloat) heightWith:(NSString*)text;
 - (void) setCellWithNotification:(HWNotification*)notification andText:(NSMutableAttributedString*)text;
