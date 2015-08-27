@@ -19,7 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *time;
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *textHeight;
-+ (CGFloat) heightWith:(NSString*)text;
-- (void) setCellWithNotification:(HWNotification*)notification;
-
+//+ (CGFloat) heightWith:(NSString*)text;
+- (void) setCellWithNotification:(HWNotification*)notification andText:(NSMutableAttributedString*)text;
++ (CGFloat) heightWithAttributedString:(NSMutableAttributedString*)text;
 @end

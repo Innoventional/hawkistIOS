@@ -19,7 +19,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AXA-Yy-3o5" id="2pv-XW-7Rq">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ewb-n6-DA6" userLabel="avatar">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ewb-n6-DA6" userLabel="avatar">
                         <rect key="frame" x="15" y="15" width="33" height="33"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="33" id="EWy-hB-55n"/>
@@ -34,6 +34,7 @@
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit " translatesAutoresizingMaskIntoConstraints="NO" id="ez0-EN-Cgr">
                         <rect key="frame" x="59" y="2" width="282" height="37"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="SXR-sN-AKb"/>
                         </constraints>
@@ -57,7 +58,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zXe-Zn-fC5">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zXe-Zn-fC5">
                         <rect key="frame" x="351" y="15" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="lxA-3X-yfo"/>
