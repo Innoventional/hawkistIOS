@@ -10,8 +10,8 @@
 
 @interface HWSingOutCell ()
 
-@property (weak, nonatomic) IBOutlet UIButton *notifySellerButton;
-@property (weak, nonatomic) IBOutlet UIButton *letMembersButton;
+//@property (weak, nonatomic) IBOutlet UIButton *notifySellerButton;
+//@property (weak, nonatomic) IBOutlet UIButton *letMembersButton;
 
 
 @end

@@ -65,6 +65,9 @@
 
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicator;
 
+@property (nonatomic, assign) BOOL addressContained;
+@property (nonatomic, assign) BOOL cardContained;
+
 
 @end
 
@@ -215,6 +218,33 @@
 #pragma mark -
 #pragma mark set/get
 
+- (void) setAddressOptionArray:(NSArray *)addressOptionArray {
+    
+    _addressOptionArray = addressOptionArray;
+    
+    if(_addressOptionArray.count) {
+    self.addressContained = YES;
+    [self enabledBuyButton];
+    }
+    
+}
+
+- (void) setPaymentOptionArray:(NSArray *)paymentOptionArray {
+    
+    _paymentOptionArray = paymentOptionArray;
+    
+    if(_paymentOptionArray.count) {
+    self.cardContained = YES;
+    [self enabledBuyButton];
+    }
+}
+
+
+-(void)enabledBuyButton {
+    
+    self.buyButton.enabled = (self.addressContained && self.cardContained);
+}
+
 
 - (void)setPaymentCollectionView:(UICollectionView *)paymentCollectionView
 {
@@ -224,8 +254,7 @@
     [_paymentCollectionView registerNib:[UINib nibWithNibName:@"HWPaymentBalanceCell" bundle:nil] forCellWithReuseIdentifier:paymentBalanceCell];
     [_paymentCollectionView registerNib:[UINib nibWithNibName:@"HWPaymentNewCardCell" bundle:nil] forCellWithReuseIdentifier:paymentNewCell];
     
-//    self.checkForBuy +=1;
-    self.buyButton.enabled = YES;// (self.checkForBuy == 2);
+ 
 }
 
 -(void)setAddressCollectionView:(UICollectionView *)addressCollectionView
@@ -236,9 +265,7 @@
     [_addressCollectionView registerNib:[UINib nibWithNibName:@"HWAddNewAddressCell" bundle:nil] forCellWithReuseIdentifier:addNewAddressCell];
     [_addressCollectionView registerNib:[UINib nibWithNibName:@"HWAddressCollectionOnlyCell" bundle:nil] forCellWithReuseIdentifier:addressCollectionOnlyCell ];
     
-//    self.checkForBuy +=1;
-    self.buyButton.enabled = YES;// (self.checkForBuy == 2);
-}
+ }
 
 
 #pragma mark -

@@ -16,6 +16,9 @@
 @property (nonatomic, assign) BOOL checkNotifySeller;
 @property (nonatomic, assign) BOOL checkLetMembers;
 
+@property (weak, nonatomic) IBOutlet UIButton *notifySellerButton;
+@property (weak, nonatomic) IBOutlet UIButton *letMembersButton;
+
 @end
 
 

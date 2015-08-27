@@ -325,6 +325,14 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
 - (void) getNotificationsCount:(void(^)(NSInteger count))successBlock
                   failureBlock:(void(^)(NSError *error)) failureBlock;
 
+
+- (void) getUserNotificationItemFavouritedWithSuccessBlock:(void(^)(BOOL isFavourite))successBlock
+                                              failureBlock:(void(^)(NSError *error)) failureBlock;
+
+- (void) updateUserNotificationItemFavouritedWithBool:(BOOL) isFavourite
+                                         successBlock:(void(^)(BOOL isFavourite))successBlock
+                                         failureBlock:(void(^)(NSError *error)) failureBlock;
+
 #pragma mark - User Balance
 
 -(void) getUserBalanceWithSuccessBlock:(void(^)(NSString *available, NSString *pending)) successBlock
@@ -351,6 +359,9 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
 - (void) updateBankAccountAddress:(HWBankAccountAddress*)accAddress
                      successBlock:(void(^)()) successBlock
                      failureBlock:(void(^)(NSError *error)) failureBlock;
+
+- (void) withdrawalWithSuccessBlock:(void(^)(void))successBlock
+                       failureBlock:(void(^)(NSError *error))failureBlock;
 
 
 @end

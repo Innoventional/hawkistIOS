@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWMyAccountViewController">
             <connections>
                 <outlet property="navigationView" destination="wb7-9Y-Nmi" id="Okt-o1-IIj"/>
+                <outlet property="signOutButton" destination="wDG-YF-Qsc" id="vHH-Q8-BYx"/>
                 <outlet property="tableView" destination="eCe-bs-2Xo" id="c09-k8-Z3g"/>
                 <outlet property="view" destination="l7V-u7-xng" id="Kmw-Gv-67p"/>
             </connections>
@@ -24,13 +25,40 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eCe-bs-2Xo">
-                    <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                    <rect key="frame" x="0.0" y="66" width="375" height="528"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDG-YF-Qsc">
+                    <rect key="frame" x="0.0" y="597" width="375" height="70"/>
+                    <color key="backgroundColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="8Nv-fN-Zqb"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="eB4-GO-xdx"/>
+                    </constraints>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                    <inset key="contentEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="SIGN OUT" image="signout" backgroundImage="acdet_but">
+                        <color key="titleColor" red="0.98074927219999997" green="0.98301863570000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" red="0.98074927219999997" green="0.98301863570000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="eB4-GO-xdx"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="pressSingOutButton:" destination="-1" eventType="touchUpInside" id="Sbt-Ur-ckH"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="wDG-YF-Qsc" secondAttribute="trailing" id="1O9-hF-59j"/>
                 <constraint firstAttribute="trailing" secondItem="wb7-9Y-Nmi" secondAttribute="trailing" id="2GG-Qx-8pe"/>
+                <constraint firstAttribute="bottom" secondItem="wDG-YF-Qsc" secondAttribute="bottom" id="2bK-bB-a1r"/>
+                <constraint firstItem="wDG-YF-Qsc" firstAttribute="leading" secondItem="l7V-u7-xng" secondAttribute="leading" id="4SW-7G-jE5"/>
+                <constraint firstItem="wDG-YF-Qsc" firstAttribute="top" secondItem="eCe-bs-2Xo" secondAttribute="bottom" constant="3" id="AvC-hL-zbx"/>
                 <constraint firstItem="eCe-bs-2Xo" firstAttribute="leading" secondItem="l7V-u7-xng" secondAttribute="leading" id="StQ-e8-mfQ"/>
                 <constraint firstAttribute="bottom" secondItem="eCe-bs-2Xo" secondAttribute="bottom" id="dGQ-ER-IVK"/>
                 <constraint firstItem="wb7-9Y-Nmi" firstAttribute="leading" secondItem="l7V-u7-xng" secondAttribute="leading" id="gcF-Ky-gjX"/>
@@ -39,7 +67,16 @@
                 <constraint firstItem="eCe-bs-2Xo" firstAttribute="top" secondItem="wb7-9Y-Nmi" secondAttribute="bottom" constant="1" id="pr6-hQ-al3"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="dGQ-ER-IVK"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="479.5" y="394.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="acdet_but" width="320" height="60"/>
+        <image name="signout" width="18" height="20"/>
+    </resources>
 </document>

@@ -23,7 +23,7 @@
 
 
 
-@interface HWMyBalanceViewController () <HWMyBalanceYourDetailsViewDelegate,HWMyBalanceBankAccAddressViewDelegate,HWBankAccountViewDelegate, NavigationViewDelegate,CDatePickerViewExDelegate>
+@interface HWMyBalanceViewController () <HWMyBalanceYourDetailsViewDelegate,HWMyBalanceBankAccAddressViewDelegate,HWBankAccountViewDelegate, NavigationViewDelegate>
 
 @property (nonatomic, weak) IBOutlet TPKeyboardAvoidingScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UIView *contentView;
@@ -52,7 +52,7 @@
 @property (nonatomic, assign) CGFloat heightWithward;
 
 @property (nonatomic, strong) UIAlertView *addAlert;
-@property (nonatomic, strong) UIAlertView *erraceData;
+@property (nonatomic, strong) UIAlertView *withwardAlert;
 
 @property (nonatomic, assign) BOOL isFirstSee;
 
@@ -123,11 +123,11 @@
                                     cancelButtonTitle:@"Cancel"
                                     otherButtonTitles:@"Ok", nil];
     
-    self.erraceData = [[UIAlertView alloc]initWithTitle:@"Clear Data"
-                                                message:@"Do you want clear data?"
+    self.withwardAlert = [[UIAlertView alloc]initWithTitle:@"Confirm Withdrawal"
+                                                message:@"Confirm that balance should be withdrawn to bank account."
                                                delegate:self
-                                      cancelButtonTitle:@"Yes"
-                                      otherButtonTitles:@"No", nil];
+                                      cancelButtonTitle:@"Cancel"
+                                      otherButtonTitles:@"OK", nil];
 }
 
 - (void) setupDatePickerForB_Day {
@@ -217,6 +217,7 @@
 
 - (IBAction)withDrawMyBalanceAction:(id)sender {
     
+    [self.withwardAlert show];
     NSLog(@"withDrawMyBalanceAction");
 }
 
@@ -484,8 +485,21 @@
         }
     }
     
-    if (alertView == self.erraceData)
+    if (alertView == self.withwardAlert)
     {
+        if (buttonIndex == 1)
+        {
+
+            [self.networkManager withdrawalWithSuccessBlock:^{
+                
+                [self setBalance];
+                
+                
+            } failureBlock:^(NSError *error) {
+                
+                [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+            }];
+        }
     }
     
 }
