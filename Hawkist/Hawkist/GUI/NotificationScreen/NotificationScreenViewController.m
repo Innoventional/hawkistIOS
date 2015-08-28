@@ -392,7 +392,7 @@
             
             else
             {
-            [self showAlertWithTitle:@"Alert" Message:@"Not now"];
+            //[self showAlertWithTitle:@"Alert" Message:@"Not now"];
             }
             break;
         }
