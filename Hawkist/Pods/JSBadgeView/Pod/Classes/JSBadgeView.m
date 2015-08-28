@@ -194,6 +194,10 @@ static BOOL JSBadgeViewIsUIKitFlatMode(void)
             newFrame.origin.x = (superviewWidth - viewWidth) / 2.0f;
             newFrame.origin.y = (superviewHeight - viewHeight) / 2.0f;
             break;
+        case JSBadgeViewAlignmentMyCenter:
+            newFrame.origin.x = ((superviewWidth - viewWidth) / 2.0f) + (superviewWidth*0.2f);
+            newFrame.origin.y = (superviewHeight - viewHeight) / 2.0f - (superviewHeight* 0.2f);
+            break;
         default:
             NSAssert(NO, @"Unimplemented JSBadgeAligment type %lul", (unsigned long)self.badgeAlignment);
     }

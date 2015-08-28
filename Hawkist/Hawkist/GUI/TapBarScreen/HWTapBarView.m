@@ -60,13 +60,13 @@
         
     }
     
-    self.badgeView = [[JSBadgeView alloc] initWithParentView:[self.items objectAtIndex:2] alignment:JSBadgeViewAlignmentTopRight];
+    self.badgeView = [[JSBadgeView alloc] initWithParentView:[self.items objectAtIndex:2] alignment:JSBadgeViewAlignmentMyCenter];
     [self sendSubviewToBack:[self.items objectAtIndex:3]];
 
-    self.badgeView.badgeBackgroundColor = [UIColor color256RGBAWithRed:55 green:185 blue:165 alpha:1];
-    self.badgeView.badgeTextFont = [UIFont fontWithName:@"OpenSans-Semibold" size:11];
-    self.badgeView.badgeStrokeColor = [UIColor color256RGBAWithRed:153 green:155 blue:159 alpha:1];
-    self.badgeView.badgeStrokeWidth = 3.f;
+    //self.badgeView.badgeBackgroundColor = [UIColor color256RGBAWithRed:55 green:185 blue:165 alpha:1];
+    self.badgeView.badgeTextFont = [UIFont fontWithName:@"OpenSans-Semibold" size:10];
+   // self.badgeView.badgeStrokeColor = [UIColor color256RGBAWithRed:153 green:155 blue:159 alpha:1];
+   // self.badgeView.badgeStrokeWidth = 1.f;
 }
 
 

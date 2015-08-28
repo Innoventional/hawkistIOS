@@ -314,7 +314,15 @@
     [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:aboutString photo:_imgAvatar2.image successBlock:^(HWUser *user) {
         
         [self hideHud];
-        [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+        if (self.userId)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+        }
+        
     } failureBlock:^(NSError *error) {
         [self hideHud];
         [self showAlert:error];
@@ -324,7 +332,14 @@
     {
         [_netManager updateUserEntityWithUsername:_txtUserName.text email:_txtEmail.text aboutMe:aboutString photo:nil successBlock:^(HWUser *user) {
             [self hideHud];
-            [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+            if (self.userId)
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            else
+            {
+                [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+            }
         } failureBlock:^(NSError *error) {
             [self hideHud];
             //[self showAlert:error];
@@ -334,6 +349,8 @@
          ];
 }
 }
+
+
 
 - (IBAction)checkBox:(id)sender {
     

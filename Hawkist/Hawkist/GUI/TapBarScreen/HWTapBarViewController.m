@@ -77,7 +77,7 @@
 - (void) updateBadge{
     
     [self.contentView updateBadge:[AppEngine shared].countNewNotifications];
-   // [self.contentView updateBadge:@"5"];
+  //  [self.contentView updateBadge:@"5"];
 
 }
 

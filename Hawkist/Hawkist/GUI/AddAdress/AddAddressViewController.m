@@ -88,7 +88,7 @@
     
     self.addAlert = [[UIAlertView alloc]initWithTitle:@"Import Billing Address" message:@"Set your Shipping Address to the Billing Address of the most recently registered bank card?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 
-    self.erraceData = [[UIAlertView alloc]initWithTitle:@"Clear Data" message:@"Do you want clear data?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    //self.erraceData = [[UIAlertView alloc]initWithTitle:@"Clear Data" message:@"Do you want clear data?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
 
 
 }
@@ -103,7 +103,11 @@
     }
     else
     {
-        [self.erraceData show];
+        self.checkBoxOutlet.selected = !self.checkBoxOutlet.selected;
+        self.addressLine1.inputField.enabled = YES;
+        self.addressLine2.inputField.enabled = YES;
+        self.city.inputField.enabled = YES;
+        self.postCode.inputField.enabled = YES;
     }
     
 }
