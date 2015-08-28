@@ -148,14 +148,7 @@
                                       withColor:nil];
         }
         
-//        if([[str substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"#"])
-//        {
-//        
-//            [atrbString paintOverWordWithString:mention
-//                                       withText:self.textView.text
-//                                      withColor:nil];
-//            
-//        }
+ 
     }
     
  self.textView.attributedText = atrbString;
@@ -251,7 +244,7 @@
             ment = [text substringToIndex:[text length]-i];
         }
         i ++;
-        NSLog(@"%@ -- %@", new, ment);
+  //      NSLog(@"%@ -- %@", new, ment);
         
     } while (![self isLetter:new]);
     

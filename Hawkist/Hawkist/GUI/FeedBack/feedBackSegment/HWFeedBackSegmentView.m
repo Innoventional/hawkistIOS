@@ -117,8 +117,8 @@
     }
     
     sender.backgroundColor = [UIColor colorWithRed:244./255. green:242./255. blue:248./255. alpha:1];
-    [sender.count setTintColor:[UIColor colorWithRed:99./255. green:99./255. blue:100./255. alpha:1]];
-    [sender.titleButton setTintColor:[UIColor colorWithRed:99./255. green:99./255. blue:95./255. alpha:1]];
+    [sender.count setTextColor:[UIColor colorWithRed:99./255. green:99./255. blue:100./255. alpha:1]];
+    [sender.titleButton setTextColor:[UIColor colorWithRed:99./255. green:99./255. blue:95./255. alpha:1]];
     
 }
 
@@ -131,7 +131,7 @@
    
     but.backgroundColor = backgraund;
     [but.count setTextColor: textColor];
-    [but.titleLabel setTextColor: textColor];
+    [but.titleButton setTextColor: textColor];
     but.selectedImage.backgroundColor = [UIColor clearColor];
     but.selectedImage.image = nil;
     

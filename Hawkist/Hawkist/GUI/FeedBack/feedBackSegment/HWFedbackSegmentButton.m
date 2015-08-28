@@ -38,7 +38,7 @@
                   {
                       UILabel *label = [[UILabel alloc]init];
                       [self addSubview:label];
-                      [label setFont:[UIFont systemFontOfSize:22]];
+                      [label setFont:[UIFont fontWithName:@"OpenSans" size:22.f]];//[UIFont systemFontOfSize:22]];
                       label.textColor = [UIColor colorWithRed:106./255. green:106./255. blue:106./255. alpha:1];
                       label.text = @"0";
                       
