@@ -137,7 +137,7 @@
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching listings..."];
     [self.refreshControl beginRefreshing];
 
-    
+    [self showHud];
     [[NetworkManager shared] getWishlistWithUserId:[AppEngine shared].user.id successBlock:^(NSArray *arrayWithItems) {
         
         [self.items removeAllObjects];
@@ -156,9 +156,11 @@
             self.placeHolder.hidden = YES;
         }
         
+        [self hideHud];
         
     } failureBlock:^(NSError *error) {
         
+        [self hideHud];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         [self.refreshControl endRefreshing];
     }];

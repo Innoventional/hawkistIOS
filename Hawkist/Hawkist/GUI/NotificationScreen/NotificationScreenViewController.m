@@ -392,7 +392,7 @@
             
             else
             {
-            //[self showAlertWithTitle:@"Alert" Message:@"Not now"];
+                [self showAlertWithTitle:@"Cannot Complete Action" Message:@"You have already left feedback on this order."];
             }
             break;
         }
