@@ -79,14 +79,18 @@
 
     
     NSString *tempTextViewString = self.text;
-    if((offsetRange.location-1) > 160)
-    {
-        return finalString;
+    
+    if([caracter isEqualToString:@"@"]) {
+        if((offsetRange.location-1) > 160)
+        {
+            return finalString;
+        }
     }
     
     NSString *selectedString = [tempTextViewString substringWithRange:NSMakeRange(offsetRange.location, offsetRange.length)];
     
-    NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSLog(@"%@", selectedString);
+    NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" \n"];
     NSArray * array = [tempTextViewString componentsSeparatedByCharactersInSet:charSet];
     
         for (NSString *str in array)
