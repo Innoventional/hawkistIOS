@@ -187,26 +187,26 @@
         switch ([notification.type integerValue]) {
         case 0:
         {
-            text = [NSString stringWithFormat:@"%@ commented on %@ - '%@'",notification.user.username,notification.listing.title,notification.comment.text];
+            text = [NSString stringWithFormat:@"%@ commented on %@ - '%@'.",notification.user.username,notification.listing.title,notification.comment.text];
             break;
         }
             
         case 1:
         {
-            text = [NSString stringWithFormat:@"Your item %@ has been sold to %@",notification.listing.title,notification.user.username];
+            text = [NSString stringWithFormat:@"Your item %@ has been sold to %@.",notification.listing.title,notification.user.username];
             break;
         }
             
         case 2:
         {
-            text = [NSString stringWithFormat:@"Has %@ arrived yet? Let us know so we can pay the seller %@",notification.listing.title,notification.user.username];
+            text = [NSString stringWithFormat:@"Has %@ arrived yet? Let us know so we can pay the seller %@.",notification.listing.title,notification.user.username];
             
             break;
         }
         case 3:
             
         {
-            text = [NSString stringWithFormat:@"%@ has left feedback about %@",notification.user.username,notification.listing.title];
+            text = [NSString stringWithFormat:@"%@ has left feedback about %@.",notification.user.username,notification.listing.title];
             break;
         }
         case 4:
@@ -217,17 +217,17 @@
             NSString* result = [NSString stringWithFormat:@"£%0.2f",price];
             
             
-            text = [NSString stringWithFormat:@"We have released %@ into your Hawkist account for %@",result,notification.listing.title];
+            text = [NSString stringWithFormat:@"We have released %@ into your Hawkist account for %@.",result,notification.listing.title];
             break;
         }
         case 5:
         {
-            text = [NSString stringWithFormat:@"%@ has requested feedback on your purchase %@",notification.user.username,notification.listing.title];
+            text = [NSString stringWithFormat:@"%@ has requested feedback on your purchase %@.",notification.user.username,notification.listing.title];
             break;
         }
         case 6:
         {
-            text = [NSString stringWithFormat:@"%@ has favourited your item %@",notification.user.username,notification.listing.title];
+            text = [NSString stringWithFormat:@"%@ has favourited your item %@.",notification.user.username,notification.listing.title];
             break;
         }
         case 7:
@@ -244,7 +244,7 @@
             
         case 9:
         {
-            text = [NSString stringWithFormat:@"%@ has created a new listing %@",notification.user.username,notification.listing.title];
+            text = [NSString stringWithFormat:@"%@ has created a new listing %@.",notification.user.username,notification.listing.title];
             break;
         }
             
@@ -257,7 +257,7 @@
             
         case 11:
         {
-            text = [NSString stringWithFormat:@"%@ has offered £%@ for %@",notification.user.username,            notification.comment.offered_price,notification.listing.title];
+            text = [NSString stringWithFormat:@"%@ has offered £%@ for %@.",notification.user.username,            notification.comment.offered_price,notification.listing.title];
             break;
         }
         case 12:
@@ -324,6 +324,13 @@
                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                             }];
     }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self selectedText:((HWNotification*)[self.messages objectAtIndex:indexPath.row])];
+}
+
 - (void) selectedText:(HWNotification *)notification
 {
     switch ([notification.type integerValue]) {
