@@ -83,10 +83,6 @@
 //                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
 //            }];
             
-            
-            
-            
-            
         }
         
       
@@ -297,8 +293,8 @@
     {
         self.buyThisItem.enabled = NO;
         
-        if([[AppEngine shared].user.id isEqualToString:self.item.user_id])
-                self.smallImage4.alpha = 0.5;
+        //if([[AppEngine shared].user.id isEqualToString:self.item.user_id])
+          //      self.smallImage4.alpha = 0.5;
     }
     else
     {
@@ -620,6 +616,12 @@
     
     if(tag == 4)
     {
+      
+        if([[AppEngine shared].user.id isEqualToString:self.item.user_id])
+        {
+         [self showAlertWithTitle:@"Cannot Favourite Listing" Message:@"I just can't do it captain, I don't have the power to favourite a listing you own!"];
+        }
+        
         [[NetworkManager shared] likeDislikeWhithItemId:self.item.id
                                            successBlock:^{
                                                
@@ -641,8 +643,7 @@
              
                                          } failureBlock:^(NSError *error) {
             
-                                         
-                                             NSLog(@"ерунда");
+                                        
                                          }
         
         
@@ -743,19 +744,19 @@
     
     
 }
-- (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item
-{
-    
-    [[NetworkManager shared] likeDislikeWhithItemId:item.id
-                                      successBlock:^{
-    
-    
-                                      } failureBlock:^(NSError *error) {
-    
-    
-                                      }];
-    
-}
+//- (void) pressLikeButton:(UIButton*) sender withItem:(HWItem*)item
+//{
+//    
+//    [[NetworkManager shared] likeDislikeWhithItemId:item.id
+//                                      successBlock:^{
+//    
+//    
+//                                      } failureBlock:^(NSError *error) {
+//    
+//    
+//                                      }];
+//    
+//}
 
 
 

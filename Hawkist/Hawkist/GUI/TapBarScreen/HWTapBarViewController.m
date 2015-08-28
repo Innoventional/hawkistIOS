@@ -132,7 +132,7 @@
              [self.contentView addContentView: self.notificationVC.view];
 //            HWMyBalanceViewController *vc = [[HWMyBalanceViewController alloc] init];
 //            [self.navigationController pushViewController:vc animated:YES];
-            [self updateBadge];
+                [self.contentView updateBadge:@"0"];
             break;
         }
         case 4:

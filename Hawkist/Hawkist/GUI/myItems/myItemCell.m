@@ -203,6 +203,16 @@
 
 - (IBAction) pressLikeAction:(id )sender
 {
+    
+    if([[AppEngine shared].user.id isEqualToString:self.item.user_id])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Cannot Favourite Listing"
+                                                           message:@"I just can't do it captain, I don't have the power to favourite a listing you own!"
+                                                          delegate:nil
+                                                            cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
     POPSpringAnimation *sprintAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
     sprintAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
     sprintAnimation.velocity = [NSValue valueWithCGPoint:CGPointMake(10, 10)];
