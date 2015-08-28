@@ -66,7 +66,7 @@
     self.verticalSpace.constant = 60;
     NavigationVIew *navigation = [[NavigationVIew alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 60)];
     [self.view addSubview:navigation];
-    navigation.title.text = @"Feeds by Tag";
+    navigation.title.text = @"Search by Tag";
     navigation.delegate = self;
     }
 }
