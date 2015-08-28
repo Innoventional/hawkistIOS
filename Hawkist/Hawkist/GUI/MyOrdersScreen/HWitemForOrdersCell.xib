@@ -53,15 +53,22 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BQR-vn-eTV">
+                                <rect key="frame" x="0.0" y="0.0" width="145" height="151"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.69781523879999996" green="0.68823407589999996" blue="0.69541994809999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BQR-vn-eTV" secondAttribute="trailing" id="0Zn-I8-ljk"/>
                             <constraint firstItem="a9Y-G8-9gR" firstAttribute="top" secondItem="iez-w3-hDa" secondAttribute="top" id="4gu-fI-lGd"/>
                             <constraint firstItem="d6q-Cw-cAY" firstAttribute="top" secondItem="iez-w3-hDa" secondAttribute="top" constant="19" id="9QZ-gg-3nb"/>
+                            <constraint firstItem="BQR-vn-eTV" firstAttribute="leading" secondItem="iez-w3-hDa" secondAttribute="leading" id="E1e-IG-eGz"/>
                             <constraint firstAttribute="bottom" secondItem="a9Y-G8-9gR" secondAttribute="bottom" id="WC3-Ef-e6h"/>
                             <constraint firstItem="d6q-Cw-cAY" firstAttribute="leading" secondItem="iez-w3-hDa" secondAttribute="leading" id="dVd-AZ-ZCu"/>
+                            <constraint firstItem="BQR-vn-eTV" firstAttribute="top" secondItem="iez-w3-hDa" secondAttribute="top" id="fxw-XU-qbM"/>
                             <constraint firstAttribute="trailing" secondItem="a9Y-G8-9gR" secondAttribute="trailing" id="l0L-Y1-OcE"/>
                             <constraint firstItem="a9Y-G8-9gR" firstAttribute="leading" secondItem="iez-w3-hDa" secondAttribute="leading" id="prI-q2-IWI"/>
+                            <constraint firstAttribute="bottom" secondItem="BQR-vn-eTV" secondAttribute="bottom" id="tgL-0p-gmX"/>
                             <constraint firstItem="QTg-ze-dNM" firstAttribute="top" secondItem="iez-w3-hDa" secondAttribute="top" constant="20" id="viV-80-BrO"/>
                             <constraint firstItem="QTg-ze-dNM" firstAttribute="leading" secondItem="iez-w3-hDa" secondAttribute="leading" id="yFv-dc-gns"/>
                         </constraints>
@@ -284,6 +291,7 @@
                 <outlet property="platform" destination="52m-HH-bq6" id="mUU-Aa-KsP"/>
                 <outlet property="receivedButton" destination="9Pb-Z4-c3l" id="gPK-ir-JWz"/>
                 <outlet property="skidkaBackground" destination="d6q-Cw-cAY" id="qBI-t5-1Vg"/>
+                <outlet property="statusImView" destination="BQR-vn-eTV" id="shA-mE-06q"/>
                 <outlet property="title" destination="zxe-IV-yox" id="NAr-i2-gdf"/>
             </connections>
             <point key="canvasLocation" x="286.5" y="320"/>

@@ -13,6 +13,7 @@
 
 
 
+
 @interface HWitemForOrdersCell ()
 
 @property (weak, nonatomic) IBOutlet HWOrderButton *receivedButton;
@@ -20,6 +21,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *feedbackButton;
 
 @property (nonatomic, strong) HWOrderItem *orderItem;
+
+@property (nonatomic, weak) IBOutlet UIImageView *statusImView;
 
 
 
