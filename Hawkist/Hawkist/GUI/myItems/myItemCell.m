@@ -18,7 +18,7 @@
 @interface myItemCell()
  
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
-@property (nonatomic,strong) UIVisualEffectView* visualEffectView;
+@property (nonatomic,strong) UIView* visualEffectView;
 
 @property (nonatomic, strong) IBOutlet  UIButton *commentButton;
 @property (nonatomic, strong) IBOutlet  UIButton *likeButton;
@@ -28,6 +28,7 @@
 @property (nonatomic, assign) BOOL isLiked;
 
 
+@property (strong, nonatomic) IBOutlet UIImageView *soldImageView;
 
 
 @property (nonatomic, assign)  NSInteger countLike;
@@ -43,7 +44,7 @@
     self = [super awakeAfterUsingCoder:aDecoder];
     if (self)
     {
-         
+        self.isSoldShowed = YES;
 
     }
     
@@ -128,9 +129,20 @@
                     self.userInteractionEnabled = YES;
     
 
-    if ([self.item.status isEqualToString:@"2"])
+    if ([self.item.status isEqualToString:@"2"] && self.isSoldShowed)
     {
-        [self setupSold];
+        //[self setupSold];
+        
+        self.soldImageView.hidden = NO;
+        
+        
+        self.userInteractionEnabled = YES;
+        //
+        self.mytrash.hidden = YES;
+    }
+    else
+    {
+        self.soldImageView.hidden = YES;
     }
    
     
@@ -139,28 +151,35 @@
 
 - (void) setupSold
 {
-    UIVisualEffect *blurEffect;
-    blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    //UIVisualEffect *blurEffect;
+    //blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     
-    self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    self.visualEffectView.frame = self.itemImage.bounds;
-    self.visualEffectView.alpha = 0.7;
+//    self.visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+//    self.visualEffectView.frame = self.itemImage.frame;
+//    self.visualEffectView.alpha = 0.7;
+//    
+//    self.visualEffectView = [[UIView alloc]initWithFrame:self.itemImage.frame];
+//    
+//    [self.visualEffectView setBackgroundColor:[UIColor whiteColor]];
+//    self.visualEffectView.alpha = 0.1;
+//    
+//    [self addSubview:self.visualEffectView];
+//    
+//    //UILabel* soldLabel = [[UILabel alloc]initWithFrame:CGRectMake(17,self.height/2 - 60, self.width,50)];
+//    
+//    //soldLabel.text = @"SOLD";
+//    //soldLabel.textColor = [UIColor color256RGBWithRed: 88  green: 184 blue: 164];
+//    
+//    //soldLabel.font = [UIFont fontWithName:@"OpenSans" size:40];
+//    //soldLabel.transform = CGAffineTransformMakeRotation(-M_PI/4);
+//    
+//    UIImageView *textSold = [[UIImageView alloc]initWithFrame:self.itemImage.frame];
+//    
+//    [textSold setImage:[UIImage imageNamed:@"sold"]];
+//    
+//    [self addSubview:textSold];
     
-    [self addSubview:self.visualEffectView];
-    UILabel* soldLabel = [[UILabel alloc]initWithFrame:CGRectMake(17,self.height/2 - 60, self.width,50)];
     
-    soldLabel.text = @"SOLD";
-    soldLabel.textColor = [UIColor color256RGBWithRed: 88  green: 184 blue: 164];
-    
-    soldLabel.font = [UIFont fontWithName:@"OpenSans" size:40];
-    soldLabel.transform = CGAffineTransformMakeRotation(-M_PI/4);
-    [self.visualEffectView addSubview:soldLabel];
-    self.userInteractionEnabled = YES;
-    
-    self.mytrash.hidden = YES;
-    
-    
-
 }
 - (void) setupLikeStar
 {

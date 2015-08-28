@@ -322,7 +322,7 @@
      sellingPrice.delegate = self;
     
      checkBox1.selected = NO;
-    checkBox1.enabled = NO;
+    checkBox1.enabled = YES;
      priceForShipping.textField.enabled = NO;
     
     priceForShipping.textField.text = @"0.00";
@@ -888,17 +888,17 @@
         float val =  [value floatValue]*0.875;
         youGetLabel.text = [NSString stringWithFormat:@"%.2f.", val];
         
-        if ([value floatValue] == 0.0f)
-        {
-            checkBox1.enabled = NO;
-            checkBox1.selected = NO;
-            priceForShipping.textField.enabled = NO;
-            priceForShipping.textField.text = @"0.00";
-        }
-        else
-        {
-            checkBox1.enabled = YES;
-        }
+//        if ([value floatValue] == 0.0f)
+//        {
+//            checkBox1.enabled = YES;
+//           // checkBox1.selected = YES;
+//            priceForShipping.textField.enabled = NO;
+//            priceForShipping.textField.text = @"0.00";
+//        }
+//        else
+//        {
+//            checkBox1.enabled = YES;
+//        }
     }
     
     //self.sellButton.enabled = YES;

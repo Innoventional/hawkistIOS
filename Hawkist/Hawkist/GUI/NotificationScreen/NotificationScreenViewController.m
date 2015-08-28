@@ -369,7 +369,7 @@
             
         case 3:
         {
-            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:notification.user.id];
+            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:[AppEngine shared].user.id];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
@@ -382,9 +382,18 @@
         }
         case 5:
         {
+            
+            if ([notification.order.available_feedback boolValue])
+            {
             HWLeaveFeedbackViewController *vc = [[HWLeaveFeedbackViewController alloc]initWithUserID:notification.user.id withOrderId:notification.order.id];
             
             [self.navigationController pushViewController:vc animated:YES];
+            }
+            
+            else
+            {
+            [self showAlertWithTitle:@"Alert" Message:@"Not now"];
+            }
             break;
         }
         case 6: case 8:

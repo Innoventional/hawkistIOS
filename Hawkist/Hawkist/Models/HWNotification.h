@@ -14,7 +14,8 @@
 @end
 
 @interface Order : JSONModel
-@property (nonatomic, strong) NSString* id;
+@property (nonatomic, strong) NSString<Optional>* id;
+@property (nonatomic, strong) NSString<Optional>* available_feedback;
 @end
 
 @protocol User
