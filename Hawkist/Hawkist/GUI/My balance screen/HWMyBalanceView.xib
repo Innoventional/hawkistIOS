@@ -31,9 +31,9 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
-            <string>OpenSans-Semibold</string>
         </mutableArray>
         <mutableArray key="OpenSansRegular.ttf">
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -83,7 +83,7 @@
                     <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                     <subviews>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWX-gn-NOJ" userLabel="contentView">
-                            <rect key="frame" x="8" y="-864" width="320" height="1379"/>
+                            <rect key="frame" x="0.0" y="-57" width="320" height="1379"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-rO-rC4" userLabel="Balance view" customClass="HWMyBalanceCurrentBalanceView">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
@@ -92,8 +92,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BALANCE DETAILS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjd-Zw-eFc">
-                                                    <rect key="frame" x="16" y="12" width="104" height="17"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                                                    <rect key="frame" x="16" y="12" width="95" height="15"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="11"/>
                                                     <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -101,7 +101,7 @@
                                             <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="37" id="1iY-MA-dMw"/>
-                                                <constraint firstAttribute="bottom" secondItem="hjd-Zw-eFc" secondAttribute="bottom" constant="8" id="PPW-qf-EeQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="hjd-Zw-eFc" secondAttribute="bottom" constant="10" id="PPW-qf-EeQ"/>
                                                 <constraint firstItem="hjd-Zw-eFc" firstAttribute="leading" secondItem="93G-hN-ISd" secondAttribute="leading" constant="16" id="Rul-UO-hhG"/>
                                             </constraints>
                                         </view>
@@ -112,18 +112,18 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Your Current Balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIj-3T-VdI">
-                                            <rect key="frame" x="16" y="48" width="248" height="21"/>
-                                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                            <rect key="frame" x="16" y="48" width="248" height="20"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                             <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Pending Sales" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edf-qV-p8w">
-                                            <rect key="frame" x="16" y="90" width="213" height="21"/>
-                                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                            <rect key="frame" x="16" y="91" width="213" height="20"/>
+                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                             <color key="textColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$400" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iO5-uD-cMX">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$400" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iO5-uD-cMX">
                                             <rect key="frame" x="269" y="48" width="35" height="21"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                             <color key="textColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -185,7 +185,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You will be able to withdraw funds and see order details after filling in the fields below." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SC-3g-yGw">
-                                            <rect key="frame" x="99" y="58" width="213" height="66"/>
+                                            <rect key="frame" x="99" y="53" width="213" height="61"/>
                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                             <color key="textColor" red="0.37647058823529411" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -195,7 +195,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="124" id="5ll-RY-Rh3"/>
                                         <constraint firstAttribute="trailing" secondItem="dZJ-Mv-TqB" secondAttribute="trailing" id="BGb-SK-T2r"/>
-                                        <constraint firstItem="6SC-3g-yGw" firstAttribute="top" secondItem="TNy-oh-Yku" secondAttribute="bottom" constant="8" id="K2z-Vf-czt"/>
+                                        <constraint firstItem="6SC-3g-yGw" firstAttribute="top" secondItem="TNy-oh-Yku" secondAttribute="bottom" constant="3" id="K2z-Vf-czt"/>
                                         <constraint firstAttribute="trailing" secondItem="6SC-3g-yGw" secondAttribute="trailing" constant="8" id="PtQ-9a-DAJ"/>
                                         <constraint firstItem="dZJ-Mv-TqB" firstAttribute="top" secondItem="t7H-XI-7K6" secondAttribute="top" id="W6n-NR-hfi"/>
                                         <constraint firstItem="bmY-TM-dB5" firstAttribute="leading" secondItem="t7H-XI-7K6" secondAttribute="leading" constant="32" id="fZZ-sZ-nPD"/>
@@ -203,7 +203,7 @@
                                         <constraint firstItem="6SC-3g-yGw" firstAttribute="leading" secondItem="bmY-TM-dB5" secondAttribute="trailing" constant="22" id="npJ-Cn-Gus"/>
                                         <constraint firstItem="bmY-TM-dB5" firstAttribute="top" secondItem="dZJ-Mv-TqB" secondAttribute="bottom" constant="24" id="o2i-Kn-x3Q"/>
                                         <constraint firstItem="dZJ-Mv-TqB" firstAttribute="leading" secondItem="t7H-XI-7K6" secondAttribute="leading" id="ofz-7a-oAB"/>
-                                        <constraint firstAttribute="bottom" secondItem="6SC-3g-yGw" secondAttribute="bottom" id="xxo-cs-Ce1"/>
+                                        <constraint firstAttribute="bottom" secondItem="6SC-3g-yGw" secondAttribute="bottom" constant="10" id="xxo-cs-Ce1"/>
                                         <constraint firstItem="TNy-oh-Yku" firstAttribute="top" secondItem="dZJ-Mv-TqB" secondAttribute="bottom" constant="8" id="zZJ-UX-dNX"/>
                                     </constraints>
                                 </view>
@@ -243,9 +243,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTJ-V9-XJn">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YUOR DETAILS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okS-jd-UNT">
-                                                    <rect key="frame" x="16" y="12" width="83" height="17"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR DETAILS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okS-jd-UNT">
+                                                    <rect key="frame" x="16" y="12" width="76" height="15"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="11"/>
                                                     <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -254,7 +254,7 @@
                                             <constraints>
                                                 <constraint firstItem="okS-jd-UNT" firstAttribute="leading" secondItem="pTJ-V9-XJn" secondAttribute="leading" constant="16" id="Kbc-pI-LFa"/>
                                                 <constraint firstAttribute="height" constant="37" id="eQe-GS-UWp"/>
-                                                <constraint firstAttribute="bottom" secondItem="okS-jd-UNT" secondAttribute="bottom" constant="8" id="hDu-3Y-ghw"/>
+                                                <constraint firstAttribute="bottom" secondItem="okS-jd-UNT" secondAttribute="bottom" constant="10" id="hDu-3Y-ghw"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si5-cH-pD5">
@@ -383,14 +383,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BANK ACCOUNT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWf-rY-hg3">
-                                                    <rect key="frame" x="16" y="10" width="93" height="17"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                                                    <rect key="frame" x="16" y="11" width="86" height="15"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="11"/>
                                                     <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVl-Bw-aAJ">
-                                                    <rect key="frame" x="175" y="3" width="127" height="30"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="15"/>
+                                                    <rect key="frame" x="192" y="3" width="110" height="30"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="13"/>
                                                     <state key="normal" title="Why We Need This?">
                                                         <color key="titleColor" red="0.2156862745" green="0.72549019609999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -405,7 +405,7 @@
                                                 <constraint firstItem="lWf-rY-hg3" firstAttribute="leading" secondItem="yOB-eg-ZOS" secondAttribute="leading" constant="16" id="7Rq-YK-nue"/>
                                                 <constraint firstAttribute="height" constant="37" id="AzT-1d-XAt"/>
                                                 <constraint firstAttribute="bottom" secondItem="sVl-Bw-aAJ" secondAttribute="bottom" constant="4" id="GCq-i6-vWi"/>
-                                                <constraint firstItem="lWf-rY-hg3" firstAttribute="top" secondItem="yOB-eg-ZOS" secondAttribute="top" constant="10" id="OW8-QE-wh9"/>
+                                                <constraint firstItem="lWf-rY-hg3" firstAttribute="top" secondItem="yOB-eg-ZOS" secondAttribute="top" constant="11" id="OW8-QE-wh9"/>
                                                 <constraint firstItem="sVl-Bw-aAJ" firstAttribute="top" secondItem="yOB-eg-ZOS" secondAttribute="top" constant="3" id="bLv-1Y-8WA"/>
                                                 <constraint firstAttribute="trailing" secondItem="sVl-Bw-aAJ" secondAttribute="trailing" constant="18" id="kur-Th-qUa"/>
                                             </constraints>
@@ -555,8 +555,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BANK ACCOUNT ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0a-b2-kOl">
-                                                    <rect key="frame" x="16" y="9" width="174" height="20"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                                                    <rect key="frame" x="16" y="12" width="137" height="15"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="11"/>
                                                     <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -565,7 +565,7 @@
                                             <constraints>
                                                 <constraint firstItem="J0a-b2-kOl" firstAttribute="leading" secondItem="fRc-VD-Lnu" secondAttribute="leading" constant="16" id="88t-q1-w44"/>
                                                 <constraint firstAttribute="height" constant="37" id="BYw-tf-oxJ"/>
-                                                <constraint firstAttribute="bottom" secondItem="J0a-b2-kOl" secondAttribute="bottom" constant="8" id="fiA-cT-vOM"/>
+                                                <constraint firstAttribute="bottom" secondItem="J0a-b2-kOl" secondAttribute="bottom" constant="10" id="fiA-cT-vOM"/>
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f54-fb-eDL">

@@ -94,6 +94,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+
     self.isFirstSee = YES;
     
     self.heightWithward = self.withwardButtonConstraint.constant;
@@ -118,10 +120,10 @@
 - (void) setupAlertView {
     
     self.addAlert = [[UIAlertView alloc]initWithTitle:@"Import Billing Address"
-                                              message:@"Set your Shipping Address the Billing Address of the most recently registered bank card?"
+                                              message:@"Set your Shipping Address to the Billing Address of the most recently registered bank card?"
                                              delegate:self
                                     cancelButtonTitle:@"Cancel"
-                                    otherButtonTitles:@"Ok", nil];
+                                    otherButtonTitles:@"OK", nil];
     
     self.withwardAlert = [[UIAlertView alloc]initWithTitle:@"Confirm Withdrawal"
                                                 message:@"Confirm that balance should be withdrawn to bank account."
@@ -333,12 +335,13 @@
         self.yourDetailsView.isEdit = (![self.yourDetailsView isFullAllTextFieldWithYourDetails:userInfo]);
         
         if(isVerify) {
-            
+            [self showHud];
             [self setBankAccountForVerify:isVerify];
         }
         
     } failureBlock:^(NSError *error) {
         
+         [self hideHud];
         [self showAlertWithTitle:error.domain Message:error.localizedDescription];
     }];
 }
@@ -370,11 +373,13 @@
         
         if(isVerify) {
             
+            
             [self setBankAccountAddressForVerify:isVerify];
         }
         
     } failureBlock:^(NSError *error) {
         
+         [self hideHud];
         [self showAlertWithTitle:error.domain Message:error.localizedDescription];
     }];
 }
@@ -404,6 +409,7 @@
         
         if(isVerify) {
             
+             [self hideHud];
             if(!(self.yourDetailsView.isEdit && self.bankAccountView.isEdit && self.bankAccAddressView.isEdit)) {
                 
                 [self hideCheckMyBalance];
@@ -422,7 +428,7 @@
         self.isFirstSee = NO;
         
     } failureBlock:^(NSError *error) {
-        
+         [self hideHud];
         [self showAlertWithTitle:error.domain Message:error.localizedDescription];
     }];
 }
@@ -434,9 +440,11 @@
                                          
                                          self.bankAccAddressView.isEdit = NO;
                                          
+                                         
                                      } failureBlock:^(NSError *error) {
                                          
         [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                         
                                      }];
 }
 
@@ -504,5 +512,15 @@
     
 }
 
+
+- (void) showHud
+{
+    [MBProgressHUD showHUDAddedTo: self.view animated: YES];
+}
+
+- (void) hideHud
+{
+    [MBProgressHUD hideAllHUDsForView: self.view animated: YES];
+}
 
 @end

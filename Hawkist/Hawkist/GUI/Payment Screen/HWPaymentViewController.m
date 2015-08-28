@@ -134,10 +134,12 @@
         
         self.addressOptionArray = addresses;
         [self setupPaymentArrayData];
+        [self hideHud];
         
         
     } failureBlock:^(NSError *error) {
         
+        [self hideHud];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
 
@@ -167,6 +169,7 @@
     [super viewDidLoad];
     
     [self.indicator stopAnimating];
+    [self showHud];
     
     // common setup
     
@@ -634,8 +637,7 @@
         HWCard *card = [self.paymentOptionArray objectAtIndex:self.paymentSelectRow];
         cardId = card.id;
     }
-    
-    //if(self.item.collection_only) {
+
         
         if(self.addressSelectRow == self.addressOptionArray.count)
         {
@@ -646,22 +648,7 @@
             HWAddress *address = [self.addressOptionArray objectAtIndex:self.addressSelectRow];
             addressID = address.id;
         }
-   // } else {
-        
-        
-   // }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  
+
     
     [self.networkManager buyItemWithCardId: cardId
                          withPayWithWallet: wallet
@@ -751,6 +738,17 @@
         AddAddressViewController *vc = [[AddAddressViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+
+
+- (void) showHud
+{
+    [MBProgressHUD showHUDAddedTo: self.view animated: YES];
+}
+
+- (void) hideHud
+{
+    [MBProgressHUD hideAllHUDsForView: self.view animated: YES];
 }
 
 @end

@@ -158,11 +158,10 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     [super viewDidLoad];
     
     [self commonInit];
-    
+    [self showHud];
     self.navigationView.delegate = self;
     self.navigationView.title.text = @"Profile";
-    [self.navigationView.title setFont: [UIFont fontWithName:@"OpenSans" size:17]];
-    [self.navigationView.title setFont:[UIFont systemFontOfSize:20]];
+    
     [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
  
    
@@ -289,14 +288,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     [self setWishlistArrayWithUsetId:userId];
     
 }
-//- (void) viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    
-//    self.isInternetConnectionAlertShowed = NO;
-//}
 
-// items
 - (void) setItemsArrayWithUserId:(NSString*)userId
 {
     
@@ -304,6 +296,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                              successBlock:^(NSArray *arrayWithItems) {
                                  
                                   self.itemsArray = arrayWithItems;
+                                 [self hideHud];
                                  
                                  if (self.selectedArrayWithData == HWArrayWithItems)
                                  {
@@ -313,6 +306,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                  
                              } failureBlock:^(NSError *error) {
                                  
+                                 [self hideHud];
                                  [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];                                 
                              }];
     
@@ -784,5 +778,15 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
 }
 
+
+- (void) showHud
+{
+    [MBProgressHUD showHUDAddedTo: self.view animated: YES];
+}
+
+- (void) hideHud
+{
+    [MBProgressHUD hideAllHUDsForView: self.view animated: YES];
+}
 
 @end
