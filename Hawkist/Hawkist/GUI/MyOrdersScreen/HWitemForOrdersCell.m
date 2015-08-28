@@ -13,6 +13,7 @@
 
 
 
+
 @interface HWitemForOrdersCell ()
 
 @property (weak, nonatomic) IBOutlet HWOrderButton *receivedButton;
@@ -20,6 +21,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *feedbackButton;
 
 @property (nonatomic, strong) HWOrderItem *orderItem;
+
+@property (nonatomic, weak) IBOutlet UIImageView *statusImView;
 
 
 
@@ -75,7 +78,16 @@
     {
         self.receivedButton.enabled = NO;
         self.hasIssueButton.enabled = NO;
-    }
+        
+//        if(self.feedbackButton.hidden){
+//            
+//            self.feedbackButton.hidden = NO;
+//            self.feedbackButton.enabled = NO;
+//            [self.feedbackButton setTitle:@"Feedback sent" forState:UIControlStateNormal];
+//            [self.feedbackButton setImage:nil forState:UIControlStateNormal];
+//        }
+        
+            }
     else
     {
         self.receivedButton.enabled = YES;
@@ -89,14 +101,21 @@
         case 1:
             self.receivedButton.backgroundColor = [UIColor colorWithRed:1 green:200./255. blue:200./255 alpha:1];
             self.hasIssueButton.backgroundColor = [UIColor whiteColor];
+            [self.statusImView setImage:[UIImage imageNamed:@"received"]];
+            
+            
+
             break;
             
         case 2:
             self.hasIssueButton.backgroundColor = [UIColor colorWithRed:1 green:200./255. blue:200./255 alpha:1];
             self.receivedButton.backgroundColor = [UIColor whiteColor];
+            [self.statusImView setImage:[UIImage imageNamed:@"hasissue"]];
             
             
+            break;
         default:
+            [self.statusImView setImage:[UIImage imageNamed:@""]];
             break;
     }
 }
