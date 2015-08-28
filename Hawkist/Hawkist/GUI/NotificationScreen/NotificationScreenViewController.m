@@ -383,7 +383,7 @@
         case 5:
         {
             
-            if (notification.order.available_feedback)
+            if ([notification.order.available_feedback boolValue])
             {
             HWLeaveFeedbackViewController *vc = [[HWLeaveFeedbackViewController alloc]initWithUserID:notification.user.id withOrderId:notification.order.id];
             
