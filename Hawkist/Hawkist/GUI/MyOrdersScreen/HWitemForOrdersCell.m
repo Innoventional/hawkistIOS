@@ -70,6 +70,7 @@
     self.hasIssueButton.title.text = @"Has issue";
 
     
+    
     if( orderItems.status != 0)
     {
         self.receivedButton.enabled = NO;
