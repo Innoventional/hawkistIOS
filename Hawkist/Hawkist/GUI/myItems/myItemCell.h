@@ -47,6 +47,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *currentPrice;
 
 
+@property (nonatomic, assign) BOOL isSoldShowed;
+
  
 
 

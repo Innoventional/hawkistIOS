@@ -66,17 +66,26 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="uiI-QW-u9K">
                                 <rect key="frame" x="62" y="66" width="20" height="20"/>
                             </activityIndicatorView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sold" translatesAutoresizingMaskIntoConstraints="NO" id="Y5r-9L-p7C" userLabel="SOLD Label">
+                                <rect key="frame" x="0.0" y="0.0" width="145" height="151"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.69781523879999996" green="0.68823407589999996" blue="0.69541994809999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Y5r-9L-p7C" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="2JR-UT-h1A"/>
+                            <constraint firstItem="hYM-vX-ds8" firstAttribute="bottom" secondItem="Y5r-9L-p7C" secondAttribute="bottom" id="3QA-n7-FuP"/>
                             <constraint firstItem="Fdb-aG-Vuq" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="9Tz-EN-vhp"/>
+                            <constraint firstAttribute="trailing" secondItem="Y5r-9L-p7C" secondAttribute="trailing" id="9rm-Gz-fCw"/>
                             <constraint firstAttribute="bottom" secondItem="hYM-vX-ds8" secondAttribute="bottom" id="AY2-Dc-PB2"/>
                             <constraint firstAttribute="centerX" secondItem="uiI-QW-u9K" secondAttribute="centerX" constant="0.5" id="BgJ-r2-SUv"/>
                             <constraint firstItem="sEe-Qj-DCZ" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="FfJ-XN-X2k"/>
                             <constraint firstAttribute="trailing" secondItem="hYM-vX-ds8" secondAttribute="trailing" id="Fjg-bp-bGO"/>
                             <constraint firstItem="sEe-Qj-DCZ" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" constant="19" id="N00-WT-nXo"/>
                             <constraint firstAttribute="centerY" secondItem="uiI-QW-u9K" secondAttribute="centerY" constant="-0.5" id="WDK-Cn-R9y"/>
+                            <constraint firstItem="Y5r-9L-p7C" firstAttribute="top" secondItem="sEe-Qj-DCZ" secondAttribute="bottom" constant="6" id="XFS-ib-uen"/>
                             <constraint firstItem="hYM-vX-ds8" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" id="Y57-LT-Eac"/>
+                            <constraint firstItem="Y5r-9L-p7C" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" id="dlX-6D-i9I"/>
                             <constraint firstItem="iYj-47-K3n" firstAttribute="top" secondItem="Fdb-aG-Vuq" secondAttribute="top" constant="-1" id="qTU-T6-LEm"/>
                             <constraint firstItem="Fdb-aG-Vuq" firstAttribute="top" secondItem="8pa-IT-Odb" secondAttribute="top" constant="20" id="riE-Eb-AVe"/>
                             <constraint firstAttribute="trailing" secondItem="iYj-47-K3n" secondAttribute="trailing" constant="10" id="tSX-mt-B9J"/>
@@ -88,6 +97,11 @@
                                 <integer key="value" value="0"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XFS-ib-uen"/>
+                            </mask>
+                        </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccF-pK-s0j">
                         <rect key="frame" x="0.0" y="149" width="145" height="78"/>
@@ -237,6 +251,7 @@
                 <outlet property="oldPrice" destination="lSV-id-3OE" id="w1W-EJ-D5e"/>
                 <outlet property="platform" destination="eUQ-4M-ZK6" id="aKP-Tj-GlO"/>
                 <outlet property="skidkaBackground" destination="sEe-Qj-DCZ" id="ea4-SM-vPa"/>
+                <outlet property="soldImageView" destination="Y5r-9L-p7C" id="dtW-2t-YrM"/>
                 <outlet property="title" destination="97z-YM-TJw" id="IIw-VW-byJ"/>
             </connections>
             <point key="canvasLocation" x="80.5" y="645.5"/>
@@ -246,6 +261,7 @@
         <image name="like" width="10" height="10"/>
         <image name="messages" width="10" height="10"/>
         <image name="skidka" width="55" height="31"/>
+        <image name="sold" width="146" height="145"/>
         <image name="trash" width="20" height="20"/>
     </resources>
 </document>

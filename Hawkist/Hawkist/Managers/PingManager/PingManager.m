@@ -46,7 +46,7 @@
             
             
         }];
-            [NSThread sleepForTimeInterval:5];
+            [NSThread sleepForTimeInterval:15];
             }
     });
     

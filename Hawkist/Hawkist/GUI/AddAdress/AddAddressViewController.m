@@ -86,7 +86,7 @@
     self.navigation.delegate = self;
     self.navigation.title.text = @"Add New Address";
     
-    self.addAlert = [[UIAlertView alloc]initWithTitle:@"Import Billing Address" message:@"Set your Shipping Address the Billing Address of the most recently registered bank card?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    self.addAlert = [[UIAlertView alloc]initWithTitle:@"Import Billing Address" message:@"Set your Shipping Address to the Billing Address of the most recently registered bank card?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 
     self.erraceData = [[UIAlertView alloc]initWithTitle:@"Clear Data" message:@"Do you want clear data?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
 
