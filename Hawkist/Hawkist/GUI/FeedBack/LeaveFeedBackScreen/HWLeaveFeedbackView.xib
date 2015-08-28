@@ -51,7 +51,7 @@
                                 <constraint firstAttribute="width" constant="46" id="3K2-km-lHI"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Provide this user with feedback on your experience. Please note that negative reviews impact on a user's quality score." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNW-SO-c2n">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Provide this user with feedback on your experience. Please note that negative reviews impact on a user's quality score." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNW-SO-c2n">
                             <rect key="frame" x="74" y="8" width="238" height="71"/>
                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                             <color key="textColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>

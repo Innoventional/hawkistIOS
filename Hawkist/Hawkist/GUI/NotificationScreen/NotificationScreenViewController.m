@@ -21,7 +21,7 @@
 @interface NotificationScreenViewController () <UITableViewDelegate,UITableViewDataSource,NotificationCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *messages;
-
+@property (strong, nonatomic) UIRefreshControl* refreshControl;
 @end
 
 
@@ -42,6 +42,11 @@
     self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"NotificationCell" bundle:nil] forCellReuseIdentifier:notificationCellIdentifier];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl setTintColor:[UIColor color256RGBWithRed: 55  green: 184 blue: 164]];
+    [self.tableView addSubview:self.refreshControl];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -53,13 +58,19 @@
 
 - (void) refresh
 {
+    [self showHud];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching notifications..."];
+    
+    [self.refreshControl beginRefreshing];
     [[NetworkManager shared] getNotifications:^(NSArray *notifications) {
         
         self.messages = [NSMutableArray arrayWithArray:notifications];
         [self.tableView reloadData];
-        
+        [self.refreshControl endRefreshing];
+        [self hideHud];
     } failureBlock:^(NSError *error) {
-        
+        [self hideHud];
+        [self.refreshControl endRefreshing];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
     

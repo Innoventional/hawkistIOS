@@ -16,6 +16,7 @@
 @property (nonatomic,strong) NSString* postCode;
 @property (nonatomic,strong) NSMutableArray* avaliableTags;
 
+@property (nonatomic,strong) NSString* countNewNotifications;
 
 + (instancetype) shared;
 

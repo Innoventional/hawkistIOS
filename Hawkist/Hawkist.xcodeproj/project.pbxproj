@@ -38,6 +38,7 @@
 		3A8F7DC21B8C88E9000940CF /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F7DC11B8C88E9000940CF /* NotificationCell.xib */; };
 		3A8F7DC51B8C8E14000940CF /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F7DC41B8C8E14000940CF /* NotificationCell.m */; };
 		3A8F7DC81B8C982F000940CF /* HWNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F7DC71B8C982F000940CF /* HWNotification.m */; };
+		3A8F7DCC1B8FCC40000940CF /* PingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F7DCB1B8FCC40000940CF /* PingManager.m */; };
 		3A968E161B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */; };
 		3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E181B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		3A968E221B4A8542005AA347 /* ChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E211B4A8542005AA347 /* ChoiceTableViewController.m */; };
@@ -267,6 +268,8 @@
 		3A8F7DC41B8C8E14000940CF /* NotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationCell.m; path = NotificationScreen/NotificationCell.m; sourceTree = "<group>"; };
 		3A8F7DC61B8C982F000940CF /* HWNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWNotification.h; sourceTree = "<group>"; };
 		3A8F7DC71B8C982F000940CF /* HWNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWNotification.m; sourceTree = "<group>"; };
+		3A8F7DCA1B8FCC40000940CF /* PingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PingManager.h; path = PingManager/PingManager.h; sourceTree = "<group>"; };
+		3A8F7DCB1B8FCC40000940CF /* PingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PingManager.m; path = PingManager/PingManager.m; sourceTree = "<group>"; };
 		3A968E141B468EBB005AA347 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		3A968E151B468EBB005AA347 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		3A968E171B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
@@ -721,6 +724,15 @@
 			name = NotificationScreen;
 			sourceTree = "<group>";
 		};
+		3A8F7DC91B8FCBC6000940CF /* PingManager */ = {
+			isa = PBXGroup;
+			children = (
+				3A8F7DCA1B8FCC40000940CF /* PingManager.h */,
+				3A8F7DCB1B8FCC40000940CF /* PingManager.m */,
+			);
+			name = PingManager;
+			sourceTree = "<group>";
+		};
 		3A968E1D1B4A8483005AA347 /* ChoiceFromButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -1007,6 +1019,7 @@
 		C35A4C3D1B2F33EA002E1F26 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3A8F7DC91B8FCBC6000940CF /* PingManager */,
 				C35CB5401B6F5D4500956150 /* StripeManager */,
 				C35CB4A01B4D391500956150 /* AWSS3Manager */,
 				C35A4C8A1B31A3F7002E1F26 /* AppEngine */,
@@ -1705,6 +1718,7 @@
 				C35A4C1D1B2F2DF7002E1F26 /* AppDelegate.m in Sources */,
 				3AF831FC1B6F6E7D00CC750D /* CustomField.m in Sources */,
 				C35CB4B31B4EA7E200956150 /* HWTapBarView.m in Sources */,
+				3A8F7DCC1B8FCC40000940CF /* PingManager.m in Sources */,
 				CEBAAFB41B6E10AD00AFE4C6 /* HWPaymentCell.m in Sources */,
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,
 				CE70EDD21B6BC62F005664FA /* HWMyAccountViewController.m in Sources */,

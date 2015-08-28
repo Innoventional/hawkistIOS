@@ -14,6 +14,8 @@
 
 @property (nonatomic, weak) id<HWTapBarViewDelegate> delegate;
 
+- (void) updateBadge:(NSString*)text;
+
 - (void) addContentView: (UIView*) view;
 
 - (void) markSelected: (NSInteger) index;

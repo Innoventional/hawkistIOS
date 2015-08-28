@@ -21,7 +21,7 @@
 #import "HWLeaveFeedbackViewController.h"
 #import "HWFeedBackViewController.h"
 #import "HWMyBalanceViewController.h"
-
+#import "PingManager.h"
 
 
 @interface HWTapBarViewController () <HWTapBarViewDelegate>
@@ -36,6 +36,7 @@
 @property (nonatomic, strong) SupportScreenViewController* supportVC;
 @property (nonatomic, strong) NotificationScreenViewController* notificationVC;
 @property (nonatomic,strong) ManageBankViewController* bankVC;
+
 @end
 
 @implementation HWTapBarViewController
@@ -66,12 +67,29 @@
     
     self.currentSelectedItem = 1;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBadge) name:@"updateNotification" object:nil];
     
+
+
 }
+
+
+- (void) updateBadge{
+    
+    [self.contentView updateBadge:[AppEngine shared].countNewNotifications];
+
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[PingManager shared] stopUpdating];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -79,6 +97,8 @@
     [super viewWillAppear: animated];
     self.contentView.frame = self.view.frame;
     [self.contentView setNeedsLayout];
+    [[PingManager shared] startUpdatingNotification];
+
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -112,6 +132,7 @@
              [self.contentView addContentView: self.notificationVC.view];
 //            HWMyBalanceViewController *vc = [[HWMyBalanceViewController alloc] init];
 //            [self.navigationController pushViewController:vc animated:YES];
+            [self updateBadge];
             break;
         }
         case 4:

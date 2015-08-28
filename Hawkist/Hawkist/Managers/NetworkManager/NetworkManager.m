@@ -2206,7 +2206,7 @@ NSString *URLString = @"user/logout";
     
 }
 
-- (void) getNotificationsCount:(void(^)(NSInteger count))successBlock
+- (void) getNotificationsCount:(void(^)(NSString *count))successBlock
                   failureBlock:(void(^)(NSError *error)) failureBlock
 {
     
@@ -2223,7 +2223,7 @@ NSString *URLString = @"user/logout";
                                return;
                            }
                            
-                           successBlock([responseObject[@"count"] integerValue]);
+                           successBlock(responseObject[@"count"]);
                            
                            
                        }failure:^(AFHTTPRequestOperation *operation, NSError *error) {

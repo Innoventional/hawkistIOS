@@ -8,6 +8,7 @@
 
 #import "HWTapBarView.h"
 #import "UIColor+Extensions.h"
+#import "JSBadgeView.h"
 
 @interface HWTapBarView ()
 
@@ -15,7 +16,7 @@
 @property (nonatomic, strong) UIView* contentView;
 @property (nonatomic, strong) NSArray* arrayWithNormalIcons;
 @property (nonatomic, strong) NSArray* arrayWithSelectedIcons;
-
+@property (nonatomic, strong) JSBadgeView *badgeView;
 @end
 
 @implementation HWTapBarView
@@ -38,6 +39,9 @@
 
 - (void) createSubviews
 {
+    
+
+    
     self.backgroundColor = [UIColor color256RGBWithRed: 50 green: 54 blue: 62];
     self.contentView = [[UIView alloc] init];
     self.contentView.backgroundColor = [UIColor clearColor];
@@ -53,6 +57,29 @@
         button.tag = index;
         [self.items addObject: button];
         [self addSubview: button];
+        
+    }
+    
+    self.badgeView = [[JSBadgeView alloc] initWithParentView:[self.items objectAtIndex:2] alignment:JSBadgeViewAlignmentTopRight];
+    [self sendSubviewToBack:[self.items objectAtIndex:3]];
+
+    self.badgeView.badgeBackgroundColor = [UIColor color256RGBAWithRed:55 green:185 blue:165 alpha:1];
+
+    self.badgeView.badgeStrokeColor = [UIColor color256RGBAWithRed:153 green:155 blue:159 alpha:1];
+    self.badgeView.badgeStrokeWidth = 3.f;
+}
+
+
+- (void) updateBadge:(NSString*)text
+{
+    if ([text integerValue] == 0)
+    {
+        self.badgeView.hidden = YES;
+    }
+    else
+    {
+        self.badgeView.hidden = NO;
+        self.badgeView.badgeText = [NSString stringWithFormat:@"%@",text];
     }
 }
 

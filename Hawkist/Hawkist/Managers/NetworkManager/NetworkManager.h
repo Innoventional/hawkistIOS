@@ -322,7 +322,7 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
 - (void) getNotifications:(void(^)(NSArray *notifications))successBlock
              failureBlock:(void(^)(NSError *error)) failureBlock;
 
-- (void) getNotificationsCount:(void(^)(NSInteger count))successBlock
+- (void) getNotificationsCount:(void(^)(NSString *count))successBlock
                   failureBlock:(void(^)(NSError *error)) failureBlock;
 
 #pragma mark - User Balance

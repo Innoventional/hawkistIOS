@@ -19,7 +19,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AXA-Yy-3o5" id="2pv-XW-7Rq">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ewb-n6-DA6" userLabel="avatar">
+                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ewb-n6-DA6" userLabel="avatar">
                         <rect key="frame" x="15" y="15" width="33" height="33"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="33" id="EWy-hB-55n"/>
@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aqq-Dk-cU4">
-                        <rect key="frame" x="72" y="39" width="44" height="15"/>
+                        <rect key="frame" x="76" y="39" width="44" height="15"/>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
                         <color key="textColor" red="0.66666666669999997" green="0.69411764710000001" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -43,7 +43,7 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_time" translatesAutoresizingMaskIntoConstraints="NO" id="XsB-fV-28Y">
-                        <rect key="frame" x="59" y="43" width="9" height="9"/>
+                        <rect key="frame" x="63" y="43" width="9" height="9"/>
                         <color key="tintColor" red="0.66666666669999997" green="0.69411764710000001" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="9" id="Ams-Zy-Ach"/>
@@ -58,7 +58,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zXe-Zn-fC5">
+                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zXe-Zn-fC5">
                         <rect key="frame" x="351" y="15" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="lxA-3X-yfo"/>
@@ -100,7 +100,7 @@
                     <constraint firstItem="8Ep-xN-xFX" firstAttribute="leading" secondItem="2pv-XW-7Rq" secondAttribute="leading" id="6cm-fz-kDE"/>
                     <constraint firstAttribute="bottomMargin" secondItem="8Ep-xN-xFX" secondAttribute="bottom" constant="1" id="8S0-Iq-Mcv"/>
                     <constraint firstItem="XsB-fV-28Y" firstAttribute="top" secondItem="ez0-EN-Cgr" secondAttribute="bottom" constant="4" id="BsY-5o-Z6o"/>
-                    <constraint firstItem="ez0-EN-Cgr" firstAttribute="leading" secondItem="XsB-fV-28Y" secondAttribute="leading" id="EON-BO-lws"/>
+                    <constraint firstItem="ez0-EN-Cgr" firstAttribute="leading" secondItem="XsB-fV-28Y" secondAttribute="leading" constant="-4" id="EON-BO-lws"/>
                     <constraint firstItem="Yld-VN-tr7" firstAttribute="top" secondItem="2pv-XW-7Rq" secondAttribute="top" id="F5p-jd-0Yj"/>
                     <constraint firstItem="ez0-EN-Cgr" firstAttribute="leading" secondItem="Ewb-n6-DA6" secondAttribute="trailing" constant="11" id="II7-hQ-y5D"/>
                     <constraint firstItem="Ewb-n6-DA6" firstAttribute="leading" secondItem="2pv-XW-7Rq" secondAttribute="leading" constant="15" id="Ke3-rj-ye1"/>

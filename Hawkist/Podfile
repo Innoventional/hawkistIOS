@@ -13,4 +13,6 @@ pod 'AWSiOSSDKv2'
 pod 'SWTableViewCell', '~> 0.3.7'
 pod 'Stripe'
 
+pod 'JSBadgeView'
+
 pod 'pop', '~> 1.0'
