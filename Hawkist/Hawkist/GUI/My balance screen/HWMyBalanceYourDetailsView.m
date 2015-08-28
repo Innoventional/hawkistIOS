@@ -26,11 +26,11 @@
     
     if(isEdit) {
         
-        [self.saveEditButton setTitle:@"SAVE BANK ACCOUNT" forState:UIControlStateNormal];
+        [self.saveEditButton setTitle:@"SAVE DETAILS" forState:UIControlStateNormal];
         [self.saveEditButton setBackgroundColor:[UIColor color256RGBWithRed:48 green:173 blue:148]];
     } else {
         
-        [self.saveEditButton setTitle:@"EDIT BANK ACCOUNT" forState:UIControlStateNormal];
+        [self.saveEditButton setTitle:@"EDIT DETAILS" forState:UIControlStateNormal];
         [self.saveEditButton setBackgroundColor:[UIColor color256RGBWithRed:78 green:78 blue:78]];
     }
     

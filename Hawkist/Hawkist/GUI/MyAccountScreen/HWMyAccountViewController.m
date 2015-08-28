@@ -14,6 +14,7 @@
 #import "NetworkManager.h"
 #import "ManageAddressViewController.h"
 #import "ManageBankViewController.h"
+#import "AccountDetailViewController.h"
 
 
 @interface HWMyAccountViewController () <UITableViewDataSource, UITableViewDelegate, NavigationViewDelegate,HWSingOutCellDelegate>
@@ -29,6 +30,10 @@
 
 @property(nonatomic, strong) NSArray *nameForGroupArray;
 @property (nonatomic, strong) NSArray *groupArray;
+
+@property (nonatomic, weak) IBOutlet UIButton *signOutButton;
+
+@property (nonatomic, assign) BOOL isFavorItem;
 
 
 @end
@@ -71,9 +76,9 @@
 - (void) setupMenuArray
 {
     self.accountDetailsArray = @[
-                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"username" withTitle:@"Username"],
-                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"email" withTitle:@"Email Address"],
-                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"about me" withTitle:@"About Me"],
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"username" withTitle:@"Update Account Details"],
+//                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"email" withTitle:@"Email Address"],
+//                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"about me" withTitle:@"About Me"],
                                 ];
     
     self.paymentOptionsArray = @[
@@ -115,6 +120,8 @@
     {
         HWSingOutCell *cell = [tableView dequeueReusableCellWithIdentifier:singOutCellIdentifier];
         cell.delegate = self;
+        [self favouriteWithButton:cell.notifySellerButton];
+        
         return cell;
     }
     
@@ -182,10 +189,13 @@
 {
     switch (row) {
         case 0:
+        {
+            AccountDetailViewController *vc = [[AccountDetailViewController alloc] initWithUser:[AppEngine shared].user.id];
+            [self.navigationController pushViewController:vc animated:YES];
             
             NSLog(@"User name");
             break;
-            
+        }
         case 1:
             
             NSLog(@"Email Address");
@@ -301,27 +311,75 @@
 
 - (void) pressNotifySellerButton:(UIButton*)sender
 {
-    [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+//    [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+    
+    [self.networkManager updateUserNotificationItemFavouritedWithBool:(!self.isFavorItem)
+                                                         successBlock:^(BOOL isFavourite){
+                                                             
+                                                             if (isFavourite) {
+                                                                 
+                                                                 [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+                                                                 self.isFavorItem = YES;
+                                                                 
+                                                             } else {
+                                                                 
+                                                                 [sender setImage:[UIImage imageNamed:@"acdet_checkempty"] forState:UIControlStateNormal];
+                                                                 self.isFavorItem = NO;
+                                                             }
+                                                             
+                                                             
+                                                         } failureBlock:^(NSError *error) {
+                                                             
+                                                             [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                                         }];
 }
 
 - (void) pressLetMemberButton:(UIButton*)sender
 {
-    [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+    if([sender.imageView.image isEqual:[UIImage imageNamed:@"acdet_check"]])
+    {
+        [sender setImage:[UIImage imageNamed:@"acdet_checkempty"] forState:UIControlStateNormal];
+    
+    } else {
+        [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+    }
 }
 
-- (void) pressSingOutButton:(UIButton*)sender
+- (IBAction) pressSingOutButton:(UIButton*)sender
 {
+    sender.enabled = NO;
     [self.networkManager logOutWithSuccessBlock:^{
         
         [self.navigationController popToRootViewControllerAnimated:YES];
         
     } failureBlock:^(NSError *error) {
         
+        sender.enabled = YES;
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         
     }];
     
 }
 
+- (void) favouriteWithButton:(UIButton*)sender {
+    
+    [self.networkManager getUserNotificationItemFavouritedWithSuccessBlock:^(BOOL isFavourite) {
+        
+        if (isFavourite) {
+            
+            [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+            self.isFavorItem = YES;
+            
+        } else {
+            
+            [sender setImage:[UIImage imageNamed:@"acdet_checkempty"] forState:UIControlStateNormal];
+            self.isFavorItem = NO;
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+    }];
+}
 
 @end

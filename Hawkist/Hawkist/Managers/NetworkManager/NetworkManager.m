@@ -2237,6 +2237,86 @@ NSString *URLString = @"user/logout";
 }
 
 
+- (void) getUserNotificationItemFavouritedWithSuccessBlock:(void(^)(BOOL isFavourite))successBlock
+                                              failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    [self.networkDecorator GET:@"user/notify_about_favorite"
+                    parameters: nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+
+                           BOOL isFavourite = [responseObject[@"notify_about_favorite"] boolValue];
+                           successBlock(isFavourite);
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+
+}
+
+
+- (void) updateUserNotificationItemFavouritedWithBool:(BOOL) isFavourite
+                                      successBlock:(void(^)(BOOL isFavourite))successBlock
+                                      failureBlock:(void(^)(NSError *error)) failureBlock
+{
+
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    if(isFavourite) {
+        
+        [params setObject:@"True" forKey:@"notify_about_favorite"];
+    } else {
+        
+        [params setObject:@"" forKey:@"notify_about_favorite"];
+    }
+
+[self.networkDecorator PUT:@"user/notify_about_favorite"
+                parameters:params
+                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                       
+                       if([responseObject[@"status"] integerValue] != 0)
+                       {
+                           NSError *responseError = [self errorWithResponseObject:responseObject];
+                           
+                           failureBlock(responseError);
+                           
+                           return;
+                       }
+                       
+                       BOOL isFavourite = [responseObject[@"notify_about_favorite"] boolValue];
+                       successBlock(isFavourite);
+
+                       
+                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                       
+                       NSError *serverError = [self serverErrorWithError:error];
+                       
+                       failureBlock(serverError);
+                   }];
+
+}
+
+
+
+
+
+
+
+
 #pragma mark - Feedback
 
 - (void) addNewFeedbackWithUserId:(NSString*) user_id
@@ -2561,6 +2641,32 @@ NSString *URLString = @"user/logout";
                            failureBlock(serverError);
                            
                        }];
+}
+
+- (void) withdrawalWithSuccessBlock:(void(^)(void))successBlock
+                       failureBlock:(void(^)(NSError *error))failureBlock
+{
+
+    [self.networkDecorator PUT:@"user/banking/withdrawal"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           successBlock();
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+
+                       }];
+    
 }
 
 
