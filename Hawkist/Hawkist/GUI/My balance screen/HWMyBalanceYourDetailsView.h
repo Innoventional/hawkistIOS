@@ -19,6 +19,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *saveEditButton;
 @property (nonatomic, strong) NSDate *date;
 
+@property (nonatomic, weak) IBOutlet UIImageView *forward;
+
 @property (nonatomic, weak) id<HWMyBalanceYourDetailsViewDelegate> delegate;
 
 @property (nonatomic, assign) BOOL isEdit;

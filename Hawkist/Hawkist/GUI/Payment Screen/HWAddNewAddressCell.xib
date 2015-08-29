@@ -23,7 +23,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ ADD NEW SHIPPING ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adD-Si-fqQ">
                         <rect key="frame" x="21" y="59" width="234" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -40,7 +40,7 @@
             <connections>
                 <outlet property="activeImage" destination="kp4-Zt-jwW" id="qnc-kR-v8B"/>
             </connections>
-            <point key="canvasLocation" x="309" y="344.5"/>
+            <point key="canvasLocation" x="504" y="343.5"/>
         </collectionViewCell>
     </objects>
     <resources>

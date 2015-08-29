@@ -626,8 +626,8 @@
 
     
     sender.enabled = NO;
-    [self.indicator startAnimating];
-    
+    //[self.indicator startAnimating];
+    [self showHud];
     if(self.paymentSelectRow == self.paymentOptionArray.count)
     {
         
@@ -663,7 +663,8 @@
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles: nil ]show];
                                   
-                                  [self.indicator stopAnimating];
+                                 // [self.indicator stopAnimating];
+                                  [self hideHud];
                                   
                                   HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
                                   [self.navigationController pushViewController:vc animated:YES];
@@ -673,7 +674,9 @@
                               } failureBlock:^(NSError *error) {
                                   
                                   [self showAlertWithTitle:error.domain Message:error.localizedDescription];
-                                  [self.indicator stopAnimating];
+                                  //[self.indicator stopAnimating];
+                                  [self hideHud];
+                                  
                                   sender.enabled = YES;
 
                               }];

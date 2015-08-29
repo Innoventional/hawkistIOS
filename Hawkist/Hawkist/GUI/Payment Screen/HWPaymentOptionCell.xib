@@ -47,8 +47,8 @@
                         <color key="textColor" red="0.36078431372549019" green="0.36078431372549019" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="****  ****  ****  1000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLR-PJ-1xA">
-                        <rect key="frame" x="33" y="75" width="178" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="●●●● ●●●● ●●●●  1000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLR-PJ-1xA">
+                        <rect key="frame" x="30" y="75" width="180" height="24"/>
                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                         <color key="textColor" red="0.29019607843137257" green="0.29019607843137257" blue="0.29019607843137257" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                 <constraint firstItem="o0V-bc-UmO" firstAttribute="leading" secondItem="SMA-of-ctg" secondAttribute="leading" constant="19" id="8kr-FZ-KOZ"/>
                 <constraint firstItem="2oP-4T-xGd" firstAttribute="leading" secondItem="SMA-of-ctg" secondAttribute="leading" constant="19" id="JEj-a8-10I"/>
                 <constraint firstAttribute="trailing" secondItem="J7f-8V-QIV" secondAttribute="trailing" constant="8" id="MM8-cP-8F0"/>
-                <constraint firstItem="LLR-PJ-1xA" firstAttribute="leading" secondItem="SMA-of-ctg" secondAttribute="leading" constant="33" id="R3V-So-QAm"/>
+                <constraint firstItem="LLR-PJ-1xA" firstAttribute="leading" secondItem="SMA-of-ctg" secondAttribute="leading" constant="30" id="R3V-So-QAm"/>
                 <constraint firstItem="aRz-Uu-Vti" firstAttribute="top" secondItem="Ptt-fF-bhx" secondAttribute="bottom" constant="10" id="S1s-pM-6w0"/>
                 <constraint firstItem="J7f-8V-QIV" firstAttribute="top" secondItem="SMA-of-ctg" secondAttribute="top" constant="8" id="cR9-pD-r17"/>
                 <constraint firstItem="o0V-bc-UmO" firstAttribute="top" secondItem="aRz-Uu-Vti" secondAttribute="bottom" constant="30" id="iYh-if-dS6"/>

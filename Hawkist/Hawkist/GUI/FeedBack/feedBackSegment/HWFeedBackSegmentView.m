@@ -7,6 +7,7 @@
 //
 
 #import "HWFeedBackSegmentView.h"
+#import "UIColor+Extensions.h"
 
 @interface HWFeedBackSegmentView ()
 
@@ -79,7 +80,7 @@
 - (IBAction)pressNeutralButtonAction:(HWFedbackSegmentButton*)sender {
     
     [self selectedButton:sender];
-    sender.selectedImage.backgroundColor = [UIColor yellowColor];
+    sender.selectedImage.backgroundColor = [UIColor color256RGBWithRed:233 green:215 blue:60];//[UIColor yellowColor];
   
     if(self.delegate && [self.delegate respondsToSelector:@selector(pressNeutralButton:)]) {
         
@@ -91,7 +92,7 @@
 - (IBAction)pressNegativeButtonAction:(HWFedbackSegmentButton*)sender{
     
     [self selectedButton:sender];
-    sender.selectedImage.backgroundColor = [UIColor redColor];
+    sender.selectedImage.backgroundColor = [UIColor color256RGBWithRed:239 green:83 blue:80];//[UIColor redColor];
   
     if(self.delegate && [self.delegate respondsToSelector:@selector(pressNegativeButton:)]) {
         
