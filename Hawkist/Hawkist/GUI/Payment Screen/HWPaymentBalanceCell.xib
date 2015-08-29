@@ -26,15 +26,15 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAY WITH MY BALANCE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sr-2v-Qvt">
-                        <rect key="frame" x="68" y="46" width="184" height="24"/>
-                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <rect key="frame" x="79" y="46" width="162" height="21"/>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                        <color key="textColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$25.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhX-R6-KOY">
                         <rect key="frame" x="134" y="83" width="53" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -45,7 +45,7 @@
                 <constraint firstItem="yWN-bh-R1E" firstAttribute="top" secondItem="7Ad-Vd-p1i" secondAttribute="top" constant="8" id="BKJ-s4-CP6"/>
                 <constraint firstAttribute="centerX" secondItem="UhX-R6-KOY" secondAttribute="centerX" id="Ifk-G4-PXK"/>
                 <constraint firstAttribute="centerX" secondItem="0sr-2v-Qvt" secondAttribute="centerX" id="S4B-3b-HiI"/>
-                <constraint firstItem="UhX-R6-KOY" firstAttribute="top" secondItem="0sr-2v-Qvt" secondAttribute="bottom" constant="13" id="alV-sc-2S8"/>
+                <constraint firstItem="UhX-R6-KOY" firstAttribute="top" secondItem="0sr-2v-Qvt" secondAttribute="bottom" constant="16" id="alV-sc-2S8"/>
                 <constraint firstAttribute="trailing" secondItem="yWN-bh-R1E" secondAttribute="trailing" constant="8" id="qbt-YN-TSm"/>
                 <constraint firstItem="0sr-2v-Qvt" firstAttribute="top" secondItem="7Ad-Vd-p1i" secondAttribute="top" constant="46" id="vm9-xq-dcI"/>
             </constraints>

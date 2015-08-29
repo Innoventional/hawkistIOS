@@ -12,6 +12,7 @@
 #import "NavigationVIew.h"
 #import "NetworkManager.h"
 #import "HWFeedBackViewController.h"
+#import "UIColor+Extensions.h"
 
 
 @interface HWLeaveFeedbackViewController () <NavigationViewDelegate>
@@ -118,7 +119,7 @@
     [self selectedButton:self.positiveButton];
     self.navigationView.delegate = self;
     self.positiveButton.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
-    self.textView.placeholder = @"Positive!";
+    self.textView.placeholder = @"Positive! Write feedback...";
      self.typeFeedback = HWFeedbackPositive;
     
     [self.textView becomeFirstResponder];
@@ -139,25 +140,25 @@
     [self selectedButton:sender];
     sender.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
-    self.textView.placeholder = @"Positive!";
+    self.textView.placeholder = @"Positive! Write feedback...";
     self.typeFeedback = HWFeedbackPositive;
 }
 
 - (IBAction)neutralButAction:(HWFedbackSegmentButton *)sender {
     
     [self selectedButton:sender];
-    sender.selectedImage.backgroundColor = [UIColor yellowColor];
+    sender.selectedImage.backgroundColor = [UIColor color256RGBWithRed:233 green:215 blue:60];;//[UIColor yellowColor];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
-    self.textView.placeholder = @"Neutral!";
+    self.textView.placeholder = @"Neutral! Write feedback...";
     self.typeFeedback = HWFeedbackNeutral;
 }
 
 - (IBAction)negativeButAction:(HWFedbackSegmentButton *)sender {
     
     [self selectedButton:sender];
-    sender.selectedImage.backgroundColor = [UIColor redColor];
+    sender.selectedImage.backgroundColor = [UIColor color256RGBWithRed:239 green:83 blue:80];//[UIColor redColor];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
-    self.textView.placeholder = @"Negative!";
+    self.textView.placeholder = @"Negative! Write feedback...";
     
     self.typeFeedback = HWFeedbackNegative;
 }
