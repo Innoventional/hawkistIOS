@@ -33,7 +33,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="328" height="49"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <tabBarItem title="In Stock" id="SFo-Nx-Dpb">
+                        <tabBarItem title="For Sale" id="SFo-Nx-Dpb">
                             <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-12"/>
                         </tabBarItem>
                         <tabBarItem tag="1" title="Sold" id="0bJ-DW-gTY">
