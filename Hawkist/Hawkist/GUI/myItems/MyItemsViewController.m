@@ -13,12 +13,14 @@
 #import "HWCommentViewController.h"
 
 
-@interface MyItemsViewController ()<UICollectionViewDataSource>
+@interface MyItemsViewController ()<UICollectionViewDataSource,UITabBarDelegate>
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic,strong) NSMutableArray* items;
+@property (nonatomic, assign) BOOL showSold;
 
+@property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 
 @end
 
@@ -36,7 +38,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self settingTabBar];
+
     self.refreshControl = [[UIRefreshControl alloc] init];
     
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -54,7 +57,15 @@
   }
 
 
-
+- (void) settingTabBar
+{
+    [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:0]];
+    
+    self.showSold = NO;
+    
+    for (UITabBarItem *item in [self.tabBar items]) {
+        [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans" size:20.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    }}
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -81,7 +92,7 @@
     HWItem* currentItem = [self.items objectAtIndex:indexPath.row];
     
     [cell setItem:currentItem];
-   
+    
     cell.delegate = self;
     return cell;
 }
@@ -125,11 +136,27 @@
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching listings..."];
     [self.refreshControl beginRefreshing];
     
+    [self showHud];
+    
     [[NetworkManager shared] getItemsByUserId:[AppEngine shared].user.id successBlock:^(NSArray *arrayWithItems) {
         
         [self.items removeAllObjects];
         
-        [self.items addObjectsFromArray: arrayWithItems];
+        for (HWItem* item in arrayWithItems)
+        {
+        if (self.showSold)
+        {
+            if ([item.status isEqualToString:@"2"])
+                [self.items addObject:item];
+        }
+        else
+        {
+            if (![item.status isEqualToString:@"2"])
+                [self.items addObject:item];
+
+        }
+        }
+        //[self.items addObjectsFromArray: arrayWithItems];
         [self.collectionView reloadData];
         [self.refreshControl endRefreshing];
         
@@ -142,10 +169,11 @@
         {
             self.view.hidden = NO;
         }
-
+        [self hideHud];
         
     } failureBlock:^(NSError *error) {
         
+        [self hideHud];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         [self.refreshControl endRefreshing];
     }];
@@ -174,5 +202,15 @@
                                        }];
 }
 
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    if ([self.tabBar selectedItem].tag == 1) {
+        self.showSold = YES;
+    }
+    else
+        self.showSold = NO;
+    [self refresh];
+}
 
 @end

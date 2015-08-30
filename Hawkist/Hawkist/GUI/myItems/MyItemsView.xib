@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyItemsViewController">
             <connections>
                 <outlet property="collectionView" destination="852-b4-MR7" id="pj3-3Z-qdp"/>
+                <outlet property="tabBar" destination="Yko-CH-SbJ" id="WfK-XA-TJA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="e5p-J5-aHn"/>
             </connections>
         </placeholder>
@@ -16,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="852-b4-MR7">
-                    <rect key="frame" x="0.0" y="0.0" width="328" height="385"/>
+                    <rect key="frame" x="0.0" y="49" width="328" height="336"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z5l-eN-t0k">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -28,13 +29,31 @@
                         <outlet property="delegate" destination="-1" id="Opx-ze-vwJ"/>
                     </connections>
                 </collectionView>
+                <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yko-CH-SbJ">
+                    <rect key="frame" x="0.0" y="0.0" width="328" height="49"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items>
+                        <tabBarItem title="In Stock" id="SFo-Nx-Dpb">
+                            <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-12"/>
+                        </tabBarItem>
+                        <tabBarItem tag="1" title="Sold" id="0bJ-DW-gTY">
+                            <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-12"/>
+                        </tabBarItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="8oI-F8-smL"/>
+                    </connections>
+                </tabBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="852-b4-MR7" secondAttribute="bottom" id="Anq-4S-WbB"/>
-                <constraint firstItem="852-b4-MR7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Qaa-6S-Uip"/>
+                <constraint firstItem="Yko-CH-SbJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DcK-jm-WwO"/>
+                <constraint firstItem="852-b4-MR7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="49" id="Qaa-6S-Uip"/>
                 <constraint firstItem="852-b4-MR7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RhA-O0-ghx"/>
+                <constraint firstItem="Yko-CH-SbJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cTy-uU-drm"/>
                 <constraint firstAttribute="trailing" secondItem="852-b4-MR7" secondAttribute="trailing" id="jxI-2x-p8J"/>
+                <constraint firstAttribute="trailing" secondItem="Yko-CH-SbJ" secondAttribute="trailing" id="w9Y-lJ-d9Q"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="163" y="259.5"/>
