@@ -11,6 +11,8 @@
 		3A0BAF6F1B551BA6004DFF86 /* myItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BAF6E1B551BA6004DFF86 /* myItemCell.m */; };
 		3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */; };
 		3A0BAF741B5527DD004DFF86 /* MyItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */; };
+		3A17AEA21B93102000CF41CD /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A17AEA11B93102000CF41CD /* WebView.xib */; };
+		3A17AEA81B93112600CF41CD /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17AEA71B93112600CF41CD /* WebViewController.m */; };
 		3A2AE3CA1B6111A000806D59 /* AddTagsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A2AE3C91B6111A000806D59 /* AddTagsView.xib */; };
 		3A2AE3CD1B6115E500806D59 /* AddTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AE3CC1B6115E500806D59 /* AddTagsView.m */; };
 		3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A2AE3CE1B6120DD00806D59 /* TagCell.xib */; };
@@ -230,6 +232,9 @@
 		3A0BAF701B5526BD004DFF86 /* MyItemsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyItemsView.xib; path = myItems/MyItemsView.xib; sourceTree = "<group>"; };
 		3A0BAF721B5527DD004DFF86 /* MyItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyItemsViewController.h; path = myItems/MyItemsViewController.h; sourceTree = "<group>"; };
 		3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItemsViewController.m; path = myItems/MyItemsViewController.m; sourceTree = "<group>"; };
+		3A17AEA11B93102000CF41CD /* WebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebView.xib; path = WebView/WebView.xib; sourceTree = "<group>"; };
+		3A17AEA61B93112600CF41CD /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = WebView/WebViewController.h; sourceTree = "<group>"; };
+		3A17AEA71B93112600CF41CD /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = WebView/WebViewController.m; sourceTree = "<group>"; };
 		3A2AE3C91B6111A000806D59 /* AddTagsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddTagsView.xib; path = AddTagsScreen/AddTagsView.xib; sourceTree = "<group>"; };
 		3A2AE3CB1B6115E500806D59 /* AddTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTagsView.h; path = AddTagsScreen/AddTagsView.h; sourceTree = "<group>"; };
 		3A2AE3CC1B6115E500806D59 /* AddTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTagsView.m; path = AddTagsScreen/AddTagsView.m; sourceTree = "<group>"; };
@@ -601,6 +606,16 @@
 				3A0BAF731B5527DD004DFF86 /* MyItemsViewController.m */,
 			);
 			name = MyItems;
+			sourceTree = "<group>";
+		};
+		3A17AEA01B930FF700CF41CD /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				3A17AEA61B93112600CF41CD /* WebViewController.h */,
+				3A17AEA71B93112600CF41CD /* WebViewController.m */,
+				3A17AEA11B93102000CF41CD /* WebView.xib */,
+			);
+			name = WebView;
 			sourceTree = "<group>";
 		};
 		3A2AE3C81B61114800806D59 /* AddTagsScreen */ = {
@@ -1073,6 +1088,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				3A17AEA01B930FF700CF41CD /* WebView */,
 				3A8F7DBB1B8C8248000940CF /* NotificationScreen */,
 				3A8F7DB51B8BD7AA000940CF /* SupportScreen */,
 				3AA5CC051B8764C1006093D0 /* MyFavoritesScreen */,
@@ -1553,6 +1569,7 @@
 				3A0BAF711B5526BD004DFF86 /* MyItemsView.xib in Resources */,
 				3AF831F61B6F6CB600CC750D /* CustomField.xib in Resources */,
 				CE15469B1B835C7C0082ACF4 /* HWLeaveFeedbackView.xib in Resources */,
+				3A17AEA21B93102000CF41CD /* WebView.xib in Resources */,
 				CE954C6A1B75E3E80063A719 /* HWAboutUserView.xib in Resources */,
 				CE1546421B7DF4A60082ACF4 /* HWAddressCollectionOnlyCell.xib in Resources */,
 				CE70EDCF1B6BC5CE005664FA /* HWMyAccountVIew.xib in Resources */,
@@ -1661,6 +1678,7 @@
 				3A0BAF741B5527DD004DFF86 /* MyItemsViewController.m in Sources */,
 				CEBAAFAA1B6DF52500AFE4C6 /* HWPaymentOptionCell.m in Sources */,
 				CE39C88C1B68FBCF00B8A2D2 /* TextViewWithDetectedWord.m in Sources */,
+				3A17AEA81B93112600CF41CD /* WebViewController.m in Sources */,
 				C35A4C6C1B3036D0002E1F26 /* HWUser.m in Sources */,
 				CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */,
 				3A8F7DC81B8C982F000940CF /* HWNotification.m in Sources */,

@@ -15,6 +15,9 @@
 @property (nonatomic,strong) NSString* city;
 @property (nonatomic,strong) NSString* postCode;
 @property (nonatomic,strong) NSMutableArray* avaliableTags;
+@property (nonatomic, assign) BOOL logginedWithPhone;
+@property (nonatomic, assign) BOOL logginedWithFB;
+
 
 @property (nonatomic,strong) NSString* countNewNotifications;
 
@@ -32,6 +35,16 @@
 - (NSString*) number;
 
 //- (NSString*) categoryNameById: (NSInteger) id;
+
+
+- (void) setLogginedWithFB:(BOOL)logginedWithFB;
+
+- (BOOL) logginedWithFB;
+
+- (void) setLogginedWithPhone:(BOOL)logginedWithPhone;
+
+- (BOOL) logginedWithPhone;
+
 
 
 @end

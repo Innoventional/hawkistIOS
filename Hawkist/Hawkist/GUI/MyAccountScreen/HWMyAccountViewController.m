@@ -17,6 +17,8 @@
 #import "AccountDetailViewController.h"
 
 
+#import "WebViewController.h"
+
 @interface HWMyAccountViewController () <UITableViewDataSource, UITableViewDelegate, NavigationViewDelegate,HWSingOutCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -246,10 +248,14 @@
     
     switch (row) {
         case 0:
-            
+        {
             NSLog(@"Mobile Notifications");
-            break;
             
+            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"http://google.com" andTitle:@"Google"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            break;
+        }
         case 1:
             
             NSLog(@"Email Notifications");
@@ -349,6 +355,9 @@
 {
     sender.enabled = NO;
     [self.networkManager logOutWithSuccessBlock:^{
+        
+        [AppEngine shared].logginedWithPhone = NO;
+        [AppEngine shared].logginedWithFB = NO;
         
         [self.navigationController popToRootViewControllerAnimated:YES];
         
