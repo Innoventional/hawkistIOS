@@ -1137,7 +1137,7 @@ NSString *URLString = @"user/logout";
 
 
 #pragma mark -
-#pragma mark Comments
+#pragma mark offer
 
 - (void) OfferPrice: (NSString*) newPrice
              itemId: (NSString*) itemId
@@ -1383,9 +1383,10 @@ NSString *URLString = @"user/logout";
                                
                                if(comment.offer)
                                {
+                                   
                                    NSError *er;
                                    HWOffer *offerForItem = [[HWOffer alloc]initWithDictionary:comment.offer error:&er];
-                                   
+                                   comment.offerModel = offerForItem;
                                    
                                    if ([offerForItem.offer_creater_id isEqualToString:bossItemId] ||
                                        [offerForItem.offer_receiver_id isEqualToString:currentUser]  ||
