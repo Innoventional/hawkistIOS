@@ -12,7 +12,7 @@
 @interface PingManager()
 
 @property (nonatomic, assign) BOOL isStopUpdating;
-
+@property (nonatomic, assign) BOOL inProccess;
 @end
 
 @implementation PingManager
@@ -29,14 +29,21 @@
 
 - (void) startUpdatingNotification
 {
+    if (self.inProccess)
+    {
+        return;
+    }
     self.isStopUpdating = NO;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             while (true) {
                 if (self.isStopUpdating)
                 {
+                    self.inProccess = NO;
                     break;
                 }
-
+                
+             
+        self.inProccess = YES;
         [[NetworkManager shared]getNotificationsCount:^(NSString *count) {
             
             [AppEngine shared].countNewNotifications = count;
@@ -50,6 +57,11 @@
             }
     });
     
+}
+
+- (BOOL) isRunned
+{
+    return self.inProccess;
 }
 
 - (void) stopUpdating
