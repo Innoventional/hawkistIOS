@@ -2671,4 +2671,39 @@ NSString *URLString = @"user/logout";
 }
 
 
+#pragma mark -
+#pragma mark PushNotification
+
+
+- (void) sendAPNSToken:(NSString*) token
+          successBlock:(void(^)()) successBlock
+          failureBlock:(void(^)(NSError *error)) failureBlock {
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:token forKey:@"apns_token"];
+    
+    [self.networkDecorator PUT:@"user/apns_token"
+                    parameters:token
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           successBlock();
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                           
+                       }];
+
+
+}
+
 @end

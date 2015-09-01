@@ -52,21 +52,26 @@
     // Do any additional setup after loading the view.
 }
 //
-//- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
-//    [self showHud];
-//    return self.allowLoad;
-//}
-//
-//- (void)webViewDidFinishLoad:(UIWebView*)webView {
-//    [self hideHud];
-//    self.allowLoad = NO;
-//}
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+    [self showHud];
+    return YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView*)webView {
+    [self hideHud];
+
+}
 
 
 
 - (void) leftButtonClick
 {
+    if (!self.content.canGoBack)
     [self.navigationController popViewControllerAnimated:YES];
+    else
+    {
+        [self.content goBack];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

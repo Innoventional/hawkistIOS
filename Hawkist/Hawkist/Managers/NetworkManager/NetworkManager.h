@@ -364,4 +364,12 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
                        failureBlock:(void(^)(NSError *error))failureBlock;
 
 
+#pragma mark -
+#pragma mark PushNotification
+
+
+- (void) sendAPNSToken:(NSString*) token
+          successBlock:(void(^)()) successBlock
+          failureBlock:(void(^)(NSError *error)) failureBlock;
+
 @end

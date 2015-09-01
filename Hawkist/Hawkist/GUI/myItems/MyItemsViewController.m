@@ -167,7 +167,7 @@
         [self.collectionView reloadData];
         [self.refreshControl endRefreshing];
         
-        if (self.items.count == 0)
+        if (arrayWithItems.count == 0)
         {
             self.view.hidden = YES;
             
@@ -176,6 +176,7 @@
         {
             self.view.hidden = NO;
         }
+        
         [self hideHud];
         
     } failureBlock:^(NSError *error) {

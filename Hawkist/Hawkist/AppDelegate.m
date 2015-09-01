@@ -61,6 +61,8 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
     NSLog(@"My token is: %@", deviceToken);
+    
+    [AppEngine shared].APNStoken = [NSString stringWithFormat:@"%@",deviceToken];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -68,6 +70,7 @@
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [AppEngine shared].APNStoken = @"";
     NSLog(@"Failed to get token, error: %@", error);
 }
 

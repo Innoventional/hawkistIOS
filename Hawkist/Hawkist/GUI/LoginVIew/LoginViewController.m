@@ -403,6 +403,14 @@
             [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
         }
         
+//        [[NetworkManager shared]sendAPNSToken:[AppEngine shared].APNStoken successBlock:^{
+//            
+//            
+//        } failureBlock:^(NSError *error) {
+//            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+//            
+//        }];
+        
         
     } failureBlock:^(NSError *error) {
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
