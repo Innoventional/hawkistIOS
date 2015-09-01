@@ -136,6 +136,13 @@
     
     [self.moneyField.textField resignFirstResponder];
     
+    
+    if ([self.moneyField.textField.text doubleValue]<0.5f)
+    {
+        [self showAlertWithTitle:@"Minimum Price Not Met" Message:@"The minimum Price for an offer is £0.50."];
+        return;
+    }
+    
     [[NetworkManager shared]OfferPrice:self.moneyField.textField.text
                                 itemId:self.item.id
 

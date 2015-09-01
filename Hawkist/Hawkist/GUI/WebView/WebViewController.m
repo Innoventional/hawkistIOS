@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UIWebView *content;
 @property (strong, nonatomic) NSString* url;
 @property (strong, nonatomic) NSString* viewTitle;
+@property (nonatomic, assign) BOOL allowLoad;
 @end
 
 @implementation WebViewController
@@ -38,6 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    self.allowLoad = YES;
     self.navigation.title.text = self.viewTitle;
     self.navigation.delegate = self;
     
@@ -45,9 +47,21 @@
     NSURL *url = [NSURL URLWithString:urlAddress];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [self.content loadRequest:requestObj];
-
+    
+    self.content.delegate = self;
     // Do any additional setup after loading the view.
 }
+
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+    [self showHud];
+    return self.allowLoad;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView*)webView {
+    [self hideHud];
+    self.allowLoad = NO;
+}
+
 
 
 - (void) leftButtonClick

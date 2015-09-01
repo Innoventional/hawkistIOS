@@ -251,9 +251,6 @@
         {
             NSLog(@"Mobile Notifications");
             
-            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"http://www.hawkist.com/privacy-policy/" andTitle:@"Privacy-policy"];
-            [self.navigationController pushViewController:vc animated:YES];
-            
             break;
         }
         case 1:
