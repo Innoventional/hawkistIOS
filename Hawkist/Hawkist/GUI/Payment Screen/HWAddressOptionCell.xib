@@ -104,6 +104,7 @@
                 <constraint firstItem="P5q-z0-ecw" firstAttribute="top" secondItem="Xq3-9P-6Mp" secondAttribute="bottom" constant="2" id="fTu-AG-2bH"/>
                 <constraint firstItem="v46-cB-lgd" firstAttribute="leading" secondItem="yAa-Wh-qKL" secondAttribute="leading" constant="19" id="gWP-X3-1kE"/>
                 <constraint firstItem="eD5-Fm-qf3" firstAttribute="top" secondItem="Mc3-3Y-YRT" secondAttribute="bottom" constant="2" id="iuz-ZT-US7"/>
+                <constraint firstItem="Xq3-9P-6Mp" firstAttribute="bottom" secondItem="Mc3-3Y-YRT" secondAttribute="bottom" id="kS9-yg-BiI"/>
                 <constraint firstItem="Mc3-3Y-YRT" firstAttribute="leading" secondItem="yAa-Wh-qKL" secondAttribute="leading" constant="19" id="nBK-Sh-4gf"/>
                 <constraint firstItem="u7z-S5-zii" firstAttribute="leading" secondItem="yAa-Wh-qKL" secondAttribute="leading" constant="19" id="nD0-V3-Pqv"/>
                 <constraint firstItem="Xq3-9P-6Mp" firstAttribute="top" secondItem="uZl-ex-2xb" secondAttribute="bottom" constant="6" id="uT1-T0-LFY"/>
@@ -111,6 +112,11 @@
                 <constraint firstItem="P5q-z0-ecw" firstAttribute="centerX" secondItem="Xq3-9P-6Mp" secondAttribute="centerX" id="xux-W7-MQQ"/>
             </constraints>
             <size key="customSize" width="320" height="166"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="uT1-T0-LFY"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="activeImage" destination="AVe-m2-yAo" id="qNK-zN-r7w"/>
                 <outlet property="address_line1" destination="4To-24-DXv" id="WTZ-2M-6QG"/>

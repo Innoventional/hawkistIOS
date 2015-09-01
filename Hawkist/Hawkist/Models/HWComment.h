@@ -25,6 +25,7 @@
 
 @property (nonatomic, strong) NSArray<Optional>* mentions;
 
+@property (nonatomic, strong) HWOffer<Optional>*offerModel;
 
 
 @end

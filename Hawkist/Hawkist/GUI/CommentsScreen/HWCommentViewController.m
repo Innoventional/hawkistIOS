@@ -276,7 +276,7 @@
     [cell setCellWithComment:comment];
     [cell layoutIfNeeded];
     
-    if (comment.isAcceptDeclineComment)
+    if (comment.isAcceptDeclineComment && [comment.offerModel.visibility integerValue])
     {
         cell.rightUtilityButtons = [self rightButtons];
         cell.backgroundColor = [UIColor colorWithRed:1 green:231./255. blue:231./255 alpha:1];
@@ -364,8 +364,6 @@
     
     
 }
-
-
 
 
 

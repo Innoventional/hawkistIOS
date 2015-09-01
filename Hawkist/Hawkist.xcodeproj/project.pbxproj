@@ -1512,7 +1512,7 @@
 				TargetAttributes = {
 					C35A4C131B2F2DF7002E1F26 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 7228BBSRBS;
+						DevelopmentTeam = 823CDF6K5W;
 					};
 					C35A4C2C1B2F2DF8002E1F26 = {
 						CreatedOnToolsVersion = 6.3.1;
