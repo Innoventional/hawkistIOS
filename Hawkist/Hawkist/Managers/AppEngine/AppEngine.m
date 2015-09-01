@@ -12,7 +12,7 @@
 
 #pragma mark -
 #pragma mark Lifecycle
-@synthesize user;
+//@synthesize user;
 + (instancetype) shared
 {
     static AppEngine* sharedInstance;
@@ -103,35 +103,39 @@
 }
 
 
-//- (NSString*) categoryNameById: (NSInteger) id
-//{
-//    HWTag* tag = [self tagWithId: [NSString stringWithFormat: @"%ld", id] fromArray: self.tags];
-//    if(tag)
-//        return tag.name;
-//    else
-//        return nil;
-//}
+- (void) setLogginedWithFB:(BOOL)logginedWithFB
+{
+    if (logginedWithFB)
+        
+        [[NSUserDefaults standardUserDefaults] setObject: @"YES" forKey: @"loginFB"];
+    else
+        [[NSUserDefaults standardUserDefaults] setObject: @"NO" forKey: @"loginFB"];
+}
 
+- (BOOL) logginedWithFB
+{
+    NSString* result = (NSString*)[[NSUserDefaults standardUserDefaults] objectForKey: @"loginFB"];
+    
+    if ([result isEqualToString:@"YES"])
+        return YES;
+    return NO;
+}
 
-//- (HWTag*) tagWithId: (NSString*) tagId fromArray: (NSArray*) array
-//{
-//    for(HWTag* tag in array)
-//    {
-//        if([tag.id isEqualToString: tagId])
-//        {
-//            return tag;
-//        }
-//        else if(tag.children && tag.children.count > 0)
-//        {
-//            HWTag* aTag = [self tagWithId: tagId fromArray: tag.children];
-//            if(aTag)
-//                return aTag;
-//        }
-//    }
-//    return nil;
-//}
+- (void) setLogginedWithPhone:(BOOL)logginedWithPhone
+{
+    if (logginedWithPhone)
+        
+        [[NSUserDefaults standardUserDefaults] setObject: @"YES" forKey: @"loginPhone"];
+    else
+        [[NSUserDefaults standardUserDefaults] setObject: @"NO" forKey: @"loginPhone"];
+}
 
-
-
-
+- (BOOL) logginedWithPhone
+{
+    NSString* result = (NSString*)[[NSUserDefaults standardUserDefaults] objectForKey: @"loginPhone"];
+    
+    if ([result isEqualToString:@"YES"])
+        return YES;
+    return NO;
+}
 @end

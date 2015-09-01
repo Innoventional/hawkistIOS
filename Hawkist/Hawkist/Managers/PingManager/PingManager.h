@@ -20,9 +20,9 @@
 
 + (instancetype) shared;
 
-
 - (void) startUpdatingNotification;
 - (void) stopUpdating;
+- (BOOL) isRunned;
 
 
 @end

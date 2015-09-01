@@ -57,6 +57,7 @@
 {
     if([orderItems.available_feedback integerValue]) {
         
+        
         self.feedbackButton.hidden = NO;
     } else {
         
@@ -103,8 +104,7 @@
             self.hasIssueButton.backgroundColor = [UIColor whiteColor];
             [self.statusImView setImage:[UIImage imageNamed:@"received"]];
             
-            
-
+           
             break;
             
         case 2:
@@ -113,11 +113,34 @@
             [self.statusImView setImage:[UIImage imageNamed:@"hasissue"]];
             
             
+            
             break;
         default:
             [self.statusImView setImage:[UIImage imageNamed:@""]];
+            [self setFeedBackHiden:YES];
             break;
     }
+}
+
+
+-(void)setFeedBackHiden:(BOOL)isHiden {
+    
+    
+    NSString *str;
+    UIImage *im;
+    
+    if(isHiden){
+        im = [UIImage imageNamed:@"fff"];
+        str = @"Leave Feedback";
+    } else {
+        im = nil;
+        str = @"Feedback sent";
+    }
+                    self.feedbackButton.hidden = isHiden;
+                    self.feedbackButton.enabled = isHiden;
+                    [self.feedbackButton setTitle:str forState:UIControlStateNormal];
+                    [self.feedbackButton setImage:im forState:UIControlStateNormal];
+    
 }
 
 #pragma mark -

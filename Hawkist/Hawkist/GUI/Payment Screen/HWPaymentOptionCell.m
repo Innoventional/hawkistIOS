@@ -27,7 +27,7 @@
 {
     self.card = card;
     self.fullNameLabel.text = card.name;
-    self.numberCardLabel.text = [NSString stringWithFormat:@"**** **** **** %@",card.last4];
+    self.numberCardLabel.text = [NSString stringWithFormat:@"●●●● ●●●● ●●●● %@",card.last4];
     self.expirationDateLabel.text = [NSString stringWithFormat:@"%@ / %@",card.exp_month, card.exp_year];
     
 }

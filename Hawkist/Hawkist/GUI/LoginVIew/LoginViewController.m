@@ -47,14 +47,14 @@
     _socManager = [SocialManager shared];
     _engine = [AppEngine shared];
     
+    
+    
     if([AppEngine isFirsTimeLaunch])
     {
         [self presentViewController: [[TutorialViewController alloc] init] animated: YES completion:^{
             
         }];
     }
-    
-
     
     NSArray* arr = [[NSBundle mainBundle]loadNibNamed:@"Login" owner:self options:nil];
    
@@ -150,6 +150,7 @@
     _txtMobileNum.inputAccessoryView = numberToolbar;
     _txtPin.inputAccessoryView = numberToolbar;
 
+    
 }
 
 
@@ -157,6 +158,8 @@
 {
     _txtMobileNum.text = _engine.number;
     _txtPin.text = _engine.pin;
+
+[self autoLogin];
 }
 
 
@@ -407,8 +410,9 @@
     
     
          //  [self DownloadData];
-    
 
+        [AppEngine shared].logginedWithFB = FaceBook;
+    [AppEngine shared].logginedWithPhone = !FaceBook;
 }
 
 
@@ -508,5 +512,54 @@
 }
 
 
+- (void) autoLogin
+{
+    [self showHud];
+    
+    if (![AppEngine shared].logginedWithFB && ![AppEngine shared].logginedWithPhone)
+    {
+        [self hideHud];
+        return;
+    }
+    
+    if ([AppEngine shared].logginedWithPhone)
+    {
+        [_networkManager loginWithPhoneNumber:[AppEngine shared].number pin:[AppEngine shared].pin successBlock:^(HWUser *user) {
+           
+            [self logged:user isLoggedWithFacebook:NO];
+            [self hideHud];
+        } failureBlock:^(NSError *error) {
+                        [self hideHud];
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+
+        }];
+    }
+    
+    if ([AppEngine shared].logginedWithFB)
+    {
+        [_socManager loginFacebookSuccess:^(NSDictionary *response) {
+            [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
+                [self logged:user isLoggedWithFacebook:YES];
+
+                } failureBlock:^(NSError *error) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                                [self hideHud];
+                });
+                
+                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+            }];
+            
+        } failure:^(NSError *error) {
+           
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideHud];
+            });
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        }];
+
+    }
+    
+}
 
 @end

@@ -134,12 +134,14 @@
         
         self.addressOptionArray = addresses;
         [self setupPaymentArrayData];
-        [self hideHud];
+       
+        
         
         
     } failureBlock:^(NSError *error) {
         
-        [self hideHud];
+      
+        
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
 
@@ -151,14 +153,19 @@
     
     [self.networkManager getAllBankCards:^(NSArray *cards, NSString *balance) {
         
+        
+        self.tableView.hidden = NO;
         self.balance = balance;
         self.paymentOptionArray = cards;
         [self.tableView reloadData];
         [self.paymentCollectionView reloadData];
         [self.addressCollectionView reloadData];
+         [self hideHud];
         
     } failureBlock:^(NSError *error) {
         
+         [self hideHud];
+        self.tableView.hidden = NO;
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
     
@@ -170,6 +177,7 @@
     
     [self.indicator stopAnimating];
     [self showHud];
+    self.tableView.hidden = YES;
     
     // common setup
     
@@ -626,8 +634,8 @@
 
     
     sender.enabled = NO;
-    [self.indicator startAnimating];
-    
+    //[self.indicator startAnimating];
+    [self showHud];
     if(self.paymentSelectRow == self.paymentOptionArray.count)
     {
         
@@ -663,7 +671,9 @@
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles: nil ]show];
                                   
-                                  [self.indicator stopAnimating];
+                                 // [self.indicator stopAnimating];
+                                  [self hideHud];
+                                  
                                   
                                   HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
                                   [self.navigationController pushViewController:vc animated:YES];
@@ -673,7 +683,10 @@
                               } failureBlock:^(NSError *error) {
                                   
                                   [self showAlertWithTitle:error.domain Message:error.localizedDescription];
-                                  [self.indicator stopAnimating];
+                                  //[self.indicator stopAnimating];
+                                  [self hideHud];
+                                  
+                                  
                                   sender.enabled = YES;
 
                               }];

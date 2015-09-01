@@ -11,14 +11,21 @@
 #import "myItemCell.h"
 #import "ViewItemViewController.h"
 #import "HWCommentViewController.h"
+#import "HWFedbackSegmentButton.h"
 
 
-@interface MyItemsViewController ()<UICollectionViewDataSource>
+@interface MyItemsViewController ()<UICollectionViewDataSource,UITabBarDelegate>
+
+@property (strong, nonatomic) IBOutletCollection(HWFedbackSegmentButton) NSArray *feedbackButtonCollection;
+@property (strong, nonatomic) IBOutlet HWFedbackSegmentButton *buttonForSale;
+@property (strong, nonatomic) IBOutlet HWFedbackSegmentButton *buttonSold;
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic,strong) NSMutableArray* items;
+@property (nonatomic, assign) BOOL showSold;
 
+//@property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 
 @end
 
@@ -36,7 +43,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   // [self settingTabBar];
+
     
+    [self setupSegmentConfig];
     self.refreshControl = [[UIRefreshControl alloc] init];
     
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -54,7 +64,15 @@
   }
 
 
-
+//- (void) settingTabBar
+//{
+//    [self.tabBar setSelectedItem:[self.tabBar.items objectAtIndex:0]];
+//    
+//    self.showSold = NO;
+//    
+//    for (UITabBarItem *item in [self.tabBar items]) {
+//        [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans" size:20.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
+//    }}
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -81,7 +99,7 @@
     HWItem* currentItem = [self.items objectAtIndex:indexPath.row];
     
     [cell setItem:currentItem];
-   
+    
     cell.delegate = self;
     return cell;
 }
@@ -125,11 +143,27 @@
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching listings..."];
     [self.refreshControl beginRefreshing];
     
+    [self showHud];
+    
     [[NetworkManager shared] getItemsByUserId:[AppEngine shared].user.id successBlock:^(NSArray *arrayWithItems) {
         
         [self.items removeAllObjects];
         
-        [self.items addObjectsFromArray: arrayWithItems];
+        for (HWItem* item in arrayWithItems)
+        {
+        if (self.showSold)
+        {
+            if ([item.status isEqualToString:@"2"])
+                [self.items addObject:item];
+        }
+        else
+        {
+            if (![item.status isEqualToString:@"2"])
+                [self.items addObject:item];
+
+        }
+        }
+        //[self.items addObjectsFromArray: arrayWithItems];
         [self.collectionView reloadData];
         [self.refreshControl endRefreshing];
         
@@ -142,10 +176,11 @@
         {
             self.view.hidden = NO;
         }
-
+        [self hideHud];
         
     } failureBlock:^(NSError *error) {
         
+        [self hideHud];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         [self.refreshControl endRefreshing];
     }];
@@ -175,4 +210,78 @@
 }
 
 
+//- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+//{
+//    if ([self.tabBar selectedItem].tag == 1) {
+//        self.showSold = YES;
+//    }
+//    else
+//        self.showSold = NO;
+//    [self refresh];
+//}
+
+- (void) selectedButton:(HWFedbackSegmentButton*) sender {
+    
+    for (HWFedbackSegmentButton *but in self.feedbackButtonCollection) {
+        
+        [self resetConfigButton:but
+                  withColorBack:[UIColor colorWithRed:38./255. green:41./255. blue:48./255. alpha:1]
+                  withColorText:[UIColor colorWithRed:141./255. green:143./255. blue:148./255. alpha:1]
+         ];
+    }
+    sender.backgroundColor = [UIColor colorWithRed:244./255. green:242./255. blue:248./255. alpha:1];
+    [sender setTitleColor:[UIColor colorWithRed:99./255. green:99./255. blue:95./255. alpha:1]
+                 forState:UIControlStateNormal];
+    
+    
+    
+    
+}
+
+- (void) resetConfigButton:(HWFedbackSegmentButton*) but
+             withColorBack:(UIColor*) backgraund
+             withColorText:(UIColor*) textColor {
+    
+    but.backgroundColor = backgraund;
+    [but setTitleColor:textColor forState: UIControlStateNormal];
+    
+    but.selectedImage.backgroundColor = [UIColor clearColor];
+    but.selectedImage.image = nil;
+    
+    //[self.textView becomeFirstResponder];
+    
+    
+}
+
+- (void) setupSegmentConfig {
+    
+    for (HWFedbackSegmentButton *but in self.feedbackButtonCollection) {
+        
+        but.count.text = @"";
+        but.titleButton.text = @"";
+        if ([but isEqual:self.buttonForSale]){
+            
+            [but setTitle:@"For Sale" forState:UIControlStateNormal];
+        }
+        
+        if ([but isEqual:self.buttonSold]){
+            
+            [but setTitle:@"Sold" forState:UIControlStateNormal];
+            
+        }
+    }
+    [self selectedButton:self.buttonForSale];
+}
+
+- (IBAction)forSaleAction:(id)sender {
+    [self selectedButton:sender];
+    self.showSold = NO;
+    [self refresh];
+}
+
+- (IBAction)soldAction:(id)sender {
+    [self selectedButton:sender];
+    self.showSold = YES;
+    [self refresh];
+}
 @end

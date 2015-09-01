@@ -8,6 +8,7 @@
 
 #import "SupportScreenViewController.h"
 #import "HWAccountMenuCell.h"
+#import "WebViewController.h"
 
 @interface SupportScreenViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -208,11 +209,17 @@
         case 1:
         {
             NSLog(@"Privacy");
+            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"http://www.hawkist.com/privacy-policy/" andTitle:@"Privacy policy"];
+            [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         case 2:
         {
             NSLog(@"Terms");
+            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"http://www.hawkist.com/terms-conditions/" andTitle:@"Terms and Conditions"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+
             break;
         }
   

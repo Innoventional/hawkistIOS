@@ -74,14 +74,14 @@
         
     }
             
-  //  dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         [[[UIAlertView alloc]initWithTitle:title
                                    message:message
                                   delegate:nil
                          cancelButtonTitle:@"OK"
                          otherButtonTitles:nil] show];
         
-  //  });
+    });
         
         
             

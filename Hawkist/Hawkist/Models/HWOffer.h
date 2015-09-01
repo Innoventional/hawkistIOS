@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString<Optional>* status;
 @property (nonatomic, strong) NSString<Optional>* offer_creater_id;
 @property (nonatomic, strong) NSString<Optional>* offer_receiver_id;
+@property (nonatomic, strong) NSString<Optional>* visibility;
 
 
 @end

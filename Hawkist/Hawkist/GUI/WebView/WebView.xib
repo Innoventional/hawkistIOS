@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController">
+            <connections>
+                <outlet property="content" destination="TtA-Se-T4X" id="PPF-Mp-gjv"/>
+                <outlet property="navigation" destination="Ror-dJ-rt5" id="hic-M9-8ON"/>
+                <outlet property="view" destination="iN0-l3-epB" id="l0y-c0-AR5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ror-dJ-rt5" customClass="NavigationVIew">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="GGJ-ea-oAa"/>
+                    </constraints>
+                </view>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TtA-Se-T4X">
+                    <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <dataDetectorType key="dataDetectorTypes"/>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Ror-dJ-rt5" secondAttribute="trailing" id="5zz-yY-Vhf"/>
+                <constraint firstItem="Ror-dJ-rt5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="D2y-WV-S9V"/>
+                <constraint firstItem="TtA-Se-T4X" firstAttribute="top" secondItem="Ror-dJ-rt5" secondAttribute="bottom" id="Ev3-X3-qeS"/>
+                <constraint firstItem="TtA-Se-T4X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GWM-wr-aJu"/>
+                <constraint firstAttribute="trailing" secondItem="TtA-Se-T4X" secondAttribute="trailing" id="JGN-oE-Mb0"/>
+                <constraint firstItem="Ror-dJ-rt5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kQ5-WS-byy"/>
+                <constraint firstAttribute="bottom" secondItem="TtA-Se-T4X" secondAttribute="bottom" id="uHF-lp-vIT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
