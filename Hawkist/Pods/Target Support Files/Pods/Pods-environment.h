@@ -264,6 +264,27 @@
 #define COCOAPODS_VERSION_MINOR_Stripe_Core 1
 #define COCOAPODS_VERSION_PATCH_Stripe_Core 2
 
+// ZendeskSDK
+#define COCOAPODS_POD_AVAILABLE_ZendeskSDK
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 1.3.4.1.
+
+// ZendeskSDK/Core
+#define COCOAPODS_POD_AVAILABLE_ZendeskSDK_Core
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 1.3.4.1.
+
+// ZendeskSDK/Localization
+#define COCOAPODS_POD_AVAILABLE_ZendeskSDK_Localization
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 1.3.4.1.
+
 // iCarousel
 #define COCOAPODS_POD_AVAILABLE_iCarousel
 #define COCOAPODS_VERSION_MAJOR_iCarousel 1
