@@ -14,7 +14,7 @@
 + (HWCategory*) getCategoryById:(NSInteger)tagId from:(NSArray*)categories;
 + (HWSubCategories*) getSubCategoryById:(NSInteger)tagId from:(NSArray*)subCategories;
 + (HWCondition*) getConditionById:(NSInteger)tagId from:(NSArray*)conditions;
-+ (HWColor*) getColorById:(NSInteger)tagId from:(NSArray*)colors;
+//+ (HWColor*) getColorById:(NSInteger)tagId from:(NSArray*)colors;
 
 + (UIColor *)colorWithHexString:(NSString *)str;
 + (UIColor *)darkerColorForColor:(UIColor *)c;
