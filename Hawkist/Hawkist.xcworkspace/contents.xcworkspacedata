@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Hawkist/GUI/LoginVIew/SignIn.xib">
+   </FileRef>
+   <FileRef
       location = "group:Hawkist.xcodeproj">
    </FileRef>
    <FileRef
