@@ -393,46 +393,6 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 }
 
 
-- (void) getCityByPostCode: (NSString*) postCode
-                         successBlock: (void (^)(NSString* city)) successBlock
-                         failureBlock: (void (^)(NSError* error)) failureBlock
-{
-    [self.networkDecorator PUT: @"get_city"
-                    parameters: @{@"post_code": postCode}
-     
-                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           if([responseObject[@"status"] integerValue] != 0)
-                           {
-                                            
-                                            NSError *responseError = [self errorWithResponseObject:responseObject];
-                                            
-                                            failureBlock(responseError);
-                               
-                               return;
-                           }
-                           
-                           NSError* error;
-                           NSString* city = responseObject[@"city"];
-
-                           if(error)
-                           {
-                               failureBlock(error);
-                               return;
-                           }
-                           
-                           successBlock(city);
-                           
-                       }
-                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           
-                           NSError *serverError = [self serverErrorWithError:error];
-                           
-                           failureBlock(serverError);
-
-                       }];
-}
-
-
 - (void) logOutWithSuccessBlock:(void(^)(void))successBlock
                    failureBlock:(void(^)(NSError *error))failureBlock
 
@@ -462,7 +422,6 @@ NSString *URLString = @"user/logout";
                        }];
 
 }
-
 
 
 
@@ -731,7 +690,44 @@ NSString *URLString = @"user/logout";
                        }];
 }
 
-
+- (void) getCityByPostCode: (NSString*) postCode
+              successBlock: (void (^)(NSString* city)) successBlock
+              failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    [self.networkDecorator PUT: @"get_city"
+                    parameters: @{@"post_code": postCode}
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           NSError* error;
+                           NSString* city = responseObject[@"city"];
+                           
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(city);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+}
 
 - (void) getItemById: (NSString*) itemId
         successBlock: (void (^)(HWItem* item)) successBlock

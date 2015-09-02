@@ -15,114 +15,104 @@
 #import "HWTapBarViewController.h"
 #import "CustomizationViewController.h"
 #import "FeedScreenViewController.h"
+#import "UIView+Extensions.h"
 
 
-@interface LoginViewController ()
+@interface LoginViewController () <UIAlertViewDelegate>
 
 @property (nonatomic,strong) UIView* loginView;
-
 @property (nonatomic,strong) UIView* numberDialog;
-
 @property (nonatomic,strong) UIView* codeDialog;
-
-@property (nonatomic,strong) NetworkManager* networkManager;
-
 @property (nonatomic,strong) UIView* signIn;
 
-@property (nonatomic,strong) AppEngine* engine;
-
-@property (nonatomic,strong) AccountDetailViewController* accountDetailVC;
-
-@property (nonatomic,strong) SocialManager* socManager;
-
+@property (weak, nonatomic) IBOutlet UITextField *txtCode;
+@property (weak, nonatomic) IBOutlet UITextField *txtNumber;
+@property (weak, nonatomic) IBOutlet UITextField *txtMobileNum;
+@property (weak, nonatomic) IBOutlet UITextField *txtPin;
 
 @end
 
-
 @implementation LoginViewController
+
+#pragma mark -
+#pragma mark UIViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    _socManager = [SocialManager shared];
-    _engine = [AppEngine shared];
-    
-    
-    
     if([AppEngine isFirsTimeLaunch])
     {
-        [self presentViewController: [[TutorialViewController alloc] init] animated: YES completion:^{
-            
-        }];
+        [self presentViewController: [[TutorialViewController alloc] init] animated: YES completion:nil];
     }
     
-    NSArray* arr = [[NSBundle mainBundle]loadNibNamed:@"Login" owner:self options:nil];
-   
-    _loginView = [arr objectAtIndex:0];
-    
-    _loginView.frame = self.view.frame;
-    
-    [self.view addSubview:_loginView];
-    
-    arr = [[NSBundle mainBundle]loadNibNamed:@"CodeAlertView" owner:self options:nil];
-    
-    _codeDialog = [arr objectAtIndex:0];
-    
-    CGSize rectSize= self.view.frame.size;
-    
-    _codeDialog.frame = CGRectMake(20, rectSize.height/2 - (rectSize.width-40)/2, rectSize.width-40, (rectSize.width-40)/2);
-    
-    
-    [self.view addSubview:_codeDialog];
-    
-    [_codeDialog setHidden:YES];
-    
-    arr = [[NSBundle mainBundle]loadNibNamed:@"CustomAlertView" owner:self options:nil];
-    
-    _numberDialog= [arr objectAtIndex:0];
-    
-    
-    _numberDialog.frame = CGRectMake(20, 60, rectSize.width-40, rectSize.width-80);
-    
-    
-    [self.view addSubview:_numberDialog];
-    
-    [_numberDialog setHidden:YES];
-    
-    _networkManager = [NetworkManager shared];
-    
+    [self initDefault];
+}
 
-    arr = [[NSBundle mainBundle]loadNibNamed:@"SignIn" owner:self options:nil];
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.isInternetConnectionAlertShowed = NO;
     
-    _signIn = [arr objectAtIndex:0];
+    self.txtMobileNum.text = [AppEngine shared].number;
+    self.txtPin.text = [AppEngine shared].pin;
     
-    _signIn.frame = self.view.frame;
-    
-    [_signIn setHidden:YES];
+    [self autoLogin];
+}
+
+
+#pragma mark -
+#pragma mark INIT/Setup
+
+- (void) initDefault
+{
+    [self setupSignUpScreen];
+    [self setupSignInScreen];
+    [self setupNubmerAlert];
+    [self setupPinAlert];
+}
+
+- (void) setupSignUpScreen
+{
+    NSArray *arr = [[NSBundle mainBundle]loadNibNamed:@"Login" owner:self options:nil];
+    self.loginView = [arr objectAtIndex:0];
+    self.loginView.frame = self.view.frame;
+    [self.view addSubview:self.loginView];
+}
+
+- (void) setupSignInScreen
+{
+    NSArray *arr = [[NSBundle mainBundle]loadNibNamed:@"SignIn" owner:self options:nil];
+    self.signIn = [arr objectAtIndex:0];
+    self.signIn.frame = self.view.frame;
     
     float imageWidth = (180.f/320.0f)*self.view.width;
     float imageHight = (180.f/568.0f)*self.view.height;
     float imageY = (37.5f/568)*self.view.height;
     
-    
     CGRect rect = CGRectMake((self.view.width - imageWidth)/2,imageY,imageWidth,imageHight);
-
     
     UIImageView* backgroundLogo = [[UIImageView alloc]initWithFrame:rect];
     [backgroundLogo setImage:[UIImage imageNamed:@"NoAvatar"]];
     
     [self.signIn addSubview:backgroundLogo];
     
-    [self.view addSubview:_signIn];
-
+    [self.view addSubview:self.signIn];
+    [self.signIn setHidden:YES];
     
+    [self setupPlaceholders];
+    [self setupToolBar];
+}
+
+- (void) setupPlaceholders
+{
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"ENTER MOBILE NUMBER" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
     self.txtMobileNum.attributedPlaceholder = str;
     
     NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"ENTER PIN" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
     self.txtPin.attributedPlaceholder = str2;
-    
+}
 
+- (void) setupToolBar
+{
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleDefault;
     
@@ -130,395 +120,199 @@
                                                                    style:UIBarButtonItemStyleDone target:self
                                                                   action:@selector(hideKeyboard)];
     
-    
     UIButton* customButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 30)];
     
     [customButton setBackgroundImage:[UIImage imageNamed:@"signBut"] forState:UIControlStateNormal];
-    
     [customButton setTitle:@"Done" forState:UIControlStateNormal];
-    
     [customButton addTarget:self action:@selector(hideKeyboard) forControlEvents:UIControlEventTouchDown];
-    
     doneButton.customView = customButton;
     
     numberToolbar.items = [NSArray arrayWithObjects:
                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                          doneButton,
+                           doneButton,
                            nil];
-    [numberToolbar sizeToFit];    //[numberToolbar addSubview:customButton];
-
-    _txtMobileNum.inputAccessoryView = numberToolbar;
-    _txtPin.inputAccessoryView = numberToolbar;
-
+    [numberToolbar sizeToFit];
     
+    self.txtMobileNum.inputAccessoryView = numberToolbar;
+    self.txtPin.inputAccessoryView = numberToolbar;
 }
-
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    _txtMobileNum.text = _engine.number;
-    _txtPin.text = _engine.pin;
-
-[self autoLogin];
-}
-
 
 - (void) hideKeyboard
 {
-    [_txtMobileNum resignFirstResponder];
-    [_txtPin resignFirstResponder];
-}
-    
-- (void) nextToPin
-{
-    
-    [_txtMobileNum resignFirstResponder];
-    [_txtPin becomeFirstResponder];
+    [self.view endEditing:YES];
 }
 
-- (void) nextTo
+- (void) setupNubmerAlert
 {
-    [_txtPin resignFirstResponder];
-    [self btnSignInMobile:self];
+    NSArray *arr = [[NSBundle mainBundle]loadNibNamed:@"CustomAlertView" owner:self options:nil];
+    self.numberDialog= [arr objectAtIndex:0];
+    self.numberDialog.frame = CGRectMake(20, 60, self.view.width-40, self.view.width-80);
+    [self.view addSubview:self.numberDialog];
+    [self.numberDialog setHidden:YES];
 }
 
-
-- (void) registerForKeyboardNotifications
+- (void) setupPinAlert
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(adjustKeyboardFrame:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(hideKeyboardFrame:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
+    NSArray *arr = [[NSBundle mainBundle]loadNibNamed:@"CodeAlertView" owner:self options:nil];
+    self.codeDialog = [arr objectAtIndex:0];
+    self.codeDialog.frame = CGRectMake(20, self.view.height/2 - (self.view.width-40)/2, self.view.width-40, (self.view.width-40)/2);
+    [self.view addSubview:self.codeDialog];
+    [self.codeDialog setHidden:YES];
 }
 
 
 
 #pragma mark -
-#pragma mark Keyboard
-
-
-- (void) adjustKeyboardFrame: (NSNotification*) notification
-{
-    
-    
-    UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    doneButton.frame = CGRectMake(0, 163, 106, 53);
-    doneButton.adjustsImageWhenHighlighted = NO;
-    [doneButton setImage:[UIImage imageNamed:@"signBut"] forState:UIControlStateNormal];
-    [doneButton setImage:[UIImage imageNamed:@"signBut"] forState:UIControlStateHighlighted];
-    [doneButton addTarget:self action:@selector(nextToPin) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIView *keyboardView = [[[[[UIApplication sharedApplication] windows] lastObject] subviews] firstObject];
-            [doneButton setFrame:CGRectMake(0, keyboardView.frame.size.height - 53, 106, 53)];
-            [keyboardView addSubview:doneButton];
-            [keyboardView bringSubviewToFront:doneButton];
-            
-            [UIView animateWithDuration:[[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]-.02
-                                  delay:.0
-                                options:[[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]
-                             animations:^{
-                                 self.view.frame = CGRectOffset(self.view.frame, 0, 0);
-                             } completion:nil];
-        });
-    
-//    
-//    BOOL willHide = [notification.name isEqualToString: UIKeyboardWillHideNotification];
-//    
-//    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//    
-//    CGFloat keyboardHeight = (CGRectGetMinY(keyboardFrame) < self.view.frame.size.height) ? CGRectGetHeight(keyboardFrame) : 0.0f;
-//    
-//    CGFloat bottomOffset = willHide ? 0.0f : keyboardHeight;
-//    
-//    CGRect newRect = CGRectMake(0, -bottomOffset, self.view.frame.size.width, self.view.frame.size.height);
-//    
-//    self.view.frame = newRect;
-    
-
-}
-
-
-
-- (void) hideKeyboardFrame: (NSNotification*) notification
-{
-//    CGRect newRect = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height);
-//    
-//    self.view.frame = newRect;
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-   
-}
+#pragma mark Navigation In Controller
 
 - (IBAction)btnSignUpMobile:(id)sender {
    
-    [_numberDialog setHidden:NO];
-
-}
-
-- (IBAction)btnSignUpFB:(id)sender {
-    
-
-        [self showHud];
-    
-    
-    [_socManager loginFacebookSuccess:^(NSDictionary *response) {
-        
-    
-        
-        
-        [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
-//            _engine.user = user;
-//                _accountDetailVC= [[AccountDetailViewController alloc]init];
-//            _accountDetailVC.isLogeedWithFacebook = YES;
-//            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-//                         [self DownloadData];
-            
-        [self logged:user isLoggedWithFacebook:YES];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideHud];
-            });
-
-            
-        } failureBlock:^(NSError *error) {
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideHud];
-            });
-
-            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        }];
-        
-    } failure:^(NSError *error) {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideHud];
-        });
-
-        
-        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        
-    }];
-
+    [self.numberDialog setHidden:NO];
 }
 
 - (IBAction)btnCancel:(id)sender {
-    if (!_numberDialog.hidden)
+    if (!self.numberDialog.hidden)
     {
-        [_numberDialog setHidden:YES];
-        [_txtNumber resignFirstResponder];
+        [self.numberDialog setHidden:YES];
+        [self.txtNumber resignFirstResponder];
     }
-    if (!_codeDialog.hidden){
+    if (!self.codeDialog.hidden){
         
-        [_codeDialog setHidden:YES];
-        [_txtCode resignFirstResponder];
-    
+        [self.codeDialog setHidden:YES];
+        [self.txtCode resignFirstResponder];
     }
-    _txtNumber.text = @"";
-    _txtCode.text = @"";
-    
-    
-    
+    self.txtNumber.text = @"";
+    self.txtCode.text = @"";
 }
-
-- (IBAction)btnSend:(id)sender {
-    
-    [self showHud];
-    [_txtNumber resignFirstResponder];
-    [_networkManager registerUserWithPhoneNumber:_txtNumber.text orFacebookToken:nil successBlock:^(HWUser *user) {
-        [self hideHud];
-        [_codeDialog setHidden:NO];
-        _txtCode.text = @"";
-        [_numberDialog setHidden:YES];
-    } failureBlock:^(NSError *error) {
-        [self hideHud];
-    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        
-    }];
-
-}
-
-- (IBAction)btnResend:(id)sender {
-    [_codeDialog setHidden:YES];
-    [_numberDialog setHidden:YES];
-    
-    
-        [_txtCode resignFirstResponder];
-    
-    [self showHud];
-    [_networkManager loginWithPhoneNumber:_txtNumber.text pin:_txtCode.text successBlock:^(HWUser *user) {
-////            _accountDetailVC= [[AccountDetailViewController alloc]init];
-////        _accountDetailVC.isLogeedWithFacebook = NO;
-////        _engine.user = user;
-//        
-//           [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-        
-        [self logged:user isLoggedWithFacebook:NO];
-        _engine.number = user.phone;
-        _engine.pin = _txtCode.text;
-        
-        
-        
-        [self hideHud];
-    } failureBlock:^(NSError *error) {
-       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        [self hideHud];
-    }];
-
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    self.isInternetConnectionAlertShowed = NO;
-    
-}
-
-
-- (void) logged:(HWUser*) user isLoggedWithFacebook: (BOOL) FaceBook
-{
-    [_networkManager getListOfTags:^(NSMutableArray *tags) {
-        
-        _engine.user = user;
-        _engine.tags = tags;
-       
-        if (user.first_login)
-        {
-            
-            _accountDetailVC= [[AccountDetailViewController alloc]init];
-            _accountDetailVC.isLogeedWithFacebook = FaceBook;
-            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-                   }
-        else
-        {
-            [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
-        }
-        
-//        [[NetworkManager shared]sendAPNSToken:[AppEngine shared].APNStoken successBlock:^{
-//            
-//            
-//        } failureBlock:^(NSError *error) {
-//            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-//            
-//        }];
-        
-        
-    } failureBlock:^(NSError *error) {
-        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-    }];
-    
-    
-         //  [self DownloadData];
-
-        [AppEngine shared].logginedWithFB = FaceBook;
-    [AppEngine shared].logginedWithPhone = !FaceBook;
-}
-
-
 
 - (IBAction)btnCancelCode:(id)sender {
-    [_codeDialog setHidden:YES];
-    [_numberDialog setHidden:NO];
-    [_txtCode resignFirstResponder];
+    [self.codeDialog setHidden:YES];
+    [self.numberDialog setHidden:NO];
+    [self.txtCode resignFirstResponder];
 }
 
 - (IBAction)btnSignIn:(id)sender {
-    [_loginView setHidden:YES];
-    [_signIn setHidden:NO];
+    [self.loginView setHidden:YES];
+    [self.signIn setHidden:NO];
 }
 
 - (IBAction)tapScreen:(id)sender {
-    [_txtMobileNum resignFirstResponder];
-    [_txtPin resignFirstResponder];
-    [_txtNumber resignFirstResponder];
-    [_txtCode resignFirstResponder];
+    [self hideKeyboard];
 }
-
-- (IBAction)btnSignInFB:(id)sender {
-
-    [self showHud];
-    
-    [_socManager loginFacebookSuccess:^(NSDictionary *response) {
-        
-    
-        [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
-//            _engine.user = user;
-//                _accountDetailVC= [[AccountDetailViewController alloc]init];
-//            self.accountDetailVC.isLogeedWithFacebook = YES;
-//            [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-//            
-        [self logged:user isLoggedWithFacebook:YES];
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideHud];
-            });
-            
-        } failureBlock:^(NSError *error) {
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideHud];
-            });
-            
-            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        }];
-        
-    } failure:^(NSError *error) {
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideHud];
-        });
-        
-       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-    }];
-}
-
 
 - (IBAction)btnRequestNewPin:(id)sender {
-    [_numberDialog setHidden:NO];
-        [self.view bringSubviewToFront:_codeDialog];
-    [self.view bringSubviewToFront:_numberDialog];
+    [self.numberDialog setHidden:NO];
+    [self.view bringSubviewToFront:self.codeDialog];
+    [self.view bringSubviewToFront:self.numberDialog];
 }
 
 - (IBAction)btnSignUp:(id)sender {
-    [_loginView setHidden:NO];
-    [_signIn setHidden:YES];
+    [self.loginView setHidden:NO];
+    [self.signIn setHidden:YES];
+}
+
+#pragma mark -
+#pragma mark Registration/Login
+
+#pragma mark FaceBook
+- (IBAction)btnSignFB:(id)sender {
+    [self showHud];
+    [[SocialManager shared] loginFacebookSuccess:^(NSDictionary *response) {
+        
+        [[NetworkManager shared] registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
+            
+                [self logged:user isLoggedWithFacebook:YES];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self hideHud];
+                });
+            
+        } failureBlock:^(NSError *error) {
+            
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self hideHud];
+                });
+                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        }];
+        
+    } failure:^(NSError *error) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideHud];
+        });
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    }];
+}
+
+#pragma mark Phone
+- (IBAction)btnSend:(id)sender {
+    [self showHud];
+    [self.txtNumber resignFirstResponder];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NetworkManager shared] registerUserWithPhoneNumber:self.txtNumber.text orFacebookToken:nil successBlock:^(HWUser *user) {
+        [self hideHud];
+        [self.codeDialog setHidden:NO];
+        self.txtCode.text = @"";
+        [self.numberDialog setHidden:YES];
+    } failureBlock:^(NSError *error) {
+        [self hideHud];
+    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    }];
+}
+
+- (IBAction)btnResend:(id)sender {
+    [self.codeDialog setHidden:YES];
+    [self.numberDialog setHidden:YES];
+    [self.txtCode resignFirstResponder];
+    
+    [self showHud];
+    [[NetworkManager shared] loginWithPhoneNumber:self.txtNumber.text pin:self.txtCode.text successBlock:^(HWUser *user) {
+        [self logged:user isLoggedWithFacebook:NO];
+        [AppEngine shared].number = user.phone;
+        [AppEngine shared].pin = self.txtCode.text;
+        [self hideHud];
+    } failureBlock:^(NSError *error) {
+       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        [self hideHud];
+    }];
 }
 
 - (IBAction)btnSignInMobile:(id)sender {
     [self showHud];
-    [_networkManager loginWithPhoneNumber:_txtMobileNum.text pin:_txtPin.text successBlock:^(HWUser *user) {
-//        _engine.user = user;
-//            _accountDetailVC= [[AccountDetailViewController alloc]init];
-//        _accountDetailVC.isLogeedWithFacebook = NO;
-                [self logged:user isLoggedWithFacebook:NO];
-
-        
-        _engine.number = user.phone;
-        _engine.pin = _txtPin.text;
-        
+    [[NetworkManager shared] loginWithPhoneNumber:self.txtMobileNum.text pin:self.txtPin.text successBlock:^(HWUser *user) {
+        [self logged:user isLoggedWithFacebook:NO];
+        [AppEngine shared].number = user.phone;
+        [AppEngine shared].pin = self.txtPin.text;
         [self hideHud];
-//        [self.navigationController pushViewController:_accountDetailVC animated:(YES)];
-     //    [self.navigationController pushViewController:[[WantToSellViewController alloc]init] animated:(YES)];
-        //[self.navigationController pushViewController:[[FeedScreenViewController alloc]init] animated:(YES)];
-    } failureBlock:^(NSError *error) {
-  
+    }
+        failureBlock:^(NSError *error) {
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         [self hideHud];
     }];
-
 }
 
+#pragma mark Helper
+
+- (void) logged:(HWUser*) user isLoggedWithFacebook: (BOOL) FaceBook
+{
+    [[NetworkManager shared] getListOfTags:^(NSMutableArray *tags) {
+        [AppEngine shared].user = user;
+        [AppEngine shared].tags = tags;
+        if (user.first_login)
+        {
+            AccountDetailViewController *accountDetailVC= [[AccountDetailViewController alloc]init];
+            accountDetailVC.isLogeedWithFacebook = FaceBook;
+            [self.navigationController pushViewController:accountDetailVC animated:(YES)];
+        }
+        else
+        {
+            [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+        }
+    } failureBlock:^(NSError *error) {
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    }];
+    [AppEngine shared].logginedWithFB = FaceBook;
+    [AppEngine shared].logginedWithPhone = !FaceBook;
+}
 
 - (void) autoLogin
 {
@@ -532,42 +326,13 @@
     
     if ([AppEngine shared].logginedWithPhone)
     {
-        [_networkManager loginWithPhoneNumber:[AppEngine shared].number pin:[AppEngine shared].pin successBlock:^(HWUser *user) {
-           
-            [self logged:user isLoggedWithFacebook:NO];
-            [self hideHud];
-        } failureBlock:^(NSError *error) {
-                        [self hideHud];
-            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-
-        }];
+        [self btnSignInMobile:self];
     }
     
     if ([AppEngine shared].logginedWithFB)
     {
-        [_socManager loginFacebookSuccess:^(NSDictionary *response) {
-            [_networkManager registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
-                [self logged:user isLoggedWithFacebook:YES];
-
-                } failureBlock:^(NSError *error) {
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                                [self hideHud];
-                });
-                
-                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-            }];
-            
-        } failure:^(NSError *error) {
-           
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideHud];
-            });
-            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-        }];
-
+        [self btnSignFB:self];
     }
-    
 }
 
 @end

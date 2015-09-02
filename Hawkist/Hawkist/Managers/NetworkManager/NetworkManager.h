@@ -79,11 +79,6 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
                          successBlock: (void (^)(HWUser* user)) successBlock
                          failureBlock: (void (^)(NSError* error)) failureBlock;
 
-- (void) getCityByPostCode: (NSString*) postCode
-              successBlock: (void (^)(NSString* city)) successBlock
-              failureBlock: (void (^)(NSError* error)) failureBlock;
-
-
 - (void) logOutWithSuccessBlock:(void(^)(void))successBlock
                    failureBlock:(void(^)(NSError *error))failureBlock;
 
@@ -124,6 +119,10 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
         successBlock: (void (^)(HWItem* item)) successBlock
         failureBlock: (void (^)(NSError* error)) failureBlock;
 
+// get City by Post
+- (void) getCityByPostCode: (NSString*) postCode
+              successBlock: (void (^)(NSString* city)) successBlock
+              failureBlock: (void (^)(NSError* error)) failureBlock;
 
 //remove item by id
 - (void) removeItemById: (NSString*) itemId
