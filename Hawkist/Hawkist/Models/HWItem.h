@@ -29,7 +29,7 @@
 @property (nonatomic, assign) NSInteger category;
 @property (nonatomic, assign) NSInteger subcategory;
 @property (nonatomic, assign) NSInteger condition;
-@property (nonatomic, assign) NSInteger color;
+//@property (nonatomic, assign) NSInteger color;
 
 @property (nonatomic, strong) NSString<Optional>* retail_price;
 @property (nonatomic, strong) NSString<Optional>* selling_price;

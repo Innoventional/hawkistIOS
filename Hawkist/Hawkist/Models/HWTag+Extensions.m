@@ -68,20 +68,20 @@
     return nil;
 }
 
+//
+//+ (HWColor*) getColorById:(NSInteger)tagId from:(NSArray*)colors
+//{
+//    
+//    for (HWColor* color in colors)
+//    {
+//        if([color.id isEqual:[NSString stringWithFormat: @"%ld", tagId]])
+//        {
+//            return color;
+//        }
+//    }
 
-+ (HWColor*) getColorById:(NSInteger)tagId from:(NSArray*)colors
-{
-    
-    for (HWColor* color in colors)
-    {
-        if([color.id isEqual:[NSString stringWithFormat: @"%ld", tagId]])
-        {
-            return color;
-        }
-    }
-    
-    return nil;
-}
+//    return nil;
+//}
 
 + (UIColor *)colorWithHexString:(NSString *)str {
    // NSString* resultS = [@"0x" stringByAppendingString: str];
