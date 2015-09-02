@@ -19,15 +19,18 @@
     [super viewDidLoad];
     [self setupCreatingTicket];
     
+     [ZDKLogger enable:YES];
+    
     [[ZDKConfig instance] initializeWithAppId:@"475beb8068c9472bda4f61c986e4ed6de28c120465e512aa"
                                    zendeskUrl:@"https://hawkist.zendesk.com"
                                      ClientId:@"mobile_sdk_client_017b0642674c40d7b0e0"
                                     onSuccess:^() {
                                         
                                         [self jwtIdentify];
+                                       
+                                        
                                         //[ZDKRequests showRequestCreationWithNavController:self.navigationController];
-                                        NSArray *labels = @[@"ios", @"ios8"];
-                                        [ZDKHelpCenter showHelpCenterWithNavController:self.navigationController filterByArticleLabels:labels];
+                                          [ZDKRequests showRequestListWithNavController:self.navigationController];
                                         
                                         NSLog(@"Yes");
                                     } onError:^(NSError *error) {

@@ -2310,8 +2310,78 @@ NSString *URLString = @"user/logout";
 
 
 
+-(void) getUserLetUserFindMeInFindFriendVisibilitySuccessBlock:(void(^)(BOOL visibleInFindFriends)) successBlock
+                                                 failureBlock:(void(^)(NSError *error)) failureBlock{
+    
+    [self.networkDecorator GET:@"user/visible_in_find_friends"
+                    parameters: nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           successBlock([responseObject[@"visible_in_find_friends"] boolValue]);
+
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       } ];
+    
+}
 
 
+
+-(void) updateUserLetUserFindMeInFindFriendVisibilityWithFlag:(BOOL)isVisibleInFindFriends
+                                                 successBlock:(void(^)(BOOL visibleInFindFriends)) successBlock
+                                                 failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    if(isVisibleInFindFriends) {
+        
+        [params setObject:@"True" forKey:@"visible_in_find_friends"];
+    } else {
+        
+        [params setObject:@"" forKey:@"visible_in_find_friends"];
+    }
+    
+    [self.networkDecorator PUT:@"user/visible_in_find_friends"
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           
+                           successBlock([responseObject[@"visible_in_find_friends"] boolValue]);
+
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+
+}
 
 
 #pragma mark - Feedback

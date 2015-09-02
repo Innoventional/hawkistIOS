@@ -36,6 +36,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *signOutButton;
 
 @property (nonatomic, assign) BOOL isFavorItem;
+@property (nonatomic, assign) BOOL isVisibleInfindFriends;
+
 
 
 @end
@@ -123,6 +125,7 @@
         HWSingOutCell *cell = [tableView dequeueReusableCellWithIdentifier:singOutCellIdentifier];
         cell.delegate = self;
         [self favouriteWithButton:cell.notifySellerButton];
+        [self membersFindMeUsingFindFriendsWithButton: cell.letMembersButton];
         
         return cell;
     }
@@ -341,13 +344,32 @@
 
 - (void) pressLetMemberButton:(UIButton*)sender
 {
-    if([sender.imageView.image isEqual:[UIImage imageNamed:@"acdet_check"]])
-    {
-        [sender setImage:[UIImage imageNamed:@"acdet_checkempty"] forState:UIControlStateNormal];
     
-    } else {
-        [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
-    }
+    [self.networkManager updateUserLetUserFindMeInFindFriendVisibilityWithFlag:!self.isVisibleInfindFriends
+                                                                  successBlock:^(BOOL visibleInFindFriends) {
+                                                                      
+                                                                      
+                                                                      if (visibleInFindFriends) {
+                                                                          
+                                                                          [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+                                                                          self.isVisibleInfindFriends = YES;
+                                                                          
+                                                                      } else {
+                                                                          
+                                                                          [sender setImage:[UIImage imageNamed:@"acdet_checkempty"] forState:UIControlStateNormal];
+                                                                          self.isVisibleInfindFriends = NO;
+                                                                      }
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+                                                                  } failureBlock:^(NSError *error) {
+                                                                      
+                                                                      [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                                                  }];
+    
+
 }
 
 - (IBAction) pressSingOutButton:(UIButton*)sender
@@ -369,6 +391,30 @@
     
 }
 
+- (void) membersFindMeUsingFindFriendsWithButton:(UIButton*)sender {
+
+     [self.networkManager getUserLetUserFindMeInFindFriendVisibilitySuccessBlock:^(BOOL visibleInFindFriends) {
+         
+         
+         if (visibleInFindFriends) {
+             
+             [sender setImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+             self.isVisibleInfindFriends = YES;
+             
+         } else {
+             
+             [sender setImage:[UIImage imageNamed:@"acdet_checkempty"] forState:UIControlStateNormal];
+             self.isVisibleInfindFriends = NO;
+         }
+         
+         
+     } failureBlock:^(NSError *error) {
+         
+         [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+     }];
+ 
+}
+         
 - (void) favouriteWithButton:(UIButton*)sender {
     
     [self.networkManager getUserNotificationItemFavouritedWithSuccessBlock:^(BOOL isFavourite) {
