@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSString* id;
 @property (nonatomic, strong) NSString<Optional>* thumbnail;
 @property (nonatomic, assign) BOOL first_login;
-
+@property (nonatomic, strong) NSString<Optional>* apns_token;
 
 @property (nonatomic, strong) NSString<Optional>* city;
 @property (nonatomic, strong) NSString<Optional>* last_activity;

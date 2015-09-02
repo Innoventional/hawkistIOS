@@ -17,18 +17,20 @@
 #import "FeedScreenViewController.h"
 
 #import "HWTapBarViewController.h"
+#import "WebViewController.h"
+#import "NavigationVIew.h"
 
-
-@interface AccountDetailViewController ()
+@interface AccountDetailViewController () <NavigationViewDelegate>
 @property (nonatomic,strong) UIView* accountDetailView;
 @property (nonatomic, assign) BOOL isContinueEnable;
+@property (strong, nonatomic) IBOutlet NavigationVIew *navigation;
 
 @property (nonatomic, strong) UIImage* avatar;
 @property (nonatomic,strong) NetworkManager* netManager;
 @property (nonatomic,assign) BOOL isPhotoSet;
 @property (nonatomic, assign) BOOL isPlaceholderHidden;
 @property (nonatomic, strong) NSString* userId;
-
+@property (nonatomic,strong) UITapGestureRecognizer *recognizer;
 @end
 
 @implementation AccountDetailViewController
@@ -56,9 +58,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigation.delegate = self;
+    self.navigation.title.text = @"Account Details";
     
     _isPhotoSet = NO;
     _netManager = [NetworkManager shared];
+    
+    
     
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
     self.txtUserName.attributedPlaceholder = str;
@@ -74,31 +80,77 @@
     
     NSString* textString = @"I accept Terms of Use and Privacy Policy";
     
-    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString: textString];
+    //NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString: textString];
     
-    UIFont *font = [UIFont fontWithName:@"OpenSans" size:14.0];
+    //UIFont *font = [UIFont fontWithName:@"OpenSans" size:14.0];
     
-    [attributedString addAttribute: NSFontAttributeName value: font range: NSMakeRange(0, attributedString.length)];
-    [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor whiteColor] range:NSMakeRange(0, attributedString.length)];
-    NSRange range = NSMakeRange(9, 12);
+//    [attributedString addAttribute: NSFontAttributeName value: font range: NSMakeRange(0, attributedString.length)];
+//    [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor whiteColor] range:NSMakeRange(0, attributedString.length)];
+//    NSRange range = NSMakeRange(9, 12);
+//    
+//    
+//    //[attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor redColor] range:range];
+//    //[attributedString addAttribute: NSLinkAttributeName value: @"http://www.hawkist.com/privacy-policy" range: range];
+//   
+//    NSDictionary *attrs = @{ NSForegroundColorAttributeName : colorUserName, NSFontAttributeName : fontUserName,  @"Tag" : @(2)   };
+//    [attrbStr addAttributes:attrs
+//                      range:range];
+//
+//    range = NSMakeRange(25, 15);
+//   // [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor color256RGBWithRed: 63 green: 147 blue: 126] range:range];
+//    [attributedString addAttribute: NSLinkAttributeName value: @"http://www.hawkist.com/terms-conditions" range: range];
+//    
+////    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+//
     
     
-    //[attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor redColor] range:range];
-    [attributedString addAttribute: NSLinkAttributeName value: @"http://www.hawkist.com/privacy-policy" range: range];
     
-    range = NSMakeRange(25, 15);
-   // [attributedString addAttribute:NSForegroundColorAttributeName value: [UIColor color256RGBWithRed: 63 green: 147 blue: 126] range:range];
-    [attributedString addAttribute: NSLinkAttributeName value: @"http://www.hawkist.com/terms-conditions" range: range];
+    NSMutableAttributedString* attrbStr = [[NSMutableAttributedString alloc]initWithString:textString];
+    UIColor *textColorAll = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
     
-//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    UIFont *fontTextAll = [UIFont fontWithName:@"OpenSans-Semibold" size:14];
+    
+    UIColor *textColorLink = [UIColor colorWithRed:63./255. green:147./255. blue:126./255. alpha:1];
     
     
-    _txtURLS.attributedText = attributedString;
-    NSDictionary* linkAttributes = @{
-                                     NSForegroundColorAttributeName: [UIColor color256RGBWithRed: 63 green: 147 blue: 126],
-                                     NSUnderlineStyleAttributeName: @(NSUnderlineStyleNone)
-                                     };
-    [_txtURLS setLinkTextAttributes: linkAttributes];
+    
+    NSRange rangeFirstLink = NSMakeRange(9, 12);
+    NSRange rangeSecondLink = NSMakeRange(25, 15);
+    NSRange range = [textString rangeOfString:textString];
+    
+    NSDictionary *attrs = @{NSFontAttributeName : fontTextAll,NSForegroundColorAttributeName : textColorAll};
+    [attrbStr addAttributes:attrs
+                      range:range];
+    
+
+    
+    attrs = @{ NSForegroundColorAttributeName : textColorLink, @"Tag" : @(1)};
+    [attrbStr addAttributes:attrs
+                      range:rangeFirstLink];
+    
+    
+    attrs = @{ NSForegroundColorAttributeName : textColorLink, @"Tag" : @(2)};
+    [attrbStr addAttributes:attrs
+                      range:rangeSecondLink];
+    
+    _txtURLS.attributedText = attrbStr;
+    
+    
+    self.recognizer = [[UITapGestureRecognizer alloc]
+                       initWithTarget:self action:@selector(tap:)];
+    
+    [self.recognizer setCancelsTouchesInView:NO];
+    
+    [self.txtURLS addGestureRecognizer:self.recognizer];
+
+    
+//    NSDictionary* linkAttributes = @{
+//                                     NSForegroundColorAttributeName: [UIColor color256RGBWithRed: 63 green: 147 blue: 126],
+//                                     NSUnderlineStyleAttributeName: @(NSUnderlineStyleNone)
+//                                     };
+    
+    
+   // [_txtURLS setLinkTextAttributes: linkAttributes];
     
     _btnContinue.enabled = false;
   
@@ -162,8 +214,58 @@
     }
 }
 
+- (void) tap:(UITapGestureRecognizer *)recognizer
+{
+    UITextView *textView = (UITextView *)recognizer.view;
+    
+    // Location of the tap in text-container coordinates
+    
+    NSLayoutManager *layoutManager = textView.layoutManager;
+    CGPoint location = [recognizer locationInView:textView];
+    location.x -= textView.textContainerInset.left;
+    location.y -= textView.textContainerInset.top;
+    
+    // Find the character that's been tapped on
+    
+    NSUInteger characterIndex;
+    characterIndex = [layoutManager characterIndexForPoint:location
+                                           inTextContainer:textView.textContainer
+                  fractionOfDistanceBetweenInsertionPoints:NULL];
+    
+    if (characterIndex < textView.textStorage.length) {
+        
+        NSRange range;
+        NSString *value = [textView.attributedText attribute:@"Tag" atIndex:characterIndex effectiveRange:&range];
+        
+        // Handle as required...
+        
+      //  NSLog(@"%@, %d, %d", value, range.location, range.length);
+        
+        switch ([value integerValue]) {
+            case 2:
+            {
+                NSLog(@"Privacy");
+                WebViewController *vc = [[WebViewController alloc]initWithUrl:@"http://www.hawkist.com/privacy-policy/" andTitle:@"Privacy policy"];
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case 1:
+            {
+                NSLog(@"Terms");
+                WebViewController *vc = [[WebViewController alloc]initWithUrl:@"http://www.hawkist.com/terms-conditions/" andTitle:@"Terms and Conditions"];
+                [self.navigationController pushViewController:vc animated:YES];
+                
+                
+                break;
+            }
+            default:
+            {
+                break;
+            }
 
-
+        }
+    }
+}
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -441,10 +543,13 @@
     [self.txtAboutMe resignFirstResponder];
     
 }
-- (IBAction)btnBack:(id)sender {
+
+
+
+- (void)leftButtonClick
+{
     [self.navigationController popViewControllerAnimated: YES];
 }
-
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

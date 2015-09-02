@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -40,8 +40,8 @@
                 <outlet property="category" destination="jjt-oP-vuF" id="KzX-mk-IlO"/>
                 <outlet property="checkBox1" destination="P4k-rL-sik" id="Tws-cM-HRm"/>
                 <outlet property="checkBox2" destination="8ig-W1-vJi" id="C8a-ay-ppe"/>
-                <outlet property="color" destination="rDN-6o-Fmi" id="tR9-fs-gBO"/>
-                <outlet property="condition" destination="Umm-aL-AGd" id="GiI-5Y-C9S"/>
+                <outlet property="color" destination="Umm-aL-AGd" id="wlt-AD-rRz"/>
+                <outlet property="condition" destination="rDN-6o-Fmi" id="d4a-Sv-g8o"/>
                 <outlet property="descriptionField" destination="wth-ne-3l8" id="vLf-tF-GDp"/>
                 <outlet property="nav" destination="oAe-q7-zAA" id="4gu-A8-pca"/>
                 <outlet property="platform" destination="RkJ-q2-tSv" id="Xf8-XU-U0C"/>

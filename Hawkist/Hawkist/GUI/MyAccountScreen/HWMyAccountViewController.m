@@ -15,7 +15,7 @@
 #import "ManageAddressViewController.h"
 #import "ManageBankViewController.h"
 #import "AccountDetailViewController.h"
-
+#import "NotificationSettingsViewController.h"
 
 #import "WebViewController.h"
 
@@ -251,6 +251,9 @@
         {
             NSLog(@"Mobile Notifications");
             
+            NotificationSettingsViewController *vc = [[NotificationSettingsViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+            
             break;
         }
         case 1:
@@ -271,7 +274,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 34;
-    
 }
 
 

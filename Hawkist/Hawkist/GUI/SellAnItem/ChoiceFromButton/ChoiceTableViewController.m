@@ -90,36 +90,36 @@
     
     NSObject* currentItem = [items objectAtIndex:indexPath.row];
     
-    if ([currentItem isKindOfClass:[HWCategory class]])
-              {
-                  cell.myLabel.text = ((HWCategory*)currentItem).name;
-                  cell.forwardImage.hidden = NO;
-              }
-    else
-    {
+//    if ([currentItem isKindOfClass:[HWCategory class]])
+//              {
+//                  cell.myLabel.text = ((HWCategory*)currentItem).name;
+//                  cell.forwardImage.hidden = NO;
+//              }
+//    else
+//    {
         cell.myLabel.text = ((HWTag*)currentItem).name;
         cell.forwardImage.hidden = YES;
         
-         if ([currentItem isKindOfClass:[HWColor class]])
-         {
-             NSString* hex = ((HWColor*)currentItem).code;
-             if (![hex isEqualToString:@""])
-                // [cell setBackgroundColor:[HWTag colorWithHexString:hex]];
-             {
-                 cell.colorView.hidden = NO;
-                 UIColor* color = [HWTag colorWithHexString:hex];
-                 [cell.colorView setBackgroundColor:color];
-                 
-                 cell.colorView.layer.cornerRadius = cell.colorView.width/2;
-                 
-                 
-                 [cell.colorView.layer setBorderColor:[HWTag darkerColorForColor:color].CGColor];
-                 cell.colorView.layer.borderWidth = 1.0f;
-             
-             }
-                
-         }
-    }
+//         if ([currentItem isKindOfClass:[HWColor class]])
+//         {
+//             NSString* hex = ((HWColor*)currentItem).code;
+//             if (![hex isEqualToString:@""])
+//                // [cell setBackgroundColor:[HWTag colorWithHexString:hex]];
+//             {
+//                 cell.colorView.hidden = NO;
+//                 UIColor* color = [HWTag colorWithHexString:hex];
+//                 [cell.colorView setBackgroundColor:color];
+//                 
+//                 cell.colorView.layer.cornerRadius = cell.colorView.width/2;
+//                 
+//                 
+//                 [cell.colorView.layer setBorderColor:[HWTag darkerColorForColor:color].CGColor];
+//                 cell.colorView.layer.borderWidth = 1.0f;
+//             
+//             }
+    
+        // }
+    //}
     
     return cell;
 }
@@ -129,30 +129,30 @@
     
      NSObject* currentItem = [items objectAtIndex:indexPath.row];
     
-    if ([currentItem isKindOfClass:[HWCategory class]])
-    {
-        ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
-        
-        
-                v.items = [NSMutableArray arrayWithArray:((HWCategory*)currentItem).subcategories];
-        
-                v.navigationView.title.text = @"Select a Subcategory";
-        
-                v.delegate = self.delegate;
-        
-                v.sender = self.sender;
-        
-                [self.navigationController pushViewController:v animated:YES];
-        
-    }
-    
-    else
-    {
+//    if ([currentItem isKindOfClass:[HWCategory class]])
+//    {
+//        ChoiceTableViewController* v= [[ChoiceTableViewController alloc]init];
+//        
+//        
+//                v.items = [NSMutableArray arrayWithArray:((HWCategory*)currentItem).subcategories];
+//        
+//                v.navigationView.title.text = @"Select a Subcategory";
+//        
+//                v.delegate = self.delegate;
+//        
+//                v.sender = self.sender;
+//        
+//                [self.navigationController pushViewController:v animated:YES];
+//        
+//    }
+//    
+//    else
+//    {
         if (self.delegate && [self.delegate respondsToSelector: @selector(SelectedItemFrom:WithItem:)])
             [self.delegate SelectedItemFrom:self.sender WithItem:currentItem];
         [self dismissViewControllerAnimated:YES completion:nil];
     
-    }
+  //  }
     
    
     

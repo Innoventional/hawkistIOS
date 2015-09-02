@@ -9,8 +9,10 @@
 #import "WantToSellViewController.h"
 #import "SellAnItemViewController.h"
 #import "myItemsViewController.h"
+#import "SocialManager.h"
+#import "NetworkManager.h"
 
-@interface WantToSellViewController ()
+@interface WantToSellViewController () <UIAlertViewDelegate>
 @property (nonatomic,strong) MyItemsViewController* itemsViewController;
 @end
 
@@ -67,14 +69,47 @@
 - (IBAction)btnWantToSell:(id)sender {
     
     [[NetworkManager shared]check_selling_ability:^{
-        [self.navigationController pushViewController: [[SellAnItemViewController alloc] init]  animated: YES];
+        
+        if ([[AppEngine shared].user.facebook_id isEqualToString:@""])
+        {
+            [[[UIAlertView alloc]initWithTitle:@"Facebook Account Required" message:@"In order to sell on Hawkist, you must connect a Facebook account to verify your identity." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil] show];
+        }
+        else
+            [self.navigationController pushViewController: [[SellAnItemViewController alloc] init]  animated: YES];
         
     } failureBlock:^(NSError *error) {
         
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
+}
 
-    
-    
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self showHud];
+        [[SocialManager shared] loginFacebookSuccess:^(NSDictionary *response) {
+            [[NetworkManager shared] linkFacebookAccountWithToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self hideHud];
+                });
+                
+        [self.navigationController pushViewController: [[SellAnItemViewController alloc] init]  animated: YES];
+                
+            } failureBlock:^(NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self hideHud];
+                });
+                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+            }];
+        } failure:^(NSError *error) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideHud];
+            });
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        }];
+    }
 }
 @end

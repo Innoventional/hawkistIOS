@@ -100,9 +100,11 @@
         condition.Title.text = @"CONDITION";
         condition.delegate = self;
         
-        color.Title.text = @"COLOUR";
-        color.delegate = self;
+//        color.Title.text = @"COLOUR";
+//        color.delegate = self;
 
+        color.Title.text = @"SUBCATEGORY";
+        color.delegate = self;
        
             engine = [AppEngine shared];
             self.tags = engine.tags;
@@ -125,7 +127,7 @@
         
         HWSubCategories* currentSubCategory = [HWTag getSubCategoryById:currentItem.subcategory from:currentCategory.subcategories];
         
-        HWColor* currentColor = [HWTag getColorById:currentItem.color from:currentSubCategory.color];
+       // HWColor* currentColor = [HWTag getColorById:currentItem.color from:currentSubCategory.color];
         
         HWCondition* currentCondition = [HWTag getConditionById:currentItem.condition from:currentSubCategory.condition];
         
@@ -155,30 +157,30 @@
         category.Text.text = currentCategory.name;
         category.Text.tag = [currentSubCategory.id integerValue];
         
-        color.Text.text = currentColor.name;
-        color.Text.tag = [currentColor.id integerValue];
+        color.Text.text = currentSubCategory.name;
+        color.Text.tag = [currentSubCategory.id integerValue];
         
         condition.Text.text = currentCondition.name;
         condition.Text.tag = [currentCondition.id integerValue];
         
 
-        if (currentSubCategory.color.count == 1 && [((HWColor*)[((NSArray*)currentSubCategory.color) firstObject]).code isEqual:@""])
-        {
-            color.notApplicable = YES;
-            color.isEnabled = YES;
-        }
-        else
-        {
-            color.isEnabled = YES;
-            color.notApplicable = NO;
-        }
+//        if (currentSubCategory.color.count == 1 && [((HWColor*)[((NSArray*)currentSubCategory.color) firstObject]).code isEqual:@""])
+//        {
+//            color.notApplicable = YES;
+//            color.isEnabled = YES;
+//        }
+//        else
+//        {
+//            color.isEnabled = YES;
+//            color.notApplicable = NO;
+//        }
 
         
         
         
         self.tempTagsForCategory = currentTag.categories;
         self.tempTagsForCondition = currentSubCategory.condition;
-        self.tempTagsForColor = currentSubCategory.color;
+        self.tempTagsForColor = currentCategory.subcategories;
         
         
         
@@ -313,7 +315,7 @@
      platform.Text.text = @"Select a Platform";
      category.Text.text = @"Select a Category";
      condition.Text.text = @"Select a Condition";
-     color.Text.text = @"Select a Colour";
+     color.Text.text = @"Select a Subcategory";
     
      retailPrice.textField.text = @"0.00";
      retailPrice.delegate = self;
@@ -486,9 +488,9 @@
     currentItem.platform = platform.Text.tag;
     currentItem.category = self.idCategory;
     
-    currentItem.subcategory = category.Text.tag;
+    currentItem.subcategory = color.Text.tag;
     currentItem.condition = condition.Text.tag;
-    currentItem.color  = color.Text.tag;
+  //  currentItem.color  = color.Text.tag;
     
     currentItem.retail_price = retailPrice.textField.text;
     currentItem.selling_price = sellingPrice.textField.text;
@@ -759,16 +761,17 @@
         if (!((CustomButton*)sender).isEnabled)
         {
             
-            [self showAlertWithTitle:@"Choose a Category" Message:@"To select a Colour you must choose a Category first."];
+            //[self showAlertWithTitle:@"Choose a Category" Message:@"To select a Colour you must choose a Category first."];
+            [self showAlertWithTitle:@"Choose a Category" Message:@"To select a Subcategory you must choose a Category first."];
             return;
         }
         
-        if (((CustomButton*)sender).notApplicable)
-        {
-            
-            [self showAlertWithTitle:@"Colour Not Applicable" Message:[NSString stringWithFormat:@"The Subcategory %@ does not have a colour. Please select Not Applicable.", self.category.Text.text]];
-            return;
-        }
+//        if (((CustomButton*)sender).notApplicable)
+//        {
+//            
+//            [self showAlertWithTitle:@"Colour Not Applicable" Message:[NSString stringWithFormat:@"The Subcategory %@ does not have a colour. Please select Not Applicable.", self.category.Text.text]];
+//            return;
+//        }
 
       
 
@@ -780,7 +783,8 @@
       
         v.items = [NSMutableArray arrayWithArray:self.tempTagsForColor];
         
-       v.navigationView.title.text = @"Select a Colour";
+        //v.navigationView.title.text = @"Select a Colour";
+        v.navigationView.title.text = @"Select a Subcategory";
         v.delegate = self;
         v.sender = sender;
         
@@ -921,7 +925,7 @@
         category.Text.text = @"Select a Category";
         
         color.Text.textColor = self.placeHolderColor;
-        color.Text.text = @"Select a Colour";
+        color.Text.text = @"Select a Subcategory";
         
         condition.Text.textColor = self.placeHolderColor;
         condition.Text.text = @"Select a Condition";
@@ -957,50 +961,61 @@
         category.Text.textColor = self.textColor;
         category.Text.text = ((HWSubCategories*)selection).name;
         
-        self.tempTagsForCondition = currentSubCategories.condition;
         
-        condition.Text.textColor = self.placeHolderColor;
-        condition.Text.text = @"Select a Condition";
-        
-        if (currentSubCategories.color.count == 1 && [((HWColor*)[((NSArray*)currentSubCategories.color) firstObject]).code isEqual:@""])
-        {
-            
-            color.Text.textColor = self.textColor;
-            color.Text.text = @"Not Applicable";
-            
-            color.notApplicable = YES;
+//        if (currentSubCategories.color.count == 1 && [((HWColor*)[((NSArray*)currentSubCategories.color) firstObject]).code isEqual:@""])
+//        {
+//            
+//            color.Text.textColor = self.textColor;
+//            color.Text.text = @"Not Applicable";
+//            
+//            color.notApplicable = YES;
+//            color.isEnabled = YES;
+//
+//            
+//            color.Text.tag = [((HWColor*)[((HWSubCategories*)selection).color firstObject]).id integerValue];
+//            
+//        }
+//        else
+//        {
+//            
+//            color.Text.textColor = self.placeHolderColor;
+//            color.Text.text = @"Select a Colour";
             color.isEnabled = YES;
-
-            
-            color.Text.tag = [((HWColor*)[((HWSubCategories*)selection).color firstObject]).id integerValue];
-            
-        }
-        else
-        {
-            
-            color.Text.textColor = self.placeHolderColor;
-            color.Text.text = @"Select a Colour";
-            color.isEnabled = YES;
-            color.notApplicable = NO;
-            self.tempTagsForColor = currentSubCategories.color;
-            
-        }
+//            color.notApplicable = NO;
+//            self.tempTagsForColor = currentSubCategories.color;
+//            
+//        }
+        
+        self.tempTagsForColor = ((HWCategory*)selection).subcategories;
         
         
-            condition.isEnabled = YES;
+//        
+//        self.idCategory = ((HWSubCategories*)selection).parent_id;
+//        category.Text.tag = [((HWSubCategories*)selection).id integerValue];
         
-        self.idCategory = ((HWSubCategories*)selection).parent_id;
-        category.Text.tag = [((HWSubCategories*)selection).id integerValue];
+        self.idCategory = [((HWCategory*)selection).id integerValue];
+       // category.Text.tag = [((HWSubCategories*)selection).id integerValue];
         
         return;
     }
     
     if (sender == color)
     {
+        HWSubCategories* currentSubCategories = ((HWSubCategories*)selection);
         color.Text.textColor = self.textColor;
-        color.Text.text = ((HWColor*)selection).name;
+//        color.Text.text = ((HWColor*)selection).name;
+        color.Text.text = ((HWSubCategories*)selection).name;
         
-        color.Text.tag = [((HWColor*)selection).id integerValue];
+//        color.Text.tag = [((HWColor*)selection).id integerValue];
+        color.Text.tag = [((HWSubCategories*)selection).id integerValue];
+        
+        
+        self.tempTagsForCondition = currentSubCategories.condition;
+        
+        condition.Text.textColor = self.placeHolderColor;
+        condition.Text.text = @"Select a Condition";
+
+        condition.isEnabled = YES;
     }
     
     if (sender == condition)

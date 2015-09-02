@@ -26,9 +26,9 @@
 
 @end
 
-@implementation HWColor
-
-@end
+//@implementation HWColor
+//
+//@end
 
 @implementation HWCondition
 

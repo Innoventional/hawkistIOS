@@ -17,9 +17,6 @@
 @protocol HWSubCategories
 @end
 
-@protocol HWColor
-@end
-
 @protocol HWCondition
 @end
 
@@ -43,16 +40,16 @@
 @property (nonatomic, strong) NSString* id;
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic,assign) NSInteger parent_id;
-@property (nonatomic, strong) NSArray<HWColor,Optional>* color;
+//@property (nonatomic, strong) NSArray<HWColor,Optional>* color;
 @property (nonatomic, strong) NSArray<HWCondition,Optional>* condition;
 @end
 
-@interface HWColor : JSONModel
-@property (nonatomic, strong) NSString* id;
-@property (nonatomic, strong) NSString* name;
-@property (nonatomic,assign) NSInteger parent_id;
-@property (nonatomic, strong) NSString* code;
-@end
+//@interface HWColor : JSONModel
+//@property (nonatomic, strong) NSString<Optional>* id;
+//@property (nonatomic, strong) NSString<Optional>* name;
+//@property (nonatomic,assign) NSInteger parent_id;
+//@property (nonatomic, strong) NSString<Optional>* code;
+//@end
 
 
 @interface HWCondition : JSONModel

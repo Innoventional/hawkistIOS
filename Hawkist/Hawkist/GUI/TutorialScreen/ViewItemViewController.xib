@@ -52,9 +52,9 @@
                 <outlet property="buyThisItem" destination="Rg4-LH-YBt" id="Hje-zt-vsf"/>
                 <outlet property="category" destination="BzK-lv-3dw" id="tJT-fU-l07"/>
                 <outlet property="collectionView" destination="oC7-ht-LMk" id="Aoy-SV-5pv"/>
-                <outlet property="colour" destination="2Fo-eF-aMI" id="Pja-ax-Pzk"/>
+                <outlet property="colour" destination="Jkl-TP-E6E" id="5dy-RX-7Ga"/>
                 <outlet property="comments" destination="RpC-Hs-FoM" id="5RO-rV-f5t"/>
-                <outlet property="condition" destination="Jkl-TP-E6E" id="mJe-G5-HPI"/>
+                <outlet property="condition" destination="2Fo-eF-aMI" id="3ap-d8-gV4"/>
                 <outlet property="counts" destination="YEq-Si-eHU" id="0fi-dc-KGE"/>
                 <outlet property="delivery" destination="ryb-mr-4Id" id="DmF-xe-Pmf"/>
                 <outlet property="descriptionTextView" destination="SiY-ip-Tfu" id="Kln-Of-k08"/>
@@ -586,14 +586,14 @@
                                     <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="739" misplaced="YES" text="Condition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0W-59-Pim">
-                                    <rect key="frame" x="12" y="82" width="67" height="16"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="739" text="Subcategory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0W-59-Pim">
+                                    <rect key="frame" x="12" y="83" width="70" height="14"/>
                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Colour" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ga2-3T-vnT">
-                                    <rect key="frame" x="12" y="99" width="67" height="16"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Condition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ga2-3T-vnT">
+                                    <rect key="frame" x="12" y="98" width="70" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="16" id="6Rb-cT-ziG"/>
                                     </constraints>
@@ -826,6 +826,8 @@
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
+                                    <exclude reference="qAL-Fn-dKQ"/>
+                                    <exclude reference="faa-uA-IMX"/>
                                     <exclude reference="c4T-np-RbO"/>
                                     <exclude reference="0wj-WZ-Nct"/>
                                     <exclude reference="7tq-ob-3UC"/>

@@ -247,8 +247,10 @@
     HWCondition* itemCondition = [HWTag getConditionById:self.item.condition from: itemSubCategory.condition];
     self.condition.text = itemCondition.name;
    
-    HWColor* itemColor = [HWTag getColorById:self.item.color from:itemSubCategory.color];
-    self.colour.text = itemColor.name;
+    //HWColor* itemColor = [HWTag getColorById:self.item.color from:itemSubCategory.color];
+    //self.colour.text = itemColor.name;
+    
+    self.colour.text = itemSubCategory.name;
     if(self.item.collection_only  )
     {
        self.delivery.text = @"Collection only";
