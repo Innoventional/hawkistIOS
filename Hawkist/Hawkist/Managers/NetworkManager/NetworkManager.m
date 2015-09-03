@@ -19,6 +19,7 @@
 #import "HWBankAccountInfo.h"
 #import "HWBankAccountAddress.h"
 #import "HWNotification.h"
+#import "HWPushNotificationSettings.h"
 
 
 
@@ -2310,6 +2311,100 @@ NSString *URLString = @"user/logout";
 
 
 
+#pragma mark - Push Notifications
+
+- (void) getPushNotificationSetings:(void(^)(HWPushNotificationSettings* settings))successBlock
+                                failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    [self.networkDecorator GET:@"user/push_notifications"
+                    parameters: nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           HWPushNotificationSettings* settings = [[HWPushNotificationSettings alloc]init];
+                                                                   
+                        settings.types = [[NSDictionary alloc]initWithDictionary: responseObject[@"types"]];
+                        settings.enable = [responseObject[@"enable"] boolValue];
+                           
+                          
+
+                           successBlock (settings);
+                           
+                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+    
+}
+//
+//Url: 'user/push_notifications'
+//Method: 'PUT'
+//Data:
+//
+//{
+//    "enable": true or false, global push settings
+//    
+//    OR
+//    
+//    "type": ONE OF TYPE ABOVE
+//}
+
+- (void) changedNotificationSetting:(NSString*)key orAll:(BOOL)all
+                       successBlock:(void(^)(HWPushNotificationSettings* settings))successBlock
+                       failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (all)
+    {
+        [params setObject:@"change" forKey:@"enable"];
+    }
+    else
+    {
+        [params setObject:key forKey:@"type"];
+    }
+    
+    [self.networkDecorator PUT:@"user/push_notifications"
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           HWPushNotificationSettings* settings = [[HWPushNotificationSettings alloc]init];
+                           
+                           settings.types = [[NSDictionary alloc]initWithDictionary: responseObject[@"types"]];
+                           settings.enable = [responseObject[@"enable"] boolValue];
+                           
+                           successBlock (settings);
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                       }];
+
+    
+}
 
 
 
@@ -2700,6 +2795,60 @@ NSString *URLString = @"user/logout";
                        }];
 
 
+}
+
+
+//Search user using facebook
+//
+//url = '/user/socials?facebook_token=FACEBOOK_TOKEN'
+//type: 'GET'
+//
+//Response:
+//
+//{
+//    "status": 0,
+//    "users": [
+//              {
+//                  'id': PROPOSED FRIEND ID,
+//                  'avatar': PROPOSED FRIEND AVATAR,
+//                  'username': PROPOSED FRIEND USERNAME,
+//                  'following': DOES CURRENT USER FOLLOW PROPOSED FRIEND
+//              },
+//              {
+//                  ...
+//              }
+//              ]
+//}
+
+
+#pragma mark -
+#pragma mark Find Friend
+
+- (void) getFriends:(NSString*)fbTocken
+       successBlock:(void(^)(NSArray* users)) successBlock
+       failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSDictionary *params = @{@"facebook_token": fbTocken};
+    [self.networkDecorator GET:@"user/socials"
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           NSArray *a = [NSArray array];
+                           
+                           successBlock(a);
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                       }];
+    
 }
 
 @end
