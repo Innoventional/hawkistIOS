@@ -17,7 +17,7 @@
 #import "FeedScreenViewController.h"
 #import "PingManager.h"
 
-
+#import "PushNotificationManager.h"
 #import "HWPaymentViewController.h"
 
 
@@ -72,6 +72,13 @@
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     [AppEngine shared].APNStoken = @"";
     NSLog(@"Failed to get token, error: %@", error);
+}
+
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Received notification: %@", userInfo);
+  //  if (application.applicationState == UIApplicationStateBackground)
+        [[PushNotificationManager shared] handleNotification:userInfo andNavigationController:[self rootViewController]];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

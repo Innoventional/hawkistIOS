@@ -24,6 +24,9 @@
 #import "PingManager.h"
 
 
+#import "HWZendeskViewController.h"
+
+
 @interface HWTapBarViewController () <HWTapBarViewDelegate>
 
 @property (nonatomic, strong) HWTapBarView* contentView;
@@ -107,6 +110,11 @@
     
 }
 
+- (void) setTab:(NSInteger)number
+{
+    [self itemAtIndexSelected:number];
+}
+
 
 #pragma mark -
 #pragma mark HWTapBarViewDelegate
@@ -130,14 +138,14 @@
         case 3:
         {
              [self.contentView addContentView: self.notificationVC.view];
-//            HWMyBalanceViewController *vc = [[HWMyBalanceViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
                 [self.contentView updateBadge:@"0"];
             break;
         }
         case 4:
         {
-            
+//            HWZendeskViewController *vc = [[HWZendeskViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            
             [self.contentView addContentView: self.supportVC.view];
                 
             break;

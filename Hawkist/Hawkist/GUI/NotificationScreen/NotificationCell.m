@@ -74,33 +74,36 @@
         NSLog(@"%@, %d, %d", value, range.location, range.length);
         
         
-        switch ([value integerValue]) {
-            case 1:
-            {
-                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedUser:)])
-                    [self.notificationCellDelegate selectedUser:self.notification.user.id];
-                break;
-            }
-            case 2:
-            {
-                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedItem:)])
-                    [self.notificationCellDelegate selectedItem:self.notification.listing.id];
-                break;
-            }
-            case 3:
-            {
-                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedComment:)])
-                    [self.notificationCellDelegate selectedComment:self.notification.listing.id];
-                break;
-            }
-            default:
-            {
-                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedText:)])
-                    [self.notificationCellDelegate selectedText:self.notification];
-
-            }
-                break;
-        }
+//        switch ([value integerValue]) {
+//            case 1:
+//            {
+//                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedUser:)])
+//                    [self.notificationCellDelegate selectedUser:self.notification.user.id];
+//                break;
+//            }
+//            case 2:
+//            {
+//                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedItem:)])
+//                    [self.notificationCellDelegate selectedItem:self.notification.listing.id];
+//                break;
+//            }
+//            case 3:
+//            {
+//                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedComment:)])
+//                    [self.notificationCellDelegate selectedComment:self.notification.listing.id];
+//                break;
+//            }
+//            default:
+//            {
+//                if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedText:)])
+//                    [self.notificationCellDelegate selectedText:self.notification];
+//
+//            }
+//                break;
+//        }
+        
+        if (self.notificationCellDelegate && [self.notificationCellDelegate respondsToSelector: @selector(selectedText:)])
+                                [self.notificationCellDelegate selectedText:self.notification];
         
     }
 
