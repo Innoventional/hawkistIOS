@@ -15,32 +15,84 @@
 
 @implementation HWZendeskViewController
 
+#define ZENDESK_APPID           @"475beb8068c9472bda4f61c986e4ed6de28c120465e512aa"
+#define ZENDESK_URL             @"https://hawkist.zendesk.com"
+#define ZENDESK_CLIENT_ID       @"mobile_sdk_client_017b0642674c40d7b0e0"
+
+
+-(instancetype) init {
+    
+    self = [super init];
+    
+    {
+        [[ZDKConfig instance] initializeWithAppId: ZENDESK_APPID
+                                       zendeskUrl: ZENDESK_URL
+                                         ClientId: ZENDESK_CLIENT_ID
+                                        onSuccess:^() {
+                                            
+                                            
+                                            NSLog(@"Yes");
+                                            
+                                        } onError:^(NSError *error) {
+                                            
+                                            NSLog(@"%@", error.description);
+                                            
+                                        }];
+
+        
+    }
+    
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupCreatingTicket];
     
      [ZDKLogger enable:YES];
     
-    [[ZDKConfig instance] initializeWithAppId:@"475beb8068c9472bda4f61c986e4ed6de28c120465e512aa"
-                                   zendeskUrl:@"https://hawkist.zendesk.com"
-                                     ClientId:@"mobile_sdk_client_017b0642674c40d7b0e0"
-                                    onSuccess:^() {
-                                        
-                                        [self jwtIdentify];
-                                       
-                                        
-                                        //[ZDKRequests showRequestCreationWithNavController:self.navigationController];
-                                          [ZDKRequests showRequestListWithNavController:self.navigationController];
-                                        
-                                        NSLog(@"Yes");
-                                    } onError:^(NSError *error) {
-    
-                                        NSLog(@"%@", error.description);
-    
+    [ZDKRequests configure:^(ZDKAccount *account, ZDKRequestCreationConfig *requestCreationConfig) {
+        
+        // specify any additional tags desired
+        requestCreationConfig.tags = [NSArray arrayWithObjects:@"report", nil];
+        
+        // add some custom content to the description
+        requestCreationConfig.additionalRequestInfo = @"<-----SSS----->";
+        
     }];
+    
+    [self jwtIdentify];
+    
+    [ZDKRequests showRequestListWithNavController:self.navigationController];
 
 }
 
+
+
+
+
+/*
+
+ 
+ [ZDKRequests configure:^(ZDKAccount *account, ZDKRequestCreationConfig *requestCreationConfig) {
+ 
+ // specify any additional tags desired
+ requestCreationConfig.tags = [NSArray arrayWithObjects:@"report", nil];
+ 
+ // add some custom content to the description
+ requestCreationConfig.additionalRequestInfo = @"SSS";
+ 
+ }];
+ 
+ 
+ [self jwtIdentify];
+ 
+ 
+ //[ZDKRequests showRequestCreationWithNavController:self.navigationController];
+ [ZDKRequests showRequestListWithNavController:self.navigationController];
+ 
+ */
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -49,9 +101,18 @@
 
 - (void) jwtIdentify {
     
-    ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:[AppEngine shared].user.id];
+//    ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"aasdsasdasdasdasdasd"];
+//
+//    [ZDKConfig instance].userIdentity = jwtUserIdentity;
     
-    [ZDKConfig instance].userIdentity = jwtUserIdentity;
+    ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
+//
+    identity.name = @"John Example";
+    identity.email = @"john@example.com";
+
+    
+    
+   [ZDKConfig instance].userIdentity = identity;
 }
 
 

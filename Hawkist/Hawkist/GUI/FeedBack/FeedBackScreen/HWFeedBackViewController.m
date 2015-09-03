@@ -33,7 +33,15 @@
 
 #pragma mark - UIViewController
 
-- (instancetype) initWithUserID:(NSString *)userID
+- (instancetype) initWithUserID:(NSString *)userID {
+    
+    self = [self initWithUserID:userID withStatus:HWFeedbackPositive];
+    
+    return self;
+    
+}
+
+- (instancetype) initWithUserID:(NSString *)userID withStatus:(HWFeedbackType)status
 {
     self = [super initWithNibName: @"HWFeedBackView" bundle: nil];
     if(self)
@@ -52,6 +60,28 @@
                                                 self.segmentView.neutralButton.count.text = [NSString stringWithFormat:@"%lu", (unsigned long)neutrall.count];
                                                 
                                                 [self.tableView reloadData];
+                                                
+                                                switch (status) {
+                                                    case HWFeedbackNegative:
+                                                        [self pressFeedbackButtonWithArray: self.negativeArray];
+                                                        [self.segmentView pressButtonWithStatus:HWFeedbackNegative];
+                                                        
+                                                        break;
+                                                    case HWFeedbackNeutral:
+                                                        [self pressFeedbackButtonWithArray: self.neutralArray];
+                                                        [self.segmentView pressButtonWithStatus:HWFeedbackNeutral];
+                                                        
+                                                        break;
+                                                    case HWFeedbackPositive:
+                                                        
+                                                        [self pressFeedbackButtonWithArray: self.positiveArray];
+                                                        [self.segmentView pressButtonWithStatus:HWFeedbackPositive];
+                                                        
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
+                                                
         
                                                 
                                           } failureBlock:^(NSError *error) {
@@ -68,7 +98,7 @@
 
 - (instancetype) init {
     
-    self = [self initWithUserID:nil];
+    self = [self initWithUserID:nil withStatus:0];
     if (self) {
         
         
@@ -160,6 +190,7 @@
 - (void) pressPositiveButton:(HWFedbackSegmentButton*) sender {
     
     [self pressFeedbackButtonWithArray: self.positiveArray];
+    
 }
 
 - (void) pressNeutralButton:(HWFedbackSegmentButton*) sender {
