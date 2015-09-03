@@ -138,10 +138,10 @@
         }
         case 4:
         {
-            HWZendeskViewController *vc = [[HWZendeskViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-            
-            //[self.contentView addContentView: self.supportVC.view];
+//            HWZendeskViewController *vc = [[HWZendeskViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            
+            [self.contentView addContentView: self.supportVC.view];
                 
             break;
             
