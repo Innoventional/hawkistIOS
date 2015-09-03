@@ -16,3 +16,4 @@ pod 'Stripe'
 pod 'JSBadgeView'
 
 pod 'pop', '~> 1.0'
+pod 'ZendeskSDK'

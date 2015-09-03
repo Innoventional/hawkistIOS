@@ -332,6 +332,14 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
                                          successBlock:(void(^)(BOOL isFavourite))successBlock
                                          failureBlock:(void(^)(NSError *error)) failureBlock;
 
+
+-(void) getUserLetUserFindMeInFindFriendVisibilitySuccessBlock:(void(^)(BOOL visibleInFindFriends)) successBlock
+                                                  failureBlock:(void(^)(NSError *error)) failureBlock;
+
+-(void) updateUserLetUserFindMeInFindFriendVisibilityWithFlag:(BOOL)isVisibleInFindFriends
+                                                 successBlock:(void(^)(BOOL visibleInFindFriends)) successBlock
+                                                 failureBlock:(void(^)(NSError *error)) failureBlock;
+
 #pragma mark - Push Notifications
 
 - (void) getPushNotificationSetings:(void(^)(HWPushNotificationSettings* settings))successBlock
