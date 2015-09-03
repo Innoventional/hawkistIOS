@@ -110,6 +110,11 @@
     
 }
 
+- (void) setTab:(NSInteger)number
+{
+    [self itemAtIndexSelected:number];
+}
+
 
 #pragma mark -
 #pragma mark HWTapBarViewDelegate

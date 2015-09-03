@@ -17,6 +17,7 @@
 #import "HWMyBalanceViewController.h"
 #import "HWLeaveFeedbackViewController.h"
 #import "BuyThisItemViewController.h"
+#import "HWTapBarViewController.h"
 
 @interface NotificationScreenViewController () <UITableViewDelegate,UITableViewDataSource,NotificationCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -347,7 +348,7 @@
                                         }];
                 break;
             }
-        case 1: case 7: case 9:
+        case 7: case 9:
         {
             [[NetworkManager shared] getItemById:notification.listing.id
                                     successBlock:^(HWItem *item) {
@@ -359,6 +360,13 @@
                                         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                     }];
                         break;
+        }
+        case 1:
+        {
+            HWTapBarViewController *vc = [[HWTapBarViewController alloc]init];
+            [vc setTab:2];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
         }
         case 2:
         {

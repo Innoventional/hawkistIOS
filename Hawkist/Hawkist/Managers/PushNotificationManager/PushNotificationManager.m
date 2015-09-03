@@ -15,7 +15,7 @@
 #import "HWLeaveFeedbackViewController.h"
 #import "HWProfileViewController.h"
 #import "BuyThisItemViewController.h"
-
+#import "HWTapBarViewController.h"
 
 @implementation PushNotificationManager
 
@@ -45,7 +45,7 @@
                                     }];
             break;
         }
-        case 1: case 7: case 9:
+        case 7: case 9:
         {
             [[NetworkManager shared] getItemById:userInfo[@"listing_id"]
                                     successBlock:^(HWItem *item) {
@@ -57,6 +57,14 @@
                                         
                                     }];
             break;
+        }
+        case 1:
+        {
+            HWTapBarViewController *vc = [[HWTapBarViewController alloc]init];
+            [vc setTab:2];
+            [navigationController pushViewController:vc animated:YES];
+            break;
+        
         }
         case 2:
         {

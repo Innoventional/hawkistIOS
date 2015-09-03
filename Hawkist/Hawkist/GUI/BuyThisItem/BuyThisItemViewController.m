@@ -135,7 +135,7 @@
 - (IBAction)sendOffer:(id)sender {
     
     [self.moneyField.textField resignFirstResponder];
-    
+    [self showHud];
     
     if ([self.moneyField.textField.text doubleValue]<0.5f)
     {
@@ -149,10 +149,12 @@
     successBlock:^{
         NSLog(@"added");
         [self showAlertWithTitle:@"Your Offer Confirmed" Message:@"Your offered price for this listing has been sent to the seller."];
+                [self hideHud];
         [self.navigationController popViewControllerAnimated:YES];
     }
     
     failureBlock:^(NSError *error) {
+        [self hideHud];
        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         
     }];

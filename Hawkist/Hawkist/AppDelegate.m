@@ -77,7 +77,7 @@
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Received notification: %@", userInfo);
-    if (application.applicationState == UIApplicationStateBackground)
+  //  if (application.applicationState == UIApplicationStateBackground)
         [[PushNotificationManager shared] handleNotification:userInfo andNavigationController:[self rootViewController]];
 }
 
