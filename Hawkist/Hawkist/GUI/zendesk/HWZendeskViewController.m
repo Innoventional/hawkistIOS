@@ -48,17 +48,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupCreatingTicket];
+//    [self setupCreatingTicket];
+//    [self setupAgentPoint];
+//     [self setupRequestList];
+//    [self setupSupportView];
+    
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *but = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    [self.view addSubview:but];
+    
+    [but addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    but.backgroundColor = [UIColor redColor];
+    
+    
+    [ZDKHelpCenter presentHelpCenterWithNavController:self.navigationController];
     
      [ZDKLogger enable:YES];
-    
+
     [ZDKRequests configure:^(ZDKAccount *account, ZDKRequestCreationConfig *requestCreationConfig) {
         
         // specify any additional tags desired
         requestCreationConfig.tags = [NSArray arrayWithObjects:@"report", nil];
-        
+        requestCreationConfig.subject = @"newwwwweeen";
         // add some custom content to the description
-        requestCreationConfig.additionalRequestInfo = @"<-----SSS----->";
+        requestCreationConfig.additionalRequestInfo = @"\n<-----SSS----->";
         
     }];
     
@@ -66,8 +81,14 @@
     
     [ZDKRequests showRequestListWithNavController:self.navigationController];
 
+    
+    
 }
 
+- (void) back {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 
@@ -120,13 +141,13 @@
 - (void) setupCreatingTicket {
     
     [[ZDKCreateRequestView appearance] setPlaceholderTextColor:[UIColor lightGrayColor]];
-    [[ZDKCreateRequestView appearance] setTextEntryColor:[UIColor whiteColor]];
-    [[ZDKCreateRequestView appearance] setTextEntryBackgroundColor:[UIColor blackColor]];
-    [[ZDKCreateRequestView appearance] setViewBackgroundColor:[UIColor blackColor]];
+    [[ZDKCreateRequestView appearance] setTextEntryColor:[UIColor blackColor]];
+    [[ZDKCreateRequestView appearance] setTextEntryBackgroundColor:[UIColor whiteColor]];
+    [[ZDKCreateRequestView appearance] setViewBackgroundColor:[UIColor whiteColor]];
     [[ZDKCreateRequestView appearance] setTextEntryFont:[UIFont systemFontOfSize:12.0f]];
     
     [[ZDKCreateRequestView appearance] setAttachmentButtonImage:[ZDKBundleUtils imageNamed:@"icoAttach" ofType:@"png"]];
-    [[ZDKCreateRequestView appearance] setAttachmentButtonBackground:[UIColor blackColor]];
+    [[ZDKCreateRequestView appearance] setAttachmentButtonBackground:[UIColor whiteColor]];
     [[ZDKCreateRequestView appearance] setAttachmentButtonBorderColor:[UIColor darkGrayColor]];
     [[ZDKCreateRequestView appearance] setAttachmentButtonBorderWidth:@2];
     [[ZDKCreateRequestView appearance] setAttachmentButtonCornerRadius:@10];
@@ -173,7 +194,7 @@
     // request list cells
     [[ZDKRequestListTableCell appearance] setDescriptionFont:[UIFont systemFontOfSize:15]];
     [[ZDKRequestListTableCell appearance] setCreatedAtFont:[UIFont systemFontOfSize:13]];
-    [[ZDKRequestListTableCell appearance] setUnreadColor:[UIColor colorWithRed:0.47059 green:0.6392 blue:0 alpha:1.0]];
+    [[ZDKRequestListTableCell appearance] setUnreadColor:[UIColor colorWithRed:48./255. green: 173./255. blue: 148./255. alpha:1.0]];
     [[ZDKRequestListTableCell appearance] setDescriptionColor:[UIColor colorWithWhite:0.88f alpha:1.0f]];
     [[ZDKRequestListTableCell appearance] setCreatedAtColor:[UIColor lightGrayColor]];
     [[ZDKRequestListTableCell appearance] setVerticalMargin:@20.0f];

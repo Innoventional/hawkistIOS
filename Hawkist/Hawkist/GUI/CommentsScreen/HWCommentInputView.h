@@ -15,6 +15,8 @@
 @property (nonatomic, weak) IBOutlet SZTextView *textView;
 @property (nonatomic, weak) id<HWCommentInputViewDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UIButton *pressButton;
+@property (nonatomic, weak) IBOutlet UILabel *limitCharacter;
+
 
 @end
 

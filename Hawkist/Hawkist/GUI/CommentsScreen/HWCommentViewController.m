@@ -560,6 +560,7 @@
                                        successBlock:^{
                                            
                                            [self setCommentsArrayWithItem:self.currentItem];
+                                           self.inputCommentView.limitCharacter.text = [NSString stringWithFormat:@"160" ];
                                            
                                        } failureBlock:^(NSError *error) {
                                            
@@ -577,9 +578,16 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
        NSInteger permissibleLenght = 160;
+    
+    
        NSUInteger newLength = [textView.text length] + [text length] - range.length;
-  
-        return (newLength > permissibleLenght) ? NO : YES;
+    
+    if (newLength <= permissibleLenght) {
+    self.inputCommentView.limitCharacter.text = [NSString stringWithFormat:@"%lu", 160 - newLength ];
+        
+    }
+    
+    return (newLength > permissibleLenght) ? NO : YES;
   
  }
 
