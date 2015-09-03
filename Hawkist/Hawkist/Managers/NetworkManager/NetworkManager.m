@@ -2772,7 +2772,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
     
 }
 
-#pragma mark - Push Notifications
+#pragma mark - Push Notifications Settings
 
 - (void) getPushNotificationSetings:(void(^)(HWPushNotificationSettings* settings))successBlock
                        failureBlock:(void(^)(NSError *error)) failureBlock
@@ -2809,18 +2809,8 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                        }];
     
 }
-//
-//Url: 'user/push_notifications'
-//Method: 'PUT'
-//Data:
-//
-//{
-//    "enable": true or false, global push settings
-//
-//    OR
-//
-//    "type": ONE OF TYPE ABOVE
-//}
+
+
 
 - (void) changedNotificationSetting:(NSString*)key orAll:(BOOL)all
                        successBlock:(void(^)(HWPushNotificationSettings* settings))successBlock
@@ -2864,6 +2854,37 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            failureBlock(serverError);
                        }];
     
+    
+}
+
+
+#pragma mark -
+#pragma mark Find Friend
+
+- (void) getFriends:(NSString*)fbTocken
+       successBlock:(void(^)(NSArray* users)) successBlock
+       failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSDictionary *params = @{@"facebook_token": fbTocken};
+    [self.networkDecorator GET:@"user/socials"
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           NSArray *a = [NSArray array];
+                           
+                           successBlock(a);
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                       }];
     
 }
 
