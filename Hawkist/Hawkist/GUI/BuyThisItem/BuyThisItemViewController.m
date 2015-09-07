@@ -138,7 +138,7 @@
     [self showHud];
     
     if ([self.moneyField.textField.text doubleValue]<0.5f)
-    {
+    {    [self hideHud];
         [self showAlertWithTitle:@"Minimum Price Not Met" Message:@"The minimum Price for an offer is £0.50."];
         return;
     }
