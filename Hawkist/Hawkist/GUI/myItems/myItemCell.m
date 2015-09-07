@@ -146,6 +146,15 @@
     }
    
     
+    if ([self.item.comments integerValue]>0)
+    {
+        self.commentView.image = [UIImage imageNamed:@"Feed_mes"];
+    }
+    else
+    {
+        self.commentView.image = [UIImage imageNamed:@"messages"];
+    }
+    
 }
 
 

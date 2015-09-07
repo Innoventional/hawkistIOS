@@ -22,6 +22,7 @@
 @property (nonatomic, weak) IBOutlet HWFedbackSegmentButton *negativeButton;
 
 - (void) pressFirstButton;
+- (void) pressButtonWithStatus:(HWFeedbackType) status;
 
 @end
 

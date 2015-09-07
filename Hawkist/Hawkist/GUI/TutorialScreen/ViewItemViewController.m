@@ -307,7 +307,7 @@
 {
     [self.buyThisItem setTitle:@"SOLD" forState:UIControlStateNormal];
     [self.buyThisItem setBackgroundImage:nil forState:UIControlStateNormal];
-    [self.buyThisItem setBackgroundColor:[UIColor color256RGBWithRed:239 green:83 blue:80]];
+    [self.buyThisItem setBackgroundColor:[UIColor color256RGBWithRed:127 green:127 blue:127]];
     
     self.buyThisItem.layer.cornerRadius = 5;
     self.buyThisItem.enabled = YES;

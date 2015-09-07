@@ -14,7 +14,7 @@
 #import "NetworkManager.h"
 #import "AppEngine.h"
 #import "HWTag+Extensions.h"
-
+#import "WebViewController.h"
 #import "AWSS3Manager.h"
 
 @interface SellAnItemViewController ()
@@ -103,7 +103,7 @@
 //        color.Title.text = @"COLOUR";
 //        color.delegate = self;
 
-        color.Title.text = @"SUBCATEGORY";
+        color.Title.text = @"SUB-CATEGORY";
         color.delegate = self;
        
             engine = [AppEngine shared];
@@ -323,9 +323,9 @@
      sellingPrice.textField.text = @"0.00";
      sellingPrice.delegate = self;
     
-     checkBox1.selected = NO;
+     checkBox1.selected = YES;
     checkBox1.enabled = YES;
-     priceForShipping.textField.enabled = NO;
+     priceForShipping.textField.enabled = YES;
     
     priceForShipping.textField.text = @"0.00";
     priceForShipping.isNoLimited = YES;
@@ -450,7 +450,10 @@
 
 - (IBAction)LinkAction:(id)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://google.com"]];
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://google.com"]];
+    WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204424321-What-does-it-cost-to-sell-on-Hawkist" andTitle:@"More About Our Fees"];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 - (IBAction)checkBox1Action:(id)sender {
    
@@ -627,6 +630,7 @@
         picker.mediaTypes    = @[(NSString*) kUTTypeImage];
         picker.sourceType    = source;
         
+
         [self presentViewController: picker animated: YES completion: NULL];
     }
 }
@@ -762,7 +766,7 @@
         {
             
             //[self showAlertWithTitle:@"Choose a Category" Message:@"To select a Colour you must choose a Category first."];
-            [self showAlertWithTitle:@"Choose a Category" Message:@"To select a Subcategory you must choose a Category first."];
+            [self showAlertWithTitle:@"Choose a Category" Message:@"To select a Sub-Category you must choose a Category first."];
             return;
         }
         
@@ -784,7 +788,7 @@
         v.items = [NSMutableArray arrayWithArray:self.tempTagsForColor];
         
         //v.navigationView.title.text = @"Select a Colour";
-        v.navigationView.title.text = @"Select a Subcategory";
+        v.navigationView.title.text = @"Select a Sub-Category";
         v.delegate = self;
         v.sender = sender;
         
@@ -799,7 +803,7 @@
     {
         if (!((CustomButton*)sender).isEnabled)
         {
-            [self showAlertWithTitle:@"Choose a Category" Message:@"To select a Condition you must choose a Category first."];
+            [self showAlertWithTitle:@"Choose a Sub-Category" Message:@"To select a Condition you must choose a Sub-Category first."];
             return;
         }
 
@@ -925,7 +929,7 @@
         category.Text.text = @"Select a Category";
         
         color.Text.textColor = self.placeHolderColor;
-        color.Text.text = @"Select a Subcategory";
+        color.Text.text = @"Select a Sub-Category";
         
         condition.Text.textColor = self.placeHolderColor;
         condition.Text.text = @"Select a Condition";
@@ -937,6 +941,7 @@
 //                            condition.userInteractionEnabled = NO;
         
         category.isEnabled = YES;
+        category.Text.tag = nil;
         color.isEnabled = NO;
         condition.isEnabled = NO;
         
@@ -983,11 +988,20 @@
             color.isEnabled = YES;
 //            color.notApplicable = NO;
 //            self.tempTagsForColor = currentSubCategories.color;
-//            
+        
+        condition.Text.textColor = self.placeHolderColor;
+        condition.Text.text = @"Select a Condition";
+        condition.Text.tag = nil;
+        condition.isEnabled = NO;
+
+//
 //        }
         
         self.tempTagsForColor = ((HWCategory*)selection).subcategories;
         
+        color.Text.textColor = self.placeHolderColor;
+        color.Text.text = @"Select a Sub-Category";
+        color.Text.tag = nil;
         
 //        
 //        self.idCategory = ((HWSubCategories*)selection).parent_id;
@@ -1014,6 +1028,7 @@
         
         condition.Text.textColor = self.placeHolderColor;
         condition.Text.text = @"Select a Condition";
+        condition.Text.tag = nil;
 
         condition.isEnabled = YES;
     }

@@ -24,6 +24,7 @@
 @property (nonatomic,strong) UIView* numberDialog;
 @property (nonatomic,strong) UIView* codeDialog;
 @property (nonatomic,strong) UIView* signIn;
+@property (nonatomic,strong) UIView* loading;
 
 @property (weak, nonatomic) IBOutlet UITextField *txtCode;
 @property (weak, nonatomic) IBOutlet UITextField *txtNumber;
@@ -64,11 +65,23 @@
 
 - (void) initDefault
 {
+
     [self setupSignUpScreen];
     [self setupSignInScreen];
     [self setupNubmerAlert];
     [self setupPinAlert];
+    [self setupLoadingScreen];
 }
+
+- (void) setupLoadingScreen
+{
+    NSArray *arr = [[NSBundle mainBundle]loadNibNamed:@"LoadingView" owner:self options:nil];
+    self.loading = [arr objectAtIndex:0];
+    self.loading.frame = self.view.frame;
+    [self.view addSubview:self.loading];
+
+}
+
 
 - (void) setupSignUpScreen
 {
@@ -76,7 +89,9 @@
     self.loginView = [arr objectAtIndex:0];
     self.loginView.frame = self.view.frame;
     [self.view addSubview:self.loginView];
+    self.loginView.hidden = YES;
 }
+
 
 - (void) setupSignInScreen
 {
@@ -297,6 +312,14 @@
     [[NetworkManager shared] getListOfTags:^(NSMutableArray *tags) {
         [AppEngine shared].user = user;
         [AppEngine shared].tags = tags;
+        
+        [[NetworkManager shared] sendAPNSToken:[AppEngine shared].APNStoken successBlock:^{
+            
+            
+        } failureBlock:^(NSError *error) {
+            
+            
+        }];
         if (user.first_login)
         {
             AccountDetailViewController *accountDetailVC= [[AccountDetailViewController alloc]init];
@@ -320,6 +343,8 @@
     
     if (![AppEngine shared].logginedWithFB && ![AppEngine shared].logginedWithPhone)
     {
+        self.loading.hidden = YES;
+        self.loginView.hidden = NO;
         [self hideHud];
         return;
     }

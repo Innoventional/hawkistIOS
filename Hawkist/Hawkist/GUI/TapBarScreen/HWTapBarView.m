@@ -63,7 +63,7 @@
     self.badgeView = [[JSBadgeView alloc] initWithParentView:[self.items objectAtIndex:2] alignment:JSBadgeViewAlignmentMyCenter];
     [self sendSubviewToBack:[self.items objectAtIndex:3]];
 
-    //self.badgeView.badgeBackgroundColor = [UIColor color256RGBAWithRed:55 green:185 blue:165 alpha:1];
+    self.badgeView.badgeBackgroundColor = [UIColor colorWithRed:239./255 green:89./255 blue:86./255 alpha:1];
     self.badgeView.badgeTextFont = [UIFont fontWithName:@"OpenSans-Semibold" size:10];
    // self.badgeView.badgeStrokeColor = [UIColor color256RGBAWithRed:153 green:155 blue:159 alpha:1];
    // self.badgeView.badgeStrokeWidth = 1.f;
@@ -136,4 +136,9 @@
     }
 }
 
+
+- (void) selectButton: (NSInteger) index
+{
+    [self markSelected:index];
+}
 @end

@@ -113,6 +113,7 @@
 - (void) setTab:(NSInteger)number
 {
     [self itemAtIndexSelected:number];
+    [((HWTapBarView*)self.contentView) selectButton:number];
 }
 
 

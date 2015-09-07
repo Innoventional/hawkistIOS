@@ -2749,7 +2749,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
     [params setObject:token forKey:@"apns_token"];
     
     [self.networkDecorator PUT:@"user/apns_token"
-                    parameters:token
+                    parameters:params
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            
                            

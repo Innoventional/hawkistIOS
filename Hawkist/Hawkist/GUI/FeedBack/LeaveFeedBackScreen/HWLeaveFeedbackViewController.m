@@ -174,7 +174,7 @@
                                      withFeedbackType:self.typeFeedback
                                          successBlock:^{
     
-                                             HWFeedBackViewController *vc = [[HWFeedBackViewController alloc] initWithUserID:self.userId];
+                                             HWFeedBackViewController *vc = [[HWFeedBackViewController alloc] initWithUserID:self.userId withStatus:self.typeFeedback];
                                              [self.navigationController pushViewController:vc animated:YES];
                                              
                                          } failureBlock:^(NSError *error) {

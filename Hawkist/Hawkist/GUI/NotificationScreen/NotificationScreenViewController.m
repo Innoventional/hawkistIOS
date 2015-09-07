@@ -363,9 +363,9 @@
         }
         case 1:
         {
-            HWTapBarViewController *vc = [[HWTapBarViewController alloc]init];
-            [vc setTab:2];
-            [self.navigationController pushViewController:vc animated:YES];
+            HWTapBarViewController* vc = (HWTapBarViewController*)[self.navigationController visibleViewController];
+            [vc setTab:1];
+
             break;
         }
         case 2:
@@ -377,7 +377,8 @@
             
         case 3:
         {
-            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:[AppEngine shared].user.id];
+            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:[AppEngine shared].user.id withStatus:[notification.feedback_type integerValue]];
+            
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
