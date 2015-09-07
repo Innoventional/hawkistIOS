@@ -56,6 +56,8 @@
 		3A968E311B4C1188005AA347 /* HWTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A968E301B4C1188005AA347 /* HWTag.m */; };
 		3A98D61E1B593F5D00D55FF9 /* BuyThisItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A98D61D1B593F5D00D55FF9 /* BuyThisItem.xib */; };
 		3A98D6211B595A2300D55FF9 /* BuyThisItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98D6201B595A2300D55FF9 /* BuyThisItemViewController.m */; };
+		3AA575AA1B98A4B5003E0CDE /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA575A91B98A4B5003E0CDE /* PushNotificationManager.m */; };
+		3AA575AD1B98A4F3003E0CDE /* HWPushNotificationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA575AC1B98A4F3003E0CDE /* HWPushNotificationSettings.m */; };
 		3AA5CBED1B8495D9006093D0 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBEC1B8495D9006093D0 /* AddAddressViewController.m */; };
 		3AA5CBF01B84B393006093D0 /* HWAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBEF1B84B393006093D0 /* HWAddress.m */; };
 		3AA5CBF31B84BBE1006093D0 /* ManageAddress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA5CBF21B84BBE1006093D0 /* ManageAddress.xib */; };
@@ -302,6 +304,12 @@
 		3A98D61D1B593F5D00D55FF9 /* BuyThisItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuyThisItem.xib; path = BuyThisItem/BuyThisItem.xib; sourceTree = "<group>"; };
 		3A98D61F1B595A2300D55FF9 /* BuyThisItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyThisItemViewController.h; path = BuyThisItem/BuyThisItemViewController.h; sourceTree = "<group>"; };
 		3A98D6201B595A2300D55FF9 /* BuyThisItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyThisItemViewController.m; path = BuyThisItem/BuyThisItemViewController.m; sourceTree = "<group>"; };
+		3AA575A81B98A4B5003E0CDE /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
+		3AA575A91B98A4B5003E0CDE /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
+		3AA575AB1B98A4F3003E0CDE /* HWPushNotificationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWPushNotificationSettings.h; sourceTree = "<group>"; };
+		3AA575AC1B98A4F3003E0CDE /* HWPushNotificationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWPushNotificationSettings.m; sourceTree = "<group>"; };
+		3AA575B31B9D9584003E0CDE /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
+		3AA575B41B9D9584003E0CDE /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
 		3AA5CBEB1B8495D9006093D0 /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddAddressViewController.h; path = AddAdress/AddAddressViewController.h; sourceTree = "<group>"; };
 		3AA5CBEC1B8495D9006093D0 /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAddressViewController.m; path = AddAdress/AddAddressViewController.m; sourceTree = "<group>"; };
 		3AA5CBEE1B84B393006093D0 /* HWAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWAddress.h; sourceTree = "<group>"; };
@@ -644,6 +652,8 @@
 		3A359D531B96905800A0F2E1 /* PushNotificationSettings */ = {
 			isa = PBXGroup;
 			children = (
+				3AA575A81B98A4B5003E0CDE /* PushNotificationManager.h */,
+				3AA575A91B98A4B5003E0CDE /* PushNotificationManager.m */,
 				3A359D5E1B969FEB00A0F2E1 /* PushNotificationSettingsCell.xib */,
 				3A359D601B96A03900A0F2E1 /* NotificationSettingsViewController.h */,
 				3A359D611B96A03900A0F2E1 /* NotificationSettingsViewController.m */,
@@ -794,6 +804,15 @@
 				3A98D6201B595A2300D55FF9 /* BuyThisItemViewController.m */,
 			);
 			name = BuyThisItem;
+			sourceTree = "<group>";
+		};
+		3AA575B21B9D9584003E0CDE /* PushNotificationManager */ = {
+			isa = PBXGroup;
+			children = (
+				3AA575B31B9D9584003E0CDE /* PushNotificationManager.h */,
+				3AA575B41B9D9584003E0CDE /* PushNotificationManager.m */,
+			);
+			path = PushNotificationManager;
 			sourceTree = "<group>";
 		};
 		3AA5CBF11B84BBAE006093D0 /* Manage Address */ = {
@@ -1056,6 +1075,7 @@
 		C35A4C3D1B2F33EA002E1F26 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3AA575B21B9D9584003E0CDE /* PushNotificationManager */,
 				3A8F7DC91B8FCBC6000940CF /* PingManager */,
 				C35CB5401B6F5D4500956150 /* StripeManager */,
 				C35CB4A01B4D391500956150 /* AWSS3Manager */,
@@ -1069,6 +1089,8 @@
 		C35A4C3E1B2F33FA002E1F26 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3AA575AB1B98A4F3003E0CDE /* HWPushNotificationSettings.h */,
+				3AA575AC1B98A4F3003E0CDE /* HWPushNotificationSettings.m */,
 				C35A4C6A1B3036D0002E1F26 /* HWUser.h */,
 				C35A4C6B1B3036D0002E1F26 /* HWUser.m */,
 				C35CB49D1B4BE91B00956150 /* HWItem.h */,
@@ -1704,6 +1726,7 @@
 			files = (
 				CEAF106F1B8B4CD300E5029E /* HWBankAccountAddress.m in Sources */,
 				3A2AE3D21B6122B600806D59 /* TagCell.m in Sources */,
+				3AA575AA1B98A4B5003E0CDE /* PushNotificationManager.m in Sources */,
 				CE59095B1B5FD7E200DAA7FF /* HWComment.m in Sources */,
 				C35A4C621B3035D2002E1F26 /* NSDate+Extensions.m in Sources */,
 				CE1546401B7DF48D0082ACF4 /* HWAddressCollectionOnlyCell.m in Sources */,
@@ -1738,6 +1761,7 @@
 				CE70EDC71B6A7053005664FA /* HWMention.m in Sources */,
 				3ACC6B951B43A1C40076004F /* SellAnItemViewController.m in Sources */,
 				7CE1D15A1B4D352B00CC92D3 /* StarRatingControl.m in Sources */,
+				3AA575AD1B98A4F3003E0CDE /* HWPushNotificationSettings.m in Sources */,
 				C35A4C611B3035D2002E1F26 /* CGGeometry+CoreGraphicsHelpers.m in Sources */,
 				CE15463B1B7CE0CF0082ACF4 /* HWPaymentBaseCell.m in Sources */,
 				CE59094F1B5F94F000DAA7FF /* HWCommentInputView.m in Sources */,
@@ -1945,14 +1969,14 @@
 			baseConfigurationReference = 6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "06bf86b2-7179-4011-b2bb-680d82a6fb11";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1962,14 +1986,14 @@
 			baseConfigurationReference = 3906BE83E13D87CC9252A21D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "06bf86b2-7179-4011-b2bb-680d82a6fb11";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -75,9 +75,9 @@
             
         case 3:
         {
-//            HWFeedBackViewController *vc = [HWFeedBackViewController alloc]initWithUserID:userInfo[@"user_id"] withStatus:userInfo[@"feedback_type"] int
-//
-//            [navigationController pushViewController:vc animated:YES];
+            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:userInfo[@"user_id"] withStatus:(HWFeedbackType)userInfo[@"feedback_type"]];
+
+            [navigationController pushViewController:vc animated:YES];
             break;
         }
             

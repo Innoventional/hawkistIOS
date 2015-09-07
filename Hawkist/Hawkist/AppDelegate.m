@@ -62,7 +62,19 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
     NSLog(@"My token is: %@", deviceToken);
     
-    [AppEngine shared].APNStoken = [NSString stringWithFormat:@"%@",deviceToken];
+//    // = [NSString stringWithUTF8String:[deviceToken bytes]];
+//    
+//    
+//    [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+//    [AppEngine shared].APNStoken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+//    //[NSString stringWithFormat:@"%@",deviceToken];
+    
+    NSString *deviceToken2 = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    deviceToken2 = [deviceToken2 stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    [AppEngine shared].APNStoken = deviceToken2;
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

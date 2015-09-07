@@ -297,6 +297,14 @@
     [[NetworkManager shared] getListOfTags:^(NSMutableArray *tags) {
         [AppEngine shared].user = user;
         [AppEngine shared].tags = tags;
+        
+        [[NetworkManager shared]sendAPNSToken:[AppEngine shared].APNStoken successBlock:^{
+            
+            
+        } failureBlock:^(NSError *error) {
+            
+            
+        }];
         if (user.first_login)
         {
             AccountDetailViewController *accountDetailVC= [[AccountDetailViewController alloc]init];
