@@ -245,14 +245,14 @@
             case 2:
             {
                 NSLog(@"Privacy");
-                WebViewController *vc = [[WebViewController alloc]initWithUrl:@"http://www.hawkist.com/privacy-policy/" andTitle:@"Privacy policy"];
+                WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204465182-Privacy-Policy" andTitle:@"Privacy policy"];
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
             case 1:
             {
                 NSLog(@"Terms");
-                WebViewController *vc = [[WebViewController alloc]initWithUrl:@"http://www.hawkist.com/terms-conditions/" andTitle:@"Terms and Conditions"];
+                WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/sections/201400962-Terms-of-Use" andTitle:@"Terms and Conditions"];
                 [self.navigationController pushViewController:vc animated:YES];
                 
                 

@@ -114,7 +114,7 @@
     
     [self.viewScroll addSubview:self.scrollView];
     
-    self.currentIndex = (int)self.avaliableTags.count/2;
+    self.currentIndex = 0;//(int)self.avaliableTags.count/2;
     
     [self.scrollView setContentOffset:CGPointMake(self.currentIndex*slideSize.width, 0) animated:NO];
 
