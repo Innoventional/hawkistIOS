@@ -10,4 +10,6 @@
 
 @interface HWTapBarViewController : HWBaseViewController
 
+- (void) setTab:(NSInteger)number;
+
 @end

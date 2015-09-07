@@ -16,7 +16,7 @@
 #import "ManageBankViewController.h"
 #import "AccountDetailViewController.h"
 #import "NotificationSettingsViewController.h"
-
+#import "SocialManager.h"
 #import "WebViewController.h"
 
 @interface HWMyAccountViewController () <UITableViewDataSource, UITableViewDelegate, NavigationViewDelegate,HWSingOutCellDelegate>
@@ -260,10 +260,11 @@
             break;
         }
         case 1:
-            
+        {
             NSLog(@"Email Notifications");
-            break;
-            
+                       
+                      break;
+        }
         default:
             break;
     }

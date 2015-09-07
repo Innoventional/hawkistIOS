@@ -1,5 +1,5 @@
 
- //
+//
 //  NetworkManager.m
 //  Hawkist
 //
@@ -72,8 +72,8 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 - (NSError*) errorWithResponseObject:(id)responseObject
 {
     NSError *responseError = [NSError errorWithDomain:responseObject[@"title"]
-                                         code:[responseObject[@"status"] integerValue]
-                                     userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}];
+                                                 code:[responseObject[@"status"] integerValue]
+                                             userInfo:@{NSLocalizedDescriptionKey:responseObject[@"message"]}];
     return responseError;
 }
 
@@ -88,19 +88,19 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                                    code:499
                                userInfo:@{NSLocalizedDescriptionKey:@"Could not complete the last action. Please try again."}];
     }
-        
+    
     else
     {
         
         if (error.code == -1004 || error.code == -1009 || error.code == - 1005)
         {
             return [NSError errorWithDomain:@"Connection Error"
-                                code:499
-                            userInfo:@{NSLocalizedDescriptionKey:@"Could not complete the last action. Please try again."}];
+                                       code:499
+                                   userInfo:@{NSLocalizedDescriptionKey:@"Could not complete the last action. Please try again."}];
         }
         
         NSInteger statusCode = [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
-
+        
         switch (statusCode) {
             case 401:
                 
@@ -135,14 +135,14 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                         failureBlock: (void (^)(NSError* error)) failureBlock
 {
     
-
+    
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
-   
+    
     if(phoneNumber) {
         
         [params setObject: phoneNumber forKey: @"phone"];
-
+        
     } else if (facebookToken) {
         
         [params setObject: facebookToken forKey: @"facebook_token"];
@@ -156,8 +156,8 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                                 NSError *responseError = [self errorWithResponseObject:responseObject];
                                 
                                 failureBlock(responseError);
-                                             
-                            return;
+                                
+                                return;
                             }
                             
                             NSError* error;
@@ -199,38 +199,38 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
         [params setObject: pin forKey: @"pin"];
     }
     
-     [self.networkDecorator PUT: @"users"
-                     parameters: params
-                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            if([responseObject[@"status"] integerValue] != 0)
-                            {
-                                NSError *responseError = [self errorWithResponseObject:responseObject];
-                                
-                                failureBlock(responseError);
-                                
-                                return;
-                            }
-                            
-                            NSError* error;
-                            HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
-                            
-                            [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:kUSER_ID];
-                            if(error)
-                            {
-                                failureBlock(error);
-                                return;
-                            }
-                            
-                            successBlock(user);
-                            
-                        }
-                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            
-                            NSError *serverError = [self serverErrorWithError:error];
-                            
-                            failureBlock(serverError);
-
-                        }];
+    [self.networkDecorator PUT: @"users"
+                    parameters: params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           NSError* error;
+                           HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
+                           
+                           [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:kUSER_ID];
+                           if(error)
+                           {
+                               failureBlock(error);
+                               return;
+                           }
+                           
+                           successBlock(user);
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
 }
 
 
@@ -240,7 +240,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                      failureBlock: (void (^)(NSError* error)) failureBlock
 {
     
- 
+    
     NSString *URLString;
     
     if (userId)
@@ -268,7 +268,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            NSError* error;
                            HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
                            
-                                                     if(error)
+                           if(error)
                            {
                                failureBlock(error);
                                return;
@@ -278,7 +278,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          
+                           
                            NSError *serverError = [self serverErrorWithError:error];
                            
                            failureBlock(serverError);
@@ -339,13 +339,13 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                             
                         }
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           
+                            
                             NSError *serverError = [self serverErrorWithError:error];
                             
                             failureBlock(serverError);
-
+                            
                         }];
-
+    
 }
 
 - (void) linkFacebookAccountWithToken: (NSString*) token
@@ -362,7 +362,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                                
                                failureBlock(responseError);
                                
-
+                               
                                return;
                            }
                            
@@ -370,7 +370,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            HWUser* user = [[HWUser alloc] initWithDictionary: responseObject[@"user"] error: &error];
                            
                            [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:kUSER_ID];
-                
+                           
                            if(error)
                            {
                                failureBlock(error);
@@ -381,11 +381,11 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          
+                           
                            NSError *serverError = [self serverErrorWithError:error];
                            
                            failureBlock(serverError);
-
+                           
                        }];
 }
 
@@ -394,8 +394,8 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                    failureBlock:(void(^)(NSError *error))failureBlock
 
 {
-NSString *URLString = @"user/logout";
-
+    NSString *URLString = @"user/logout";
+    
     [self.networkDecorator PUT:URLString
                     parameters:nil
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -415,9 +415,9 @@ NSString *URLString = @"user/logout";
                            
                            NSError *serverError = [self serverErrorWithError:error];
                            failureBlock(serverError);
-
+                           
                        }];
-
+    
 }
 
 
@@ -442,11 +442,11 @@ NSString *URLString = @"user/logout";
                            }
                            
                            NSError* error;
-
+                           
                            
                            NSMutableArray* tags = [NSMutableArray array];
                            
-
+                           
                            
                            
                            //WithDictionary: tag error: &error];
@@ -454,9 +454,9 @@ NSString *URLString = @"user/logout";
                            for (NSDictionary* tag in responseObject[@"tags"][@"platforms"])
                            {
                                HWTag* newTag = [[HWTag alloc] initWithDictionary: tag error: &error];
-                                [tags addObject:newTag];
+                               [tags addObject:newTag];
                            }
-//
+                           //
                            if(error)
                            {
                                failureBlock(error);
@@ -471,7 +471,7 @@ NSString *URLString = @"user/logout";
                            NSError *serverError = [self serverErrorWithError:error];
                            
                            failureBlock(serverError);
-
+                           
                        }];
 }
 
@@ -518,7 +518,7 @@ NSString *URLString = @"user/logout";
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          
+                           
                            NSError *serverError = [self serverErrorWithError:error];
                            
                            failureBlock(serverError);
@@ -531,14 +531,14 @@ NSString *URLString = @"user/logout";
 
 - (void) addTagToFeed:(NSString*)tagId
          successBlock:(void(^)(void)) successBlock
-             failureBlock: (void (^)(NSError* error)) failureBlock
+         failureBlock: (void (^)(NSError* error)) failureBlock
 {
     
     NSMutableDictionary* tag = [NSMutableDictionary dictionary];
     
-        [tag setObject: tagId forKey: @"id"];
-        [tag setObject: @"0" forKey: @"type"];
-
+    [tag setObject: tagId forKey: @"id"];
+    [tag setObject: @"0" forKey: @"type"];
+    
     NSMutableArray* param = [NSMutableArray array];
     [param addObject:tag];
     
@@ -633,17 +633,17 @@ NSString *URLString = @"user/logout";
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          
+                           
                            NSError *serverError = [self serverErrorWithError:error];
                            
                            failureBlock(serverError);
-
+                           
                        }];
 }
 
 - (void) createOrUpdateItem: (HWItem*) item
-       successBlock: (void (^)(HWItem* item)) successBlock
-       failureBlock: (void (^)(NSError* error)) failureBlock
+               successBlock: (void (^)(HWItem* item)) successBlock
+               failureBlock: (void (^)(NSError* error)) failureBlock
 {
     if(!item)
     {
@@ -655,36 +655,36 @@ NSString *URLString = @"user/logout";
     NSDictionary* params = [item toDictionary];
     
     [self.networkDecorator POST: @"listings"
-                    parameters: params
+                     parameters: params
      
-                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           if([responseObject[@"status"] integerValue] != 0)
-                           {
-                               NSError *responseError = [self errorWithResponseObject:responseObject];
-                               
-                               failureBlock(responseError);
-                               
-                               return;
-                           }
-                           
-                           NSError* error;
-                           HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
-                           
-                           if(error)
-                           {
-                               failureBlock(error);
-                               return;
-                           }
-                           
-                           successBlock(item);
-                           
-                       }
-                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           
-                           NSError *serverError = [self serverErrorWithError:error];
-                           
-                           failureBlock(serverError);
-                       }];
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
+                                
+                                return;
+                            }
+                            
+                            NSError* error;
+                            HWItem* item = [[HWItem alloc] initWithDictionary: responseObject[@"item"] error: &error];
+                            
+                            if(error)
+                            {
+                                failureBlock(error);
+                                return;
+                            }
+                            
+                            successBlock(item);
+                            
+                        }
+                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
+                        }];
 }
 
 - (void) getCityByPostCode: (NSString*) postCode
@@ -786,11 +786,11 @@ NSString *URLString = @"user/logout";
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          
+                           
                            NSError *serverError = [self serverErrorWithError:error];
                            
                            failureBlock(serverError);
-
+                           
                        }];
 }
 
@@ -802,32 +802,32 @@ NSString *URLString = @"user/logout";
     
     NSDictionary* params = @{@"listing_id": itemId};
     
-
+    
     
     [self.networkDecorator DELETE:@"listings"
      
                        parameters: params
      
-                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           if([responseObject[@"status"] integerValue] != 0)
-                           {
-                               NSError *responseError = [self errorWithResponseObject:responseObject];
-                               
-                               failureBlock(responseError);
-                               
-                               return;
-                           }
-                           
-                           successBlock();
-                           
-                       }
-                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          
-                           NSError *serverError = [self serverErrorWithError:error];
-                           
-                           failureBlock(serverError);
-                           
-                       }];
+                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              if([responseObject[@"status"] integerValue] != 0)
+                              {
+                                  NSError *responseError = [self errorWithResponseObject:responseObject];
+                                  
+                                  failureBlock(responseError);
+                                  
+                                  return;
+                              }
+                              
+                              successBlock();
+                              
+                          }
+                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              
+                              NSError *serverError = [self serverErrorWithError:error];
+                              
+                              failureBlock(serverError);
+                              
+                          }];
 }
 
 - (void) getItemsByUserId: (NSString*) userId
@@ -902,17 +902,17 @@ NSString *URLString = @"user/logout";
                            }
                            
                            else successBlock();
-
-     
-                            }
+                           
+                           
+                       }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         
-                            NSError *serverError = [self serverErrorWithError:error];
-         
-                            failureBlock(serverError);
-         
-     }];
-
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+    
 }
 
 #pragma mark -
@@ -943,15 +943,15 @@ NSString *URLString = @"user/logout";
                             
                             successBlock();
                             
-                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                         
-                          NSError *serverError = [self serverErrorWithError:error];
-                          
-                          failureBlock(serverError);
-                          
-                      }];
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
+                            
+                        }];
     
- 
+    
 }
 
 
@@ -961,11 +961,11 @@ NSString *URLString = @"user/logout";
 {
     
     NSString *unfollow = [NSString stringWithFormat: @"user/followers?user_id=%@", userId];
- 
+    
     [self.networkDecorator DELETE:unfollow
                        parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            
-                            NSLog(@"%@",responseObject);
+                           NSLog(@"%@",responseObject);
                            if([responseObject[@"status"] integerValue] != 0)
                            {
                                NSError *responseError = [self errorWithResponseObject:responseObject];
@@ -974,9 +974,9 @@ NSString *URLString = @"user/logout";
                                
                                return;
                            }
-                      
+                           
                            successBlock();
-                        
+                           
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            
@@ -1000,7 +1000,7 @@ NSString *URLString = @"user/logout";
     [self.networkDecorator GET:URLString
                     parameters:nil
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
+                           
                            if([responseObject[@"status"] integerValue] != 0)
                            {
                                NSError *responseError = [self errorWithResponseObject:responseObject];
@@ -1009,11 +1009,11 @@ NSString *URLString = @"user/logout";
                                
                                return;
                            }
-
+                           
                            NSArray *usersArray = responseObject[@"users"];
                            NSMutableArray *followersArray = [NSMutableArray array];
                            
-    
+                           
                            NSError *error;
                            for (NSDictionary *dict in usersArray)
                            {
@@ -1028,9 +1028,9 @@ NSString *URLString = @"user/logout";
                            }
                            
                            successBlock(followersArray);
-
+                           
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+                           
                            NSError *serverError = [self serverErrorWithError:error];
                            
                            failureBlock(serverError);
@@ -1059,7 +1059,7 @@ NSString *URLString = @"user/logout";
                                
                                return;
                            }
-                          
+                           
                            NSArray *usersArray = responseObject[@"users"];
                            NSMutableArray *followersArray = [NSMutableArray array];
                            
@@ -1134,39 +1134,39 @@ NSString *URLString = @"user/logout";
 
 - (void) OfferPrice: (NSString*) newPrice
              itemId: (NSString*) itemId
-              successBlock: (void (^)(void)) successBlock
-              failureBlock: (void (^)(NSError* error)) failureBlock
+       successBlock: (void (^)(void)) successBlock
+       failureBlock: (void (^)(NSError* error)) failureBlock
 {
     NSString* post = [@"listings/offers/" stringByAppendingString: itemId];
     [self.networkDecorator POST:post
-                    parameters: @{@"new_price": newPrice}
+                     parameters: @{@"new_price": newPrice}
      
-                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           if([responseObject[@"status"] integerValue] != 0)
-                           {
-                                    NSError *responseError = [self errorWithResponseObject:responseObject];
-                                    
-                                    failureBlock(responseError);
-                               
-                               return;
-                           }
-                        
-                           successBlock();
-                           
-                       }
-                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          
-                           NSError *serverError = [self serverErrorWithError:error];
-                           
-                           failureBlock(serverError);
-                           
-                       }];
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
+                                
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+                        }
+                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
+                            
+                        }];
 }
 
 
 - (void) acceptOfferWithItemId:(NSString*)itemId
-                         successBlock:(void(^)(void))successBlock
-                         failureBlock:(void(^)(NSError* error))failureBlock
+                  successBlock:(void(^)(void))successBlock
+                  failureBlock:(void(^)(NSError* error))failureBlock
 {
     
     [self acceptDeclineOfferWithItemId:itemId
@@ -1179,13 +1179,13 @@ NSString *URLString = @"user/logout";
                               
                               failureBlock(error);
                           }];
-   
+    
     
 }
 
 - (void) declineOfferWithItemId:(NSString*)itemId
-                  successBlock:(void(^)(void))successBlock
-                  failureBlock:(void(^)(NSError* error))failureBlock
+                   successBlock:(void(^)(void))successBlock
+                   failureBlock:(void(^)(NSError* error))failureBlock
 {
     
     [self acceptDeclineOfferWithItemId:itemId
@@ -1205,8 +1205,8 @@ NSString *URLString = @"user/logout";
 
 - (void) acceptDeclineOfferWithItemId:(NSString*)itemId
                         acceptDecline:(HWAcceptDeclineOffer) acceptDecline
-                  successBlock:(void(^)(void))successBlock
-                  failureBlock:(void(^)(NSError* error))failureBlock
+                         successBlock:(void(^)(void))successBlock
+                         failureBlock:(void(^)(NSError* error))failureBlock
 {
     
     NSString *URLString = [NSString stringWithFormat:@"listings/offers/%@",itemId];
@@ -1229,7 +1229,7 @@ NSString *URLString = @"user/logout";
                            }
                            
                            successBlock();
-
+                           
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            
@@ -1237,14 +1237,14 @@ NSString *URLString = @"user/logout";
                            
                            failureBlock(serverError);
                        }];
-
-
+    
+    
 }
 
 
 
 
-#pragma mark - 
+#pragma mark -
 #pragma mark wishlist
 
 
@@ -1291,12 +1291,12 @@ NSString *URLString = @"user/logout";
                            succesBlock(wishlistArray);
                            
                            
-                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-                         NSError *serverError = [self serverErrorWithError:error];
-                         
-                         failureBlock(serverError);
-                     }];
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                       }];
     
     
 }
@@ -1340,8 +1340,8 @@ NSString *URLString = @"user/logout";
 
 
 - (void) getAllCommentsWithItem:(HWItem*)item
-                     successBlock:(void (^)(NSArray* commentsArray))successBlock
-                     failureBlock:(void(^)(NSError * error)) failureBlock
+                   successBlock:(void (^)(NSArray* commentsArray))successBlock
+                   failureBlock:(void(^)(NSError * error)) failureBlock
 {
     
     NSString *URLString = [NSString stringWithFormat:@"listings/comments/%@",item.id];
@@ -1386,11 +1386,11 @@ NSString *URLString = @"user/logout";
                                        [offerForItem.offer_creater_id isEqualToString:currentUser])
                                    {
                                        
-                                      
+                                       
                                        if([offerForItem.status integerValue]>0) {
                                            
                                        } else  if ([offerForItem.offer_receiver_id isEqualToString:    currentUser]) {
-                                       
+                                           
                                            comment.isAcceptDeclineComment = @"Yes";
                                        }
                                        
@@ -1399,7 +1399,7 @@ NSString *URLString = @"user/logout";
                                        continue;
                                    }
                                    
-
+                                   
                                    if(er)
                                    {
                                        NSLog(@"%@",er);
@@ -1407,7 +1407,7 @@ NSString *URLString = @"user/logout";
                                    
                                }
                                
-                                [commentsArray addObject:comment];
+                               [commentsArray addObject:comment];
                            }
                            if (error)
                            {
@@ -1416,12 +1416,12 @@ NSString *URLString = @"user/logout";
                                failureBlock(serverError);
                                
                                return;
-
+                               
                            }
                            
                            successBlock(commentsArray);
                            
-                          
+                           
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            
                            NSError *serverError = [self serverErrorWithError:error];
@@ -1439,26 +1439,26 @@ NSString *URLString = @"user/logout";
                            failureBlock:(void(^)(NSError *error)) failureBlock
 {
     
-
-//    NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
-//    NSString *decodevalue = [[NSString alloc] initWithData:data encoding:NSNonLossyASCIIStringEncoding];
+    
+    //    NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
+    //    NSString *decodevalue = [[NSString alloc] initWithData:data encoding:NSNonLossyASCIIStringEncoding];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSString *URLString = [NSString stringWithFormat:@"listings/comments_people"];
-   
+    
     if(text && text.length > 0)
     {
         [params setObject: text forKey: @"q"];
     }
- 
+    
 #warning please see me
     
-
+    
     
     [self.networkDecorator GET:URLString
                     parameters:params
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        
+                           
                            if([responseObject[@"status"] integerValue] != 0)
                            {
                                NSError *responseError = [self errorWithResponseObject:responseObject];
@@ -1504,8 +1504,8 @@ NSString *URLString = @"user/logout";
 
 
 - (void) addNewBankCard:(NSString*)tokenId
-             successBlock:(void(^)(void)) successBlock
-             failureBlock: (void (^)(NSError* error)) failureBlock
+           successBlock:(void(^)(void)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock
 {
     
     
@@ -1542,7 +1542,7 @@ NSString *URLString = @"user/logout";
 
 
 - (void) getAllBankCards:(void(^)(NSArray *cards, NSString *balance))successBlock
-                           failureBlock:(void(^)(NSError *error)) failureBlock
+            failureBlock:(void(^)(NSError *error)) failureBlock
 {
     
     [self.networkDecorator GET:@"user/cards"
@@ -1592,39 +1592,6 @@ NSString *URLString = @"user/logout";
     NSDictionary *parameter = @{@"card_id":cardId};
     
     [self.networkDecorator DELETE:@"user/cards"
-                     parameters:parameter
-                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            
-                            if([responseObject[@"status"] integerValue] != 0)
-                            {
-                                NSError *responseError = [self errorWithResponseObject:responseObject];
-                                
-                                failureBlock(responseError);
-                                
-                                return;
-                            }
-                            
-                            successBlock();
-                            
-                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            
-                            NSError *serverError = [self serverErrorWithError:error];
-                            
-                            failureBlock(serverError);
-                            
-                        }];
-    
-    
-}
-
-- (void) updateBankCard:(HWCard*)card
-           successBlock:(void(^)(void)) successBlock
-           failureBlock: (void (^)(NSError* error)) failureBlock
-{
-    
-    NSDictionary *parameter = [card toDictionary];
-    
-    [self.networkDecorator PUT:@"user/cards"
                        parameters:parameter
                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
                               
@@ -1650,22 +1617,55 @@ NSString *URLString = @"user/logout";
     
 }
 
+- (void) updateBankCard:(HWCard*)card
+           successBlock:(void(^)(void)) successBlock
+           failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    NSDictionary *parameter = [card toDictionary];
+    
+    [self.networkDecorator PUT:@"user/cards"
+                    parameters:parameter
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           successBlock();
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+    
+    
+}
 
-#pragma mark - 
+
+#pragma mark -
 #pragma mark Buy item
 
 -(void) buyItemWithCardId:(NSString*)cardId
         withPayWithWallet:(NSString*)wallet
                withItemId:(NSString*)itemId
         withCollectioOnly:(NSString*)collOnly
-              withAddressID:(NSString*)addressId
+            withAddressID:(NSString*)addressId
              successBlock:(void(^)(void))successBlock
              failureBlock:(void(^)(NSError *error)) failureBlock
 {
     
     NSString *URLString = [NSString stringWithFormat:@"user/orders"];
-  
- 
+    
+    
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
@@ -1678,7 +1678,7 @@ NSString *URLString = @"user/logout";
         
         [params setObject:wallet forKey:@"pay_with_wallet"];
     }
-   
+    
     if(itemId) {
         
         [params setObject:itemId  forKey:@"listing_id"];
@@ -1693,7 +1693,7 @@ NSString *URLString = @"user/logout";
         
         [params setObject:addressId  forKey:@"address_id"];
     }
- 
+    
     
     [self.networkDecorator POST:URLString
                      parameters:params
@@ -1709,7 +1709,7 @@ NSString *URLString = @"user/logout";
                             }
                             
                             successBlock();
-
+                            
                             
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -1747,8 +1747,8 @@ NSString *URLString = @"user/logout";
                                
                                return;
                            }
-                                NSArray *array = [self getOrderItemsArrayWithResponse:responseObject];
-                                successBlock(array);
+                           NSArray *array = [self getOrderItemsArrayWithResponse:responseObject];
+                           successBlock(array);
                            
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -1837,7 +1837,7 @@ NSString *URLString = @"user/logout";
 {
     NSString *URLString = @"user/orders";
     NSDictionary *parametrs = @{@"order_id": orderId,
-                                 @"new_status": @"1"};
+                                @"new_status": @"1"};
     
     [self.networkDecorator PUT:URLString
                     parameters:parametrs
@@ -1851,7 +1851,7 @@ NSString *URLString = @"user/logout";
                                
                                return;
                            }
-
+                           
                            successBlock();
                            
                            
@@ -1887,7 +1887,7 @@ NSString *URLString = @"user/logout";
                                failureBlock(responseError);
                                return;
                            }
-
+                           
                            successBlock();
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -1907,15 +1907,15 @@ NSString *URLString = @"user/logout";
 {
     NSDictionary *parametrs;
     if (enabled){
-    parametrs = @{@"holiday_mode": @"1"};
+        parametrs = @{@"holiday_mode": @"1"};
     }
     else
     {
-    parametrs = @{@"holiday_mode": @""};
+        parametrs = @{@"holiday_mode": @""};
     }
     
     [self.networkDecorator PUT:@"user/holiday_mode"
-
+     
                     parameters:parametrs success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         if([responseObject[@"status"] integerValue] != 0)
                         {
@@ -1931,7 +1931,7 @@ NSString *URLString = @"user/logout";
                         NSError *serverError = [self serverErrorWithError:error];
                         failureBlock(serverError);
                         
-                }];
+                    }];
     
 }
 
@@ -1951,7 +1951,7 @@ NSString *URLString = @"user/logout";
                                return;
                            }
                            
-
+                           
                            successBlock([responseObject[@"holiday_mode"] boolValue]);
                            
                            
@@ -1962,16 +1962,16 @@ NSString *URLString = @"user/logout";
                            failureBlock(serverError);
                            
                        }];
-
-
+    
+    
 }
 
 #pragma mark -
 #pragma mark Address
 
 - (void) addNewAddress:(HWAddress*) address
-           successBlock:(void(^)(void)) successBlock
-           failureBlock: (void (^)(NSError* error)) failureBlock
+          successBlock:(void(^)(void)) successBlock
+          failureBlock: (void (^)(NSError* error)) failureBlock
 {
     
     
@@ -2007,7 +2007,7 @@ NSString *URLString = @"user/logout";
 
 
 - (void) getAddresses:(void(^)(NSArray *addresses))successBlock
-            failureBlock:(void(^)(NSError *error)) failureBlock
+         failureBlock:(void(^)(NSError *error)) failureBlock
 {
     
     [self.networkDecorator GET:@"user/addresses"
@@ -2051,8 +2051,8 @@ NSString *URLString = @"user/logout";
 
 
 - (void) removeAddress:(NSString*)addressId
-           successBlock:(void(^)(void)) successBlock
-           failureBlock: (void (^)(NSError* error)) failureBlock
+          successBlock:(void(^)(void)) successBlock
+          failureBlock: (void (^)(NSError* error)) failureBlock
 {
     
     NSDictionary *parameter = @{@"address_id":addressId};
@@ -2084,34 +2084,34 @@ NSString *URLString = @"user/logout";
 }
 
 - (void) updateAddress:(HWAddress*)address
-           successBlock:(void(^)(void)) successBlock
-           failureBlock: (void (^)(NSError* error)) failureBlock
+          successBlock:(void(^)(void)) successBlock
+          failureBlock: (void (^)(NSError* error)) failureBlock
 {
     
     NSDictionary *parameter = [address toDictionary];
     
     [self.networkDecorator POST:@"user/addresses"
-                    parameters:parameter
-                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           
-                           if([responseObject[@"status"] integerValue] != 0)
-                           {
-                               NSError *responseError = [self errorWithResponseObject:responseObject];
-                               
-                               failureBlock(responseError);
-                               
-                               return;
-                           }
-                           
-                           successBlock();
-                           
-                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           
-                           NSError *serverError = [self serverErrorWithError:error];
-                           
-                           failureBlock(serverError);
-                           
-                       }];
+                     parameters:parameter
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                
+                                failureBlock(responseError);
+                                
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            
+                            failureBlock(serverError);
+                            
+                        }];
     
     
 }
@@ -2148,7 +2148,7 @@ NSString *URLString = @"user/logout";
                            failureBlock(serverError);
                            
                        }];
-
+    
 }
 
 
@@ -2247,7 +2247,7 @@ NSString *URLString = @"user/logout";
                                
                                return;
                            }
-
+                           
                            BOOL isFavourite = [responseObject[@"notify_about_favorite"] boolValue];
                            successBlock(isFavourite);
                            
@@ -2258,15 +2258,15 @@ NSString *URLString = @"user/logout";
                            failureBlock(serverError);
                            
                        }];
-
+    
 }
 
 
 - (void) updateUserNotificationItemFavouritedWithBool:(BOOL) isFavourite
-                                      successBlock:(void(^)(BOOL isFavourite))successBlock
-                                      failureBlock:(void(^)(NSError *error)) failureBlock
+                                         successBlock:(void(^)(BOOL isFavourite))successBlock
+                                         failureBlock:(void(^)(NSError *error)) failureBlock
 {
-
+    
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
@@ -2277,38 +2277,38 @@ NSString *URLString = @"user/logout";
         
         [params setObject:@"" forKey:@"notify_about_favorite"];
     }
-
-[self.networkDecorator PUT:@"user/notify_about_favorite"
-                parameters:params
-                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                       
-                       if([responseObject[@"status"] integerValue] != 0)
-                       {
-                           NSError *responseError = [self errorWithResponseObject:responseObject];
+    
+    [self.networkDecorator PUT:@"user/notify_about_favorite"
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            
-                           failureBlock(responseError);
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
                            
-                           return;
-                       }
-                       
-                       BOOL isFavourite = [responseObject[@"notify_about_favorite"] boolValue];
-                       successBlock(isFavourite);
-
-                       
-                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                       
-                       NSError *serverError = [self serverErrorWithError:error];
-                       
-                       failureBlock(serverError);
-                   }];
-
+                           BOOL isFavourite = [responseObject[@"notify_about_favorite"] boolValue];
+                           successBlock(isFavourite);
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                       }];
+    
 }
 
 
 
 
 -(void) getUserLetUserFindMeInFindFriendVisibilitySuccessBlock:(void(^)(BOOL visibleInFindFriends)) successBlock
-                                                 failureBlock:(void(^)(NSError *error)) failureBlock{
+                                                  failureBlock:(void(^)(NSError *error)) failureBlock{
     
     [self.networkDecorator GET:@"user/visible_in_find_friends"
                     parameters: nil
@@ -2324,7 +2324,7 @@ NSString *URLString = @"user/logout";
                            }
                            
                            successBlock([responseObject[@"visible_in_find_friends"] boolValue]);
-
+                           
                            
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -2368,7 +2368,7 @@ NSString *URLString = @"user/logout";
                            
                            
                            successBlock([responseObject[@"visible_in_find_friends"] boolValue]);
-
+                           
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            
@@ -2377,7 +2377,7 @@ NSString *URLString = @"user/logout";
                            failureBlock(serverError);
                            
                        }];
-
+    
 }
 
 
@@ -2402,24 +2402,24 @@ NSString *URLString = @"user/logout";
     
     [self.networkDecorator POST: URLString
                      parameters: params
-                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           
-                           if([responseObject[@"status"] integerValue] != 0)
-                           {
-                               NSError *responseError = [self errorWithResponseObject:responseObject];
-                               failureBlock(responseError);
-                               return;
-                           }
-                           
-                           successBlock();
-                           
-                           
-                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           
-                           NSError *serverError = [self serverErrorWithError:error];
-                           failureBlock(serverError);
-                           
-                       }];
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                failureBlock(responseError);
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            failureBlock(serverError);
+                            
+                        }];
     
 }
 
@@ -2430,30 +2430,30 @@ NSString *URLString = @"user/logout";
     NSString *URLString = [NSString stringWithFormat:@"user/feedbacks/%@",user_id];
     
     [self.networkDecorator GET:URLString
-                   parameters:nil
-                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                          
-                          if([responseObject[@"status"] integerValue] != 0)
-                          {
-                              NSError *responseError = [self errorWithResponseObject:responseObject];
-                              failureBlock(responseError);
-                              return;
-                          }
-                          
-    
-                          NSDictionary *feedbacksDict = responseObject[@"feedbacks"];
-                
-                          NSArray *posAr = [self parsingFeedbackWithArray:feedbacksDict[@"positive"]];
-                          NSArray *neutAr = [self parsingFeedbackWithArray:feedbacksDict[@"neutral"]];
-                          NSArray *negAr = [self parsingFeedbackWithArray:feedbacksDict[@"negative"]];
-                          successBlock(posAr,neutAr,negAr);
-                          
-                        
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    
-                        NSError *serverError = [self serverErrorWithError:error];
-                        failureBlock(serverError);
-                    }];
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           
+                           NSDictionary *feedbacksDict = responseObject[@"feedbacks"];
+                           
+                           NSArray *posAr = [self parsingFeedbackWithArray:feedbacksDict[@"positive"]];
+                           NSArray *neutAr = [self parsingFeedbackWithArray:feedbacksDict[@"neutral"]];
+                           NSArray *negAr = [self parsingFeedbackWithArray:feedbacksDict[@"negative"]];
+                           successBlock(posAr,neutAr,negAr);
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                       }];
     
 }
 
@@ -2502,45 +2502,45 @@ NSString *URLString = @"user/logout";
                            NSString *pending = balance[@"pending"];
                            
                            successBlock(available, pending);
-                         
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        
-                        NSError *serverError = [self serverErrorWithError:error];
-                        failureBlock(serverError);
-                        
-                    }];
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                           
+                       }];
     
 }
 
 -(void) getBankUserInfoWithSuccessBlock:(void(^)(HWBankUserInfo *userInfo)) successBlock
                            failureBlock:(void(^)(NSError *error)) failureBlock {
     
- [self.networkDecorator GET:@"user/banking/user_info"
-                 parameters:nil
-                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        
-                        if([responseObject[@"status"] integerValue] != 0)
-                        {
-                            NSError *responseError = [self errorWithResponseObject:responseObject];
-                            failureBlock(responseError);
-                            return;
-                        }
-                        
-                        NSError *error;
-                        
-                        HWBankUserInfo *userInfo = [[HWBankUserInfo alloc]initWithDictionary:responseObject[@"user_info"] error:&error];
-                        if(error) {
-                            failureBlock(error);
-                        }
-                        
-                        successBlock(userInfo);
-                        
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        
-                        NSError *serverError = [self serverErrorWithError:error];
-                        failureBlock(serverError);
-
-                    }];
+    [self.networkDecorator GET:@"user/banking/user_info"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           NSError *error;
+                           
+                           HWBankUserInfo *userInfo = [[HWBankUserInfo alloc]initWithDictionary:responseObject[@"user_info"] error:&error];
+                           if(error) {
+                               failureBlock(error);
+                           }
+                           
+                           successBlock(userInfo);
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                           
+                       }];
 }
 
 - (void) updateBankUserInfo:(HWBankUserInfo *)userInfo
@@ -2710,7 +2710,7 @@ NSString *URLString = @"user/logout";
 - (void) withdrawalWithSuccessBlock:(void(^)(void))successBlock
                        failureBlock:(void(^)(NSError *error))failureBlock
 {
-
+    
     [self.networkDecorator PUT:@"user/banking/withdrawal"
                     parameters:nil
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -2728,7 +2728,7 @@ NSString *URLString = @"user/logout";
                            
                            NSError *serverError = [self serverErrorWithError:error];
                            failureBlock(serverError);
-
+                           
                        }];
     
 }
@@ -2741,12 +2741,12 @@ NSString *URLString = @"user/logout";
 - (void) sendAPNSToken:(NSString*) token
           successBlock:(void(^)()) successBlock
           failureBlock:(void(^)(NSError *error)) failureBlock {
-
+    
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:token forKey:@"apns_token"];
     
     [self.networkDecorator PUT:@"user/apns_token"
-                    parameters:token
+                    parameters:params
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            
                            
@@ -2765,9 +2765,48 @@ NSString *URLString = @"user/logout";
                            failureBlock(serverError);
                            
                        }];
-
-
+    
+    
 }
+
+#pragma mark - Push Notifications Settings
+
+- (void) getPushNotificationSetings:(void(^)(HWPushNotificationSettings* settings))successBlock
+                       failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    
+    [self.networkDecorator GET:@"user/push_notifications"
+                    parameters: nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           HWPushNotificationSettings* settings = [[HWPushNotificationSettings alloc]init];
+                           
+                           settings.types = [[NSDictionary alloc]initWithDictionary: responseObject[@"types"]];
+                           settings.enable = [responseObject[@"enable"] boolValue];
+                           
+                           
+                           
+                           successBlock (settings);
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+    
+}
+
 
 #pragma mark - Block a user
 
@@ -2854,9 +2893,91 @@ NSString *URLString = @"user/logout";
                             NSError *serverError = [self serverErrorWithError:error];
                             failureBlock(serverError);
                         }];
+ 
+
+}
+
+- (void) changedNotificationSetting:( NSString *)key
+                              orAll:(BOOL)all
+                       successBlock:(void(^)(HWPushNotificationSettings* settings))successBlock
+                       failureBlock:(void(^)(NSError *error)) failureBlock
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (all)
+    {
+        [params setObject:@"change" forKey:@"enable"];
+    }
+    else
+    {
+        [params setObject:key forKey:@"type"];
+    }
+    
+    [self.networkDecorator PUT:@"user/push_notifications"
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           HWPushNotificationSettings* settings = [[HWPushNotificationSettings alloc]init];
+                           
+                           settings.types = [[NSDictionary alloc]initWithDictionary: responseObject[@"types"]];
+                           settings.enable = [responseObject[@"enable"] boolValue];
+                           
+                           successBlock (settings);
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                       }];
+    
     
 }
 
+
+#pragma mark -
+#pragma mark Find Friend
+
+- (void) getFriends:(NSString*)fbTocken
+       successBlock:(void(^)(NSArray* users)) successBlock
+       failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSDictionary *params = @{@"facebook_token": fbTocken};
+    [self.networkDecorator GET:@"user/socials"
+                    parameters:params
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           NSArray *a = [NSArray array];
+                           
+                           successBlock(a);
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                       }];
+ 
+    
+}
+
+
+    
+    
 
 
 

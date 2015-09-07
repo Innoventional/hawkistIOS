@@ -17,6 +17,7 @@
 #import "HWMyBalanceViewController.h"
 #import "HWLeaveFeedbackViewController.h"
 #import "BuyThisItemViewController.h"
+#import "HWTapBarViewController.h"
 
 @interface NotificationScreenViewController () <UITableViewDelegate,UITableViewDataSource,NotificationCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -347,7 +348,7 @@
                                         }];
                 break;
             }
-        case 1: case 7: case 9:
+        case 7: case 9:
         {
             [[NetworkManager shared] getItemById:notification.listing.id
                                     successBlock:^(HWItem *item) {
@@ -360,6 +361,13 @@
                                     }];
                         break;
         }
+        case 1:
+        {
+            HWTapBarViewController* vc = (HWTapBarViewController*)[self.navigationController visibleViewController];
+            [vc setTab:1];
+
+            break;
+        }
         case 2:
         {
             HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
@@ -369,7 +377,8 @@
             
         case 3:
         {
-            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:[AppEngine shared].user.id];
+            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:[AppEngine shared].user.id withStatus:[notification.feedback_type integerValue]];
+            
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }

@@ -11,7 +11,7 @@
 #import "HWCard.h"
 #import "HWFeedback.h"
 #import "HWAddress.h"
-
+#import "HWPushNotificationSettings.h"
 
 @class HWBankAccountAddress;
 @class HWBankUserInfo;
@@ -340,6 +340,15 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
                                                  successBlock:(void(^)(BOOL visibleInFindFriends)) successBlock
                                                  failureBlock:(void(^)(NSError *error)) failureBlock;
 
+#pragma mark - Push Notifications
+
+- (void) getPushNotificationSetings:(void(^)(HWPushNotificationSettings* settings))successBlock
+                       failureBlock:(void(^)(NSError *error)) failureBlock;
+
+- (void) changedNotificationSetting:(NSString*)key orAll:(BOOL)all
+                       successBlock:(void(^)(HWPushNotificationSettings* settings))successBlock
+                       failureBlock:(void(^)(NSError *error)) failureBlock;
+
 #pragma mark - User Balance
 
 -(void) getUserBalanceWithSuccessBlock:(void(^)(NSString *available, NSString *pending)) successBlock
@@ -379,6 +388,7 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
           successBlock:(void(^)()) successBlock
           failureBlock:(void(^)(NSError *error)) failureBlock;
 
+ 
 #pragma mark - block user
 
 -(void) blockUserWithId:(NSString*) userId
@@ -395,5 +405,15 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
            withReportReason:(NSInteger)reasonReport
                successBlock:(void(^)())successBlock
                failureBlock:(void(^)(NSError *error))failureBlock;
+
+
+#pragma mark -
+#pragma mark Find Friend
+
+- (void) getFriends:(NSString*)fbTocken
+       successBlock:(void(^)(NSArray* users)) successBlock
+       failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
 
 @end

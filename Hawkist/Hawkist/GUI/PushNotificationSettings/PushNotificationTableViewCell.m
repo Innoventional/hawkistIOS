@@ -46,7 +46,7 @@
 {
     [self.icon setImage:dataModel.image];
     self.title.text = dataModel.title;
-    [self.status setEnabled:dataModel.enabled];
+    [self.status setOn:dataModel.enabled];
     self.type = dataModel.type;
 }
 

@@ -111,6 +111,12 @@
     
 }
 
+- (void) setTab:(NSInteger)number
+{
+    [self itemAtIndexSelected:number];
+    [((HWTapBarView*)self.contentView) selectButton:number];
+}
+
 
 #pragma mark -
 #pragma mark HWTapBarViewDelegate
@@ -141,7 +147,8 @@
         {
 //            HWZendeskViewController *vc = [[HWZendeskViewController alloc] init];
 //            [self.navigationController pushViewController:vc animated:YES];
-            
+          
+ 
             [self.contentView addContentView: self.supportVC.view];
                 
             break;

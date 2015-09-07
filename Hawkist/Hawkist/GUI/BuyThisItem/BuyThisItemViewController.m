@@ -135,10 +135,10 @@
 - (IBAction)sendOffer:(id)sender {
     
     [self.moneyField.textField resignFirstResponder];
-    
+    [self showHud];
     
     if ([self.moneyField.textField.text doubleValue]<0.5f)
-    {
+    {    [self hideHud];
         [self showAlertWithTitle:@"Minimum Price Not Met" Message:@"The minimum Price for an offer is £0.50."];
         return;
     }
@@ -149,10 +149,12 @@
     successBlock:^{
         NSLog(@"added");
         [self showAlertWithTitle:@"Your Offer Confirmed" Message:@"Your offered price for this listing has been sent to the seller."];
+                [self hideHud];
         [self.navigationController popViewControllerAnimated:YES];
     }
     
     failureBlock:^(NSError *error) {
+        [self hideHud];
        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         
     }];
