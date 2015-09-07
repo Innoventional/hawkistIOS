@@ -185,6 +185,7 @@
 		CE7876521B60F3FF00A3970D /* HWOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7876511B60F3FF00A3970D /* HWOffer.m */; };
 		CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8721F11B553684003C47E5 /* HWProfileViewController.m */; };
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
+		CE8D895B1B9D92D200749577 /* HWZendesk.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D895A1B9D92D200749577 /* HWZendesk.m */; };
 		CE954C611B74B4DB0063A719 /* ViewItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */; };
 		CE954C641B750C800063A719 /* HWOrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C631B750C800063A719 /* HWOrderItem.m */; };
 		CE954C681B75E3CD0063A719 /* HWAboutUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C671B75E3CD0063A719 /* HWAboutUserViewController.m */; };
@@ -516,6 +517,8 @@
 		CE8721F01B553684003C47E5 /* HWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWProfileViewController.h; path = ProfileScreen/HWProfileViewController.h; sourceTree = "<group>"; };
 		CE8721F11B553684003C47E5 /* HWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWProfileViewController.m; path = ProfileScreen/HWProfileViewController.m; sourceTree = "<group>"; };
 		CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWProfileViewController.xib; path = ProfileScreen/HWProfileViewController.xib; sourceTree = "<group>"; };
+		CE8D89591B9D92D200749577 /* HWZendesk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWZendesk.h; path = zendesk/HWZendesk.h; sourceTree = "<group>"; };
+		CE8D895A1B9D92D200749577 /* HWZendesk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWZendesk.m; path = zendesk/HWZendesk.m; sourceTree = "<group>"; };
 		CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewItemViewController.xib; sourceTree = "<group>"; };
 		CE954C621B750C800063A719 /* HWOrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWOrderItem.h; sourceTree = "<group>"; };
 		CE954C631B750C800063A719 /* HWOrderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWOrderItem.m; sourceTree = "<group>"; };
@@ -1377,6 +1380,8 @@
 			children = (
 				CE6611B51B97164B001E199C /* HWZendeskViewController.h */,
 				CE6611B61B97164B001E199C /* HWZendeskViewController.m */,
+				CE8D89591B9D92D200749577 /* HWZendesk.h */,
+				CE8D895A1B9D92D200749577 /* HWZendesk.m */,
 			);
 			name = zenDesk;
 			sourceTree = "<group>";
@@ -1715,6 +1720,7 @@
 				C35A4C6C1B3036D0002E1F26 /* HWUser.m in Sources */,
 				CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */,
 				3A8F7DC81B8C982F000940CF /* HWNotification.m in Sources */,
+				CE8D895B1B9D92D200749577 /* HWZendesk.m in Sources */,
 				C35A4C671B3035D2002E1F26 /* UIColor+Extensions.m in Sources */,
 				3A0BAF6F1B551BA6004DFF86 /* myItemCell.m in Sources */,
 				CE954C641B750C800063A719 /* HWOrderItem.m in Sources */,
@@ -1945,14 +1951,14 @@
 			baseConfigurationReference = 6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "06bf86b2-7179-4011-b2bb-680d82a6fb11";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1962,14 +1968,14 @@
 			baseConfigurationReference = 3906BE83E13D87CC9252A21D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "06bf86b2-7179-4011-b2bb-680d82a6fb11";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

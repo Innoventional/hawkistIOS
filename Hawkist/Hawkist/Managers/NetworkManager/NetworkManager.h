@@ -379,4 +379,21 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
           successBlock:(void(^)()) successBlock
           failureBlock:(void(^)(NSError *error)) failureBlock;
 
+#pragma mark - block user
+
+-(void) blockUserWithId:(NSString*) userId
+           successBlock:(void(^)()) successBlock
+           failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
+-(void) unblockUserWithId:(NSString*)userId
+             successBlock:(void(^)())successBlock
+             failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
+-(void)reportUserWithUserId:(NSString*)userId
+           withReportReason:(NSInteger)reasonReport
+               successBlock:(void(^)())successBlock
+               failureBlock:(void(^)(NSError *error))failureBlock;
+
 @end

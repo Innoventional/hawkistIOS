@@ -20,6 +20,8 @@
 #define ZENDESK_CLIENT_ID       @"mobile_sdk_client_017b0642674c40d7b0e0"
 
 
+
+
 -(instancetype) init {
     
     self = [super init];
@@ -48,24 +50,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self setupCreatingTicket];
-//    [self setupAgentPoint];
-//     [self setupRequestList];
-//    [self setupSupportView];
-    
+
     
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton *but = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     [self.view addSubview:but];
     
+    
     [but addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     but.backgroundColor = [UIColor redColor];
-    
+ 
     
     [ZDKHelpCenter presentHelpCenterWithNavController:self.navigationController];
-    
-     [ZDKLogger enable:YES];
+    [ZDKLogger enable:YES];
 
     [ZDKRequests configure:^(ZDKAccount *account, ZDKRequestCreationConfig *requestCreationConfig) {
         
@@ -140,6 +138,7 @@
 
 - (void) setupCreatingTicket {
     
+          
     [[ZDKCreateRequestView appearance] setPlaceholderTextColor:[UIColor lightGrayColor]];
     [[ZDKCreateRequestView appearance] setTextEntryColor:[UIColor blackColor]];
     [[ZDKCreateRequestView appearance] setTextEntryBackgroundColor:[UIColor whiteColor]];

@@ -14,6 +14,7 @@
 
 
 
+
 @interface HWitemForOrdersCell ()
 
 @property (weak, nonatomic) IBOutlet HWOrderButton *receivedButton;
@@ -73,6 +74,16 @@
     self.hasIssueButton.acceptImage.image = [UIImage imageNamed:@"red"];
     self.hasIssueButton.title.text = @"Has issue";
 
+//    if( orderItems.status == 1) {
+//        
+//        self.feedbackButton.hidden = NO;
+//        self.feedbackButton.enabled = YES;
+//        [self.feedbackButton setTitle:@"Feedback sent" forState:UIControlStateNormal];
+//        [self.feedbackButton setImage:nil forState:UIControlStateNormal];
+//    }
+    
+    
+    
     
     
     if( orderItems.status != 0)
@@ -80,13 +91,24 @@
         self.receivedButton.enabled = NO;
         self.hasIssueButton.enabled = NO;
         
-//        if(self.feedbackButton.hidden){
-//            
+        
+        if( orderItems.status == 1) {
+            
 //            self.feedbackButton.hidden = NO;
 //            self.feedbackButton.enabled = NO;
 //            [self.feedbackButton setTitle:@"Feedback sent" forState:UIControlStateNormal];
 //            [self.feedbackButton setImage:nil forState:UIControlStateNormal];
-//        }
+            
+        } else if( orderItems.status == 2) {
+            
+//           
+//            self.feedbackButton.enabled = YES;
+//            [self.feedbackButton setTitle:@"Feedback sent" forState:UIControlStateNormal];
+//            [self.feedbackButton setImage:[UIImage imageNamed:@"fff"] forState:UIControlStateNormal];
+            
+        }
+        
+
         
             }
     else
@@ -138,7 +160,7 @@
     }
                     self.feedbackButton.hidden = isHiden;
                     self.feedbackButton.enabled = isHiden;
-                    [self.feedbackButton setTitle:str forState:UIControlStateNormal];
+                    [self.feedbackButton setTitle:@"Feedback sent" forState:UIControlStateNormal];
                     [self.feedbackButton setImage:im forState:UIControlStateNormal];
     
 }

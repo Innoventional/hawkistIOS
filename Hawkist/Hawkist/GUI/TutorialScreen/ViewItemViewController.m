@@ -46,6 +46,9 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *askOutlet;
 @property (nonatomic, strong) UIActionSheet* editActionSheet;
+@property (nonatomic, strong) UIActionSheet* reportActionSheet;
+@property (nonatomic, strong) UIActionSheet* reasonReportActionSheet;
+
 @property (nonatomic, strong) UIActionSheet *sendToFrandActionSheet;
 
 
@@ -190,17 +193,23 @@
                                   cancelButtonTitle: @"Cancel"
                              destructiveButtonTitle: nil
                                   otherButtonTitles: @"Edit", nil];
+        
+        [self.editActionSheet showInView:self.view];
+        
     } else {
         
-        self.editActionSheet = [[UIActionSheet alloc] initWithTitle: nil
+        self.reportActionSheet = [[UIActionSheet alloc] initWithTitle: nil
                                            delegate: self
                                   cancelButtonTitle: @"Cancel"
                              destructiveButtonTitle: nil
                                   otherButtonTitles: @"Report", nil];
+        
+        [self.reportActionSheet showInView:self.view];
+
     }
     
     
-    [self.editActionSheet showInView:self.view];
+    
 
      
 }
@@ -816,8 +825,56 @@
         }
         
         
+    } else if ([actionSheet isEqual:self.reportActionSheet]){
+        
+        switch (buttonIndex) {
+            case 0:
+                //Share on Facebook
+                [self setupReportAlert];
+                NSLog(@"report");
+                break;
+         
+                
+            default:
+                break;
+        }
+        
+    } else if ([actionSheet isEqual:self.reasonReportActionSheet]) {
+        
+        switch (buttonIndex) {
+            case 0:
+                
+                NSLog(@"Item violates Terms of Use");
+                break;
+            case 1:
+                
+                NSLog(@"Item is regulated, counterfeit or illegal");
+                break;
+            case 2:
+                
+                NSLog(@"Price is misleading");
+                break;
+ 
+            default:
+                break;
+        }
+
     }
 
+}
+
+
+-(void)setupReportAlert {
+    
+    self.reasonReportActionSheet = [[UIActionSheet alloc] initWithTitle: nil
+                                                               delegate: self
+                                                      cancelButtonTitle: @"Cancel"
+                                                 destructiveButtonTitle: nil
+                                                      otherButtonTitles: @"Item violates Terms of Use",
+                                                                        @"Item is regulated, counterfeit or illegal",
+                                                                        @"Price is misleading",
+                                                                             nil];
+    [self.reasonReportActionSheet showInView:self.view];
 }
 
 #pragma mark -

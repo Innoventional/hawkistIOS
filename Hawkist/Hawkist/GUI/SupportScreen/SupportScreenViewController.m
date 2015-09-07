@@ -9,6 +9,8 @@
 #import "SupportScreenViewController.h"
 #import "HWAccountMenuCell.h"
 #import "WebViewController.h"
+#import "HWZendesk.h"
+
 
 @interface SupportScreenViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -154,6 +156,9 @@
     switch (row) {
         case 0:
         {
+            HWZendesk *zendesk = [HWZendesk shared];
+            [zendesk supportView];
+            
             NSLog(@"FAQs&Support");
             
             break;
@@ -188,6 +193,9 @@
     switch (row) {
         case 0:
         {
+            
+            [[HWZendesk shared] myTiket];
+            
             NSLog(@"Comments");
             break;
         }

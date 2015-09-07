@@ -14,7 +14,7 @@
 #import "HWCommentViewController.h"
 #import "HWLeaveFeedbackViewController.h"
 #import "HWPaymentViewController.h"
-
+#import "HWZendesk.h"
 
 @interface HWMyOrdersViewController () <HWitemForOrdersCellDelegate, NavigationViewDelegate,UIActionSheetDelegate>
 
@@ -31,6 +31,8 @@
 @property (nonatomic, strong) UIAlertView* receivedAlert;
 @property (nonatomic, strong) UIAlertView* hasIssueAlert;
 @property (nonatomic, strong) HWOrderItem *selectedItem;
+
+ 
 
 @end
 
@@ -229,12 +231,48 @@
                                            item.status = 2;
                                            
                                            [self reloadIndexPath:indexPath];
+                                           [self reporWithReason:orderIssue];
+                                           
                                            
                                        } failureBlock:^(NSError *error) {
                                            
                                            [self showAlertWithTitle:error.domain Message:error.localizedDescription];
                                        }];
 
+}
+
+
+
+-(void)reporWithReason:(NSInteger) reason {
+    
+    NSString *reasonStr;
+    
+    switch (reason) {
+        case 0:
+            
+            reasonStr =  @"Item has not arrived";
+            break;
+            
+        case 1:
+            
+            reasonStr = @"Item is not as described";
+            break;
+            
+        case 2:
+            
+            reasonStr = @"Item is broken or not usable";
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    NSString *str = [NSString stringWithFormat:@"Reason: %@\nItem: %@\nItemID: %@\nUserID: %@",reasonStr, self.selectedItem.item.title,self.selectedItem.id,self.selectedItem.item.user_id];
+    
+    
+    [[HWZendesk shared] createTicketWithSubject:@"Listing has issue" withDescription:str];
+    
 }
 
 
@@ -376,6 +414,9 @@
     
 }
 
+
+
+
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -384,7 +425,11 @@
     
     [self tapHasIssuseWith:self.selectedItem with:buttonIndex];
     
+
 }
+
+
+
 
 
 @end

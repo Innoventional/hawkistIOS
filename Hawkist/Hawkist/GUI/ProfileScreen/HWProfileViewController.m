@@ -26,10 +26,14 @@
 #import "UIImageView+Extensions.h"
 #import "HWFeedBackViewController.h"
 
+#import "HWZendesk.h"
 
 
 
-@interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate, UIAlertViewDelegate, HWFollowInProfileCellDelegate, MyItemCellDelegate>
+
+
+
+@interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate, UIAlertViewDelegate, HWFollowInProfileCellDelegate, MyItemCellDelegate,UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *segmentView;
@@ -74,7 +78,30 @@
 @property (weak, nonatomic) IBOutlet UIButton *aboutButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
+@property (nonatomic, strong) UIActionSheet *reportBlockActionSheet;
+@property (nonatomic, strong) UIActionSheet *resonReportActionSheet;
+
+
+@property (nonatomic, assign) BOOL isBlocked;
+
 @end
+
+
+//AbusiveBehaviour = 0
+//InappropriateContent = 1
+//ImpersonationOrHateAccount = 2
+//SellingFakeItems = 3
+//UnderagedAccount = 4
+
+typedef NS_ENUM(NSInteger, HWReasonReport) {
+    
+    HWReasonReportAbusiveBehaviour = 0,
+    HWReasonReportInappropriateContent = 1,
+    HWReasonReportImpersonationOrHateAccount = 2,
+    HWReasonReportSellingFakeItems = 3,
+    HWReasonReportUnderagedAccount = 4
+};
+
 
 
 typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
@@ -162,7 +189,10 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     self.navigationView.delegate = self;
     self.navigationView.title.text = @"Profile";
     
-    [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
+    if(![self.userId isEqualToString:[AppEngine shared].user.id]) {
+        
+        [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
+    }
  
    
 }
@@ -246,8 +276,33 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a MMM dd, yyyy"];
     
+    self.isBlocked = [self.user.blocked boolValue];
+    
     self.lastSeenLabel.text = [dateFormatter stringFromDate:lastActivityDate];
     
+    NSInteger time = [self.user.response_time integerValue];
+    
+    NSUInteger d = time / (3600 *24);
+    NSUInteger h = (time - d*(3600 *24)) / 3600;
+    NSUInteger m = (time / 60) % 60;
+    NSString *strTime;
+    
+    
+    
+    if(d || d>=3) {
+        
+        strTime = d>=3 ? @"72 hours+" : [NSString stringWithFormat:@"%lu day %lu hrs", (unsigned long)d, (unsigned long)h];
+
+    } else if(h) {
+        
+        strTime =  [NSString stringWithFormat:@"%lu hrs %lu min", (unsigned long)h, (unsigned long)m];
+    } else  {
+        
+        strTime =  [NSString stringWithFormat:@"%lu min", (unsigned long)m];
+    }
+    
+    
+    self.responsTimeLabel.text = strTime;
 }
 
  
@@ -546,14 +601,19 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 -(void) rightButtonClick
 {
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                              delegate:nil
-                                                     cancelButtonTitle:@"Cancel"
-                                                destructiveButtonTitle:nil
-                                                     otherButtonTitles:@"Report",@"Block", nil];
-    
-    
-    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+    if(![self.user.id isEqualToString:[AppEngine shared].user.id]) {
+        
+        NSString *str = self.isBlocked? @"Unblock" : @"Block";
+        
+        self.reportBlockActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"Cancel"
+                                                    destructiveButtonTitle:nil
+                                                         otherButtonTitles:@"Report",str, nil];
+        
+        
+        [self.reportBlockActionSheet showInView:[UIApplication sharedApplication].keyWindow];
+    }
 }
 
 
@@ -678,6 +738,140 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     return CGSizeMake(widthForView, ((widthForView * 488) / 291)-5);
 }
 
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    
+    if([actionSheet isEqual:self.reportBlockActionSheet])
+    {
+        switch (buttonIndex) {
+            case 0:
+                
+                [self setupReportActionSheet];
+                break;
+            case 1:
+                
+                [self blockUnblok];
+                NSLog(@"Block");
+                
+                break;
+            default:
+                break;
+        }
+        
+        
+    
+    
+    }
+     
+    
+    else if ([actionSheet isEqual:self.resonReportActionSheet]) {
+        
+        switch (buttonIndex) {
+            case 0:
+                
+                [self reportWithReason:@"Abusive behaviour" withReasonCode:HWReasonReportAbusiveBehaviour];
+                NSLog(@"Abusive behaviour");
+                break;
+            case 1:
+                
+                [self reportWithReason:@"Inappropriate content" withReasonCode:HWReasonReportInappropriateContent];
+                 NSLog(@"Inappropriate content");
+                break;
+            case 2:
+                
+                [self reportWithReason:@"Impersonation or hate account" withReasonCode:HWReasonReportImpersonationOrHateAccount];
+                 NSLog(@"Impersonation or hate account");
+                break;
+            case 3:
+                
+                [self reportWithReason:@"Selling fake items" withReasonCode:HWReasonReportSellingFakeItems];
+                 NSLog(@"Selling fake items");
+                break;
+            case 4:
+                
+                [self reportWithReason:@"Underaged account" withReasonCode:HWReasonReportUnderagedAccount];
+                 NSLog(@"Underaged account");
+                break;
+                
+                
+            default:
+                break;
+        }
+        
+        
+    }
+    
+    
+}
+
+
+-(void)reportWithReason:(NSString*)reason
+         withReasonCode:(HWReasonReport)reasonCode{
+    
+    [self.networkManager reportUserWithUserId:self.userId
+                             withReportReason:reasonCode
+                                 successBlock:^{
+                                     
+                                     [self createTicketWithDescription:reason];
+                                     
+                                 } failureBlock:^(NSError *error) {
+                                     
+                                     [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                 }];
+    
+}
+
+-(void) createTicketWithDescription:(NSString*)descript {
+    
+    NSString *str = [NSString stringWithFormat:@"Reason: %@\nUser: %@\nUserID: %@",descript, self.user.username, self.userId];
+    
+    [[HWZendesk shared] createTicketWithSubject:@"User reported"
+                                withDescription:str];
+    
+}
+
+-(void) blockUnblok {
+    
+    if(self.isBlocked) {
+        [self.networkManager unblockUserWithId:self.userId
+                                  successBlock:^{
+                                      
+                                      self.isBlocked = NO;
+                                  } failureBlock:^(NSError *error) {
+                                      
+                                      [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                  }];
+    } else {
+        
+        [self.networkManager blockUserWithId:self.userId
+                                successBlock:^{
+                                    
+                                    self.isBlocked = YES;
+                                } failureBlock:^(NSError *error) {
+                                    
+                                    [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                }];
+    }
+    
+    
+}
+-(void) setupReportActionSheet {
+    
+    self.resonReportActionSheet = [[UIActionSheet alloc] initWithTitle:@"Why do you want to report this user?"
+                                                              delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                     otherButtonTitles: @"Abusive behaviour",
+                                                                        @"Inappropriate content",
+                                                                        @"Impersonation or hate account",
+                                                                        @"Selling fake items",
+                                                                        @"Underaged account", nil];
+    [self.resonReportActionSheet showInView:self.view];
+}
+
 #pragma mark -
 #pragma mark UIAlertViewDelegate
 
@@ -746,6 +940,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
      
     return  ([currentUserId isEqualToString:userId]);
 }
+
+
 
 
 #pragma mark -

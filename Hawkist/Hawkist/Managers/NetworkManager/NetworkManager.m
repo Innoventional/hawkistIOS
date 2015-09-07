@@ -38,9 +38,6 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 
 @implementation NetworkManager
 
-
-
-
 #pragma mark -
 #pragma mark Lifecycle
 
@@ -2771,5 +2768,96 @@ NSString *URLString = @"user/logout";
 
 
 }
+
+#pragma mark - Block a user
+
+-(void) blockUserWithId:(NSString*) userId
+           successBlock:(void(^)()) successBlock
+           failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSDictionary *params = @{@"user_id":userId};
+    
+    [self.networkDecorator POST:@"user/blocking"
+                     parameters:params
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                failureBlock(responseError);
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            failureBlock(serverError);
+                            
+                        }];
+}
+
+
+-(void) unblockUserWithId:(NSString*)userId
+             successBlock:(void(^)())successBlock
+             failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSString *URLString = [NSString stringWithFormat:@"user/blocking?user_id=%@",userId];
+    [self.networkDecorator DELETE:URLString
+                       parameters:nil
+                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              
+                              if([responseObject[@"status"] integerValue] != 0)
+                              {
+                                  NSError *responseError = [self errorWithResponseObject:responseObject];
+                                  failureBlock(responseError);
+                                  return;
+                              }
+                              successBlock();
+                              
+                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              
+                              NSError *serverError = [self serverErrorWithError:error];
+                              failureBlock(serverError);
+                          }];
+}
+
+
+
+-(void)reportUserWithUserId:(NSString*)userId
+           withReportReason:(NSInteger)reasonReport
+               successBlock:(void(^)())successBlock
+               failureBlock:(void(^)(NSError *error))failureBlock {
+    
+    NSDictionary *params = @{@"user_id": userId,
+                             @"reason_id": @(reasonReport) };
+    
+    [self.networkDecorator POST:@"user/reporting"
+                     parameters:params
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                failureBlock(responseError);
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            failureBlock(serverError);
+                        }];
+    
+}
+
+
+
 
 @end

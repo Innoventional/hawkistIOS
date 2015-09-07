@@ -25,6 +25,7 @@
 
 
 #import "HWZendeskViewController.h"
+#import "HWZendesk.h"
 
 
 @interface HWTapBarViewController () <HWTapBarViewDelegate>
@@ -72,7 +73,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBadge) name:@"updateNotification" object:nil];
     
-
+    [HWZendesk shared].navigationController = self.navigationController;
 
 }
 
@@ -138,10 +139,10 @@
         }
         case 4:
         {
-            HWZendeskViewController *vc = [[HWZendeskViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+//            HWZendeskViewController *vc = [[HWZendeskViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
             
-            //[self.contentView addContentView: self.supportVC.view];
+            [self.contentView addContentView: self.supportVC.view];
                 
             break;
             
