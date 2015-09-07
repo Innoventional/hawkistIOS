@@ -627,6 +627,7 @@
         picker.mediaTypes    = @[(NSString*) kUTTypeImage];
         picker.sourceType    = source;
         
+
         [self presentViewController: picker animated: YES completion: NULL];
     }
 }

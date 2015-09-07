@@ -60,9 +60,20 @@
         }
         case 1:
         {
+            
+            if ([HWTapBarViewController class] == [navigationController.visibleViewController class])
+            {
+                [((HWTapBarViewController*)navigationController.visibleViewController) setTab:1];
+                
+            }
+            else
+            {
             HWTapBarViewController *vc = [[HWTapBarViewController alloc]init];
-            [vc setTab:2];
+
             [navigationController pushViewController:vc animated:YES];
+            
+            [vc setTab:1];
+            }
             break;
         
         }
@@ -75,7 +86,8 @@
             
         case 3:
         {
-            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:[AppEngine shared].user.id];
+            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:[AppEngine shared].user.id withStatus:[userInfo[@"feedback_type"] integerValue]];
+                                            
             [navigationController pushViewController:vc animated:YES];
             break;
         }

@@ -136,4 +136,9 @@
     }
 }
 
+
+- (void) selectButton: (NSInteger) index
+{
+    [self markSelected:index];
+}
 @end

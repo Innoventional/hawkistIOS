@@ -52,6 +52,7 @@
 @property (nonatomic, strong) NSString<Optional>* id;
 @property (nonatomic, strong) NSString<Optional>* created_at;
 @property (nonatomic, strong) NSString<Optional>* type;
+@property (nonatomic, strong) NSString<Optional>* feedback_type;
 @property (nonatomic, strong) User<Optional>* user;
 @property (nonatomic, strong) Listing<Optional>* listing;
 @property (nonatomic, strong) Comment<Optional>* comment;

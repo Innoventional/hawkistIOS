@@ -101,10 +101,40 @@
 }
 
 
-- (void) pressFirstButton {
+- (void) pressButtonWithStatus:(HWFeedbackType) status{
     
-    [self selectedButton:self.positiveButton];
-     self.positiveButton.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
+    
+    switch (status) {
+        case HWFeedbackPositive:
+            
+            [self selectedButton:self.positiveButton];
+            self.positiveButton.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
+            
+            break;
+        case HWFeedbackNeutral:
+            
+            [self selectedButton:self.neutralButton];
+            self.neutralButton.selectedImage.backgroundColor = [UIColor color256RGBWithRed:233 green:215 blue:60];
+            
+            break;
+        case HWFeedbackNegative:
+            
+            [self selectedButton:self.negativeButton];
+            self.negativeButton.selectedImage.backgroundColor = [UIColor color256RGBWithRed:239 green:83 blue:80];
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void) pressFirstButton {
+
+    [self pressButtonWithStatus:HWFeedbackPositive];
+    
+//    [self selectedButton:self.positiveButton];
+//     self.positiveButton.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
 }
 
 - (void) selectedButton:(HWFedbackSegmentButton*) sender {

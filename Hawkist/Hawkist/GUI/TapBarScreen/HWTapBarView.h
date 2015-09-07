@@ -20,6 +20,8 @@
 
 - (void) markSelected: (NSInteger) index;
 
+- (void) selectButton: (NSInteger) index;
+
 @end
 
 @protocol HWTapBarViewDelegate <NSObject>
