@@ -22,10 +22,6 @@
 		3A359D5D1B969F2F00A0F2E1 /* PushNotificationSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A359D5C1B969F2F00A0F2E1 /* PushNotificationSettings.xib */; };
 		3A359D5F1B969FEB00A0F2E1 /* PushNotificationSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A359D5E1B969FEB00A0F2E1 /* PushNotificationSettingsCell.xib */; };
 		3A359D621B96A03900A0F2E1 /* NotificationSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A359D611B96A03900A0F2E1 /* NotificationSettingsViewController.m */; };
-		3A359D651B9739CA00A0F2E1 /* HWPushNotificationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A359D641B9739CA00A0F2E1 /* HWPushNotificationSettings.m */; };
-		3A359D6A1B98699200A0F2E1 /* FindFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A359D681B98699200A0F2E1 /* FindFriendViewController.m */; };
-		3A359D6B1B98699200A0F2E1 /* FindFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A359D691B98699200A0F2E1 /* FindFriendViewController.xib */; };
-		3A359D6F1B987E4800A0F2E1 /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A359D6E1B987E4800A0F2E1 /* PushNotificationManager.m */; };
 		3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A45ABDF1B6B316800FD56D6 /* Images.xcassets */; };
 		3A45ABEB1B6BBCAB00FD56D6 /* ManageBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45ABEA1B6BBCAB00FD56D6 /* ManageBankViewController.m */; };
 		3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A61FBCB1B3813620004A24B /* CustomAlertView.xib */; };
@@ -95,9 +91,6 @@
 		7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */; };
 		7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */; };
 		7C9E7B011B4FCD58001DF8BE /* open-sans.extrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C9E7B001B4FCD58001DF8BE /* open-sans.extrabold.ttf */; };
-		7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE8F1B4BF39200CDA5FD /* mot2.png */; };
-		7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE901B4BF39200CDA5FD /* mot3.png */; };
-		7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE931B4BF63B00CDA5FD /* smile.png */; };
 		7CDD9A621B343AD2000FA498 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD9A601B343AD2000FA498 /* TutorialViewController.m */; };
 		7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */; };
 		7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */; };
@@ -259,13 +252,6 @@
 		3A359D5E1B969FEB00A0F2E1 /* PushNotificationSettingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PushNotificationSettingsCell.xib; path = PushNotificationSettings/PushNotificationSettingsCell.xib; sourceTree = "<group>"; };
 		3A359D601B96A03900A0F2E1 /* NotificationSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationSettingsViewController.h; path = PushNotificationSettings/NotificationSettingsViewController.h; sourceTree = "<group>"; };
 		3A359D611B96A03900A0F2E1 /* NotificationSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationSettingsViewController.m; path = PushNotificationSettings/NotificationSettingsViewController.m; sourceTree = "<group>"; };
-		3A359D631B9739CA00A0F2E1 /* HWPushNotificationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWPushNotificationSettings.h; sourceTree = "<group>"; };
-		3A359D641B9739CA00A0F2E1 /* HWPushNotificationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWPushNotificationSettings.m; sourceTree = "<group>"; };
-		3A359D671B98699200A0F2E1 /* FindFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FindFriendViewController.h; path = Hawkist/GUI/FindFriend/FindFriendViewController.h; sourceTree = SOURCE_ROOT; };
-		3A359D681B98699200A0F2E1 /* FindFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FindFriendViewController.m; path = Hawkist/GUI/FindFriend/FindFriendViewController.m; sourceTree = SOURCE_ROOT; };
-		3A359D691B98699200A0F2E1 /* FindFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FindFriendViewController.xib; path = Hawkist/GUI/FindFriend/FindFriendViewController.xib; sourceTree = SOURCE_ROOT; };
-		3A359D6D1B987E4800A0F2E1 /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PushNotificationManager.h; path = PushNotificationManager/PushNotificationManager.h; sourceTree = "<group>"; };
-		3A359D6E1B987E4800A0F2E1 /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PushNotificationManager.m; path = PushNotificationManager/PushNotificationManager.m; sourceTree = "<group>"; };
 		3A45ABDF1B6B316800FD56D6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A45ABE91B6BBCAB00FD56D6 /* ManageBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManageBankViewController.h; path = manageBank/ManageBankViewController.h; sourceTree = "<group>"; };
 		3A45ABEA1B6BBCAB00FD56D6 /* ManageBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManageBankViewController.m; path = manageBank/ManageBankViewController.m; sourceTree = "<group>"; };
@@ -370,9 +356,6 @@
 		7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansRegular.ttf; sourceTree = "<group>"; };
 		7C9E7B001B4FCD58001DF8BE /* open-sans.extrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "open-sans.extrabold.ttf"; sourceTree = "<group>"; };
-		7CDBCE8F1B4BF39200CDA5FD /* mot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mot2.png; sourceTree = "<group>"; };
-		7CDBCE901B4BF39200CDA5FD /* mot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mot3.png; sourceTree = "<group>"; };
-		7CDBCE931B4BF63B00CDA5FD /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
 		7CDD9A5F1B343AD2000FA498 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		7CDD9A601B343AD2000FA498 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
@@ -671,26 +654,6 @@
 				3A359D5C1B969F2F00A0F2E1 /* PushNotificationSettings.xib */,
 			);
 			name = PushNotificationSettings;
-			sourceTree = "<group>";
-		};
-		3A359D661B9868A600A0F2E1 /* FindFriend */ = {
-			isa = PBXGroup;
-			children = (
-				3A359D671B98699200A0F2E1 /* FindFriendViewController.h */,
-				3A359D681B98699200A0F2E1 /* FindFriendViewController.m */,
-				3A359D691B98699200A0F2E1 /* FindFriendViewController.xib */,
-			);
-			name = FindFriend;
-			path = LoginVIew;
-			sourceTree = "<group>";
-		};
-		3A359D6C1B987D3700A0F2E1 /* PushNotificationManager */ = {
-			isa = PBXGroup;
-			children = (
-				3A359D6D1B987E4800A0F2E1 /* PushNotificationManager.h */,
-				3A359D6E1B987E4800A0F2E1 /* PushNotificationManager.m */,
-			);
-			name = PushNotificationManager;
 			sourceTree = "<group>";
 		};
 		3A45ABDC1B6B294800FD56D6 /* ManageBank */ = {
@@ -1005,9 +968,6 @@
 				7CF0F97F1B455DB30041F58F /* ViewItemViewController.h */,
 				7CF0F9801B455DB30041F58F /* ViewItemViewController.m */,
 				CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */,
-				7CDBCE931B4BF63B00CDA5FD /* smile.png */,
-				7CDBCE8F1B4BF39200CDA5FD /* mot2.png */,
-				7CDBCE901B4BF39200CDA5FD /* mot3.png */,
 			);
 			name = ViewItem;
 			path = TutorialScreen;
@@ -1096,7 +1056,6 @@
 		C35A4C3D1B2F33EA002E1F26 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				3A359D6C1B987D3700A0F2E1 /* PushNotificationManager */,
 				3A8F7DC91B8FCBC6000940CF /* PingManager */,
 				C35CB5401B6F5D4500956150 /* StripeManager */,
 				C35CB4A01B4D391500956150 /* AWSS3Manager */,
@@ -1144,8 +1103,6 @@
 				CEAF106E1B8B4CD300E5029E /* HWBankAccountAddress.m */,
 				3A8F7DC61B8C982F000940CF /* HWNotification.h */,
 				3A8F7DC71B8C982F000940CF /* HWNotification.m */,
-				3A359D631B9739CA00A0F2E1 /* HWPushNotificationSettings.h */,
-				3A359D641B9739CA00A0F2E1 /* HWPushNotificationSettings.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1159,7 +1116,6 @@
 				CE5909501B5F9F9400DAA7FF /* TextViewWithPlaceholder */,
 				C35A4C411B302CE7002E1F26 /* Base */,
 				3A17AEA01B930FF700CF41CD /* WebView */,
-				3A359D661B9868A600A0F2E1 /* FindFriend */,
 				3A8366711B30668E00208FC5 /* LoginVIew */,
 				7CDD9A5E1B343AB9000FA498 /* TutorialScreen */,
 				3A83667D1B318B1100208FC5 /* AccountDetails */,
@@ -1654,7 +1610,6 @@
 				CE1546471B7DF6DE0082ACF4 /* HWAddNewAddressCell.xib in Resources */,
 				3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
-				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
 				CEBAAFA41B6DF44800AFE4C6 /* HWPaymentOptionCell.xib in Resources */,
 				CE59094C1B5E9DD600DAA7FF /* HWCommentViewController.xib in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
@@ -1675,8 +1630,6 @@
 				CE1546351B7CD0970082ACF4 /* HWPaymentBalanceCell.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
 				3AA5CC011B862AC6006093D0 /* holidayMode.xib in Resources */,
-				7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */,
-				3A359D6B1B98699200A0F2E1 /* FindFriendViewController.xib in Resources */,
 				7CF22CA41B4FCE18002CF7ED /* open-sans.bold.ttf in Resources */,
 				3AF8320F1B70E73100CC750D /* ManageBankView.xib in Resources */,
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
@@ -1699,7 +1652,6 @@
 				CE15469E1B84AC0A0082ACF4 /* HWMyBalanceView.xib in Resources */,
 				3A359D5D1B969F2F00A0F2E1 /* PushNotificationSettings.xib in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
-				7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1764,7 +1716,6 @@
 				CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */,
 				3A8F7DC81B8C982F000940CF /* HWNotification.m in Sources */,
 				C35A4C671B3035D2002E1F26 /* UIColor+Extensions.m in Sources */,
-				3A359D6F1B987E4800A0F2E1 /* PushNotificationManager.m in Sources */,
 				3A0BAF6F1B551BA6004DFF86 /* myItemCell.m in Sources */,
 				CE954C641B750C800063A719 /* HWOrderItem.m in Sources */,
 				3A8F7DBA1B8BD85A000940CF /* SupportScreenViewController.m in Sources */,
@@ -1825,7 +1776,6 @@
 				CE70EDD21B6BC62F005664FA /* HWMyAccountViewController.m in Sources */,
 				3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				CEBAAF9F1B6CE9DF00AFE4C6 /* HWSingOutCell.m in Sources */,
-				3A359D6A1B98699200A0F2E1 /* FindFriendViewController.m in Sources */,
 				3AA5CBF01B84B393006093D0 /* HWAddress.m in Sources */,
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
 				CE1546941B833A120082ACF4 /* HWFeadbackCell.m in Sources */,
@@ -1843,7 +1793,6 @@
 				3AF832081B70E4EB00CC750D /* HWCard.m in Sources */,
 				CEBAAFA71B6DF4C800AFE4C6 /* HWPaymentViewController.m in Sources */,
 				CE59094A1B5E9CD700DAA7FF /* HWCommentViewController.m in Sources */,
-				3A359D651B9739CA00A0F2E1 /* HWPushNotificationSettings.m in Sources */,
 				CEAF105D1B8AFB5B00E5029E /* HWMyBalanceCurrentBalanceView.m in Sources */,
 				C35A4C441B302D05002E1F26 /* HWBaseViewController.m in Sources */,
 				7CE0E8E11B4307F0003B8B3A /* FeedScreenViewController.m in Sources */,
@@ -2003,7 +1952,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82fe7923-d4d8-41fa-96ee-9c78c1a0977d";
+				PROVISIONING_PROFILE = "06bf86b2-7179-4011-b2bb-680d82a6fb11";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2020,7 +1969,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82fe7923-d4d8-41fa-96ee-9c78c1a0977d";
+				PROVISIONING_PROFILE = "06bf86b2-7179-4011-b2bb-680d82a6fb11";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

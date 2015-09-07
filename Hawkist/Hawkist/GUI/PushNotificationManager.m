@@ -75,9 +75,8 @@
             
         case 3:
         {
-//            HWFeedBackViewController *vc = [HWFeedBackViewController alloc]initWithUserID:userInfo[@"user_id"] withStatus:userInfo[@"feedback_type"] int
-//
-//            [navigationController pushViewController:vc animated:YES];
+            HWFeedBackViewController *vc = [[HWFeedBackViewController alloc]initWithUserID:[AppEngine shared].user.id];
+            [navigationController pushViewController:vc animated:YES];
             break;
         }
             
