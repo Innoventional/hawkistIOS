@@ -63,16 +63,15 @@
             
             if ([HWTapBarViewController class] == [navigationController.visibleViewController class])
             {
-                [((HWTapBarViewController*)navigationController.visibleViewController) setTab:1];
+                [((HWTapBarViewController*)navigationController.visibleViewController) setSold];
                 
             }
             else
             {
-            HWTapBarViewController *vc = [[HWTapBarViewController alloc]init];
+            HWTapBarViewController *vc = [[HWTapBarViewController alloc]initWithSold];
 
             [navigationController pushViewController:vc animated:YES];
             
-            [vc setTab:1];
             }
             break;
         
@@ -103,7 +102,7 @@
             
             if ([userInfo[@"order_available_feedback"] boolValue])
             {
-                HWLeaveFeedbackViewController *vc = [[HWLeaveFeedbackViewController alloc]initWithUserID: userInfo[@"order_available_feedback"] withOrderId:userInfo[@"order_id"]];
+                HWLeaveFeedbackViewController *vc = [[HWLeaveFeedbackViewController alloc]initWithUserID: userInfo[@"user_id"] withOrderId:userInfo[@"order_id"]];
                 
                 [navigationController pushViewController:vc animated:YES];
             }

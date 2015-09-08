@@ -37,9 +37,11 @@
     if(self)
     {
         self.items = [[NSMutableArray alloc]init];
+
     }
     return self;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -78,7 +80,18 @@
 {
     self.isInternetConnectionAlertShowed = NO;
     [self refresh];
+    
+}
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    if ([AppEngine shared].isShowSold)
+    {
+        [self selectedButton:self.buttonSold];
+        self.showSold = YES;
+        [self refresh];
+
+    }
 }
 
 
@@ -235,7 +248,7 @@
                  forState:UIControlStateNormal];
     sender.selectedImage.backgroundColor = [UIColor colorWithRed:255./255. green:193./255. blue:7./255. alpha:1];
     
-    
+    sender.selectedImage.backgroundColor = [UIColor colorWithRed:255./255. green:197/255. blue:7./255. alpha:1];
     
     
 }
@@ -272,13 +285,15 @@
             
         }
     }
-    [self selectedButton:self.buttonForSale];
+            [self selectedButton:self.buttonForSale];
+
 }
 
 - (IBAction)forSaleAction:(id)sender {
     [self selectedButton:sender];
     self.showSold = NO;
     [self refresh];
+    [AppEngine shared].isShowSold = NO;
 }
 
 - (IBAction)soldAction:(id)sender {

@@ -11,5 +11,7 @@
 @interface HWTapBarViewController : HWBaseViewController
 
 - (void) setTab:(NSInteger)number;
+- (void) setSold;
 
+- (instancetype) initWithSold;
 @end

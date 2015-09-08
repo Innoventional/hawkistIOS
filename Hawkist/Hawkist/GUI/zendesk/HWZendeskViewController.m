@@ -15,32 +15,103 @@
 
 @implementation HWZendeskViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setupCreatingTicket];
-    
-     [ZDKLogger enable:YES];
-    
-    [[ZDKConfig instance] initializeWithAppId:@"475beb8068c9472bda4f61c986e4ed6de28c120465e512aa"
-                                   zendeskUrl:@"https://hawkist.zendesk.com"
-                                     ClientId:@"mobile_sdk_client_017b0642674c40d7b0e0"
-                                    onSuccess:^() {
-                                        
-                                        [self jwtIdentify];
-                                       
-                                        
-                                        //[ZDKRequests showRequestCreationWithNavController:self.navigationController];
-                                          [ZDKRequests showRequestListWithNavController:self.navigationController];
-                                        
-                                        NSLog(@"Yes");
-                                    } onError:^(NSError *error) {
-    
-                                        NSLog(@"%@", error.description);
-    
-    }];
+#define ZENDESK_APPID           @"475beb8068c9472bda4f61c986e4ed6de28c120465e512aa"
+#define ZENDESK_URL             @"https://hawkist.zendesk.com"
+#define ZENDESK_CLIENT_ID       @"mobile_sdk_client_017b0642674c40d7b0e0"
 
+
+
+
+-(instancetype) init {
+    
+    self = [super init];
+    
+    {
+        [[ZDKConfig instance] initializeWithAppId: ZENDESK_APPID
+                                       zendeskUrl: ZENDESK_URL
+                                         ClientId: ZENDESK_CLIENT_ID
+                                        onSuccess:^() {
+                                            
+                                            
+                                            NSLog(@"Yes");
+                                            
+                                        } onError:^(NSError *error) {
+                                            
+                                            NSLog(@"%@", error.description);
+                                            
+                                        }];
+
+        
+    }
+    
+    return self;
 }
 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *but = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    [self.view addSubview:but];
+    
+    
+    [but addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    but.backgroundColor = [UIColor redColor];
+ 
+    
+    [ZDKHelpCenter presentHelpCenterWithNavController:self.navigationController];
+    [ZDKLogger enable:YES];
+
+    [ZDKRequests configure:^(ZDKAccount *account, ZDKRequestCreationConfig *requestCreationConfig) {
+        
+        // specify any additional tags desired
+        requestCreationConfig.tags = [NSArray arrayWithObjects:@"report", nil];
+        requestCreationConfig.subject = @"newwwwweeen";
+        // add some custom content to the description
+        requestCreationConfig.additionalRequestInfo = @"\n<-----SSS----->";
+        
+    }];
+    
+    [self jwtIdentify];
+    
+    [ZDKRequests showRequestListWithNavController:self.navigationController];
+
+    
+    
+}
+
+- (void) back {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
+
+/*
+
+ 
+ [ZDKRequests configure:^(ZDKAccount *account, ZDKRequestCreationConfig *requestCreationConfig) {
+ 
+ // specify any additional tags desired
+ requestCreationConfig.tags = [NSArray arrayWithObjects:@"report", nil];
+ 
+ // add some custom content to the description
+ requestCreationConfig.additionalRequestInfo = @"SSS";
+ 
+ }];
+ 
+ 
+ [self jwtIdentify];
+ 
+ 
+ //[ZDKRequests showRequestCreationWithNavController:self.navigationController];
+ [ZDKRequests showRequestListWithNavController:self.navigationController];
+ 
+ */
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -49,23 +120,33 @@
 
 - (void) jwtIdentify {
     
-    ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:[AppEngine shared].user.id];
+//    ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"aasdsasdasdasdasdasd"];
+//
+//    [ZDKConfig instance].userIdentity = jwtUserIdentity;
     
-    [ZDKConfig instance].userIdentity = jwtUserIdentity;
+    ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
+//
+    identity.name = @"John Example";
+    identity.email = @"john@example.com";
+
+    
+    
+   [ZDKConfig instance].userIdentity = identity;
 }
 
 
 
 - (void) setupCreatingTicket {
     
+          
     [[ZDKCreateRequestView appearance] setPlaceholderTextColor:[UIColor lightGrayColor]];
-    [[ZDKCreateRequestView appearance] setTextEntryColor:[UIColor whiteColor]];
-    [[ZDKCreateRequestView appearance] setTextEntryBackgroundColor:[UIColor blackColor]];
-    [[ZDKCreateRequestView appearance] setViewBackgroundColor:[UIColor blackColor]];
+    [[ZDKCreateRequestView appearance] setTextEntryColor:[UIColor blackColor]];
+    [[ZDKCreateRequestView appearance] setTextEntryBackgroundColor:[UIColor whiteColor]];
+    [[ZDKCreateRequestView appearance] setViewBackgroundColor:[UIColor whiteColor]];
     [[ZDKCreateRequestView appearance] setTextEntryFont:[UIFont systemFontOfSize:12.0f]];
     
     [[ZDKCreateRequestView appearance] setAttachmentButtonImage:[ZDKBundleUtils imageNamed:@"icoAttach" ofType:@"png"]];
-    [[ZDKCreateRequestView appearance] setAttachmentButtonBackground:[UIColor blackColor]];
+    [[ZDKCreateRequestView appearance] setAttachmentButtonBackground:[UIColor whiteColor]];
     [[ZDKCreateRequestView appearance] setAttachmentButtonBorderColor:[UIColor darkGrayColor]];
     [[ZDKCreateRequestView appearance] setAttachmentButtonBorderWidth:@2];
     [[ZDKCreateRequestView appearance] setAttachmentButtonCornerRadius:@10];
@@ -112,7 +193,7 @@
     // request list cells
     [[ZDKRequestListTableCell appearance] setDescriptionFont:[UIFont systemFontOfSize:15]];
     [[ZDKRequestListTableCell appearance] setCreatedAtFont:[UIFont systemFontOfSize:13]];
-    [[ZDKRequestListTableCell appearance] setUnreadColor:[UIColor colorWithRed:0.47059 green:0.6392 blue:0 alpha:1.0]];
+    [[ZDKRequestListTableCell appearance] setUnreadColor:[UIColor colorWithRed:48./255. green: 173./255. blue: 148./255. alpha:1.0]];
     [[ZDKRequestListTableCell appearance] setDescriptionColor:[UIColor colorWithWhite:0.88f alpha:1.0f]];
     [[ZDKRequestListTableCell appearance] setCreatedAtColor:[UIColor lightGrayColor]];
     [[ZDKRequestListTableCell appearance] setVerticalMargin:@20.0f];

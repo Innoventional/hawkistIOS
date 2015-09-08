@@ -560,6 +560,7 @@
                                        successBlock:^{
                                            
                                            [self setCommentsArrayWithItem:self.currentItem];
+                                           self.inputCommentView.limitCharacter.text = [NSString stringWithFormat:@"160" ];
                                            
                                        } failureBlock:^(NSError *error) {
                                            
@@ -575,11 +576,27 @@
 
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-       NSInteger permissibleLenght = 160;
-       NSUInteger newLength = [textView.text length] + [text length] - range.length;
-  
-        return (newLength > permissibleLenght) ? NO : YES;
+{     
+    NSInteger newLength = [textView.text length] + [text length] - range.length;
+    NSInteger limit =  160;
+ 
+   // if (newLength <= permissibleLenght) {
+    self.inputCommentView.limitCharacter.text = [NSString stringWithFormat:@"%d", (limit - newLength) ];
+        if ((limit - newLength)<= 10) {
+            
+            self.inputCommentView.limitCharacter.textColor = [UIColor redColor];
+        } else {
+            
+            self.inputCommentView.limitCharacter.textColor = [UIColor color256RGBAWithRed:167 green:167 blue:167 alpha:1];
+        }
+        
+        self.inputCommentView.pressButton.enabled = ((160 - newLength) >= 0);
+        
+        
+        
+  //  }
+    
+    return YES;//(newLength > permissibleLenght) ? NO : YES;
   
  }
 
@@ -589,11 +606,8 @@
     {
         self.inputCommentView.pressButton.enabled = NO;
         
-    } else {
-        
-        self.inputCommentView.pressButton.enabled = YES;
-        
     }
+    
     if([textView.text isEqualToString:@""]) return;
     NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
     

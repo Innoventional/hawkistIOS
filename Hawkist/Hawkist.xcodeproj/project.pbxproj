@@ -106,9 +106,6 @@
 		7C735D9C1B3998FE00295472 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */; };
 		7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */; };
 		7C9E7B011B4FCD58001DF8BE /* open-sans.extrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C9E7B001B4FCD58001DF8BE /* open-sans.extrabold.ttf */; };
-		7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE8F1B4BF39200CDA5FD /* mot2.png */; };
-		7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE901B4BF39200CDA5FD /* mot3.png */; };
-		7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBCE931B4BF63B00CDA5FD /* smile.png */; };
 		7CDD9A621B343AD2000FA498 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD9A601B343AD2000FA498 /* TutorialViewController.m */; };
 		7CDD9A631B343AD2000FA498 /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */; };
 		7CE0E8DF1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0E8DA1B4307F0003B8B3A /* FeedScreenCollectionViewCell.m */; };
@@ -195,6 +192,7 @@
 		CE7876521B60F3FF00A3970D /* HWOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7876511B60F3FF00A3970D /* HWOffer.m */; };
 		CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8721F11B553684003C47E5 /* HWProfileViewController.m */; };
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
+		CE8D895B1B9D92D200749577 /* HWZendesk.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D895A1B9D92D200749577 /* HWZendesk.m */; };
 		CE954C611B74B4DB0063A719 /* ViewItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */; };
 		CE954C641B750C800063A719 /* HWOrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C631B750C800063A719 /* HWOrderItem.m */; };
 		CE954C681B75E3CD0063A719 /* HWAboutUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C671B75E3CD0063A719 /* HWAboutUserViewController.m */; };
@@ -390,9 +388,6 @@
 		7C735D9B1B3998FE00295472 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		7C735D9F1B399B0200295472 /* OpenSansRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansRegular.ttf; sourceTree = "<group>"; };
 		7C9E7B001B4FCD58001DF8BE /* open-sans.extrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "open-sans.extrabold.ttf"; sourceTree = "<group>"; };
-		7CDBCE8F1B4BF39200CDA5FD /* mot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mot2.png; sourceTree = "<group>"; };
-		7CDBCE901B4BF39200CDA5FD /* mot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mot3.png; sourceTree = "<group>"; };
-		7CDBCE931B4BF63B00CDA5FD /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
 		7CDD9A5F1B343AD2000FA498 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		7CDD9A601B343AD2000FA498 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		7CDD9A611B343AD2000FA498 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
@@ -540,6 +535,8 @@
 		CE8721F01B553684003C47E5 /* HWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWProfileViewController.h; path = ProfileScreen/HWProfileViewController.h; sourceTree = "<group>"; };
 		CE8721F11B553684003C47E5 /* HWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWProfileViewController.m; path = ProfileScreen/HWProfileViewController.m; sourceTree = "<group>"; };
 		CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWProfileViewController.xib; path = ProfileScreen/HWProfileViewController.xib; sourceTree = "<group>"; };
+		CE8D89591B9D92D200749577 /* HWZendesk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWZendesk.h; path = zendesk/HWZendesk.h; sourceTree = "<group>"; };
+		CE8D895A1B9D92D200749577 /* HWZendesk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWZendesk.m; path = zendesk/HWZendesk.m; sourceTree = "<group>"; };
 		CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewItemViewController.xib; sourceTree = "<group>"; };
 		CE954C621B750C800063A719 /* HWOrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWOrderItem.h; sourceTree = "<group>"; };
 		CE954C631B750C800063A719 /* HWOrderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWOrderItem.m; sourceTree = "<group>"; };
@@ -1067,9 +1064,6 @@
 				7CF0F97F1B455DB30041F58F /* ViewItemViewController.h */,
 				7CF0F9801B455DB30041F58F /* ViewItemViewController.m */,
 				CE954C601B74B4DB0063A719 /* ViewItemViewController.xib */,
-				7CDBCE931B4BF63B00CDA5FD /* smile.png */,
-				7CDBCE8F1B4BF39200CDA5FD /* mot2.png */,
-				7CDBCE901B4BF39200CDA5FD /* mot3.png */,
 			);
 			name = ViewItem;
 			path = TutorialScreen;
@@ -1440,6 +1434,8 @@
 			children = (
 				CE6611B51B97164B001E199C /* HWZendeskViewController.h */,
 				CE6611B61B97164B001E199C /* HWZendeskViewController.m */,
+				CE8D89591B9D92D200749577 /* HWZendesk.h */,
+				CE8D895A1B9D92D200749577 /* HWZendesk.m */,
 			);
 			name = zenDesk;
 			sourceTree = "<group>";
@@ -1674,7 +1670,6 @@
 				CE1546471B7DF6DE0082ACF4 /* HWAddNewAddressCell.xib in Resources */,
 				3A2AE3CF1B6120DD00806D59 /* TagCell.xib in Resources */,
 				3A61FBD41B386FA60004A24B /* SignIn.xib in Resources */,
-				7CDBCE941B4BF63B00CDA5FD /* smile.png in Resources */,
 				CEBAAFA41B6DF44800AFE4C6 /* HWPaymentOptionCell.xib in Resources */,
 				CE59094C1B5E9DD600DAA7FF /* HWCommentViewController.xib in Resources */,
 				7CE778CA1B3D51E600856A36 /* Icon-60@3x.png in Resources */,
@@ -1695,8 +1690,11 @@
 				CE1546351B7CD0970082ACF4 /* HWPaymentBalanceCell.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
 				3AA5CC011B862AC6006093D0 /* holidayMode.xib in Resources */,
+
+ 
 				7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */,
 				3A359D6B1B98699200A0F2E1 /* FindFriendViewController.xib in Resources */,
+
 				7CF22CA41B4FCE18002CF7ED /* open-sans.bold.ttf in Resources */,
 				3AF8320F1B70E73100CC750D /* ManageBankView.xib in Resources */,
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
@@ -1720,7 +1718,6 @@
 				CE15469E1B84AC0A0082ACF4 /* HWMyBalanceView.xib in Resources */,
 				3A359D5D1B969F2F00A0F2E1 /* PushNotificationSettings.xib in Resources */,
 				3A8366781B30668E00208FC5 /* Login.xib in Resources */,
-				7CDBCE911B4BF39200CDA5FD /* mot2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1784,6 +1781,7 @@
 				C35A4C6C1B3036D0002E1F26 /* HWUser.m in Sources */,
 				CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */,
 				3A8F7DC81B8C982F000940CF /* HWNotification.m in Sources */,
+				CE8D895B1B9D92D200749577 /* HWZendesk.m in Sources */,
 				C35A4C671B3035D2002E1F26 /* UIColor+Extensions.m in Sources */,
 				3AA575CA1B9DAB88003E0CDE /* HWFeedBackViewController.m in Sources */,
 				3A359D6F1B987E4800A0F2E1 /* PushNotificationManager.m in Sources */,
@@ -2018,14 +2016,14 @@
 			baseConfigurationReference = 6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82fe7923-d4d8-41fa-96ee-9c78c1a0977d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2035,14 +2033,14 @@
 			baseConfigurationReference = 3906BE83E13D87CC9252A21D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82fe7923-d4d8-41fa-96ee-9c78c1a0977d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

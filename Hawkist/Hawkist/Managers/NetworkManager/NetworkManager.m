@@ -38,9 +38,6 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 
 @implementation NetworkManager
 
-
-
-
 #pragma mark -
 #pragma mark Lifecycle
 
@@ -2811,8 +2808,97 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 }
 
 
+#pragma mark - Block a user
 
-- (void) changedNotificationSetting:(NSString*)key orAll:(BOOL)all
+-(void) blockUserWithId:(NSString*) userId
+           successBlock:(void(^)()) successBlock
+           failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSDictionary *params = @{@"user_id":userId};
+    
+    [self.networkDecorator POST:@"user/blocking"
+                     parameters:params
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                failureBlock(responseError);
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            failureBlock(serverError);
+                            
+                        }];
+}
+
+
+-(void) unblockUserWithId:(NSString*)userId
+             successBlock:(void(^)())successBlock
+             failureBlock:(void(^)(NSError *error)) failureBlock {
+    
+    NSString *URLString = [NSString stringWithFormat:@"user/blocking?user_id=%@",userId];
+    [self.networkDecorator DELETE:URLString
+                       parameters:nil
+                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              
+                              if([responseObject[@"status"] integerValue] != 0)
+                              {
+                                  NSError *responseError = [self errorWithResponseObject:responseObject];
+                                  failureBlock(responseError);
+                                  return;
+                              }
+                              successBlock();
+                              
+                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              
+                              NSError *serverError = [self serverErrorWithError:error];
+                              failureBlock(serverError);
+                          }];
+}
+
+
+
+-(void)reportUserWithUserId:(NSString*)userId
+           withReportReason:(NSInteger)reasonReport
+               successBlock:(void(^)())successBlock
+               failureBlock:(void(^)(NSError *error))failureBlock {
+    
+    NSDictionary *params = @{@"user_id": userId,
+                             @"reason_id": @(reasonReport) };
+    
+    [self.networkDecorator POST:@"user/reporting"
+                     parameters:params
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                failureBlock(responseError);
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            failureBlock(serverError);
+                        }];
+ 
+
+}
+
+- (void) changedNotificationSetting:( NSString *)key
+                              orAll:(BOOL)all
                        successBlock:(void(^)(HWPushNotificationSettings* settings))successBlock
                        failureBlock:(void(^)(NSError *error)) failureBlock
 {
@@ -2885,9 +2971,99 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            NSError *serverError = [self serverErrorWithError:error];
                            failureBlock(serverError);
                        }];
+ 
     
 }
 
+
+-(void) reportListingWithItemId:(NSString*)itemId
+                     withReason:(NSInteger)reason
+                   successBlock:(void(^)()) successBlock
+                   failureBlock:(void(^)(NSError *error)) failureBlock{
+    
+    
+    NSDictionary *params = @{@"listing_id": itemId,
+                             @"reason_id": @(reason)};
+    
+    
+    [self.networkDecorator POST:@"listing/reporting"
+                     parameters:params
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            
+                            if([responseObject[@"status"] integerValue] != 0)
+                            {
+                                NSError *responseError = [self errorWithResponseObject:responseObject];
+                                failureBlock(responseError);
+                                return;
+                            }
+                            
+                            successBlock();
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            
+                            NSError *serverError = [self serverErrorWithError:error];
+                            failureBlock(serverError);
+                            
+                        }];
+    
+    
+}
+
+
+
+//ItemViolatesTermsOfUse = 0
+//PriceIsMisleading = 1
+//ItemIsRegulatedOrIllegal = 2
+//
+//Report some listing
+//
+//Url: 'listing/reporting'
+//Method: 'POST'
+
+
+//Data:
+//
+//{
+//    "listing_id": LISTING_TO_REPORT_ID,
+//    "reason_id": REPORT_REASON_ID
+//}
+//
+//Response Success:
+//
+//{
+//    'status': 0
+//}
+//
+//Response Failure:
+//
+//{
+//    'status': 1,
+//    'message': '',          — Error message text
+//    'title': ''          — Error message title
+//}
+
+
+-(void) jwt{
+    
+  AFHTTPRequestOperationManager*   operationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString: @"http://hawkist.zendesk.com/"]];
+     
+    NSDictionary *param = @{@"user_token":@"ddsd" };
+    
+    
+//    [operationManager POST:@""
+//                     parameters:nil//param
+//                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                       
+//                       NSLog(@"%@", responseObject);
+//                       
+//                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                       
+//                       NSLog(@"%@", error);
+//                   }];
+    
+   
+}
 
 
 @end
