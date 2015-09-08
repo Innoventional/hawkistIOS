@@ -189,7 +189,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     self.navigationView.delegate = self;
     self.navigationView.title.text = @"Profile";
     
-    if(![self.userId isEqualToString:[AppEngine shared].user.id]) {
+    if(![self.userId isEqual:[AppEngine shared].user.id]) {
         
         [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
     }

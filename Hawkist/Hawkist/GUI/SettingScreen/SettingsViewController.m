@@ -59,7 +59,7 @@
     
     HWUser* userInfo = [AppEngine shared].user;
 
-    self.starRatingControl.rating = [userInfo.rating integerValue];
+    self.starRatingControl.rating = [userInfo.rating integerValue]; 
     self.userName.text = userInfo.username;
     self.raiting.text = [NSString stringWithFormat:@"%@ (%@ reviews)", userInfo.rating,userInfo.review];
     
@@ -68,6 +68,20 @@
     self.avatar.layer.masksToBounds = YES;
 }
 
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    HWUser* userInfo = [AppEngine shared].user;
+    
+    self.starRatingControl.rating = [userInfo.rating integerValue];
+    self.userName.text = userInfo.username;
+    self.raiting.text = [NSString stringWithFormat:@"%@ (%@ reviews)", userInfo.rating,userInfo.review];
+    
+    [self avatarInit:userInfo.avatar];
+    self.avatar.layer.cornerRadius = self.avatar.frame.size.width /2;
+    self.avatar.layer.masksToBounds = YES;
+
+}
 
 - (void) avatarInit:(NSString*)url
 {

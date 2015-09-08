@@ -41,9 +41,21 @@
 @property (nonatomic, strong) NotificationScreenViewController* notificationVC;
 @property (nonatomic,strong) ManageBankViewController* bankVC;
 
+@property (nonatomic, assign) BOOL isSold;
+
 @end
 
 @implementation HWTapBarViewController
+
+- (instancetype) initWithSold
+{
+    self = [self init];
+    if (self)
+    {
+        self.isSold = YES;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,6 +86,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBadge) name:@"updateNotification" object:nil];
     
     [HWZendesk shared].navigationController = self.navigationController;
+    
+    if (self.isSold)
+    {
+        [self setSold];
+    }
 
 }
 
@@ -117,6 +134,14 @@
     [((HWTapBarView*)self.contentView) selectButton:number];
 }
 
+- (void) setSold
+{
+    [AppEngine shared].isShowSold = YES;
+    [self itemAtIndexSelected:2];
+    [((HWTapBarView*)self.contentView) selectButton:2];
+    
+    
+}
 
 #pragma mark -
 #pragma mark HWTapBarViewDelegate

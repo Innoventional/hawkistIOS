@@ -418,12 +418,14 @@
         [self hideHud];
         if (self.userId)
         {
+
             [self.navigationController popViewControllerAnimated:YES];
         }
         else
         {
             [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
         }
+        [AppEngine shared].user = user;
         
     } failureBlock:^(NSError *error) {
         [self hideHud];
@@ -442,6 +444,8 @@
             {
                 [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
             }
+            [AppEngine shared].user = user;
+
         } failureBlock:^(NSError *error) {
             [self hideHud];
             //[self showAlert:error];

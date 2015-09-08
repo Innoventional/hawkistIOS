@@ -94,6 +94,13 @@
     
     self.groupArray = @[self.highPriorityNotifications, self.lowPriorityNotifications,self.enableNotifications];
     
+    if (!enabled) {
+        self.highPriorityNotifications = nil;
+        self.lowPriorityNotifications = nil;
+        self.nameForGroupArray = nil;
+        self.groupArray = @[self.enableNotifications];
+    }
+    
     [self.tableView reloadData];
 }
 

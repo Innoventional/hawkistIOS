@@ -364,7 +364,7 @@
         case 1:
         {
             HWTapBarViewController* vc = (HWTapBarViewController*)[self.navigationController visibleViewController];
-            [vc setTab:1];
+            [vc setSold];
 
             break;
         }
