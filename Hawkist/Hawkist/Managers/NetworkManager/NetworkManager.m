@@ -2998,6 +2998,8 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                                 return;
                             }
                             
+                            successBlock();
+                            
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             
                             NSError *serverError = [self serverErrorWithError:error];
