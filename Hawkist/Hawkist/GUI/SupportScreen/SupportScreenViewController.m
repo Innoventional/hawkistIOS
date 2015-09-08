@@ -10,6 +10,7 @@
 #import "HWAccountMenuCell.h"
 #import "WebViewController.h"
 #import "HWZendesk.h"
+#import "AboutViewController.h"
 
 
 @interface SupportScreenViewController () <UITableViewDataSource,UITableViewDelegate>
