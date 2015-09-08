@@ -178,7 +178,8 @@
         case 3:
         {
             NSLog(@"More about");
-            
+            AboutViewController *vc = [[AboutViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         default:
@@ -212,19 +213,22 @@
         case 0:
         {
             NSLog(@"Refund Policy");
+            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204470212" andTitle:@"Refund Policy"];
+            [self.navigationController pushViewController:vc animated:YES];
+
             break;
         }
         case 1:
         {
             NSLog(@"Privacy");
-            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"http://www.hawkist.com/privacy-policy/" andTitle:@"Privacy policy"];
+            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204465182-Privacy-Policy" andTitle:@"Privacy policy"];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         case 2:
         {
             NSLog(@"Terms");
-            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"http://www.hawkist.com/terms-conditions/" andTitle:@"Terms and Conditions"];
+            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/sections/201400962-Terms-of-Use" andTitle:@"Terms and Conditions"];
             [self.navigationController pushViewController:vc animated:YES];
             
 

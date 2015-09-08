@@ -69,15 +69,16 @@
 - (IBAction)btnWantToSell:(id)sender {
     
     [[NetworkManager shared]check_selling_ability:^{
-        
-        if ([[AppEngine shared].user.facebook_id isEqualToString:@""])
-        {
-            [[[UIAlertView alloc]initWithTitle:@"Facebook Account Required" message:@"In order to sell on Hawkist, you must connect a Facebook account to verify your identity." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil] show];
-        }
-        else
-            [self.navigationController pushViewController: [[SellAnItemViewController alloc] init]  animated: YES];
+    
+        [self.navigationController pushViewController: [[SellAnItemViewController alloc] init]  animated: YES];
         
     } failureBlock:^(NSError *error) {
+        
+        if (error.code == 2)
+        {
+             [[[UIAlertView alloc]initWithTitle:@"Facebook Account Required" message:@"In order to sell on Hawkist, you must connect a Facebook account to verify your identity." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil] show];
+            return;
+        }
         
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
@@ -95,7 +96,7 @@
                     [self hideHud];
                 });
                 
-        [self.navigationController pushViewController: [[SellAnItemViewController alloc] init]  animated: YES];
+                [self btnWantToSell:self];
                 
             } failureBlock:^(NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{

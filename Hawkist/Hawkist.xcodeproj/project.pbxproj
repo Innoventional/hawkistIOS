@@ -68,6 +68,9 @@
 		3AA575CC1B9DAB88003E0CDE /* HWFeedBackSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA575C21B9DAB88003E0CDE /* HWFeedBackSegmentView.m */; };
 		3AA575CD1B9DAB88003E0CDE /* HWLeaveFeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA575C41B9DAB88003E0CDE /* HWLeaveFeedbackView.xib */; };
 		3AA575CE1B9DAB88003E0CDE /* HWLeaveFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA575C61B9DAB88003E0CDE /* HWLeaveFeedbackViewController.m */; };
+		3AA575D01B9E291D003E0CDE /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA575CF1B9E291D003E0CDE /* LoadingView.xib */; };
+		3AA575D31B9E4BBE003E0CDE /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA575D21B9E4BBE003E0CDE /* AboutView.xib */; };
+		3AA575D61B9E4EFB003E0CDE /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA575D51B9E4EFB003E0CDE /* AboutViewController.m */; };
 		3AA5CBED1B8495D9006093D0 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBEC1B8495D9006093D0 /* AddAddressViewController.m */; };
 		3AA5CBF01B84B393006093D0 /* HWAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBEF1B84B393006093D0 /* HWAddress.m */; };
 		3AA5CBF31B84BBE1006093D0 /* ManageAddress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA5CBF21B84BBE1006093D0 /* ManageAddress.xib */; };
@@ -327,6 +330,10 @@
 		3AA575C41B9DAB88003E0CDE /* HWLeaveFeedbackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWLeaveFeedbackView.xib; sourceTree = "<group>"; };
 		3AA575C51B9DAB88003E0CDE /* HWLeaveFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWLeaveFeedbackViewController.h; sourceTree = "<group>"; };
 		3AA575C61B9DAB88003E0CDE /* HWLeaveFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWLeaveFeedbackViewController.m; sourceTree = "<group>"; };
+		3AA575CF1B9E291D003E0CDE /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		3AA575D21B9E4BBE003E0CDE /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutView.xib; path = AboutHawkist/AboutView.xib; sourceTree = "<group>"; };
+		3AA575D41B9E4EFB003E0CDE /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = AboutHawkist/AboutViewController.h; sourceTree = "<group>"; };
+		3AA575D51B9E4EFB003E0CDE /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = AboutHawkist/AboutViewController.m; sourceTree = "<group>"; };
 		3AA5CBEB1B8495D9006093D0 /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddAddressViewController.h; path = AddAdress/AddAddressViewController.h; sourceTree = "<group>"; };
 		3AA5CBEC1B8495D9006093D0 /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAddressViewController.m; path = AddAdress/AddAddressViewController.m; sourceTree = "<group>"; };
 		3AA5CBEE1B84B393006093D0 /* HWAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWAddress.h; sourceTree = "<group>"; };
@@ -751,6 +758,7 @@
 				3A8366761B30668E00208FC5 /* LoginViewController.m */,
 				3A61FBCB1B3813620004A24B /* CustomAlertView.xib */,
 				3A61FBCD1B383B6A0004A24B /* CodeAlertView.xib */,
+				3AA575CF1B9E291D003E0CDE /* LoadingView.xib */,
 			);
 			path = LoginVIew;
 			sourceTree = "<group>";
@@ -872,6 +880,16 @@
 				3AA575C61B9DAB88003E0CDE /* HWLeaveFeedbackViewController.m */,
 			);
 			path = LeaveFeedBackScreen;
+			sourceTree = "<group>";
+		};
+		3AA575D11B9E4B95003E0CDE /* AboutHawkist */ = {
+			isa = PBXGroup;
+			children = (
+				3AA575D21B9E4BBE003E0CDE /* AboutView.xib */,
+				3AA575D41B9E4EFB003E0CDE /* AboutViewController.h */,
+				3AA575D51B9E4EFB003E0CDE /* AboutViewController.m */,
+			);
+			name = AboutHawkist;
 			sourceTree = "<group>";
 		};
 		3AA5CBF11B84BBAE006093D0 /* Manage Address */ = {
@@ -1191,6 +1209,7 @@
 		C35A4C3F1B2F340F002E1F26 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				3AA575D11B9E4B95003E0CDE /* AboutHawkist */,
 				3AA575B61B9DAB88003E0CDE /* FeedBack */,
 				CE6611B41B971527001E199C /* zenDesk */,
 				3A359D531B96905800A0F2E1 /* PushNotificationSettings */,
@@ -1626,7 +1645,9 @@
 				3A6901631B78E6BA00B618B8 /* FeedToShort.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */,
+				3AA575D01B9E291D003E0CDE /* LoadingView.xib in Resources */,
 				3AA5CBFE1B84DB14006093D0 /* defaultAddress.xib in Resources */,
+				3AA575D31B9E4BBE003E0CDE /* AboutView.xib in Resources */,
 				CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
 				3A2AE3CA1B6111A000806D59 /* AddTagsView.xib in Resources */,
@@ -1781,6 +1802,7 @@
 				CEAF10601B8AFB8900E5029E /* HWMyBalanceYourDetailsView.m in Sources */,
 				CEBAAF9A1B6C9C5C00AFE4C6 /* HWAccountMenuDataModel.m in Sources */,
 				3A359D5B1B969DA200A0F2E1 /* NotificationSettingsModel.m in Sources */,
+				3AA575D61B9E4EFB003E0CDE /* AboutViewController.m in Sources */,
 				CE5909561B5FA8C800DAA7FF /* HWCommentCell.m in Sources */,
 				3A6901541B72DF1500B618B8 /* PersonalisationViewController.m in Sources */,
 				3A968E221B4A8542005AA347 /* ChoiceTableViewController.m in Sources */,

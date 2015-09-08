@@ -148,7 +148,7 @@
 
     successBlock:^{
         NSLog(@"added");
-        [self showAlertWithTitle:@"Your Offer Confirmed" Message:@"Your offered price for this listing has been sent to the seller."];
+        [self showAlertWithTitle:@"Your Offer Confirmed" Message:@"We have sent your offer to the seller."];
                 [self hideHud];
         [self.navigationController popViewControllerAnimated:YES];
     }
