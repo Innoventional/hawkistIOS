@@ -41,8 +41,9 @@
                                        zendeskUrl: ZENDESK_URL
                                          ClientId: ZENDESK_CLIENT_ID
                                         onSuccess:^() {
+                                         
                                             
-                                        
+                                            
                                             [self jwtIdentify];
                                             NSLog(@"Yes");
                                             
@@ -58,9 +59,14 @@
 }
 
 
+ 
+
 - (void) jwtIdentify {
     
-        ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE0NDE2NDQxMzksInN1YmRvbWFpbiI6Imhhd2tpc3QiLCJqdGkiOiIxNDAiLCJuYW1lIjoiU2VyZ2V5X0JvcmljaGV2IiwiZW1haWwiOiJnaWdla0BtYWlsLnJ1In0.ospV9pK2bxnU2fzIkwbeXOq_YdomyVvMSlRGgMHM6ts"];
+    
+    [[NetworkManager shared] jwt];
+    
+        ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQm9iIiwiYWxnIjoiSFMyNTYiLCJqdGkiOjIxLCJpYXQiOjE0NDE3MDYxNDEsInR5cCI6IkpXVCIsImVtYWlsIjoiZ2lnZWtAbWFpbC5ydSJ9.mGzCGgKhFIfrOd7QPSLTqHewFFq6bN7BF4mHf2ATDBk"];
 
         [ZDKConfig instance].userIdentity = jwtUserIdentity;
     
@@ -133,6 +139,8 @@
 
     
          [ZDKRequests showRequestListWithNavController:self.navigationController];
+    
+
 }
 
 
