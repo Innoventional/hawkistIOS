@@ -247,6 +247,9 @@
                     [self hideHud];
                 });
                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+            self.signIn.hidden = NO;
+            self.loading.hidden = YES;
+            self.loginView.hidden = YES;
         }];
         
     } failure:^(NSError *error) {
@@ -302,6 +305,9 @@
         failureBlock:^(NSError *error) {
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         [self hideHud];
+        self.signIn.hidden = NO;
+        self.loading.hidden = YES;
+        self.loginView.hidden = YES;
     }];
 }
 
