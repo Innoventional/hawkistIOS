@@ -233,6 +233,7 @@
     sender.backgroundColor = [UIColor colorWithRed:244./255. green:242./255. blue:248./255. alpha:1];
     [sender setTitleColor:[UIColor colorWithRed:99./255. green:99./255. blue:95./255. alpha:1]
                  forState:UIControlStateNormal];
+    sender.selectedImage.backgroundColor = [UIColor colorWithRed:255./255. green:193./255. blue:7./255. alpha:1];
     
     
     
