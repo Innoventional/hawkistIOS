@@ -116,6 +116,8 @@
         case 6: case 8:
         {
             HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUserID:userInfo[@"user_id"]];
+            
+            
             [navigationController pushViewController:vc animated:YES];
             
             break;

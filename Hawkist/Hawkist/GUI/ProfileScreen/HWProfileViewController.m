@@ -81,6 +81,8 @@
 @property (nonatomic, strong) UIActionSheet *reportBlockActionSheet;
 @property (nonatomic, strong) UIActionSheet *resonReportActionSheet;
 
+@property (nonatomic, assign) NSInteger selectedReasonReport;
+
 
 @property (nonatomic, assign) BOOL isBlocked;
 
@@ -189,7 +191,11 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     self.navigationView.delegate = self;
     self.navigationView.title.text = @"Profile";
     
-    if(![self.userId isEqual:[AppEngine shared].user.id]) {
+    NSString *userid = [AppEngine shared].user.id;
+    
+    NSString *userID = self.userId;
+    
+    if(![userID isEqual:userid]) {
         
         [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
     }
@@ -769,37 +775,47 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     else if ([actionSheet isEqual:self.resonReportActionSheet]) {
         
-        switch (buttonIndex) {
-            case 0:
-                
-                [self reportWithReason:@"Abusive behaviour" withReasonCode:HWReasonReportAbusiveBehaviour];
-                NSLog(@"Abusive behaviour");
-                break;
-            case 1:
-                
-                [self reportWithReason:@"Inappropriate content" withReasonCode:HWReasonReportInappropriateContent];
-                 NSLog(@"Inappropriate content");
-                break;
-            case 2:
-                
-                [self reportWithReason:@"Impersonation or hate account" withReasonCode:HWReasonReportImpersonationOrHateAccount];
-                 NSLog(@"Impersonation or hate account");
-                break;
-            case 3:
-                
-                [self reportWithReason:@"Selling fake items" withReasonCode:HWReasonReportSellingFakeItems];
-                 NSLog(@"Selling fake items");
-                break;
-            case 4:
-                
-                [self reportWithReason:@"Underaged account" withReasonCode:HWReasonReportUnderagedAccount];
-                 NSLog(@"Underaged account");
-                break;
-                
-                
-            default:
-                break;
-        }
+        
+        [[[UIAlertView alloc] initWithTitle:@"Are you sure?"
+                                    message:@"Please confirm you want to report this user."
+                                   delegate:self
+                          cancelButtonTitle:@"Cancel"
+                          otherButtonTitles:@"OK", nil] show];
+        
+        
+        self.selectedReasonReport = buttonIndex;
+
+//        switch (buttonIndex) {
+//            case 0:
+//                
+//                [self reportWithReason:@"Abusive behaviour" withReasonCode:HWReasonReportAbusiveBehaviour];
+//                NSLog(@"Abusive behaviour");
+//                break;
+//            case 1:
+//                
+//                [self reportWithReason:@"Inappropriate content" withReasonCode:HWReasonReportInappropriateContent];
+//                 NSLog(@"Inappropriate content");
+//                break;
+//            case 2:
+//                
+//                [self reportWithReason:@"Impersonation or hate account" withReasonCode:HWReasonReportImpersonationOrHateAccount];
+//                 NSLog(@"Impersonation or hate account");
+//                break;
+//            case 3:
+//                
+//                [self reportWithReason:@"Selling fake items" withReasonCode:HWReasonReportSellingFakeItems];
+//                 NSLog(@"Selling fake items");
+//                break;
+//            case 4:
+//                
+//                [self reportWithReason:@"Underaged account" withReasonCode:HWReasonReportUnderagedAccount];
+//                 NSLog(@"Underaged account");
+//                break;
+//                
+//                
+//            default:
+//                break;
+//        }
         
         
     }
@@ -879,11 +895,44 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self.navigationController popViewControllerAnimated:YES];
+   
+    if(buttonIndex == 0) return;
+    
+    switch (self.selectedReasonReport) {
+        case 0:
+            
+            [self reportWithReason:@"Abusive behaviour" withReasonCode:HWReasonReportAbusiveBehaviour];
+            NSLog(@"Abusive behaviour");
+            break;
+        case 1:
+            
+            [self reportWithReason:@"Inappropriate content" withReasonCode:HWReasonReportInappropriateContent];
+            NSLog(@"Inappropriate content");
+            break;
+        case 2:
+            
+            [self reportWithReason:@"Impersonation or hate account" withReasonCode:HWReasonReportImpersonationOrHateAccount];
+            NSLog(@"Impersonation or hate account");
+            break;
+        case 3:
+            
+            [self reportWithReason:@"Selling fake items" withReasonCode:HWReasonReportSellingFakeItems];
+            NSLog(@"Selling fake items");
+            break;
+        case 4:
+            
+            [self reportWithReason:@"Underaged account" withReasonCode:HWReasonReportUnderagedAccount];
+            NSLog(@"Underaged account");
+            break;
+            
+            
+        default:
+            break;
+    }
     
 }
 
-#pragma mark - 
+#pragma mark -
 #pragma mark HWFollowInProfileCellDelegate
 
 - (void) transitionToUserProfileWithUserId:(NSString*)userId

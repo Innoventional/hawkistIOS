@@ -407,6 +407,16 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
                failureBlock:(void(^)(NSError *error))failureBlock;
 
 
+
+-(void) reportListingWithItemId:(NSString*)itemId
+                     withReason:(NSInteger)reason
+                   successBlock:(void(^)()) successBlock
+                   failureBlock:(void(^)(NSError *error)) failureBlock;
+
+
+
+
+
 #pragma mark -
 #pragma mark Find Friend
 

@@ -66,18 +66,17 @@
     
     [[NetworkManager shared] jwt];
     
-        ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQm9iIiwiYWxnIjoiSFMyNTYiLCJqdGkiOjIxLCJpYXQiOjE0NDE3MDYxNDEsInR5cCI6IkpXVCIsImVtYWlsIjoiZ2lnZWtAbWFpbC5ydSJ9.mGzCGgKhFIfrOd7QPSLTqHewFFq6bN7BF4mHf2ATDBk"];
-
-        [ZDKConfig instance].userIdentity = jwtUserIdentity;
+//        ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQm9iIiwiYWxnIjoiSFMyNTYiLCJqdGkiOjIxLCJpYXQiOjE0NDE3MDYxNDEsInR5cCI6IkpXVCIsImVtYWlsIjoiZ2lnZWtAbWFpbC5ydSJ9.mGzCGgKhFIfrOd7QPSLTqHewFFq6bN7BF4mHf2ATDBk"];
+//
+//     [ZDKConfig instance].userIdentity = jwtUserIdentity;
     
-//    ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
-//    //
-//    identity.name = @"John Example";
-//    identity.email = @"john@example.com";
+    ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
+    //
+    identity.name = [AppEngine shared].user.username;
+    identity.email = [AppEngine shared].user.email;
     
     
-    
-   // [ZDKConfig instance].userIdentity = identity;
+   [ZDKConfig instance].userIdentity = identity;
 }
 
 
@@ -106,19 +105,19 @@
      [ZDKRequests showRequestCreationWithNavController:self.navigationController];
 }
 
--(void)setConfigTi{
-    
-    [ZDKRequests configure:^(ZDKAccount *account, ZDKRequestCreationConfig *requestCreationConfig) {
-        
-        // specify any additional tags desired
-        requestCreationConfig.tags = [NSArray arrayWithObjects:@"report", nil];
-        requestCreationConfig.subject = @"newwwwweeen";
-        // add some custom content to the description
-        requestCreationConfig.additionalRequestInfo = @"\n<-----SSS----->";
-        
-    }];
-    
-}
+//-(void)setConfigTi{
+//    
+//    [ZDKRequests configure:^(ZDKAccount *account, ZDKRequestCreationConfig *requestCreationConfig) {
+//        
+//        // specify any additional tags desired
+//        requestCreationConfig.tags = [NSArray arrayWithObjects:@"report", nil];
+//        requestCreationConfig.subject = @"newwwwweeen";
+//        // add some custom content to the description
+//        requestCreationConfig.additionalRequestInfo = @"\n<-----SSS----->";
+//        
+//    }];
+//    
+//}
 
 
 

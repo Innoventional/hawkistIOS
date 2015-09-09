@@ -29,6 +29,7 @@
 #import "TextViewWithDetectedWord.h"
 #import "NSMutableAttributedString+PaintText.h"
 #import "FeedScreenViewController.h"
+#import "HWZendesk.h"
 
 
 @interface ViewItemViewController () <MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,MyItemCellDelegate, TextViewWithDetectedWordDelegate>
@@ -60,12 +61,20 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
 
+@property (nonatomic, assign) NSInteger selectBut;
+
 @end
 
 
 
 @implementation ViewItemViewController
 
+typedef NS_ENUM(NSInteger, HWReportItemReason) {
+    
+    HWReportItemReasonItemViolatesTermsOfUse = 0,
+    HWReportItemReasonPriceIsMisleading = 1,
+    HWReportItemReasonItemIsRegulatedOrIllegal = 2
+};
 
 #pragma mark - UIViewController
 
@@ -670,6 +679,7 @@
     [self setImages];
 }
 
+
 - (IBAction)buyButton:(id)sender {
 
     if ([self.item.status isEqualToString:@"2"])
@@ -770,6 +780,7 @@
 //}
 
 
+#pragma mark
 
 #pragma mark -Action Sheet
 
@@ -841,28 +852,59 @@
         
     } else if ([actionSheet isEqual:self.reasonReportActionSheet]) {
         
-        switch (buttonIndex) {
-            case 0:
-                
-                NSLog(@"Item violates Terms of Use");
-                break;
-            case 1:
-                
-                NSLog(@"Item is regulated, counterfeit or illegal");
-                break;
-            case 2:
-                
-                NSLog(@"Price is misleading");
-                break;
- 
-            default:
-                break;
-        }
+        [[[UIAlertView alloc] initWithTitle:@"Are you sure?"
+                                    message:@"Please confirm you want to report this listing."
+                                   delegate:self
+                          cancelButtonTitle:@"Cancel"
+                          otherButtonTitles:@"OK", nil]show];
+        
+        self.selectBut = buttonIndex;
+        
+//        switch (buttonIndex) {
+//            case 0:
+//                
+//                [self reportItemWithReason:HWReportItemReasonItemViolatesTermsOfUse withReasonStr:@"Item violates Terms of Use"];
+//                
+//                NSLog(@"Item violates Terms of Use");
+//                break;
+//            case 1:
+//                
+//                [self reportItemWithReason:HWReportItemReasonItemIsRegulatedOrIllegal withReasonStr:@"Item is regulated, counterfeit or illegal"];
+//                
+//                NSLog(@"Item is regulated, counterfeit or illegal");
+//                break;
+//            case 2:
+//                
+//                [self reportItemWithReason:HWReportItemReasonPriceIsMisleading withReasonStr:@"Price is misleading"];
+//                
+//                NSLog(@"Price is misleading");
+//                break;
+// 
+//            default:
+//                break;
+//        }
 
     }
 
 }
 
+
+-(void) reportItemWithReason:(HWReportItemReason)reason withReasonStr:(NSString*) reasonStr {
+    
+    NSString *descriptionStr = [NSString stringWithFormat:@"Reason: %@\nUser: %@\nUserID: %@",reasonStr, self.item.user.username, self.item.user.id];
+    
+    [[NetworkManager shared] reportListingWithItemId:self.item.id
+                                        withReason:reason successBlock:^{
+                                            
+                                            
+                                            [[HWZendesk shared] createTicketWithSubject:@"Listing reported" withDescription:descriptionStr];
+                                            
+                                        } failureBlock:^(NSError *error) {
+                                            
+                                            [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                            
+                                        }];
+}
 
 -(void)setupReportAlert {
     
@@ -876,6 +918,11 @@
                                                                              nil];
     [self.reasonReportActionSheet showInView:self.view];
 }
+
+
+
+
+
 
 #pragma mark -
 #pragma mark Share
@@ -1011,6 +1058,7 @@
             NSLog(@"Result: not sent");
             break;
     }
+    
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -1034,6 +1082,41 @@
                 
 }
 
+
+#pragma mark - UIAlertViewDelegate
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if(buttonIndex == 0) return;
+    
+    switch (self.selectBut) {
+                        case 0:
+            
+                            [self reportItemWithReason:HWReportItemReasonItemViolatesTermsOfUse withReasonStr:@"Item violates Terms of Use"];
+            
+                            NSLog(@"Item violates Terms of Use");
+                            break;
+                        case 1:
+            
+                            [self reportItemWithReason:HWReportItemReasonItemIsRegulatedOrIllegal withReasonStr:@"Item is regulated, counterfeit or illegal"];
+            
+                            NSLog(@"Item is regulated, counterfeit or illegal");
+                            break;
+                        case 2:
+            
+                            [self reportItemWithReason:HWReportItemReasonPriceIsMisleading withReasonStr:@"Price is misleading"];
+                            
+                            NSLog(@"Price is misleading");
+                            break;
+             
+                        default:
+                            break;
+                    }
+
+    
+    
+}
 
 
 @end
