@@ -30,8 +30,10 @@
 @property (nonatomic, strong) NSString<Optional>* review;
 @property (nonatomic, strong) NSString<Optional>* response_time;
 @property (nonatomic, strong) NSString<Optional>* following;
-
 @property (nonatomic, strong) NSString<Optional>* blocked;
+
+
+@property (nonatomic, strong) NSString<Optional>* blocked_me;
 
 
 

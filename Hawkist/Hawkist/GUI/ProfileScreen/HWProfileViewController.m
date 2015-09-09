@@ -88,6 +88,7 @@
 
 @property (nonatomic, weak) IBOutlet UIButton *feedbackBut;
 
+@property (nonatomic, assign) BOOL nePOnatnoChto;
 
 @end
 
@@ -136,20 +137,38 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         [self.networkManager getUserProfileWithUserID:userID
                                             successBlock:^(HWUser *user) {
                                                 
-                                                self.user = user;
-                                                [self updateUser];
+                                              
+                                                
+                                                if(!user) {
+                                                    
+                                                   [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                                               message:@"You have been blocked by this user."
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"OK"
+                                                                     otherButtonTitles: nil]show];
+                                                    
+                                                    [self.navigationController popViewControllerAnimated:YES];
+                                                    
+                                                    
+                                                    
+                                                } else {
+                                                
+                                                      self.user = user;
+                                                      [self updateUser];
+                                                      [self setArrayForSegmentViewWithUserID:userID];
+                                                    
+                                                    self.nePOnatnoChto = YES;
+                                                }
                                                 
                                             } failureBlock:^(NSError *error) {
-
-                                                NSString *errorMessage = [NSString stringWithFormat:@"%@", error.localizedDescription];
-       
+ 
                                                 [[[UIAlertView alloc]initWithTitle:@"Error!"
-                                                                           message:errorMessage
+                                                                           message:error.localizedDescription
                                                                           delegate:self
                                                                  cancelButtonTitle:@"Ok!"
-                                                                 otherButtonTitles: nil] show];
+                                                                 otherButtonTitles: nil] show];// }
                                         }];
-        [self setArrayForSegmentViewWithUserID:userID];
+      
     
     }
     
@@ -176,7 +195,11 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     self.feedbackBut.enabled = YES;
      self.isInternetConnectionAlertShowed = NO;
-    if(!self.lastPressSegmentButton){
+    
+    
+    if (!self.nePOnatnoChto) return;
+    
+    if(!self.lastPressSegmentButton   ){
         
         [self segmentButtonAction:self.itemsButton];
         

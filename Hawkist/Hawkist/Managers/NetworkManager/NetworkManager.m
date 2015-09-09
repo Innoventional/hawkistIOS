@@ -255,8 +255,19 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
     [self.networkDecorator GET: URLString
                     parameters: nil
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          
+                           
+                           if([responseObject[@"status"] integerValue] == 3) {
+                               
+                               successBlock(nil);
+                               return ;
+                           }
+                           
+                           
                            if([responseObject[@"status"] integerValue] != 0)
                            {
+                
+                               
                                NSError *responseError = [self errorWithResponseObject:responseObject];
                                
                                failureBlock(responseError);
@@ -278,6 +289,8 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
                            
                        }
                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           
                            
                            NSError *serverError = [self serverErrorWithError:error];
                            
