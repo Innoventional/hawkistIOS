@@ -188,11 +188,6 @@
     return theView;
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
-//{
-//
-//        return  CGSizeMake(50, 1000);
-//}
 
 
 - (void)refresh
@@ -205,19 +200,8 @@
         
         if ([AppEngine shared].tags.count == tags.count)
         {
-            
-//            CustomizationViewController* vc = [[CustomizationViewController alloc]init];
-//            vc.avaliableTags = tags;
-//            
-//            [self.navigationController pushViewController:vc animated:NO];
-            
             [self.collectionView setContentOffset:CGPointMake(0, 500)];
-            
         }
-        
-    
-        
-        
         
             __weak typeof(self) weakSelf = self;
             [self.addTags addTagsToView:tags successBlock:^{
@@ -252,18 +236,11 @@
         
     }];
     
-    
-    
-    
-   
-    
 }
-
-
 
 - (void)clickToPersonalisation
 {
-    PersonalisationViewController* vc = [[PersonalisationViewController alloc]init];
+    PersonalisationViewController* vc = [[PersonalisationViewController alloc]initWithTags:[AppEngine shared].tags];
     [self.navigationController pushViewController:vc animated:NO];
 }
 
