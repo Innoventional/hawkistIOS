@@ -98,6 +98,10 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
          successBlock:(void(^)(void)) successBlock
          failureBlock: (void (^)(NSError* error)) failureBlock;
 
+- (void) removeTagFromFeed:(NSString*)tagId
+              successBlock:(void(^)(void)) successBlock
+              failureBlock: (void (^)(NSError* error)) failureBlock;
+
 #pragma mark -
 #pragma mark Items
 
@@ -318,7 +322,9 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
 #pragma mark -
 #pragma mark Notification
 
-- (void) getNotifications:(void(^)(NSArray *notifications))successBlock
+
+- (void) getNotifications:(NSInteger)page
+              succesBlock:(void(^)(NSArray *notifications))successBlock
              failureBlock:(void(^)(NSError *error)) failureBlock;
 
 - (void) getNotificationsCount:(void(^)(NSString *count))successBlock

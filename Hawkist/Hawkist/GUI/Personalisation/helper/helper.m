@@ -21,7 +21,7 @@
         
         HWTag* currentTag = (HWTag*)[tags objectAtIndex:i];
         
-        TagCell* cell = [[TagCell alloc]initWithName:currentTag.name tagId:currentTag.id isEnabled:NO];
+        TagCell* cell = [[TagCell alloc]initWithName:currentTag.name tagId:currentTag.id isEnabled:![currentTag.available boolValue]];
         
         [tempArrayForTags addObject:cell];
     }

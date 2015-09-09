@@ -266,8 +266,19 @@
             break;
         }
         case 3:{
-            PersonalisationViewController* vc = [[PersonalisationViewController alloc]initWithTags:[AppEngine shared].tags];
-            [self.navigationController pushViewController:vc animated:NO];
+            [self showHud];
+            [[NetworkManager shared]getAvaliableTags:^(NSMutableArray *tags) {
+                [self hideHud];
+                PersonalisationViewController* vc = [[PersonalisationViewController alloc]initWithTags:tags];
+                [self.navigationController pushViewController:vc animated:NO];
+
+                
+            } failureBlock:^(NSError *error) {
+                [self hideHud];
+                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                
+            }];
+            
             break;
         }
         default:

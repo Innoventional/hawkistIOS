@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol emptyTableViewCell <NSObject>
+
+- (void) setEnable:(NSString*)tagId;
+- (void) setDisable:(NSString*)tagId;
+
+@end
 
 @interface emptyTableViewCell : UITableViewCell
+@property (nonatomic,strong) id <emptyTableViewCell> delegate;
 - (void) setup:(NSMutableArray*) tagCells;
 @end

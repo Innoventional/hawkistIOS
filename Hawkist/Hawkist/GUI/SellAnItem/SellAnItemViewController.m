@@ -545,7 +545,6 @@
     
     currentItem.id = self.itemId;
     
-
     [netManager createOrUpdateItem:currentItem successBlock:^(HWItem *item) {
         
         NSLog(@"--------------------------Ok");
@@ -560,6 +559,7 @@
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }
      ];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
