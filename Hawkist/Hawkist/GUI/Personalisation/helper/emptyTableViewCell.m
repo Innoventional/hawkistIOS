@@ -45,8 +45,23 @@
     
 }
 
-- (void)clicked:(NSString *)tagId
+- (void)clicked:(NSString *)tagId withStatus:(BOOL)status
 {
+    if (status)
+    {
+    if (self.delegate && [self.delegate respondsToSelector: @selector(setEnable:)])
+        [self.delegate setEnable:tagId];
+        NSLog(@"Send On");
+        
+        
+    }
+    else
+        
+    {
+        if (self.delegate && [self.delegate respondsToSelector: @selector(setDisable:)])
+            [self.delegate setDisable:tagId];
+        NSLog(@"SendOff");
+    }
 
 }
 

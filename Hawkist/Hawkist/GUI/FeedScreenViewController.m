@@ -198,13 +198,23 @@
     
     [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
         
-        if ([AppEngine shared].tags.count == tags.count)
+        NSMutableArray *avaliableTags = [NSMutableArray array];
+        
+        
+        
+        for (HWTag* t in tags) {
+            if ([t.available boolValue])
+                [avaliableTags addObject:t];
+        }
+        
+        
+        if ([AppEngine shared].tags.count == avaliableTags.count)
         {
             [self.collectionView setContentOffset:CGPointMake(0, 500)];
         }
         
             __weak typeof(self) weakSelf = self;
-            [self.addTags addTagsToView:tags successBlock:^{
+            [self.addTags addTagsToView:avaliableTags successBlock:^{
                 
                 
                 [[NetworkManager shared] getItemsWithPage: 1 searchString: weakSelf.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
@@ -240,8 +250,18 @@
 
 - (void)clickToPersonalisation
 {
-    PersonalisationViewController* vc = [[PersonalisationViewController alloc]initWithTags:[AppEngine shared].tags];
-    [self.navigationController pushViewController:vc animated:NO];
+    [self showHud];
+    [[NetworkManager shared]getAvaliableTags:^(NSMutableArray *tags) {
+        [self hideHud];
+        PersonalisationViewController* vc = [[PersonalisationViewController alloc]initWithTags:tags];
+        [self.navigationController pushViewController:vc animated:NO];
+        
+        
+    } failureBlock:^(NSError *error) {
+        [self hideHud];
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        
+    }];
 }
 
 

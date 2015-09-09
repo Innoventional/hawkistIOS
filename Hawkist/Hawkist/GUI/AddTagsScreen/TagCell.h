@@ -11,7 +11,7 @@
 @protocol TagCell <NSObject>
 
 
-- (void) clicked:(NSString*)tagId;
+- (void) clicked:(NSString*)tagId withStatus:(BOOL)status;
 
 @end
 

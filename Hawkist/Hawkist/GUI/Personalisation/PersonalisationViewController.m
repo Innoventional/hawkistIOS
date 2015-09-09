@@ -11,7 +11,7 @@
 #import "helper.h"
 #import "emptyTableViewCell.h"
 
-@interface PersonalisationViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface PersonalisationViewController () <UITableViewDataSource,UITableViewDelegate,emptyTableViewCell>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray* matrix;
 @end
@@ -76,10 +76,37 @@
     
     [cell setup:tagCells];
     
+    cell.delegate = self;
     
 
     
     return cell;
+}
+
+- (void)setDisable:(NSString *)tagId
+{
+
+    [[NetworkManager shared]removeTagFromFeed:tagId successBlock:^{
+        
+        
+    } failureBlock:^(NSError *error) {
+        
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        
+    }];
+    
+}
+
+- (void) setEnable:(NSString *)tagId
+{
+        [[NetworkManager shared]addTagToFeed:tagId successBlock:^{
+            
+            
+        } failureBlock:^(NSError *error) {
+            
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+            
+        }];
 }
 
 @end

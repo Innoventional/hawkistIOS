@@ -98,6 +98,10 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
          successBlock:(void(^)(void)) successBlock
          failureBlock: (void (^)(NSError* error)) failureBlock;
 
+- (void) removeTagFromFeed:(NSString*)tagId
+              successBlock:(void(^)(void)) successBlock
+              failureBlock: (void (^)(NSError* error)) failureBlock;
+
 #pragma mark -
 #pragma mark Items
 

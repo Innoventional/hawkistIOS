@@ -547,6 +547,71 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
     [params setObject:param forKey:@"tags"];
     
     
+    [self.networkDecorator POST: @"user/metatags"
+                    parameters: params
+     
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               
+                               failureBlock(responseError);
+                               
+                               return;
+                           }
+                           
+                           successBlock();
+                           
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           
+                           failureBlock(serverError);
+                           
+                       }];
+}
+
+
+//Url: 'user/metatags'
+//Method: 'DELETE'
+//
+//Data:
+//
+//{
+//    "tags": [
+//             {
+//                 "type": VALID_TAG_TYPE,         - int
+//                 "id": int
+//             },
+//             .
+//             .
+//             .
+//             {
+//                 "type": VALID_TAG_TYPE,
+//                 "id": int
+//             }
+//             ]
+//}
+
+- (void) removeTagFromFeed:(NSString*)tagId
+         successBlock:(void(^)(void)) successBlock
+         failureBlock: (void (^)(NSError* error)) failureBlock
+{
+    
+    NSMutableDictionary* tag = [NSMutableDictionary dictionary];
+    
+    [tag setObject: tagId forKey: @"id"];
+    [tag setObject: @"0" forKey: @"type"];
+    
+    NSMutableArray* param = [NSMutableArray array];
+    [param addObject:tag];
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    
+    [params setObject:param forKey:@"tags"];
+    
+    
     [self.networkDecorator PUT: @"user/metatags"
                     parameters: params
      

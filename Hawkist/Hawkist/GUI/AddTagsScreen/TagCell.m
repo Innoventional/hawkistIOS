@@ -24,6 +24,7 @@
     {
         UIView* sub = [[[NSBundle mainBundle]loadNibNamed:@"TagCell" owner:self options:nil]firstObject];
         
+        self.on = enabled;
         
         CGSize myStringSize = [self getSize:text];
         
@@ -85,8 +86,8 @@
     
     [self setupWithStatus:self.on];
     
-    if (self.delegate && [self.delegate respondsToSelector: @selector(clicked:)])
-        [self.delegate clicked:self.tagId];
+    if (self.delegate && [self.delegate respondsToSelector: @selector(clicked:withStatus:)])
+        [self.delegate clicked:self.tagId withStatus:self.on];
     
     NSLog(@"%@",self.tagId);
 }

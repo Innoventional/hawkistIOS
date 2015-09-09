@@ -30,7 +30,7 @@
 }
 
 
-- (void) clicked:(NSString *)tagId
+- (void) clicked:(NSString *)tagId withStatus:(BOOL)status
 {
     
     [[NetworkManager shared]addTagToFeed:tagId successBlock:^{
