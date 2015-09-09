@@ -423,7 +423,9 @@
         }
         else
         {
-            [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+            CustomizationViewController* vc = [[CustomizationViewController alloc]init];
+            vc.avaliableTags = [AppEngine shared].tags;
+            [self.navigationController pushViewController:vc animated:NO];
         }
         [AppEngine shared].user = user;
         
@@ -442,7 +444,9 @@
             }
             else
             {
-                [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+                CustomizationViewController* vc = [[CustomizationViewController alloc]init];
+                vc.avaliableTags = [AppEngine shared].tags;
+                [self.navigationController pushViewController:vc animated:NO];
             }
             [AppEngine shared].user = user;
 

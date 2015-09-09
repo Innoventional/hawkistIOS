@@ -203,18 +203,20 @@
     
     [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
         
-//        if ([AppEngine shared].tags.count == tags.count)
-//        {
-//            
+        if ([AppEngine shared].tags.count == tags.count)
+        {
+            
 //            CustomizationViewController* vc = [[CustomizationViewController alloc]init];
 //            vc.avaliableTags = tags;
 //            
 //            [self.navigationController pushViewController:vc animated:NO];
-//            
-//        }
+            
+            [self.collectionView setContentOffset:CGPointMake(0, 500)];
+            
+        }
         
-        //else
-        //{
+    
+        
         
         
             __weak typeof(self) weakSelf = self;
@@ -243,7 +245,7 @@
                 
                 
             }];
-        //}
+        
     } failureBlock:^(NSError *error) {
         [self.refreshControl endRefreshing];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];

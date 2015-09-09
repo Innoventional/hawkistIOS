@@ -11,7 +11,7 @@
 
 @interface CustomizationViewController : HWBaseViewController <UIScrollViewDelegate>
 
-- (instancetype)initWithTags:(NSMutableArray*)tags;
+
 @property (strong, nonatomic) IBOutlet UIView *viewTop;
 
 @property (strong, nonatomic) UIScrollView *scrollView;
