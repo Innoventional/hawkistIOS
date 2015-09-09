@@ -94,19 +94,10 @@
         
         if( orderItems.status == 1) {
             
-//            self.feedbackButton.hidden = NO;
-//            self.feedbackButton.enabled = NO;
-//            [self.feedbackButton setTitle:@"Feedback sent" forState:UIControlStateNormal];
-//            [self.feedbackButton setImage:nil forState:UIControlStateNormal];
+         } else if( orderItems.status == 2) {
             
-        } else if( orderItems.status == 2) {
-            
-//           
-//            self.feedbackButton.enabled = YES;
-//            [self.feedbackButton setTitle:@"Feedback sent" forState:UIControlStateNormal];
-//            [self.feedbackButton setImage:[UIImage imageNamed:@"fff"] forState:UIControlStateNormal];
-            
-        }
+ 
+         }
         
 
         
@@ -122,16 +113,16 @@
     
     switch (orderItems.status) {
         case 1:
-            self.receivedButton.backgroundColor = [UIColor colorWithRed:1 green:200./255. blue:200./255 alpha:1];
-            self.hasIssueButton.backgroundColor = [UIColor whiteColor];
+            
+            self.hasIssueButton.acceptImage.image = [UIImage imageNamed:@"Grey2"];
             [self.statusImView setImage:[UIImage imageNamed:@"received"]];
             
            
             break;
             
         case 2:
-            self.hasIssueButton.backgroundColor = [UIColor colorWithRed:1 green:200./255. blue:200./255 alpha:1];
-            self.receivedButton.backgroundColor = [UIColor whiteColor];
+            
+            self.receivedButton.acceptImage.image = [UIImage imageNamed:@"Grey1"];
             [self.statusImView setImage:[UIImage imageNamed:@"hasissue"]];
             
             
@@ -139,31 +130,31 @@
             break;
         default:
             [self.statusImView setImage:[UIImage imageNamed:@""]];
-            [self setFeedBackHiden:YES];
+           // [self setFeedBackHiden:YES];
             break;
     }
 }
 
 
--(void)setFeedBackHiden:(BOOL)isHiden {
-    
-    
-    NSString *str;
-    UIImage *im;
-    
-    if(isHiden){
-        im = [UIImage imageNamed:@"fff"];
-        str = @"Leave Feedback";
-    } else {
-        im = nil;
-        str = @"Feedback sent";
-    }
-                    self.feedbackButton.hidden = isHiden;
-                    self.feedbackButton.enabled = isHiden;
-                    [self.feedbackButton setTitle:@"Feedback sent" forState:UIControlStateNormal];
-                    [self.feedbackButton setImage:im forState:UIControlStateNormal];
-    
-}
+//-(void)setFeedBackHiden:(BOOL)isHiden {
+//    
+//    
+//    NSString *str;
+//    UIImage *im;
+//    
+//    if(isHiden){
+//        im = [UIImage imageNamed:@"fff"];
+//        str = @"Leave Feedback";
+//    } else {
+//        im = nil;
+//        str = @"Feedback sent";
+//    }
+//                    self.feedbackButton.hidden = isHiden;
+//                    self.feedbackButton.enabled = isHiden;
+//                    [self.feedbackButton setTitle:@"Feedback sent" forState:UIControlStateNormal];
+//                    [self.feedbackButton setImage:im forState:UIControlStateNormal];
+//    
+//}
 
 #pragma mark -
 #pragma mark Actions

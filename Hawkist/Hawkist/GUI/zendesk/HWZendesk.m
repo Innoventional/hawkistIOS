@@ -41,9 +41,7 @@
                                        zendeskUrl: ZENDESK_URL
                                          ClientId: ZENDESK_CLIENT_ID
                                         onSuccess:^() {
-                                         
-                                            
-                                            
+                                          
                                             [self jwtIdentify];
                                             NSLog(@"Yes");
                                             
@@ -59,6 +57,21 @@
 }
 
 
+
+BOOL setStatusBarColor(UIColor *color)
+{
+    id statusBarWindow = [[UIApplication sharedApplication] valueForKey:@"statusBarWindow"];
+    id statusBar = [statusBarWindow valueForKey:@"statusBar"];
+    
+    SEL setForegroundColor_sel = NSSelectorFromString(@"setForegroundColor:");
+    if([statusBar respondsToSelector:setForegroundColor_sel]) {
+        // iOS 7+
+        [statusBar performSelector:setForegroundColor_sel withObject:color];
+        return YES;
+    } else {
+        return NO;
+    }
+}
  
 
 - (void) jwtIdentify {
@@ -66,8 +79,11 @@
     
     [[NetworkManager shared] jwt];
     
-//        ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQm9iX0thcmJvYiIsImFsZyI6IkhTMjU2IiwianRpIjo1MCwiaWF0IjoxNDQxNzIyODQ5LCJ0eXAiOiJKV1QiLCJlbWFpbCI6ImdpZ2VrQG1haWwucnUifQ.JAKi4qD1QCXl1V9jpyNppF5qRR32TYCb7_KNU-EDys8"];
-//
+//        ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQm9iX0thcmJvYiIsImFsZyI6IkhTMjU2IiwianRpIjozNywiaWF0IjoxNDQxNzkyNzM5LCJ0eXAiOiJKV1QiLCJlbWFpbCI6ImdpZ2VrQG1haWwucnUifQ.6G99vMzjU5FuH4NIxSrlJWgo-1g-mEdiIAW_E06-hDQ"];
+//    
+//    
+//    mzU2MTIc7g
+
 //     [ZDKConfig instance].userIdentity = jwtUserIdentity;
     
     ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
@@ -75,7 +91,6 @@
     identity.name = [AppEngine shared].user.username;
     identity.email = [AppEngine shared].user.email;
     identity.externalId = [AppEngine shared].user.id;
-
     
    [ZDKConfig instance].userIdentity = identity;
 }
@@ -91,55 +106,56 @@
     UIColor *allColor = [UIColor whiteColor];
     
     NSDictionary *allAttrib = @{ NSForegroundColorAttributeName : allColor, NSFontAttributeName : allFont  };
-    //self.navigationController.navigationBar.titleTextAttributes = allAttrib;
-    
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBarTintColor:[UIColor color256RGBWithRed:48 green:173 blue:148]];
     [[UINavigationBar appearance] setTitleTextAttributes:allAttrib];
    
- 
+   
     
 }
 
 -(void) newTiket {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [self jwtIdentify];
      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
      [ZDKRequests showRequestCreationWithNavController:self.navigationController];
+     setStatusBarColor([UIColor whiteColor]);
 }
 
-//-(void)setConfigTi{
-//    
-//    [ZDKRequests configure:^(ZDKAccount *account, ZDKRequestCreationConfig *requestCreationConfig) {
-//        
-//        // specify any additional tags desired
-//        requestCreationConfig.tags = [NSArray arrayWithObjects:@"report", nil];
-//        requestCreationConfig.subject = @"newwwwweeen";
-//        // add some custom content to the description
-//        requestCreationConfig.additionalRequestInfo = @"\n<-----SSS----->";
-//        
-//    }];
-//    
-//}
-
-
-
 -(void) supportView {
- [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-   
+    
+[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[ZDKSupportView appearance] setSearchBarStyle:@(UIBarStyleDefault)];
  
-    
-    
-    
     [ZDKHelpCenter showHelpCenterWithNavController:self.navigationController];
-  }
+ 
+    setStatusBarColor([UIColor whiteColor]);
+}
+
+
+-(void) whyWeNeedThis{
+    
+    ZDKHelpCenterArticle *art = [[ZDKHelpCenterArticle alloc] init];
+   NSArray *labels = @[@"ww"];
+  //  art.title = @"How Do I Get My Account Balance Into My Bank Account?";
+   // art.locale = @"https://hawkist.zendesk.com/hc/en-us/articles/204424051";
+   // art.sid = @"204424051";
+    [ZDKHelpCenter showHelpCenterWithNavController:self.navigationController filterByArticleLabels:@[labels]];
+    
+    
+//https://hawkist.zendesk.com/hc/en-us/articles/204424051
+    
+}
 
 -(void) myTiket {
-//    [ZDKRequests showRequestCreationWithNavController:self.navigationController];
-//     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+ 
     
          [ZDKRequests showRequestListWithNavController:self.navigationController];
-    
+    setStatusBarColor([UIColor whiteColor]);
+
 
 }
 

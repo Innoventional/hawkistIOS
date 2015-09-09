@@ -852,6 +852,8 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
         
     } else if ([actionSheet isEqual:self.reasonReportActionSheet]) {
         
+        if (buttonIndex == 3) return;
+        
         [[[UIAlertView alloc] initWithTitle:@"Are you sure?"
                                     message:@"Please confirm you want to report this listing."
                                    delegate:self

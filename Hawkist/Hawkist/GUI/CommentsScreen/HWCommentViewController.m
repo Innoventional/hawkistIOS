@@ -247,7 +247,6 @@
 }
 
 
- 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -280,10 +279,12 @@
     {
         cell.rightUtilityButtons = [self rightButtons];
         cell.backgroundColor = [UIColor colorWithRed:1 green:231./255. blue:231./255 alpha:1];
+        cell.swipeImage.hidden = NO;
     } else {
         
         cell.rightUtilityButtons = nil;
         cell.backgroundColor = [UIColor whiteColor];
+        cell.swipeImage.hidden = YES;
     }
     if(indexPath.row == self.commentsArray.count -1)
     {

@@ -80,10 +80,14 @@
                             <constraint firstAttribute="height" constant="1" id="ASE-iE-uVk"/>
                         </constraints>
                     </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe" translatesAutoresizingMaskIntoConstraints="NO" id="K7J-pe-bOz">
+                        <rect key="frame" x="296" y="25" width="16" height="14"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ncd-3a-J82" firstAttribute="leading" secondItem="S08-00-PrI" secondAttribute="leading" id="1KO-ur-vAT"/>
                     <constraint firstItem="d7J-ZB-Rs7" firstAttribute="top" secondItem="jun-kg-JuE" secondAttribute="bottom" constant="-18" id="1sl-VK-oeR"/>
+                    <constraint firstItem="ncd-3a-J82" firstAttribute="top" secondItem="K7J-pe-bOz" secondAttribute="bottom" constant="9" id="3F4-F2-Azh"/>
                     <constraint firstAttribute="bottomMargin" secondItem="jun-kg-JuE" secondAttribute="bottom" constant="-8" id="6Yd-oE-2pu"/>
                     <constraint firstItem="UYT-Qu-FWN" firstAttribute="height" secondItem="zfN-Yd-Huv" secondAttribute="height" constant="15" id="A4X-Yg-4Mr"/>
                     <constraint firstItem="zfN-Yd-Huv" firstAttribute="top" secondItem="UYT-Qu-FWN" secondAttribute="bottom" constant="-21" id="ASg-g5-KYA"/>
@@ -101,6 +105,7 @@
                     <constraint firstItem="eeF-Tg-aA0" firstAttribute="leading" secondItem="S08-00-PrI" secondAttribute="leadingMargin" constant="43" id="iKM-ob-YI1"/>
                     <constraint firstItem="jun-kg-JuE" firstAttribute="top" secondItem="S08-00-PrI" secondAttribute="topMargin" constant="-4" id="jNO-xm-abq"/>
                     <constraint firstItem="d7J-ZB-Rs7" firstAttribute="leading" secondItem="S08-00-PrI" secondAttribute="leadingMargin" constant="56" id="pyx-0q-uJg"/>
+                    <constraint firstAttribute="trailing" secondItem="K7J-pe-bOz" secondAttribute="trailing" constant="8" id="pzp-Sx-Gzq"/>
                     <constraint firstItem="zfN-Yd-Huv" firstAttribute="leading" secondItem="S08-00-PrI" secondAttribute="leadingMargin" constant="5" id="qgJ-5o-Fr1"/>
                     <constraint firstItem="jun-kg-JuE" firstAttribute="trailing" secondItem="S08-00-PrI" secondAttribute="trailingMargin" id="x8e-Gz-aLl"/>
                 </constraints>
@@ -116,6 +121,7 @@
             <connections>
                 <outlet property="avatarImageView" destination="zfN-Yd-Huv" id="416-ee-qdZ"/>
                 <outlet property="heightTextView" destination="byM-c6-LCR" id="DBe-QV-Idr"/>
+                <outlet property="swipeImage" destination="K7J-pe-bOz" id="cn3-ZB-Vmn"/>
                 <outlet property="textView" destination="jun-kg-JuE" id="sBI-Kt-hVu"/>
                 <outlet property="timeLabel" destination="d7J-ZB-Rs7" id="U8q-Ij-Hqx"/>
             </connections>
@@ -125,5 +131,6 @@
     <resources>
         <image name="comment_time" width="8" height="8"/>
         <image name="line" width="1" height="1"/>
+        <image name="swipe" width="16" height="14"/>
     </resources>
 </document>

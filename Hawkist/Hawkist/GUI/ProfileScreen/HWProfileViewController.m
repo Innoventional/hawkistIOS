@@ -86,6 +86,9 @@
 
 @property (nonatomic, assign) BOOL isBlocked;
 
+@property (nonatomic, weak) IBOutlet UIButton *feedbackBut;
+
+
 @end
 
 
@@ -171,6 +174,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 {
     [super viewDidAppear:animated];
     
+    self.feedbackBut.enabled = YES;
      self.isInternetConnectionAlertShowed = NO;
     if(!self.lastPressSegmentButton){
         
@@ -203,6 +207,14 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
    
 }
 
+-(void) viewDidDisappear:(BOOL)animated {
+    
+    [super viewDidDisappear:animated];
+    
+    
+    
+    [self hideHud];
+}
 
 #pragma mark -
 #pragma mark commonInit
@@ -438,7 +450,10 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 #pragma mark -
 #pragma mark Actions
 
-- (IBAction)feedbackAction:(id)sender {
+- (IBAction)feedbackAction:(UIButton*)sender {
+    
+    sender.enabled = NO;
+    [self showHud];
     
     HWFeedBackViewController *vc = [[HWFeedBackViewController alloc] initWithUserID:self.userId];
     [self.navigationController pushViewController:vc animated:YES];
@@ -752,6 +767,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     if([actionSheet isEqual:self.reportBlockActionSheet])
     {
+        if(buttonIndex == 2) return;
+        
         switch (buttonIndex) {
             case 0:
                 
@@ -775,7 +792,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     else if ([actionSheet isEqual:self.resonReportActionSheet]) {
         
-        
+        if (buttonIndex == 5) return;
         [[[UIAlertView alloc] initWithTitle:@"Are you sure?"
                                     message:@"Please confirm you want to report this user."
                                    delegate:self
@@ -785,38 +802,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         
         self.selectedReasonReport = buttonIndex;
 
-//        switch (buttonIndex) {
-//            case 0:
-//                
-//                [self reportWithReason:@"Abusive behaviour" withReasonCode:HWReasonReportAbusiveBehaviour];
-//                NSLog(@"Abusive behaviour");
-//                break;
-//            case 1:
-//                
-//                [self reportWithReason:@"Inappropriate content" withReasonCode:HWReasonReportInappropriateContent];
-//                 NSLog(@"Inappropriate content");
-//                break;
-//            case 2:
-//                
-//                [self reportWithReason:@"Impersonation or hate account" withReasonCode:HWReasonReportImpersonationOrHateAccount];
-//                 NSLog(@"Impersonation or hate account");
-//                break;
-//            case 3:
-//                
-//                [self reportWithReason:@"Selling fake items" withReasonCode:HWReasonReportSellingFakeItems];
-//                 NSLog(@"Selling fake items");
-//                break;
-//            case 4:
-//                
-//                [self reportWithReason:@"Underaged account" withReasonCode:HWReasonReportUnderagedAccount];
-//                 NSLog(@"Underaged account");
-//                break;
-//                
-//                
-//            default:
-//                break;
-//        }
-        
+ 
         
     }
     

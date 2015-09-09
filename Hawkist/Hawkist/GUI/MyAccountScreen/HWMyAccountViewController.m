@@ -91,8 +91,8 @@
                                 ];
     
     self.sharingAndNitificationsArray = @[
-                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"MobileNot" withTitle:@"Mobile Notifications"],
-                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"EmailNot" withTitle:@"Email Notifications"]
+                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"MobileNot" withTitle:@"Mobile Notifications"]//,
+//                                 [[HWAccountMenuDataModel alloc]initWithImageName:@"EmailNot" withTitle:@"Email Notifications"]
                                  ];
     self.privacyArray = @[@"SingOut"];
 

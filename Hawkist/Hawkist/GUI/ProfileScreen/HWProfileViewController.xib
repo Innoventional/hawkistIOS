@@ -27,6 +27,7 @@
             <connections>
                 <outlet property="aboutButton" destination="bG6-zT-ZHN" id="uvF-E9-RJG"/>
                 <outlet property="avatarView" destination="2U4-iU-E4C" id="amx-wr-iX1"/>
+                <outlet property="feedbackBut" destination="2E7-kc-EDe" id="gn8-kE-JzG"/>
                 <outlet property="followUnfollowButton" destination="ovl-2s-eoB" id="6N5-LX-7h6"/>
                 <outlet property="followersButton" destination="XrF-5R-JCf" id="PPd-5J-hUd"/>
                 <outlet property="followingButton" destination="PJ4-L1-9RI" id="wXN-bM-qyr"/>

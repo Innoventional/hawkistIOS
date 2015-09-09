@@ -19,6 +19,7 @@
 
 #import "PushNotificationManager.h"
 #import "HWPaymentViewController.h"
+#import <ZendeskSDK/ZendeskSDK.h>
 
 
 @interface AppDelegate ()
@@ -31,6 +32,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    
+    [ZDKDispatcher setDebugLogging:YES];
+    
+    [ZDKLogger enable:YES];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];

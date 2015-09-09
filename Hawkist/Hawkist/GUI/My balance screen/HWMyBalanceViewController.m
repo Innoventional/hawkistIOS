@@ -20,7 +20,7 @@
 #import "HWBankAccountAddress.h"
 #import "CDatePickerViewEx.h"
 #import "UIColor+Extensions.h"
-
+#import "HWZendesk.h"
 
 
 @interface HWMyBalanceViewController () <HWMyBalanceYourDetailsViewDelegate,HWMyBalanceBankAccAddressViewDelegate,HWBankAccountViewDelegate, NavigationViewDelegate>
@@ -230,13 +230,6 @@
     NSLog(@"checkMyBalanceAction");
 }
 
-- (IBAction)rrr:(id)sender {
-    
-    
-    self.contentConstreint.constant -= self.warningMessageConstraint.constant;
-    self.warningMessageConstraint.constant = 0;
-    
-}
 
 #pragma mark - NavigationViewDelegate 
 
@@ -306,6 +299,7 @@
 
 - (void) whyWeNeedThisButton:(UIButton*) sender {
     
+    [[HWZendesk shared] whyWeNeedThis];
 }
 
 

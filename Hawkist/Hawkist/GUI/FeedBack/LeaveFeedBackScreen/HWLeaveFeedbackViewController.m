@@ -118,13 +118,15 @@
     [self setupSegmentConfig];
     [self selectedButton:self.positiveButton];
     self.navigationView.delegate = self;
-    self.positiveButton.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
+    self.positiveButton.selectedImage.backgroundColor = [UIColor colorWithRed:107./255. green:189./255. blue:111./255. alpha:1];
     self.textView.placeholder = @"Positive! Write feedback...";
      self.typeFeedback = HWFeedbackPositive;
+    self.indicatorFeedback.backgroundColor = [UIColor colorWithRed:107./255. green:189./255. blue:111./255. alpha:1];
+    
     
     [self.textView becomeFirstResponder];
     
-    
+  
 }
 
 - (void)didReceiveMemoryWarning {
@@ -138,7 +140,7 @@
 - (IBAction)positiveButAction:(HWFedbackSegmentButton *)sender {
     
     [self selectedButton:sender];
-    sender.selectedImage.backgroundColor = [UIColor colorWithRed:52./255. green:185./255. blue:165./255. alpha:1];
+    sender.selectedImage.backgroundColor = [UIColor colorWithRed:107./255. green:189./255. blue:111./255. alpha:1];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
     self.textView.placeholder = @"Positive! Write feedback...";
     self.typeFeedback = HWFeedbackPositive;
@@ -147,7 +149,7 @@
 - (IBAction)neutralButAction:(HWFedbackSegmentButton *)sender {
     
     [self selectedButton:sender];
-    sender.selectedImage.backgroundColor = [UIColor color256RGBWithRed:233 green:215 blue:60];;//[UIColor yellowColor];
+    sender.selectedImage.backgroundColor = [UIColor color256RGBWithRed:255 green:193 blue:7];;//[UIColor yellowColor];
     self.indicatorFeedback.backgroundColor = sender.selectedImage.backgroundColor;
     self.textView.placeholder = @"Neutral! Write feedback...";
     self.typeFeedback = HWFeedbackNeutral;

@@ -23,6 +23,8 @@
 @property (nonatomic, weak) id <HWCommentCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet TextViewWithDetectedWord *textView;
 
+@property (nonatomic, weak) IBOutlet UIImageView *swipeImage;
+
 
 + (CGFloat) heightWith:(NSString*)text;
 - (void) setCellWithComment:(HWComment*)comment;

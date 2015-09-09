@@ -20,4 +20,6 @@
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 
+-(void) whyWeNeedThis;
+
 @end

@@ -83,7 +83,7 @@
                     <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                     <subviews>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWX-gn-NOJ" userLabel="contentView">
-                            <rect key="frame" x="0.0" y="-213" width="320" height="1379"/>
+                            <rect key="frame" x="0.0" y="-306" width="320" height="1379"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-rO-rC4" userLabel="Balance view" customClass="HWMyBalanceCurrentBalanceView">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
@@ -184,9 +184,9 @@
                                             <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You will be able to withdraw funds and see order details after filling in the fields below." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SC-3g-yGw">
-                                            <rect key="frame" x="99" y="53" width="213" height="61"/>
-                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You will be able to view the account balance and withdraw funds after filling in the fields below." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SC-3g-yGw">
+                                            <rect key="frame" x="99" y="48" width="213" height="74"/>
+                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                             <color key="textColor" red="0.37647058823529411" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -195,7 +195,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="124" id="5ll-RY-Rh3"/>
                                         <constraint firstAttribute="trailing" secondItem="dZJ-Mv-TqB" secondAttribute="trailing" id="BGb-SK-T2r"/>
-                                        <constraint firstItem="6SC-3g-yGw" firstAttribute="top" secondItem="TNy-oh-Yku" secondAttribute="bottom" constant="3" id="K2z-Vf-czt"/>
+                                        <constraint firstItem="6SC-3g-yGw" firstAttribute="top" secondItem="TNy-oh-Yku" secondAttribute="bottom" constant="-2" id="K2z-Vf-czt"/>
                                         <constraint firstAttribute="trailing" secondItem="6SC-3g-yGw" secondAttribute="trailing" constant="8" id="PtQ-9a-DAJ"/>
                                         <constraint firstItem="dZJ-Mv-TqB" firstAttribute="top" secondItem="t7H-XI-7K6" secondAttribute="top" id="W6n-NR-hfi"/>
                                         <constraint firstItem="bmY-TM-dB5" firstAttribute="leading" secondItem="t7H-XI-7K6" secondAttribute="leading" constant="32" id="fZZ-sZ-nPD"/>
@@ -203,7 +203,7 @@
                                         <constraint firstItem="6SC-3g-yGw" firstAttribute="leading" secondItem="bmY-TM-dB5" secondAttribute="trailing" constant="22" id="npJ-Cn-Gus"/>
                                         <constraint firstItem="bmY-TM-dB5" firstAttribute="top" secondItem="dZJ-Mv-TqB" secondAttribute="bottom" constant="24" id="o2i-Kn-x3Q"/>
                                         <constraint firstItem="dZJ-Mv-TqB" firstAttribute="leading" secondItem="t7H-XI-7K6" secondAttribute="leading" id="ofz-7a-oAB"/>
-                                        <constraint firstAttribute="bottom" secondItem="6SC-3g-yGw" secondAttribute="bottom" constant="10" id="xxo-cs-Ce1"/>
+                                        <constraint firstAttribute="bottom" secondItem="6SC-3g-yGw" secondAttribute="bottom" constant="2" id="xxo-cs-Ce1"/>
                                         <constraint firstItem="TNy-oh-Yku" firstAttribute="top" secondItem="dZJ-Mv-TqB" secondAttribute="bottom" constant="8" id="zZJ-UX-dNX"/>
                                     </constraints>
                                 </view>
