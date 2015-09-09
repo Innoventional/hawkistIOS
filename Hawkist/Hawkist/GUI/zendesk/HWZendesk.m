@@ -66,15 +66,16 @@
     
     [[NetworkManager shared] jwt];
     
-//        ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQm9iIiwiYWxnIjoiSFMyNTYiLCJqdGkiOjIxLCJpYXQiOjE0NDE3MDYxNDEsInR5cCI6IkpXVCIsImVtYWlsIjoiZ2lnZWtAbWFpbC5ydSJ9.mGzCGgKhFIfrOd7QPSLTqHewFFq6bN7BF4mHf2ATDBk"];
+//        ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQm9iX0thcmJvYiIsImFsZyI6IkhTMjU2IiwianRpIjo1MCwiaWF0IjoxNDQxNzIyODQ5LCJ0eXAiOiJKV1QiLCJlbWFpbCI6ImdpZ2VrQG1haWwucnUifQ.JAKi4qD1QCXl1V9jpyNppF5qRR32TYCb7_KNU-EDys8"];
 //
 //     [ZDKConfig instance].userIdentity = jwtUserIdentity;
     
     ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
-    //
+    
     identity.name = [AppEngine shared].user.username;
     identity.email = [AppEngine shared].user.email;
-    
+    identity.externalId = [AppEngine shared].user.id;
+
     
    [ZDKConfig instance].userIdentity = identity;
 }
