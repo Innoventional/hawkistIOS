@@ -2220,12 +2220,17 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 #pragma mark -
 #pragma mark Notification
 
-- (void) getNotifications:(void(^)(NSArray *notifications))successBlock
+- (void) getNotifications:(NSInteger)page
+              succesBlock:(void(^)(NSArray *notifications))successBlock
              failureBlock:(void(^)(NSError *error)) failureBlock
 {
-    
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    if(page < 1)
+        page = 1;
+    [params setObject: @(page) forKey: @"p"];
+
     [self.networkDecorator GET:@"user/notifications"
-                    parameters:nil
+                    parameters:params
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            
                            if([responseObject[@"status"] integerValue] != 0)

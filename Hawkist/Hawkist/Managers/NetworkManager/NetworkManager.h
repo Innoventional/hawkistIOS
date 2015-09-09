@@ -322,7 +322,9 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
 #pragma mark -
 #pragma mark Notification
 
-- (void) getNotifications:(void(^)(NSArray *notifications))successBlock
+
+- (void) getNotifications:(NSInteger)page
+              succesBlock:(void(^)(NSArray *notifications))successBlock
              failureBlock:(void(^)(NSError *error)) failureBlock;
 
 - (void) getNotificationsCount:(void(^)(NSString *count))successBlock

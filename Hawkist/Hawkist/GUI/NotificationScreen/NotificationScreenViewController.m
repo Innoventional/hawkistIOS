@@ -19,10 +19,14 @@
 #import "BuyThisItemViewController.h"
 #import "HWTapBarViewController.h"
 
+
 @interface NotificationScreenViewController () <UITableViewDelegate,UITableViewDataSource,NotificationCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (strong, nonatomic) UIRefreshControl* refreshControl;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic,assign) BOOL isAdding;
+@property (nonatomic,assign) BOOL continued;
 @end
 
 
@@ -39,6 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.currentPage = 1;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"NotificationCell" bundle:nil] forCellReuseIdentifier:notificationCellIdentifier];
@@ -57,13 +62,42 @@
 }
 
 
+- (void) addElements
+{
+    self.currentPage++;
+    [self showHud];
+    if (self.isAdding) {
+        
+    
+    [[NetworkManager shared] getNotifications:self.currentPage succesBlock:^(NSArray *notifications) {
+        
+        if (notifications.count != 0)
+        {[self.messages addObjectsFromArray:notifications];
+        [self.tableView reloadData];
+        [self hideHud];
+        }
+        else
+        {
+            self.isAdding = NO;
+        }
+        
+        self.continued = NO;
+    } failureBlock:^(NSError *error) {
+        [self hideHud];
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    }];
+    }
+}
+
 - (void) refresh
 {
     [self showHud];
+    self.currentPage = 1;
+    self.isAdding = YES;
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching notifications..."];
     
     [self.refreshControl beginRefreshing];
-    [[NetworkManager shared] getNotifications:^(NSArray *notifications) {
+    [[NetworkManager shared] getNotifications:self.currentPage succesBlock:^(NSArray *notifications) {
         
         self.messages = [NSMutableArray arrayWithArray:notifications];
         [self.tableView reloadData];
@@ -85,6 +119,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"count of Items == %d",self.messages.count);
     return self.messages.count;
 }
 
@@ -100,6 +135,15 @@
 
     cell.notificationCellDelegate = self;
     [cell layoutIfNeeded];
+    
+    int index = indexPath.row;
+    
+    if (index % 20 == 0 )
+        self.continued = YES;
+    
+    if (index % 49 == 0 && index != 0 && self.continued)
+        [self addElements];
+    
     
     
     return cell;

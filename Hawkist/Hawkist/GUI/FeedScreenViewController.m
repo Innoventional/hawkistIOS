@@ -30,6 +30,8 @@
 
 @property (nonatomic, assign) BOOL initedWithTag;
 
+@property (nonatomic, assign) NSInteger numberOfPage;
+
 @end
 
 @implementation FeedScreenViewController
@@ -43,6 +45,7 @@
         self.initedWithTag = YES;
         self.hashTag = tag;
         self.searchString = tag;
+        self.numberOfPage = 1;
         [self refresh];
     }
     return self;
@@ -129,7 +132,9 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+
     return self.items.count;
+    
 }
 
 
@@ -140,6 +145,12 @@
     cell.delegate = self;
     cell.item = [self.items objectAtIndex: indexPath.row];
     cell.mytrash.hidden = YES;
+    
+    int index = indexPath.row;
+    
+    if (index % 75 == 0 && index != 0)
+        [self addListings];
+    
     
     return cell;
 }
@@ -188,10 +199,27 @@
     return theView;
 }
 
+- (void) addListings
+{
+    self.currentPage++;
+    [[NetworkManager shared] getItemsWithPage: self.currentPage searchString: self.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+        
+        [self.items addObjectsFromArray: arrayWithItems];
+        
+        [self.collectionView reloadData];
+        
+    } failureBlock:^(NSError *error) {
+       
+        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+    }];
 
+
+}
 
 - (void)refresh
 {
+    
+
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching listings..."];
     
     [self.refreshControl beginRefreshing];
@@ -216,8 +244,8 @@
             __weak typeof(self) weakSelf = self;
             [self.addTags addTagsToView:avaliableTags successBlock:^{
                 
-                
-                [[NetworkManager shared] getItemsWithPage: 1 searchString: weakSelf.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
+                weakSelf.currentPage=1;
+                [[NetworkManager shared] getItemsWithPage: weakSelf.currentPage searchString: weakSelf.searchString successBlock:^(NSArray *arrayWithItems, NSInteger page, NSString *searchString) {
                     [weakSelf.items removeAllObjects];
                     [weakSelf.items addObjectsFromArray: arrayWithItems];
 
