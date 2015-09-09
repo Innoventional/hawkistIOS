@@ -22,6 +22,7 @@
 
 - (void) selectButton: (NSInteger) index;
 
+
 @end
 
 @protocol HWTapBarViewDelegate <NSObject>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -52,17 +51,8 @@
                                 <action selector="getStart:" destination="-1" eventType="touchUpInside" id="OCN-Aq-O0x"/>
                             </connections>
                         </button>
-                        <pageControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="s5i-Dw-WNp">
-                            <rect key="frame" x="281" y="93" width="39" height="37"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="37" id="YxM-IL-mQl"/>
-                            </constraints>
-                            <connections>
-                                <action selector="pageControlDidChange:" destination="-1" eventType="valueChanged" id="mkv-JG-ZJN"/>
-                            </connections>
-                        </pageControl>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwV-Mn-M65">
-                            <rect key="frame" x="8" y="8" width="584" height="34"/>
+                            <rect key="frame" x="8" y="19" width="584" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="S8W-CL-rZP"/>
                             </constraints>
@@ -71,7 +61,7 @@
                             <color key="highlightedColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miI-fR-thO">
-                            <rect key="frame" x="148" y="43" width="304" height="42"/>
+                            <rect key="frame" x="148" y="54" width="304" height="0.0"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="304" id="K40-Zt-kTx"/>
                             </constraints>
@@ -79,6 +69,15 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <pageControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="s5i-Dw-WNp">
+                            <rect key="frame" x="281" y="1" width="39" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="YxM-IL-mQl"/>
+                            </constraints>
+                            <connections>
+                                <action selector="pageControlDidChange:" destination="-1" eventType="valueChanged" id="mkv-JG-ZJN"/>
+                            </connections>
+                        </pageControl>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -90,11 +89,20 @@
                         <constraint firstItem="TWx-9E-ihc" firstAttribute="bottom" secondItem="1kc-W9-pz0" secondAttribute="bottomMargin" id="gxh-1G-sjh"/>
                         <constraint firstAttribute="height" constant="170" id="km7-kP-GNg"/>
                         <constraint firstItem="TWx-9E-ihc" firstAttribute="leading" secondItem="1kc-W9-pz0" secondAttribute="leadingMargin" id="oaa-kZ-PqH"/>
+                        <constraint firstItem="s5i-Dw-WNp" firstAttribute="top" secondItem="1kc-W9-pz0" secondAttribute="top" constant="1" id="ogC-6R-q4N"/>
                         <constraint firstItem="TWx-9E-ihc" firstAttribute="trailing" secondItem="UwV-Mn-M65" secondAttribute="trailing" id="p67-Vb-WHM"/>
                         <constraint firstItem="UwV-Mn-M65" firstAttribute="leading" secondItem="TWx-9E-ihc" secondAttribute="leading" id="sKP-wM-zf1"/>
                         <constraint firstItem="TWx-9E-ihc" firstAttribute="trailing" secondItem="1kc-W9-pz0" secondAttribute="trailingMargin" id="sdv-Ww-gHh"/>
                         <constraint firstItem="UwV-Mn-M65" firstAttribute="top" secondItem="1kc-W9-pz0" secondAttribute="topMargin" id="u0L-DU-0zj"/>
+                        <constraint firstItem="UwV-Mn-M65" firstAttribute="top" secondItem="s5i-Dw-WNp" secondAttribute="bottom" constant="3" id="zGl-Dr-8WP"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="u0L-DU-0zj"/>
+                            <exclude reference="3ab-NS-QdI"/>
+                            <exclude reference="7Gj-OK-cVd"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

@@ -15,8 +15,9 @@
 #import "HWCommentViewController.h"
 #import "PersonalisationViewController.h"
 #import "NavigationVIew.h"
+#import "helper.h"
 
-@interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate, MyItemCellDelegate,NavigationViewDelegate>
+@interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate, MyItemCellDelegate,NavigationViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -188,6 +189,7 @@
 }
 
 
+
 - (void)refresh
 {
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching listings..."];
@@ -198,16 +200,9 @@
         
         if ([AppEngine shared].tags.count == tags.count)
         {
-            
-            CustomizationViewController* vc = [[CustomizationViewController alloc]init];
-            vc.avaliableTags = tags;
-            
-            [self.navigationController pushViewController:vc animated:NO];
-            
+            [self.collectionView setContentOffset:CGPointMake(0, 500)];
         }
         
-        else
-        {
             __weak typeof(self) weakSelf = self;
             [self.addTags addTagsToView:tags successBlock:^{
                 
@@ -234,25 +229,18 @@
                 
                 
             }];
-        }
+        
     } failureBlock:^(NSError *error) {
         [self.refreshControl endRefreshing];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         
     }];
     
-    
-    
-    
-   
-    
 }
-
-
 
 - (void)clickToPersonalisation
 {
-    PersonalisationViewController* vc = [[PersonalisationViewController alloc]init];
+    PersonalisationViewController* vc = [[PersonalisationViewController alloc]initWithTags:[AppEngine shared].tags];
     [self.navigationController pushViewController:vc animated:NO];
 }
 

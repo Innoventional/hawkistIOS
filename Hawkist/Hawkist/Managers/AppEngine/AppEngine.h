@@ -18,6 +18,9 @@
 @property (nonatomic, assign) BOOL logginedWithPhone;
 @property (nonatomic, assign) BOOL logginedWithFB;
 
+
+
+@property (nonatomic, assign) BOOL isShowSold;
 @property (nonatomic,strong) NSString* APNStoken;
 
 

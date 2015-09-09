@@ -418,12 +418,16 @@
         [self hideHud];
         if (self.userId)
         {
+
             [self.navigationController popViewControllerAnimated:YES];
         }
         else
         {
-            [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+            CustomizationViewController* vc = [[CustomizationViewController alloc]init];
+            vc.avaliableTags = [AppEngine shared].tags;
+            [self.navigationController pushViewController:vc animated:NO];
         }
+        [AppEngine shared].user = user;
         
     } failureBlock:^(NSError *error) {
         [self hideHud];
@@ -440,8 +444,12 @@
             }
             else
             {
-                [self.navigationController pushViewController:[[HWTapBarViewController alloc]init] animated:(YES)];
+                CustomizationViewController* vc = [[CustomizationViewController alloc]init];
+                vc.avaliableTags = [AppEngine shared].tags;
+                [self.navigationController pushViewController:vc animated:NO];
             }
+            [AppEngine shared].user = user;
+
         } failureBlock:^(NSError *error) {
             [self hideHud];
             //[self showAlert:error];

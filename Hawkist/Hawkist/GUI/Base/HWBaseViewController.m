@@ -66,6 +66,8 @@
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             //LoginViewController* vc = [[LoginViewController alloc]init];
+            [AppEngine shared].logginedWithPhone = NO;
+            [AppEngine shared].logginedWithFB = NO;
             [self.navigationController popToRootViewControllerAnimated:NO];
 
             

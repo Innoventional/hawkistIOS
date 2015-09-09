@@ -66,7 +66,7 @@
         
         HWTag* currentTag = (HWTag*)[self.tags objectAtIndex:i];
         
-        TagCell* cell = [[TagCell alloc]initWithName:currentTag.name tagId:currentTag.id];
+        TagCell* cell = [[TagCell alloc]initWithName:currentTag.name tagId:currentTag.id isEnabled:NO];
         
         //[cell setPostion:CGPointMake(0, i*30)];
         
