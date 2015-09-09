@@ -83,7 +83,7 @@
     }
     
     
-  self.pageControl.pageIndicatorTintColor = [UIColor colorWithRed:0.235f green: 0.720f blue:0.645f alpha:0.1f];
+  self.pageControl.pageIndicatorTintColor = [UIColor colorWithRed:195./255 green: 195./255 blue:195./255 alpha:1];
     self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:(55/255.0) green:(185/255.0) blue:(165/255.0) alpha:1];
     [self setPageControl:self.pageControl];
     
