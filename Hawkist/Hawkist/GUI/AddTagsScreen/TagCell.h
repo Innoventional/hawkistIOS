@@ -21,7 +21,8 @@
 @property (strong,nonatomic)id <TagCell> delegate;
 
 - (instancetype) initWithName:(NSString*)text
-                           tagId:(NSString*)tagId;
+                        tagId:(NSString*)tagId
+                    isEnabled:(BOOL) enabled;
 
 
 - (IBAction)click:(id)sender;

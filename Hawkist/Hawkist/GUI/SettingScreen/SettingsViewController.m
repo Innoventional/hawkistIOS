@@ -266,7 +266,7 @@
             break;
         }
         case 3:{
-            PersonalisationViewController* vc = [[PersonalisationViewController alloc]init];
+            PersonalisationViewController* vc = [[PersonalisationViewController alloc]initWithTags:[AppEngine shared].tags];
             [self.navigationController pushViewController:vc animated:NO];
             break;
         }

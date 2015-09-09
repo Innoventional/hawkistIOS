@@ -8,11 +8,17 @@
 
 #import "TagCell.h"
 #import "UIColor+Extensions.h"
+@interface TagCell()
+
+@property (nonatomic,assign)BOOL on;
+@end
 
 @implementation TagCell
 
+
 - (instancetype) initWithName:(NSString*)text
-                        tagId:(NSString*)tagId;
+                        tagId:(NSString*)tagId
+                    isEnabled:(BOOL) enabled
 {
     if (self = [super init])
     {
@@ -34,6 +40,7 @@
         
         self.tagId = tagId;
         
+        [self setupWithStatus:self.on];
         
         
         self.frame = sub.bounds;
@@ -45,15 +52,38 @@
     return self;
 }
 
+- (void) setupWithStatus:(BOOL)enabled
+{
+    if (enabled)
+    {
+        self.start.image = [UIImage imageNamed:@"start_clicked"];
+        self.end.image = [UIImage imageNamed:@"end_clicked"];
+        self.buttomLine.hidden = YES;
+        
+        [self.centerView setBackgroundColor:[UIColor color256RGBWithRed:55 green:185 blue:165]];
+        
+        self.label.textColor = [UIColor whiteColor];
+        
+    }
+    
+    else
+    {
+        self.start.image = [UIImage imageNamed:@"start"];
+        self.end.image = [UIImage imageNamed:@"end"];
+        self.buttomLine.hidden = NO;
+        
+        [self.centerView setBackgroundColor:[UIColor color256RGBWithRed:255 green:255 blue:255]];
+        
+        self.label.textColor = [UIColor color256RGBWithRed:138 green:138 blue:138];
+        
+    }
+}
+
 - (IBAction)click:(id)sender {
     
-    self.start.image = [UIImage imageNamed:@"start_clicked"];
-    self.end.image = [UIImage imageNamed:@"end_clicked"];
-    self.buttomLine.hidden = YES;
+    self.on = !self.on;
     
-    [self.centerView setBackgroundColor:[UIColor color256RGBWithRed:55 green:185 blue:165]];
-    
-    self.label.textColor = [UIColor whiteColor];
+    [self setupWithStatus:self.on];
     
     if (self.delegate && [self.delegate respondsToSelector: @selector(clicked:)])
         [self.delegate clicked:self.tagId];

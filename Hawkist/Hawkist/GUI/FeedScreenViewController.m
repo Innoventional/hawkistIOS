@@ -15,8 +15,9 @@
 #import "HWCommentViewController.h"
 #import "PersonalisationViewController.h"
 #import "NavigationVIew.h"
+#import "helper.h"
 
-@interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate, MyItemCellDelegate,NavigationViewDelegate>
+@interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate, MyItemCellDelegate,NavigationViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -187,6 +188,12 @@
     return theView;
 }
 
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+//{
+//
+//        return  CGSizeMake(50, 1000);
+//}
+
 
 - (void)refresh
 {
@@ -196,18 +203,20 @@
     
     [[NetworkManager shared] getAvaliableTags:^(NSMutableArray *tags) {
         
-        if ([AppEngine shared].tags.count == tags.count)
-        {
-            
-            CustomizationViewController* vc = [[CustomizationViewController alloc]init];
-            vc.avaliableTags = tags;
-            
-            [self.navigationController pushViewController:vc animated:NO];
-            
-        }
+//        if ([AppEngine shared].tags.count == tags.count)
+//        {
+//            
+//            CustomizationViewController* vc = [[CustomizationViewController alloc]init];
+//            vc.avaliableTags = tags;
+//            
+//            [self.navigationController pushViewController:vc animated:NO];
+//            
+//        }
         
-        else
-        {
+        //else
+        //{
+        
+        
             __weak typeof(self) weakSelf = self;
             [self.addTags addTagsToView:tags successBlock:^{
                 
@@ -234,7 +243,7 @@
                 
                 
             }];
-        }
+        //}
     } failureBlock:^(NSError *error) {
         [self.refreshControl endRefreshing];
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];

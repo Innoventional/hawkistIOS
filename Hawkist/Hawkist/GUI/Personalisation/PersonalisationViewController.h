@@ -13,5 +13,5 @@
 
 @interface PersonalisationViewController : HWBaseViewController <NavigationViewDelegate>
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigation;
-
+- (instancetype)initWithTags:(NSMutableArray*)tags;
 @end

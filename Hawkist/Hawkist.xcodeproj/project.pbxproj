@@ -71,6 +71,9 @@
 		3AA575D01B9E291D003E0CDE /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA575CF1B9E291D003E0CDE /* LoadingView.xib */; };
 		3AA575D31B9E4BBE003E0CDE /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA575D21B9E4BBE003E0CDE /* AboutView.xib */; };
 		3AA575D61B9E4EFB003E0CDE /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA575D51B9E4EFB003E0CDE /* AboutViewController.m */; };
+		3AA575DA1B9FAAEB003E0CDE /* helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA575D91B9FAAEB003E0CDE /* helper.m */; };
+		3AA575DC1B9FB800003E0CDE /* emptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA575DB1B9FB800003E0CDE /* emptyCell.xib */; };
+		3AA575DF1B9FB836003E0CDE /* emptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA575DE1B9FB836003E0CDE /* emptyTableViewCell.m */; };
 		3AA5CBED1B8495D9006093D0 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBEC1B8495D9006093D0 /* AddAddressViewController.m */; };
 		3AA5CBF01B84B393006093D0 /* HWAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5CBEF1B84B393006093D0 /* HWAddress.m */; };
 		3AA5CBF31B84BBE1006093D0 /* ManageAddress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA5CBF21B84BBE1006093D0 /* ManageAddress.xib */; };
@@ -334,6 +337,11 @@
 		3AA575D21B9E4BBE003E0CDE /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutView.xib; path = AboutHawkist/AboutView.xib; sourceTree = "<group>"; };
 		3AA575D41B9E4EFB003E0CDE /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = AboutHawkist/AboutViewController.h; sourceTree = "<group>"; };
 		3AA575D51B9E4EFB003E0CDE /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = AboutHawkist/AboutViewController.m; sourceTree = "<group>"; };
+		3AA575D81B9FAAEB003E0CDE /* helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = helper.h; path = Personalisation/helper/helper.h; sourceTree = "<group>"; };
+		3AA575D91B9FAAEB003E0CDE /* helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = helper.m; path = Personalisation/helper/helper.m; sourceTree = "<group>"; };
+		3AA575DB1B9FB800003E0CDE /* emptyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = emptyCell.xib; path = Personalisation/helper/emptyCell.xib; sourceTree = "<group>"; };
+		3AA575DD1B9FB836003E0CDE /* emptyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = emptyTableViewCell.h; path = Personalisation/helper/emptyTableViewCell.h; sourceTree = "<group>"; };
+		3AA575DE1B9FB836003E0CDE /* emptyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = emptyTableViewCell.m; path = Personalisation/helper/emptyTableViewCell.m; sourceTree = "<group>"; };
 		3AA5CBEB1B8495D9006093D0 /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddAddressViewController.h; path = AddAdress/AddAddressViewController.h; sourceTree = "<group>"; };
 		3AA5CBEC1B8495D9006093D0 /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAddressViewController.m; path = AddAdress/AddAddressViewController.m; sourceTree = "<group>"; };
 		3AA5CBEE1B84B393006093D0 /* HWAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWAddress.h; sourceTree = "<group>"; };
@@ -724,6 +732,7 @@
 		3A69014F1B72DE9000B618B8 /* Personalisation */ = {
 			isa = PBXGroup;
 			children = (
+				3AA575D71B9FAAB4003E0CDE /* helper */,
 				3A6901501B72DEBF00B618B8 /* PersonalisationView.xib */,
 				3A6901521B72DF1500B618B8 /* PersonalisationViewController.h */,
 				3A6901531B72DF1500B618B8 /* PersonalisationViewController.m */,
@@ -890,6 +899,18 @@
 				3AA575D51B9E4EFB003E0CDE /* AboutViewController.m */,
 			);
 			name = AboutHawkist;
+			sourceTree = "<group>";
+		};
+		3AA575D71B9FAAB4003E0CDE /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				3AA575D81B9FAAEB003E0CDE /* helper.h */,
+				3AA575D91B9FAAEB003E0CDE /* helper.m */,
+				3AA575DB1B9FB800003E0CDE /* emptyCell.xib */,
+				3AA575DD1B9FB836003E0CDE /* emptyTableViewCell.h */,
+				3AA575DE1B9FB836003E0CDE /* emptyTableViewCell.m */,
+			);
+			name = helper;
 			sourceTree = "<group>";
 		};
 		3AA5CBF11B84BBAE006093D0 /* Manage Address */ = {
@@ -1649,6 +1670,7 @@
 				3AA5CBFE1B84DB14006093D0 /* defaultAddress.xib in Resources */,
 				3AA575D31B9E4BBE003E0CDE /* AboutView.xib in Resources */,
 				CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */,
+				3AA575DC1B9FB800003E0CDE /* emptyCell.xib in Resources */,
 				3A61FBCC1B3813620004A24B /* CustomAlertView.xib in Resources */,
 				3A2AE3CA1B6111A000806D59 /* AddTagsView.xib in Resources */,
 				CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */,
@@ -1690,11 +1712,7 @@
 				CE1546351B7CD0970082ACF4 /* HWPaymentBalanceCell.xib in Resources */,
 				3ACC6B971B43A1D90076004F /* SellAnItem.xib in Resources */,
 				3AA5CC011B862AC6006093D0 /* holidayMode.xib in Resources */,
-
- 
-				7CDBCE921B4BF39200CDA5FD /* mot3.png in Resources */,
 				3A359D6B1B98699200A0F2E1 /* FindFriendViewController.xib in Resources */,
-
 				7CF22CA41B4FCE18002CF7ED /* open-sans.bold.ttf in Resources */,
 				3AF8320F1B70E73100CC750D /* ManageBankView.xib in Resources */,
 				3ACC6BE81B4408590076004F /* Custom.xib in Resources */,
@@ -1846,6 +1864,7 @@
 				CEBAAFB41B6E10AD00AFE4C6 /* HWPaymentCell.m in Sources */,
 				C35A4C691B3035D2002E1F26 /* UIView+Extensions.m in Sources */,
 				CE70EDD21B6BC62F005664FA /* HWMyAccountViewController.m in Sources */,
+				3AA575DA1B9FAAEB003E0CDE /* helper.m in Sources */,
 				3A968E191B468F08005AA347 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				CEBAAF9F1B6CE9DF00AFE4C6 /* HWSingOutCell.m in Sources */,
 				3A359D6A1B98699200A0F2E1 /* FindFriendViewController.m in Sources */,
@@ -1870,6 +1889,7 @@
 				7CE0E8E11B4307F0003B8B3A /* FeedScreenViewController.m in Sources */,
 				C35CB4A61B4D3A2E00956150 /* AWSS3Manager.m in Sources */,
 				C35A4C681B3035D2002E1F26 /* UIImage+Extensions.m in Sources */,
+				3AA575DF1B9FB836003E0CDE /* emptyTableViewCell.m in Sources */,
 				CEAF10631B8AFBB700E5029E /* HWBankAccountView.m in Sources */,
 				CE1546451B7DF6B60082ACF4 /* HWAddNewAddressCell.m in Sources */,
 				C35CB5431B6F5D5E00956150 /* StripeManager.m in Sources */,

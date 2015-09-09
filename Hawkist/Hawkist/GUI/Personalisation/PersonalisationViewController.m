@@ -7,19 +7,29 @@
 //
 
 #import "PersonalisationViewController.h"
+#import "TagCell.h"
+#import "helper.h"
+#import "emptyTableViewCell.h"
 
-@interface PersonalisationViewController ()
-
+@interface PersonalisationViewController () <UITableViewDataSource,UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong,nonatomic) NSMutableArray* matrix;
 @end
 
 @implementation PersonalisationViewController
+#define CellIdentifier @"CELL"
 
-- (instancetype)init
+- (instancetype)initWithTags:(NSMutableArray*)tags
 {
     self = [super initWithNibName: @"PersonalisationView" bundle: [NSBundle mainBundle]];
     if(self)
     {
+        helper *h = [[helper alloc]init];
         
+        NSMutableArray* cells = [h setupTagCells:[NSArray arrayWithArray:tags]];
+        
+        self.matrix = [h convertTags:cells andMaxWidth:self.view.width withPadding:17];
+
     }
     return self;
 }
@@ -28,6 +38,11 @@
     [super viewDidLoad];
     self.navigation.delegate = self;
     self.navigation.title.text = @"Personalisation Settings";
+    self.tableView.estimatedRowHeight = 47;
+    self.tableView.allowsSelection = NO;
+    
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"emptyCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,9 +50,36 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+    
+    
+    
 - (void) leftButtonClick
 {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.matrix count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+
+    emptyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    NSMutableArray* tagCells = [self.matrix objectAtIndex:indexPath.row];
+    
+    [cell setup:tagCells];
+    
+    
+
+    
+    return cell;
 }
 
 @end
