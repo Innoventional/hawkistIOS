@@ -7,12 +7,12 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "tutorial_3s2@x.png"
+      "filename" : "tutorial_3s@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "tutorial_3s3@x.png"
+      "filename" : "tutorial_3s@3x.png"
     }
   ],
   "info" : {
