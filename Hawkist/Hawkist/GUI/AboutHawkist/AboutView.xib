@@ -71,11 +71,11 @@
                             <string key="content">Did you know that high street retailers charge up to 70% more for used video games than they paid?
 We think it's time for gaming to get more rewarding.
 A retailer that gives us the best price for new and used games on our smartphones, not on the high street.
-It's time for Hawkist.</string>
+It's time for Hawkist!</string>
                             <attributes>
                                 <color key="NSColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="12" name="OpenSans"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10"/>
                             </attributes>
                         </fragment>
                     </attributedString>
