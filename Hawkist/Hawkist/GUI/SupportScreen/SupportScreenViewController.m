@@ -57,7 +57,7 @@
 ];
     
     self.sectionSecond = @[
-                           [[HWAccountMenuDataModel alloc]initWithImageName:@"comment" withTitle:@"Comments and Suggestions are welcome"]];
+                           [[HWAccountMenuDataModel alloc]initWithImageName:@"comment" withTitle:@"My Tickets"]];
     
     self.sectionThird = @[
                           [[HWAccountMenuDataModel alloc]initWithImageName:@"refund" withTitle:@"Refund Policy"],

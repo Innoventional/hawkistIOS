@@ -35,12 +35,8 @@
     
     
     ///LeanPlum////
-#ifdef DEBUG
-    LEANPLUM_USE_ADVERTISING_ID;
-    [Leanplum setAppId:@"app_KDXJqv2wDVTDVFDxckARmWAiQMtEf6DNu6Nj8MffNm8" withDevelopmentKey:@"dev_pKABuSCybC918bRvGc9sjoOzbfPpikqArhOkn7ws9VE"];
-#else
-    [Leanplum setAppId:@"app_KDXJqv2wDVTDVFDxckARmWAiQMtEf6DNu6Nj8MffNm8" withProductionKey:@"prod_AGvlqjixqJhhZIUE9jeZeZOrbUmSAyjizTsnEUu7Kho"];
-#endif
+
+    [Leanplum setAppId:LeanPlum_APP_ID withDevelopmentKey:LeanPlum_DevKey];
     
     
     [Leanplum start];

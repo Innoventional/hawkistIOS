@@ -31,4 +31,17 @@
 //#define FACEBOOK_APP_ID @"1592531330997204"
 #define FACEBOOK_APP_ID @"452450878249777"
 #define STRIPE_KEY @"pk_test_oury2cSVAi0FgbINEHbGbyV6"
+
+#ifdef DEBUG
+
+#define LeanPlum_APP_ID @"app_KDXJqv2wDVTDVFDxckARmWAiQMtEf6DNu6Nj8MffNm8"
+#define LeanPlum_DevKey @"dev_pKABuSCybC918bRvGc9sjoOzbfPpikqArhOkn7ws9VE"
+#else
+#define LeanPlum_APP_ID @"app_KDXJqv2wDVTDVFDxckARmWAiQMtEf6DNu6Nj8MffNm8"
+#define LeanPlum_DevKey @"prod_AGvlqjixqJhhZIUE9jeZeZOrbUmSAyjizTsnEUu7Kho"
 #endif
+
+#endif
+
+
+
