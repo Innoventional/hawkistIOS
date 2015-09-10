@@ -20,7 +20,7 @@
 #import "PushNotificationManager.h"
 #import "HWPaymentViewController.h"
 #import <ZendeskSDK/ZendeskSDK.h>
-
+#import <Leanplum/Leanplum.h>
 
 @interface AppDelegate ()
 @property (nonatomic,strong) LoginViewController* viewController;
@@ -33,6 +33,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
+    ///LeanPlum////
+#ifdef DEBUG
+    LEANPLUM_USE_ADVERTISING_ID;
+    [Leanplum setAppId:@"app_KDXJqv2wDVTDVFDxckARmWAiQMtEf6DNu6Nj8MffNm8" withDevelopmentKey:@"dev_pKABuSCybC918bRvGc9sjoOzbfPpikqArhOkn7ws9VE"];
+#else
+    [Leanplum setAppId:@"app_KDXJqv2wDVTDVFDxckARmWAiQMtEf6DNu6Nj8MffNm8" withProductionKey:@"prod_AGvlqjixqJhhZIUE9jeZeZOrbUmSAyjizTsnEUu7Kho"];
+#endif
+    
+    
+    [Leanplum start];
+    
+    
+    
+    /////LeanPlum////
     
     
     [ZDKDispatcher setDebugLogging:YES];

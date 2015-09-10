@@ -31,6 +31,27 @@
 
 - (void) handleNotification:(NSDictionary *)userInfo andNavigationController:(UINavigationController*)navigationController
 {
+    
+    if (!userInfo[@"type"])
+    {
+        if ([HWTapBarViewController class] == [navigationController.visibleViewController class])
+        {
+            [((HWTapBarViewController*)navigationController.visibleViewController) setTab:1];
+            
+        }
+        else
+        {
+            
+            if ([AppEngine shared].logginedWithFB || [AppEngine shared].logginedWithPhone)
+            {
+            HWTapBarViewController *vc = [[HWTapBarViewController alloc]init];
+            
+            [navigationController pushViewController:vc animated:YES];
+            }
+        }
+
+        return;
+    }
     switch ([userInfo[@"type"] integerValue]) {
         case 11: case 10: case 0:
         {
