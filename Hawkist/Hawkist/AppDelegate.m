@@ -20,7 +20,7 @@
 #import "PushNotificationManager.h"
 #import "HWPaymentViewController.h"
 #import <ZendeskSDK/ZendeskSDK.h>
-
+#import <Leanplum/Leanplum.h>
 
 @interface AppDelegate ()
 @property (nonatomic,strong) LoginViewController* viewController;
@@ -33,6 +33,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
+    ///LeanPlum////
+
+    [Leanplum setAppId:LeanPlum_APP_ID withDevelopmentKey:LeanPlum_DevKey];
+    
+    
+    [Leanplum start];
+    
+    
+    
+    /////LeanPlum////
     
     
     [ZDKDispatcher setDebugLogging:YES];
@@ -90,8 +101,11 @@
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Received notification: %@", userInfo);
-    if ( application.applicationState == UIApplicationStateInactive || application.applicationState == UIApplicationStateBackground  )
+    if ( application.applicationState == UIApplicationStateInactive || application.applicationState == UIApplicationStateBackground  ){
         [[PushNotificationManager shared] handleNotification:userInfo andNavigationController:[self rootViewController]];
+    
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

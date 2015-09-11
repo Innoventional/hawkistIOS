@@ -127,12 +127,12 @@
     self.sectionThird = @[
                                           [[HWAccountMenuDataModel alloc]initWithImageName:@"6" withTitle:@"Holiday Mode"]
                                           ];
-    self.sectionFourth = @[
-                           [[HWAccountMenuDataModel alloc]initWithImageName:@"7" withTitle:@"Find Friends"]
-                           ];
+    //self.sectionFourth = @[
+      //                     [[HWAccountMenuDataModel alloc]initWithImageName:@"7" withTitle:@"Find Friends"]
+        //                   ];
 
     
-    self.groupArray = @[self.sectionFirst, self.sectionSecond,self.sectionThird,self.sectionFourth];
+    self.groupArray = @[self.sectionFirst, self.sectionSecond,self.sectionThird];//,self.sectionFourth];
     
 }
 
@@ -206,10 +206,10 @@
             [self sectionThird:indexPath.row];
             break;
             
-        case 3:
-            
-            [self sectionFourth:indexPath.row];
-            break;
+//        case 3:
+//            
+//            [self sectionFourth:indexPath.row];
+//            break;
             
         default:
             break;
@@ -305,22 +305,22 @@
     
 }
 
--(void)sectionFourth:(NSInteger)row
-
-{
-    
-    switch (row) {
-        case 0:
-            
-            NSLog(@"Find Friends");
-            break;
-            
-        default:
-            break;
-    }
-    
-    
-}
+//-(void)sectionFourth:(NSInteger)row
+//
+//{
+//    
+//    switch (row) {
+//        case 0:
+//            
+//            NSLog(@"Find Friends");
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//    
+//}
 
 #pragma mark -
 #pragma mark UITableViewDelegate

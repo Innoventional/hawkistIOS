@@ -1238,8 +1238,8 @@
 			isa = PBXGroup;
 			children = (
 				3AA575D11B9E4B95003E0CDE /* AboutHawkist */,
-				3AA575B61B9DAB88003E0CDE /* FeedBack */,
 				CE6611B41B971527001E199C /* zenDesk */,
+				3AA575B61B9DAB88003E0CDE /* FeedBack */,
 				3A359D531B96905800A0F2E1 /* PushNotificationSettings */,
 				3ACC6B8C1B43A0AA0076004F /* NavigationView */,
 				CE5909501B5F9F9400DAA7FF /* TextViewWithPlaceholder */,
@@ -2047,7 +2047,7 @@
 			baseConfigurationReference = 6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jonathan Erwin (88DJ4L28WB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
@@ -2065,7 +2065,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

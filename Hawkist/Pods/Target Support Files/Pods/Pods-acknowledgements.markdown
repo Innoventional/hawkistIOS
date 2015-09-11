@@ -4429,6 +4429,10 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 
+## Leanplum-iOS-SDK
+
+See https://www.leanplum.com/tos
+
 ## MBProgressHUD
 
 Copyright (c) 2009-2015 Matej Bukovinski
