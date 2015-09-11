@@ -246,7 +246,7 @@
 //        currentItem.photos = [NSArray arrayWithArray:tmpArrayForImage];
         
         
-        [self.sellButton setTitle:@"Save" forState:UIControlStateNormal];
+        [self.sellButton setTitle:@"SAVE" forState:UIControlStateNormal];
         
       //  self.sellButton.enabled = YES;
         self.itemId = currentItem.id;

@@ -387,7 +387,14 @@
                                 [self.navigationController pushViewController:vc animated:YES];
                                 
                             } failureBlock:^(NSError *error) {
-                                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+
+                                if (error.code == 3)
+                                {
+                                    [self showAlertWithTitle:@"Cannot Complete Action" Message:@"You have been blocked by this user"];
+                                    
+                                }
+                                else
+                                    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                             }];
     
 }
@@ -438,6 +445,13 @@
                                         [self.navigationController pushViewController:vc animated:YES];
                                         
                                     } failureBlock:^(NSError *error) {
+                                        
+                                        if (error.code == 3)
+                                        {
+                                            [self showAlertWithTitle:@"Cannot Complete Action" Message:@"You have been blocked by this user"];
+                                        
+                                        }
+                                        else
                                         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                     }];
                         break;
