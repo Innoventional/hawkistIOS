@@ -353,7 +353,7 @@
                                                                    cancelButtonTitle:@"OK"
                                                                    otherButtonTitles: nil]show];
                                                  
-                                                 [self.navigationController popViewControllerAnimated:YES];
+                                                
                                                  
                                                  
                                                  
@@ -391,6 +391,8 @@
                             }];
     
 }
+
+
 - (void) selectedComment:(NSString*)itemId
 {
     
@@ -499,9 +501,6 @@
                                                                                 delegate:nil
                                                                        cancelButtonTitle:@"OK"
                                                                        otherButtonTitles: nil]show];
-                                                     
-                                                     [self.navigationController popViewControllerAnimated:YES];
-                                                     
                                                      
                                                      
                                                  } else {
