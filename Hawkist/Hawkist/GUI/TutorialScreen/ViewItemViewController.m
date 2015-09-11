@@ -79,30 +79,19 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
 #pragma mark - UIViewController
 
 - (instancetype) initWithItem: (HWItem*) item
+{
+    self = [super initWithNibName: @"ViewItemViewController" bundle: nil];
+    if(self)
     {
-        self = [super initWithNibName: @"ViewItemViewController" bundle: nil];
-        if(self)
-        {
-            self.imagesArray = [NSMutableArray array];
-            self.item = item;
-//            [[NetworkManager shared] getItemById: self.item.id
-//            successBlock:^(HWItem *item) {
-//                self.item = item;
-//                
-//               // [self updateItem];
-//            } failureBlock:^(NSError *error) {
-//                
-//                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-//            }];
-            
-        }
+        self.imagesArray = [NSMutableArray array];
+        self.item = item;
         
-      
-        
-        return self;
-        
-        
+        self.view.hidden = YES;
     }
+    
+  
+    return self;
+}
 
 
 
@@ -862,30 +851,7 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
         
         self.selectBut = buttonIndex;
         
-//        switch (buttonIndex) {
-//            case 0:
-//                
-//                [self reportItemWithReason:HWReportItemReasonItemViolatesTermsOfUse withReasonStr:@"Item violates Terms of Use"];
-//                
-//                NSLog(@"Item violates Terms of Use");
-//                break;
-//            case 1:
-//                
-//                [self reportItemWithReason:HWReportItemReasonItemIsRegulatedOrIllegal withReasonStr:@"Item is regulated, counterfeit or illegal"];
-//                
-//                NSLog(@"Item is regulated, counterfeit or illegal");
-//                break;
-//            case 2:
-//                
-//                [self reportItemWithReason:HWReportItemReasonPriceIsMisleading withReasonStr:@"Price is misleading"];
-//                
-//                NSLog(@"Price is misleading");
-//                break;
-// 
-//            default:
-//                break;
-//        }
-
+    
     }
 
 }

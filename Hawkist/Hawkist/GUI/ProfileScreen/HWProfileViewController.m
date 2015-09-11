@@ -29,10 +29,6 @@
 #import "HWZendesk.h"
 
 
-
-
-
-
 @interface HWProfileViewController () <NavigationViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, StarRatingDelegate, UIAlertViewDelegate, HWFollowInProfileCellDelegate, MyItemCellDelegate,UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -131,6 +127,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     if(self) {
     
         self.user = user;
+        
+        self.userId = user.id;
         [self updateUser];
         [self OOOItemsWithUserId:user.id];
         
