@@ -388,6 +388,8 @@
     
     CGFloat width = 0;
     
+    width = (self.screenWidth - self.screenWidth/1.5)/2;
+    
     if( self.screenWidth >320)
     {
           width = (self.screenWidth - self.screenWidth/1.5)/2;
@@ -405,7 +407,7 @@
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     
-    CGFloat kMaxIndex = 4;
+    CGFloat kMaxIndex = 100;
         CGFloat targetX = scrollView.contentOffset.x + velocity.x * 60.0;
     
 //       CGFloat targetIndex = round(targetX / (scrollView.frame.size.width - 150));
@@ -422,6 +424,8 @@
 
     
     CGFloat targetIndex = round(targetX / width);
+    
+    NSLog(@"%f",targetIndex);
   ;
         if (targetIndex < 0)
             targetIndex = 0;
