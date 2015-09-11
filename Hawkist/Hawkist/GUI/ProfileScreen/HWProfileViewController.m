@@ -88,6 +88,8 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *frontGround;
 
+
+
 @end
 
 
@@ -122,14 +124,16 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     
     self = [super initWithNibName: @"HWProfileViewController" bundle: nil];
+   
     if(self) {
     
+       self.networkManager = [NetworkManager shared];
+        
         self.userId = user.id;
         self.user = user;
+        
+        [self OOOItemsWithUserId:self.userId];
 
-        
-        self.nePOnatnoChto = YES;
-        
     }
     
     return self;
@@ -138,20 +142,20 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 - (instancetype) initWithUserID:(NSString *)userID
 {
     self = [super initWithNibName: @"HWProfileViewController" bundle: nil];
+     self.frontGround.hidden = NO;
     if(self)
     {
         self.networkManager = [NetworkManager shared];
         self.userId = userID;
-        [self showHud];
+       // [self showHud];
         
         [self.networkManager getUserProfileWithUserID:userID
                                             successBlock:^(HWUser *user) {
                                                 
-                                              
                                                 
                                                 if(!user) {
                                                     
-                                                    self.view.hidden = YES;
+                                                   // self.view.hidden = YES;
                                                     
                                                    [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
                                                                                message:@"You have been blocked by this user."
@@ -176,11 +180,11 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                                 
                                             } failureBlock:^(NSError *error) {
  
-                                                [[[UIAlertView alloc]initWithTitle:@"Error!"
-                                                                           message:error.localizedDescription
-                                                                          delegate:self
-                                                                 cancelButtonTitle:@"Ok!"
-                                                                 otherButtonTitles: nil] show];// }
+//                                                [[[UIAlertView alloc]initWithTitle:@"Error!"
+//                                                                           message:error.localizedDescription
+//                                                                          delegate:self
+//                                                                 cancelButtonTitle:@"Ok!"
+//                                                                 otherButtonTitles: nil] show];// }
                                         }];
       
     
@@ -221,7 +225,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                          [[UIApplication sharedApplication] endIgnoringInteractionEvents];
                      }];
     
-    self.feedbackBut.enabled = YES;
+     self.feedbackBut.enabled = YES;
      self.isInternetConnectionAlertShowed = NO;
     
     
@@ -234,9 +238,9 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     } else {
     
         [self segmentButtonAction:self.lastPressSegmentButton];
-        
-        
     }
+    
+    
     
 }
 
@@ -245,8 +249,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     [self commonInit];
     
-//    [self updateUser];
-//    [self OOOItemsWithUserId:self.userId];
+    [self updateUser];
+    [self OOOItemsWithUserId:self.userId];
 
     
     [self showHud];
@@ -263,8 +267,11 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     }
  
     
-//      [self updateUser];
-//    [self OOOItemsWithUserId:self.userId];
+        
+        
+      [self updateUser];
+    
+  [self segmentButtonAction:self.itemsButton];
    
 }
 
@@ -409,22 +416,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 #pragma mark -
 #pragma mark set/get
 
-- (void) setArrayForSegmentViewWithUserID:(NSString*)userId
-{
-// items
-//    [self setItemsArrayWithUserId:userId];
-//    
-//// following
-//    [self setFollowingArrayWithUserId:userId];
-//   
-////followers
-//    [self setFollowersArrayWithUserId:userId];
-//    
-////wishlist
-//    [self setWishlistArrayWithUsetId:userId];
-    
-}
-
+ 
 
 
 
@@ -443,7 +435,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                              } failureBlock:^(NSError *error) {
                                  
                                  [self hideHud];
-                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+//                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                              }];
 
     
@@ -461,7 +453,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                        
                                    } failureBlock:^(NSError *error) {
                                        
-                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+//                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                    }];
     
 }
@@ -486,7 +478,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                        
                                    } failureBlock:^(NSError *error) {
                                        
-                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+//                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                    }];
 
     
@@ -506,7 +498,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                       
                                   } failureBlock:^(NSError *error) {
                                       
-                                      [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+//                                      [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                   }];
 
     

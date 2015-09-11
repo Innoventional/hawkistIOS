@@ -479,8 +479,41 @@
 
 - (void) transitionToProfileWithUserId:(NSString*)userId
 {
-    HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUserID:userId];
-    [self.navigationController pushViewController:profileVC animated:NO];
+    
+    NSString *userID = [NSString stringWithFormat:@"%@",userId];
+    
+         [[NetworkManager shared] getUserProfileWithUserID:userID
+                                            successBlock:^(HWUser *user) {
+                                                
+                                                
+                                                if(!user) {
+                                                    
+                                                    
+                                                    
+                                                    [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                                                message:@"You have been blocked by this user."
+                                                                               delegate:nil
+                                                                      cancelButtonTitle:@"OK"
+                                                 
+                                                                otherButtonTitles: nil]show];
+                                                    
+                                                    return ;
+                                                }
+                                                
+                                                    
+                                                HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUser:user];
+                                                [self.navigationController pushViewController:profileVC animated:NO];
+//
+                                                
+                                            } failureBlock:^(NSError *error) {
+                                                
+                                                [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                                
+                                            }];
+                                                
+    
+//    HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUserID:userId];
+//    [self.navigationController pushViewController:profileVC animated:NO];
 }
 
 
