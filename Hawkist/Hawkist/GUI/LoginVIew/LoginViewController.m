@@ -44,6 +44,7 @@
     if([AppEngine isFirsTimeLaunch])
     {
         [self presentViewController: [[TutorialViewController alloc] init] animated: YES completion:nil];
+                [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     }
     
     [self initDefault];
@@ -319,6 +320,8 @@
         [AppEngine shared].user = user;
         [AppEngine shared].tags = tags;
         
+        
+        if ([AppEngine shared].APNStoken){
         [[NetworkManager shared] sendAPNSToken:[AppEngine shared].APNStoken successBlock:^{
             
             
@@ -326,6 +329,7 @@
             
             
         }];
+        }
         if (user.first_login)
         {
             AccountDetailViewController *accountDetailVC= [[AccountDetailViewController alloc]init];
