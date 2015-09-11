@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *available_feedback;
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, assign) NSInteger  status;
+@property (nonatomic, assign) NSInteger sort_status;
 
 @property (nonatomic, strong) HWItem *item;
 

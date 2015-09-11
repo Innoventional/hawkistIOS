@@ -21,5 +21,8 @@
 @property (nonatomic, strong) UINavigationController *navigationController;
 
 -(void) whyWeNeedThis;
+-(void) refundPolicy;
+-(void) privacyPolicy;
+
 
 @end

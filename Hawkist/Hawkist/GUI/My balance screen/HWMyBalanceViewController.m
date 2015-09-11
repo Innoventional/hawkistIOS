@@ -23,6 +23,9 @@
 #import "HWZendesk.h"
 
 
+#import "HWWebViewZendeskViewController.h"
+
+
 @interface HWMyBalanceViewController () <HWMyBalanceYourDetailsViewDelegate,HWMyBalanceBankAccAddressViewDelegate,HWBankAccountViewDelegate, NavigationViewDelegate>
 
 @property (nonatomic, weak) IBOutlet TPKeyboardAvoidingScrollView *scrollView;
@@ -110,7 +113,7 @@
     
     self.navView.title.text = @"My Balance";
     
-    [self setBalance];
+    
     [self setYourDetailsForVerify:YES];
     [self setupDatePickerForB_Day];
     [self setupAlertView];
@@ -299,7 +302,10 @@
 
 - (void) whyWeNeedThisButton:(UIButton*) sender {
     
-    [[HWZendesk shared] whyWeNeedThis];
+    HWWebViewZendeskViewController *vc = [HWWebViewZendeskViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+  //  [[HWZendesk shared] whyWeNeedThis];
 }
 
 
@@ -410,8 +416,8 @@
                 
             } else if (!self.isFirstSee){
              
-                [[[UIAlertView alloc] initWithTitle:@"Oh no!"
-                                           message:@"Please complete all required fields!"
+                [[[UIAlertView alloc] initWithTitle:@"Required Fields Missing!"
+                                           message:@"You cannot check the account balance until all required fields are completed."
                                           delegate:nil
                                  cancelButtonTitle:@"OK"
                                   otherButtonTitles: nil] show];
@@ -444,6 +450,8 @@
 
 
 - (void) hideCheckMyBalance {
+    
+    [self setBalance];
     
     self.contentConstreint.constant -= self.warningMessageConstraint.constant;
     self.warningMessageConstraint.constant = 0;

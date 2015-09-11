@@ -30,7 +30,13 @@
     return self;
 }
 
-
+/*
+ 
+ 255
+ G: 193
+ B: 7
+ 
+ */
 
 - (void) commonInit
 {
@@ -67,7 +73,9 @@
                      {
                          UIImageView * imV = [[UIImageView alloc]init];
                          [self addSubview:imV];
-                         imV.image = [UIImage imageNamed:@"Profile_select"];
+                         //imV.image = [UIImage imageNamed:@"Profile_select"];
+                         
+                         imV.backgroundColor = [UIColor colorWithRed:255./255. green:193./255. blue:7./255. alpha:1];
                          imV.hidden = YES;
                          
                          imV;

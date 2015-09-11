@@ -48,8 +48,6 @@
 @property (nonatomic, strong) NSArray *addressOptionArray;
 @property (nonatomic, strong) NSArray *dataModelArray;
 
-
-
 @property (nonatomic, assign) NSUInteger paymentSelectRow;
 @property (nonatomic, assign) NSUInteger addressSelectRow;
 
@@ -67,6 +65,7 @@
 
 @property (nonatomic, assign) BOOL addressContained;
 @property (nonatomic, assign) BOOL cardContained;
+@property (nonatomic, assign) BOOL isCollectOnlyBuy;
 
 
 @end
@@ -334,7 +333,7 @@
 }
 
 
-#pragma mark -https://omicron.atlassian.net/secure/attachment/10886/sms_sharing.PNG
+#pragma mark  -
 #pragma mark UITableViewDelegate
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -404,6 +403,40 @@
 }
 
 
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    
+    CGFloat kMaxIndex = 4;
+        CGFloat targetX = scrollView.contentOffset.x + velocity.x * 60.0;
+    
+//       CGFloat targetIndex = round(targetX / (scrollView.frame.size.width - 150));
+    
+    CGFloat width;
+    if( self.screenWidth >320)
+    {
+        width = ( self.screenWidth -  (self.screenWidth - self.screenWidth/2.5)/2);
+    }
+    else
+    {
+        width = ( self.screenWidth -  (self.screenWidth - self.screenWidth/1.4)/2);
+    }
+
+    
+    CGFloat targetIndex = round(targetX / width);
+  ;
+        if (targetIndex < 0)
+            targetIndex = 0;
+        if (targetIndex > kMaxIndex)
+            targetIndex = kMaxIndex;
+//         targetContentOffset->x = targetIndex * (scrollView.frame.size.width - 100);
+    
+    targetContentOffset->x = targetIndex* width;
+    
+    
+
+    
+}
+
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     // Calculate cell frame
@@ -454,6 +487,7 @@
     
 }
 
+ 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -588,10 +622,25 @@
                 return;
             }
             
-            
         }
         
+        if((self.addressOptionArray.count ) == indexPath.row) {
+            
+            self.shippingLable.text = [NSString stringWithFormat:@"£0.00"];
+            self.totalLable.text = [NSString stringWithFormat:@"£%.2f",self.itemPrice];
+            self.isCollectOnlyBuy = YES;
+            
+        } else {
+            
+            self.shippingLable.text = [NSString stringWithFormat:@"£%.2f",self.shipping];
+            self.totalLable.text = [NSString stringWithFormat:@"£%.2f",self.total];
+            self.isCollectOnlyBuy = NO;
+        }
+        
+        
         if((self.addressOptionArray.count + 1) == indexPath.row){
+            
+            
             
             AddAddressViewController *vc = [[AddAddressViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
@@ -623,8 +672,17 @@
         return;
     }
     
-    NSString *desc =
-    [NSString stringWithFormat:@"You have purchased \"%@\" for £%@. Please confirm when you have received the item.",self.item.title, self.item.selling_price];
+    NSString *desc;
+    if(self.isCollectOnlyBuy) {
+    
+        desc =
+    [NSString stringWithFormat:@"You have purchased \"%@\" for £%0.2f. Please confirm when you have received the item.",self.item.title, [self.item.selling_price floatValue]];
+    } else {
+        
+        desc =
+        [NSString stringWithFormat:@"You have purchased \"%@\" for £%0.2f. Please confirm when you have received the item.",self.item.title, ( [self.item.selling_price floatValue] + [self.item.shipping_price floatValue])];
+    }
+    
    
     NSString *cardId  = nil;
     NSString *itemId  = self.item.id;
@@ -692,34 +750,7 @@
                               }];
     
     
-    
-//    [self.networkManager buyItemWithCardId:card.id
-//                                withItemId:self.item.id
-//                              successBlock:^{
-//                                  
-//                                 
-//                                  [[[UIAlertView alloc]initWithTitle:@"Purchase Completed"
-//                                                             message:desc
-//                                                            delegate:nil
-//                                                   cancelButtonTitle:@"OK"
-//                                                   otherButtonTitles: nil ]show];
-//                                  
-//                                   [self.indicator stopAnimating];
-//                                  
-//                                  HWMyOrdersViewController *vc = [[HWMyOrdersViewController alloc]init];
-//                                  [self.navigationController pushViewController:vc animated:YES];
-//                                    
-//    
-//                                } failureBlock:^(NSError *error) {
-//                                    
-//                                    [self showAlertWithTitle:error.domain Message:error.localizedDescription];
-//                                    [self.indicator stopAnimating];
-//                                    sender.enabled = YES;
-//
-//                                    
-//                                }];
-
-}
+  }
 
 #pragma mark -
 #pragma mark NavigationViewDelegate

@@ -117,6 +117,7 @@
     cell.orderCellDelegate = self;
     cell.delegate = self;
     
+    NSLog(@"%ld",(long)orderItem.sort_status);
     [cell setCellWithOrderItem:orderItem];
     
     return cell;
@@ -128,6 +129,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    HWOrderItem * orderItem = [self.itemsArray objectAtIndex:indexPath.row];
+
+    
     
     HWOrderItem * item = [self.itemsArray objectAtIndex:indexPath.row];
     

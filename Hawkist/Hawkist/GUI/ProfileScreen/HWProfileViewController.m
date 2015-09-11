@@ -124,7 +124,22 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 #pragma mark-
 #pragma mark Lifecycle
 
-
+-(instancetype) initWithUser:(HWUser*)user {
+    
+    
+    self = [super initWithNibName: @"HWProfileViewController" bundle: nil];
+    if(self) {
+    
+        self.user = user;
+        [self updateUser];
+        [self OOOItemsWithUserId:user.id];
+        
+        self.nePOnatnoChto = YES;
+        
+    }
+    
+    return self;
+}
 
 - (instancetype) initWithUserID:(NSString *)userID
 {
@@ -155,7 +170,9 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                                 
                                                       self.user = user;
                                                       [self updateUser];
-                                                      [self setArrayForSegmentViewWithUserID:userID];
+                                                   //   [self setArrayForSegmentViewWithUserID:userID];
+                                                    [self OOOItemsWithUserId:user.id];
+                                                    
                                                     
                                                     self.nePOnatnoChto = YES;
                                                 }
@@ -193,6 +210,20 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 {
     [super viewDidAppear:animated];
     
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    
+    [self showHud];
+    
+    [UIView animateWithDuration:15
+                     animations:^{
+                         
+                         
+                     } completion:^(BOOL finished) {
+                         
+                         [self hideHud];
+                         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                     }];
+    
     self.feedbackBut.enabled = YES;
      self.isInternetConnectionAlertShowed = NO;
     
@@ -206,6 +237,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     } else {
     
         [self segmentButtonAction:self.lastPressSegmentButton];
+        
+        
     }
     
 }
@@ -372,18 +405,142 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 - (void) setArrayForSegmentViewWithUserID:(NSString*)userId
 {
 // items
-    [self setItemsArrayWithUserId:userId];
-    
-// following
-    [self setFollowingArrayWithUserId:userId];
-   
-//followers
-    [self setFollowersArrayWithUserId:userId];
-    
-//wishlist
-    [self setWishlistArrayWithUsetId:userId];
+//    [self setItemsArrayWithUserId:userId];
+//    
+//// following
+//    [self setFollowingArrayWithUserId:userId];
+//   
+////followers
+//    [self setFollowersArrayWithUserId:userId];
+//    
+////wishlist
+//    [self setWishlistArrayWithUsetId:userId];
     
 }
+
+
+
+
+-(void)OOOItemsWithUserId:(NSString*)userId {
+    
+    
+    [self.networkManager getItemsByUserId:userId
+                             successBlock:^(NSArray *arrayWithItems) {
+                                 
+                                 self.itemsArray = arrayWithItems;
+                                 [self hideHud];
+                                 
+                                 [self OOOfollowingWithUserId:userId];
+                                 
+                                 
+                             } failureBlock:^(NSError *error) {
+                                 
+                                 [self hideHud];
+                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                             }];
+
+    
+}
+
+- (void) OOOfollowingWithUserId:(NSString*)userId
+{
+    
+    [self.networkManager getFollowingWithUserId:userId
+                                   successBlock:^(NSArray *followingArray) {
+                                       
+                                       self.followingArray = followingArray;
+                                       
+                                       [self OOOfollowersWithUserId:userId];
+                                       
+                                   } failureBlock:^(NSError *error) {
+                                       
+                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                   }];
+    
+}
+
+-(void) OOOfollowersWithUserId:(NSString*)userId {
+    
+    NSString *userID = userId;
+    if (!userId) {
+        
+        userID = self.userId;
+    }
+    [self.networkManager getFollowersWithUserId:userID
+                                   successBlock:^(NSArray *followingArray) {
+                                       
+                                       
+                                       self.followersArray = followingArray;
+                                       
+                                       if(!userId) {
+                                           return;
+                                       }
+                                       [self OOOWishListWithUserId:userId];
+                                       
+                                   } failureBlock:^(NSError *error) {
+                                       
+                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                   }];
+
+    
+}
+
+
+-(void)OOOWishListWithUserId:(NSString*)userId {
+    
+    
+    [self.networkManager getWishlistWithUserId:userId
+                                  successBlock:^(NSArray *wishlistArray) {
+                                      
+                                      self.wishListArray = wishlistArray;
+                                      
+                                      [self selectedButConfig];
+                                      
+                                      
+                                  } failureBlock:^(NSError *error) {
+                                      
+                                      [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                  }];
+
+    
+    
+}
+
+-(void) selectedButConfig {
+    
+    
+    
+    switch (self.selectedArrayWithData) {
+        case HWArrayWithItems:
+            
+            [self reloadDataIfSuccessBlockForTable:NO withDataArray:self.itemsArray];
+            
+            break;
+        case HWArrayWithFollowing:
+            
+            [self reloadDataIfSuccessBlockForTable:YES withDataArray:self.followingArray];
+            
+            break;
+        case HWArrayWithFollowers:
+            
+            [self reloadDataIfSuccessBlockForTable:YES withDataArray:self.followersArray];
+            
+            break;
+        case HWArrayWithWishlist:
+            
+            
+            [self reloadDataIfSuccessBlockForTable:NO withDataArray:self.wishListArray];
+            
+            
+            break;
+        default:
+            break;
+    }
+    
+
+    
+}
+
 
 - (void) setItemsArrayWithUserId:(NSString*)userId
 {
@@ -391,7 +548,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     [self.networkManager getItemsByUserId:userId
                              successBlock:^(NSArray *arrayWithItems) {
                                  
-                                  self.itemsArray = arrayWithItems;
+                                 self.itemsArray = arrayWithItems;
                                  [self hideHud];
                                  
                                  if (self.selectedArrayWithData == HWArrayWithItems)
@@ -403,72 +560,71 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                              } failureBlock:^(NSError *error) {
                                  
                                  [self hideHud];
-                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];                                 
+                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                              }];
     
 }
-
-// following
-
-- (void) setFollowingArrayWithUserId:(NSString*)userId
-{
-    [self.networkManager getFollowingWithUserId:userId
-                                   successBlock:^(NSArray *followingArray) {
-                                       
-                                       self.followingArray = followingArray;
-                                     
-                                       if (self.selectedArrayWithData == HWArrayWithFollowing)
-                                       {
-                                           [self reloadDataIfSuccessBlockForTable:YES withDataArray:followingArray];
-                                       }
-
-                                   } failureBlock:^(NSError *error) {
-                                       
-                                        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-                                   }];
-}
-
-//followers
-
-- (void) setFollowersArrayWithUserId:(NSString*)userId
-{
-    [self.networkManager getFollowersWithUserId:userId
-                                   successBlock:^(NSArray *followersArray) {
-                                       
-                                      self.followersArray = followersArray;
-                                       
-                                       if (self.selectedArrayWithData == HWArrayWithFollowers)
-                                       {
-                                           [self reloadDataIfSuccessBlockForTable:YES withDataArray:followersArray];
-                                       }
-                                       
-                                } failureBlock:^(NSError *error) {
-                                    
-                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-                                   }];
-    
-}
-
-// wishlist
-
-- (void) setWishlistArrayWithUsetId:(NSString*)userId
-{
-    [self.networkManager getWishlistWithUserId:userId
-                                  successBlock:^(NSArray *wishlistArray) {
-                                      
-                                      self.wishListArray = wishlistArray;
-                                      
-                                      if (self.selectedArrayWithData == HWArrayWithWishlist)
-                                      {
-                                          [self reloadDataIfSuccessBlockForTable:NO withDataArray:wishlistArray];
-                                      }
-                                      
-                                  } failureBlock:^(NSError *error) {
-                                      
-                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-                                  }];
-}
-
+//// following
+//
+//- (void) setFollowingArrayWithUserId:(NSString*)userId
+//{
+//    [self.networkManager getFollowingWithUserId:userId
+//                                   successBlock:^(NSArray *followingArray) {
+//                                       
+//                                       self.followingArray = followingArray;
+//                                     
+//                                       if (self.selectedArrayWithData == HWArrayWithFollowing)
+//                                       {
+//                                           [self reloadDataIfSuccessBlockForTable:YES withDataArray:followingArray];
+//                                       }
+//
+//                                   } failureBlock:^(NSError *error) {
+//                                       
+//                                        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+//                                   }];
+//}
+//
+////followers
+//
+//- (void) setFollowersArrayWithUserId:(NSString*)userId
+//{
+//    [self.networkManager getFollowersWithUserId:userId
+//                                   successBlock:^(NSArray *followersArray) {
+//                                       
+//                                      self.followersArray = followersArray;
+//                                       
+//                                       if (self.selectedArrayWithData == HWArrayWithFollowers)
+//                                       {
+//                                           [self reloadDataIfSuccessBlockForTable:YES withDataArray:followersArray];
+//                                       }
+//                                       
+//                                } failureBlock:^(NSError *error) {
+//                                    
+//                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+//                                   }];
+//    
+//}
+//
+//// wishlist
+//
+//- (void) setWishlistArrayWithUsetId:(NSString*)userId
+//{
+//    [self.networkManager getWishlistWithUserId:userId
+//                                  successBlock:^(NSArray *wishlistArray) {
+//                                      
+//                                      self.wishListArray = wishlistArray;
+//                                      
+//                                      if (self.selectedArrayWithData == HWArrayWithWishlist)
+//                                      {
+//                                          [self reloadDataIfSuccessBlockForTable:NO withDataArray:wishlistArray];
+//                                      }
+//                                      
+//                                  } failureBlock:^(NSError *error) {
+//                                      
+//                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+//                                  }];
+//}
+//
 
 #pragma mark -
 #pragma mark Actions
@@ -508,10 +664,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         
     } else {
         
-//        [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
-//        sender.backgroundColor = [UIColor colorWithRed:55./255. green:185./255. blue:165./255. alpha:1];
-        
-        [self.networkManager unfollowWithUserId:self.user.id successBlock:^{
+            [self.networkManager unfollowWithUserId:self.user.id successBlock:^{
             [sender setTitle:@"  FOLLOW  " forState:UIControlStateNormal];
             sender.backgroundColor = [UIColor colorWithRed:55./255. green:185./255. blue:165./255. alpha:1];
             
@@ -521,7 +674,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         }];
         
     }
-    [self setFollowersArrayWithUserId:self.user.id];
+    [self OOOfollowersWithUserId:nil];
+ //   [self setFollowersArrayWithUserId:self.user.id];
     
 }
 
@@ -535,7 +689,6 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
     self.lastPressSegmentButton = sender;
     sender.selectedImage.hidden = NO;
-    
     
     switch (sender.tag) {
         case 1:
@@ -561,11 +714,17 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
             break;
     }
     
+    [self selectedButConfig];
+  //  [self OOOItemsWithUserId:self.userId];
     
-    [self setItemsArrayWithUserId:self.userId];
-    [self setFollowersArrayWithUserId:self.userId];
-    [self setFollowingArrayWithUserId:self.userId];
-    [self setWishlistArrayWithUsetId:self.userId];
+    
+    
+//
+//    
+//    [self setItemsArrayWithUserId:self.userId];
+//    [self setFollowersArrayWithUserId:self.userId];
+//    [self setFollowingArrayWithUserId:self.userId];
+//    [self setWishlistArrayWithUsetId:self.userId];
     
 }
 
@@ -592,6 +751,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     if(!forTableView)
     {
         self.tableView.hidden = YES;
+        
         self.collectionView.hidden = NO;
         [self.collectionView reloadData];
         [self.collectionView layoutIfNeeded];
@@ -622,6 +782,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     }
     
     [self setupHeightScrollView:heightForCollectionOrTable];
+    
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     
 }
 
@@ -671,6 +833,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
     if([[self.selectedSegmentArray objectAtIndex:indexPath.row] isKindOfClass:[HWItem class]]) {
         
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ddd"];

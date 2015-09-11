@@ -72,7 +72,7 @@ BOOL setStatusBarColor(UIColor *color)
         return NO;
     }
 }
- 
+
 
 - (void) jwtIdentify {
     
@@ -109,6 +109,10 @@ BOOL setStatusBarColor(UIColor *color)
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBarTintColor:[UIColor color256RGBWithRed:48 green:173 blue:148]];
     [[UINavigationBar appearance] setTitleTextAttributes:allAttrib];
+    
+    
+   // self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+setStatusBarColor([UIColor whiteColor]);
    
    
     
@@ -120,41 +124,96 @@ BOOL setStatusBarColor(UIColor *color)
     [self jwtIdentify];
      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
      [ZDKRequests showRequestCreationWithNavController:self.navigationController];
-     setStatusBarColor([UIColor whiteColor]);
+  //   setStatusBarColor([UIColor whiteColor]);
 }
 
 -(void) supportView {
     
-[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[ZDKSupportView appearance] setSearchBarStyle:@(UIBarStyleDefault)];
  
     [ZDKHelpCenter showHelpCenterWithNavController:self.navigationController];
  
     setStatusBarColor([UIColor whiteColor]);
+    
+    
+//    ZDKHelpCenterProvider  *pr = [[ZDKHelpCenterProvider alloc] init];
+//   [pr getCategoriesWithCallback:^(NSArray *items, NSError *error) {
+//   [pr getSectionsForCategoryId: @"200603732" withCallback:^(NSArray *items, NSError *error) {
+//       
+//        NSLog(@"%@", items);
+//       
+//       ZDKHelpCenterSection *i = [items firstObject];
+//       
+//      [pr getArticlesForSectionId: i.sid withCallback:^(NSArray *items, NSError *error) {
+//       
+//          
+//          ZDKHelpCenterArticle *art = items.firstObject;
+//          
+//          
+//          
+//          ZDKArticleViewController* vc =[[ZDKArticleViewController alloc] initWithArticle:art];
+//          [self.navigationController pushViewController:vc animated:YES];
+//      }];
+//
+//       
+//   }];
+    
+    
+    
+    
+      }
+
+
+-(void) refundPolicy {
+    
+    ZDKHelpCenterProvider  *provider = [[ZDKHelpCenterProvider alloc] init];
+
+    [provider getArticleById:@"204470212" withCallback:^(NSArray *items, NSError *error) {
+        
+        ZDKHelpCenterArticle *article = items.lastObject;
+        article.author_name = @"";
+        
+        ZDKArticleViewController* vc =[[ZDKArticleViewController alloc] initWithArticle:items.firstObject];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }];
+    
 }
 
+
+-(void) privacyPolicy {
+    
+    ZDKHelpCenterProvider  *provider = [[ZDKHelpCenterProvider alloc] init];
+    
+    [provider getArticleById:@"204465182" withCallback:^(NSArray *items, NSError *error) {
+        
+        ZDKArticleViewController* vc =[[ZDKArticleViewController alloc] initWithArticle:items.firstObject];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }];
+    
+}
 
 -(void) whyWeNeedThis{
     
+    
     ZDKHelpCenterArticle *art = [[ZDKHelpCenterArticle alloc] init];
-   NSArray *labels = @[@"ww"];
-  //  art.title = @"How Do I Get My Account Balance Into My Bank Account?";
-   // art.locale = @"https://hawkist.zendesk.com/hc/en-us/articles/204424051";
-   // art.sid = @"204424051";
-    [ZDKHelpCenter showHelpCenterWithNavController:self.navigationController filterByArticleLabels:@[labels]];
+   // art.locale = @"en-us/articles/204425331";
+    ZDKArticleViewController* vc =[[ZDKArticleViewController alloc] initWithArticle:art];
     
+    NSURLRequest *re = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://hawkist.zendesk.com/hc/en-us/categories/200603732-Frequently-Asked-Questions"]];
     
-//https://hawkist.zendesk.com/hc/en-us/articles/204424051
-    
-}
+    [vc.articleView.articleWebView loadRequest:re];
+    [self.navigationController pushViewController:vc animated:YES];
+ }
 
 -(void) myTiket {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+   // [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
  
     
          [ZDKRequests showRequestListWithNavController:self.navigationController];
-    setStatusBarColor([UIColor whiteColor]);
+    //setStatusBarColor([UIColor whiteColor]);
 
 
 }

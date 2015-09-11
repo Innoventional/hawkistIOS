@@ -1892,10 +1892,13 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
         orderItem.item = [[HWItem alloc]initWithDictionary:listingDict
                                                      error:&error];
         orderItem.id = dict[@"id"];
+        orderItem.sort_status = [dict[@"sorting_status"] integerValue];
         orderItem.available_feedback = dict[@"available_feedback"];
         NSNumber *numb = dict[@"status"];
         orderItem.status = [numb intValue];
         [array addObject:orderItem];
+        
+        NSLog(@"%d", orderItem.sort_status);
     }
     
     if (error)

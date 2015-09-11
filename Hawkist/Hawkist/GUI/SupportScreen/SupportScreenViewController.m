@@ -11,6 +11,7 @@
 #import "WebViewController.h"
 #import "HWZendesk.h"
 #import "AboutViewController.h"
+#import "HWZendesk.h"
 
 
 @interface SupportScreenViewController () <UITableViewDataSource,UITableViewDelegate>
@@ -168,11 +169,22 @@
         {
             NSLog(@"Managing My Acc");
             
+            
+            
+            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/sections/201277702-Managing-My-Account" andTitle:@"Managing My Account"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+
+            
             break;
         }
         case 2:
         {
             NSLog(@"Buying");
+            
+            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/categories/200603732-Frequently-Asked-Questions" andTitle:@"Buying & Selling"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
             
             break;
         }
@@ -214,16 +226,19 @@
         case 0:
         {
             NSLog(@"Refund Policy");
-            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204470212" andTitle:@"Refund Policy"];
-            [self.navigationController pushViewController:vc animated:YES];
+//            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204470212" andTitle:@"Refund Policy"];
+//            [self.navigationController pushViewController:vc animated:YES];
 
+            [[HWZendesk shared] refundPolicy];
             break;
         }
         case 1:
         {
-            NSLog(@"Privacy");
-            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204465182-Privacy-Policy" andTitle:@"Privacy policy"];
-            [self.navigationController pushViewController:vc animated:YES];
+//            NSLog(@"Privacy");
+//            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204465182-Privacy-Policy" andTitle:@"Privacy policy"];
+//            [self.navigationController pushViewController:vc animated:YES];
+
+            [[HWZendesk shared] privacyPolicy];
             break;
         }
         case 2:

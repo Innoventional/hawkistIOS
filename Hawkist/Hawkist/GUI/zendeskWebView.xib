@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWWebViewZendeskViewController">
+            <connections>
+                <outlet property="navBar" destination="AfY-Sd-bNR" id="32B-KS-8iF"/>
+                <outlet property="view" destination="xpa-Iq-e27" id="BP9-oJ-pue"/>
+                <outlet property="webView" destination="Z73-e8-gTe" id="uck-hx-sdA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="xpa-Iq-e27">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfY-Sd-bNR" customClass="NavigationVIew">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                    <color key="backgroundColor" red="0.18039215689999999" green="0.67843137249999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="Cob-nV-cse"/>
+                    </constraints>
+                </view>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z73-e8-gTe">
+                    <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Z73-e8-gTe" firstAttribute="leading" secondItem="xpa-Iq-e27" secondAttribute="leading" id="2Yu-YL-BpJ"/>
+                <constraint firstAttribute="bottom" secondItem="Z73-e8-gTe" secondAttribute="bottom" id="60E-Jk-kYH"/>
+                <constraint firstAttribute="trailing" secondItem="AfY-Sd-bNR" secondAttribute="trailing" id="6uf-Yb-dYh"/>
+                <constraint firstItem="AfY-Sd-bNR" firstAttribute="leading" secondItem="xpa-Iq-e27" secondAttribute="leading" id="CE4-Lh-DDy"/>
+                <constraint firstAttribute="trailing" secondItem="Z73-e8-gTe" secondAttribute="trailing" id="dbq-FR-RPb"/>
+                <constraint firstItem="AfY-Sd-bNR" firstAttribute="top" secondItem="xpa-Iq-e27" secondAttribute="top" id="eBf-LE-nkM"/>
+                <constraint firstItem="Z73-e8-gTe" firstAttribute="top" secondItem="AfY-Sd-bNR" secondAttribute="bottom" id="uA9-oZ-mef"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="396" y="160"/>
+        </view>
+    </objects>
+</document>

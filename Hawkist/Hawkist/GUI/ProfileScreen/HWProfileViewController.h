@@ -11,5 +11,8 @@
 @interface HWProfileViewController : HWBaseViewController
 
 - (instancetype) initWithUserID:(NSString*)userID;
+-(instancetype) initWithUser:(HWUser*)user;
+
+
 
 @end

@@ -42,6 +42,7 @@
 //    self.allowLoad = YES;
     self.navigation.title.text = self.viewTitle;
     self.navigation.delegate = self;
+    self.content.scrollView.bounces = NO;
     
     NSString *urlAddress = self.url;
     NSURL *url = [NSURL URLWithString:urlAddress];
