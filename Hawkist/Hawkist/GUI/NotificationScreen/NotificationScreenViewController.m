@@ -340,8 +340,43 @@
 
 - (void) selectedUser:(NSString*)userId
 {
-    HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUserID:userId];
-    [self.navigationController pushViewController:vc animated:YES];
+    [[NetworkManager shared] getUserProfileWithUserID:userId
+                                         successBlock:^(HWUser *user) {
+                                             
+                                             
+                                             
+                                             if(!user) {
+                                                 
+                                                 [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                                             message:@"You have been blocked by this user."
+                                                                            delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles: nil]show];
+                                                 
+                                                 [self.navigationController popViewControllerAnimated:YES];
+                                                 
+                                                 
+                                                 
+                                             } else {
+                                                 
+                                                 HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUser:user];
+                                                 
+                                                 [self.navigationController pushViewController:vc animated:YES];
+                                             }
+                                             
+                                         } failureBlock:^(NSError *error) {
+                                             
+                                             [[[UIAlertView alloc]initWithTitle:@"Error!"
+                                                                        message:error.localizedDescription
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"Ok!"
+                                                              otherButtonTitles: nil] show];// }
+                                         }];
+    
+    
+    
+    
+
 }
 - (void) selectedItem:(NSString*)itemId
 {
@@ -451,8 +486,46 @@
         }
         case 6: case 8:
         {
-            HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUserID:notification.user.id];
-            [self.navigationController pushViewController:vc animated:YES];
+            
+            [[NetworkManager shared] getUserProfileWithUserID:notification.user.id
+                                             successBlock:^(HWUser *user) {
+                                                 
+                                                 
+                                                 
+                                                 if(!user) {
+                                                     
+                                                     [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                                                 message:@"You have been blocked by this user."
+                                                                                delegate:nil
+                                                                       cancelButtonTitle:@"OK"
+                                                                       otherButtonTitles: nil]show];
+                                                     
+                                                     [self.navigationController popViewControllerAnimated:YES];
+                                                     
+                                                     
+                                                     
+                                                 } else {
+                                                     
+                                                     HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUser:user];
+                                                     
+                                                    [self.navigationController pushViewController:vc animated:YES];
+                                                 }
+                                                 
+                                             } failureBlock:^(NSError *error) {
+                                                 
+                                                 [[[UIAlertView alloc]initWithTitle:@"Error!"
+                                                                            message:error.localizedDescription
+                                                                           delegate:self
+                                                                  cancelButtonTitle:@"Ok!"
+                                                                  otherButtonTitles: nil] show];// }
+                                             }];
+            
+
+            
+            
+            
+            
+
             break;
         }
         case 12:case 13:

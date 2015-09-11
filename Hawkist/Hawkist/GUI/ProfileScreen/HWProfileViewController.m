@@ -130,9 +130,10 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     self = [super initWithNibName: @"HWProfileViewController" bundle: nil];
     if(self) {
     
+        self.userId = user.id;
         self.user = user;
-        [self updateUser];
-        [self OOOItemsWithUserId:user.id];
+//        [self updateUser];
+//        [self OOOItemsWithUserId:user.id];
         
         self.nePOnatnoChto = YES;
         
@@ -260,6 +261,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
     }
  
+    [self OOOItemsWithUserId:self.userId];
+      [self updateUser];
    
 }
 
