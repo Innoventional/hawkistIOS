@@ -16,6 +16,5 @@ pod 'Stripe'
 pod 'JSBadgeView'
 
 pod 'pop', '~> 1.0'
-pod 'ZendeskSDK'
 
-pod 'Leanplum-iOS-SDK'
+pod 'Leanplum-iOS-SDK'pod 'ZendeskSDK'
