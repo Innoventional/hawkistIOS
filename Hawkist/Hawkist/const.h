@@ -22,9 +22,10 @@
 
 #else
 
-#define SERVER_URL @""
-#define SERVER_API_KEY @""
-#define SERVER_API_PASS @""
+#define SERVER_URL @"http://52.18.7.196:8000/api/"
+#define SERVER_API_KEY @"c7f3380a074f4736"
+#define SERVER_API_PASS @"8ec1d0c900079d0a"
+
 
 #endif
 

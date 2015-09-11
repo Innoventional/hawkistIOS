@@ -673,7 +673,6 @@
 		3A359D531B96905800A0F2E1 /* PushNotificationSettings */ = {
 			isa = PBXGroup;
 			children = (
-				CE6611B41B971527001E199C /* zenDesk */,
 				3A359D5E1B969FEB00A0F2E1 /* PushNotificationSettingsCell.xib */,
 				3A359D601B96A03900A0F2E1 /* NotificationSettingsViewController.h */,
 				3A359D611B96A03900A0F2E1 /* NotificationSettingsViewController.m */,
@@ -1234,6 +1233,7 @@
 			isa = PBXGroup;
 			children = (
 				3AA575D11B9E4B95003E0CDE /* AboutHawkist */,
+				CE6611B41B971527001E199C /* zenDesk */,
 				3AA575B61B9DAB88003E0CDE /* FeedBack */,
 				3A359D531B96905800A0F2E1 /* PushNotificationSettings */,
 				3ACC6B8C1B43A0AA0076004F /* NavigationView */,
