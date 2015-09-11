@@ -63,6 +63,8 @@
 
 @property (nonatomic, assign) NSInteger selectBut;
 
+@property (nonatomic, weak) IBOutlet UIImageView *frontGraund;
+
 @end
 
 
@@ -86,7 +88,9 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
         self.imagesArray = [NSMutableArray array];
         self.item = item;
         
-        self.view.hidden = YES;
+        
+        self.frontGraund.backgroundColor = [UIColor whiteColor];
+        [self showHud];
     }
     
   
@@ -217,6 +221,8 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
 #pragma mark - update item
 - (void) updateItem
 {
+    [self hideHud];
+    self.frontGraund.hidden = YES;
     
     [self setupDescription];
     self.navigationView.title.text = self.item.title;

@@ -31,6 +31,7 @@
                 <outlet property="followUnfollowButton" destination="ovl-2s-eoB" id="6N5-LX-7h6"/>
                 <outlet property="followersButton" destination="XrF-5R-JCf" id="PPd-5J-hUd"/>
                 <outlet property="followingButton" destination="PJ4-L1-9RI" id="wXN-bM-qyr"/>
+                <outlet property="frontGround" destination="HuV-kn-plo" id="u2Q-1c-L1o"/>
                 <outlet property="indicator" destination="snj-nM-5OM" id="cPU-R8-9KO"/>
                 <outlet property="itemsButton" destination="omz-WK-uvU" id="pKd-zM-Zmu"/>
                 <outlet property="lastSeenLabel" destination="qhG-Y7-xFW" id="a2q-H5-5G9"/>
@@ -410,16 +411,24 @@
                         </mask>
                     </variation>
                 </scrollView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HuV-kn-plo">
+                    <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.89822048610000005" green="0.89822048610000005" blue="0.89822048610000005" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="HuV-kn-plo" firstAttribute="top" secondItem="Ioc-8h-dDs" secondAttribute="top" constant="65" id="0Qk-fH-8io"/>
                 <constraint firstItem="eYe-lJ-r6J" firstAttribute="leading" secondItem="s5R-OZ-1Dq" secondAttribute="leading" id="9FV-eU-6nH"/>
                 <constraint firstItem="eYe-lJ-r6J" firstAttribute="trailing" secondItem="s5R-OZ-1Dq" secondAttribute="trailing" id="AkZ-a6-x9p"/>
                 <constraint firstAttribute="trailing" secondItem="eYe-lJ-r6J" secondAttribute="trailing" id="L57-Wh-s0U"/>
                 <constraint firstItem="s5R-OZ-1Dq" firstAttribute="top" secondItem="Ioc-8h-dDs" secondAttribute="top" id="QlR-4h-mh2"/>
                 <constraint firstItem="eYe-lJ-r6J" firstAttribute="leading" secondItem="Ioc-8h-dDs" secondAttribute="leading" id="RlU-bd-ooi"/>
                 <constraint firstAttribute="bottom" secondItem="eYe-lJ-r6J" secondAttribute="bottom" id="bZV-mI-pIH"/>
+                <constraint firstItem="HuV-kn-plo" firstAttribute="leading" secondItem="Ioc-8h-dDs" secondAttribute="leading" id="clP-dv-NtI"/>
                 <constraint firstItem="eYe-lJ-r6J" firstAttribute="top" secondItem="s5R-OZ-1Dq" secondAttribute="bottom" id="hqB-Fh-3gS"/>
+                <constraint firstAttribute="bottom" secondItem="HuV-kn-plo" secondAttribute="bottom" id="rBg-r0-SNf"/>
+                <constraint firstAttribute="trailing" secondItem="HuV-kn-plo" secondAttribute="trailing" id="rOM-Iw-OfX"/>
                 <constraint firstItem="eYe-lJ-r6J" firstAttribute="top" secondItem="Ioc-8h-dDs" secondAttribute="top" constant="65" id="zcP-0E-1d5"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

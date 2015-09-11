@@ -86,14 +86,12 @@
 
 @property (nonatomic, assign) BOOL nePOnatnoChto;
 
+@property (nonatomic, weak) IBOutlet UIImageView *frontGround;
+
 @end
 
 
-//AbusiveBehaviour = 0
-//InappropriateContent = 1
-//ImpersonationOrHateAccount = 2
-//SellingFakeItems = 3
-//UnderagedAccount = 4
+
 
 typedef NS_ENUM(NSInteger, HWReasonReport) {
     
@@ -128,10 +126,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     
         self.userId = user.id;
         self.user = user;
-        
-        self.userId = user.id;
-        [self updateUser];
-        [self OOOItemsWithUserId:user.id];
+
         
         self.nePOnatnoChto = YES;
         
@@ -147,6 +142,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     {
         self.networkManager = [NetworkManager shared];
         self.userId = userID;
+        [self showHud];
         
         [self.networkManager getUserProfileWithUserID:userID
                                             successBlock:^(HWUser *user) {
@@ -155,13 +151,16 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                                 
                                                 if(!user) {
                                                     
+                                                    self.view.hidden = YES;
+                                                    
                                                    [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
                                                                                message:@"You have been blocked by this user."
                                                                               delegate:nil
                                                                      cancelButtonTitle:@"OK"
                                                                      otherButtonTitles: nil]show];
                                                     
-                                                    [self.navigationController popViewControllerAnimated:YES];
+                                                    [self.navigationController popViewControllerAnimated:NO];
+                                                    [self hideHud];
                                                     
                                                     
                                                     
@@ -169,8 +168,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                                 
                                                       self.user = user;
                                                       [self updateUser];
-                                                   //   [self setArrayForSegmentViewWithUserID:userID];
-                                                    [self OOOItemsWithUserId:user.id];
+                                                      [self OOOItemsWithUserId:user.id];
                                                     
                                                     
                                                     self.nePOnatnoChto = YES;
@@ -246,6 +244,11 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
     [super viewDidLoad];
     
     [self commonInit];
+    
+//    [self updateUser];
+//    [self OOOItemsWithUserId:self.userId];
+
+    
     [self showHud];
     self.navigationView.delegate = self;
     self.navigationView.title.text = @"Profile";
@@ -259,8 +262,9 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         [self.navigationView.rightButtonOutlet setImage:[UIImage imageNamed:@"points"] forState:UIControlStateNormal];
     }
  
-    [self OOOItemsWithUserId:self.userId];
-      [self updateUser];
+    
+//      [self updateUser];
+//    [self OOOItemsWithUserId:self.userId];
    
 }
 
@@ -325,6 +329,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 - (void) updateUser
 {
+    self.frontGround.hidden = YES;
+    [self hideHud];
     
     if([self.user.following integerValue] == 1)
     {

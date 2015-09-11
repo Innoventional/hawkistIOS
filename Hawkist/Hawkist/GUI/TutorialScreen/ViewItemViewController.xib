@@ -60,6 +60,7 @@
                 <outlet property="delivery" destination="ryb-mr-4Id" id="DmF-xe-Pmf"/>
                 <outlet property="descriptionTextView" destination="SiY-ip-Tfu" id="Kln-Of-k08"/>
                 <outlet property="discount" destination="L7e-2t-3KG" id="60T-sx-hhw"/>
+                <outlet property="frontGraund" destination="K51-7T-t9A" id="Csp-ru-KRY"/>
                 <outlet property="height" destination="3up-aO-gc2" id="utE-zO-ZTC"/>
                 <outlet property="itemUser" destination="KAH-LN-Fo2" id="1l2-O1-eYJ"/>
                 <outlet property="nameOoStuff" destination="UR7-vb-gl3" id="3xC-ZB-2Du"/>
@@ -963,16 +964,24 @@
                         <constraint firstItem="c5T-eQ-yef" firstAttribute="trailing" secondItem="b1C-1U-qJn" secondAttribute="trailing" id="yR2-wJ-1jV"/>
                     </constraints>
                 </scrollView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K51-7T-t9A">
+                    <rect key="frame" x="0.0" y="65" width="320" height="922"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Noy-fC-lwS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="9rh-fe-b4I"/>
                 <constraint firstItem="Noy-fC-lwS" firstAttribute="top" secondItem="xDE-9I-P7A" secondAttribute="bottom" id="LlA-Hw-wL9"/>
+                <constraint firstItem="K51-7T-t9A" firstAttribute="top" secondItem="xDE-9I-P7A" secondAttribute="bottom" id="LyH-Qn-yFd"/>
                 <constraint firstItem="xDE-9I-P7A" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TYc-8Q-wAA"/>
+                <constraint firstItem="K51-7T-t9A" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tc0-WU-bsj"/>
                 <constraint firstItem="xDE-9I-P7A" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YUI-3d-e5X"/>
                 <constraint firstItem="xDE-9I-P7A" firstAttribute="trailing" secondItem="Noy-fC-lwS" secondAttribute="trailing" id="ZxO-No-ieX"/>
                 <constraint firstAttribute="trailing" secondItem="xDE-9I-P7A" secondAttribute="trailing" id="kEf-1U-F2P"/>
                 <constraint firstAttribute="bottom" secondItem="Noy-fC-lwS" secondAttribute="bottom" constant="-318" id="nLl-BZ-wBI"/>
+                <constraint firstAttribute="bottom" secondItem="K51-7T-t9A" secondAttribute="bottom" id="sI5-rF-aNj"/>
+                <constraint firstAttribute="trailing" secondItem="K51-7T-t9A" secondAttribute="trailing" id="zGz-M2-NXy"/>
                 <constraint firstItem="xDE-9I-P7A" firstAttribute="leading" secondItem="Noy-fC-lwS" secondAttribute="leading" id="zjq-mz-qWn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

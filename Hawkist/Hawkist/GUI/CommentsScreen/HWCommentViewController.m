@@ -480,7 +480,7 @@
 - (void) transitionToProfileWithUserId:(NSString*)userId
 {
     HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUserID:userId];
-    [self.navigationController pushViewController:profileVC animated:YES];
+    [self.navigationController pushViewController:profileVC animated:NO];
 }
 
 
