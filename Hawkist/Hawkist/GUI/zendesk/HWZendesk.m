@@ -135,32 +135,6 @@ setStatusBarColor([UIColor whiteColor]);
  
     setStatusBarColor([UIColor whiteColor]);
     
-    
-//    ZDKHelpCenterProvider  *pr = [[ZDKHelpCenterProvider alloc] init];
-//   [pr getCategoriesWithCallback:^(NSArray *items, NSError *error) {
-//   [pr getSectionsForCategoryId: @"200603732" withCallback:^(NSArray *items, NSError *error) {
-//       
-//        NSLog(@"%@", items);
-//       
-//       ZDKHelpCenterSection *i = [items firstObject];
-//       
-//      [pr getArticlesForSectionId: i.sid withCallback:^(NSArray *items, NSError *error) {
-//       
-//          
-//          ZDKHelpCenterArticle *art = items.firstObject;
-//          
-//          
-//          
-//          ZDKArticleViewController* vc =[[ZDKArticleViewController alloc] initWithArticle:art];
-//          [self.navigationController pushViewController:vc animated:YES];
-//      }];
-//
-//       
-//   }];
-    
-    
-    
-    
       }
 
 
@@ -196,25 +170,16 @@ setStatusBarColor([UIColor whiteColor]);
 }
 
 -(void) whyWeNeedThis{
+       ZDKHelpCenterProvider  *provider = [[ZDKHelpCenterProvider alloc] init];
     
-    
-    ZDKHelpCenterArticle *art = [[ZDKHelpCenterArticle alloc] init];
-   // art.locale = @"en-us/articles/204425331";
-    ZDKArticleViewController* vc =[[ZDKArticleViewController alloc] initWithArticle:art];
-    
-    NSURLRequest *re = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://hawkist.zendesk.com/hc/en-us/categories/200603732-Frequently-Asked-Questions"]];
-    
-    [vc.articleView.articleWebView loadRequest:re];
-    [self.navigationController pushViewController:vc animated:YES];
- }
+    [provider getArticleById:@"204424051" withCallback:^(NSArray *items, NSError *error) {
+        
+        ZDKArticleViewController* vc =[[ZDKArticleViewController alloc] initWithArticle:items.firstObject];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }];
 
--(void) myTiket {
-   // [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
- 
-    
-         [ZDKRequests showRequestListWithNavController:self.navigationController];
-    //setStatusBarColor([UIColor whiteColor]);
-
+   
 
 }
 
