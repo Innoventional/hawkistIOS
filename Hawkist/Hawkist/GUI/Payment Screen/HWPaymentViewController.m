@@ -388,7 +388,7 @@
     
     CGFloat width = 0;
     
-    width = (self.screenWidth - self.screenWidth/1.5)/2;
+   // width = (self.screenWidth - self.screenWidth/1.5)/2;
     
     if( self.screenWidth >320)
     {

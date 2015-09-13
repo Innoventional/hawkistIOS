@@ -3101,10 +3101,10 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 
 -(void) jwt{
     
-  AFHTTPRequestOperationManager*   operationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString: @"http://hawkist.zendesk.com/"]];
-     
-    NSDictionary *param = @{@"user_token":@"ddsd" };
-    
+//  AFHTTPRequestOperationManager*   operationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString: @"http://hawkist.zendesk.com/"]];
+//     
+//    NSDictionary *param = @{@"user_token":@"ddsd" };
+//    
     
 //    [operationManager POST:@""
 //                     parameters:nil//param

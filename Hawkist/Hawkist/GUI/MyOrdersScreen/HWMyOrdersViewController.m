@@ -129,7 +129,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HWOrderItem * orderItem = [self.itemsArray objectAtIndex:indexPath.row];
+   // HWOrderItem * orderItem = [self.itemsArray objectAtIndex:indexPath.row];
 
     
     
