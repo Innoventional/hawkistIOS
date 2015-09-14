@@ -22,6 +22,8 @@
 #import <ZendeskSDK/ZendeskSDK.h>
 #import <Leanplum/Leanplum.h>
 
+#import "const.h"
+
 @interface AppDelegate ()
 @property (nonatomic,strong) LoginViewController* viewController;
 //@property (nonatomic,strong) AccountDetailViewController* viewController;

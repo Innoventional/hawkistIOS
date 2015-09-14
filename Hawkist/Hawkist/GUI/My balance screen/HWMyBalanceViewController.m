@@ -409,7 +409,7 @@
         if(isVerify) {
             
              [self hideHud];
-            if((self.yourDetailsView.isEdit && self.bankAccountView.isEdit && self.bankAccAddressView.isEdit)) {
+            if(!(self.yourDetailsView.isEdit || self.bankAccountView.isEdit || self.bankAccAddressView.isEdit)) {
                 
                 [self hideCheckMyBalance];
                 
