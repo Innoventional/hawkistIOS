@@ -22,7 +22,7 @@
 #import "UIColor+Extensions.h"
 #import "HWZendesk.h"
 
- 
+
 
 
 @interface HWMyBalanceViewController () <HWMyBalanceYourDetailsViewDelegate,HWMyBalanceBankAccAddressViewDelegate,HWBankAccountViewDelegate, NavigationViewDelegate>
@@ -432,7 +432,7 @@
     }];
 }
 
-- (void) updateBankAccountAddress:(HWBankAccountAddress *)bankAddress {
+- (void) updateBankAccountAddress:(HWBankAccountAddress *)bankAddress  {
     
     [self.networkManager updateBankAccountAddress: bankAddress
                                      successBlock:^{
