@@ -23,7 +23,6 @@
 #import "HWZendesk.h"
 
 
-#import "HWWebViewZendeskViewController.h"
 
 
 @interface HWMyBalanceViewController () <HWMyBalanceYourDetailsViewDelegate,HWMyBalanceBankAccAddressViewDelegate,HWBankAccountViewDelegate, NavigationViewDelegate>
@@ -281,6 +280,7 @@
 - (void) sameAsBillingWithButton:(UIButton*) sender {
     
     [self.addAlert show];
+    
      NSLog(@"sameAsBillingWithButton");
 }
 
@@ -410,7 +410,7 @@
         if(isVerify) {
             
              [self hideHud];
-            if(!(self.yourDetailsView.isEdit && self.bankAccountView.isEdit && self.bankAccAddressView.isEdit)) {
+            if(!(self.yourDetailsView.isEdit || self.bankAccountView.isEdit || self.bankAccAddressView.isEdit)) {
                 
                 [self hideCheckMyBalance];
                 
@@ -433,7 +433,7 @@
     }];
 }
 
-- (void) updateBankAccountAddress:(HWBankAccountAddress *)bankAddress {
+- (void) updateBankAccountAddress:(HWBankAccountAddress *)bankAddress  {
     
     [self.networkManager updateBankAccountAddress: bankAddress
                                      successBlock:^{
@@ -485,7 +485,10 @@
                 
                 [self.bankAccAddressView setBankAccountAddress:ad];
                 self.bankAccAddressView.isEdit = NO;
+                
                 [self.bankAccAddressView.sameAsBillingButton setBackgroundImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+                
+                [self updateBankAccountAddress:ad];
                 
                 
             } failureBlock:^(NSError *error) {

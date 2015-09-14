@@ -225,7 +225,6 @@
 		CEBAAFBC1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAFBB1B70CAAA00AFE4C6 /* HWAddCardAndAdressCell.m */; };
 		CEBAAFBE1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAAFBD1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib */; };
 		CEBAAFC11B70E67B00AFE4C6 /* HWAddDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAAFC01B70E67B00AFE4C6 /* HWAddDataModel.m */; };
-		CEC2B2F11BA2DDFE003B9163 /* HWWebViewZendeskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC2B2F01BA2DDFE003B9163 /* HWWebViewZendeskViewController.m */; };
 		CEC2B2F31BA2DE74003B9163 /* zendeskWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC2B2F21BA2DE74003B9163 /* zendeskWebView.xib */; };
 		CEC68DD11B5661510024AFC5 /* HWButtonForSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */; };
 /* End PBXBuildFile section */
@@ -596,8 +595,6 @@
 		CEBAAFBD1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWAddCardAndAdressCell.xib; path = "Payment Screen/SelectCell/HWAddCardAndAdressCell.xib"; sourceTree = "<group>"; };
 		CEBAAFBF1B70E67B00AFE4C6 /* HWAddDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAddDataModel.h; path = "Payment Screen/HWAddDataModel.h"; sourceTree = "<group>"; };
 		CEBAAFC01B70E67B00AFE4C6 /* HWAddDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAddDataModel.m; path = "Payment Screen/HWAddDataModel.m"; sourceTree = "<group>"; };
-		CEC2B2EF1BA2DDFE003B9163 /* HWWebViewZendeskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWWebViewZendeskViewController.h; path = zendesk/HWWebViewZendeskViewController.h; sourceTree = "<group>"; };
-		CEC2B2F01BA2DDFE003B9163 /* HWWebViewZendeskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWWebViewZendeskViewController.m; path = zendesk/HWWebViewZendeskViewController.m; sourceTree = "<group>"; };
 		CEC2B2F21BA2DE74003B9163 /* zendeskWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = zendeskWebView.xib; sourceTree = "<group>"; };
 		CEC68DCF1B5661510024AFC5 /* HWButtonForSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWButtonForSegment.h; path = ProfileScreen/CustomSegment/HWButtonForSegment.h; sourceTree = "<group>"; };
 		CEC68DD01B5661510024AFC5 /* HWButtonForSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWButtonForSegment.m; path = ProfileScreen/CustomSegment/HWButtonForSegment.m; sourceTree = "<group>"; };
@@ -1463,8 +1460,6 @@
 				CE6611B61B97164B001E199C /* HWZendeskViewController.m */,
 				CE8D89591B9D92D200749577 /* HWZendesk.h */,
 				CE8D895A1B9D92D200749577 /* HWZendesk.m */,
-				CEC2B2EF1BA2DDFE003B9163 /* HWWebViewZendeskViewController.h */,
-				CEC2B2F01BA2DDFE003B9163 /* HWWebViewZendeskViewController.m */,
 				CEC2B2F21BA2DE74003B9163 /* zendeskWebView.xib */,
 			);
 			name = zenDesk;
@@ -1799,7 +1794,6 @@
 				CEAF106F1B8B4CD300E5029E /* HWBankAccountAddress.m in Sources */,
 				3A2AE3D21B6122B600806D59 /* TagCell.m in Sources */,
 				CE59095B1B5FD7E200DAA7FF /* HWComment.m in Sources */,
-				CEC2B2F11BA2DDFE003B9163 /* HWWebViewZendeskViewController.m in Sources */,
 				C35A4C621B3035D2002E1F26 /* NSDate+Extensions.m in Sources */,
 				CE1546401B7DF48D0082ACF4 /* HWAddressCollectionOnlyCell.m in Sources */,
 				3A0BAF741B5527DD004DFF86 /* MyItemsViewController.m in Sources */,

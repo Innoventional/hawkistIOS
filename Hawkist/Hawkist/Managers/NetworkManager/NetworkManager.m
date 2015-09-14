@@ -3097,14 +3097,57 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 }
 
 
+-(void) jwtWithSuccess:(void(^)(NSString *jwt)) successBlock
+                        failureBlock:(void(^)(NSError *error)) failureBlock  {
+                            
+    [self.networkDecorator GET:@"user/jwt"
+                    parameters:nil
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           
+                           
+                           if([responseObject[@"status"] integerValue] != 0)
+                           {
+                               NSError *responseError = [self errorWithResponseObject:responseObject];
+                               failureBlock(responseError);
+                               return;
+                           }
+                           
+                           NSString *jwt = responseObject[@"jwt"];
+                           
+                           successBlock(jwt);
+                           
+                           
+                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           
+                           NSError *serverError = [self serverErrorWithError:error];
+                           failureBlock(serverError);
+                           
+                       }];
+    
+}
 
 
--(void) jwt{
+
+
+//
+//Url: 'user/jwt'
+//Method: 'GET'
+//
+//
+//Response :
+//
+//{
+//    "status": 0,
+//    "jwt": JWT_STRING
+//}
+//
+
+//-(void) jwt{
     
-  AFHTTPRequestOperationManager*   operationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString: @"http://hawkist.zendesk.com/"]];
-     
-    NSDictionary *param = @{@"user_token":@"ddsd" };
-    
+//  AFHTTPRequestOperationManager*   operationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString: @"http://hawkist.zendesk.com/"]];
+//     
+//    NSDictionary *param = @{@"user_token":@"ddsd" };
+//    
     
 //    [operationManager POST:@""
 //                     parameters:nil//param
@@ -3118,7 +3161,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 //                   }];
     
    
-}
+//}
 
 
 @end
