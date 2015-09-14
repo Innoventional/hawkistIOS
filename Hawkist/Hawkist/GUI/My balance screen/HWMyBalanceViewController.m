@@ -280,6 +280,7 @@
 - (void) sameAsBillingWithButton:(UIButton*) sender {
     
     [self.addAlert show];
+    
      NSLog(@"sameAsBillingWithButton");
 }
 
@@ -484,7 +485,10 @@
                 
                 [self.bankAccAddressView setBankAccountAddress:ad];
                 self.bankAccAddressView.isEdit = NO;
+                
                 [self.bankAccAddressView.sameAsBillingButton setBackgroundImage:[UIImage imageNamed:@"acdet_check"] forState:UIControlStateNormal];
+                
+                [self updateBankAccountAddress:ad];
                 
                 
             } failureBlock:^(NSError *error) {

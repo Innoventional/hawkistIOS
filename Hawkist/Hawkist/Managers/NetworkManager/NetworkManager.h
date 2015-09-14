@@ -431,6 +431,8 @@ typedef NS_ENUM(NSInteger, HWOrderIssuseReasons)
        failureBlock:(void(^)(NSError *error)) failureBlock;
 
 
--(void) jwt;
+-(void) jwtWithSuccess:(void(^)(NSString *jwt)) successBlock
+          failureBlock:(void(^)(NSError *error)) failureBlock;
+
 
 @end

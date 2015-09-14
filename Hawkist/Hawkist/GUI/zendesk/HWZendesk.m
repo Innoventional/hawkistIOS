@@ -77,22 +77,34 @@ BOOL setStatusBarColor(UIColor *color)
 - (void) jwtIdentify {
     
     
-    [[NetworkManager shared] jwt];
+   
     
-//        ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQm9iX0thcmJvYiIsImFsZyI6IkhTMjU2IiwianRpIjozNywiaWF0IjoxNDQxNzkyNzM5LCJ0eXAiOiJKV1QiLCJlbWFpbCI6ImdpZ2VrQG1haWwucnUifQ.6G99vMzjU5FuH4NIxSrlJWgo-1g-mEdiIAW_E06-hDQ"];
-//    
-//    
-//    mzU2MTIc7g
+    
+    [[NetworkManager shared] jwtWithSuccess:^(NSString *jwt) {
+        
+          ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:jwt];
+        
+        
+        [ZDKConfig instance].userIdentity = jwtUserIdentity;
+        
+    } failureBlock:^(NSError *error) {
+        
+    
+    }];
+    
+    
+ 
 
-//     [ZDKConfig instance].userIdentity = jwtUserIdentity;
+    // [ZDKConfig instance].userIdentity = jwtUserIdentity;
     
-    ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
-    
-    identity.name = [AppEngine shared].user.username;
-    identity.email = [AppEngine shared].user.email;
-    identity.externalId = [AppEngine shared].user.id;
-    
-   [ZDKConfig instance].userIdentity = identity;
+//    ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
+//    
+//    identity.name = [AppEngine shared].user.username;
+//    identity.email = [AppEngine shared].user.email;
+//    identity.externalId = [AppEngine shared].user.id;
+//    
+//    
+//   [ZDKConfig instance].userIdentity = identity;
 }
 
 
@@ -133,7 +145,7 @@ setStatusBarColor([UIColor whiteColor]);
  
     [ZDKHelpCenter showHelpCenterWithNavController:self.navigationController];
  
-    setStatusBarColor([UIColor whiteColor]);
+   setStatusBarColor([UIColor whiteColor]);
     
       }
 

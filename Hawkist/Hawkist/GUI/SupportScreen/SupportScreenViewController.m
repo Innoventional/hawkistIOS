@@ -158,8 +158,8 @@
     switch (row) {
         case 0:
         {
-            HWZendesk *zendesk = [HWZendesk shared];
-            [zendesk supportView];
+            
+            [[HWZendesk shared] supportView];
             
             NSLog(@"FAQs&Support");
             
