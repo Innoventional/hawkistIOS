@@ -586,8 +586,12 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
     myItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
    
     HWItem *item  = [self.selectedItemsArray objectAtIndex: indexPath.row] ;
+    
+    [cell setItem:item];
     cell.mytrash.hidden = YES;
-    cell.item = item;
+    
+    
+    
     cell.delegate = self;
     
     return cell;
