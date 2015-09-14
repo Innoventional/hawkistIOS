@@ -66,6 +66,7 @@ BOOL setStatusBarColor(UIColor *color)
     SEL setForegroundColor_sel = NSSelectorFromString(@"setForegroundColor:");
     if([statusBar respondsToSelector:setForegroundColor_sel]) {
         // iOS 7+
+        
         [statusBar performSelector:setForegroundColor_sel withObject:color];
         return YES;
     } else {
@@ -76,35 +77,31 @@ BOOL setStatusBarColor(UIColor *color)
 
 - (void) jwtIdentify {
     
-    
-   
-    
-    
-    [[NetworkManager shared] jwtWithSuccess:^(NSString *jwt) {
-        
-          ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:jwt];
-        
-        
-        [ZDKConfig instance].userIdentity = jwtUserIdentity;
-        
-    } failureBlock:^(NSError *error) {
-        
-    
-    }];
-    
+//    [[NetworkManager shared] jwtWithSuccess:^(NSString *jwt) {
+//        
+//          ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:jwt];
+//        
+//        
+//        [ZDKConfig instance].userIdentity = jwtUserIdentity;
+//        
+//    } failureBlock:^(NSError *error) {
+//        
+//    
+//    }];
+//    
     
  
 
-    // [ZDKConfig instance].userIdentity = jwtUserIdentity;
+   
     
-//    ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
-//    
-//    identity.name = [AppEngine shared].user.username;
-//    identity.email = [AppEngine shared].user.email;
-//    identity.externalId = [AppEngine shared].user.id;
-//    
-//    
-//   [ZDKConfig instance].userIdentity = identity;
+    ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
+    
+    identity.name = [AppEngine shared].user.username;
+    identity.email = [AppEngine shared].user.email;
+    identity.externalId = [AppEngine shared].user.id;
+    
+    
+   [ZDKConfig instance].userIdentity = identity;
 }
 
 
