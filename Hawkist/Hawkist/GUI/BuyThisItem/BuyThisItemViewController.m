@@ -165,8 +165,29 @@
 #pragma mark Action 
 - (IBAction)pressBuyButton:(UIButton *)sender
 {
-    HWPaymentViewController *vc = [[HWPaymentViewController alloc] initWithItem:self.item];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    [  [NetworkManager shared]getItemById:self.item.id
+
+
+                             successBlock:^(HWItem *item) {
+                                
+                                 
+                                 if ([item.status isEqualToString:@"0"]){
+                                 HWPaymentViewController *vc = [[HWPaymentViewController alloc] initWithItem:self.item];
+                                 [self.navigationController pushViewController:vc animated:YES];
+                                 }
+                                 else
+                                 {
+                                     [self.navigationController popViewControllerAnimated:YES];
+                                 }
+    
+                             } failureBlock:^(NSError *error) {
+                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                 
+
+    
+}];
+    
     
 }
 
