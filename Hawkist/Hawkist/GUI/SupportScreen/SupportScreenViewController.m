@@ -234,11 +234,11 @@
         }
         case 1:
         {
-            NSLog(@"Privacy");
-            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204465182-Privacy-Policy" andTitle:@"Privacy policy"];
-            [self.navigationController pushViewController:vc animated:YES];
-
-         //   [[HWZendesk shared] privacyPolicy];
+//            NSLog(@"Privacy");
+//            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204465182-Privacy-Policy" andTitle:@"Privacy policy"];
+//            [self.navigationController pushViewController:vc animated:YES];
+//
+            [[HWZendesk shared] privacyPolicy];
             break;
         }
         case 2:
