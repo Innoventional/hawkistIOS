@@ -246,19 +246,25 @@
             
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self hideHud];
-                });
+                
                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             self.signIn.hidden = NO;
             self.loading.hidden = YES;
             self.loginView.hidden = YES;
+            [self.view layoutIfNeeded];
+                    });
         }];
         
     } failure:^(NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideHud];
-        });
+
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        self.signIn.hidden = NO;
+        self.loading.hidden = YES;
+        self.loginView.hidden = YES;
+                    });
     }];
 }
 

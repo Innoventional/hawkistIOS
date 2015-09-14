@@ -143,6 +143,7 @@
     else
     {
         self.soldImageView.hidden = YES;
+        self.mytrash.hidden = NO;
     }
    
     
