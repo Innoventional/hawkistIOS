@@ -17,7 +17,7 @@
 #ifdef TEST_SERVER
 
 
-//#define SERVER_URL @"http://52.18.7.196:8000/api/"
+
 
 #define SERVER_URL @"http://45.55.197.87:8003/api/"  // - test
 #define SERVER_API_KEY @"c7f3380a074f4736"
@@ -34,7 +34,8 @@
 
 #define FACEBOOK_APP_ID @"1592531330997204"
 #define FACEBOOK_APP_ID @"452450878249777"
-#define STRIPE_KEY @"pk_test_oury2cSVAi0FgbINEHbGbyV6"
+//#define STRIPE_KEY @"pk_test_oury2cSVAi0FgbINEHbGbyV6" - debug
+#define STRIPE_KEY @"pk_live_kghKa4ho5OOPVWPBL68klsTc"
 
 #ifdef DEBUG
 

@@ -226,10 +226,10 @@
         case 0:
         {
             NSLog(@"Refund Policy");
-//            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204470212" andTitle:@"Refund Policy"];
-//            [self.navigationController pushViewController:vc animated:YES];
+            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204470212" andTitle:@"Refund Policy"];
+            [self.navigationController pushViewController:vc animated:YES];
 
-            [[HWZendesk shared] refundPolicy];
+          //  [[HWZendesk shared] refundPolicy];
             break;
         }
         case 1:
@@ -237,7 +237,7 @@
 //            NSLog(@"Privacy");
 //            WebViewController *vc = [[WebViewController alloc]initWithUrl:@"https://hawkist.zendesk.com/hc/en-us/articles/204465182-Privacy-Policy" andTitle:@"Privacy policy"];
 //            [self.navigationController pushViewController:vc animated:YES];
-
+//
             [[HWZendesk shared] privacyPolicy];
             break;
         }

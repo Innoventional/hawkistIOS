@@ -44,6 +44,7 @@
     if([AppEngine isFirsTimeLaunch])
     {
         [self presentViewController: [[TutorialViewController alloc] init] animated: YES completion:nil];
+                [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     }
     
     [self initDefault];
@@ -245,19 +246,25 @@
             
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self hideHud];
-                });
+                
                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             self.signIn.hidden = NO;
             self.loading.hidden = YES;
             self.loginView.hidden = YES;
+            [self.view layoutIfNeeded];
+                    });
         }];
         
     } failure:^(NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideHud];
-        });
+
         [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        self.signIn.hidden = NO;
+        self.loading.hidden = YES;
+        self.loginView.hidden = YES;
+                    });
     }];
 }
 
@@ -319,6 +326,8 @@
         [AppEngine shared].user = user;
         [AppEngine shared].tags = tags;
         
+        
+        if ([AppEngine shared].APNStoken){
         [[NetworkManager shared] sendAPNSToken:[AppEngine shared].APNStoken successBlock:^{
             
             
@@ -326,6 +335,7 @@
             
             
         }];
+        }
         if (user.first_login)
         {
             AccountDetailViewController *accountDetailVC= [[AccountDetailViewController alloc]init];

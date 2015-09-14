@@ -111,6 +111,8 @@
    
     HWItem* currentItem = [self.items objectAtIndex:indexPath.row];
     
+    
+    
     [cell setItem:currentItem];
     
     cell.delegate = self;
