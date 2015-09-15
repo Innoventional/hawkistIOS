@@ -186,7 +186,7 @@
                                        
                                    } failureBlock:^(NSError *error) {
                                        
-                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"] withDelegate:self];
+                                       [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                        
                                        //  [self.navigationController popViewControllerAnimated:YES];
                                        
@@ -613,9 +613,8 @@
 {     
     NSInteger newLength = [textView.text length] + [text length] - range.length;
     NSInteger limit =  160;
- 
-   // if (newLength <= permissibleLenght) {
-    self.inputCommentView.limitCharacter.text = [NSString stringWithFormat:@"%d", (limit - newLength) ];
+  
+    self.inputCommentView.limitCharacter.text = [NSString stringWithFormat:@"%ld", (limit - newLength) ];
         if ((limit - newLength)<= 10) {
             
             self.inputCommentView.limitCharacter.textColor = [UIColor redColor];
@@ -626,9 +625,6 @@
         
         self.inputCommentView.pressButton.enabled = ((160 - newLength) >= 0);
         
-        
-        
-  //  }
     
     return YES;//(newLength > permissibleLenght) ? NO : YES;
   
@@ -687,19 +683,9 @@
                                                
                                            }];
     
-    
-    
 }
 
-#pragma mark -
-#pragma mark UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    
-}
 
 
 @end

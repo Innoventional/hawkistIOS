@@ -77,18 +77,18 @@ BOOL setStatusBarColor(UIColor *color)
 
 - (void) jwtIdentify {
     
-//    [[NetworkManager shared] jwtWithSuccess:^(NSString *jwt) {
-//        
-//          ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:jwt];
-//        
-//        
-//        [ZDKConfig instance].userIdentity = jwtUserIdentity;
-//        
-//    } failureBlock:^(NSError *error) {
-//        
-//    
-//    }];
-//    
+    [[NetworkManager shared] jwtWithSuccess:^(NSString *jwt) {
+        
+          ZDKJwtIdentity * jwtUserIdentity = [[ZDKJwtIdentity alloc] initWithJwtUserIdentifier:jwt];
+        
+        
+        [ZDKConfig instance].userIdentity = jwtUserIdentity;
+        
+    } failureBlock:^(NSError *error) {
+        
+    
+    }];
+    
     
  
 

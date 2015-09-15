@@ -8,18 +8,53 @@
 
 #import "HWBaseViewController.h"
 #import "LoginViewController.h"
+#import "AFNetworking.h"
 
 @interface HWBaseViewController ()
+
+@property (nonatomic, strong) UIView *noConnectView;
 
 @end
 
 @implementation HWBaseViewController
+
+-(void) viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityDidChange:)
+                                                 name: AFNetworkingReachabilityDidChangeNotification
+                                               object:nil];
+    
+    
+}
+
+-(void) viewDidDisappear:(BOOL)animated {
+    
+    
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:AFNetworkingReachabilityDidChangeNotification
+                                                  object:nil];
+    
+    
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
    // self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
+    self.noConnectView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.noConnectView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:self.noConnectView];
+    
+    self.noConnectView.hidden = YES;
+    
     
 }
 
@@ -31,6 +66,52 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+
+#pragma mark - notification method
+
+- (void)reachabilityDidChange:(NSNotification *)notification {
+   
+    NSNumber *status = [notification userInfo][AFNetworkingReachabilityNotificationStatusItem];
+    
+     [self.view bringSubviewToFront:self.noConnectView];
+    
+    switch ([status integerValue]) {
+        case 0:
+            
+            NSLog(@"Net ineta");
+            
+            if(self.noConnectView.hidden) {
+                
+                self.noConnectView.hidden = NO;
+                
+            } else {
+                
+                return;
+            }
+            
+
+            break;
+        
+        default:
+            
+            if(self.noConnectView.hidden) {
+                
+                return;
+            } else {
+                
+                self.noConnectView.hidden = YES;
+                
+                [self viewDidLoad];
+            }
+            
+            NSLog(@"Est inet");
+            break;
+    }
+
 }
 
 #pragma mark -
@@ -48,6 +129,8 @@
 
 - (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message
 {
+   // [self.navigationController popViewControllerAnimated:NO];
+    
     if ([title isEqualToString:@"Connection Error"]&& self.isInternetConnectionAlertShowed)
     {
         return;
@@ -96,32 +179,32 @@
 }
 
 
-- (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message withDelegate:(id)delegate
-{
-    if ([title isEqualToString:@"Connection Error"]&& self.isInternetConnectionAlertShowed)
-    {
-        return;
-    }
-    else
-    {
-        if ([title isEqualToString:@"Connection Error"])
-        {
-            self.isInternetConnectionAlertShowed = YES;
-        }
-        
-        NSLog(@"%@",message);
-        
-        
-            [[[UIAlertView alloc]initWithTitle:title
-                                       message:message
-                                      delegate:delegate
-                             cancelButtonTitle:@"OK"
-                             otherButtonTitles:nil] show];
-        
-        
-        
-    };
-}
+//- (void) showAlertWithTitle:(NSString*)title Message:(NSString*) message withDelegate:(id)delegate
+//{
+//    if ([title isEqualToString:@"Connection Error"]&& self.isInternetConnectionAlertShowed)
+//    {
+//        return;
+//    }
+//    else
+//    {
+//        if ([title isEqualToString:@"Connection Error"])
+//        {
+//            self.isInternetConnectionAlertShowed = YES;
+//        }
+//        
+//        NSLog(@"%@",message);
+//        
+//        
+//            [[[UIAlertView alloc]initWithTitle:title
+//                                       message:message
+//                                      delegate:delegate
+//                             cancelButtonTitle:@"OK"
+//                             otherButtonTitles:nil] show];
+//        
+//        
+//        
+//    };
+//}
 
 
 @end

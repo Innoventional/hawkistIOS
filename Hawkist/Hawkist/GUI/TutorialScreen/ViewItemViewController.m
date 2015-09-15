@@ -111,6 +111,8 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
                             } failureBlock:^(NSError *error) {
                                 
                                  [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                [self.navigationController popViewControllerAnimated:NO];
+                                [self hideHud];
                             }];
 
     

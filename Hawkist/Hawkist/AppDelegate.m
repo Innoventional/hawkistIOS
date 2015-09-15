@@ -48,7 +48,7 @@
     /////LeanPlum////
     
     
-    [ZDKDispatcher setDebugLogging:YES];
+    //[ZDKDispatcher setDebugLogging:YES];
     
     [ZDKLogger enable:YES];
     
