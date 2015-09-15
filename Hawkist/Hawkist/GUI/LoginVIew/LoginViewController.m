@@ -48,16 +48,16 @@
     }
     
     [self initDefault];
+    self.txtMobileNum.text = [AppEngine shared].number;
+    self.txtPin.text = [AppEngine shared].pin;
+    [self autoLogin];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     self.isInternetConnectionAlertShowed = NO;
     
-    self.txtMobileNum.text = [AppEngine shared].number;
-    self.txtPin.text = [AppEngine shared].pin;
-    
-    [self autoLogin];
+    //[self autoLogin];
 }
 
 
@@ -351,6 +351,12 @@
     }];
     [AppEngine shared].logginedWithFB = FaceBook;
     [AppEngine shared].logginedWithPhone = !FaceBook;
+}
+
+- (void) setLogout
+{
+    self.loading.hidden = YES;
+    self.loginView.hidden = NO;
 }
 
 - (void) autoLogin

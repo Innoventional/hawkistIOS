@@ -87,6 +87,7 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
       //  return [NSError errorWithDomain:@"Connection Error"
         //                           code:499
           //                     userInfo:@{NSLocalizedDescriptionKey:@"Could not complete the last action. Please try again."}];
+        return nil;
     }
     
     else

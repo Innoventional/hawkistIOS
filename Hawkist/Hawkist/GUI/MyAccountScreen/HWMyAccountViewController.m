@@ -18,6 +18,7 @@
 #import "NotificationSettingsViewController.h"
 #import "SocialManager.h"
 #import "WebViewController.h"
+#import "LoginViewController.h"
 
 @interface HWMyAccountViewController () <UITableViewDataSource, UITableViewDelegate, NavigationViewDelegate,HWSingOutCellDelegate>
 
@@ -381,6 +382,10 @@
         [AppEngine shared].logginedWithPhone = NO;
         [AppEngine shared].logginedWithFB = NO;
         
+        
+        LoginViewController *lc = (LoginViewController*)[[self.navigationController viewControllers] objectAtIndex:0];
+
+        [lc setLogout];
         [self.navigationController popToRootViewControllerAnimated:YES];
         
     } failureBlock:^(NSError *error) {
