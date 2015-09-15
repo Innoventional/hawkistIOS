@@ -25,5 +25,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *rightButtonOutlet;
 
+@property (strong, nonatomic) IBOutlet UIButton *rightButtonSuperOutlet;
 @property (weak, nonatomic) id <NavigationViewDelegate> delegate;
 @end

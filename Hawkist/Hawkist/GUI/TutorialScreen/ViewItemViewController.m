@@ -332,6 +332,8 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
     self.askOutlet.enabled = NO;
     self.navigationView.rightButtonOutlet.hidden = YES;
     self.navigationView.rightButtonOutlet.enabled = NO;
+    self.navigationView.rightButtonSuperOutlet.enabled = NO;
+    
 }
     
 
