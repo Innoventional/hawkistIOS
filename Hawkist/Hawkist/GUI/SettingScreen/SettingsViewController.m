@@ -352,9 +352,38 @@
 }
 - (IBAction)nickNameSelect:(id)sender {
     
-    HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUserID:[AppEngine shared].user.id];
+    [self showHud];
+    [[NetworkManager shared] getUserProfileWithUserID:[AppEngine shared].user.id
+                                         successBlock:^(HWUser *user) {
+                                             
+                                             
+                                             
+                                             if(!user) {
+                                                 [self hideHud];
+                                                 [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                                             message:@"You have been blocked by this user."
+                                                                            delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles: nil]show];
+                                                 
+                                                 
+                                             } else {
+                                                 [self hideHud];
+                                                 HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUser:user];
+                                                 
+                                                 [self.navigationController pushViewController:vc animated:YES];
+                                             }
+                                             
+                                         } failureBlock:^(NSError *error) {
+                                             [self hideHud];
+                                             [[[UIAlertView alloc]initWithTitle:@"Error!"
+                                                                        message:error.localizedDescription
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"Ok!"
+                                                              otherButtonTitles: nil] show];// }
+                                         }];
     
-    [self.navigationController pushViewController:profileVC animated:YES];
+    
 }
 
 

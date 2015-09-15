@@ -108,13 +108,16 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
                                 self.item = item;
                                 
                                 [self updateItem];
+                                
+                                
                             } failureBlock:^(NSError *error) {
                                 
                                  [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                 [self.navigationController popViewControllerAnimated:NO];
                                 [self hideHud];
                             }];
-
+    
+    
     
 }
 - (void)viewDidLoad {
@@ -328,6 +331,7 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
     self.buyThisItem.enabled = YES;
     self.askOutlet.enabled = NO;
     self.navigationView.rightButtonOutlet.hidden = YES;
+    self.navigationView.rightButtonOutlet.enabled = NO;
 }
     
 
