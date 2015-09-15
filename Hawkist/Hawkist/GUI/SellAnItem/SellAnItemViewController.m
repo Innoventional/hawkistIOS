@@ -483,6 +483,8 @@
      [self.view endEditing:YES];
     HWItem* currentItem = [[HWItem alloc]init];
     
+    [self.view endEditing:YES];
+    
     currentItem.title = titleField.text;
     
     
