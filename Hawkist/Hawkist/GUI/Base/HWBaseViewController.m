@@ -50,8 +50,22 @@
    // self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
     self.noConnectView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.noConnectView.backgroundColor = [UIColor redColor];
+    self.noConnectView.backgroundColor = [UIColor whiteColor];
+    
     [self.view addSubview:self.noConnectView];
+    CGRect frLabel = self.noConnectView.bounds;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frLabel.size.width - 20, frLabel.size.height - 20)];
+    
+    
+    label.text = @"Connection Error\n\nCould not complete the last action. Please try again.";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    
+    [self.noConnectView addSubview:label];
+    
+    label.center = self.noConnectView.center;
+    
+    
     
     self.noConnectView.hidden = YES;
     
