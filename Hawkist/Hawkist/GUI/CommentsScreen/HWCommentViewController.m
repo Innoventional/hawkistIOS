@@ -43,6 +43,8 @@
 @property (nonatomic, assign) BOOL isCommentsArray;
 @property (weak, nonatomic) IBOutlet UIView *v;
 
+@property (nonatomic, assign) BOOL isSwipeButtomPress;
+
 @end
 
 
@@ -101,6 +103,8 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
          self.isInternetConnectionAlertShowed = NO;
     
    
@@ -174,6 +178,7 @@
     [self.networkManager getAllCommentsWithItem:item
                                    successBlock:^(NSArray *commentsArray) {
                                        
+                                        self.isSwipeButtomPress = NO;
                                        self.commentsArray = commentsArray;
                                        
                                        if(!self.commentsArray.count)
@@ -186,6 +191,7 @@
                                        
                                    } failureBlock:^(NSError *error) {
                                        
+                                        self.isSwipeButtomPress = NO;
                                        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                        
                                        //  [self.navigationController popViewControllerAnimated:YES];
@@ -416,29 +422,48 @@
 
 - (void)swipeableTableViewCell:(HWCommentCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
+    
+    if(self.isSwipeButtomPress) {
+        
+        return;
+    }
+
+    
     switch (index) {
         case 0:
         {
+             self.isSwipeButtomPress = YES;
+            
             [self.networkManager acceptOfferWithItemId:cell.offerId
                                           successBlock:^{
                                               
+                                             
                                               [self setCommentsArrayWithItem:self.currentItem];
+                                              
                                           } failureBlock:^(NSError *error) {
                                               
+                                               self.isSwipeButtomPress = NO;
                                               [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                               
                                           }];
+            
+           
+            
             break;
         }
         case 1:
         {
+             self.isSwipeButtomPress = YES;
+            
             [self.networkManager declineOfferWithItemId:cell.offerId
                                            successBlock:^{
+                                               
                                                
                                                [self setCommentsArrayWithItem:self.currentItem];
                                                
                                            } failureBlock:^(NSError *error) {
-                                               NSLog(@"success");
+                                               
+                                                self.isSwipeButtomPress = NO;
                                                [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                            }];
             break;

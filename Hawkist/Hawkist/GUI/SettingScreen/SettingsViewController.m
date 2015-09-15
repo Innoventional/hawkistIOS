@@ -350,9 +350,13 @@
     
     return headerView;
 }
+
+
+
 - (IBAction)nickNameSelect:(id)sender {
     
-    HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUserID:[AppEngine shared].user.id];
+    
+    HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUser:[AppEngine shared].user];
     
     [self.navigationController pushViewController:profileVC animated:YES];
 }
