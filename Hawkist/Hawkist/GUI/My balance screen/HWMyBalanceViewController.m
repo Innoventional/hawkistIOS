@@ -208,6 +208,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     
     NSLog(@"%f", self.withwardButtonConstraint.constant);
 }

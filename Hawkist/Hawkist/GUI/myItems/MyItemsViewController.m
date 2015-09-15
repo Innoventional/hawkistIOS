@@ -78,6 +78,7 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    
     self.isInternetConnectionAlertShowed = NO;
     [self refresh];
     
@@ -85,7 +86,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    if ([AppEngine shared].isShowSold)
+         if ([AppEngine shared].isShowSold)
     {
         [self selectedButton:self.buttonSold];
         self.showSold = YES;
