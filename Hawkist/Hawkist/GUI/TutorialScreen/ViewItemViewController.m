@@ -877,7 +877,7 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
 
 -(void) reportItemWithReason:(HWReportItemReason)reason withReasonStr:(NSString*) reasonStr {
     
-    NSString *descriptionStr = [NSString stringWithFormat:@"Reason: %@\nUser: %@\nUserID: %@",reasonStr, self.item.user.username, self.item.user.id];
+    NSString *descriptionStr = [NSString stringWithFormat:@"Reason: %@\nItemId: %@\nUser: %@\nUserID: %@",reasonStr,self.item.id, self.item.user.username, self.item.user.id];
     
     [[NetworkManager shared] reportListingWithItemId:self.item.id
                                         withReason:reason successBlock:^{
