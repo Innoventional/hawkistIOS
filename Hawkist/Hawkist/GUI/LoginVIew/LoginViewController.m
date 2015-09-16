@@ -332,15 +332,15 @@
         [AppEngine shared].tags = tags;
         
         
-        if ([AppEngine shared].APNStoken){
-        [[NetworkManager shared] sendAPNSToken:[AppEngine shared].APNStoken successBlock:^{
-            
-            
-        } failureBlock:^(NSError *error) {
-            
-            
-        }];
-        }
+//        if ([AppEngine shared].APNStoken){
+//        [[NetworkManager shared] sendAPNSToken:[AppEngine shared].APNStoken successBlock:^{
+//            
+//            
+//        } failureBlock:^(NSError *error) {
+//            
+//            
+//        }];
+//        }
         if (user.first_login)
         {
             AccountDetailViewController *accountDetailVC= [[AccountDetailViewController alloc]init];

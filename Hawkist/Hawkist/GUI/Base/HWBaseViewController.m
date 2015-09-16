@@ -145,6 +145,13 @@
 {
    // [self.navigationController popViewControllerAnimated:NO];
     
+    
+    if (![self.noConnectView isHidden])
+    {
+        return;
+    }
+    
+    
     if ([title isEqualToString:@"Connection Error"]&& self.isInternetConnectionAlertShowed)
     {
         return;
