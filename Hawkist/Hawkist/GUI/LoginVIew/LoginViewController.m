@@ -53,14 +53,9 @@
     [self autoLogin];
 }
 
-
-
 - (void) viewDidAppear:(BOOL)animated
 {
     self.isInternetConnectionAlertShowed = NO;
-    
-    self.txtMobileNum.text = [AppEngine shared].number;
-    self.txtPin.text = [AppEngine shared].pin;
     
     //[self autoLogin];
 }
