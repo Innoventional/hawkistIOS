@@ -95,19 +95,12 @@
     
     
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 
-    if ([AppEngine shared].APNStoken){
-        [[NetworkManager shared] sendAPNSToken:[AppEngine shared].APNStoken successBlock:^{
-            
-            
-        } failureBlock:^(NSError *error) {
-            
-            
-        }];
-    }
+       }
 
-}
+
 
 
 - (void) updateBadge{
