@@ -56,10 +56,10 @@
     
 //    
 //    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-
-//    
-    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
+//
+//
+//    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+//    [[UIApplication sharedApplication] registerForRemoteNotifications];
 
     
     
@@ -96,6 +96,16 @@
     deviceToken2 = [deviceToken2 stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     [AppEngine shared].APNStoken = deviceToken2;
+    
+
+        [[NetworkManager shared] sendAPNSToken:deviceToken2 successBlock:^{
+            
+            
+        } failureBlock:^(NSError *error) {
+            
+            
+        }];
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
