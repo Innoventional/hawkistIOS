@@ -220,11 +220,15 @@
     CGFloat kMaxIndex = [self.avaliableTags count];
     CGFloat targetX = scrollView.contentOffset.x + velocity.x * 60.0;
     CGFloat targetIndex = round(targetX / slideSize.width);
+    
     if (targetIndex < 0)
         targetIndex = 0;
     if (targetIndex > kMaxIndex)
         targetIndex = kMaxIndex;
-    targetContentOffset->x = targetIndex * slideSize.width;
+    
+    targetContentOffset->x = targetIndex * (slideSize.width+10);
+    
+    
     
     for (NSInteger index = 0; index < [self.avaliableTags count]; index++) {
         UIImageView* border = [self.arrayWithImageViews objectAtIndex: index];
