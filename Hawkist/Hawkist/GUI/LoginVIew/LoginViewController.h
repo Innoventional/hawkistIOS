@@ -10,5 +10,5 @@
 #import "HWBaseViewController.h"
 
 @interface LoginViewController : HWBaseViewController
-
+- (void) setLogout;
 @end

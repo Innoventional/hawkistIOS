@@ -429,6 +429,35 @@
     return YES;
 }
 
+- (void) updatePostCode:(void (^)(void)) successBlock
+
+{
+    if (postField.text.length>0)
+    {
+        
+        [self showHud];
+        [netManager getCityByPostCode:postField.text successBlock:^(NSString *city) {
+            [self hideHud];
+            postLabel.text = city;
+            self.sellButton.enabled = YES;
+            
+            successBlock();
+        }
+                         failureBlock:^(NSError *error) {
+                             [self hideHud];
+                             [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                             
+                         }];
+    }
+    else
+    {
+        postLabel.text = @"Enter post code";
+
+    }
+
+}
+
+
 - (void) textViewDidEndEditing: (UITextView*) textView
 {
 //    if([textView.text isEqualToString: @""])
@@ -483,82 +512,87 @@
      [self.view endEditing:YES];
     HWItem* currentItem = [[HWItem alloc]init];
     
-    currentItem.title = titleField.text;
-    
-    
-    currentItem.item_description = descriptionField.text;
-   
-    currentItem.platform = platform.Text.tag;
-    currentItem.category = self.idCategory;
-    
-    currentItem.subcategory = color.Text.tag;
-    currentItem.condition = condition.Text.tag;
-  //  currentItem.color  = color.Text.tag;
-    
-    currentItem.retail_price = retailPrice.textField.text;
-    currentItem.selling_price = sellingPrice.textField.text;
-    
-    if (checkBox1.selected)
-         currentItem.shipping_price = priceForShipping.textField.text;
-    
-    else
-        currentItem.shipping_price = @"not_applicable";
-    
-    
-   
-    
-    currentItem.collection_only = checkBox2.selected;
-    
-    if (![postField.text isEqualToString:@""])
-    
-    
-    currentItem.post_code = postField.text;
-    if (![postLabel.text isEqualToString:@"Enter post code"])
-        currentItem.city = postLabel.text;
- 
-    
-    NSMutableArray* tmpArrayForImage = [[NSMutableArray alloc]init];
-    
-    if (self.barUrl)
-        [tmpArrayForImage addObject:self.barUrl];
-    
-    
-    if (self.img1Url)
-        [tmpArrayForImage addObject:self.img1Url];
-    
-    
-    if (self.img2Url)
-        [tmpArrayForImage addObject:self.img2Url];
-    
-    if (self.img3Url)
-        [tmpArrayForImage addObject:self.img3Url];
-    
-    
-    
-    currentItem.photos = [NSArray arrayWithArray:tmpArrayForImage];
-    
-  //  currentItem.barcode = self.barUrl;
-    
+    [self updatePostCode:^{
+        currentItem.title = titleField.text;
+        
+        
+        currentItem.item_description = descriptionField.text;
+        
+        currentItem.platform = platform.Text.tag;
+        currentItem.category = self.idCategory;
+        
+        currentItem.subcategory = color.Text.tag;
+        currentItem.condition = condition.Text.tag;
+        //  currentItem.color  = color.Text.tag;
+        
+        currentItem.retail_price = retailPrice.textField.text;
+        currentItem.selling_price = sellingPrice.textField.text;
+        
+        if (checkBox1.selected)
+            currentItem.shipping_price = priceForShipping.textField.text;
+        
+        else
+            currentItem.shipping_price = @"not_applicable";
+        
+        
+        
+        
+        currentItem.collection_only = checkBox2.selected;
+        
+        if (![postField.text isEqualToString:@""])
+            
+            
+            currentItem.post_code = postField.text;
+        if (![postLabel.text isEqualToString:@"Enter post code"])
+            currentItem.city = postLabel.text;
+        
+        
+        NSMutableArray* tmpArrayForImage = [[NSMutableArray alloc]init];
+        
+        if (self.barUrl)
+            [tmpArrayForImage addObject:self.barUrl];
+        
+        
+        if (self.img1Url)
+            [tmpArrayForImage addObject:self.img1Url];
+        
+        
+        if (self.img2Url)
+            [tmpArrayForImage addObject:self.img2Url];
+        
+        if (self.img3Url)
+            [tmpArrayForImage addObject:self.img3Url];
+        
+        
+        
+        currentItem.photos = [NSArray arrayWithArray:tmpArrayForImage];
+        
+        //  currentItem.barcode = self.barUrl;
+        
+        
+        [self showHud];
+        //
+        
+        currentItem.id = self.itemId;
+        
+        [netManager createOrUpdateItem:currentItem successBlock:^(HWItem *item) {
+            
+            NSLog(@"--------------------------Ok");
+            [self hideHud];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            engine.city = postLabel.text;
+            engine.postCode = postField.text;
+            
+        } failureBlock:^(NSError *error) {
+            [self hideHud];
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        }
+         ];
 
-    [self showHud];
-//
+        
+    }];
     
-    currentItem.id = self.itemId;
-    
-    [netManager createOrUpdateItem:currentItem successBlock:^(HWItem *item) {
-        
-        NSLog(@"--------------------------Ok");
-        [self hideHud];
-        [self.navigationController popViewControllerAnimated:YES];
-        
-        engine.city = postLabel.text;
-        engine.postCode = postField.text;
-        
-    } failureBlock:^(NSError *error) {
-        [self hideHud];
-        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-    }
-     ];
     
 }
 
@@ -614,6 +648,8 @@
     }
 }
 
+
+
 - (void) takePhoto: (BOOL)photo
        fromGallery:(BOOL)gallery
 {
@@ -630,8 +666,10 @@
         picker.mediaTypes    = @[(NSString*) kUTTypeImage];
         picker.sourceType    = source;
         
-
+        
+        
         [self presentViewController: picker animated: YES completion: NULL];
+        
     }
 }
 

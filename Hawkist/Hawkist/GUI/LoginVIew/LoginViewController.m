@@ -48,6 +48,9 @@
     }
     
     [self initDefault];
+    self.txtMobileNum.text = [AppEngine shared].number;
+    self.txtPin.text = [AppEngine shared].pin;
+    [self autoLogin];
 }
 
 
@@ -353,6 +356,12 @@
     }];
     [AppEngine shared].logginedWithFB = FaceBook;
     [AppEngine shared].logginedWithPhone = !FaceBook;
+}
+
+- (void) setLogout
+{
+    self.loading.hidden = YES;
+    self.loginView.hidden = NO;
 }
 
 - (void) autoLogin

@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="leftButtonOutlet" destination="ptk-gz-sxi" id="YMr-YO-FlC"/>
                 <outlet property="rightButtonOutlet" destination="cdq-ku-HdW" id="2Yn-K7-jEb"/>
+                <outlet property="rightButtonSuperOutlet" destination="R3z-La-ya4" id="BaB-hr-t03"/>
                 <outlet property="title" destination="dZw-L5-lOK" id="b8X-qK-gu4"/>
             </connections>
         </placeholder>
