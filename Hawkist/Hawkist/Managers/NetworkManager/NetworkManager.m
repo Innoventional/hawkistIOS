@@ -84,15 +84,15 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
     
     if (error.code == 499)   /// Internet disconnected
     {
-      //  return [NSError errorWithDomain:@"Connection Error"
-        //                           code:499
-          //                     userInfo:@{NSLocalizedDescriptionKey:@"Could not complete the last action. Please try again."}];
+        return [NSError errorWithDomain:@"Connection Error"
+                                   code:499
+                               userInfo:@{NSLocalizedDescriptionKey:@"Could not complete the last action. Please try again."}];
         return nil;
     }
     
     else
     {
-        
+    
         if (error.code == -1004 || error.code == -1009 || error.code == - 1005)
         {
             return [NSError errorWithDomain:@"Connection Error"
