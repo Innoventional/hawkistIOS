@@ -700,7 +700,7 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
         {
             if (![self.item.user_who_reserve_id isEqualToString:[AppEngine shared].user.id])
             {
-                [self showAlertWithTitle:@"Item Not Available" Message:@"Unfortunately this item has already been purchased by another user. Please find an alternative listing."];
+                [self showAlertWithTitle:@"Item Not Available" Message:@"This item is currently reserved but it may become available again. Please check back in 24 hours."];
             }
             else
             {

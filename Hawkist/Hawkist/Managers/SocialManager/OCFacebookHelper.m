@@ -236,7 +236,7 @@ static OCFacebookHelper* fbHelperInstance = nil;
                  }
                  if (error.code == 7)
                  {
-                     error = [NSError errorWithDomain:@"Facebook" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"Hawkist would like access to your basic profile info and friends list"}];
+                     error = [NSError errorWithDomain:@"Are you sure?" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"In order to use all app features like selling or sharing, you must allow access to Facebook."}];
                  }
                  completionBlock(nil, error);
              }
