@@ -88,7 +88,7 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *frontGround;
 
-
+@property (nonatomic, strong) UIAlertView *blockAlert;
 
 @end
 
@@ -1046,27 +1046,27 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 }
 
 -(void) blockUnblok {
+
+    NSString *mes;
+
     
     if(self.isBlocked) {
-        [self.networkManager unblockUserWithId:self.userId
-                                  successBlock:^{
-                                      
-                                      self.isBlocked = NO;
-                                  } failureBlock:^(NSError *error) {
-                                      
-                                      [self showAlertWithTitle:error.domain Message:error.localizedDescription];
-                                  }];
+        
+        mes = @"You have been unblocked by this user.";
     } else {
         
-        [self.networkManager blockUserWithId:self.userId
-                                successBlock:^{
-                                    
-                                    self.isBlocked = YES;
-                                } failureBlock:^(NSError *error) {
-                                    
-                                    [self showAlertWithTitle:error.domain Message:error.localizedDescription];
-                                }];
+          mes = @"You have been blocked by this user.";
     }
+
+ 
+    
+    self.blockAlert =   [[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                  message:mes
+                                                 delegate:self
+                                        cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"OK", nil];
+    
+    [self.blockAlert show];
     
     
 }
@@ -1091,7 +1091,36 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-   
+    if ([alertView isEqual:self.blockAlert]) {
+        
+        if(buttonIndex == 0) return;
+        
+        if(self.isBlocked) {
+            [self.networkManager unblockUserWithId:self.userId
+                                      successBlock:^{
+                                          
+                                          self.isBlocked = NO;
+                                      } failureBlock:^(NSError *error) {
+                                          
+                                          [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                      }];
+        } else {
+            
+            [self.networkManager blockUserWithId:self.userId
+                                    successBlock:^{
+                                        
+                                        self.isBlocked = YES;
+                                    } failureBlock:^(NSError *error) {
+                                        
+                                        [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                    }];
+        }
+
+        
+    } else {
+    
+    
+    
     if(buttonIndex == 0) return;
     
     switch (self.selectedReasonReport) {
@@ -1125,7 +1154,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
         default:
             break;
     }
-    
+        
+    }
 }
 
 #pragma mark -

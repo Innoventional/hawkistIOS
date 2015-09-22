@@ -895,15 +895,11 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
                                                       cancelButtonTitle: @"Cancel"
                                                  destructiveButtonTitle: nil
                                                       otherButtonTitles: @"Item violates Terms of Use",
-                                                                        @"Item is regulated, counterfeit or illegal",
+                                                                        @"Item is stolen or counterfeit",
                                                                         @"Price is misleading",
                                                                              nil];
     [self.reasonReportActionSheet showInView:self.view];
 }
-
-
-
-
 
 
 #pragma mark -
@@ -1081,9 +1077,9 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
                             break;
                         case 1:
             
-                            [self reportItemWithReason:HWReportItemReasonItemIsRegulatedOrIllegal withReasonStr:@"Item is regulated, counterfeit or illegal"];
+                            [self reportItemWithReason:HWReportItemReasonItemIsRegulatedOrIllegal withReasonStr:@"Item is stolen or counterfeit"];
             
-                            NSLog(@"Item is regulated, counterfeit or illegal");
+                            NSLog(@"Item is stolen or counterfeit");
                             break;
                         case 2:
             
