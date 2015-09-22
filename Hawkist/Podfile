@@ -17,4 +17,6 @@ pod 'JSBadgeView'
 
 pod 'pop', '~> 1.0'
 
-pod 'Leanplum-iOS-SDK'pod 'ZendeskSDK'
+pod 'Leanplum-iOS-SDK'
+pod 'ZendeskSDK'
+pod 'SDWebImage', '~>3.7'

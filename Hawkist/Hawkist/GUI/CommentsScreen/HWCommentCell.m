@@ -266,7 +266,7 @@
 
     UITextView *textView = [[UITextView alloc]init];
     
-    
+ 
     textView.text = text;
     
     textView.font =  [UIFont fontWithName:@"OpenSans" size:15.f];

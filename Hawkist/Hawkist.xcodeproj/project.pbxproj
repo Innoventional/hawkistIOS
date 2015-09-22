@@ -169,6 +169,9 @@
 		CE15469E1B84AC0A0082ACF4 /* HWMyBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE15469D1B84AC090082ACF4 /* HWMyBalanceView.xib */; };
 		CE1546A11B84B50D0082ACF4 /* HWMyBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546A01B84B50D0082ACF4 /* HWMyBalanceViewController.m */; };
 		CE1546A41B84D75F0082ACF4 /* HWFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1546A31B84D75F0082ACF4 /* HWFeedback.m */; };
+		CE1B82191BAA23D100AE50DF /* Launch.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1B82181BAA23D100AE50DF /* Launch.xib */; };
+		CE1B821B1BAA258900AE50DF /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1B821A1BAA258900AE50DF /* Images-2.xcassets */; };
+		CE1B821D1BAA25AC00AE50DF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B821C1BAA25AC00AE50DF /* Default-568h@2x.png */; };
 		CE2579F01B73427500A0DEE9 /* cardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579EE1B7339A800A0DEE9 /* cardView.xib */; };
 		CE2579F41B73A93800A0DEE9 /* HWMyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */; };
 		CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2579F81B73AA1900A0DEE9 /* HWitemForOrdersCell.xib */; };
@@ -193,6 +196,7 @@
 		CE70EDD51B6BD51D005664FA /* HWAccountMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE70EDD41B6BD51D005664FA /* HWAccountMenuCell.m */; };
 		CE70EDD71B6BD54B005664FA /* HWAccountMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE70EDD61B6BD54B005664FA /* HWAccountMenuCell.xib */; };
 		CE7876521B60F3FF00A3970D /* HWOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7876511B60F3FF00A3970D /* HWOffer.m */; };
+		CE851CA31BAA16DE00E9CB09 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE851CA21BAA16DE00E9CB09 /* Default-568h@2x.png */; };
 		CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8721F11B553684003C47E5 /* HWProfileViewController.m */; };
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
 		CE8D895B1B9D92D200749577 /* HWZendesk.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D895A1B9D92D200749577 /* HWZendesk.m */; };
@@ -420,7 +424,6 @@
 		C35A4C191B2F2DF7002E1F26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C35A4C1B1B2F2DF7002E1F26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C35A4C271B2F2DF7002E1F26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C35A4C2D1B2F2DF8002E1F26 /* HawkistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HawkistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35A4C321B2F2DF8002E1F26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C35A4C331B2F2DF8002E1F26 /* HawkistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HawkistTests.m; sourceTree = "<group>"; };
@@ -501,6 +504,9 @@
 		CE1546A01B84B50D0082ACF4 /* HWMyBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWMyBalanceViewController.m; path = "My balance screen/HWMyBalanceViewController.m"; sourceTree = "<group>"; };
 		CE1546A21B84D75F0082ACF4 /* HWFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWFeedback.h; sourceTree = "<group>"; };
 		CE1546A31B84D75F0082ACF4 /* HWFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWFeedback.m; sourceTree = "<group>"; };
+		CE1B82181BAA23D100AE50DF /* Launch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Launch.xib; sourceTree = "<group>"; };
+		CE1B821A1BAA258900AE50DF /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		CE1B821C1BAA25AC00AE50DF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CE2579EE1B7339A800A0DEE9 /* cardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = cardView.xib; path = manageBank/cardView.xib; sourceTree = "<group>"; };
 		CE2579F21B73A93800A0DEE9 /* HWMyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWMyOrdersViewController.h; path = MyOrdersScreen/HWMyOrdersViewController.h; sourceTree = "<group>"; };
 		CE2579F31B73A93800A0DEE9 /* HWMyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWMyOrdersViewController.m; path = MyOrdersScreen/HWMyOrdersViewController.m; sourceTree = "<group>"; };
@@ -539,8 +545,10 @@
 		CE70EDD31B6BD51D005664FA /* HWAccountMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAccountMenuCell.h; path = MyAccountScreen/HWAccountMenuCell.h; sourceTree = "<group>"; };
 		CE70EDD41B6BD51D005664FA /* HWAccountMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAccountMenuCell.m; path = MyAccountScreen/HWAccountMenuCell.m; sourceTree = "<group>"; };
 		CE70EDD61B6BD54B005664FA /* HWAccountMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWAccountMenuCell.xib; path = MyAccountScreen/HWAccountMenuCell.xib; sourceTree = "<group>"; };
+		CE71D0571BB0392200162205 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCardIO.a; path = Pods/CardIO/CardIO/libCardIO.a; sourceTree = "<group>"; };
 		CE7876501B60F3FF00A3970D /* HWOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWOffer.h; sourceTree = "<group>"; };
 		CE7876511B60F3FF00A3970D /* HWOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWOffer.m; sourceTree = "<group>"; };
+		CE851CA21BAA16DE00E9CB09 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		CE8721F01B553684003C47E5 /* HWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWProfileViewController.h; path = ProfileScreen/HWProfileViewController.h; sourceTree = "<group>"; };
 		CE8721F11B553684003C47E5 /* HWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWProfileViewController.m; path = ProfileScreen/HWProfileViewController.m; sourceTree = "<group>"; };
 		CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWProfileViewController.xib; path = ProfileScreen/HWProfileViewController.xib; sourceTree = "<group>"; };
@@ -1097,6 +1105,7 @@
 		B5270341DDA6B1495FD88522 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE71D0571BB0392200162205 /* libCardIO.a */,
 				C35A4C7B1B303A43002E1F26 /* Accounts.framework */,
 				C35A4C791B303A36002E1F26 /* Social.framework */,
 				C35A4C771B303A0E002E1F26 /* SystemConfiguration.framework */,
@@ -1139,7 +1148,7 @@
 				C35A4C3D1B2F33EA002E1F26 /* Managers */,
 				C35A4C1B1B2F2DF7002E1F26 /* AppDelegate.h */,
 				C35A4C1C1B2F2DF7002E1F26 /* AppDelegate.m */,
-				C35A4C261B2F2DF7002E1F26 /* LaunchScreen.xib */,
+				CE1B821A1BAA258900AE50DF /* Images-2.xcassets */,
 				C35A4C171B2F2DF7002E1F26 /* Supporting Files */,
 			);
 			path = Hawkist;
@@ -1148,6 +1157,9 @@
 		C35A4C171B2F2DF7002E1F26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE1B821C1BAA25AC00AE50DF /* Default-568h@2x.png */,
+				CE1B82181BAA23D100AE50DF /* Launch.xib */,
+				CE851CA21BAA16DE00E9CB09 /* Default-568h@2x.png */,
 				C35A4C181B2F2DF7002E1F26 /* Info.plist */,
 				3A45ABDF1B6B316800FD56D6 /* Images.xcassets */,
 				C35A4C191B2F2DF7002E1F26 /* main.m */,
@@ -1666,12 +1678,14 @@
 				CE5909581B5FA94B00DAA7FF /* HWCommentCell.xib in Resources */,
 				7CE0E8E21B4307F0003B8B3A /* FeedScreenViewController.xib in Resources */,
 				CEBAAFBE1B70CAD200AFE4C6 /* HWAddCardAndAdressCell.xib in Resources */,
+				CE1B821D1BAA25AC00AE50DF /* Default-568h@2x.png in Resources */,
 				CEBAAFB11B6DF5CC00AFE4C6 /* HWPaymentView.xib in Resources */,
 				3A6901631B78E6BA00B618B8 /* FeedToShort.xib in Resources */,
 				3A8366811B31A85900208FC5 /* AccountDetailView.xib in Resources */,
 				3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */,
 				3AA575D01B9E291D003E0CDE /* LoadingView.xib in Resources */,
 				3AA5CBFE1B84DB14006093D0 /* defaultAddress.xib in Resources */,
+				CE851CA31BAA16DE00E9CB09 /* Default-568h@2x.png in Resources */,
 				3AA575D31B9E4BBE003E0CDE /* AboutView.xib in Resources */,
 				CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */,
 				3AA575DC1B9FB800003E0CDE /* emptyCell.xib in Resources */,
@@ -1689,6 +1703,7 @@
 				3AF831F61B6F6CB600CC750D /* CustomField.xib in Resources */,
 				3A17AEA21B93102000CF41CD /* WebView.xib in Resources */,
 				CE954C6A1B75E3E80063A719 /* HWAboutUserView.xib in Resources */,
+				CE1B82191BAA23D100AE50DF /* Launch.xib in Resources */,
 				CE1546421B7DF4A60082ACF4 /* HWAddressCollectionOnlyCell.xib in Resources */,
 				3AA575C81B9DAB88003E0CDE /* HWFeadbackCell.xib in Resources */,
 				CE70EDCF1B6BC5CE005664FA /* HWMyAccountVIew.xib in Resources */,
@@ -1724,6 +1739,7 @@
 				3AA5CC071B8764FC006093D0 /* myFavourites.xib in Resources */,
 				7C735DA01B399B0200295472 /* OpenSansRegular.ttf in Resources */,
 				CEBAAFA11B6CE9FD00AFE4C6 /* HWSingOutCell.xib in Resources */,
+				CE1B821B1BAA258900AE50DF /* Images-2.xcassets in Resources */,
 				3A6901611B784D1F00B618B8 /* AddAddressView.xib in Resources */,
 				3A359D5F1B969FEB00A0F2E1 /* PushNotificationSettingsCell.xib in Resources */,
 				3AA575C91B9DAB88003E0CDE /* HWFeedBackView.xib in Resources */,
@@ -1942,17 +1958,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		C35A4C261B2F2DF7002E1F26 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C35A4C271B2F2DF7002E1F26 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		C35A4C351B2F2DF8002E1F26 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2041,14 +2046,20 @@
 			baseConfigurationReference = 6226D1D47C026C1F95F57F16 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jonathan Erwin (88DJ4L28WB)";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ec1f8900-38e4-40cc-8157-2641b764ce80";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2058,14 +2069,20 @@
 			baseConfigurationReference = 3906BE83E13D87CC9252A21D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Developer ID Installer: Jonathan Erwin (823CDF6K5W)";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ec1f8900-38e4-40cc-8157-2641b764ce80";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

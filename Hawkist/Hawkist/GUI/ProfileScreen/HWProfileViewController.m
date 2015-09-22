@@ -894,6 +894,30 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
        
 }
 
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableview = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 400, 400)];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 600, 400)];
+    
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        
+        view.backgroundColor = [UIColor redColor];
+        [reusableview addSubview: view];
+    }
+    
+    if (kind == UICollectionElementKindSectionFooter) {
+        
+        
+        reusableview;
+    }
+    
+    return reusableview;
+}
+
+
 #pragma mark -
 #pragma mark UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

@@ -240,7 +240,7 @@
     if (self.isCommentsArray)
     {
         HWComment *comment = [self.commentsArray objectAtIndex:indexPath.row];
-        NSString *text = [NSString stringWithFormat:@"%@ %@", comment.user_username, comment.text];
+        NSString *text = [NSString stringWithFormat:@"%@      %@", comment.user_username, comment.text];
         
         
         return [HWCommentCell heightWith:text];
