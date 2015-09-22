@@ -20,89 +20,92 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AWSAutoScaling (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSCloudWatch (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSCore (2.2.5)
-  - AWSDynamoDB (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSEC2 (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSElasticLoadBalancing (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSiOSSDKv2 (2.2.5):
-    - AWSiOSSDKv2/AutoScaling (= 2.2.5)
-    - AWSiOSSDKv2/AWSCore (= 2.2.5)
-    - AWSiOSSDKv2/CloudWatch (= 2.2.5)
-    - AWSiOSSDKv2/DynamoDB (= 2.2.5)
-    - AWSiOSSDKv2/EC2 (= 2.2.5)
-    - AWSiOSSDKv2/ElasticLoadBalancing (= 2.2.5)
-    - AWSiOSSDKv2/Kinesis (= 2.2.5)
-    - AWSiOSSDKv2/MobileAnalytics (= 2.2.5)
-    - AWSiOSSDKv2/S3 (= 2.2.5)
-    - AWSiOSSDKv2/SES (= 2.2.5)
-    - AWSiOSSDKv2/SimpleDB (= 2.2.5)
-    - AWSiOSSDKv2/SNS (= 2.2.5)
-    - AWSiOSSDKv2/SQS (= 2.2.5)
-  - AWSiOSSDKv2/AutoScaling (2.2.5):
-    - AWSAutoScaling (= 2.2.5)
-  - AWSiOSSDKv2/AWSCore (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSiOSSDKv2/CloudWatch (2.2.5):
-    - AWSCloudWatch (= 2.2.5)
-  - AWSiOSSDKv2/DynamoDB (2.2.5):
-    - AWSDynamoDB (= 2.2.5)
-  - AWSiOSSDKv2/EC2 (2.2.5):
-    - AWSEC2 (= 2.2.5)
-  - AWSiOSSDKv2/ElasticLoadBalancing (2.2.5):
-    - AWSElasticLoadBalancing (= 2.2.5)
-  - AWSiOSSDKv2/Kinesis (2.2.5):
-    - AWSKinesis (= 2.2.5)
-  - AWSiOSSDKv2/MobileAnalytics (2.2.5):
-    - AWSMobileAnalytics (= 2.2.5)
-  - AWSiOSSDKv2/S3 (2.2.5):
-    - AWSS3 (= 2.2.5)
-  - AWSiOSSDKv2/SES (2.2.5):
-    - AWSSES (= 2.2.5)
-  - AWSiOSSDKv2/SimpleDB (2.2.5):
-    - AWSSimpleDB (= 2.2.5)
-  - AWSiOSSDKv2/SNS (2.2.5):
-    - AWSSNS (= 2.2.5)
-  - AWSiOSSDKv2/SQS (2.2.5):
-    - AWSSQS (= 2.2.5)
-  - AWSKinesis (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSMobileAnalytics (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSS3 (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSSES (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSSimpleDB (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSSNS (2.2.5):
-    - AWSCore (= 2.2.5)
-  - AWSSQS (2.2.5):
-    - AWSCore (= 2.2.5)
+  - AWSAutoScaling (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSCloudWatch (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSCore (2.2.6)
+  - AWSDynamoDB (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSEC2 (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSElasticLoadBalancing (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSiOSSDKv2 (2.2.6):
+    - AWSiOSSDKv2/AutoScaling (= 2.2.6)
+    - AWSiOSSDKv2/AWSCore (= 2.2.6)
+    - AWSiOSSDKv2/CloudWatch (= 2.2.6)
+    - AWSiOSSDKv2/DynamoDB (= 2.2.6)
+    - AWSiOSSDKv2/EC2 (= 2.2.6)
+    - AWSiOSSDKv2/ElasticLoadBalancing (= 2.2.6)
+    - AWSiOSSDKv2/Kinesis (= 2.2.6)
+    - AWSiOSSDKv2/MobileAnalytics (= 2.2.6)
+    - AWSiOSSDKv2/S3 (= 2.2.6)
+    - AWSiOSSDKv2/SES (= 2.2.6)
+    - AWSiOSSDKv2/SimpleDB (= 2.2.6)
+    - AWSiOSSDKv2/SNS (= 2.2.6)
+    - AWSiOSSDKv2/SQS (= 2.2.6)
+  - AWSiOSSDKv2/AutoScaling (2.2.6):
+    - AWSAutoScaling (= 2.2.6)
+  - AWSiOSSDKv2/AWSCore (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSiOSSDKv2/CloudWatch (2.2.6):
+    - AWSCloudWatch (= 2.2.6)
+  - AWSiOSSDKv2/DynamoDB (2.2.6):
+    - AWSDynamoDB (= 2.2.6)
+  - AWSiOSSDKv2/EC2 (2.2.6):
+    - AWSEC2 (= 2.2.6)
+  - AWSiOSSDKv2/ElasticLoadBalancing (2.2.6):
+    - AWSElasticLoadBalancing (= 2.2.6)
+  - AWSiOSSDKv2/Kinesis (2.2.6):
+    - AWSKinesis (= 2.2.6)
+  - AWSiOSSDKv2/MobileAnalytics (2.2.6):
+    - AWSMobileAnalytics (= 2.2.6)
+  - AWSiOSSDKv2/S3 (2.2.6):
+    - AWSS3 (= 2.2.6)
+  - AWSiOSSDKv2/SES (2.2.6):
+    - AWSSES (= 2.2.6)
+  - AWSiOSSDKv2/SimpleDB (2.2.6):
+    - AWSSimpleDB (= 2.2.6)
+  - AWSiOSSDKv2/SNS (2.2.6):
+    - AWSSNS (= 2.2.6)
+  - AWSiOSSDKv2/SQS (2.2.6):
+    - AWSSQS (= 2.2.6)
+  - AWSKinesis (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSMobileAnalytics (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSS3 (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSSES (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSSimpleDB (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSSNS (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSSQS (2.2.6):
+    - AWSCore (= 2.2.6)
   - CardIO (5.1.1)
   - Heap (2.1.5)
   - iCarousel (1.7.6)
   - JSBadgeView (1.4.1)
   - JSONModel (1.1.0)
-  - Leanplum-iOS-SDK (1.3.7)
+  - Leanplum-iOS-SDK (1.3.8.1)
   - Masonry (0.5.3)
   - MBProgressHUD (0.9.1)
-  - pop (1.0.7)
-  - Stripe (5.1.2):
-    - Stripe/Core (= 5.1.2)
-  - Stripe/Core (5.1.2)
+  - pop (1.0.8)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+  - Stripe (5.1.4):
+    - Stripe/Core (= 5.1.4)
+  - Stripe/Core (5.1.4)
   - SWTableViewCell (0.3.7)
-  - ZendeskSDK (1.3.4.1):
-    - ZendeskSDK/Core (= 1.3.4.1)
-    - ZendeskSDK/Localization (= 1.3.4.1)
-  - ZendeskSDK/Core (1.3.4.1)
-  - ZendeskSDK/Localization (1.3.4.1):
+  - ZendeskSDK (1.4.0.2):
+    - ZendeskSDK/Core (= 1.4.0.2)
+    - ZendeskSDK/Localization (= 1.4.0.2)
+  - ZendeskSDK/Core (1.4.0.2)
+  - ZendeskSDK/Localization (1.4.0.2):
     - ZendeskSDK/Core
 
 DEPENDENCIES:
@@ -117,37 +120,39 @@ DEPENDENCIES:
   - Masonry (~> 0.5.3)
   - MBProgressHUD (~> 0.5)
   - pop (~> 1.0)
+  - SDWebImage (~> 3.7)
   - Stripe
   - SWTableViewCell (~> 0.3.7)
   - ZendeskSDK
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  AWSAutoScaling: 0a0888d1646695c6668ba060108b7a690c2304f6
-  AWSCloudWatch: 70aa7722b0368e8ce5c893564885d8ad57b606c3
-  AWSCore: 101929899cea9febd4ea4fc85774a63ff17cf809
-  AWSDynamoDB: ddb6d2cea58673ba44266534e87409f42fdda1ec
-  AWSEC2: a2d751cd48da9735316bb1870eb83b8592f227e6
-  AWSElasticLoadBalancing: 569afd311e807514c9105100c8b978373983bca6
-  AWSiOSSDKv2: 57ce73d0e0f113c93952a5aeaeec16bf54bcc662
-  AWSKinesis: 60ec71d37e1498e8677d5559a8f1777bc37cc0fe
-  AWSMobileAnalytics: 926bd6e293f4796faa59697bd380eb21b0484fbe
-  AWSS3: 78a5be4417c5fe1d9a1c301b05bbfbb6719d4f18
-  AWSSES: 88deab0d0ca1ba7cd987d512f8ad3e0f83cba1c8
-  AWSSimpleDB: 89a6f82d45d1858030b5ee6ac7f4a801403df656
-  AWSSNS: df046002638a67d879757718d240401317a39646
-  AWSSQS: 73d134eb630090ce5ed26882c4a3c621896750ab
+  AWSAutoScaling: cafa0f5bba29dbb20122b314abac57132ba669ab
+  AWSCloudWatch: 61facf3e246bad0f8299ad625576eb8347d39abd
+  AWSCore: dd05203bf44d45b58b7667754ce4fa6f1bdb1c3e
+  AWSDynamoDB: d0eb38a6bcaaee5931e5168478c409a39b0a9066
+  AWSEC2: 2a37f326ea456c059da9b5bc5d390eac5190965a
+  AWSElasticLoadBalancing: 8601baf2e63244cf60c2330d25b06d87250d6de7
+  AWSiOSSDKv2: fff75dd29641796f798d21e2f1e38bbdc97461e4
+  AWSKinesis: 519965a89e37fda8b4b6cf312da1ec7567c748d5
+  AWSMobileAnalytics: 522b2bb4705f05e7a2eb9f86a085ddfce64f183a
+  AWSS3: a8aeb5f8224236c2b1b46fdab14add3eff971fc4
+  AWSSES: b49d9e901902e9b1acaf757557b305524a02e7d3
+  AWSSimpleDB: 56a8aae3cde205ef3270e46ed4a3e416e67d4d4e
+  AWSSNS: 0188eab8b808981c531bbcd4ef238325c71270ec
+  AWSSQS: a2304d18086ce907aa7a8bba275861a69886a662
   CardIO: 2c3a8ef9b9add4bd664c83bb653b83b2f32d9d7f
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   iCarousel: ddd7f142c7c2f3429b0ce5fb8ea37f4a059394cd
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
-  Leanplum-iOS-SDK: 63bddd7d05709d85b0e2f99405ad7a3b79a6ff51
+  Leanplum-iOS-SDK: df25dec4dc038b022901739d06c11109fc5df5dd
   Masonry: 9f515466afe48632562342a40a1c224071a1a022
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
-  Stripe: 141b28d157f12db2e1624315cf19f1b6bd5af84d
+  pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  Stripe: 6864be95b09092f05526bc2e0a50804bc556aa0d
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
-  ZendeskSDK: 216ce1b6c2ff650f69c501da539720fca95ceded
+  ZendeskSDK: c97e29286726c6eaf4f6fe97867dba354cbbd199
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2

@@ -445,27 +445,23 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
 
 - (void) avatarInit
 {
-
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: self.item.user_avatar]];
-
-    [self.sellerAvatar setImageWithURLRequest:request
-                           placeholderImage:nil
-                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                        
-                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                           
-                                         
-                                           self.sellerAvatar.image = image;
-                                           
-
-                                       });
-                                        
-                                        
-                                    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-                                        
-                                     
-                                        self.sellerAvatar.image = [UIImage imageNamed:@"noPhoto"];
-                                    }];
+//
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: self.item.user_avatar]
+//                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
+//                                         timeoutInterval:60];
+//    
+//    [self.sellerAvatar setImageWithURLRequest:request
+//                           placeholderImage:nil
+//                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+//                                        
+//                                         //  self.sellerAvatar.image = image;
+//                                        
+//                                        
+//                                    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+//                                        
+//                                     
+//                                       // self.sellerAvatar.image = [UIImage imageNamed:@"noPhoto"];
+//                                    }];
     
     
 

@@ -9,7 +9,7 @@
 #ifndef Hawkist_const_h
 #define Hawkist_const_h
 
-//#define TEST_SERVER
+#define TEST_SERVER
 
 
 #define kUSER_ID @"user_id"

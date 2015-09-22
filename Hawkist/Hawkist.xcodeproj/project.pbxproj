@@ -545,6 +545,7 @@
 		CE70EDD31B6BD51D005664FA /* HWAccountMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWAccountMenuCell.h; path = MyAccountScreen/HWAccountMenuCell.h; sourceTree = "<group>"; };
 		CE70EDD41B6BD51D005664FA /* HWAccountMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWAccountMenuCell.m; path = MyAccountScreen/HWAccountMenuCell.m; sourceTree = "<group>"; };
 		CE70EDD61B6BD54B005664FA /* HWAccountMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWAccountMenuCell.xib; path = MyAccountScreen/HWAccountMenuCell.xib; sourceTree = "<group>"; };
+		CE71D0571BB0392200162205 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCardIO.a; path = Pods/CardIO/CardIO/libCardIO.a; sourceTree = "<group>"; };
 		CE7876501B60F3FF00A3970D /* HWOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWOffer.h; sourceTree = "<group>"; };
 		CE7876511B60F3FF00A3970D /* HWOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWOffer.m; sourceTree = "<group>"; };
 		CE851CA21BAA16DE00E9CB09 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -1104,6 +1105,7 @@
 		B5270341DDA6B1495FD88522 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE71D0571BB0392200162205 /* libCardIO.a */,
 				C35A4C7B1B303A43002E1F26 /* Accounts.framework */,
 				C35A4C791B303A36002E1F26 /* Social.framework */,
 				C35A4C771B303A0E002E1F26 /* SystemConfiguration.framework */,
@@ -2045,14 +2047,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ec1f8900-38e4-40cc-8157-2641b764ce80";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2063,14 +2070,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Developer ID Installer: Jonathan Erwin (823CDF6K5W)";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ec1f8900-38e4-40cc-8157-2641b764ce80";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

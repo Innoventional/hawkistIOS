@@ -7,6 +7,7 @@
 //
 
 #import "UIImageView+Extensions.h"
+#import "UIImageView+WebCache.h"
 
 @implementation UIImageView (Extensions)
 
@@ -19,23 +20,43 @@
        [indicator stopAnimating] ;
         return;
    }
-    __weak __block UIImageView *blockSelf = self;
-    __weak __block UIActivityIndicatorView* indic = indicator;
+ 
+ 
+    [self sd_setImageWithURL:url
+                           placeholderImage:[UIImage imageNamed:@"noPhoto"]
+                                    options:SDWebImageRefreshCached];
+
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+     [self sd_setImageWithURL:url
+             placeholderImage:[UIImage imageNamed:@"noPhoto"]
+                      options:SDWebImageRefreshCached
+                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                        
+                        [indicator stopAnimating] ;
+                    }];
+   
     
-    [blockSelf setImageWithURLRequest:request
-                          placeholderImage:nil
-                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                       
-                                       blockSelf.image = image;
-                                       [indic stopAnimating];
-                                       
-                                   } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-                                       
-                                       
-                                       
-                                   }];
+    
+    //    __weak __block UIImageView *blockSelf = self;
+    //    __weak __block UIActivityIndicatorView* indic = indicator;
+    
+    
+    //    NSURLRequest *request = [NSURLRequest requestWithURL:url
+    //                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
+    //                                         timeoutInterval:60];
+
+    
+//    [self setImageWithURLRequest:request
+//                          placeholderImage:nil
+//                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+//                                       
+//                                       blockSelf.image = image;
+//                                       [indic stopAnimating];
+//                                       
+//                                   } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+//                                       
+//                                       
+//                                }];
     
 
     
