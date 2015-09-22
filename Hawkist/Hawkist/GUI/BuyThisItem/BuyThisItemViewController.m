@@ -136,7 +136,7 @@
     
     if ([self.item.status isEqualToString:@"2"])
     {
-        [self showAlertWithTitle:@"Item Not Available" Message:@"Sorry, but this listing is sold out"];
+        [self showAlertWithTitle:@"Item Not Available" Message:@"This item has already been purchased."];
         return;
     }
 
@@ -189,7 +189,7 @@
                                  
                                  if ([self.item.status isEqualToString:@"2"])
                                  {
-                                    [self showAlertWithTitle:@"Item Not Available" Message:@"Sorry, but this listing is sold out"];
+                                    [self showAlertWithTitle:@"Item Not Available" Message:@"This item has already been purchased."];
                                      return;
                                  }
                                  

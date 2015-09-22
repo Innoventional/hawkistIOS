@@ -235,6 +235,8 @@
     [self showHud];
     [[SocialManager shared] loginFacebookSuccess:^(NSDictionary *response) {
         
+        
+        if ([response objectForKey:SocialToken]){
         [[NetworkManager shared] registerUserWithPhoneNumber:nil orFacebookToken:[response objectForKey:SocialToken] successBlock:^(HWUser *user) {
             
                 [self logged:user isLoggedWithFacebook:YES];
@@ -254,7 +256,20 @@
             [self.view layoutIfNeeded];
                     });
         }];
-        
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideHud];
+                
+                self.signIn.hidden = NO;
+                self.loading.hidden = YES;
+                self.loginView.hidden = YES;
+                [self.view layoutIfNeeded];
+            });
+
+        }
+            
     } failure:^(NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
