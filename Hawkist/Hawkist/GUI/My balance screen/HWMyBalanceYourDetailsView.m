@@ -41,7 +41,9 @@
     [self.firstName setText:userInfo.first_name];
     [self.lastName setText:userInfo.last_name];
    
-    if(userInfo.birth_date) {
+    if(userInfo.birth_date && ![userInfo.birth_date isEqual: @""]) {
+        NSLog(@"%@",userInfo.birth_date.description);
+        
         [self.birthday setText:[NSString stringWithFormat:@"%@/%@/%@",userInfo.birth_date, userInfo.birth_month, userInfo.birth_year]];
     }
     
@@ -58,6 +60,7 @@
     userDet.first_name = self.firstName.text ? self.firstName.text : @"";
     userDet.last_name = self.lastName.text ? self.lastName.text : @"";
     
+   // if ([self.birthday.text isEqualToString:@"//"]) self.birthday.text = @"????????????????";
     if (self.birthday.text && ![self.birthday.text isEqualToString:@""]) {
         
         
