@@ -18,7 +18,7 @@
 #import "UIView+Extensions.h"
 
 
-@interface LoginViewController () <UIAlertViewDelegate>
+@interface LoginViewController () <UIAlertViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic,strong) UIView* loginView;
 @property (nonatomic,strong) UIView* numberDialog;
@@ -396,5 +396,27 @@
         [self btnSignFB:self];
     }
 }
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (!string.length)
+    {
+        return YES;
+    }
+    
+    // Prevent invalid character input, if keyboard is numberpad
+    if (textField.keyboardType == UIKeyboardTypeNumberPad)
+    {
+        if ([string rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location != NSNotFound)
+        {
+            [[[UIAlertView alloc]initWithTitle:@"Invalid Number Format" message:@"Mobile numbers must consist of numbers only." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+            return NO;
+        }
+    }
+
+    return YES;
+}
+
 
 @end
