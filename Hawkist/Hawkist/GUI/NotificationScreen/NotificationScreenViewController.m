@@ -543,8 +543,18 @@
         }
         case 12:case 13:
         {
+            
+
+            
             [[NetworkManager shared] getItemById:notification.listing.id
                                     successBlock:^(HWItem *item) {
+                                        
+                                        if ([item.status isEqualToString:@"2"])
+                                        {
+                                            [self showAlertWithTitle:@"Item Not Available" Message:@"This item has already been purchased."];
+                                            return;
+                                        }
+                                        
                                         BuyThisItemViewController *vc = [[BuyThisItemViewController alloc]initWithItem:item];
                                         
                                         [self.navigationController pushViewController:vc animated:YES];

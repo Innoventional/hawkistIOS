@@ -134,6 +134,13 @@
 
 - (IBAction)sendOffer:(id)sender {
     
+    if ([self.item.status isEqualToString:@"2"])
+    {
+        [self showAlertWithTitle:@"Item Not Available" Message:@"This item has already been purchased."];
+        return;
+    }
+
+    
     [self.moneyField.textField resignFirstResponder];
     [self showHud];
     
@@ -173,14 +180,36 @@
                                 
                                  
                                  if ([item.status isEqualToString:@"0"]){
-                                 HWPaymentViewController *vc = [[HWPaymentViewController alloc] initWithItem:self.item];
-                                 [self.navigationController pushViewController:vc animated:YES];
+                                     HWPaymentViewController *vc = [[HWPaymentViewController alloc] initWithItem:self.item];
+                                     [self.navigationController pushViewController:vc animated:YES];
+                                     return;
                                  }
-                                 else
+                                 
+                                 
+                                 
+                                 if ([self.item.status isEqualToString:@"2"])
                                  {
-                                     [self.navigationController popViewControllerAnimated:YES];
+                                    [self showAlertWithTitle:@"Item Not Available" Message:@"This item has already been purchased."];
+                                     return;
                                  }
-    
+                                 
+                                 if ([self.item.status isEqualToString:@"1"])
+                                 {
+                                     if ([self.item.user_id integerValue] != [[AppEngine shared].user.id integerValue])
+                                     {
+                                         if (![self.item.user_who_reserve_id isEqualToString:[AppEngine shared].user.id])
+                                         {
+                                             [self showAlertWithTitle:@"Item Not Available" Message:@"This item is currently reserved but it may become available again. Please check back in 24 hours."];
+                                         }
+                                         else
+                                         {
+                                             [self.navigationController pushViewController: [[HWPaymentViewController alloc] initWithItem:self.item]  animated: YES];
+                                         }
+                                         
+                                     }
+                                     
+                                 }
+                                 
                              } failureBlock:^(NSError *error) {
                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                  
