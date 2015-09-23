@@ -90,9 +90,10 @@
     
     HWItem* currentItem = [self.items objectAtIndex:indexPath.row];
     
-    cell.mytrash.hidden = YES;
+
     
     [cell setItem:currentItem];
+    cell.mytrash.hidden = YES;
     
     cell.delegate = self;
     return cell;
