@@ -8,10 +8,13 @@
 
 #import "JSONModel.h"
 #import "HWUser.h"
+#import "HWImageWithThumbnail.h"
 
-@protocol HWItem <NSObject>
+@protocol HWItem
 
 @end
+
+
 
 @interface HWItem : JSONModel
 
@@ -44,7 +47,7 @@
 @property (nonatomic, strong) NSString<Optional>* location_lon;
 
 @property (nonatomic, strong) NSString<Optional>* barcode;
-@property (nonatomic, strong) NSArray<Optional>* photos;
+@property (nonatomic, strong) NSArray<HWImageWithThumbnail, Optional>* photos;
 
 @property (nonatomic, strong) NSArray<HWItem, Optional>* similar_items;
 @property (nonatomic, strong) NSArray<HWItem, Optional>* user_items;

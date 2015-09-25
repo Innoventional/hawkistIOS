@@ -93,6 +93,7 @@
 		3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6BEA1B4426780076004F /* CustomButton.m */; };
 		3ACC6BEE1B44A75E0076004F /* money.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6BED1B44A75E0076004F /* money.xib */; };
 		3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6BF01B44A9E30076004F /* MoneyField.m */; };
+		3AEA82381BB5A45F008E2057 /* HWImageWithThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA82371BB5A45F008E2057 /* HWImageWithThumbnail.m */; settings = {ASSET_TAGS = (); }; };
 		3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */; };
 		3AF37F9B1B57A8DD00E784DB /* HWTag+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF37F9A1B57A8DD00E784DB /* HWTag+Extensions.m */; };
 		3AF831F41B6F64B900CC750D /* AddCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF831F31B6F64B900CC750D /* AddCardView.xib */; };
@@ -376,6 +377,8 @@
 		3ACC6BED1B44A75E0076004F /* money.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = money.xib; path = SellAnItem/MoneyField/money.xib; sourceTree = "<group>"; };
 		3ACC6BEF1B44A9E30076004F /* MoneyField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoneyField.h; path = SellAnItem/MoneyField/MoneyField.h; sourceTree = "<group>"; };
 		3ACC6BF01B44A9E30076004F /* MoneyField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoneyField.m; path = SellAnItem/MoneyField/MoneyField.m; sourceTree = "<group>"; };
+		3AEA82361BB5A45F008E2057 /* HWImageWithThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWImageWithThumbnail.h; sourceTree = "<group>"; };
+		3AEA82371BB5A45F008E2057 /* HWImageWithThumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWImageWithThumbnail.m; sourceTree = "<group>"; };
 		3AF04D411B42B34D000D1D58 /* WantToSellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WantToSellViewController.h; path = WantToSell/WantToSellViewController.h; sourceTree = "<group>"; };
 		3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WantToSellViewController.m; path = WantToSell/WantToSellViewController.m; sourceTree = "<group>"; };
 		3AF37F991B57A8DD00E784DB /* HWTag+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HWTag+Extensions.h"; sourceTree = "<group>"; };
@@ -1239,6 +1242,8 @@
 				3A8F7DC71B8C982F000940CF /* HWNotification.m */,
 				3A359D631B9739CA00A0F2E1 /* HWPushNotificationSettings.h */,
 				3A359D641B9739CA00A0F2E1 /* HWPushNotificationSettings.m */,
+				3AEA82361BB5A45F008E2057 /* HWImageWithThumbnail.h */,
+				3AEA82371BB5A45F008E2057 /* HWImageWithThumbnail.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1890,6 +1895,7 @@
 				CEBAAF9F1B6CE9DF00AFE4C6 /* HWSingOutCell.m in Sources */,
 				3A359D6A1B98699200A0F2E1 /* FindFriendViewController.m in Sources */,
 				3AA5CBF01B84B393006093D0 /* HWAddress.m in Sources */,
+				3AEA82381BB5A45F008E2057 /* HWImageWithThumbnail.m in Sources */,
 				C35A4C641B3035D2002E1F26 /* NSString+Extensions.m in Sources */,
 				3AA5CBFB1B84CA2E006093D0 /* AddressView.m in Sources */,
 				CE5909531B5F9FF400DAA7FF /* SZTextView.m in Sources */,
@@ -1976,7 +1982,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jonathan Erwin (88DJ4L28WB)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2020,7 +2026,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dmitro Stepanov (7228BBSRBS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2035,6 +2041,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

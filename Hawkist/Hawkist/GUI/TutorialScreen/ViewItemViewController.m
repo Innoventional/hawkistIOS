@@ -293,9 +293,17 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
     [self.imagesArray removeAllObjects];
     
     if(self.item.photos)
-        [self.imagesArray addObjectsFromArray: self.item.photos];
-    if(self.item.barcode)
-        [self.imagesArray addObject: self.item.barcode];
+    {
+        for (int i=0;i<self.item.photos.count; i++)
+        {
+            [self.imagesArray addObject:((HWImageWithThumbnail*)[self.item.photos objectAtIndex:i]).image];
+        }
+        
+    }
+//    if(self.item.barcode)
+//        [self.imagesArray addObject: self.item.barcode];
+    
+    
     
     [self setImages];
     
