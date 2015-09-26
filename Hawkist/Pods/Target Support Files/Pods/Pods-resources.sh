@@ -91,6 +91,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "Stripe/Stripe/Resources/Images"
   install_resource "ZendeskSDK/ZendeskSDK.bundle"
   install_resource "ZendeskSDK/ZendeskSDKStrings.bundle"
+  install_resource "${BUILT_PRODUCTS_DIR}/Braintree-Drop-In-Localization.bundle"
+  install_resource "${BUILT_PRODUCTS_DIR}/Braintree-UI-Localization.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/JSBadgeView.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -127,6 +129,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "Stripe/Stripe/Resources/Images"
   install_resource "ZendeskSDK/ZendeskSDK.bundle"
   install_resource "ZendeskSDK/ZendeskSDKStrings.bundle"
+  install_resource "${BUILT_PRODUCTS_DIR}/Braintree-Drop-In-Localization.bundle"
+  install_resource "${BUILT_PRODUCTS_DIR}/Braintree-UI-Localization.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/JSBadgeView.bundle"
 fi
 

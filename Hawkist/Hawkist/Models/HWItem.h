@@ -64,4 +64,8 @@
 @property (nonatomic, strong) NSString<Optional>* reserved_by_user;
 
 
+
+
+
+
 @end

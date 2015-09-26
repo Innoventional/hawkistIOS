@@ -85,6 +85,36 @@ PODS:
     - AWSCore (= 2.2.6)
   - AWSSQS (2.2.6):
     - AWSCore (= 2.2.6)
+  - Braintree (3.9.3):
+    - Braintree/API (= 3.9.3)
+    - Braintree/Coinbase (= 3.9.3)
+    - Braintree/Drop-In (= 3.9.3)
+    - Braintree/Payments (= 3.9.3)
+    - Braintree/PayPal (= 3.9.3)
+    - Braintree/UI (= 3.9.3)
+    - Braintree/Venmo (= 3.9.3)
+  - Braintree/API (3.9.3)
+  - Braintree/Coinbase (3.9.3):
+    - Braintree/API
+  - Braintree/Drop-In (3.9.3):
+    - Braintree/API
+    - Braintree/Coinbase
+    - Braintree/Payments
+    - Braintree/PayPal
+    - Braintree/UI
+    - Braintree/Venmo
+  - Braintree/Payments (3.9.3):
+    - Braintree/API
+    - Braintree/Coinbase
+    - Braintree/PayPal
+    - Braintree/Venmo
+  - Braintree/PayPal (3.9.3):
+    - Braintree/API
+    - Braintree/UI
+  - Braintree/UI (3.9.3):
+    - Braintree/API
+  - Braintree/Venmo (3.9.3):
+    - Braintree/API
   - CardIO (5.1.1)
   - Heap (2.1.5)
   - iCarousel (1.7.6)
@@ -111,6 +141,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
   - AWSiOSSDKv2
+  - Braintree
   - CardIO
   - Heap (~> 2.1.5)
   - iCarousel (~> 1.7.6)
@@ -141,6 +172,7 @@ SPEC CHECKSUMS:
   AWSSimpleDB: 56a8aae3cde205ef3270e46ed4a3e416e67d4d4e
   AWSSNS: 0188eab8b808981c531bbcd4ef238325c71270ec
   AWSSQS: a2304d18086ce907aa7a8bba275861a69886a662
+  Braintree: 996027dcc8633569f2405bc57dca11f367050c60
   CardIO: 2c3a8ef9b9add4bd664c83bb653b83b2f32d9d7f
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   iCarousel: ddd7f142c7c2f3429b0ce5fb8ea37f4a059394cd

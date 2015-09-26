@@ -3129,40 +3129,4 @@ typedef NS_ENUM (NSInteger, HWAcceptDeclineOffer ){
 
 
 
-
-//
-//Url: 'user/jwt'
-//Method: 'GET'
-//
-//
-//Response :
-//
-//{
-//    "status": 0,
-//    "jwt": JWT_STRING
-//}
-//
-
-//-(void) jwt{
-    
-//  AFHTTPRequestOperationManager*   operationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString: @"http://hawkist.zendesk.com/"]];
-//     
-//    NSDictionary *param = @{@"user_token":@"ddsd" };
-//    
-    
-//    [operationManager POST:@""
-//                     parameters:nil//param
-//                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                       
-//                       NSLog(@"%@", responseObject);
-//                       
-//                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                       
-//                       NSLog(@"%@", error);
-//                   }];
-    
-   
-//}
-
-
 @end

@@ -134,14 +134,9 @@
         self.addressOptionArray = addresses;
         [self setupPaymentArrayData];
        
-        
-        
-        
     } failureBlock:^(NSError *error) {
         
-      
-        
-        [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
     }];
 
     

@@ -52,6 +52,10 @@
 }
 
 
+- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
+    return layoutAttributes;
+}
+
 
 - (IBAction) moveToTrash:(UIButton*)sender
 {

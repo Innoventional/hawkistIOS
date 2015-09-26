@@ -13,9 +13,11 @@
 #import "HWFeedBackViewController.h"
 #import "HWMyBalanceViewController.h"
 #import "HWLeaveFeedbackViewController.h"
-#import "HWProfileViewController.h"
+//#import "HWProfileViewController.h"
 #import "BuyThisItemViewController.h"
 #import "HWTapBarViewController.h"
+
+#import "HWProfileViewControllerV2.h"
 
 @implementation PushNotificationManager
 
@@ -136,10 +138,28 @@
         }
         case 6: case 8:
         {
-            HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUserID:userInfo[@"user_id"]];
             
+            [[NetworkManager shared] getUserProfileWithUserID:userInfo[@"user_id"]
+                                                 successBlock:^(HWUser *user) {
+                                                     
+                                                     if(!user) {
+                                                         
+                                                         [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                                                     message:@"You have been blocked by this user."
+                                                                                    delegate:nil
+                                                                           cancelButtonTitle:@"OK"
+                                                                           otherButtonTitles: nil]show];
+                                                         return;
+                                                     }
             
-            [navigationController pushViewController:vc animated:YES];
+                                                     HWProfileViewControllerV2 *vc = [[HWProfileViewControllerV2 alloc]initWithUser:user];
+                                                     
+                                                     [navigationController pushViewController:vc animated:YES];
+
+                                                 } failureBlock:^(NSError *error) {
+            
+                                                 }];
+            
             
             break;
         }

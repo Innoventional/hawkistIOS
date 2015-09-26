@@ -12,10 +12,12 @@
 #import "HWMyAccountViewController.h"
 #import "PersonalisationViewController.h"
 #import "HWMyOrdersViewController.h"
-#import "HWProfileViewController.h"
+//#import "HWProfileViewController.h"
 #import "myFavouritesViewController.h"
 #import "HolidayModeViewController.h"
 #import "HWMyBalanceViewController.h"
+
+#import "HWProfileViewControllerV2.h"
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -369,7 +371,7 @@
                                                  
                                              } else {
                                                  [self hideHud];
-                                                 HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUser:user];
+                                                 HWProfileViewControllerV2 *vc = [[HWProfileViewControllerV2 alloc]initWithUser:user];
                                                  
                                                  [self.navigationController pushViewController:vc animated:YES];
                                              }

@@ -8,7 +8,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "FeedScreenViewController.h"
 #import "ViewItemViewController.h"
-#import "HWProfileViewController.h"
+//#import "HWProfileViewController.h"
 #import "CustomizationViewController.h"
 #import "AddTagsView.h"
 #import "myItemCell.h"
@@ -16,6 +16,8 @@
 #import "PersonalisationViewController.h"
 #import "NavigationVIew.h"
 #import "helper.h"
+
+#import "HWProfileViewControllerV2.h"
 
 @interface FeedScreenViewController () <UITextFieldDelegate, FeedScreenCollectionViewCellDelegate, MyItemCellDelegate,NavigationViewDelegate,UICollectionViewDelegateFlowLayout>
 
@@ -327,8 +329,29 @@
 }
 - (void) transitionToProfileScreenWithUserId:(NSString*)userId
 {
-    HWProfileViewController *profileVC = [[HWProfileViewController alloc]initWithUserID:userId];
-    [self.navigationController pushViewController:profileVC animated:YES];
+    
+    [[NetworkManager shared] getUserProfileWithUserID:userId
+                                         successBlock:^(HWUser *user) {
+                                             
+                                             
+                                             if(!user) {
+                                                 [self hideHud];
+                                                 [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                                             message:@"You have been blocked by this user."
+                                                                            delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles: nil]show];
+                                                 return;
+                                             }
+                                             
+                                             
+                                             HWProfileViewControllerV2 *profileVC = [[HWProfileViewControllerV2 alloc]initWithUser:user];
+                                             [self.navigationController pushViewController:profileVC animated:YES];
+                                             
+                                         } failureBlock:^(NSError *error) {
+                                             
+                                             
+                                         }];
 }
 
 #pragma mark -

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 TecSynt Solutions. All rights reserved.
 //
 
-#import "HWProfileViewController.h"
+#import "HWProfileViewController1.h"
 #import "NavigationVIew.h"
 
 #import "HWButtonForSegment.h"
@@ -180,11 +180,7 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
                                                 
                                             } failureBlock:^(NSError *error) {
  
-//                                                [[[UIAlertView alloc]initWithTitle:@"Error!"
-//                                                                           message:error.localizedDescription
-//                                                                          delegate:self
-//                                                                 cancelButtonTitle:@"Ok!"
-//                                                                 otherButtonTitles: nil] show];// }
+ 
                                         }];
       
     

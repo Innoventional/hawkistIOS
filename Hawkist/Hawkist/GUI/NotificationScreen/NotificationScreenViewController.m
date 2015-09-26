@@ -10,7 +10,7 @@
 #import "NotificationCell.h"
 #import "ViewItemViewController.h"
 #import "NetworkManager.h"
-#import "HWProfileViewController.h"
+//#import "HWProfileViewController.h"
 #import "HWMyOrdersViewController.h"
 #import "HWCommentViewController.h"
 #import "HWFeedBackViewController.h"
@@ -18,6 +18,8 @@
 #import "HWLeaveFeedbackViewController.h"
 #import "BuyThisItemViewController.h"
 #import "HWTapBarViewController.h"
+
+#import "HWProfileViewControllerV2.h"
 
 
 @interface NotificationScreenViewController () <UITableViewDelegate,UITableViewDataSource,NotificationCellDelegate>
@@ -359,7 +361,7 @@
                                                  
                                              } else {
                                                  
-                                                 HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUser:user];
+                                                 HWProfileViewControllerV2 *vc = [[HWProfileViewControllerV2 alloc]initWithUser:user];
                                                  
                                                  [self.navigationController pushViewController:vc animated:YES];
                                              }
@@ -519,7 +521,7 @@
                                                      
                                                  } else {
                                                      
-                                                     HWProfileViewController *vc = [[HWProfileViewController alloc]initWithUser:user];
+                                                     HWProfileViewControllerV2 *vc = [[HWProfileViewControllerV2 alloc]initWithUser:user];
                                                      
                                                     [self.navigationController pushViewController:vc animated:YES];
                                                  }

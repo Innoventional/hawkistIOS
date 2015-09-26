@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWProfileViewControllerV2">
+            <connections>
+                <outlet property="collectionView" destination="wVP-jY-aZr" id="Ook-EA-h2Y"/>
+                <outlet property="navigationView" destination="hSD-SZ-vt3" id="n1D-BI-5bo"/>
+                <outlet property="view" destination="a3J-rT-3ZF" id="aqD-Jz-Khw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="a3J-rT-3ZF">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSD-SZ-vt3" customClass="NavigationVIew">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="dag-Ia-jMH"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wVP-jY-aZr">
+                    <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KaE-mw-bn8">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="tgY-2l-vmm"/>
+                        <outlet property="delegate" destination="-1" id="JNq-5W-ZUX"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="wVP-jY-aZr" firstAttribute="top" secondItem="hSD-SZ-vt3" secondAttribute="bottom" id="1QQ-ca-S6Y"/>
+                <constraint firstAttribute="trailing" secondItem="hSD-SZ-vt3" secondAttribute="trailing" id="EF7-GV-b6r"/>
+                <constraint firstAttribute="trailing" secondItem="wVP-jY-aZr" secondAttribute="trailing" id="LO4-dJ-BGa"/>
+                <constraint firstItem="hSD-SZ-vt3" firstAttribute="top" secondItem="a3J-rT-3ZF" secondAttribute="top" id="Q74-zh-p2C"/>
+                <constraint firstItem="hSD-SZ-vt3" firstAttribute="leading" secondItem="a3J-rT-3ZF" secondAttribute="leading" id="Ulg-VW-sL3"/>
+                <constraint firstItem="wVP-jY-aZr" firstAttribute="leading" secondItem="a3J-rT-3ZF" secondAttribute="leading" id="cGD-1l-SBm"/>
+                <constraint firstAttribute="bottom" secondItem="wVP-jY-aZr" secondAttribute="bottom" id="x6u-Ay-myz"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="328" y="-318"/>
+        </view>
+    </objects>
+</document>

@@ -22,6 +22,11 @@
 #import <ZendeskSDK/ZendeskSDK.h>
 #import <Leanplum/Leanplum.h>
 
+#import <Braintree/Braintree.h>
+#import "HWBraintreeManager.h"
+
+
+
 #import "const.h"
 
 @interface AppDelegate ()
@@ -34,9 +39,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
-    
+  
     
     NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024
                                                          diskCapacity:20 * 1024 * 1024
@@ -45,7 +48,19 @@
     
     
     
-    
+    [[HWBraintreeManager shared] createTokenFromCardNumber:@"4242 4242 4242 4242"
+                                                  expMonth:3
+                                                   expYear:16
+                                                       cvv:@"222"
+                                              addressLine1:@"dd"
+                                              addressLine2:nil
+                                                      name:nil
+                                                  postCode:@"121"
+                                                      city:@"DD"
+                                                completion:^(NSString *tokenId, NSError *error) {
+                                                    
+                                                    
+                                                                                }];
     
     ///LeanPlum////
 
@@ -65,8 +80,8 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-//    
-//    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+   
+//   [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
 //
 //
 //    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
@@ -76,8 +91,15 @@
     
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.rootViewController = [[UINavigationController alloc] init];
+    
  //[self.rootViewController pushViewController:[[HWPaymentViewController alloc] init]  animated: NO];
+    
+    
     [self.rootViewController pushViewController:[[LoginViewController alloc] init]  animated: NO];
+    
+    
+   // [self.rootViewController pushViewController:[HWBrainTreeViewController new] animated:NO];
+    
    //   [self.rootViewController pushViewController:[[WantToSellViewController alloc] init]  animated: NO];
     self.rootViewController.navigationBarHidden = YES;
         self.window.rootViewController = self.rootViewController;
@@ -120,6 +142,13 @@
 }
 
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    return [Braintree handleOpenURL:url sourceApplication:sourceApplication];
+}
 
 
 

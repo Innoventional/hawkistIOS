@@ -11,7 +11,9 @@
 #import "HWFeedBackSegmentView.h"
 #import "HWFeadbackCell.h"
 #import "NetworkManager.h"
-#import "HWProfileViewController.h"
+//#import "HWProfileViewController.h"
+
+#import "HWProfileViewControllerV2.h"
 
 @interface HWFeedBackViewController () <NavigationViewDelegate, HWFeedBackSegmentViewDelegate, HWFeadbackCellDelegate>
 @property (weak, nonatomic) IBOutlet NavigationVIew *navigationView;
@@ -138,7 +140,7 @@
     
      NSLog(@"%@",vc);
     
-    if( [ vc isKindOfClass:[HWProfileViewController class]]) {
+    if( [ vc isKindOfClass:[HWProfileViewControllerV2 class]]) {
    
     [self.navigationController popViewControllerAnimated:YES];
     
@@ -214,9 +216,33 @@
 
 - (void) transitionToProfileWithUserId:(NSString*)userId {
     
-    HWProfileViewController *vc = [[HWProfileViewController alloc] initWithUserID:userId];
-    [self.navigationController pushViewController:vc animated:YES];
-}
+    [self showHud];
+    
+    [[NetworkManager shared] getUserProfileWithUserID:userId
+                                         successBlock:^(HWUser *user) {
+    
+                                             if(!user) {
+                                                 [self hideHud];
+                                                 [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                                             message:@"You have been blocked by this user."
+                                                                            delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles: nil]show];
+                                                 return;
+                                             }
+                                             
+                                             HWProfileViewControllerV2 *vc = [[HWProfileViewControllerV2 alloc] initWithUser:user];
+                                             [self.navigationController pushViewController:vc animated:YES];
+                                             [self hideHud];
+                                             
+                                         } failureBlock:^(NSError *error) {
+    
+    
+                                             [self showAlertWithTitle:error.domain Message:error.localizedDescription];
+                                             [self hideHud];
+                                         }];
+    
+    }
 
 
 @end

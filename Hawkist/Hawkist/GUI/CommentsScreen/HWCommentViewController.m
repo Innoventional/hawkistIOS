@@ -10,10 +10,11 @@
 #import "NavigationVIew.h"
 #import "HWCommentInputView.h"
 #import "HWCommentCell.h"
-#import "HWProfileViewController.h"
+//#import "HWProfileViewController.h"
 #import "NetworkManager.h"
 #import "ViewItemViewController.h"
 
+#import "HWProfileViewControllerV2.h"
 
 #import "SZTextView.h"
 #import "HWComment.h"
@@ -526,7 +527,7 @@
                                                 }
                                                 
                                                     
-                                                HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUser:user];
+                                                HWProfileViewControllerV2 *profileVC = [[HWProfileViewControllerV2 alloc] initWithUser:user];
                                                 [self.navigationController pushViewController:profileVC animated:NO];
 //
                                                 

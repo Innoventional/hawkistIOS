@@ -8,8 +8,9 @@
 
 #import "FeedScreenCollectionViewCell.h"
 #import "HWTag+Extensions.h"
-#import "HWProfileViewController.h"
+//#import "HWProfileViewController.h"
 
+//#import "HWProfileViewControllerV2.h"
 
 @interface FeedScreenCollectionViewCell ()
 

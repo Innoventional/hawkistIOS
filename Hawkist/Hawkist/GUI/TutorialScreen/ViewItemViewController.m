@@ -13,7 +13,7 @@
 #import "AppEngine.h"
 #import "HWTag+Extensions.h"
 #import "BuyThisItemViewController.h"
-#import "HWProfileViewController.h"
+//#import "HWProfileViewController.h"
 #import "SellAnItemViewController.h"
 #import "myItemCell.h"
 #import "UIImageView+Extensions.h"
@@ -29,6 +29,9 @@
 #import "TextViewWithDetectedWord.h"
 #import "NSMutableAttributedString+PaintText.h"
 #import "FeedScreenViewController.h"
+
+#import "HWProfileViewControllerV2.h"
+
 #import "HWZendesk.h"
 
 
@@ -720,8 +723,30 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
 
 - (IBAction)transitionToProfile:(UIButton *)sender {
     
-    HWProfileViewController *profileVC = [[HWProfileViewController alloc]initWithUserID:self.item.user_id];
-    [self.navigationController pushViewController:profileVC animated:YES];
+    
+    [[NetworkManager shared] getUserProfileWithUserID:self.item.user_id
+                                         successBlock:^(HWUser *user) {
+    
+                                             
+                                             if(!user) {
+                                                 [self hideHud];
+                                                 [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                                             message:@"You have been blocked by this user."
+                                                                            delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles: nil]show];
+                                                 return;
+                                             }
+                                             
+                                            
+                                             HWProfileViewControllerV2 *profileVC = [[HWProfileViewControllerV2 alloc]initWithUser:user];
+                                             [self.navigationController pushViewController:profileVC animated:YES];
+
+                                         } failureBlock:^(NSError *error) {
+    
+    
+                                         }];
+    
     
 }
 
@@ -752,9 +777,30 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
 
 - (void) transitionToProfileScreenWithUserId:(NSString*)userId
 {
-    HWProfileViewController *profileVC = [[HWProfileViewController alloc] initWithUserID:userId];
-    
-    [self.navigationController pushViewController:profileVC animated:YES];
+
+    [[NetworkManager shared] getUserProfileWithUserID:userId
+                                         successBlock:^(HWUser *user) {
+                                             
+                                             
+                                             if(!user) {
+                                                 [self hideHud];
+                                                 [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
+                                                                             message:@"You have been blocked by this user."
+                                                                            delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles: nil]show];
+                                                 return;
+                                             }
+                                             
+                                             
+                                             HWProfileViewControllerV2 *profileVC = [[HWProfileViewControllerV2 alloc]initWithUser:user];
+                                             [self.navigationController pushViewController:profileVC animated:YES];
+                                             
+                                         } failureBlock:^(NSError *error) {
+                                             
+                                             
+                                         }];
+
 }
 
 
