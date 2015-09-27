@@ -721,16 +721,18 @@ typedef NS_ENUM(NSInteger, HWReasonReport) {
 }
 
 
-- (void) followUnfollowButton:(UIButton*)button follow:(BOOL)isFollow forUserId:(NSString*)userId
+- (void) followUnfollowButton:(UIButton*)button follow:(BOOL)isFollow forUser:(HWFollowUser*)user
 {
     if(!isFollow){
         
-        [ [NetworkManager shared] unfollowWithUserId:userId successBlock:^{
+        [ [NetworkManager shared] unfollowWithUserId:user.id successBlock:^{
             
             [UIView performWithoutAnimation:^{
                 [button setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
                 [button layoutIfNeeded];
+               
             }];
+             user.follow = @"0";
             
             
             
@@ -742,14 +744,15 @@ typedef NS_ENUM(NSInteger, HWReasonReport) {
         }];
     } else {
         
-        [ [NetworkManager shared] followWithUserId:userId successBlock:^{
+        [ [NetworkManager shared] followWithUserId:user.id successBlock:^{
             
             
             [UIView performWithoutAnimation:^{
                 [button setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
                 [button layoutIfNeeded];
+               
             }];
-            
+             user.follow = @"1";
             
             
             button.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];

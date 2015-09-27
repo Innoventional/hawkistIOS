@@ -30,7 +30,7 @@
 
 @optional
 - (void) transitionToUserProfileWithUserId:(NSString*)userId;
-- (void) followUnfollowButton:(UIButton*)button follow:(BOOL)isFollow forUserId:(NSString*)userId;
+- (void) followUnfollowButton:(UIButton*)button follow:(BOOL)isFollow forUser:(HWFollowUser *)useк;
 
 - (BOOL) hideFollowUnfollowButtonForUserId:(NSString*)userId;
 

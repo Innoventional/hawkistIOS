@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSString *userId;
 
 @property (weak, nonatomic) IBOutlet StarRatingControl *starView;
+@property (nonatomic, strong) HWFollowUser *user;
 
 
 //@property (nonatomic, assign) BOOL isFollow;
@@ -66,9 +67,9 @@
         self.isFollow = YES;
     }
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(followUnfollowButton:follow: forUserId:)])
+    if (self.delegate && [self.delegate respondsToSelector:@selector(followUnfollowButton:follow: forUser:)])
     {
-        [self.delegate followUnfollowButton:sender follow:self.isFollow forUserId:self.userId];
+        [self.delegate followUnfollowButton:sender follow:self.isFollow forUser:self.user];
     }
 }
 
@@ -84,6 +85,33 @@
 - (void) setCellWithFollowUser:(HWFollowUser*) user
 {
     
+    
+    
+    if ([user.follow isEqualToString:IS_FOLLOW])
+    {
+        self.isFollow = YES;
+        
+        [UIView performWithoutAnimation:^{
+            
+            [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
+            self.followButton.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
+            [self.followButton layoutIfNeeded];
+        }];
+        
+    } else {
+        
+        self.isFollow = NO;
+        
+        [UIView performWithoutAnimation:^{
+            
+            [self.followButton setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
+            self.followButton.backgroundColor = [UIColor colorWithRed:48./255. green:173./255. blue:148./255. alpha:1];
+            [self.followButton layoutIfNeeded];
+        }];
+    }
+    
+    
+    self.user = user;
     [self.avatarImageView setImageWithURL:[NSURL URLWithString: user.avatar] placeholderImage:[UIImage imageNamed:@"noPhoto"]];
     
     self.userNameLabel.text = user.username;
@@ -106,31 +134,8 @@
         self.followButton.enabled = (![self.delegate hideFollowUnfollowButtonForUserId:self.userId]);
     }
     
-    if ([user.follow isEqualToString:IS_FOLLOW])
-    {
-        self.isFollow = YES;
-        
-        [UIView performWithoutAnimation:^{
-            
-            [self.followButton setTitle:@" UNFOLLOW "  forState:UIControlStateNormal];
-        }];
-        
-        
-        
-        self.followButton.backgroundColor = [UIColor colorWithRed:97./255. green:97./255. blue:97./255. alpha:1];
-        
-    } else {
-        
-        self.isFollow = NO;
-        
-        [UIView performWithoutAnimation:^{
-            
-            [self.followButton setTitle:@"  FOLLOW  "  forState:UIControlStateNormal];
-        }];
-        
-        self.followButton.backgroundColor = [UIColor colorWithRed:48./255. green:173./255. blue:148./255. alpha:1];
-        
-    }
+    
+   
     
     
 }
