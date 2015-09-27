@@ -210,6 +210,8 @@ typedef NS_ENUM(NSInteger, HWReasonReport) {
 
 -(void)commonInit
 {
+    self.isBlocked = [self.user.blocked boolValue];
+    
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundCollection"]];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"collectionViewCell"];
