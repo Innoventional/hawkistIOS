@@ -126,7 +126,11 @@
     
     [self.itemImage setImage:nil];
     
-    [self.itemImage setImageWithUrl:[NSURL URLWithString: self.item.photos.firstObject]
+    
+
+    
+    
+    [self.itemImage setImageWithUrl:[NSURL URLWithString: ((HWImageWithThumbnail*)[self.item.photos firstObject]).thumbnail]
                       withIndicator:self.indicator];
  
     [self.visualEffectView removeFromSuperview];

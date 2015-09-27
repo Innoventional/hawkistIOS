@@ -16,6 +16,9 @@
 #import "HWTag+Extensions.h"
 #import "WebViewController.h"
 #import "AWSS3Manager.h"
+#import "HWItem.h"
+
+
 
 @interface SellAnItemViewController ()
 
@@ -35,6 +38,11 @@
 @property (nonatomic,strong)NSString* img1Url;
 @property (nonatomic,strong)NSString* img2Url;
 @property (nonatomic,strong)NSString* img3Url;
+
+@property (nonatomic,strong)NSString* bartUrl;
+@property (nonatomic,strong)NSString* img1tUrl;
+@property (nonatomic,strong)NSString* img2tUrl;
+@property (nonatomic,strong)NSString* img3tUrl;
 
 @property (nonatomic,weak) AppEngine* engine;
 
@@ -266,27 +274,37 @@
         switch (index) {
             case 0:
             {
-                [self.barCode setImageWithURL: [NSURL URLWithString: [imagesArray objectAtIndex: index]] placeholderImage: nil];
+                HWImageWithThumbnail* i = [imagesArray objectAtIndex:index];
+                [self.barCode setImageWithURL: [NSURL URLWithString: i.image] placeholderImage: nil];
+            
+                self.barUrl = i.image;
+                self.bartUrl = i.thumbnail;
                 
-                self.barUrl = [imagesArray objectAtIndex: index];
                 break;
             }
             case 1:
             {
-                [self.takePic1 setImageWithURL: [NSURL URLWithString: [imagesArray objectAtIndex: index]] placeholderImage:nil];
-                self.img1Url = [imagesArray objectAtIndex: index];
+                HWImageWithThumbnail* i = [imagesArray objectAtIndex:index];
+                [self.takePic1 setImageWithURL: [NSURL URLWithString: i.image] placeholderImage:nil];
+                self.img1Url = i.image;
+                self.img1tUrl = i.thumbnail;
                 break;
             }
             case 2:
             {
-                [self.takePic2 setImageWithURL: [NSURL URLWithString: [imagesArray objectAtIndex: index]] placeholderImage: nil];
-                self.img2Url = [imagesArray objectAtIndex: index];
+                HWImageWithThumbnail* i = [imagesArray objectAtIndex:index];
+                [self.takePic2 setImageWithURL: [NSURL URLWithString: i.image] placeholderImage:nil];
+                self.img2Url = i.image;
+                self.img2tUrl = i.thumbnail;
                 break;
             }
             case 3:
             {
-                [self.takePic3 setImageWithURL: [NSURL URLWithString: [imagesArray objectAtIndex: index]] placeholderImage: nil];
-                self.img3Url = [imagesArray objectAtIndex: index];
+                HWImageWithThumbnail* i = [imagesArray objectAtIndex:index];
+                [self.takePic3
+                 setImageWithURL: [NSURL URLWithString: i.image] placeholderImage:nil];
+                self.img3Url = i.image;
+                self.img3tUrl = i.thumbnail;
                 break;
             }
             default:
@@ -547,25 +565,48 @@
             currentItem.city = postLabel.text;
         
         
-        NSMutableArray* tmpArrayForImage = [[NSMutableArray alloc]init];
+        NSMutableArray *tmpArrayForImage = [NSMutableArray array];
+        
+    
         
         if (self.barUrl)
-            [tmpArrayForImage addObject:self.barUrl];
-        
+        {
+            
+            HWImageWithThumbnail *pics = [[HWImageWithThumbnail alloc]init];
+            pics.image = self.barUrl;
+            pics.thumbnail = self.bartUrl;
+            
+            [tmpArrayForImage addObject:pics];
+        }
         
         if (self.img1Url)
-            [tmpArrayForImage addObject:self.img1Url];
+        {
+            HWImageWithThumbnail *pics = [[HWImageWithThumbnail alloc]init];
+            pics.image = self.img1Url;
+            pics.thumbnail = self.img1tUrl;
         
+        [tmpArrayForImage addObject:pics];
+        }
         
-        if (self.img2Url)
-            [tmpArrayForImage addObject:self.img2Url];
+        if (self.img2Url){
+            HWImageWithThumbnail *pics = [[HWImageWithThumbnail alloc]init];
+        pics.image = self.img2Url;
+        pics.thumbnail = self.img1tUrl;
+        
+        [tmpArrayForImage addObject:pics];
+        }
         
         if (self.img3Url)
-            [tmpArrayForImage addObject:self.img3Url];
+        {
+            HWImageWithThumbnail *pics = [[HWImageWithThumbnail alloc]init];
+            pics.image = self.img3Url;
+            pics.thumbnail = self.img3tUrl;
+            
+            [tmpArrayForImage addObject:pics];
+        }
         
         
-        
-        currentItem.photos = [NSArray arrayWithArray:tmpArrayForImage];
+        currentItem.photos = [[NSArray alloc]initWithArray:tmpArrayForImage];
         
         //  currentItem.barcode = self.barUrl;
         
@@ -673,111 +714,216 @@
     }
 }
 
+
+- (NSString*) compressingImage:(UIImage*) image
+                 withResolutin:(CGFloat)resolution
+                      andNamed:(NSString*)name
+{
+    
+    float height = (resolution/image.size.width) * image.size.height;
+    
+    
+    
+    CGRect rect = CGRectMake(0,0,resolution,height);
+    
+    UIGraphicsBeginImageContext(rect.size);
+    
+    [image drawInRect:rect];
+    
+    UIImage *picture1 = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    NSData *imageData = UIImagePNGRepresentation(picture1);
+    
+    UIImage *compressedImage=[UIImage imageWithData:imageData];
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", name]];
+    [UIImagePNGRepresentation(compressedImage) writeToFile:filePath atomically:YES];
+    
+
+    return filePath;
+}
+
+
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage* selImage = info[UIImagePickerControllerEditedImage];
+    
+    
    
     switch (selectedImage) {
             case 1:
         {
-            barCode.image = selImage;
-
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempBar"]];
-            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
             
+            NSString* fileImage = [self compressingImage:selImage withResolutin:400 andNamed:@"img"];
+            NSString* fileThumbnail = [self compressingImage:selImage withResolutin:150 andNamed:@"thumb"];
+            
+            self.barCode.image = selImage;
             [self showHud];
             
-            
-            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                                successBlock:^(NSString *fileURL) {
                                    self.barUrl = fileURL;
-                                   [self hideHud];
+                                   
+                                   
+                                   [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
+                                                      successBlock:^(NSString *fileURL) {
+                                                          self.bartUrl = fileURL;
+                                                          [self hideHud];
+                                                          
+                                                      }
+                                                      failureBlock:^(NSError *error) {
+                                                          [self hideHud];
+                                                          [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                                      }
+                                                     progressBlock:^(CGFloat progress) {
+                                                         
+                                                         
+                                                     }];
+                                   
                 
             }
                                failureBlock:^(NSError *error) {
                                    [self hideHud];
-[self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             }
                               progressBlock:^(CGFloat progress) {
                 
                                 
             }];
+            
+     
             break;
         }
         case 2:
         {
-         
+            
             takePic1.image = selImage;
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic1"]];
-            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
-
+            
+            NSString* fileImage = [self compressingImage:selImage withResolutin:400 andNamed:@"img"];
+            NSString* fileThumbnail = [self compressingImage:selImage withResolutin:200 andNamed:@"thumb"];
+            
             [self showHud];
-            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
+            
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                                successBlock:^(NSString *fileURL) {
                                    self.img1Url = fileURL;
-                                               [self hideHud];
+                                   
+                                   
+                                   [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
+                                                      successBlock:^(NSString *fileURL) {
+                                                          self.img1tUrl = fileURL;
+                                                          [self hideHud];
+                                                          
+                                                      }
+                                                      failureBlock:^(NSError *error) {
+                                                          [self hideHud];
+                                                          [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                                      }
+                                                     progressBlock:^(CGFloat progress) {
+                                                         
+                                                         
+                                                     }];
+                                   
+                                   
                                }
                                failureBlock:^(NSError *error) {
-                                               [self hideHud];
-                               [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                   [self hideHud];
+                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                }
                               progressBlock:^(CGFloat progress) {
                                   
-                                  NSLog(@"%f",progress);
+                                  
                               }];
-            
+
             break;
         }
         case 3:
         {
             
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic2"]];
-            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
-
+            takePic2.image = selImage;
+            
+            NSString* fileImage = [self compressingImage:selImage withResolutin:400 andNamed:@"img"];
+            NSString* fileThumbnail = [self compressingImage:selImage withResolutin:150 andNamed:@"thumb"];
+            
             [self showHud];
             
-            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                                successBlock:^(NSString *fileURL) {
                                    self.img2Url = fileURL;
-                                   [self hideHud];
+                                   
+                                   
+                                   [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
+                                                      successBlock:^(NSString *fileURL) {
+                                                          self.img2tUrl = fileURL;
+                                                          [self hideHud];
+                                                          
+                                                      }
+                                                      failureBlock:^(NSError *error) {
+                                                          [self hideHud];
+                                                          [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                                      }
+                                                     progressBlock:^(CGFloat progress) {
+                                                         
+                                                         
+                                                     }];
+                                   
+                                   
                                }
                                failureBlock:^(NSError *error) {
                                    [self hideHud];
-                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                }
                               progressBlock:^(CGFloat progress) {
                                   
-                                  NSLog(@"%f",progress);
+                                  
                               }];
             
-            takePic2.image = selImage;
             break;
         }
         case 4:
         {
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"tempPic3"]];
-            [UIImagePNGRepresentation(selImage) writeToFile:filePath atomically:YES];
 
+            takePic3.image = selImage;
+            
+            NSString* fileImage = [self compressingImage:selImage withResolutin:400 andNamed:@"img"];
+            NSString* fileThumbnail = [self compressingImage:selImage withResolutin:150 andNamed:@"thumb"];
+            
             [self showHud];
-            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:filePath]
+            
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                                successBlock:^(NSString *fileURL) {
                                    self.img3Url = fileURL;
-                                   [self hideHud];
+                                   
+                                   
+                                   [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
+                                                      successBlock:^(NSString *fileURL) {
+                                                          self.img3tUrl = fileURL;
+                                                          [self hideHud];
+                                                          
+                                                      }
+                                                      failureBlock:^(NSError *error) {
+                                                          [self hideHud];
+                                                          [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                                      }
+                                                     progressBlock:^(CGFloat progress) {
+                                                         
+                                                         
+                                                     }];
+                                   
+                                   
                                }
                                failureBlock:^(NSError *error) {
                                    [self hideHud];
-                                 [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                }
                               progressBlock:^(CGFloat progress) {
                                   
-                                  NSLog(@"%f",progress);
+                                  
                               }];
-            
-            takePic3.image = selImage;
             break;
         }
             default:
