@@ -150,7 +150,8 @@ setStatusBarColor([UIColor whiteColor]);
 }
 
 
--(void) privacyPolicy {
+-(void) privacyPolicy :(void (^)(void )) successBlock
+{
     
     ZDKHelpCenterProvider  *provider = [[ZDKHelpCenterProvider alloc] init];
     
@@ -158,7 +159,7 @@ setStatusBarColor([UIColor whiteColor]);
         
         ZDKArticleViewController* vc =[[ZDKArticleViewController alloc] initWithArticle:items.firstObject];
         [self.navigationController pushViewController:vc animated:YES];
-        
+        successBlock();
     }];
     
 }

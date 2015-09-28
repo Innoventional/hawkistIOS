@@ -83,7 +83,7 @@
         self.skidka.hidden = YES;
     }
     
-    [self.bigImage setImageWithURL: [NSURL URLWithString: [self.item.photos firstObject]] placeholderImage: nil];
+    [self.bigImage setImageWithURL: [NSURL URLWithString: ((HWImageWithThumbnail*)[self.item.photos firstObject]).image] placeholderImage: nil];
     
     NSString* buttonTitle =  [@"BUY £" stringByAppendingString: self.price.text];
     

@@ -68,14 +68,14 @@
                                 <rect key="frame" x="62" y="66" width="20" height="20"/>
                             </activityIndicatorView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sold" translatesAutoresizingMaskIntoConstraints="NO" id="Y5r-9L-p7C" userLabel="SOLD Label">
-                                <rect key="frame" x="0.0" y="0.0" width="145" height="151"/>
+                                <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.69781523879999996" green="0.68823407589999996" blue="0.69541994809999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Y5r-9L-p7C" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="2JR-UT-h1A"/>
-                            <constraint firstItem="hYM-vX-ds8" firstAttribute="bottom" secondItem="Y5r-9L-p7C" secondAttribute="bottom" id="3QA-n7-FuP"/>
+                            <constraint firstItem="hYM-vX-ds8" firstAttribute="bottom" secondItem="Y5r-9L-p7C" secondAttribute="bottom" constant="6" id="3QA-n7-FuP"/>
                             <constraint firstItem="Fdb-aG-Vuq" firstAttribute="leading" secondItem="8pa-IT-Odb" secondAttribute="leading" id="9Tz-EN-vhp"/>
                             <constraint firstAttribute="trailing" secondItem="Y5r-9L-p7C" secondAttribute="trailing" id="9rm-Gz-fCw"/>
                             <constraint firstAttribute="bottom" secondItem="hYM-vX-ds8" secondAttribute="bottom" id="AY2-Dc-PB2"/>

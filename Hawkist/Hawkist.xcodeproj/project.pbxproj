@@ -197,7 +197,7 @@
 		CE70EDD51B6BD51D005664FA /* HWAccountMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE70EDD41B6BD51D005664FA /* HWAccountMenuCell.m */; };
 		CE70EDD71B6BD54B005664FA /* HWAccountMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE70EDD61B6BD54B005664FA /* HWAccountMenuCell.xib */; };
 		CE7876521B60F3FF00A3970D /* HWOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7876511B60F3FF00A3970D /* HWOffer.m */; };
-		CE851CA31BAA16DE00E9CB09 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE851CA21BAA16DE00E9CB09 /* Default-568h@2x.png */; };
+		CE851CA31BAA16DE00E9CB09 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		CE8721F21B553684003C47E5 /* HWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8721F11B553684003C47E5 /* HWProfileViewController.m */; };
 		CE8721F41B55545E003C47E5 /* HWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8721F31B55545E003C47E5 /* HWProfileViewController.xib */; };
 		CE8D895B1B9D92D200749577 /* HWZendesk.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D895A1B9D92D200749577 /* HWZendesk.m */; };
@@ -212,8 +212,6 @@
 		CEA107B91BB66EA7006F95EE /* HWProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA107B81BB66EA7006F95EE /* HWProfileHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
 		CEA107BC1BB66FA4006F95EE /* HWProfileHeaderVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107BB1BB66FA4006F95EE /* HWProfileHeaderVeiw.m */; settings = {ASSET_TAGS = (); }; };
 		CEA107BF1BB67BD0006F95EE /* HWProfileViewControllerV2.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107BE1BB67BD0006F95EE /* HWProfileViewControllerV2.m */; settings = {ASSET_TAGS = (); }; };
-		CEA107C11BB6F613006F95EE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA107C01BB6F613006F95EE /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
-		CEA107C31BB6F627006F95EE /* Images-3.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA107C21BB6F627006F95EE /* Images-3.xcassets */; settings = {ASSET_TAGS = (); }; };
 		CEA107C61BB6FDD4006F95EE /* HWFollowInProfileColViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107C51BB6FDD4006F95EE /* HWFollowInProfileColViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		CEA107C81BB6FED6006F95EE /* HWFollowInProfileColViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA107C71BB6FED6006F95EE /* HWFollowInProfileColViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */; };
@@ -583,8 +581,6 @@
 		CEA107BB1BB66FA4006F95EE /* HWProfileHeaderVeiw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWProfileHeaderVeiw.m; sourceTree = "<group>"; };
 		CEA107BD1BB67BD0006F95EE /* HWProfileViewControllerV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWProfileViewControllerV2.h; path = ProfileScreenV2/HWProfileViewControllerV2.h; sourceTree = "<group>"; };
 		CEA107BE1BB67BD0006F95EE /* HWProfileViewControllerV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWProfileViewControllerV2.m; path = ProfileScreenV2/HWProfileViewControllerV2.m; sourceTree = "<group>"; };
-		CEA107C01BB6F613006F95EE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		CEA107C21BB6F627006F95EE /* Images-3.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-3.xcassets"; sourceTree = "<group>"; };
 		CEA107C41BB6FDD4006F95EE /* HWFollowInProfileColViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWFollowInProfileColViewCell.h; path = ProfileScreenV2/HWFollowInProfileColViewCell.h; sourceTree = "<group>"; };
 		CEA107C51BB6FDD4006F95EE /* HWFollowInProfileColViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWFollowInProfileColViewCell.m; path = ProfileScreenV2/HWFollowInProfileColViewCell.m; sourceTree = "<group>"; };
 		CEA107C71BB6FED6006F95EE /* HWFollowInProfileColViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWFollowInProfileColViewCell.xib; path = ProfileScreenV2/HWFollowInProfileColViewCell.xib; sourceTree = "<group>"; };
@@ -1183,7 +1179,6 @@
 			children = (
 				CE1B821C1BAA25AC00AE50DF /* Default-568h@2x.png */,
 				CE1B82181BAA23D100AE50DF /* Launch.xib */,
-				CE851CA21BAA16DE00E9CB09 /* Default-568h@2x.png */,
 				C35A4C181B2F2DF7002E1F26 /* Info.plist */,
 				3A45ABDF1B6B316800FD56D6 /* Images.xcassets */,
 				C35A4C191B2F2DF7002E1F26 /* main.m */,
@@ -1738,7 +1733,7 @@
 				3A45ABE01B6B316800FD56D6 /* Images.xcassets in Resources */,
 				3AA575D01B9E291D003E0CDE /* LoadingView.xib in Resources */,
 				3AA5CBFE1B84DB14006093D0 /* defaultAddress.xib in Resources */,
-				CE851CA31BAA16DE00E9CB09 /* Default-568h@2x.png in Resources */,
+				CE851CA31BAA16DE00E9CB09 /* (null) in Resources */,
 				3AA575D31B9E4BBE003E0CDE /* AboutView.xib in Resources */,
 				CE2579F91B73AA1900A0DEE9 /* HWitemForOrdersCell.xib in Resources */,
 				3AA575DC1B9FB800003E0CDE /* emptyCell.xib in Resources */,

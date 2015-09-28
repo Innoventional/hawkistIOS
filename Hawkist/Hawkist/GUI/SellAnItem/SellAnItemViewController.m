@@ -716,19 +716,65 @@
 
 
 - (NSString*) compressingImage:(UIImage*) image
-                 withResolutin:(CGFloat)resolution
+                 withTargetSize:(CGSize)targetSize
                       andNamed:(NSString*)name
 {
     
-    float height = (resolution/image.size.width) * image.size.height;
+//    float height = (resolution/image.size.width) * image.size.height;
+//    
+//    
+//    CGRect rect = CGRectMake(0,0,resolution,height);
+//    
+//    UIGraphicsBeginImageContext(rect.size);
+    
+    UIImage *sourceImage = image;
+    
+    CGSize imageSize = sourceImage.size;
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
+    
+    CGFloat targetWidth = targetSize.width;
+    CGFloat targetHeight = targetSize.height;
+    
+    CGFloat scaleFactor = 0.0;
+    CGFloat scaledWidth = targetWidth;
+    CGFloat scaledHeight = targetHeight;
+    
+    CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
+    
+    if (CGSizeEqualToSize(imageSize, targetSize) == NO) {
+        
+       // CGFloat widthFactor = targetWidth / width;
+        CGFloat heightFactor = targetHeight / height;
+        
+      //  if (widthFactor < heightFactor)
+         //   scaleFactor = widthFactor;
+        //else
+            scaleFactor = heightFactor;
+        
+        scaledWidth  = width * scaleFactor;
+        scaledHeight = height * scaleFactor;
+        
+        // center the image
+        
+      //  if (widthFactor < heightFactor) {
+        //    thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
+        //} else if (widthFactor > heightFactor) {
+            thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
+        //}
+    }
     
     
+    // this is actually the interesting part:
     
-    CGRect rect = CGRectMake(0,0,resolution,height);
+    UIGraphicsBeginImageContext(targetSize);
     
-    UIGraphicsBeginImageContext(rect.size);
+    CGRect thumbnailRect = CGRectZero;
+    thumbnailRect.origin = thumbnailPoint;
+    thumbnailRect.size.width  = scaledWidth;
+    thumbnailRect.size.height = scaledHeight;
     
-    [image drawInRect:rect];
+    [image drawInRect:thumbnailRect];
     
     UIImage *picture1 = UIGraphicsGetImageFromCurrentImageContext();
     
@@ -740,11 +786,12 @@
 
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", name]];
+//    [UIImagePNGRepresentation(compressedImage) writeToFile:filePath atomically:YES];
     [UIImagePNGRepresentation(compressedImage) writeToFile:filePath atomically:YES];
-    
 
     return filePath;
 }
+
 
 
 
@@ -758,8 +805,11 @@
             case 1:
         {
             
-            NSString* fileImage = [self compressingImage:selImage withResolutin:400 andNamed:@"img"];
-            NSString* fileThumbnail = [self compressingImage:selImage withResolutin:150 andNamed:@"thumb"];
+            CGSize imageSize = {500,500};
+            CGSize thumbnailSize = {250 ,250};
+            
+            NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
+            NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
             self.barCode.image = selImage;
             [self showHud];
@@ -803,8 +853,11 @@
             
             takePic1.image = selImage;
             
-            NSString* fileImage = [self compressingImage:selImage withResolutin:400 andNamed:@"img"];
-            NSString* fileThumbnail = [self compressingImage:selImage withResolutin:200 andNamed:@"thumb"];
+            CGSize imageSize = {500,500};
+            CGSize thumbnailSize = {250 ,250};
+            
+            NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
+            NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
             [self showHud];
             
@@ -846,8 +899,11 @@
             
             takePic2.image = selImage;
             
-            NSString* fileImage = [self compressingImage:selImage withResolutin:400 andNamed:@"img"];
-            NSString* fileThumbnail = [self compressingImage:selImage withResolutin:150 andNamed:@"thumb"];
+            CGSize imageSize = {500,500};
+            CGSize thumbnailSize = {250 ,250};
+            
+            NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
+            NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
             [self showHud];
             
@@ -889,8 +945,11 @@
 
             takePic3.image = selImage;
             
-            NSString* fileImage = [self compressingImage:selImage withResolutin:400 andNamed:@"img"];
-            NSString* fileThumbnail = [self compressingImage:selImage withResolutin:150 andNamed:@"thumb"];
+            CGSize imageSize = {500,500};
+            CGSize thumbnailSize = {250 ,250};
+            
+            NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
+            NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
             [self showHud];
             

@@ -22,7 +22,7 @@
 
 -(void) whyWeNeedThis;
 -(void) refundPolicy;
--(void) privacyPolicy;
+-(void) privacyPolicy :(void (^)(void )) successBlock;
 
 
 @end
