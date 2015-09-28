@@ -731,7 +731,7 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
 
 - (IBAction)transitionToProfile:(UIButton *)sender {
     
-    
+    [self showHud];
     [[NetworkManager shared] getUserProfileWithUserID:self.item.user_id
                                          successBlock:^(HWUser *user) {
     
@@ -749,9 +749,9 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
                                             
                                              HWProfileViewControllerV2 *profileVC = [[HWProfileViewControllerV2 alloc]initWithUser:user];
                                              [self.navigationController pushViewController:profileVC animated:YES];
-
+                                             [self hideHud];
                                          } failureBlock:^(NSError *error) {
-    
+                                             [self hideHud];
     
                                          }];
     
@@ -785,11 +785,11 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
 
 - (void) transitionToProfileScreenWithUserId:(NSString*)userId
 {
-
+    [self showHud];
     [[NetworkManager shared] getUserProfileWithUserID:userId
                                          successBlock:^(HWUser *user) {
                                              
-                                             
+                                             [self hideHud];
                                              if(!user) {
                                                  [self hideHud];
                                                  [[[UIAlertView alloc] initWithTitle:@"Cannot Complete Action"
@@ -803,10 +803,10 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
                                              
                                              HWProfileViewControllerV2 *profileVC = [[HWProfileViewControllerV2 alloc]initWithUser:user];
                                              [self.navigationController pushViewController:profileVC animated:YES];
-                                             
+                                            [self hideHud];
                                          } failureBlock:^(NSError *error) {
                                              
-                                             
+                                             [self hideHud];
                                          }];
 
 }
