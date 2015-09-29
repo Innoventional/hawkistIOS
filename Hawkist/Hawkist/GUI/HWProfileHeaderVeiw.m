@@ -41,7 +41,7 @@
 @property (weak, nonatomic) IBOutlet HWButtonForSegment *followersButton;
 @property (weak, nonatomic) IBOutlet HWButtonForSegment *wishlistButton;
 
- @property (nonatomic, weak) IBOutlet UIButton *feedbackBut;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *aboutButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
