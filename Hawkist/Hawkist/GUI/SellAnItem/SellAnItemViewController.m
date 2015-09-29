@@ -470,6 +470,7 @@
     else
     {
         postLabel.text = @"Enter post code";
+        [self showAlertWithTitle:@"Post Code missing" Message:@"You must input the Post Code in order to create a listing."];
 
     }
 
