@@ -49,8 +49,12 @@
     [self.navigationController popViewControllerAnimated:NO];
 }
 
+
+
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     [self initDefault];
     
     if (![CardIOUtilities canReadCardWithCamera]) {
