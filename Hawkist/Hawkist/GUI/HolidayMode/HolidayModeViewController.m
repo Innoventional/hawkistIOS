@@ -29,6 +29,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [[NetworkManager shared]getHolidayMode:^(BOOL *enabled) {
         
         self.switchOutlet.on = enabled;

@@ -1046,7 +1046,6 @@
 				3AF831FB1B6F6E7D00CC750D /* CustomField.m */,
 			);
 			name = AddCard;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		3AF8323E1B7190C800CC750D /* SettingScreen */ = {
@@ -1112,7 +1111,6 @@
 		7CF0F97E1B455D7F0041F58F /* ViewItem */ = {
 			isa = PBXGroup;
 			children = (
-				3AF831F21B6F649500CC750D /* AddCard */,
 				7CE1D15D1B4D353100CC92D3 /* star */,
 				7CF0F97F1B455DB30041F58F /* ViewItemViewController.h */,
 				7CF0F9801B455DB30041F58F /* ViewItemViewController.m */,
@@ -1281,6 +1279,7 @@
 				7CDD9A5E1B343AB9000FA498 /* TutorialScreen */,
 				3A83667D1B318B1100208FC5 /* AccountDetails */,
 				C35CB4AB1B4EA39600956150 /* TapBarScreen */,
+				3AF831F21B6F649500CC750D /* AddCard */,
 				7CBC69E41B42B1F300AE535C /* FeedScreen */,
 				7CF0F97E1B455D7F0041F58F /* ViewItem */,
 				3A61FBD51B3C11300004A24B /* WantToSell */,

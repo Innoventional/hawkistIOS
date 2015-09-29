@@ -35,6 +35,7 @@
 
 - (void) viewDidLoad
 {
+    [super viewDidLoad];
     self.navigation.delegate = self;
     self.navigation.title.text = @"My Bank Cards";
     self.contentHeight.constant = self.view.height - 95;
