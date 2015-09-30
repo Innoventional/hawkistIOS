@@ -467,12 +467,12 @@
                              
                          }];
     }
-    else
-    {
-        postLabel.text = @"Enter post code";
-        [self showAlertWithTitle:@"Post Code missing" Message:@"You must input the Post Code in order to create a listing."];
-
-    }
+//    else
+//    {
+//        postLabel.text = @"Enter post code";
+//        [self showAlertWithTitle:@"Post Code missing" Message:@"You must input the Post Code in order to create a listing."];
+//
+//    }
 
 }
 
@@ -530,8 +530,7 @@
 - (IBAction)sellAction:(id)sender {
      [self.view endEditing:YES];
     HWItem* currentItem = [[HWItem alloc]init];
-    
-    [self updatePostCode:^{
+
         currentItem.title = titleField.text;
         
         
@@ -616,7 +615,12 @@
         //
         
         currentItem.id = self.itemId;
-        
+    
+    
+    if (postField.text.length>0)
+    {
+    
+        [self updatePostCode:^{
         [netManager createOrUpdateItem:currentItem successBlock:^(HWItem *item) {
             
             NSLog(@"--------------------------Ok");
@@ -634,7 +638,24 @@
 
         
     }];
-    
+    }
+    else
+    {
+        [netManager createOrUpdateItem:currentItem successBlock:^(HWItem *item) {
+            
+            NSLog(@"--------------------------Ok");
+            [self hideHud];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            engine.city = postLabel.text;
+            engine.postCode = postField.text;
+            
+        } failureBlock:^(NSError *error) {
+            [self hideHud];
+            [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+        }
+         ];
+    }
     
 }
 
