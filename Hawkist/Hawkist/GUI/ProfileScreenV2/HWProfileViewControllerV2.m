@@ -141,20 +141,21 @@ typedef NS_ENUM(NSInteger, HWReasonReport) {
 {
     [super viewDidAppear:animated];
     
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+   // [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
-    [self showHud];
+    //[self showHud];
     
-    [UIView animateWithDuration:15
-                     animations:^{
-                         
-                         
-                     } completion:^(BOOL finished) {
-                         
-                         [self hideHud];
-                         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-                     }];
+//    [UIView animateWithDuration:15
+//                     animations:^{
+//                         
+//                         
+//                     } completion:^(BOOL finished) {
+//                         
+//                         [self hideHud];
+//                         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+//                     }];
  
+    [self.collectionView reloadData];
     self.isInternetConnectionAlertShowed = NO;
 
     
@@ -179,7 +180,7 @@ typedef NS_ENUM(NSInteger, HWReasonReport) {
     [self commonInit];
     
     [self itemsWithUserId:self.userId];
-    [self showHud];
+   //[self showHud];
     
     self.navigationView.delegate = self;
     self.navigationView.title.text = @"Profile";
@@ -403,6 +404,7 @@ typedef NS_ENUM(NSInteger, HWReasonReport) {
                         withWishlist:self.wishListArray];
         
         self.header = header;
+        header.feedbackBut.enabled = YES;
         
         
         return header;

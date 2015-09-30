@@ -16,6 +16,7 @@
 
 @property (nonatomic, weak) id<HWProfileHeaderViewDelegate>delegate;
 @property (nonatomic, assign) BOOL hideFollowButton;
+@property (nonatomic, weak) IBOutlet UIButton *feedbackBut;
 
 + (CGFloat)heightHeaderView;
 
