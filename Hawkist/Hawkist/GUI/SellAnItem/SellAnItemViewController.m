@@ -49,6 +49,10 @@
 @property (nonatomic,assign)BOOL isCreate;
 @property (nonatomic,strong)NSString* itemId;
 
+@property (nonatomic,assign)NSInteger activeUpload;
+@property (nonatomic, assign) BOOL isStopObserver;
+@property (nonatomic, assign) BOOL isEditing;
+
 @end
 
 @implementation SellAnItemViewController 
@@ -81,6 +85,8 @@
 {
     if (self = [super init])
     {
+        
+        self.activeUpload = 0;
         netManager = [NetworkManager shared];
         
         awsManager = [AWSS3Manager shared];
@@ -119,16 +125,56 @@
         
         
         [self initDefault];
-        
+        self.isEditing = NO;
+        self.isStopObserver = NO;
+        [self startObserver];
                 
     }
     return self;
+}
+
+- (void) startObserver
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        while (true) {
+            if (self.isStopObserver)
+            {
+                break;
+            }
+            
+            
+            if (self.activeUpload == 0)
+            {
+
+                if (!self.isEditing)
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.sellButton setTitle:@"SELL THIS ITEM" forState:UIControlStateNormal];
+                        self.sellButton.enabled = YES;
+                    });
+                }
+                else
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.sellButton setTitle:@"SAVE" forState:UIControlStateNormal];
+                        self.sellButton.enabled = YES;
+                    });
+                }
+                [NSThread sleepForTimeInterval:1];
+            }
+        }
+
+    });
+
+    
 }
 
 - (instancetype) initWithItem:(HWItem*)currentItem
 {
     if (self = [self init])
     {
+        
+        self.isEditing = YES;
         HWTag* currentTag = [HWTag getPlatformById:currentItem.platform from:self.tags];
         
         HWCategory* currentCategory = [HWTag getCategoryById:currentItem.category from:currentTag.categories];
@@ -426,7 +472,7 @@
         [netManager getCityByPostCode:textField.text successBlock:^(NSString *city) {
             [self hideHud];
             postLabel.text = city;
-           self.sellButton.enabled = YES;
+          // self.sellButton.enabled = YES;
             
             
         }
@@ -493,7 +539,8 @@
 
 - (void) leftButtonClick
 {
-    [self.navigationController popViewControllerAnimated: YES];
+    self.isStopObserver = YES;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)LinkAction:(id)sender {
@@ -644,9 +691,9 @@
         [netManager createOrUpdateItem:currentItem successBlock:^(HWItem *item) {
             
             NSLog(@"--------------------------Ok");
-            [self hideHud];
+            self.isStopObserver = YES;
             [self.navigationController popViewControllerAnimated:YES];
-            
+            [self hideHud];
             engine.city = postLabel.text;
             engine.postCode = postField.text;
             
@@ -821,6 +868,8 @@
 {
     UIImage* selImage = info[UIImagePickerControllerEditedImage];
     
+    [self.sellButton setTitle:@"Uploading images. Please wait" forState:UIControlStateNormal];
+    self.sellButton.enabled = NO;
     
    
     switch (selectedImage) {
@@ -834,38 +883,67 @@
             NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
             self.barCode.image = selImage;
-            [self showHud];
+            
+            
+            
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                self.activeUpload++;
+                
+            });
             
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                                successBlock:^(NSString *fileURL) {
                                    self.barUrl = fileURL;
                                    
-                                   
-                                   [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
-                                                      successBlock:^(NSString *fileURL) {
-                                                          self.bartUrl = fileURL;
-                                                          [self hideHud];
-                                                          
-                                                      }
-                                                      failureBlock:^(NSError *error) {
-                                                          [self hideHud];
-                                                          [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-                                                      }
-                                                     progressBlock:^(CGFloat progress) {
-                                                         
-                                                         
-                                                     }];
-                                   
-                
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                   });
             }
                                failureBlock:^(NSError *error) {
-                                   [self hideHud];
+                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                       self.barUrl = nil;
+                                       self.bartUrl = nil;
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            self.barCode.image = [UIImage imageNamed:@"takepic2"];
+                                        });
+                                                       
+                                   });
                                    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
             }
                               progressBlock:^(CGFloat progress) {
                 
                                 
             }];
+            
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                self.activeUpload++;
+            });
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
+                               successBlock:^(NSString *fileURL) {
+                                   self.bartUrl = fileURL;
+
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                   });
+                                   
+                               }
+                               failureBlock:^(NSError *error) {
+                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                       self.barUrl = nil;
+                                       self.bartUrl = nil;
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                       self.barCode.image = [UIImage imageNamed:@"takepic2"];
+                                        });
+                                   });
+                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                               }
+                              progressBlock:^(CGFloat progress) {
+                                  
+                                  
+                              }];
+
             
      
             break;
@@ -881,38 +959,63 @@
             NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
             NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
-            [self showHud];
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                self.activeUpload++;
+            });
             
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                                successBlock:^(NSString *fileURL) {
                                    self.img1Url = fileURL;
                                    
-                                   
-                                   [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
-                                                      successBlock:^(NSString *fileURL) {
-                                                          self.img1tUrl = fileURL;
-                                                          [self hideHud];
-                                                          
-                                                      }
-                                                      failureBlock:^(NSError *error) {
-                                                          [self hideHud];
-                                                          [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-                                                      }
-                                                     progressBlock:^(CGFloat progress) {
-                                                         
-                                                         
-                                                     }];
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                   });
                                    
                                    
                                }
                                failureBlock:^(NSError *error) {
-                                   [self hideHud];
+                                   
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                    self.img1Url = nil;
+                                    self.img1tUrl = nil;
+                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                    self.takePic1.image = [UIImage imageNamed:@"takepic2"];
+                                     });
+                                   });
                                    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                }
                               progressBlock:^(CGFloat progress) {
                                   
                                   
                               }];
+            
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                self.activeUpload++;
+            });
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
+                               successBlock:^(NSString *fileURL) {
+                                   self.img1tUrl = fileURL;
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                   });
+                                   
+                               }
+                               failureBlock:^(NSError *error) {
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                self.img1Url = nil;
+                self.img1tUrl = nil;
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     self.takePic1.image = [UIImage imageNamed:@"takepic2"];});
+                                   });
+                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                               }
+                              progressBlock:^(CGFloat progress) {
+                                  
+                                  
+                              }];
+
 
             break;
         }
@@ -927,38 +1030,58 @@
             NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
             NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
-            [self showHud];
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                self.activeUpload++;
+            });
             
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                                successBlock:^(NSString *fileURL) {
                                    self.img2Url = fileURL;
-                                   
-                                   
-                                   [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
-                                                      successBlock:^(NSString *fileURL) {
-                                                          self.img2tUrl = fileURL;
-                                                          [self hideHud];
-                                                          
-                                                      }
-                                                      failureBlock:^(NSError *error) {
-                                                          [self hideHud];
-                                                          [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-                                                      }
-                                                     progressBlock:^(CGFloat progress) {
-                                                         
-                                                         
-                                                     }];
-                                   
-                                   
+                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                   });
                                }
                                failureBlock:^(NSError *error) {
-                                   [self hideHud];
+                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                       self.img2Url = nil;
+                                       self.img2tUrl = nil;
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            self.takePic2.image = [UIImage imageNamed:@"takepic2"];});
+                                   });
                                    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                }
                               progressBlock:^(CGFloat progress) {
                                   
                                   
                               }];
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                self.activeUpload++;
+            });
+            
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
+                               successBlock:^(NSString *fileURL) {
+                                   self.img2tUrl = fileURL;
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                   });
+                                   
+                               }
+                               failureBlock:^(NSError *error) {
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                self.img2Url = nil;
+                self.img2tUrl = nil;
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     self.takePic2.image = [UIImage imageNamed:@"takepic2"];});
+                                   });
+                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                               }
+                              progressBlock:^(CGFloat progress) {
+                                  
+                                  
+                              }];
+            
             
             break;
         }
@@ -973,38 +1096,63 @@
             NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
             NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
-            [self showHud];
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                self.activeUpload++;
+            });
             
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                                successBlock:^(NSString *fileURL) {
                                    self.img3Url = fileURL;
                                    
-                                   
-                                   [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
-                                                      successBlock:^(NSString *fileURL) {
-                                                          self.img3tUrl = fileURL;
-                                                          [self hideHud];
-                                                          
-                                                      }
-                                                      failureBlock:^(NSError *error) {
-                                                          [self hideHud];
-                                                          [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
-                                                      }
-                                                     progressBlock:^(CGFloat progress) {
-                                                         
-                                                         
-                                                     }];
-                                   
-                                   
-                               }
+                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                   });
+                                                                  }
                                failureBlock:^(NSError *error) {
-                                   [self hideHud];
+                                   
+                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                       self.img3Url = nil;
+                                       self.img3tUrl = nil;
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            self.takePic3.image = [UIImage imageNamed:@"takepic2"];});
+                                   });
+                                   
                                    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                }
                               progressBlock:^(CGFloat progress) {
                                   
                                   
                               }];
+            
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                self.activeUpload++;
+            });
+
+            
+            [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileThumbnail]
+                               successBlock:^(NSString *fileURL) {
+                                   self.img3tUrl = fileURL;
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                                   });
+                                   
+                               }
+                               failureBlock:^(NSError *error) {
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                                       self.activeUpload--;
+                self.img3Url = nil;
+                self.img3tUrl = nil;
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     self.takePic3.image = [UIImage imageNamed:@"takepic2"];});
+                                   });
+                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                               }
+                              progressBlock:^(CGFloat progress) {
+                                  
+                                  
+                              }];
+
             break;
         }
             default:
@@ -1017,7 +1165,7 @@
         
     }];
 }
-    
+
 
 - (void) selectAction:sender
 {
