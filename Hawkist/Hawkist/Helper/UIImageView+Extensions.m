@@ -22,14 +22,14 @@
    }
  
  
-    [self sd_setImageWithURL:url
-                           placeholderImage:[UIImage imageNamed:@"noPhoto"]
-                                    options:SDWebImageRefreshCached];
+//    [self sd_setImageWithURL:url
+//                           placeholderImage:[UIImage imageNamed:@"noPhoto"]
+//                                    options:SDWebImageRefreshCached];
 
     
      [self sd_setImageWithURL:url
              placeholderImage:[UIImage imageNamed:@"noPhoto"]
-                      options:SDWebImageRefreshCached
+                      options:SDWebImageRetryFailed
                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                         
                         [indicator stopAnimating] ;
