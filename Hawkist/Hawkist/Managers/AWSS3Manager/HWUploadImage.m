@@ -135,8 +135,11 @@ BOOL _isCancelled;
 - (void) upload:(AWSS3TransferManagerUploadRequest *)uploadRequest {
     
     AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
-    
+    __weak HWUploadImage* weakSelf = self;
     [[transferManager upload:uploadRequest] continueWithBlock:^id(AWSTask *task) {
+        if(!weakSelf)
+            return nil;
+        
         if (task.error) {
             if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
                 switch (task.error.code) {
@@ -151,29 +154,28 @@ BOOL _isCancelled;
                         break;
                         
                     default:
-                        self.failure(
+                        weakSelf.failure(
                                      
                                      [NSError errorWithDomain:@"File Server Error" code:-3 userInfo:@{NSLocalizedDescriptionKey:@"Please try again later"}]);
-                                        [self finish];
+                                        [weakSelf finish];
                         NSLog(@"Upload failed: [%@]", task.error);
                         break;
                 }
             } else {
-                                [self finish];
-                self.failure([NSError errorWithDomain:@"File Server Error" code:-3 userInfo:@{NSLocalizedDescriptionKey:@"Please try again later"}]);
+                                [weakSelf finish];
+                weakSelf.failure([NSError errorWithDomain:@"File Server Error" code:-3 userInfo:@{NSLocalizedDescriptionKey:@"Please try again later"}]);
                 
                 NSLog(@"Upload failed: [%@]", task.error);
             }
         }
         
         if (task.result) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.numberOfFiles -= 1;
-                if(self.numberOfFiles < 1)
-                    self.success(self.fileURL, self.thumbURL);
-                [self finish];
-                
-            });
+            weakSelf.numberOfFiles -= 1;
+            if(weakSelf.numberOfFiles < 1){
+                    weakSelf.success(weakSelf.fileURL, weakSelf.thumbURL);
+                [weakSelf finish];
+            }
+            
         }
         
         return nil;

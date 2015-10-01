@@ -50,7 +50,7 @@
 @property (nonatomic,strong)NSString* itemId;
 
 
-@property (nonatomic, assign) BOOL isStopObserver;
+@property (nonatomic, strong) NSTimer* timer;
 @property (nonatomic, assign) BOOL isEditing;
 
 @end
@@ -126,45 +126,82 @@
         
         [self initDefault];
         self.isEditing = NO;
-        self.isStopObserver = NO;
+//        self.isStopObserver = NO;
         [self startObserver];
                 
     }
     return self;
 }
 
+
+- (void) observerQueque
+{
+        __weak SellAnItemViewController* weakSelf = self;
+    
+    if ([weakSelf.awsManager getTaskCount] == 0)
+                    {
+        
+                        if (!weakSelf.isEditing)
+                        {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [weakSelf.sellButton setTitle:@"SELL THIS ITEM" forState:UIControlStateNormal];
+                                weakSelf.sellButton.enabled = YES;
+                            });
+                        }
+                        else
+                        {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [weakSelf.sellButton setTitle:@"SAVE" forState:UIControlStateNormal];
+                                weakSelf.sellButton.enabled = YES;
+                            });
+                        }
+                    }
+}
 - (void) startObserver
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        while (true) {
-            if (self.isStopObserver)
-            {
-                break;
-            }
-            
-            
-            if ([self.awsManager getTaskCount] == 0)
-            {
 
-                if (!self.isEditing)
-                {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.sellButton setTitle:@"SELL THIS ITEM" forState:UIControlStateNormal];
-                        self.sellButton.enabled = YES;
-                    });
-                }
-                else
-                {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.sellButton setTitle:@"SAVE" forState:UIControlStateNormal];
-                        self.sellButton.enabled = YES;
-                    });
-                }
-                [NSThread sleepForTimeInterval:1];
-            }
-        }
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval: 3.0
+                                                  target: self
+                                                selector: @selector(observerQueque)
+                                                userInfo: nil
+                                                 repeats: YES];
+    
+    NSRunLoop *runner = [NSRunLoop currentRunLoop];
+    [runner addTimer:self.timer forMode: NSDefaultRunLoopMode];
 
-    });
+//    [self.timer fire];
+    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        while (true) {
+//            if (weakSelf.isStopObserver)
+//            {
+//                break;
+//            }
+//            
+//            
+//            if ([weakSelf.awsManager getTaskCount] == 0)
+//            {
+//
+//                if (!weakSelf.isEditing)
+//                {
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [weakSelf.sellButton setTitle:@"SELL THIS ITEM" forState:UIControlStateNormal];
+//                        weakSelf.sellButton.enabled = YES;
+//                    });
+//                }
+//                else
+//                {
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [weakSelf.sellButton setTitle:@"SAVE" forState:UIControlStateNormal];
+//                        weakSelf.sellButton.enabled = YES;
+//                    });
+//                }
+//                [NSThread sleepForTimeInterval:1];
+//            }
+//        }
+//
+//    });
 
     
 }
@@ -539,7 +576,8 @@
 
 - (void) leftButtonClick
 {
-    self.isStopObserver = YES;
+//    self.isStopObserver = YES;
+    [self.timer invalidate];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -697,7 +735,8 @@
         [netManager createOrUpdateItem:currentItem successBlock:^(HWItem *item) {
             
             NSLog(@"--------------------------Ok");
-            self.isStopObserver = YES;
+//            self.isStopObserver = YES;
+            [self.timer invalidate];
             [self.navigationController popViewControllerAnimated:YES];
             [self hideHud];
             engine.city = postLabel.text;
@@ -902,25 +941,23 @@
             
             
 
-            
+            __weak SellAnItemViewController* weakSelf = self;
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                               thumbnailPath:[NSURL fileURLWithPath:fileThumbnail]
                                successBlock:^(NSString *fileLink, NSString *thumbLink) {
+                                   weakSelf.barUrl = fileLink;
+                                   weakSelf.bartUrl = thumbLink;
                                    
-                                   self.barUrl = fileLink;
-                                   self.bartUrl = thumbLink;
-                                   
-                                    NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,self.barUrl,self.bartUrl);
+                                    NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,weakSelf.barUrl,weakSelf.bartUrl);
                                    
                                    
                                } failureBlock:^(NSError *error) {
-                                   
                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                       self.barUrl = nil;
-                                       self.bartUrl = nil;
-                                       self.barCode.image = [UIImage imageNamed:@"takepic2"];});
+                                       weakSelf.barUrl = nil;
+                                       weakSelf.bartUrl = nil;
+                                       weakSelf.barCode.image = [UIImage imageNamed:@"takepic2"];});
                                    
-                                    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                    [weakSelf showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                    
                                }];
                                                   
@@ -986,26 +1023,24 @@
             NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
 
-            
+            __weak SellAnItemViewController* weakSelf = self;
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                               thumbnailPath:[NSURL fileURLWithPath:fileThumbnail]
                                successBlock:^(NSString *fileLink, NSString *thumbLink) {
-                                   
-                                   self.img1Url = fileLink;
-                                   self.img1tUrl = thumbLink;
-                                    NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,self.img1Url,self.img1tUrl);
+                                   weakSelf.img1Url = fileLink;
+                                   weakSelf.img1tUrl = thumbLink;
+                                    NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,weakSelf.img1Url,weakSelf.img1tUrl);
                                    
                                } failureBlock:^(NSError *error) {
                                    
-                                  
                                    dispatch_async(dispatch_get_main_queue(), ^{
                 
-                                       self.img1Url = nil;
-                                       self.img1tUrl = nil;
+                                       weakSelf.img1Url = nil;
+                                       weakSelf.img1tUrl = nil;
 
-                                       self.takePic1.image = [UIImage imageNamed:@"takepic2"];
+                                       weakSelf.takePic1.image = [UIImage imageNamed:@"takepic2"];
                                    });
-                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                   [weakSelf showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                    
                                }];
             break;
@@ -1076,25 +1111,23 @@
             NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
             NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
-
+            __weak SellAnItemViewController* weakSelf = self;
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                               thumbnailPath:[NSURL fileURLWithPath:fileThumbnail]
                                successBlock:^(NSString *fileLink, NSString *thumbLink) {
-                                   
-                                   self.img2Url = fileLink;
-                                   self.img2tUrl = thumbLink;
-                                    NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,self.img2Url,self.img2tUrl);
+                                   weakSelf.img2Url = fileLink;
+                                   weakSelf.img2tUrl = thumbLink;
+                                    NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,weakSelf.img2Url,weakSelf.img2tUrl);
                                    
                                    
                                } failureBlock:^(NSError *error) {
-                                   
                                    dispatch_async(dispatch_get_main_queue(), ^{
                 
-                                        self.img2Url = nil;
-                                        self.img2tUrl = nil;
-                                        self.takePic2.image = [UIImage imageNamed:@"takepic2"];
+                                        weakSelf.img2Url = nil;
+                                        weakSelf.img2tUrl = nil;
+                                        weakSelf.takePic2.image = [UIImage imageNamed:@"takepic2"];
                                     });
-                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                   [weakSelf showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                    
                                }];
             break;
@@ -1160,28 +1193,25 @@
             NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
             NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
-
+            __weak SellAnItemViewController* weakSelf = self;
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                               thumbnailPath:[NSURL fileURLWithPath:fileThumbnail]
                                successBlock:^(NSString *fileLink, NSString *thumbLink) {
-                                   
-                                   self.img3Url = fileLink;
-                                   self.img3tUrl = thumbLink;
-                                    NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,self.img3Url,self.img3tUrl);
+                                   weakSelf.img3Url = fileLink;
+                                   weakSelf.img3tUrl = thumbLink;
+                                    NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,weakSelf.img3Url,weakSelf.img3tUrl);
 
                                    
                                } failureBlock:^(NSError *error) {
-                                   
-
-                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                        dispatch_async(dispatch_get_main_queue(), ^{
                                        
-                                       self.img3Url = nil;
-                                       self.img3tUrl = nil;
+                                       weakSelf.img3Url = nil;
+                                       weakSelf.img3tUrl = nil;
 
-                                        self.takePic3.image = [UIImage imageNamed:@"takepic2"];});
+                                        weakSelf.takePic3.image = [UIImage imageNamed:@"takepic2"];});
                                    
 
-                                   [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
+                                   [weakSelf showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                    
                                }];
             break;
