@@ -544,7 +544,9 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
     
     if(urlStr)
     {
-        [iv setImageWithURL: [NSURL URLWithString: urlStr] placeholderImage:nil];
+        [iv setImageWithUrl:[NSURL URLWithString: urlStr]
+              withIndicator:nil];
+        
     } else {
         
         iv.image = [UIImage imageNamed:@"noPhoto"];
