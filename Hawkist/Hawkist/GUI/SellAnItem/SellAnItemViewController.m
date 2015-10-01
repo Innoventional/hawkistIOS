@@ -49,7 +49,7 @@
 @property (nonatomic,assign)BOOL isCreate;
 @property (nonatomic,strong)NSString* itemId;
 
-@property (nonatomic,assign)NSInteger activeUpload;
+
 @property (nonatomic, assign) BOOL isStopObserver;
 @property (nonatomic, assign) BOOL isEditing;
 
@@ -86,7 +86,7 @@
     if (self = [super init])
     {
         
-        self.activeUpload = 0;
+
         netManager = [NetworkManager shared];
         
         awsManager = [AWSS3Manager shared];
@@ -143,7 +143,7 @@
             }
             
             
-            if (self.activeUpload == 0)
+            if ([self.awsManager getTaskCount] == 0)
             {
 
                 if (!self.isEditing)
@@ -897,10 +897,7 @@
             
             
             
-            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                self.activeUpload++;
-                
-            });
+
             
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                               thumbnailPath:[NSURL fileURLWithPath:fileThumbnail]
@@ -911,19 +908,12 @@
                                    
                                     NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,self.barUrl,self.bartUrl);
                                    
-                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                                       self.activeUpload--;
-                                   });
                                    
                                } failureBlock:^(NSError *error) {
                                    
-                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                                       self.activeUpload--;
+                                   dispatch_async(dispatch_get_main_queue(), ^{
                                        self.barUrl = nil;
                                        self.bartUrl = nil;
-
-                                   });
-                                   dispatch_async(dispatch_get_main_queue(), ^{
                                        self.barCode.image = [UIImage imageNamed:@"takepic2"];});
                                    
                                     [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
@@ -991,9 +981,7 @@
             NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
             NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
-            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                self.activeUpload++;
-            });
+
             
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                               thumbnailPath:[NSURL fileURLWithPath:fileThumbnail]
@@ -1002,20 +990,17 @@
                                    self.img1Url = fileLink;
                                    self.img1tUrl = thumbLink;
                                     NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,self.img1Url,self.img1tUrl);
-                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                                       self.activeUpload--;
-                                   });
                                    
                                } failureBlock:^(NSError *error) {
                                    
-                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                                       self.activeUpload--;
-                                       
+                                  
+                                   dispatch_async(dispatch_get_main_queue(), ^{
+                
                                        self.img1Url = nil;
                                        self.img1tUrl = nil;
+
+                                       self.takePic1.image = [UIImage imageNamed:@"takepic2"];
                                    });
-                                   dispatch_async(dispatch_get_main_queue(), ^{
-                                                            self.takePic1.image = [UIImage imageNamed:@"takepic2"];});
                                    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                    
                                }];
@@ -1087,9 +1072,7 @@
             NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
             NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
-            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                self.activeUpload++;
-            });
+
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                               thumbnailPath:[NSURL fileURLWithPath:fileThumbnail]
                                successBlock:^(NSString *fileLink, NSString *thumbLink) {
@@ -1098,21 +1081,15 @@
                                    self.img2tUrl = thumbLink;
                                     NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,self.img2Url,self.img2tUrl);
                                    
-                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                                       self.activeUpload--;
-                                   });
                                    
                                } failureBlock:^(NSError *error) {
                                    
-                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                                       self.activeUpload--;
-                                       
-                                       self.img2Url = nil;
-                                       self.img2tUrl = nil;
-                                   
-                                   });
                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                                            self.takePic2.image = [UIImage imageNamed:@"takepic2"];});
+                
+                                        self.img2Url = nil;
+                                        self.img2tUrl = nil;
+                                        self.takePic2.image = [UIImage imageNamed:@"takepic2"];
+                                    });
                                    [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
                                    
                                }];
@@ -1179,9 +1156,7 @@
             NSString* fileImage = [self compressingImage:selImage withTargetSize:imageSize andNamed:@"img"];
             NSString* fileThumbnail = [self compressingImage:selImage withTargetSize:thumbnailSize andNamed:@"thumb"];
             
-            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                self.activeUpload++;
-            });
+
             [awsManager uploadImageWithPath:[NSURL fileURLWithPath:fileImage]
                               thumbnailPath:[NSURL fileURLWithPath:fileThumbnail]
                                successBlock:^(NSString *fileLink, NSString *thumbLink) {
@@ -1189,18 +1164,16 @@
                                    self.img3Url = fileLink;
                                    self.img3tUrl = thumbLink;
                                     NSLog(@"Saved \n%@ \n %@ \n url: \n %@ \n %@",fileLink,thumbLink,self.img3Url,self.img3tUrl);
-                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                                       self.activeUpload--;
-                                   });
+
                                    
                                } failureBlock:^(NSError *error) {
                                    
-                                   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                                       self.activeUpload--;
+
+                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                       
                                        self.img3Url = nil;
                                        self.img3tUrl = nil;
-                                   });
-                                   dispatch_async(dispatch_get_main_queue(), ^{
+
                                         self.takePic3.image = [UIImage imageNamed:@"takepic2"];});
                                    
 

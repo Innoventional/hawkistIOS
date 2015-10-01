@@ -12,6 +12,8 @@
 
 + (instancetype) shared;
 
+- (NSUInteger) getTaskCount;
+
 - (void) uploadImageWithPath: (NSURL*) url
                thumbnailPath: (NSURL*) thumbURL
                 successBlock: (void (^)(NSString *fileLink, NSString* thumbLink)) successBlock

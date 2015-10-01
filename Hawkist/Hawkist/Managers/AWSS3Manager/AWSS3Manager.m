@@ -70,6 +70,12 @@
 }
 
 
+- (NSUInteger) getTaskCount
+{
+    return self.downloadQueue.operations.count;
+}
+
+
 - (void) uploadImageWithPath: (NSURL*) url
                thumbnailPath: (NSURL*) thumbURL
                 successBlock: (void (^)(NSString *fileLink, NSString* thumbLink)) successBlock

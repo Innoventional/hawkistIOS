@@ -15,20 +15,85 @@
 @property (nonatomic, strong) NSString* thumbURL;
 @property (nonatomic, assign) NSInteger numberOfFiles;
 
+@property (nonatomic, assign) BOOL isExecuting;
+@property (nonatomic, assign) BOOL isFinished;
+@property (nonatomic, assign) BOOL isCancelled;
+
+
+
 @end
 
 @implementation HWUploadImage
+{
+BOOL _isExecuting;
+BOOL _isFinished;
+BOOL _isCancelled;
+}
 
-//- (void) executeOperation
-//{
-//    [self createRequest];
-//}
-//
-//- (void) start{
-//    [self executeOperation];
-//}
+@synthesize isExecuting = _isExecuting;
+@synthesize isFinished = _isFinished;
+@synthesize isCancelled = _isCancelled;
 
-- (void) start{
+
+#pragma mark Lifecycle
+
+- (BOOL)isConcurrent
+{
+    return NO;
+}
+
+- (void) start
+{
+    [self willChangeValueForKey:@"isExecuting"];
+    _isExecuting = YES;
+    [self didChangeValueForKey:@"isExecuting"];
+    
+    
+    if (_isCancelled == YES)
+    {
+        NSLog(@"** OPERATION CANCELED **");
+    }
+    else
+    {
+        NSLog(@"Operation started.");
+        [self executeOperation];
+    }
+}
+
+- (void) finish
+{
+    NSLog(@"operationfinished.");
+    
+    [self willChangeValueForKey:@"isExecuting"];
+    [self willChangeValueForKey:@"isFinished"];
+    
+    _isExecuting = NO;
+    _isFinished = YES;
+    
+    [self didChangeValueForKey:@"isExecuting"];
+    [self didChangeValueForKey:@"isFinished"];
+    
+    if (_isCancelled == YES)
+    {
+        NSLog(@"** OPERATION CANCELED **");
+    }
+}
+
+- (void) cancel
+{
+    [self willChangeValueForKey:@"isCancelled"];
+    _isCancelled = YES;
+    [self didChangeValueForKey:@"isCancelled"];
+}
+
+- (void) executeOperation
+{
+    [self createRequest];
+}
+
+
+
+- (void) createRequest{
     self.numberOfFiles = 2;
     
     NSString* fileName = [NSString stringWithFormat: @"%@-%ld.png",
@@ -89,11 +154,12 @@
                         self.failure(
                                      
                                      [NSError errorWithDomain:@"File Server Error" code:-3 userInfo:@{NSLocalizedDescriptionKey:@"Please try again later"}]);
-                        
+                                        [self finish];
                         NSLog(@"Upload failed: [%@]", task.error);
                         break;
                 }
             } else {
+                                [self finish];
                 self.failure([NSError errorWithDomain:@"File Server Error" code:-3 userInfo:@{NSLocalizedDescriptionKey:@"Please try again later"}]);
                 
                 NSLog(@"Upload failed: [%@]", task.error);
@@ -105,6 +171,7 @@
                 self.numberOfFiles -= 1;
                 if(self.numberOfFiles < 1)
                     self.success(self.fileURL, self.thumbURL);
+                [self finish];
                 
             });
         }
