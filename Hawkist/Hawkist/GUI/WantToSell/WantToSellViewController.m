@@ -68,12 +68,13 @@
 
 - (IBAction)btnWantToSell:(id)sender {
     
+    [self showHud];
     [[NetworkManager shared]check_selling_ability:^{
     
         [self.navigationController pushViewController: [[SellAnItemViewController alloc] init]  animated: YES];
-        
+        [self hideHud];
     } failureBlock:^(NSError *error) {
-        
+        [self hideHud];
         if (error.code == 2)
         {
              [[[UIAlertView alloc]initWithTitle:@"Facebook Account Required" message:@"In order to sell on Hawkist, you must connect a Facebook account to verify your identity." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil] show];
