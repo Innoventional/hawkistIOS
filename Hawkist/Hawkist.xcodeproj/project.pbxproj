@@ -93,6 +93,7 @@
 		3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6BEA1B4426780076004F /* CustomButton.m */; };
 		3ACC6BEE1B44A75E0076004F /* money.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6BED1B44A75E0076004F /* money.xib */; };
 		3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6BF01B44A9E30076004F /* MoneyField.m */; };
+		3AE6208A1BBCBF01008E91D0 /* HWUploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE620891BBCBF01008E91D0 /* HWUploadImage.m */; settings = {ASSET_TAGS = (); }; };
 		3AEA82381BB5A45F008E2057 /* HWImageWithThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA82371BB5A45F008E2057 /* HWImageWithThumbnail.m */; settings = {ASSET_TAGS = (); }; };
 		3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */; };
 		3AF37F9B1B57A8DD00E784DB /* HWTag+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF37F9A1B57A8DD00E784DB /* HWTag+Extensions.m */; };
@@ -384,6 +385,8 @@
 		3ACC6BED1B44A75E0076004F /* money.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = money.xib; path = SellAnItem/MoneyField/money.xib; sourceTree = "<group>"; };
 		3ACC6BEF1B44A9E30076004F /* MoneyField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoneyField.h; path = SellAnItem/MoneyField/MoneyField.h; sourceTree = "<group>"; };
 		3ACC6BF01B44A9E30076004F /* MoneyField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoneyField.m; path = SellAnItem/MoneyField/MoneyField.m; sourceTree = "<group>"; };
+		3AE620881BBCBF01008E91D0 /* HWUploadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWUploadImage.h; sourceTree = "<group>"; };
+		3AE620891BBCBF01008E91D0 /* HWUploadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWUploadImage.m; sourceTree = "<group>"; };
 		3AEA82361BB5A45F008E2057 /* HWImageWithThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWImageWithThumbnail.h; sourceTree = "<group>"; };
 		3AEA82371BB5A45F008E2057 /* HWImageWithThumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWImageWithThumbnail.m; sourceTree = "<group>"; };
 		3AF04D411B42B34D000D1D58 /* WantToSellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WantToSellViewController.h; path = WantToSell/WantToSellViewController.h; sourceTree = "<group>"; };
@@ -1384,6 +1387,8 @@
 			children = (
 				C35CB4A41B4D3A2E00956150 /* AWSS3Manager.h */,
 				C35CB4A51B4D3A2E00956150 /* AWSS3Manager.m */,
+				3AE620881BBCBF01008E91D0 /* HWUploadImage.h */,
+				3AE620891BBCBF01008E91D0 /* HWUploadImage.m */,
 			);
 			path = AWSS3Manager;
 			sourceTree = "<group>";
@@ -1986,6 +1991,7 @@
 				3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */,
 				3A968E311B4C1188005AA347 /* HWTag.m in Sources */,
 				3A359D621B96A03900A0F2E1 /* NotificationSettingsViewController.m in Sources */,
+				3AE6208A1BBCBF01008E91D0 /* HWUploadImage.m in Sources */,
 				7CF0F9821B455DB30041F58F /* ViewItemViewController.m in Sources */,
 				3AF832431B723AAF00CC750D /* SettingsViewController.m in Sources */,
 				3A359D581B96960500A0F2E1 /* PushNotificationTableViewCell.m in Sources */,

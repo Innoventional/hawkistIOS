@@ -13,8 +13,9 @@
 + (instancetype) shared;
 
 - (void) uploadImageWithPath: (NSURL*) url
-                successBlock: (void (^)(NSString* fileURL)) successBlock
-                failureBlock: (void (^)(NSError* error)) failureBlock
-               progressBlock: (void (^)(CGFloat progress)) progressBlock;
+               thumbnailPath: (NSURL*) thumbURL
+                successBlock: (void (^)(NSString *fileLink, NSString* thumbLink)) successBlock
+                failureBlock: (void (^)(NSError* error)) failureBlock;
+
 
 @end
