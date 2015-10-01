@@ -47,7 +47,10 @@
 
 @property (nonatomic, assign) BOOL isLikeItem;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator2;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator4;
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator3;
 @property (strong, nonatomic) IBOutlet UIButton *askOutlet;
 @property (nonatomic, strong) UIActionSheet* editActionSheet;
 @property (nonatomic, strong) UIActionSheet* reportActionSheet;
@@ -162,6 +165,7 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
     
   
 #pragma mark - ending
+    
     
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"myItemCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
@@ -515,20 +519,60 @@ typedef NS_ENUM(NSInteger, HWReportItemReason) {
             case 1:
             {
              
-                [self setImageWithString:[self.imagesArray objectAtIndex: index] withImageView:self.smallImage1];
+              //  [self setImageWithString:[self.imagesArray objectAtIndex: index] withImageView:self.smallImage1];
 
+                NSString* urlStr = [self.imagesArray objectAtIndex: index];
+                
+                if(urlStr)
+                {
+                    [self.smallImage1 setImageWithUrl:[NSURL URLWithString: urlStr]
+                          withIndicator:self.activityIndicator2];
+                    
+                } else {
+                    
+                    self.smallImage1.image = [UIImage imageNamed:@"noPhoto"];
+                    [self.activityIndicator2 stopAnimating];
+                    
+                }
+                
+                
                 break;
             }
             case 2:
             {
-                [self setImageWithString:[self.imagesArray objectAtIndex: index] withImageView:self.smallImage2];
+                //[self setImageWithString:[self.imagesArray objectAtIndex: index] withImageView:self.smallImage2];
+                NSString* urlStr = [self.imagesArray objectAtIndex: index];
+                
+                if(urlStr)
+                {
+                    [self.smallImage2 setImageWithUrl:[NSURL URLWithString: urlStr]
+                                        withIndicator:self.activityIndicator3];
+                    
+                } else {
+                    
+                    self.smallImage2.image = [UIImage imageNamed:@"noPhoto"];
+                    [self.activityIndicator3 stopAnimating];
+                }
                 
                 break;
             }
             case 3:
             {
-                [self setImageWithString:[self.imagesArray objectAtIndex: index] withImageView:self.smallImage3];
-               
+//                [self setImageWithString:[self.imagesArray objectAtIndex: index] withImageView:self.smallImage3];
+                NSString* urlStr = [self.imagesArray objectAtIndex: index];
+                
+                if(urlStr)
+                {
+                    [self.smallImage3 setImageWithUrl:[NSURL URLWithString: urlStr]
+                                        withIndicator:self.activityIndicator4];
+                    
+                } else {
+                    
+                    self.smallImage3.image = [UIImage imageNamed:@"noPhoto"];
+                    [self.activityIndicator4 stopAnimating];
+                    
+                }
+                
                 break;
             }
             default:

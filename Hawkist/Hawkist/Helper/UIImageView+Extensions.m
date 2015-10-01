@@ -26,7 +26,7 @@
 //                           placeholderImage:[UIImage imageNamed:@"noPhoto"]
 //                                    options:SDWebImageRefreshCached];
 
-    
+    [indicator startAnimating];
      [self sd_setImageWithURL:url
              placeholderImage:[UIImage imageNamed:@"noPhoto"]
                       options:SDWebImageRetryFailed
