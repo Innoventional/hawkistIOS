@@ -721,6 +721,7 @@
 
 - (IBAction)imageClick:(id)sender {
     
+        [self.view endEditing:YES];
     UIActionSheet* popup = [[UIActionSheet alloc] initWithTitle: nil
                                                        delegate: self
                                               cancelButtonTitle: @"Cancel"
@@ -872,10 +873,13 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+
     UIImage* selImage = info[UIImagePickerControllerEditedImage];
     
     [self.sellButton setTitle:@"Uploading images. Please wait" forState:UIControlStateNormal];
     self.sellButton.enabled = NO;
+    
+    
     
    
     switch (selectedImage) {
