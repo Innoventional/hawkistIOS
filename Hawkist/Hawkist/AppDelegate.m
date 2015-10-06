@@ -48,19 +48,19 @@
     
      
     
-    [[HWBraintreeManager shared] createTokenFromCardNumber:@"4242 4242 4242 4242"
-                                                  expMonth:3
-                                                   expYear:16
-                                                       cvv:@"222"
-                                              addressLine1:@"dd"
-                                              addressLine2:nil
-                                                      name:nil
-                                                  postCode:@"121"
-                                                      city:@"DD"
-                                                completion:^(NSString *tokenId, NSError *error) {
-                                                    
-                                                    
-                                                                                }];
+//    [[HWBraintreeManager shared] createTokenFromCardNumber:@"4242 4242 4242 4242"
+//                                                  expMonth:3
+//                                                   expYear:16
+//                                                       cvv:@"222"
+//                                              addressLine1:@"dd"
+//                                              addressLine2:nil
+//                                                      name:nil
+//                                                  postCode:@"121"
+//                                                      city:@"DD"
+//                                                completion:^(NSString *tokenId, NSError *error) {
+//                                                    
+//                                                    
+//                                                                                }];
     
     ///LeanPlum////
 
