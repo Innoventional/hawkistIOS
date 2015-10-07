@@ -7,7 +7,7 @@ pod 'MBProgressHUD', '~> 0.5'
 pod 'iCarousel', '~> 1.7.6'
 pod 'JSONModel', '~> 1.1.0'
 pod 'Heap', '~> 2.1.5'
-pod 'CardIO'
+pod 'CardIO', '~> 5.1.1'
 pod 'AWSiOSSDKv2'
 
 pod 'SWTableViewCell', '~> 0.3.7'
@@ -19,4 +19,9 @@ pod 'pop', '~> 1.0'
 
 pod 'Leanplum-iOS-SDK'
 pod 'ZendeskSDK'
-pod 'Braintree'pod 'SDWebImage', '~>3.7'
+pod 'Braintree'
+pod 'SDWebImage', '~>3.7'
+
+pod  'Fabric'
+
+pod 'Crashlytics'

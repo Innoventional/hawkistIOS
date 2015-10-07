@@ -85,37 +85,41 @@ PODS:
     - AWSCore (= 2.2.6)
   - AWSSQS (2.2.6):
     - AWSCore (= 2.2.6)
-  - Braintree (3.9.3):
-    - Braintree/API (= 3.9.3)
-    - Braintree/Coinbase (= 3.9.3)
-    - Braintree/Drop-In (= 3.9.3)
-    - Braintree/Payments (= 3.9.3)
-    - Braintree/PayPal (= 3.9.3)
-    - Braintree/UI (= 3.9.3)
-    - Braintree/Venmo (= 3.9.3)
-  - Braintree/API (3.9.3)
-  - Braintree/Coinbase (3.9.3):
+  - Braintree (3.9.5):
+    - Braintree/API (= 3.9.5)
+    - Braintree/Coinbase (= 3.9.5)
+    - Braintree/Drop-In (= 3.9.5)
+    - Braintree/Payments (= 3.9.5)
+    - Braintree/PayPal (= 3.9.5)
+    - Braintree/UI (= 3.9.5)
+    - Braintree/Venmo (= 3.9.5)
+  - Braintree/API (3.9.5)
+  - Braintree/Coinbase (3.9.5):
     - Braintree/API
-  - Braintree/Drop-In (3.9.3):
+  - Braintree/Drop-In (3.9.5):
     - Braintree/API
     - Braintree/Coinbase
     - Braintree/Payments
     - Braintree/PayPal
     - Braintree/UI
     - Braintree/Venmo
-  - Braintree/Payments (3.9.3):
+  - Braintree/Payments (3.9.5):
     - Braintree/API
     - Braintree/Coinbase
     - Braintree/PayPal
     - Braintree/Venmo
-  - Braintree/PayPal (3.9.3):
+  - Braintree/PayPal (3.9.5):
     - Braintree/API
     - Braintree/UI
-  - Braintree/UI (3.9.3):
+  - Braintree/UI (3.9.5):
     - Braintree/API
-  - Braintree/Venmo (3.9.3):
+  - Braintree/Venmo (3.9.5):
     - Braintree/API
   - CardIO (5.1.1)
+  - Crashlytics (3.3.4)
+  - Fabric (1.5.5):
+    - Fabric/Base (= 1.5.5)
+  - Fabric/Base (1.5.5)
   - Heap (2.1.5)
   - iCarousel (1.7.6)
   - JSBadgeView (1.4.1)
@@ -131,18 +135,20 @@ PODS:
     - Stripe/Core (= 5.1.4)
   - Stripe/Core (5.1.4)
   - SWTableViewCell (0.3.7)
-  - ZendeskSDK (1.4.0.2):
-    - ZendeskSDK/Core (= 1.4.0.2)
-    - ZendeskSDK/Localization (= 1.4.0.2)
-  - ZendeskSDK/Core (1.4.0.2)
-  - ZendeskSDK/Localization (1.4.0.2):
+  - ZendeskSDK (1.4.1.3):
+    - ZendeskSDK/Core (= 1.4.1.3)
+    - ZendeskSDK/Localization (= 1.4.1.3)
+  - ZendeskSDK/Core (1.4.1.3)
+  - ZendeskSDK/Localization (1.4.1.3):
     - ZendeskSDK/Core
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
   - AWSiOSSDKv2
   - Braintree
-  - CardIO
+  - CardIO (~> 5.1.1)
+  - Crashlytics
+  - Fabric
   - Heap (~> 2.1.5)
   - iCarousel (~> 1.7.6)
   - JSBadgeView
@@ -172,8 +178,10 @@ SPEC CHECKSUMS:
   AWSSimpleDB: 56a8aae3cde205ef3270e46ed4a3e416e67d4d4e
   AWSSNS: 0188eab8b808981c531bbcd4ef238325c71270ec
   AWSSQS: a2304d18086ce907aa7a8bba275861a69886a662
-  Braintree: 996027dcc8633569f2405bc57dca11f367050c60
+  Braintree: 79c1646276349ac8c0bd44f0ded4f1d5ab01af02
   CardIO: 2c3a8ef9b9add4bd664c83bb653b83b2f32d9d7f
+  Crashlytics: 41c082440d2e14da444186fff65e79c0b4b35d4c
+  Fabric: 190bf1a6eb65f7500de1347d027d2e59a7e53db1
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   iCarousel: ddd7f142c7c2f3429b0ce5fb8ea37f4a059394cd
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
@@ -185,6 +193,6 @@ SPEC CHECKSUMS:
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   Stripe: 6864be95b09092f05526bc2e0a50804bc556aa0d
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
-  ZendeskSDK: c97e29286726c6eaf4f6fe97867dba354cbbd199
+  ZendeskSDK: 642e8774dec64624eaac36a54647f76755c01ea2
 
 COCOAPODS: 0.38.2

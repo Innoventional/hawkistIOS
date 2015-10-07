@@ -25,7 +25,8 @@
 #import <Braintree/Braintree.h>
 #import "HWBraintreeManager.h"
 
-
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 #import "const.h"
 
@@ -46,7 +47,7 @@
                                                              diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
     
-     
+    [Fabric with:@[[Crashlytics class]]];
     
 //    [[HWBraintreeManager shared] createTokenFromCardNumber:@"4242 4242 4242 4242"
 //                                                  expMonth:3
