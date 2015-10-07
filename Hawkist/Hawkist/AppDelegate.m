@@ -28,6 +28,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
+
 #import "const.h"
 
 @interface AppDelegate ()
@@ -48,6 +49,7 @@
     [NSURLCache setSharedURLCache:URLCache];
     
     [Fabric with:@[[Crashlytics class]]];
+
     
 //    [[HWBraintreeManager shared] createTokenFromCardNumber:@"4242 4242 4242 4242"
 //                                                  expMonth:3

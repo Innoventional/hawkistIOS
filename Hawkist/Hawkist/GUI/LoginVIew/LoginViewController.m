@@ -16,7 +16,8 @@
 #import "CustomizationViewController.h"
 #import "FeedScreenViewController.h"
 #import "UIView+Extensions.h"
-
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface LoginViewController () <UIAlertViewDelegate,UITextFieldDelegate>
 
@@ -337,6 +338,11 @@
 
 - (void) logged:(HWUser*) user isLoggedWithFacebook: (BOOL) FaceBook
 {
+    
+    [CrashlyticsKit setUserIdentifier:user.id];
+    [CrashlyticsKit setUserEmail:user.email];
+    [CrashlyticsKit setUserName:user.username];
+    
     [[NetworkManager shared] getListOfTags:^(NSMutableArray *tags) {
         [AppEngine shared].user = user;
         [AppEngine shared].tags = tags;
@@ -367,6 +373,10 @@
     [AppEngine shared].logginedWithFB = FaceBook;
     [AppEngine shared].logginedWithPhone = !FaceBook;
 }
+
+
+
+
 
 - (void) setLogout
 {
