@@ -18,7 +18,7 @@
 #import "AWSS3Manager.h"
 #import "HWItem.h"
 
-
+#import <FBSDKAppEvents.h>
 
 @interface SellAnItemViewController ()
 
@@ -721,6 +721,8 @@
             engine.city = postLabel.text;
             engine.postCode = postField.text;
             
+                        [FBSDKAppEvents logEvent:@"Added New Item"];
+            
         } failureBlock:^(NSError *error) {
             [self hideHud];
             [self showAlertWithTitle:error.domain Message:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
@@ -741,6 +743,8 @@
             [self hideHud];
             engine.city = postLabel.text;
             engine.postCode = postField.text;
+            
+            [FBSDKAppEvents logEvent:@"Added New Item"];
             
         } failureBlock:^(NSError *error) {
             [self hideHud];

@@ -268,6 +268,8 @@ typedef NS_ENUM (NSInteger, HWArrayWithDataForSegmentView)
       [self updateUser];
     
   [self segmentButtonAction:self.itemsButton];
+
+   
    
 }
 

@@ -22,7 +22,7 @@
 #import "HWAddressCollectionOnlyCell.h"
 #import "AddAddressViewController.h"
 
-
+#import <FBSDKAppEvents.h>
 
 
 @interface HWPaymentViewController () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, NavigationViewDelegate, HWAddCardAndAdressCellDelegat>
@@ -736,7 +736,7 @@
                                   [self.navigationController pushViewController:vc animated:YES];
                                   
 
-                                  
+                                  [FBSDKAppEvents logPurchase:self.total currency:@"GBP"];
                               } failureBlock:^(NSError *error) {
                                   
                                   [self showAlertWithTitle:error.domain Message:error.localizedDescription];

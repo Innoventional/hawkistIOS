@@ -9,6 +9,7 @@
 #import "HWBaseViewController.h"
 #import "LoginViewController.h"
 #import "AFNetworking.h"
+#import <FBSDKAppEvents.h>
 
 @interface HWBaseViewController ()
 
@@ -25,7 +26,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityDidChange:)
                                                  name: AFNetworkingReachabilityDidChangeNotification
                                                object:nil];
+
     
+
     
 }
 

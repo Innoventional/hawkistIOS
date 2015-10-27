@@ -19,6 +19,7 @@
 #import "HWTapBarViewController.h"
 #import "WebViewController.h"
 #import "NavigationVIew.h"
+#import <FBSDKAppEvents.h>
 
 @interface AccountDetailViewController () <NavigationViewDelegate>
 @property (nonatomic,strong) UIView* accountDetailView;
@@ -444,6 +445,7 @@
             }
             else
             {
+                [FBSDKAppEvents logEvent:@"Registered New User"];
                 CustomizationViewController* vc = [[CustomizationViewController alloc]init];
                 vc.avaliableTags = [AppEngine shared].tags;
                 [self.navigationController pushViewController:vc animated:NO];

@@ -208,7 +208,6 @@
 		CE954C6A1B75E3E80063A719 /* HWAboutUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE954C691B75E3E80063A719 /* HWAboutUserView.xib */; };
 		CE954C6D1B77D9620063A719 /* UIImageView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C6C1B77D9620063A719 /* UIImageView+Extensions.m */; };
 		CE954C701B78EBEB0063A719 /* HWOrderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C6F1B78EBEB0063A719 /* HWOrderButton.m */; };
-		CEA107B41BB58AB1006F95EE /* HWBraintreeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107B31BB58AB1006F95EE /* HWBraintreeManager.m */; settings = {ASSET_TAGS = (); }; };
 		CEA107B71BB66BF0006F95EE /* HWProfileViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA107B61BB66BF0006F95EE /* HWProfileViewControllerV2.xib */; settings = {ASSET_TAGS = (); }; };
 		CEA107B91BB66EA7006F95EE /* HWProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA107B81BB66EA7006F95EE /* HWProfileHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
 		CEA107BC1BB66FA4006F95EE /* HWProfileHeaderVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107BB1BB66FA4006F95EE /* HWProfileHeaderVeiw.m */; settings = {ASSET_TAGS = (); }; };
@@ -576,8 +575,6 @@
 		CE954C6C1B77D9620063A719 /* UIImageView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Extensions.m"; sourceTree = "<group>"; };
 		CE954C6E1B78EBEB0063A719 /* HWOrderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWOrderButton.h; path = MyOrdersScreen/HWOrderButton.h; sourceTree = "<group>"; };
 		CE954C6F1B78EBEB0063A719 /* HWOrderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWOrderButton.m; path = MyOrdersScreen/HWOrderButton.m; sourceTree = "<group>"; };
-		CEA107B21BB58AB1006F95EE /* HWBraintreeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HWBraintreeManager.h; path = BraintreeManager/HWBraintreeManager.h; sourceTree = "<group>"; };
-		CEA107B31BB58AB1006F95EE /* HWBraintreeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HWBraintreeManager.m; path = BraintreeManager/HWBraintreeManager.m; sourceTree = "<group>"; };
 		CEA107B61BB66BF0006F95EE /* HWProfileViewControllerV2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HWProfileViewControllerV2.xib; path = ProfileScreenV2/HWProfileViewControllerV2.xib; sourceTree = "<group>"; };
 		CEA107B81BB66EA7006F95EE /* HWProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWProfileHeaderView.xib; sourceTree = "<group>"; };
 		CEA107BA1BB66FA4006F95EE /* HWProfileHeaderVeiw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWProfileHeaderVeiw.h; sourceTree = "<group>"; };
@@ -1209,7 +1206,6 @@
 		C35A4C3D1B2F33EA002E1F26 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				CEA107B11BB58A50006F95EE /* BraintreeManager */,
 				3A359D6C1B987D3700A0F2E1 /* PushNotificationManager */,
 				3A8F7DC91B8FCBC6000940CF /* PingManager */,
 				C35CB5401B6F5D4500956150 /* StripeManager */,
@@ -1546,15 +1542,6 @@
 			name = AboutUserScreen;
 			sourceTree = "<group>";
 		};
-		CEA107B11BB58A50006F95EE /* BraintreeManager */ = {
-			isa = PBXGroup;
-			children = (
-				CEA107B21BB58AB1006F95EE /* HWBraintreeManager.h */,
-				CEA107B31BB58AB1006F95EE /* HWBraintreeManager.m */,
-			);
-			name = BraintreeManager;
-			sourceTree = "<group>";
-		};
 		CEA107B51BB66B79006F95EE /* ProfileScreenV2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1655,6 +1642,7 @@
 				C35A4C121B2F2DF7002E1F26 /* Resources */,
 				42BE26212B5C6D69C4709543 /* Copy Pods Resources */,
 				3A56D00B1BC5DA14008EC94F /* ShellScript */,
+				94A4ED8ECCA963273216E8AE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1869,6 +1857,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		94A4ED8ECCA963273216E8AE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1897,7 +1900,6 @@
 				3A0BAF6F1B551BA6004DFF86 /* myItemCell.m in Sources */,
 				CE954C641B750C800063A719 /* HWOrderItem.m in Sources */,
 				3A8F7DBA1B8BD85A000940CF /* SupportScreenViewController.m in Sources */,
-				CEA107B41BB58AB1006F95EE /* HWBraintreeManager.m in Sources */,
 				CEA107C61BB6FDD4006F95EE /* HWFollowInProfileColViewCell.m in Sources */,
 				C35CB4B61B4FF04900956150 /* HWItem+Extensions.m in Sources */,
 				C35A4C871B303BCF002E1F26 /* OCFacebookHelper.m in Sources */,
@@ -2051,6 +2053,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jonathan Erwin (88DJ4L28WB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jonathan Erwin (88DJ4L28WB)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2095,7 +2098,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dmitro Stepanov (7228BBSRBS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jonathan Erwin (823CDF6K5W)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2123,8 +2126,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
@@ -2135,7 +2138,7 @@
 					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ec1f8900-38e4-40cc-8157-2641b764ce80";
+				PROVISIONING_PROFILE = "d1577430-abad-44b7-92da-e2bf17d87e8e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2146,8 +2149,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Developer ID Installer: Jonathan Erwin (823CDF6K5W)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = Hawkist/PrefixHeader.pch;
 				INFOPLIST_FILE = Hawkist/Info.plist;
@@ -2158,7 +2161,7 @@
 					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ec1f8900-38e4-40cc-8157-2641b764ce80";
+				PROVISIONING_PROFILE = "d1577430-abad-44b7-92da-e2bf17d87e8e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

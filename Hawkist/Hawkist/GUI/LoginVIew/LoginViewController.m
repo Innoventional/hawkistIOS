@@ -18,6 +18,7 @@
 #import "UIView+Extensions.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <FBSDKAppEvents.h>
 
 @interface LoginViewController () <UIAlertViewDelegate,UITextFieldDelegate>
 
@@ -339,6 +340,17 @@
 - (void) logged:(HWUser*) user isLoggedWithFacebook: (BOOL) FaceBook
 {
     
+    if (FaceBook)
+
+    {
+        [FBSDKAppEvents logEvent:@"Sign In With FB"];
+    }
+    else
+        
+    {
+        [FBSDKAppEvents logEvent:@"Sign In With Number"];
+    }
+    
     [CrashlyticsKit setUserIdentifier:user.id];
     [CrashlyticsKit setUserEmail:user.email];
     [CrashlyticsKit setUserName:user.username];
@@ -359,6 +371,7 @@
 //        }
         if (user.first_login)
         {
+
             AccountDetailViewController *accountDetailVC= [[AccountDetailViewController alloc]init];
             accountDetailVC.isLogeedWithFacebook = FaceBook;
             [self.navigationController pushViewController:accountDetailVC animated:(YES)];

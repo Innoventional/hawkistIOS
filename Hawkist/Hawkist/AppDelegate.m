@@ -22,13 +22,11 @@
 #import <ZendeskSDK/ZendeskSDK.h>
 #import <Leanplum/Leanplum.h>
 
-#import <Braintree/Braintree.h>
-#import "HWBraintreeManager.h"
-
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-
-
+#import <FBSDKApplicationDelegate.h>
+#import <FBSDKAppEvents.h>
+#import <FBSDKAppLinkUtility.h>
 #import "const.h"
 
 @interface AppDelegate ()
@@ -43,6 +41,12 @@
     // Override point for customization after application launch.
   
     
+    //FB
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+    //
+    
+    
     NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024
                                                          diskCapacity:20 * 1024 * 1024
                                                              diskPath:nil];
@@ -50,20 +54,7 @@
     
     [Fabric with:@[[Crashlytics class]]];
 
-    
-//    [[HWBraintreeManager shared] createTokenFromCardNumber:@"4242 4242 4242 4242"
-//                                                  expMonth:3
-//                                                   expYear:16
-//                                                       cvv:@"222"
-//                                              addressLine1:@"dd"
-//                                              addressLine2:nil
-//                                                      name:nil
-//                                                  postCode:@"121"
-//                                                      city:@"DD"
-//                                                completion:^(NSString *tokenId, NSError *error) {
-//                                                    
-//                                                    
-//                                                                                }];
+
     
     ///LeanPlum////
 
@@ -101,7 +92,7 @@
     [self.rootViewController pushViewController:[[LoginViewController alloc] init]  animated: NO];
     
     
-   // [self.rootViewController pushViewController:[HWBrainTreeViewController new] animated:NO];
+
     
    //   [self.rootViewController pushViewController:[[WantToSellViewController alloc] init]  animated: NO];
     self.rootViewController.navigationBarHidden = YES;
@@ -150,7 +141,12 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     
-    return [Braintree handleOpenURL:url sourceApplication:sourceApplication];
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation
+            ];
+
 }
 
 
@@ -192,10 +188,13 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+     [FBSDKAppEvents activateApp];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

@@ -21,6 +21,7 @@
 #import "HWMention.h"
 #import "HWMentionUserCell.h"
 #import <pop/POP.h>
+#import <FBSDKAppEvents.h>
  
 
 @interface HWCommentViewController () <NavigationViewDelegate, HWCommentInputViewDelegate, HWCommentCellDelegate, UITextViewDelegate>
@@ -618,7 +619,8 @@
     [self.networkManager createNewCommentWithItemId:self.itemId
                                         textComment:trimmedString
                                        successBlock:^{
-                                           
+                                        
+                                           [FBSDKAppEvents logEvent:@"Added New Comment"];
                                            [self setCommentsArrayWithItem:self.currentItem];
                                            self.inputCommentView.limitCharacter.text = [NSString stringWithFormat:@"160" ];
                                            

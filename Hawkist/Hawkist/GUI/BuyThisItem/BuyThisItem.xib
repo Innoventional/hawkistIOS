@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -45,6 +46,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHb-Yl-EHH" customClass="NavigationVIew">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="63" id="hd5-6X-Mtx"/>
@@ -64,6 +66,7 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ZXt-3C-Tbe">
                                     <rect key="frame" x="14" y="44" width="292" height="292"/>
+                                    <animations/>
                                     <color key="backgroundColor" red="0.86693102899999996" green="0.86693102899999996" blue="0.86693102899999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="320" id="8JK-qT-MNz"/>
@@ -77,6 +80,7 @@
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="X99A GAMING 9 ACK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sU6-GO-rmI">
                                     <rect key="frame" x="14" y="8" width="170" height="28"/>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="3vB-4j-75T"/>
                                         <constraint firstAttribute="width" constant="170" id="7dP-d1-wcV"/>
@@ -95,6 +99,7 @@
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5999.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATO-Uf-JV5">
                                     <rect key="frame" x="198" y="13" width="52" height="20"/>
+                                    <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                     <color key="textColor" red="0.2156862745" green="0.72549019609999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -102,6 +107,7 @@
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skidka" translatesAutoresizingMaskIntoConstraints="NO" id="CEg-SZ-AHu">
                                     <rect key="frame" x="14" y="83" width="53" height="30"/>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="53" id="6ip-aB-NcA"/>
                                         <constraint firstAttribute="height" constant="30" id="Icp-EH-DBf"/>
@@ -109,6 +115,7 @@
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szL-T9-38Q">
                                     <rect key="frame" x="20" y="85" width="42" height="26"/>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="26" id="K0Z-4F-Qvw"/>
                                     </constraints>
@@ -118,6 +125,7 @@
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5999.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyv-eC-aVy">
                                     <rect key="frame" x="261" y="15" width="45" height="17"/>
+                                    <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
@@ -125,18 +133,21 @@
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="£" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhL-ts-n6D">
                                     <rect key="frame" x="190" y="13" width="8" height="20"/>
+                                    <animations/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                     <color key="textColor" red="0.2156862745" green="0.72549019609999998" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="£" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LP7-zg-x5d">
                                     <rect key="frame" x="254" y="15" width="7" height="17"/>
+                                    <animations/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qvW-Fx-KEM">
                                     <rect key="frame" x="254" y="24" width="52" height="1"/>
+                                    <animations/>
                                     <color key="backgroundColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="15E-0B-b7f"/>
@@ -144,6 +155,7 @@
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezg-3g-0ri">
                                     <rect key="frame" x="165" y="351" width="141" height="41"/>
+                                    <animations/>
                                     <color key="backgroundColor" red="0.74901960784313726" green="0.78431372549019607" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="41" id="wcm-vJ-N4s"/>
@@ -163,6 +175,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5A-Cw-nmp">
                                     <rect key="frame" x="14" y="352" width="141" height="40"/>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="D5d-Ok-Lad"/>
                                         <constraint firstAttribute="height" constant="40" id="cNv-1N-3X0"/>
@@ -181,6 +194,7 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJz-iF-ZMx">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                            <animations/>
                                             <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="7wc-UM-gVW"/>
@@ -188,11 +202,13 @@
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NEW OFFERED PRICE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUp-7T-hIj">
                                             <rect key="frame" x="13" y="8" width="99" height="14"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
                                             <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                     <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="BJz-iF-ZMx" firstAttribute="leading" secondItem="vr2-xa-TVe" secondAttribute="leading" id="34P-4c-UXk"/>
@@ -205,6 +221,7 @@
                                 </view>
                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2xQ-R5-cY1" customClass="MoneyField">
                                     <rect key="frame" x="17" y="466" width="110" height="40"/>
+                                    <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="GnS-iM-Ntl"/>
@@ -215,11 +232,13 @@
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ENTER A NEW OFFERED PRICE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGi-JI-0Qe">
                                     <rect key="frame" x="15" y="446" width="199" height="20"/>
+                                    <animations/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                     <color key="textColor" red="0.67843137254901964" green="0.67843137254901964" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <animations/>
                             <constraints>
                                 <constraint firstItem="ezg-3g-0ri" firstAttribute="top" secondItem="ZXt-3C-Tbe" secondAttribute="bottom" constant="15" id="0Ky-0f-E5A"/>
                                 <constraint firstItem="sU6-GO-rmI" firstAttribute="leading" secondItem="sZb-gu-zVD" secondAttribute="leading" constant="14" id="0tQ-UZ-W1b"/>
@@ -268,6 +287,7 @@
                             </variation>
                         </view>
                     </subviews>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="sZb-gu-zVD" secondAttribute="trailing" id="1Ry-er-yKq"/>
                         <constraint firstItem="sZb-gu-zVD" firstAttribute="width" secondItem="JTH-Us-UXO" secondAttribute="width" id="5K1-O4-vDr"/>
@@ -283,6 +303,7 @@
                     </variation>
                 </scrollView>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="JTH-Us-UXO" firstAttribute="top" secondItem="JHb-Yl-EHH" secondAttribute="bottom" id="64F-yw-uCL"/>
