@@ -93,8 +93,8 @@
 		3ACC6BEB1B4426780076004F /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6BEA1B4426780076004F /* CustomButton.m */; };
 		3ACC6BEE1B44A75E0076004F /* money.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC6BED1B44A75E0076004F /* money.xib */; };
 		3ACC6BF11B44A9E30076004F /* MoneyField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC6BF01B44A9E30076004F /* MoneyField.m */; };
-		3AE6208A1BBCBF01008E91D0 /* HWUploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE620891BBCBF01008E91D0 /* HWUploadImage.m */; settings = {ASSET_TAGS = (); }; };
-		3AEA82381BB5A45F008E2057 /* HWImageWithThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA82371BB5A45F008E2057 /* HWImageWithThumbnail.m */; settings = {ASSET_TAGS = (); }; };
+		3AE6208A1BBCBF01008E91D0 /* HWUploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE620891BBCBF01008E91D0 /* HWUploadImage.m */; };
+		3AEA82381BB5A45F008E2057 /* HWImageWithThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA82371BB5A45F008E2057 /* HWImageWithThumbnail.m */; };
 		3AF04D431B42B34D000D1D58 /* WantToSellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF04D421B42B34D000D1D58 /* WantToSellViewController.m */; };
 		3AF37F9B1B57A8DD00E784DB /* HWTag+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF37F9A1B57A8DD00E784DB /* HWTag+Extensions.m */; };
 		3AF831F41B6F64B900CC750D /* AddCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF831F31B6F64B900CC750D /* AddCardView.xib */; };
@@ -208,12 +208,12 @@
 		CE954C6A1B75E3E80063A719 /* HWAboutUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE954C691B75E3E80063A719 /* HWAboutUserView.xib */; };
 		CE954C6D1B77D9620063A719 /* UIImageView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C6C1B77D9620063A719 /* UIImageView+Extensions.m */; };
 		CE954C701B78EBEB0063A719 /* HWOrderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE954C6F1B78EBEB0063A719 /* HWOrderButton.m */; };
-		CEA107B71BB66BF0006F95EE /* HWProfileViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA107B61BB66BF0006F95EE /* HWProfileViewControllerV2.xib */; settings = {ASSET_TAGS = (); }; };
-		CEA107B91BB66EA7006F95EE /* HWProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA107B81BB66EA7006F95EE /* HWProfileHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
-		CEA107BC1BB66FA4006F95EE /* HWProfileHeaderVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107BB1BB66FA4006F95EE /* HWProfileHeaderVeiw.m */; settings = {ASSET_TAGS = (); }; };
-		CEA107BF1BB67BD0006F95EE /* HWProfileViewControllerV2.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107BE1BB67BD0006F95EE /* HWProfileViewControllerV2.m */; settings = {ASSET_TAGS = (); }; };
-		CEA107C61BB6FDD4006F95EE /* HWFollowInProfileColViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107C51BB6FDD4006F95EE /* HWFollowInProfileColViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		CEA107C81BB6FED6006F95EE /* HWFollowInProfileColViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA107C71BB6FED6006F95EE /* HWFollowInProfileColViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		CEA107B71BB66BF0006F95EE /* HWProfileViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA107B61BB66BF0006F95EE /* HWProfileViewControllerV2.xib */; };
+		CEA107B91BB66EA7006F95EE /* HWProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA107B81BB66EA7006F95EE /* HWProfileHeaderView.xib */; };
+		CEA107BC1BB66FA4006F95EE /* HWProfileHeaderVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107BB1BB66FA4006F95EE /* HWProfileHeaderVeiw.m */; };
+		CEA107BF1BB67BD0006F95EE /* HWProfileViewControllerV2.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107BE1BB67BD0006F95EE /* HWProfileViewControllerV2.m */; };
+		CEA107C61BB6FDD4006F95EE /* HWFollowInProfileColViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA107C51BB6FDD4006F95EE /* HWFollowInProfileColViewCell.m */; };
+		CEA107C81BB6FED6006F95EE /* HWFollowInProfileColViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA107C71BB6FED6006F95EE /* HWFollowInProfileColViewCell.xib */; };
 		CEA725641B57ED590086F657 /* HWFollowInProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA725631B57ED590086F657 /* HWFollowInProfileCell.m */; };
 		CEA725661B57F0BA0086F657 /* HWFollowInProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA725651B57F0BA0086F657 /* HWFollowInProfileCell.xib */; };
 		CEAF105D1B8AFB5B00E5029E /* HWMyBalanceCurrentBalanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAF105C1B8AFB5B00E5029E /* HWMyBalanceCurrentBalanceView.m */; };
@@ -2138,7 +2138,7 @@
 					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4c7d9bf-32b5-41b7-b7a8-96a69c237e28";
+				PROVISIONING_PROFILE = "6c1b75a8-f166-413b-834f-78a3e9a5425a";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2161,7 +2161,7 @@
 					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4c7d9bf-32b5-41b7-b7a8-96a69c237e28";
+				PROVISIONING_PROFILE = "6c1b75a8-f166-413b-834f-78a3e9a5425a";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
