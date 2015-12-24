@@ -46,6 +46,7 @@
     card.name = name;
     card.addressCity = city;
     card.addressZip = postCode;
+    
     STPAPIClient *client = [[STPAPIClient alloc] initWithPublishableKey: STRIPE_KEY];
     [client createTokenWithCard:card completion:^(STPToken *token, NSError *error) {
         if (error) {
